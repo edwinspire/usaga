@@ -1,0 +1,17 @@
+# Ignores
+*.c~
+*.vala~
+\.sh
+\.bat
+\.c~
+bin/\.vala~
+bin/\.sh
+bin/\.bat
+bin/\.c~
+\.DS_Store
+\.classpath
+\.project
+\.settings
+\.metadata/
+Servers/
+target/
