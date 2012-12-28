@@ -160,6 +160,15 @@ return store.getValue(item, tagname)
 },
 GetValueFromBase64: function(store, item, tagname){
 return jsspire.Base64.decode(this.GetValue(store, item, tagname));
+},
+GetNumber:function(store, item, tagname){
+return Number(this.GetValue(store, item, tagname));
+}, 
+GetBoolean:function(store, item, tagname){
+return StringToBool(this.GetValue(store, item, tagname));
+}, 
+GetString:function(store, item, tagname){
+return String(this.GetValue(store, item, tagname));
 }
 }
 

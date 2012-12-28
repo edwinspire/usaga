@@ -1017,31 +1017,6 @@ alert(error);
 }
 return Objeto;
 },
-/*
-SaveForm: function(){
-
-if(AC.dijit.Select.get('value') > 0 && GlobalObject.IdAccount > 0){
-
-var store = new dojox.data.XmlStore({url: "opensagagetaccountcontactstable", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idcontact: AC.dijit.Select.get('value'), enable: AC.dijit.Enable.get('value'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: encodeURIComponent(AC.dijit.Note.get('value')), ts: AC.dijit.TS.get('value')}, onComplete: function(itemsrow, r){
-
-if(itemsrow.length > 0){
-alert(Base64.decode(String(store.getValue(itemsrow[0], "outpgmsg"))));
-}
-
-},
-onError: function(e){
-alert(e);
-}
-});
-
-}else{
-AC.GxCClear();
-}
-return this;
-},
-*/
 LoadPhonesNotifEvenTypes: function(idphone){
 
 if(idphone > 0){
@@ -1105,18 +1080,18 @@ myData.identifier = "unique_id";
 var i = 0;
 while(i<numrows){
     var row = itemsrow[i];
-//alert(store.getValue(row, "idnotifaccount"));
+//alert(store.getValue(row, "idphone"));
 myData.items[i] = {
 unique_id:i,
 idcontact: idcontact,
-idnotifaccount: store.getValue(row, "idnotifaccount"),
-idphone: store.getValue(row, "idphone"),
-idprovider: store.getValue(row, "idprovider"),
+idnotifaccount: jsspire.XmlStore.GetNumber(store, row, "idnotifaccount"),
+idphone: Number(store.getValue(row, "idphone")),
+idprovider: Number(store.getValue(row, "idprovider")),
 phone: jsspire.Base64.decode(store.getValue(row, "phone")),
-idaccount: store.getValue(row, "idaccount"),
-priority: store.getValue(row, "priority"),    
-call: store.getValue(row, "call"),
-sms: store.getValue(row, "sms"),
+idaccount: Number(store.getValue(row, "idaccount")),
+priority: Number(store.getValue(row, "priority")),    
+call: jsspire.XmlStore.GetBoolean(store, row, "call"),
+sms: jsspire.XmlStore.GetBoolean(store, row, "sms"),
 smstext: jsspire.Base64.decode(store.getValue(row, "smstext")),
 address: jsspire.Base64.decode(store.getValue(row, "address")),
 note: jsspire.Base64.decode(store.getValue(row, "note"))
@@ -1211,25 +1186,28 @@ AC.dijit.GxC.startup();
 }
 
 	if (AC.dijit.GxNP) {
-// Captura el evento cuando se hace click en una fila
-dojo.connect(AC.dijit.GxNP, 'onRowClick', function(event){
-//var id = this.cell(event.rowId, 2, true).data();
-//alert(id);
-AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 2, true).data());
-});
-		AC.dijit.GxNP.setColumns([
+
+AC.dijit.GxNP.setColumns([
 			{field:"idnotifaccount", name: "id", width: '0px'},
 			{field:"idphone", name: "idp", width: '0px'},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
-			{field:"call", name: "call", width: '20px', editable: true},
+			{field:"callx", name: "callx", width: '20px', editable: true},
 			{field:"sms", name: "sms", width: '20px', editable: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
 			{field:"address", name: "Dirección", editable: true},
 	                {field:"note", name: "Nota", editable: true}
 		]);
 AC.dijit.GxNP.startup();
+
+// Captura el evento cuando se hace click en una fila
+dojo.connect(AC.dijit.GxNP, 'onRowClick', function(event){
+//var id = this.cell(event.rowId, 2, true).data();
+//alert(id);
+AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 2, true).data());
+});
+		
 }
 
 
@@ -1305,7 +1283,7 @@ return Objeto;
 }
 
 	dojo.connect(opensaga_account_contact_notifphonesStore, 'onSet', function(item, attribute, oldValue, newValue){
-alert('Edita '+ item.idcontact);
+//alert('Edita '+ item.idcontact);
 ANP.Save(item);
 });	
 
