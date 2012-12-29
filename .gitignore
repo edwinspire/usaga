@@ -3,11 +3,8 @@
 *.vala~
 *.sh
 *.bat
-\.c~
-\.DS_Store
-\.classpath
-\.project
-\.settings
-\.metadata/
-Servers/
-target/
+*.sh~
+*.bat~
+*.md~
+bin/lnx/proyects
+bin/win/proyects
