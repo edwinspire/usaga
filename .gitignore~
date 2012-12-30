@@ -9,5 +9,8 @@
 *.sj~
 *.html~
 *.dia~
+*.css~
+*.log~
+*.log
 bin/lnx/proyects
 bin/win/proyects

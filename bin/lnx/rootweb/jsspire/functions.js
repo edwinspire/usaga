@@ -145,7 +145,6 @@ Base64: {
 	}
  
 },
-//alert(Base64.decode(xmldata[0].getElementsByTagName('outpgmsg').item(0).firstChild.data));
 Xml :{
 GetData: function(xmldatarow, tagname){
 return xmldatarow.getElementsByTagName(tagname).item(0).firstChild.data;
@@ -173,6 +172,65 @@ return String(this.GetValue(store, item, tagname));
 }
 
 }
+
+// Objeto que representa una tabla de datos (filas y columnas) en formato xml obtenido desde dojo.xhrPost o dojo.xhrGet (handleAs: 'xml')
+var jspireTableXmlDoc = function (xmldoc, getElementsByTagName){
+this.xml = xmldoc,
+this.ElementsByTagName = getElementsByTagName,
+this.rows = this.xml.getElementsByTagName(this.ElementsByTagName),
+this.length = this.rows.length,
+this.getValue = function(i, field){
+return this.rows[i].getElementsByTagName(field).item(0).firstChild.data;
+},
+this.getBool = function(i, field){
+return jsspire.StringToBool(this.getValue(i, field));
+},
+this.getNumber = function(i, field){
+return Number(this.getValue(i, field));
+},
+this.getInt = function(i, field){
+return parseInt(this.getValue(i, field));
+},
+this.getFloat = function(i, field){
+return parseFloat(this.getValue(i, field));
+},
+this.getString = function(i, field){
+return this.getValue(i, field);
+},
+this.getStringB64 = function(i, field){
+return jsspire.Base64.decode(this.getValue(i, field));
+}
+}
+
+// Objeto que representa una tabla de datos (filas y columnas) en formato xml obtenido desde un dojox.data.XmlStore
+var jspireTableXmlStore = function (xmlstore, xmlitems){
+this.store = xmlstore,
+this.items = xmlitems,
+this.lengthItems = this.items.length,
+this.getValue = function(i, field){
+return this.store.getValue(this.items[i], field);
+},
+this.getBool = function(i, field){
+return jsspire.StringToBool(this.getValue(i, field));
+},
+this.getNumber = function(i, field){
+return Number(this.getValue(i, field));
+},
+this.getInt = function(i, field){
+return parseInt(this.getValue(i, field));
+},
+this.getFloat = function(i, field){
+return parseFloat(this.getValue(i, field));
+},
+this.getString = function(i, field){
+return this.getValue(i, field);
+},
+this.getStringB64 = function(i, field){
+return jsspire.Base64.decode(this.getValue(i, field));
+}
+}
+
+
 
 
 

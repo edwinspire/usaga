@@ -1025,6 +1025,8 @@ var store = new dojox.data.XmlStore({url: "opensagagetaccountphonesnotifeventtyp
 
 var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idphone: idphone}, onComplete: function(itemsrow, r){
 
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
@@ -1032,17 +1034,14 @@ myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
-    var row = itemsrow[i];
-
 myData.items[i] = {
 unique_id:i,
-idnotifaccount: store.getValue(row, "idnotifaccount"),
-ideventtype: store.getValue(row, "ideventtype"),
-enable: store.getValue(row, "enable"),
-label: jsspire.Base64.decode(store.getValue(row, "label")),
-ts: store.getValue(row, "ts"),
+idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
+ideventtype: dataxml.getNumber(i, "ideventtype"),
+enable: dataxml.getBool(i, "enable"),
+label: dataxml.getStringB64(i, "label"),
+ts: dataxml.getValue(i, "ts"),
 };
-
 i++;
 }
 
@@ -1077,24 +1076,25 @@ numrows = itemsrow.length;
 var myData = {identifier: "unique_id", items: []};
 myData.identifier = "unique_id";
 
+var dataxml = new jspireTableXmlStore(store, itemsrow);
 var i = 0;
 while(i<numrows){
-    var row = itemsrow[i];
+//    var row = itemsrow[i];
 //alert(store.getValue(row, "idphone"));
 myData.items[i] = {
 unique_id:i,
 idcontact: idcontact,
-idnotifaccount: jsspire.XmlStore.GetNumber(store, row, "idnotifaccount"),
-idphone: Number(store.getValue(row, "idphone")),
-idprovider: Number(store.getValue(row, "idprovider")),
-phone: jsspire.Base64.decode(store.getValue(row, "phone")),
-idaccount: Number(store.getValue(row, "idaccount")),
-priority: Number(store.getValue(row, "priority")),    
-call: jsspire.XmlStore.GetBoolean(store, row, "call"),
-sms: jsspire.XmlStore.GetBoolean(store, row, "sms"),
-smstext: jsspire.Base64.decode(store.getValue(row, "smstext")),
-address: jsspire.Base64.decode(store.getValue(row, "address")),
-note: jsspire.Base64.decode(store.getValue(row, "note"))
+idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
+idphone: dataxml.getNumber(i, "idphone"),
+idprovider: dataxml.getNumber(i, "idprovider"),
+phone: dataxml.getStringB64(i, "phone"),
+idaccount: dataxml.getNumber(i, "idaccount"),
+priority: dataxml.getNumber(i, "priority"),    
+call: dataxml.getBool(i, "call"),
+sms: dataxml.getBool(i, "sms"),
+smstext: dataxml.getStringB64(i, "smstext"),
+address: dataxml.getStringB64(i, "address"),
+note: dataxml.getStringB64(i, "note")
 };
 
 i++;
@@ -1240,22 +1240,17 @@ if(GlobalObject.IdAccount > 0 && itemStore.idcontact > 0){
  content: {idnotifaccount: 0, idaccount:GlobalObject.IdAccount, idphone: itemStore.idphone, priority: itemStore.priority, sms: itemStore.sms, call: itemStore.call, smstext: itemStore.smstext, note: itemStore.note },
     handleAs: "xml",
     load: function(datass){
-//alert(datass);
-var xmldata = datass.getElementsByTagName("row");
-//     alert(xmldata.length);
-//  var datar = dojox.xml.DomParser.parse(datass);
 
-if(xmldata.length > 0){
-//Objeto.dijit.Select.set('value', String(xmldata[0].getAttribute("idcontact"))); 
+var xmld = new jspireTableXmlDoc(datass, 'row');
 
-if(xmldata[0].getElementsByTagName('outreturn').item(0).firstChild.data > 0){
+if(xmld.length > 0){
+
+if(xmld.getInt(0, 'outreturn') > 0){
 //alert('pasa');
-alert(jsspire.Xml.GetDataFromBase64(xmldata[0], 'outpgmsg'));
+alert(xmld.getStringB64(0, 'outpgmsg'));
 }else{
 //Objeto.ResetOnSelectContact();
 }
-
-
 
 }
 //Objeto.LoadContactsGrid();
