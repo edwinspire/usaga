@@ -738,7 +738,7 @@ RetornoX = reg["return"].Value;
 }else{
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-GLib.print(RetornoX);
+//GLib.print(RetornoX);
 return RetornoX;
 }
 

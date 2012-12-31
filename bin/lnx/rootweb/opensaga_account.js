@@ -71,10 +71,40 @@ return this;
 
 LoadListIdContactName: function(){
 var Objeto = this;
+var store = new dojox.data.XmlStore({url: "usmsgetcontactsvaluesselectbox", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+
+if(numrows > 0){
+var Items = [];
+
+//var len = xmldata.length;
+var i = 0;
+while(i<numrows){
+Items[i] =    {name: dataxml.getStringB64(i, 'name'), id: dataxml.getNumber(i, "idcontact")};
+i++;
+}
+on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
+}
+
+},
+onError: function(e){
+alert(e);
+}
+});
+/*
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "usmsgetcontactsvaluesselectbox",
-    handleAs: "text",
+    handleAs: "xml",
     load: function(dataX){
 //alert(dataX);
   var datar = dojox.xml.DomParser.parse(dataX);
@@ -99,7 +129,7 @@ alert(errorx);
   }
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrGet(xhrArgs);
- 
+ */
 return Objeto;
 }
 }
@@ -377,46 +407,6 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
 		]);
 myAccountUsersGridX.startup();
-}
-
-
-// Obtiene un store que contiene el idcontact y el nombre
-function StoreContactIdAndName(dijitFilteringSelectElement){
-
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "usmsgetcontactsvaluesselectbox",
-    handleAs: "text",
-    load: function(dataX){
-//alert(dataX);
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('row');
-
-if(xmldata.length > 0){
-var Items = [];
-
-var len = xmldata.length;
-var i = 0;
-while(i<len){
-Items[i] =    {name: jsspire.Base64.decode(xmldata[i].getAttribute("name")), id: String(xmldata[i].getAttribute("idcontact"))};
-i++;
-}
-
-dijitFilteringSelectElement.store = null;
-dijitFilteringSelectElement.store = new Memory({data: Items});
-dijitFilteringSelectElement.startup();
-}
-dijitFilteringSelectElement.readOnly = true;
-
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrGet(xhrArgs);
- 
-return dijitFilteringSelectElement;
 }
 
 
@@ -1079,8 +1069,6 @@ myData.identifier = "unique_id";
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 var i = 0;
 while(i<numrows){
-//    var row = itemsrow[i];
-//alert(store.getValue(row, "idphone"));
 myData.items[i] = {
 unique_id:i,
 idcontact: idcontact,

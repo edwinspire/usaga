@@ -28,7 +28,7 @@ S.VirtualUrl["opensagagetaccount"] = "/opensagagetaccount";
 S.VirtualUrl["opensagasaveaccount"] = "/opensagasaveaccount";
 S.VirtualUrl["opensagagetvaluesselectbox"] = "/opensagagetvaluesselectbox"; 
 S.VirtualUrl["opensagagetaccountusersgrid"] = "/opensagagetaccountusersgrid";
-S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
+//S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
 S.VirtualUrl["opensagagetaccountuser"] = "/opensagagetaccountuser";
 S.VirtualUrl["opensagasaveaccountuser"] = "/opensagasaveaccountuser";
 S.VirtualUrl["opensagageteventsmonitor"] = "/opensagageteventsmonitor";       
@@ -70,9 +70,6 @@ response = ResponseAccountsNamesToSelectBox(request);
 break;
 case "/opensagagetaccountusersgrid":
 response = ResponseAccountUsersToGridx(request);
-break;
-case "/usmsgetcontactsvaluesselectbox":
-response = ResponseContactsNamesToSelectBox(request);
 break;
 case "/opensagagetaccountuser":
 response = ResponseGetUserAccount(request);
@@ -359,8 +356,7 @@ Tabla.GetParamCnx();
 return Retorno;
 }
 
-
-
+/*
 private uHttp.Response ResponseContactsNamesToSelectBox(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
@@ -375,6 +371,7 @@ Tabla.GetParamCnx();
 
 return Retorno;
 }
+*/
 
 private uHttp.Response ResponseAccountsNamesToSelectBox(Request request){
 
