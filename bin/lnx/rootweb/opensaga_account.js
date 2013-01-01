@@ -895,6 +895,7 @@ GxNETClear: function(){
 
 },
 ResetOnSelectContact: function(){
+this.dijit.Select.readOnly = true;
 this.dojo.Form.reset();
 this.GxNPClear();
 this.GxNETClear();
@@ -980,6 +981,7 @@ if(jsspire.Xml.GetData(xmldata[0], 'outreturn') == Objeto.dijit.Select.get('valu
 //alert(Base64.decode(xmldata[0].getElementsByTagName('outpgmsg').item(0).firstChild.data));
 alert(jsspire.Xml.GetDataFromBase64(xmldata[0], 'outpgmsg'));
 Objeto.LoadFormContact(Objeto.dijit.Select.get('value'));
+//Objeto.LoadFormContact(Objeto.dijit.Select.get('value'));
 }else{
 Objeto.ResetOnSelectContact();
 }
@@ -1002,8 +1004,6 @@ alert(error);
 
 //LoadAccountPhonesTriggerGridx(iniidcontact);
 
-}else{
-	AC.GxCClear();
 }
 return Objeto;
 },
@@ -1127,6 +1127,7 @@ Objeto.dijit.Appointment.set('value', jsspire.Base64.decode(xmldata[0].getAttrib
 Objeto.dijit.Note.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note")));
 Objeto.dijit.TS.set('value', xmldata[0].getAttribute("ts"));
 }
+Objeto.LoadPhones(iniidcontact);
     },
 
     error: function(error){
@@ -1161,7 +1162,7 @@ AC.dijit.Select.readOnly = true;
 dojo.connect(AC.dijit.GxC, 'onRowClick', function(event){
 AC.ResetOnSelectContact();
 var id = this.cell(event.rowId, 1, true).data();
-AC.LoadFormContact(id).LoadPhones(id);
+AC.LoadFormContact(id);
 });
 		AC.dijit.GxC.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
@@ -1181,10 +1182,10 @@ AC.dijit.GxNP.setColumns([
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
-			{field:"callx", name: "callx", width: '20px', editable: true},
+			{field:"call", name: "call", width: '20px', editable: true},
 			{field:"sms", name: "sms", width: '20px', editable: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
-			{field:"address", name: "Dirección", editable: true},
+			{field:"address", name: "Dirección", editable: false},
 	                {field:"note", name: "Nota", editable: true}
 		]);
 AC.dijit.GxNP.startup();
