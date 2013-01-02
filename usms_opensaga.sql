@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2012-12-31 19:39:51 ECT
+-- Started on 2013-01-02 07:30:45 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -233,7 +233,7 @@ COMMENT ON FUNCTION fun_account_event_notifications_sms() IS 'Genere notificacio
 
 --
 -- TOC entry 278 (class 1255 OID 26359)
--- Dependencies: 799 7
+-- Dependencies: 7 799
 -- Name: fun_account_insert_update(integer, integer, boolean, text, text, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -819,7 +819,7 @@ COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion
 
 --
 -- TOC entry 284 (class 1255 OID 26416)
--- Dependencies: 7 799
+-- Dependencies: 799 7
 -- Name: fun_generate_test_report(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -872,7 +872,7 @@ COMMENT ON FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) IS 
 
 --
 -- TOC entry 276 (class 1255 OID 26215)
--- Dependencies: 799 7
+-- Dependencies: 7 799
 -- Name: fun_notification_gen_message(integer, integer, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1263,7 +1263,7 @@ END;$$;
 
 --
 -- TOC entry 271 (class 1255 OID 26417)
--- Dependencies: 799 7
+-- Dependencies: 7 799
 -- Name: hearbeat(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1514,7 +1514,7 @@ COMMENT ON FUNCTION xxxfun_account_table(inidaccount integer, inenable boolean, 
 
 --
 -- TOC entry 280 (class 1255 OID 26374)
--- Dependencies: 799 7
+-- Dependencies: 7 799
 -- Name: xxxfun_account_table(integer, boolean, text, text, integer, integer, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -2771,7 +2771,7 @@ COMMENT ON FUNCTION fun_smsoutoptions_current() IS 'Obtiene los valores de smsou
 
 --
 -- TOC entry 302 (class 1255 OID 26959)
--- Dependencies: 5 799
+-- Dependencies: 799 5
 -- Name: fun_view_contacts_byidcontact_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2786,7 +2786,7 @@ BEGIN
 
 IF fieldtextasbase64 THEN
 
-OPEN CursorResult FOR SELECT idcontact, enable, title, encode(firstname::bytea, 'base64'), encode(lastname::bytea, 'base64'), gender, birthday, typeofid, encode(identification::bytea, 'base64'), encode(web::bytea, 'base64'), encode(email1::bytea, 'base64'), encode(email2::bytea, 'base64'), encode(note::bytea, 'base64'), idaddress, ts   FROM contacts;
+OPEN CursorResult FOR SELECT idcontact, enable, title, encode(firstname::bytea, 'base64') AS firstname, encode(lastname::bytea, 'base64') AS lastname, gender, birthday, typeofid, encode(identification::bytea, 'base64') AS identification, encode(web::bytea, 'base64') as web, encode(email1::bytea, 'base64') as email1, encode(email2::bytea, 'base64') as email2, encode(note::bytea, 'base64') AS note, idaddress, ts   FROM contacts;
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
@@ -6014,7 +6014,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2012-12-31 19:39:53 ECT
+-- Completed on 2013-01-02 07:30:47 ECT
 
 --
 -- PostgreSQL database dump complete
