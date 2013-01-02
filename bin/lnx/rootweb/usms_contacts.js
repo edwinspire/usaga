@@ -42,13 +42,14 @@ Grid: dijit.byId("usms.contacts.gridx")
 LoadContactSelected: function(){
 alert(GlobalObject.IdContact);
 if(GlobalObject.IdContact > 0){
-var store = new dojox.data.XmlStore({query: {idcontact: GlobalObject.IdContact},  url: "usms_getcontactbyid_xml", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "usms_getcontactbyid_xml", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
+alert(numrows);
 
 var i = 0;
 
@@ -64,20 +65,6 @@ FormContact.dijit.email1.set('value', dataxml.getStringB64(i, "email1"));
 FormContact.dijit.email2.set('value', dataxml.getStringB64(i, "email2"));
 FormContact.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 FormContact.ts = dataxml.getStringB64(i, "ts");
-
-/*
-Enable: dijit.byId('usms.contact.enable'),
-Firstname: dijit.byId('usms.contact.firstname'),
-Lastname: dijit.byId('usms.contact.lastname'),
-Title: dijit.byId('usms.contact.title'),
-Gender: dijit.byId('usms.contact.gender'),
-IdentificationType: dijit.byId('usms.contact.typeidentification'),
-Identification: dijit.byId('usms.contact.identification'),
-Web: dijit.byId('usms.contact.web'),
-email1: dijit.byId('usms.contact.email1'),
-email2: dijit.byId('usms.contact.email2'),
-Note: dijit.byId('usms.contact.note')
-*/
 },
 onError: function(e){
 alert(e);
