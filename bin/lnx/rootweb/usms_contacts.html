@@ -31,7 +31,8 @@ require([
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
 </style>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="jsspire/functions.js"></script>
+<script type="text/javascript" src="usms_contacts.js"></script>
 </head>
 <body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
  <div style="width: 100%; height: 100%;">
@@ -47,7 +48,7 @@ require([
       <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
           Lista</label>
       </div>
-       <div style="width: 100%; height: 90%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_2" jsId="usms_contacts_ItemFileWriteStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span><table data-dojo-type="gridx.Grid" id="usms.contacts.gridx" title="Lista de todos los contactos registrados" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'enable',field:'enable'},{width:'auto',name:'title',field:'title'},{width:'auto',name:'name',field:'name'},{width:'auto',name:'note',field:'note'}],store:ItemFileReadStore_2"></table>
+       <div style="width: 100%; height: 90%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileReadStore_2" jsId="usms_contacts_ItemFileReadStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span><table data-dojo-type="gridx.Grid" id="usms.contacts.gridx" title="Lista de todos los contactos registrados" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'enable',field:'enable'},{width:'auto',name:'title',field:'title'},{width:'auto',name:'name',field:'name'},{width:'auto',name:'note',field:'note'}],store:usms_contacts_ItemFileReadStore"></table>
 </div>
      </div>
     </div>
@@ -359,3 +360,4 @@ require([
 </div>
 </body>
 </html>
+

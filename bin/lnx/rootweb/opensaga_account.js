@@ -71,7 +71,7 @@ return this;
 
 LoadListIdContactName: function(){
 var Objeto = this;
-var store = new dojox.data.XmlStore({url: "usmsgetcontactsvaluesselectbox", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
@@ -103,7 +103,7 @@ alert(e);
 /*
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "usmsgetcontactsvaluesselectbox",
+    url: "usms_getcontactslistidcontactname_xml",
     handleAs: "xml",
     load: function(dataX){
 //alert(dataX);
