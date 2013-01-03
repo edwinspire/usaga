@@ -189,12 +189,12 @@ alert(xmld.getStringB64(0, 'outpgmsg'));
 
 }
 
-Objeto.LoadGrid();
+GlobalObject.LoadGrid();
     },
 
     error: function(error)
 {
-Objeto.LoadGrid();
+GlobalObject.LoadGrid();
 alert(error);
     }
   }
