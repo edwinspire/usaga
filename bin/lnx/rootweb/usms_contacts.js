@@ -31,6 +31,21 @@ require(["dojo/ready",
 ///// BASIC /////
 // Account basic elements
 
+dojo.connect(dijit.byId('usms.contact.new'), 'onClick', function(e){
+GlobalObject.IdContact = 0;
+FormContact.dojo.Form.reset();
+//TODO Limpiar el resto de datos
+});
+
+dojo.connect(dijit.byId('usms.contact.save'), 'onClick', function(e){
+FormContact.SaveForm();
+});
+
+dojo.connect(dijit.byId('usms.contact.del'), 'onClick', function(e){
+GlobalObject.IdContact = GlobalObject.IdContact*-1;
+FormContact.SaveForm();
+});
+
 
 var GlobalObject = {
 IdContact: 0,
@@ -56,6 +71,7 @@ FormContact.dijit.Enable.set('value', dataxml.getBool(i, "enable"));
 FormContact.dijit.Firstname.set('value', dataxml.getStringB64(i, "firstname"));
 FormContact.dijit.Lastname.set('value', dataxml.getStringB64(i, "lastname"));
 FormContact.dijit.Title.set('value', dataxml.getNumber(i, "title"));
+FormContact.dijit.Birthday.set('value', new Date(dataxml.getString(i, "birthday")));
 FormContact.dijit.Gender.set('value', dataxml.getNumber(i, "gender"));
 FormContact.dijit.IdentificationType.set('value', dataxml.getNumber(i, "typeofid"));
 FormContact.dijit.Identification.set('value', dataxml.getStringB64(i, "identification"));
@@ -141,6 +157,7 @@ Enable: dijit.byId('usms.contact.enable'),
 Firstname: dijit.byId('usms.contact.firstname'),
 Lastname: dijit.byId('usms.contact.lastname'),
 Title: dijit.byId('usms.contact.title'),
+Birthday: dijit.byId('usms.contact.birthday'),
 Gender: dijit.byId('usms.contact.gender'),
 IdentificationType: dijit.byId('usms.contact.typeidentification'),
 Identification: dijit.byId('usms.contact.identification'),
@@ -148,6 +165,43 @@ Web: dijit.byId('usms.contact.web'),
 email1: dijit.byId('usms.contact.email1'),
 email2: dijit.byId('usms.contact.email2'),
 Note: dijit.byId('usms.contact.note')
+},
+SaveForm: function(){
+
+var Objeto = this;
+
+  var xhrArgs = {
+    url: "usms_contactstablefun_xml",
+ content: {idcontact:GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('value'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+
+if(xmld.getInt(0, 'outreturn') > 0){
+//alert('pasa');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+//Objeto.ResetOnSelectContact();
+}
+
+}
+
+Objeto.LoadContactsGrid();
+    },
+
+    error: function(error)
+{
+Objeto.LoadContactsGrid();
+alert(error);
+    }
+  }
+
+  var deferred = dojo.xhrPost(xhrArgs);
+
+return Objeto;
 }
 }
 

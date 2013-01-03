@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Untitled</title>
+<title>uSMS Contacos (Personas)</title>
 <script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}]"></script>
 <script type="text/javascript">
 require([
@@ -27,7 +27,8 @@ require([
   "dijit/form/SimpleTextarea",
   "dijit/form/Textarea",
   "dijit/form/ComboBox",
-  "dojo/data/ItemFileWriteStore"
+  "dojo/data/ItemFileWriteStore",
+  "dijit/form/DateTextBox"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -57,19 +58,53 @@ require([
       <div style="width: 100%; height: 100%;"><div style="width: 100%; height: 98%;"><span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
 <div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="selected" closable="false" doLayout="false">
    <div style="width: 100%; height: 100%;">
-     <span data-dojo-type="dijit.Toolbar"><input type="button" data-dojo-type="dijit.form.Button" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-     </span>
+     <span data-dojo-type="dijit.Toolbar">
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.new" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.save" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.del" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+</span>
      <div style="min-height: 150px;">
-     <div style="width: auto; height: auto; display: inline-block;">
+       <div style="width: auto; height: auto; display: inline-block;">
          <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usms.contact.enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
          <label>
+           
            
           Habilitado</label>
        </div>
        <div style="width: auto; height: auto; display: inline-block;">
+         <div style="width: auto; height: auto; display: inline-block;">
+           <label>
+           Título:</label>
+           <select data-dojo-type="dijit.form.Select" id="usms.contact.title" type="text" value="Sr." intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
+             <option value="Sr.">
+               
+             
+             
+            Sr.</option>
+             <option value="Sra.">
+               
+             
+             
+            Sra.</option>
+             <option value="Ing.">
+               
+             
+             
+            Ing.</option>
+             <option value="Dr.">
+               
+             
+             
+            Dr.</option>
+             <option value="Dra.">
+               
+             
+             
+            Dra.</option>
+           </select>
+         </div>
          <label>
+           
            
           Nombre:</label>
          <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.firstname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
@@ -77,50 +112,33 @@ require([
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
+           
           Apellido:</label>
          <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+         <div>
+          <label>
+        Fecha Nacimiento:</label>
+          <input type="text" data-dojo-type="dijit.form.DateTextBox" id="usms.contact.birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01"></input>
+        </div>
        </div>
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
-          T&iacute;tulo:</label>
-         <select data-dojo-type="dijit.form.Select" id="usms.contact.title" type="text" value="Sr." intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
-           <option value="Sr.">
-             
-             
-            Sr.</option>
-           <option value="Sra.">
-             
-             
-            Sra.</option>
-           <option value="Ing.">
-             
-             
-            Ing.</option>
-           <option value="Dr.">
-             
-             
-            Dr.</option>
-           <option value="Dra.">
-             
-             
-            Dra.</option>
-         </select>
-       </div>
-       <div style="width: auto; height: auto; display: inline-block;">
-         <label>
            
           G&eacute;nero:</label>
          <select data-dojo-type="dijit.form.Select" id="usms.contact.gender" type="text" value="No Establecido" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
            <option value="No Establecido">
              
              
+             
             No Establecido</option>
            <option value="Hombre">
              
              
+             
             Hombre</option>
            <option value="Mujer">
+             
              
              
             Mujer</option>
@@ -129,17 +147,21 @@ require([
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
+           
           Tipo de identificaci&oacute;n:</label>
          <select data-dojo-type="dijit.form.Select" id="usms.contact.typeidentification" type="text" value="Ninguno" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
            <option value="Ninguno">
+             
              
              
             Ninguno</option>
            <option value="C&amp;amp;eacute;dula,">
              
              
+             
             C&amp;eacute;dula,</option>
            <option value="Pasaporte">
+             
              
              
             Pasaporte</option>
@@ -148,11 +170,13 @@ require([
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
+           
         Identificaci&oacute;n:</label>
          <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
        </div>
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
+           
            
         web:</label>
          <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.web" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
@@ -160,17 +184,20 @@ require([
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
+           
           email-1:</label>
          <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.email1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
        </div>
        <div style="width: auto; height: auto; display: inline-block;">
          <label>
            
+           
           email-2:</label>
          <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.email2" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
        </div>
        <div style="height: auto; display: inline-block; width: 100%;">
          <label>
+           
            
         Nota:</label>
          <br></br>
@@ -373,4 +400,5 @@ require([
 </div>
 </body>
 </html>
+
 

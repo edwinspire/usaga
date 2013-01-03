@@ -1002,8 +1002,6 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 
-//LoadAccountPhonesTriggerGridx(iniidcontact);
-
 }
 return Objeto;
 },
