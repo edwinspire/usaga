@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-02 08:06:24 ECT
+-- Started on 2013-01-03 05:32:38 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -233,7 +233,7 @@ COMMENT ON FUNCTION fun_account_event_notifications_sms() IS 'Genere notificacio
 
 --
 -- TOC entry 278 (class 1255 OID 26359)
--- Dependencies: 7 799
+-- Dependencies: 799 7
 -- Name: fun_account_insert_update(integer, integer, boolean, text, text, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -602,7 +602,7 @@ initialaccount := inaccount;
 -- Buscamos un idaccount con el nombre pasado como parametro
 IdAccountSearchByName := opensaga.fun_account_search_name(inname);
 
-IF IdAccountSearchByName <= 0 OR inidaccount = 0 OR IdAccountSearchByName = inidaccount THEN
+--IF IdAccountSearchByName <= 0 OR inidaccount = 0 OR IdAccountSearchByName = inidaccount THEN
 
 CASE
     WHEN inidaccount = 0 THEN
@@ -613,15 +613,31 @@ WHILE opensaga.fun_account_search_number(inaccount) > 0 LOOP
 i := i+1;
 END LOOP;
 
+IF IdAccountSearchByName < 1 THEN
         -- Nuevo registro
 INSERT INTO opensaga.account (partition, enable, account, name, type, dateload, note, idgroup) VALUES (inpartition, inenable, inaccount, inname, intype, now(), innote, inidgroup) RETURNING idaccount INTO outreturn;       
 outpgmsg := 'Nueva cuenta almacenda. idaccount = '||outreturn::TEXT;
 INSERT INTO opensaga.events (dateload, idaccount, code, priority, description, ideventtype, datetimeevent) VALUES (now(), inidaccount, 'SYS', 100, outpgmsg, 79, now());
+
+ELSE
+outpgmsg := 'El nombre ['|| inname::text ||'] y esta siendo utilizado por otra cuenta. Utilice otro nombre';
+outreturn := -1;
+END IF;
+
+
     WHEN inidaccount > 0 THEN
+
+IF IdAccountSearchByName < 1 OR IdAccountSearchByName = inidaccount THEN
         -- Actualia registro
 UPDATE opensaga.account SET partition = inpartition, enable = inenable, account = inaccount, name = inname, type = intype, note = innote, idgroup = inidgroup WHERE idaccount = abs(inidaccount) RETURNING idaccount INTO outreturn;
 outpgmsg := 'Actualizada la cuenta idaccount = '||outreturn::TEXT;
 INSERT INTO opensaga.events (dateload, idaccount, code, priority, description, ideventtype, datetimeevent) VALUES (now(), inidaccount, 'SYS', 100, outpgmsg, 78, now());
+
+ELSE
+outpgmsg := 'El nombre ['|| inname::text ||'] y esta siendo utilizado por otra cuenta. Utilice otro nombre';
+outreturn := -1;
+END IF;
+
         WHEN inidaccount < 0 THEN
         -- Eliminamos el registro si existe
 IF EXISTS(SELECT account FROM opensaga.account WHERE idaccount = abs(inidaccount)) THEN
@@ -629,12 +645,13 @@ DELETE FROM  opensaga.account WHERE idaccount = abs(inidaccount);
 outpgmsg := 'Registro idaccount '|| abs(inidaccount) ||' eliminado.';
 outreturn := abs(inidaccount);
 END IF;
+
 END CASE;
 
-ELSE
-outpgmsg := 'El nombre ['|| inname::text ||'] y esta siendo utilizado por otra cuenta.';
-outreturn := -1;
-END IF;
+--ELSE
+--outpgmsg := 'El nombre ['|| inname::text ||'] y esta siendo utilizado por otra cuenta.';
+--outreturn := -1;
+--END IF;
 
 EXCEPTION
 WHEN UNIQUE_VIOLATION THEN
@@ -819,7 +836,7 @@ COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion
 
 --
 -- TOC entry 284 (class 1255 OID 26416)
--- Dependencies: 799 7
+-- Dependencies: 7 799
 -- Name: fun_generate_test_report(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -872,7 +889,7 @@ COMMENT ON FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) IS 
 
 --
 -- TOC entry 276 (class 1255 OID 26215)
--- Dependencies: 7 799
+-- Dependencies: 799 7
 -- Name: fun_notification_gen_message(integer, integer, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1263,7 +1280,7 @@ END;$$;
 
 --
 -- TOC entry 271 (class 1255 OID 26417)
--- Dependencies: 7 799
+-- Dependencies: 799 7
 -- Name: hearbeat(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1514,7 +1531,7 @@ COMMENT ON FUNCTION xxxfun_account_table(inidaccount integer, inenable boolean, 
 
 --
 -- TOC entry 280 (class 1255 OID 26374)
--- Dependencies: 7 799
+-- Dependencies: 799 7
 -- Name: xxxfun_account_table(integer, boolean, text, text, integer, integer, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -6014,7 +6031,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-02 08:06:26 ECT
+-- Completed on 2013-01-03 05:32:40 ECT
 
 --
 -- PostgreSQL database dump complete
