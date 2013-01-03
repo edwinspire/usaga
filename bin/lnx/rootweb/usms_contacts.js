@@ -40,7 +40,7 @@ Grid: dijit.byId("usms.contacts.gridx")
 },
 
 LoadContactSelected: function(){
-alert(GlobalObject.IdContact);
+
 if(GlobalObject.IdContact > 0){
 var store = new dojox.data.XmlStore({url: "usms_getcontactbyid_xml", sendQuery: true, rootItem: 'row'});
 
@@ -49,8 +49,7 @@ var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplet
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
-alert(numrows);
-
+if(numrows > 0){
 var i = 0;
 
 FormContact.dijit.Enable.set('value', dataxml.getBool(i, "enable"));
@@ -65,6 +64,9 @@ FormContact.dijit.email1.set('value', dataxml.getStringB64(i, "email1"));
 FormContact.dijit.email2.set('value', dataxml.getStringB64(i, "email2"));
 FormContact.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 FormContact.ts = dataxml.getStringB64(i, "ts");
+}else{
+FormContact.dojo.Form.reset();
+}
 },
 onError: function(e){
 alert(e);
