@@ -81,10 +81,14 @@ FormContact.dijit.email2.set('value', dataxml.getStringB64(i, "email2"));
 FormContact.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 FormContact.ts = dataxml.getStringB64(i, "ts");
 }else{
+GlobalObject.IdContact = 0;
 FormContact.dojo.Form.reset();
 }
+
 },
 onError: function(e){
+GlobalObject.IdContact = 0;
+FormContact.dojo.Form.reset();
 alert(e);
 }
 });
@@ -147,6 +151,7 @@ GlobalObject.dijit.Grid.startup();
 GlobalObject.LoadGrid();
 }
 
+
 var FormContact = {
 ts: '',
 dojo: {
@@ -204,6 +209,16 @@ alert(error);
 return Objeto;
 }
 }
+
+// Contact Phones
+var CP = {
+Gridx: dijit.byId('usms.contact.phone.grid'),
+GridxStore: ItemFileWriteStore_contactphones,
+dijit: {
+
+}
+}
+
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
