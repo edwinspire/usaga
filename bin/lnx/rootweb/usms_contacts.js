@@ -84,6 +84,7 @@ FormContact.ts = dataxml.getStringB64(i, "ts");
 GlobalObject.IdContact = 0;
 FormContact.dojo.Form.reset();
 }
+CP.LoadGrid();
 
 },
 onError: function(e){
@@ -213,12 +214,61 @@ return Objeto;
 // Contact Phones
 var CP = {
 Gridx: dijit.byId('usms.contact.phone.grid'),
-GridxStore: ItemFileWriteStore_contactphones,
-dijit: {
+GridxStore: ItemFileReadStore_contactphones,
+LoadGrid: function(){
+var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
+var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i,
+idcontact: dataxml.getNumber(i, "idcontact"),
+idphone: dataxml.getNumber(i, "idphone"),
+enable: dataxml.getBool(i, "enable"),
+phone: dataxml.getStringB64(i, "phone"),
+};
+i++;
+}
+
+CP.GridxStore.clearOnClose = true;
+	CP.GridxStore.data = myData;
+	CP.GridxStore.close();
+
+		CP.Gridx.store = null;
+		CP.Gridx.setStore(CP.GridxStore);
+
+},
+onError: function(e){
+alert(e);
+}
+});
 }
 }
 
+	if (CP.Gridx) {
+// Captura el evento cuando se hace click en una fila
+dojo.connect(CP.Gridx, 'onRowClick', function(event){
+//GlobalObject.IdContact = this.cell(event.rowId, 1, true).data();
+//GlobalObject.LoadContactSelected();
+});
+		// Optionally change column structure on the grid
+		CP.Gridx.setColumns([
+			{field:"idcontact", name: "idc", width: '0px'},
+			{field:"idphone", name: "idp", width: '0px'},
+			{field:"enable", name: "*", width: '20px'},
+			{field:"phone", name: "Teléfono"},
+		]);
+CP.Gridx.startup();
+}
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
