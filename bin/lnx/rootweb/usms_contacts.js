@@ -211,8 +211,51 @@ return Objeto;
 }
 }
 
+
+dojo.connect(dijit.byId('usms.phones.new'), 'onClick', function(e){
+CP.IdPhone = 0;
+CP.resetForm();
+//TODO Limpiar el resto de datos
+});
+
+dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
+
+});
+
+dojo.connect(dijit.byId('usms.phones.del'), 'onClick', function(e){
+
+});
+
+dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
+alert('No implementado');
+});
+
 // Contact Phones
 var CP = {
+ts: '1990-01-01',
+idaddress: 'xxxxxx',
+resetForm: function(){
+dojo.byId('usms.phones.formdata').reset();
+dojo.byId('usms.phones.formlocalization').reset();
+},
+dijit: {
+Enable: dijit.byId('usms.phones.enable'),
+Phone: dijit.byId('usms.phones.phone'),
+Ext: dijit.byId('usms.phones.ext'),
+Type: dijit.byId('usms.phones.typephone'),
+Ubi: dijit.byId('usms.phones.ubiphone'),
+Provider: dijit.byId('usms.phones.provider'),
+Note: dijit.byId('usms.phones.note'),
+Country: dijit.byId('usms.phones.local.country'),
+State: dijit.byId('usms.phones.local.state'),
+City: dijit.byId('usms.phones.local.city'),
+Sector: dijit.byId('usms.phones.local.sector'),
+Subsector: dijit.byId('usms.phones.local.subsector'),
+Address: dijit.byId('usms.phones.address'),
+GeoX: dijit.byId('usms.phones.geox'),
+GeoY: dijit.byId('usms.phones.geoy')
+},
+IdPhone: 0,
 Gridx: dijit.byId('usms.contact.phone.grid'),
 GridxStore: ItemFileReadStore_contactphones,
 LoadGrid: function(){
@@ -251,14 +294,48 @@ onError: function(e){
 alert(e);
 }
 });
+},
+LoadPhone: function(){
+var store = new dojox.data.XmlStore({url: "usms_getphonebyid_xml", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idphone: CP.IdPhone}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+if(numrows>0){
+var i = 0;
+
+CP.dijit.Enable.set('value', dataxml.getBool(i, "enable"));
+CP.dijit.Phone.set('value', dataxml.getStringB64(i, "phone"));
+CP.dijit.Ext.set('value', dataxml.getStringB64(i, "phone_ext"));
+CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
+CP.dijit.Provider.set('value', dataxml.getNumber(i, "phone_ext"));
+CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
+CP.dijit.Address.set('value', dataxml.getStringB64(i, "address"));
+CP.dijit.GeoX.set('value', dataxml.getFloat(i, "address"));
+CP.dijit.GeoY.set('value', dataxml.getFloat(i, "address"));
+}
+
+
+},
+onError: function(e){
+alert(e);
+}
+});
 }
 }
 
 	if (CP.Gridx) {
 // Captura el evento cuando se hace click en una fila
 dojo.connect(CP.Gridx, 'onRowClick', function(event){
-//GlobalObject.IdContact = this.cell(event.rowId, 1, true).data();
-//GlobalObject.LoadContactSelected();
+//alert(this.cell(event.rowId, 2, true).data());
+CP.IdPhone = this.cell(event.rowId, 2, true).data();
+CP.LoadPhone();
 });
 		// Optionally change column structure on the grid
 		CP.Gridx.setColumns([
@@ -269,6 +346,9 @@ dojo.connect(CP.Gridx, 'onRowClick', function(event){
 		]);
 CP.Gridx.startup();
 }
+
+
+
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};

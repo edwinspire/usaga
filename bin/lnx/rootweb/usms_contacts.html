@@ -28,7 +28,8 @@ require([
   "dijit/form/Textarea",
   "dijit/form/ComboBox",
   "dojo/data/ItemFileWriteStore",
-  "dijit/form/DateTextBox"
+  "dijit/form/DateTextBox",
+  "dijit/form/NumberTextBox"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -240,178 +241,159 @@ require([
          </div>
        </div>
        <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
-        <div style="width: 100%; height: 100%;"><span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
+        <div style="width: 100%; height: 100%;"><span data-dojo-type="dijit.Toolbar">
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.phones.new" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.phones.save" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.phones.del" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="usms.phone.map" tabIndex="-1" intermediateChanges="false" label="Mapa" iconClass="dijitNoIcon"></input>
+</span>
+             <span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
 <div data-dojo-type="dijit.layout.ContentPane" title="Tel&amp;eacute;fono" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
- <div style="width: 100%; height: 100%;">
-   <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.phone.new" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.phone.save" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.phone.del" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-</span>
-   <div style="min-height: 150px; width: 100%; height: auto;">
-     <div style="display: inline-block;">
-       <label>
-         Habilitado:</label>
-       <input type="checkbox" data-dojo-type="dijit.form.CheckBox" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Teléfono:</label>
-       <input type="text" data-dojo-type="dijit.form.TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Tipo:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="No especificado" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="No especificado">
-           No especificado</option>
-         <option value="Movil">
-           Movil</option>
-         <option value="Fijo">
-           Fijo</option>
-       </select>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Proveedor:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="Item 1">
-           Item 1</option>
-         <option value="Item 2">
-           Item 2</option>
-         <option value="Item 3">
-           Item 3</option>
-       </select>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Extensión:</label>
-       <input type="text" data-dojo-type="dijit.form.TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-     </div>
-     <div style="display: inline-block;">
-       <div>
-         <label>
-           Ubicación:</label>
-         <select data-dojo-type="dijit.form.ComboBox" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-           <option value="Item 1">
-             Item 1</option>
-           <option value="Item 2">
-             Item 2</option>
-           <option value="Item 3">
-             Item 3</option>
-         </select>
-         <div>
-           <label style="width: 100%; display: block;">
-             Dirección:</label>
-           <textarea type="text" data-dojo-type="dijit.form.Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="width: 200px; height: auto;"></textarea>
+           <div style="width: 100%; height: 100%;">
+             <form id="usms.phones.formdata" style="min-height: 150px; width: 100%; height: auto;">
+               <div style="display: inline-block;">
+                 <label>
+                   Habilitado:</label>
+                 <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usms.phones.enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+               </div>
+               <div style="display: inline-block;">
+                 <label>
+                   Teléfono:</label>
+                 <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.phones.phone" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+               </div>
+               <div style="display: inline-block;">
+                 <label>
+                   Extensión:</label>
+                 <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.phones.ext" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+               </div>
+               <div style="display: inline-block;">
+                 <label>
+                   Tipo:</label>
+                 <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.typephone" value="No especificado" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                   <option value="No especificado">
+                     No especificado</option>
+                   <option value="Movil">
+                     Movil</option>
+                   <option value="Fijo">
+                     Fijo</option>
+                 </select>
+               </div>
+               <div>
+                 <label>
+                   Ubicación:</label>
+                 <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.ubiphone" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                   <option value="Item 1">
+                     Item 1</option>
+                   <option value="Item 2">
+                     Item 2</option>
+                   <option value="Item 3">
+                     Item 3</option>
+                 </select>
+               </div>
+               <div style="display: inline-block;">
+                 <label>
+                   Proveedor:</label>
+                 <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.provider" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                   <option value="Item 1">
+                     Item 1</option>
+                   <option value="Item 2">
+                     Item 2</option>
+                   <option value="Item 3">
+                     Item 3</option>
+                 </select>
+               </div>
+               <div>
+                 <label style="width: 100%; display: block;">
+                   Nota:</label>
+                 <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usms.phones.note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+               </div>
+             </form>
+           </div>
          </div>
-       </div>
-     </div>
-   </div>
-   <div>
-     <label style="width: 100%; display: block;">
-       Nota:</label>
-     <textarea type="text" data-dojo-type="dijit.form.Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="width: 200px; height: auto;"></textarea>
-   </div>
- </div>
-</div>
-<div data-dojo-type="dijit.layout.ContentPane" title="Localizaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
- <div style="width: 100%; height: 100%;">
-   <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" title="Limpia todos los campos para agregar nuevo contacto" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask" tabIndex="-1"></input>
-<input type="button" data-dojo-type="dijit.form.Button" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-<input type="button" data-dojo-type="dijit.form.Button" label="Mapa"></input>
-</span>
-   <div style="min-height: 150px; width: 100%; height: auto;">
-     <div style="display: inline-block;">
-       <label>
-     Pa&iacute;s:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Ecuador" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="Ecuador" selected="true">
-           Ecuador</option>
-         <option value="Item 2">
-           Item 2</option>
-         <option value="Item 3">
-           Item 3</option>
-       </select>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Provincia:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Pichincha" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-       <option value="Pichincha" selected="true">
-           Pichincha</option>
-         <option value="Item 2">
-           Item 2</option>
-         <option value="Item 3">
-           Item 3</option>
-       </select>
-       </div>
-     <div style="display: inline-block;">
-       <label>
-       Ciudad:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Quito" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="Quito" selected="true">
-           Quito</option>
-         <option value="Movil">
-           Movil</option>
-         <option value="Fijo">
-           Fijo</option>
-       </select>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Sector:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="Item 1">
-           Item 1</option>
-         <option value="Item 2">
-           Item 2</option>
-         <option value="Item 3">
-           Item 3</option>
-       </select>
-     </div>
-     <div style="display: inline-block;">
-       <label>
-         Subsector:</label>
-       <select data-dojo-type="dijit.form.ComboBox" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-       <option value="Item 1" selected="true">
-           Item 1</option>
-         <option value="Item 2">
-           Item 2</option>
-         <option value="Item 3">
-           Item 3</option>
-       </select>
-       </div>
-     <div style="display: inline-block;">
-       <div>
-         <label>
-           GeoX:</label>
-         <select data-dojo-type="dijit.form.ComboBox" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-           <option value="Item 1">
-             Item 1</option>
-           <option value="Item 2">
-             Item 2</option>
-           <option value="Item 3">
-             Item 3</option>
-         </select>
-         <div>
-           <label style="width: 100%; display: block;">
-             GeoY:</label>
-           <textarea type="text" data-dojo-type="dijit.form.Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="width: 200px; height: auto;"></textarea>
+         <div data-dojo-type="dijit.layout.ContentPane" title="Localizaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
+           <div style="width: 100%; height: 100%;">
+            <form id="usms.phones.formlocalization" style="min-height: 150px; width: 100%; height: auto;">
+              <div style="display: inline-block;">
+                <label>
+                País:</label>
+                <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.local.country" value="Ecuador" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                  <option value="Ecuador">
+                    Ecuador</option>
+                  <option value="Item 2">
+                    Item 2</option>
+                  <option value="Item 3">
+                    Item 3</option>
+                </select>
+              </div>
+              <div style="display: inline-block;">
+                <label>
+                Provincia:</label>
+                <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.local.state" value="Pichincha" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                  <option value="Pichincha">
+                    Pichincha</option>
+                  <option value="Item 2">
+                    Item 2</option>
+                  <option value="Item 3">
+                    Item 3</option>
+                </select>
+              </div>
+              <div style="display: inline-block;">
+                <label>
+                Ciudad:</label>
+                <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.local.city" value="Quito" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                  <option value="Quito">
+                    Quito</option>
+                  <option value="Movil">
+                    Movil</option>
+                  <option value="Fijo">
+                    Fijo</option>
+                </select>
+              </div>
+              <div style="display: inline-block;">
+                <label>
+                Sector:</label>
+                <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.local.sector" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                  <option value="Item 1">
+                    Item 1</option>
+                  <option value="Item 2">
+                    Item 2</option>
+                  <option value="Item 3">
+                    Item 3</option>
+                </select>
+              </div>
+              <div style="display: inline-block;">
+                <label>
+                Subsector:</label>
+                <select data-dojo-type="dijit.form.ComboBox" id="usms.phones.local.subsector" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                  <option value="Item 1">
+                    Item 1</option>
+                  <option value="Item 2">
+                    Item 2</option>
+                  <option value="Item 3">
+                    Item 3</option>
+                </select>
+              </div>
+              <div>
+              <label style="width: 100%; display: block;">
+                Dirección:</label>
+                <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usms.phones.address" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="width: 200px; height: auto;"></textarea>
+              </div>
+              <div style="display: block;">
+                <div>
+                  <label>
+                  GeoX:</label>
+                  <input type="text" data-dojo-type="dijit.form.NumberTextBox" id="usms.phones.geox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo."></input>
+                </div>
+                <div>
+                  <label style="width: 100%; display: block;">
+                  GeoY:</label>
+                  <input type="text" data-dojo-type="dijit.form.NumberTextBox" id="usms.phones.geoy" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo."></input>
+                </div>
+              </div>
+            </form>
+          </div>
          </div>
-       </div>
-     </div>
-   </div>
-   <div>
-     <label style="width: 100%; display: block;">
-       Nota:</label>
-     <textarea type="text" data-dojo-type="dijit.form.Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="width: 200px; height: auto;"></textarea>
-   </div>
- </div>
-</div>
-</span></div>
+         </span></div>
       </div>
      </div>
    </div>
@@ -424,5 +406,6 @@ require([
 </div>
 </body>
 </html>
+
 
 
