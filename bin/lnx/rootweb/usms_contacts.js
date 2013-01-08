@@ -351,18 +351,20 @@ if(xmld.length > 0){
 if(xmld.getInt(0, 'outreturn') > 0){
 //alert('pasa');
 alert(xmld.getStringB64(0, 'outpgmsg'));
+CP.IdPhone = xmld.getInt(0, 'outreturn');
+CP.LoadPhone();
 }else{
 //Objeto.ResetOnSelectContact();
 }
 
 }
 
-GlobalObject.LoadGrid();
+CP.LoadGrid();
     },
 
     error: function(error)
 {
-GlobalObject.LoadGrid();
+CP.LoadGrid();
 alert(error);
     }
   }
