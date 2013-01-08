@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-04 08:20:44 ECT
+-- Started on 2013-01-08 13:30:15 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -146,7 +146,7 @@ END;$$;
 
 --
 -- TOC entry 278 (class 1255 OID 25923)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: fun_account_event_notifications_sms(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -579,7 +579,7 @@ COMMENT ON FUNCTION fun_account_search_number(innumberaccount text) IS 'Busca el
 
 --
 -- TOC entry 273 (class 1255 OID 26378)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: fun_account_table(integer, boolean, text, text, integer, integer, integer, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -667,7 +667,7 @@ COMMENT ON FUNCTION fun_account_table(inidaccount integer, inenable boolean, ina
 
 --
 -- TOC entry 280 (class 1255 OID 26412)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: fun_account_users_table(integer, integer, text, boolean, integer, text, text, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -829,7 +829,7 @@ COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion
 
 --
 -- TOC entry 287 (class 1255 OID 26416)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: fun_generate_test_report(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -853,7 +853,7 @@ COMMENT ON FUNCTION fun_generate_test_report(OUT outeventsgenerated integer) IS 
 
 --
 -- TOC entry 277 (class 1255 OID 26131)
--- Dependencies: 806 7
+-- Dependencies: 7 806
 -- Name: fun_get_priority_from_ideventtype(integer); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1089,7 +1089,7 @@ process:
 
 --
 -- TOC entry 286 (class 1255 OID 26415)
--- Dependencies: 806 7
+-- Dependencies: 7 806
 -- Name: fun_receiver_from_incomingsmss(); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1107,7 +1107,7 @@ END;$$;
 
 --
 -- TOC entry 296 (class 1255 OID 26920)
--- Dependencies: 806 7
+-- Dependencies: 7 806
 -- Name: fun_view_account_contact_notif_eventtypes(integer, integer, boolean); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1175,7 +1175,7 @@ COMMENT ON FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount intege
 
 --
 -- TOC entry 264 (class 1255 OID 26939)
--- Dependencies: 806 7
+-- Dependencies: 7 806
 -- Name: fun_view_account_contact_notif_eventtypes_xml(integer, integer, boolean); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1252,7 +1252,7 @@ $$;
 
 --
 -- TOC entry 265 (class 1255 OID 26938)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: fun_view_account_notif_phones_xml(integer, integer, boolean); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1298,7 +1298,7 @@ COMMENT ON FUNCTION hearbeat() IS 'Genera un evento de funcionmiento de la recep
 
 --
 -- TOC entry 297 (class 1255 OID 26931)
--- Dependencies: 806 7
+-- Dependencies: 7 806
 -- Name: xxxfun_account_contacts_table(integer, integer, integer, boolean, text, text); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1577,7 +1577,7 @@ COMMENT ON FUNCTION xxxfun_account_table(inidaccount integer, inenable boolean, 
 
 --
 -- TOC entry 285 (class 1255 OID 26413)
--- Dependencies: 7 806
+-- Dependencies: 806 7
 -- Name: xxxfun_account_users_add(integer, integer); Type: FUNCTION; Schema: opensaga; Owner: -
 --
 
@@ -1805,7 +1805,7 @@ $$;
 
 --
 -- TOC entry 305 (class 1255 OID 26962)
--- Dependencies: 5 806
+-- Dependencies: 806 5
 -- Name: fun_contact_search_by_name(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1893,7 +1893,7 @@ END;$$;
 
 --
 -- TOC entry 308 (class 1255 OID 26966)
--- Dependencies: 806 5
+-- Dependencies: 5 806
 -- Name: fun_contacts_table_xml(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, text, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2217,14 +2217,32 @@ CREATE FUNCTION fun_phones_table(inidphone integer, inidcontact integer, inenabl
 
 BEGIN
 
-IF inidphone > 0  THEN
+IF EXISTS(SELECT * FROM contacts WHERE idcontact = inidcontact)  THEN
 --
 
+
 ELSE
--- Eliminamos
+-- 
+outreturn := -1;
+outpgmsg := 'El contacto no existe';
 
 END IF;
 
+CASE
+
+	WHEN inidphone = 0 THEN
+	-- TODO Verificar q el numero no se repita
+	INSERT INTO phones (idcontact, enable, phone, typephone, idprovider, note, geox, geoy, idaddress, phone_ext, ubiphone, address) VALUES (inidcontact, inenable, inphone, intypephone, inidprovider, innote, ingeox, ingeoy, inidaddress, inphone_ext, inubiphone, inaddress) RETURNING idphone INTO outreturn;
+	outpgmsg := 'Nuevo telefono ingresado';
+
+	WHEN inidphone > 0 AND EXISTS(SELECT * FROM phones WHERE idphone = inidphone) THEN
+	-- TODO Verificar q el numero no se repita
+	UPDATE phones SET idcontact = inidcontact, enable = inenable, phone = inphone, typephone = intypephone, idprovider = inprovider, note = innote, geox = ingeox, geoy = ingeoy, idaddress = inidaddress, phone_ext = inphone_ext, ubiphone = inubiphone, address = inaddress WHERE idphone = inphone RETURNING  idphone INTO outreturn;
+	outpgmsg := 'Telefono actualizado';
+	WHEN inidphone < 0 THEN
+	DELETE FROM phones WHERE idphone = abs(inidphone);
+	outpgmsg := 'Telefono eliminado';
+END CASE;
 
 RETURN;
 END;$$;
@@ -2969,7 +2987,7 @@ END;$$;
 
 --
 -- TOC entry 309 (class 1255 OID 26976)
--- Dependencies: 5 806
+-- Dependencies: 806 5
 -- Name: fun_view_phones_byidcontact_simplified_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -3003,7 +3021,7 @@ END;$$;
 
 --
 -- TOC entry 304 (class 1255 OID 26933)
--- Dependencies: 806 5
+-- Dependencies: 5 806
 -- Name: xxxfun_contacts_table(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -3103,7 +3121,7 @@ $$;
 
 --
 -- TOC entry 307 (class 1255 OID 26965)
--- Dependencies: 806 5
+-- Dependencies: 5 806
 -- Name: xxxxfun_contacts_table(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -4852,7 +4870,7 @@ ALTER TABLE ONLY account ALTER COLUMN idaccount SET DEFAULT nextval('account_ida
 
 --
 -- TOC entry 2316 (class 2604 OID 17146)
--- Dependencies: 188 189 189
+-- Dependencies: 189 188 189
 -- Name: idlocation; Type: DEFAULT; Schema: opensaga; Owner: -
 --
 
@@ -4861,7 +4879,7 @@ ALTER TABLE ONLY account_location ALTER COLUMN idlocation SET DEFAULT nextval('a
 
 --
 -- TOC entry 2324 (class 2604 OID 17179)
--- Dependencies: 190 191 191
+-- Dependencies: 191 190 191
 -- Name: idnotifaccount; Type: DEFAULT; Schema: opensaga; Owner: -
 --
 
@@ -4870,7 +4888,7 @@ ALTER TABLE ONLY account_notifications ALTER COLUMN idnotifaccount SET DEFAULT n
 
 --
 -- TOC entry 2333 (class 2604 OID 17264)
--- Dependencies: 193 192 193
+-- Dependencies: 192 193 193
 -- Name: idnotifphoneeventtype; Type: DEFAULT; Schema: opensaga; Owner: -
 --
 
@@ -4942,7 +4960,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN ts SET DEFAULT now();
 
 --
 -- TOC entry 2345 (class 2604 OID 17292)
--- Dependencies: 195 194 195
+-- Dependencies: 194 195 195
 -- Name: idevent; Type: DEFAULT; Schema: opensaga; Owner: -
 --
 
@@ -5268,7 +5286,7 @@ ALTER TABLE ONLY phones ALTER COLUMN idphone SET DEFAULT nextval('phones_idphone
 
 --
 -- TOC entry 2212 (class 2604 OID 16455)
--- Dependencies: 169 168 169
+-- Dependencies: 168 169 169
 -- Name: idprovider; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6284,7 +6302,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-04 08:20:46 ECT
+-- Completed on 2013-01-08 13:30:16 ECT
 
 --
 -- PostgreSQL database dump complete
