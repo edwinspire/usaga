@@ -218,7 +218,7 @@ CP.resetForm();
 //TODO Limpiar el resto de datos
 });
 
-dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
+dojo.connect(dijit.byId('usms.phones.map'), 'onClick', function(e){
 
 });
 
@@ -227,7 +227,7 @@ dojo.connect(dijit.byId('usms.phones.del'), 'onClick', function(e){
 });
 
 dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
-alert('No implementado');
+CP.SaveForm();
 });
 
 // Contact Phones
@@ -327,6 +327,47 @@ onError: function(e){
 alert(e);
 }
 });
+},
+SaveForm: function(){
+
+if(GlobalObject.IdContact > 0 && CP.IdPhone){
+
+var Objeto = this;
+
+  var xhrArgs = {
+    url: "usms_phonetable_xml",
+ content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('value'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider, note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+
+if(xmld.getInt(0, 'outreturn') > 0){
+//alert('pasa');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+//Objeto.ResetOnSelectContact();
+}
+
+}
+
+GlobalObject.LoadGrid();
+    },
+
+    error: function(error)
+{
+GlobalObject.LoadGrid();
+alert(error);
+    }
+  }
+
+  var deferred = dojo.xhrPost(xhrArgs);
+
+}
+
+return Objeto;
 }
 }
 
