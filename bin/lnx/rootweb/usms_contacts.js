@@ -223,7 +223,7 @@ dojo.connect(dijit.byId('usms.phones.map'), 'onClick', function(e){
 });
 
 dojo.connect(dijit.byId('usms.phones.del'), 'onClick', function(e){
-
+CP.Delete();
 });
 
 dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
