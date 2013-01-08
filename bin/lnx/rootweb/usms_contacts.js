@@ -328,9 +328,13 @@ alert(e);
 }
 });
 },
+Delete: function(){
+CP.IdPhone = CP.IdPhone*-1;
+CP.SaveForm();
+},
 SaveForm: function(){
 
-if(GlobalObject.IdContact > 0 && CP.IdPhone){
+if(GlobalObject.IdContact > 0){
 
 var Objeto = this;
 
