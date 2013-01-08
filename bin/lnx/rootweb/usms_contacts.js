@@ -340,7 +340,7 @@ var Objeto = this;
 
   var xhrArgs = {
     url: "usms_phonetable_xml",
- content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('value'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider, note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
+ content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('value'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
     handleAs: "xml",
     load: function(datass){
 
