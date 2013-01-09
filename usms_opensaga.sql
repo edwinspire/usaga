@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-09 05:49:00 ECT
+-- Started on 2013-01-09 12:27:41 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -1716,7 +1716,7 @@ END;$$;
 
 
 --
--- TOC entry 297 (class 1255 OID 26980)
+-- TOC entry 296 (class 1255 OID 26980)
 -- Dependencies: 794 5
 -- Name: fun_phone_search_by_number(text); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -1740,7 +1740,7 @@ END;$$;
 
 --
 -- TOC entry 2624 (class 0 OID 0)
--- Dependencies: 297
+-- Dependencies: 296
 -- Name: FUNCTION fun_phone_search_by_number(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -1748,7 +1748,7 @@ COMMENT ON FUNCTION fun_phone_search_by_number(inphone text) IS 'Busca el id seg
 
 
 --
--- TOC entry 296 (class 1255 OID 26979)
+-- TOC entry 297 (class 1255 OID 26979)
 -- Dependencies: 5 794
 -- Name: fun_phones_table(integer, integer, boolean, text, integer, integer, real, real, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -1760,6 +1760,8 @@ CREATE FUNCTION fun_phones_table(inidphone integer, inidcontact integer, inenabl
 InternalIdPhone INTEGER DEFAULT 0;
 
 BEGIN
+
+IF length(inphone) > 0 THEN
 
 IF EXISTS(SELECT * FROM contacts WHERE idcontact = inidcontact)  THEN
 --
@@ -1794,10 +1796,13 @@ CASE
 END CASE;
 
 ELSE
--- 
 outreturn := -1;
 outpgmsg := 'El contacto no existe';
+END IF;
 
+ELSE
+outreturn := -1;
+outpgmsg := 'El numero no puede estar vacio';
 END IF;
 
 IF fieldtextasbase64 THEN
@@ -5702,7 +5707,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-09 05:49:02 ECT
+-- Completed on 2013-01-09 12:27:42 ECT
 
 --
 -- PostgreSQL database dump complete
