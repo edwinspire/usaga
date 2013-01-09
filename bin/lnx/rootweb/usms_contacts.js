@@ -67,7 +67,7 @@ numrows = itemsrow.length;
 if(numrows > 0){
 var i = 0;
 
-FormContact.dijit.Enable.set('value', dataxml.getBool(i, "enable"));
+FormContact.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
 FormContact.dijit.Firstname.set('value', dataxml.getStringB64(i, "firstname"));
 FormContact.dijit.Lastname.set('value', dataxml.getStringB64(i, "lastname"));
 FormContact.dijit.Title.set('value', dataxml.getNumber(i, "title"));
@@ -178,7 +178,7 @@ var Objeto = this;
 
   var xhrArgs = {
     url: "usms_contactstablefun_xml",
- content: {idcontact:GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('value'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
+ content: {idcontact:GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('checked'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
     handleAs: "xml",
     load: function(datass){
 
@@ -312,15 +312,15 @@ myData.identifier = "unique_id";
 if(numrows>0){
 var i = 0;
 
-CP.dijit.Enable.set('value', dataxml.getBool(i, "enable"));
+CP.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
 CP.dijit.Phone.set('value', dataxml.getStringB64(i, "phone"));
 CP.dijit.Ext.set('value', dataxml.getStringB64(i, "phone_ext"));
 CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
 CP.dijit.Provider.set('value', dataxml.getNumber(i, "phone_ext"));
 CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 CP.dijit.Address.set('value', dataxml.getStringB64(i, "address"));
-CP.dijit.GeoX.set('value', dataxml.getFloat(i, "address"));
-CP.dijit.GeoY.set('value', dataxml.getFloat(i, "address"));
+CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
+CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
 }
 
 
@@ -342,7 +342,7 @@ var Objeto = this;
 
   var xhrArgs = {
     url: "usms_phonetable_xml",
- content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('value'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
+ content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('checked'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
     handleAs: "xml",
     load: function(datass){
 
