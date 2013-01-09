@@ -236,6 +236,7 @@ ts: '1990-01-01',
 idaddress: 'xxxxxx',
 resetForm: function(){
 this.IdPhone = 0;
+this.dijit.Enable.reset();
 dojo.byId('usms.phones.formdata').reset();
 dojo.byId('usms.phones.formlocalization').reset();
 },
