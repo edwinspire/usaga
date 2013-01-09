@@ -97,7 +97,7 @@ alert(e);
 },
 
 LoadGrid: function(){
-this.resetForm();
+
 var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
@@ -260,6 +260,7 @@ IdPhone: 0,
 Gridx: dijit.byId('usms.contact.phone.grid'),
 GridxStore: ItemFileReadStore_contactphones,
 LoadGrid: function(){
+this.resetForm();
 var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
