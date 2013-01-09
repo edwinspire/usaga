@@ -97,7 +97,7 @@ alert(e);
 },
 
 LoadGrid: function(){
-
+this.resetForm();
 var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
@@ -213,7 +213,7 @@ return Objeto;
 
 
 dojo.connect(dijit.byId('usms.phones.new'), 'onClick', function(e){
-CP.IdPhone = 0;
+//CP.IdPhone = 0;
 CP.resetForm();
 //TODO Limpiar el resto de datos
 });
@@ -235,6 +235,7 @@ var CP = {
 ts: '1990-01-01',
 idaddress: 'xxxxxx',
 resetForm: function(){
+this.IdPhone = 0;
 dojo.byId('usms.phones.formdata').reset();
 dojo.byId('usms.phones.formlocalization').reset();
 },
