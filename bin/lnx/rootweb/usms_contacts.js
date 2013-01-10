@@ -406,20 +406,25 @@ numrows = itemsrow.length;
 var myData = {identifier: "unique_id", items: []};
 myData.identifier = "unique_id";
 
+var Combobxp = dijit.byId('usms.phones.provider');
+
 var Items = [{}];
 var i = 0;
 
 while(i<numrows){
 Items[i] = {id: dataxml.getString(i, "idprovider"), name: dataxml.getStringB64(i, "name")};
+Combobxp.addOption({value: dataxml.getString(i, "idprovider"), label: dataxml.getStringB64(i, "name")});
 i++;
 }
 
-var Checkb = dijit.byId('usms.phones.provider');
 
+
+/*
     var stateStore = new Memory({data: Items});
 Checkb.store = null;
 Checkb.store = stateStore;
 Checkb.startup();
+*/
 
 
 },
