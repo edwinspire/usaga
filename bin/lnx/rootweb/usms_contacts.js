@@ -317,7 +317,7 @@ CP.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
 CP.dijit.Phone.set('value', dataxml.getStringB64(i, "phone"));
 CP.dijit.Ext.set('value', dataxml.getStringB64(i, "phone_ext"));
 CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
-CP.dijit.Provider.set('value', dataxml.getNumber(i, "phone_ext"));
+CP.dijit.Provider.set('value', dataxml.getString(i, "idprovider"));
 CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 CP.dijit.Address.set('value', dataxml.getStringB64(i, "address"));
 CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
@@ -394,12 +394,45 @@ CP.Gridx.startup();
 }
 
 
+function LoadProviderList(){
+var store = new dojox.data.XmlStore({url: "usms_provider_listidname_xml", sendQuery: true, rootItem: 'row'});
 
+var request = store.fetch({onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var Items = [{}];
+var i = 0;
+
+while(i<numrows){
+Items[i] = {id: dataxml.getString(i, "idprovider"), name: dataxml.getStringB64(i, "name")};
+i++;
+}
+
+var Checkb = dijit.byId('usms.phones.provider');
+
+    var stateStore = new Memory({data: Items});
+Checkb.store = null;
+Checkb.store = stateStore;
+Checkb.startup();
+
+
+},
+onError: function(e){
+alert(e);
+}
+});
+}
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
-
+LoadProviderList();
 
 
      });
