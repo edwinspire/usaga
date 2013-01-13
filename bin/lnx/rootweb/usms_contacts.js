@@ -70,7 +70,7 @@ var i = 0;
 FormContact.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
 FormContact.dijit.Firstname.set('value', dataxml.getStringB64(i, "firstname"));
 FormContact.dijit.Lastname.set('value', dataxml.getStringB64(i, "lastname"));
-FormContact.dijit.Title.set('value', dataxml.getNumber(i, "title"));
+FormContact.dijit.Title.set('value', dataxml.getStringB64(i, "title"));
 FormContact.dijit.Birthday.set('value', new Date(dataxml.getString(i, "birthday")));
 FormContact.dijit.Gender.set('value', dataxml.getNumber(i, "gender"));
 FormContact.dijit.IdentificationType.set('value', dataxml.getNumber(i, "typeofid"));
