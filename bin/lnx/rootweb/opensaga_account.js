@@ -100,36 +100,6 @@ onError: function(e){
 alert(e);
 }
 });
-/*
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "usms_getcontactslistidcontactname_xml",
-    handleAs: "xml",
-    load: function(dataX){
-//alert(dataX);
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('row');
-
-if(xmldata.length > 0){
-var Items = [];
-
-var len = xmldata.length;
-var i = 0;
-while(i<len){
-Items[i] =    {name: jsspire.Base64.decode(xmldata[i].getAttribute("name")), id: String(xmldata[i].getAttribute("idcontact"))};
-i++;
-}
-on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
-}
-
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrGet(xhrArgs);
- */
 return Objeto;
 }
 }

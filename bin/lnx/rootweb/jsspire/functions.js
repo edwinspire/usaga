@@ -231,6 +231,51 @@ return jsspire.Base64.decode(this.getValue(i, field));
 }
 
 
+var jspireLoadFilteringSelectFromTableXmlStore = function(dijit_FilteringSelect, sq, urlxml, ri, lid, lname){
+this.Url = urlxml,
+this.SendQuery = sq,
+this.RootItem = ri,
+this.FilteringSelect = dijit_FilteringSelect,
+this.Query = {},
+this.TagId = lid,
+this.TagName = lname,
+
+this.Load = function(){
+var Objeto = this;
+var store = new dojox.data.XmlStore({url: this.Url, sendQuery: this.SendQuery, rootItem: this.RootItem});
+
+var request = store.fetch({query: this.Query, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+if(numrows > 0){
+var Items = [];
+
+var i = 0;
+while(i<numrows){
+Items[i] =    {name: dataxml.getStringB64(i, Objeto.TagName), id: dataxml.getString(i, Objeto.TagId)};
+i++;
+}
+//on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
+Objeto.FilteringSelect.store = null;
+Objeto.FilteringSelect.store = new dojo.store.Memory({data: Items});
+Objeto.FilteringSelect.startup();
+}
+
+},
+onError: function(e){
+alert(e);
+}
+});
+return Objeto;
+}
+
+}
 
 
 

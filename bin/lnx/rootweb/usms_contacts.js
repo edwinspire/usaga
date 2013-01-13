@@ -393,51 +393,12 @@ CP.LoadPhone();
 CP.Gridx.startup();
 }
 
-
-function LoadProviderList(){
-var store = new dojox.data.XmlStore({url: "usms_provider_listidname_xml", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
-var Combobxp = dijit.byId('usms.phones.provider');
-
-var Items = [{}];
-var i = 0;
-
-while(i<numrows){
-Items[i] = {id: dataxml.getString(i, "idprovider"), name: dataxml.getStringB64(i, "name")};
-Combobxp.addOption({value: dataxml.getString(i, "idprovider"), label: dataxml.getStringB64(i, "name")});
-i++;
-}
-
-
-
-/*
-    var stateStore = new Memory({data: Items});
-Checkb.store = null;
-Checkb.store = stateStore;
-Checkb.startup();
-*/
-
-
-},
-onError: function(e){
-alert(e);
-}
-});
-}
+var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
-LoadProviderList();
+loadProviderlist.Load();
 
 
      });
