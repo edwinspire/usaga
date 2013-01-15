@@ -43,6 +43,9 @@ S.VirtualUrl["opensagagetaccountcontact"] = "/opensagagetaccountcontact";
 S.VirtualUrl["opensagagetaccountphonesnotifeventtypegrid"] = "/opensagagetaccountphonesnotifeventtypegrid";
 S.VirtualUrl["opensagagetaccountcontactstable"] = "/opensagagetaccountcontactstable";
 S.VirtualUrl["opensagagetaccountnotificationstable"] = "/opensagagetaccountnotificationstable";
+S.VirtualUrl["opensagagetviewnotificationtemplates"] = "/opensagagetviewnotificationtemplates";
+
+
 
 
 foreach(var u in uSMSServer.VirtualUrls().entries){
@@ -117,6 +120,9 @@ response = ResponseAccountContactsTable(request);
 break;
 case "/opensagagetaccountnotificationstable":
 response = ResponseAccountNotificationsTable(request);
+break;
+case "/opensagagetviewnotificationtemplates":
+response = ResponseViewNotificationTemplates(request);
 break;
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
