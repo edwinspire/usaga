@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-15 09:35:27 ECT
+-- Started on 2013-01-15 09:46:58 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -1195,7 +1195,7 @@ END;$$;
 
 
 --
--- TOC entry 298 (class 1255 OID 26994)
+-- TOC entry 297 (class 1255 OID 26994)
 -- Dependencies: 783 7
 -- Name: fun_view_account_contacts_xml(integer, boolean); Type: FUNCTION; Schema: opensaga; Owner: -
 --
@@ -1211,7 +1211,7 @@ BEGIN
 
 IF fieldtextasbase64 THEN
 
-OPEN CursorResult FOR SELECT idaccount, idcontact, enable, encode(firstname::bytea, 'base64') AS firstname, encode(lastname::bytea, 'base64') AS lastname, prioritycontact, enable_as_contact, appointment, ts FROM opensaga.view_account_contacts WHERE idaccount = inidaccount;
+OPEN CursorResult FOR SELECT idaccount, idcontact, enable, encode(firstname::bytea, 'base64') AS firstname, encode(lastname::bytea, 'base64') AS lastname, prioritycontact, enable_as_contact, encode(appointment::bytea, 'base64') as appointment, ts FROM opensaga.view_account_contacts WHERE idaccount = inidaccount;
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
@@ -1306,7 +1306,7 @@ END;$$;
 
 
 --
--- TOC entry 297 (class 1255 OID 26986)
+-- TOC entry 298 (class 1255 OID 26986)
 -- Dependencies: 783 7
 -- Name: fun_view_last_events_xml(integer, boolean); Type: FUNCTION; Schema: opensaga; Owner: -
 --
@@ -1341,7 +1341,7 @@ END;$$;
 
 --
 -- TOC entry 2600 (class 0 OID 0)
--- Dependencies: 297
+-- Dependencies: 298
 -- Name: FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: opensaga; Owner: -
 --
 
@@ -5854,7 +5854,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-15 09:35:28 ECT
+-- Completed on 2013-01-15 09:47:00 ECT
 
 --
 -- PostgreSQL database dump complete

@@ -225,7 +225,7 @@ return Retorno;
 private uHttp.Response ResponseAccountContactsToGridx(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 int id = 0;
@@ -236,7 +236,7 @@ id = int.parse(request.Query["idaccount"]);
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.AccountContactsViewXml(id).data;
+    Retorno.Data =  Tabla.fun_view_account_contacts_xml(id).data;
 //print(Tabla.UserAndIdContact_Xml(id));
 return Retorno;
 }

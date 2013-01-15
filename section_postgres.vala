@@ -1048,6 +1048,60 @@ return RetornoX;
 }
 
 
+public string fun_account_notifications_table_xml(int idnotifaccount, int idaccount, int idphone, int priority, bool call, bool sms, string smstext, string note, string ts, bool fieldtextasbase64 = true){
+
+string Retorno = "";
+
+string[] ValuesArray = {idnotifaccount.to_string(), idaccount.to_string(), idphone.to_string(), priority.to_string(), call.to_string(),  sms.to_string(), smstext, note, ts, fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = Conexion.exec_params ("SELECT * FROM opensaga.fun_account_notifications_table_xml($1::integer, $2::integer, $3::integer, $4::integer, $5::boolean, $6::boolean, $7::text, $8::text, $9::timestamp without time zone, $10::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
+public string  fun_view_account_contacts_xml(int idaccount, bool fieldtextasbase64 = true){
+
+string Retorno = "<table></table>";
+
+string[] ValuesArray = {idaccount.to_string(), fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = Conexion.exec_params ("SELECT * FROM  opensaga.fun_view_account_contacts_xml($1::integer, $2::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
 public string AccountContactsViewXml(int idaccount){
 var Rows = XmlDatas.Node("contacts");
 foreach(var r in AccountContactsView(idaccount)){
