@@ -10,7 +10,6 @@ var ContentPage = dijit.byId("idContentPageMaster");
 function AdjustheightContentPage(){
 var h = dojo.window.getBox().h-dojo.style('idHeader', 'height')-dojo.style('idmenubar', 'height')-5;
 ContentPage.size("100%", h+"px");
-//dojo.style(ContentPage, "height", "calc(100% - 400px)");
 }
 
 dojo.connect(dojo.byId('opensaga_menuitem_login'), 'onclick', function(){
