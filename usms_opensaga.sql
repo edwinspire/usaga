@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-15 05:02:32 ECT
+-- Started on 2013-01-15 05:21:04 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -1867,7 +1867,7 @@ COMMENT ON FUNCTION fun_portmodem_update(inidport integer, inport text, incimi t
 
 
 --
--- TOC entry 298 (class 1255 OID 26982)
+-- TOC entry 299 (class 1255 OID 26982)
 -- Dependencies: 5 796
 -- Name: fun_providers_idname_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -1901,7 +1901,7 @@ END;$$;
 
 --
 -- TOC entry 2628 (class 0 OID 0)
--- Dependencies: 298
+-- Dependencies: 299
 -- Name: FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -2573,7 +2573,7 @@ COMMENT ON FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean) IS 
 
 
 --
--- TOC entry 299 (class 1255 OID 26983)
+-- TOC entry 298 (class 1255 OID 26983)
 -- Dependencies: 796 5
 -- Name: fun_view_incomingcalls_xml(timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -2589,13 +2589,13 @@ BEGIN
 
 IF fieldtextasbase64 THEN
 
-OPEN CursorResult FOR SELECT idincall, datecall, idport, idphone, callaction, encode(phone::bytea, 'base64') AS phone, flag1, flag2, flag3, flag4, flag5, idmodem, encode(note::bytea, 'base64') AS note, ts FROM incomingcalls WHERE datecall BETWEEN datestart AND dateend;
+OPEN CursorResult FOR SELECT idincall, datecall, idport, idphone, callaction, encode(phone::bytea, 'base64') AS phone, flag1, flag2, flag3, flag4, flag5, idmodem, encode(note::bytea, 'base64') AS note, ts FROM incomingcalls WHERE datecall BETWEEN datestart AND dateend ORDER BY datecall DESC;
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
 ELSE
 
-OPEN CursorResult FOR SELECT * FROM incomingcalls WHERE datecall BETWEEN datestart AND dateend;
+OPEN CursorResult FOR SELECT * FROM incomingcalls WHERE datecall BETWEEN datestart AND dateend ORDER BY datecall DESC;
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
@@ -2608,7 +2608,7 @@ END;$$;
 
 --
 -- TOC entry 2651 (class 0 OID 0)
--- Dependencies: 299
+-- Dependencies: 298
 -- Name: FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -5792,7 +5792,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-15 05:02:34 ECT
+-- Completed on 2013-01-15 05:21:06 ECT
 
 --
 -- PostgreSQL database dump complete
