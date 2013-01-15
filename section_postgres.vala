@@ -603,8 +603,8 @@ idaccount = int.parse(Data["idaccount"]);
 if(Data.has_key("idcontact")){
 idcontact = int.parse(Data["idcontact"]);
 }
-if(Data.has_key("enable")){
-enable = bool.parse(Data["enable"]);
+if(Data.has_key("enable_as_contact")){
+enable = bool.parse(Data["enable_as_contact"]);
 }
 if(Data.has_key("priority")){
 priority = int.parse(Data["priority"]);
@@ -683,7 +683,7 @@ foreach(var reg in this.Result_FieldName(ref Resultado)){
 
 Retorno.IdAccount = reg["idaccount"].as_int();
 Retorno.IdContact = reg["idcontact"].as_int();
-Retorno.Enable =  reg["enable"].as_bool();
+Retorno.Enable =  reg["enable_as_contact"].as_bool();
 Retorno.Priority = reg["prioritycontact"].as_int();
 Retorno.Appointment = reg["appointment"].Value;
 Retorno.TimeStamp = reg["ts"].Value;

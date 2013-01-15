@@ -458,7 +458,7 @@ if(inidaccount > 0){
 var xmldata = datar.byName('row');
 
 dijit.byId('opensaga.account.users.form.idcontact').set('value', String(xmldata[0].getAttribute("idcontact"))); 
-dijit.byId('opensaga.account.users.form.enable').set("value", StringToBool(xmldata[0].getAttribute("enable")));
+dijit.byId('opensaga.account.users.form.enable').set("checked", StringToBool(xmldata[0].getAttribute("enable")));
 dijit.byId('opensaga.account.users.form.numuser').set("value", xmldata[0].getAttribute("numuser"));
 dijit.byId('opensaga.account.users.form.appointment').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("appointment")));
 dijit.byId('opensaga.account.users.form.keyword').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("keyword")));
@@ -887,6 +887,7 @@ myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
+alert(dataxml.getString(i, "enable_as_contact"));
 myData.items[i] = {
 unique_id:i,
 idcontact: dataxml.getNumber(i, "idcontact"), 
@@ -979,7 +980,7 @@ idcontact = idcontact*-1;
 
   var xhrArgs = {
     url: "opensagagetaccountcontactstable",
- content: {idaccount:GlobalObject.IdAccount, idcontact: idcontact, enable: AC.dijit.Enable.get('value'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: AC.dijit.Note.get('value'), ts: AC.dijit.TS.get('value')},
+ content: {idaccount:GlobalObject.IdAccount, idcontact: idcontact, enable_as_contact: AC.dijit.Enable.get('checked'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: AC.dijit.Note.get('value'), ts: AC.dijit.TS.get('value')},
     handleAs: "xml",
     load: function(datass){
 
