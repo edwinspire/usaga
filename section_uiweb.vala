@@ -127,6 +127,19 @@ break;
 
 }
 
+
+private uHttp.Response ResponseViewNotificationTemplates(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+NotificationTemplates Tabla = new NotificationTemplates();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_view_notification_templates_xml().data;
+//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
+return Retorno;
+}
+
 private uHttp.Response ResponseAccountNotificationsTable(Request request){
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
@@ -135,7 +148,7 @@ uHttp.Response Retorno = new uHttp.Response();
 AccountNotificationsTable Tabla = new AccountNotificationsTable();
 Tabla.GetParamCnx();
 Retorno.Data = Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form).data;
-GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
+//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
 return Retorno;
 }
 
@@ -355,23 +368,6 @@ Tabla.GetParamCnx();
 
 return Retorno;
 }
-
-/*
-private uHttp.Response ResponseContactsNamesToSelectBox(Request request){
-
-uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
-    Retorno.Header.Status = StatusCode.OK;
-
-TableContacts Tabla = new TableContacts();
-Tabla.GetParamCnx();
-
-    Retorno.Data =  Tabla.NameAndId_All_Xml().data;
-//print(Tabla.NameAndId_All_Xml());
-
-return Retorno;
-}
-*/
 
 private uHttp.Response ResponseAccountsNamesToSelectBox(Request request){
 
