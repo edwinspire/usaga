@@ -80,7 +80,8 @@ ItemFileWriteStore_1.clearOnClose = true;
 
 		GridCalls.store = null;
 		GridCalls.setStore(ItemFileWriteStore_1);
-
+//GridCalls.startup();
+//alert('ok');
 },
 onError: function(e){
 alert(e);
@@ -89,10 +90,8 @@ alert(e);
 
 }
 
-
-
-LoadGrid();
-
+// Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
+setTimeout(LoadGrid, 5000);
 
 
 
