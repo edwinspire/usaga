@@ -197,6 +197,9 @@ return parseFloat(this.getValue(i, field));
 this.getString = function(i, field){
 return String(this.getValue(i, field));
 },
+this.getDate = function(i, field){
+return new Date(this.getString(i, field));
+},
 this.getStringB64 = function(i, field){
 return jsspire.Base64.decode(this.getValue(i, field));
 }
@@ -224,6 +227,9 @@ return parseFloat(this.getValue(i, field));
 },
 this.getString = function(i, field){
 return String(this.getValue(i, field));
+},
+this.getDate = function(i, field){
+return new Date(this.getString(i, field));
 },
 this.getStringB64 = function(i, field){
 return jsspire.Base64.decode(this.getValue(i, field));

@@ -30,7 +30,7 @@ require(["dojo/ready",
 // Account basic elements
 
 dojo.connect(dijit.byId('buttonsend'), 'onClick', function(e){
-
+LoadGrid();
 });
 
 var GridCalls = dijit.byId('gridxcallin');
@@ -62,12 +62,58 @@ CP.IdPhone = this.cell(event.rowId, 2, true).data();
 GridCalls.startup();
 }
 
+
+function getdate(iddijit){
+return dojo.date.locale.format(dijit.byId(iddijit).get('value'), {datePattern: "yyyy-MM-dd", selector: "date"});
+}
+
 function LoadGrid(){
 
-}
-////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
-LoadGrid();
+var store = new dojox.data.XmlStore({url: "usms_gettableincomingcalls_xml", sendQuery: true, rootItem: 'row'});
 
+var request = store.fetch({query: {datestart: getdate('datestart'), dateend: getdate('dateend')}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i,
+idincall: dataxml.getNumber(i, "idincall"),
+datecall: dataxml.getDate(i, "datecall"),
+idport: dataxml.getNumber(i, "idport"),
+idphone: dataxml.getNumber(i, "idphone"),
+callaction: dataxml.getNumber(i, "callaction"),
+phone: dataxml.getStringB64(i, "phone"),
+flag1: dataxml.getNumber(i, "flag1"),
+flag2: dataxml.getNumber(i, "flag2"),
+flag3: dataxml.getNumber(i, "flag3"),
+flag4: dataxml.getNumber(i, "flag4"),
+flag5: dataxml.getNumber(i, "flag5"),
+note: dataxml.getStringB64(i, "note"),
+};
+i++;
+}
+
+ItemFileReadStore_1.clearOnClose = true;
+	ItemFileReadStore_1.data = myData;
+	ItemFileReadStore_1.close();
+
+		GridCalls.store = null;
+		GridCalls.setStore(ItemFileReadStore_1);
+
+},
+onError: function(e){
+alert(e);
+}
+});
+
+}
 
      });
 });
