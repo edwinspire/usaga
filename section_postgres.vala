@@ -1102,60 +1102,6 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-public string AccountContactsViewXml(int idaccount){
-var Rows = XmlDatas.Node("contacts");
-foreach(var r in AccountContactsView(idaccount)){
-Rows->add_child(AccountContactViewNodeXml(r).Row());
-}
-return XmlDatas.XmlDocToString(Rows);
-}
-
-public AccountContactViewdb[] AccountContactsView(int idaccount){
-
-string[] valuesin = {idaccount.to_string()};
-AccountContactViewdb[] RetornoX = new AccountContactViewdb[0];
-
-var  Conexion = Postgres.connect_db (this.ConnString());
-
-if(Conexion.get_status () == ConnectionStatus.OK){
-
-var Resultado = Conexion.exec_params ("select * from opensaga.view_account_contacts where idaccount = $1 order by prioritycontact, lastname, firstname", valuesin.length, null, valuesin, null, null, 0);
-
-    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-
-var Registros = this.Result_FieldName(ref Resultado);
-
-RetornoX = new AccountContactViewdb[Registros.length];
-int i = 0;
-foreach(var reg in Registros){
-AccountContactViewdb Registro = AccountContactViewdb();
-Registro.IdContact = reg["idcontact"].as_int();
-Registro.EnableContact = reg["enable"].as_bool();
-Registro.FirstName = reg["firstname"].Value;
-Registro.LastName = reg["lastname"].Value;
-Registro.IdAccount = reg["idaccount"].as_int();
-Registro.PriorityContact = reg["prioritycontact"].as_int();
-Registro.EnableAsContact = reg["enable_as_contact"].as_bool();
-Registro.Appointment = reg["appointment"].Value;
-
-RetornoX[i] = Registro;
-
-i++;
-}
-
-} else{
-	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
-    }
-
-}else{
-	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
-}
-
-return RetornoX;
-}
-
-
-
 public string AccountUsersViewXml(int idaccount){
 var Rows = XmlDatas.Node("users");
 foreach(var r in AccountUsersView(idaccount)){
