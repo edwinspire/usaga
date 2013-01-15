@@ -874,6 +874,44 @@ LoadContactsGrid: function(){
 this.ResetOnSelectContact();
 if(GlobalObject.IdAccount > 0){
 
+var store = new dojox.data.XmlStore({url: "opensagagetaccountcontactsgrid", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idaccount: GlobalObject.IdAccount}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i,
+idcontact: dataxml.getNumber(i, "idcontact"), 
+enable_as_contact: dataxml.getBool(i, "enable_as_contact"),
+priority: dataxml.getNumber(i, "prioritycontact"),    
+name: dataxml.getStringB64(i, "lastname")+' '+dataxml.getStringB64(i, "firstname"),
+appointment: dataxml.getStringB64(i, "appointment"),
+};
+
+i++;
+}
+
+	AC.GxCStore.clearOnClose = true;
+	AC.GxCStore.data = myData;
+	AC.GxCStore.close();
+
+		AC.dijit.GxC.store = null;
+		AC.dijit.GxC.setStore(AC.GxCStore);
+},
+onError: function(e){
+alert(e);
+}
+});
+
+/*
   var xhrArgs = {
     url: "opensagagetaccountcontactsgrid",
  content: {idaccount: GlobalObject.IdAccount},
@@ -921,9 +959,13 @@ alert(error);
 
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
+
+*/
 }else{
 AC.GxCClear();
 }
+
+
 return this;
 },
 SaveForm: function(deleteReg){

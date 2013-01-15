@@ -229,8 +229,8 @@ uHttp.Response Retorno = new uHttp.Response();
     Retorno.Header.Status = StatusCode.OK;
 
 int id = 0;
-if(request.Form.has_key("idaccount")){
-id = int.parse(request.Form["idaccount"]);
+if(request.Query.has_key("idaccount")){
+id = int.parse(request.Query["idaccount"]);
 }
 
 AccountTable Tabla = new AccountTable();
