@@ -713,6 +713,12 @@ return RetornoX;
 
 public class AccountNotificationsTable:PostgreSQLConnection{
 
+
+
+}
+
+public class AccountNotificationsTable:PostgreSQLConnection{
+
 public string byIdContact(int idaccount, int idcontact, bool fieldtextasbase64 = true){
 
 string RetornoX = "";
