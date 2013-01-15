@@ -231,7 +231,7 @@ RetornoX = reg["return"].Value;
 }else{
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-
+GLib.print("ResponseGetEventsMonitor >>> \n%s\n", RetornoX);
 return RetornoX;
 }
 

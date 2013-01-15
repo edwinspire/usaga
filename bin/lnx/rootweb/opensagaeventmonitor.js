@@ -32,7 +32,7 @@ require(["dojo/ready", "dojo/data/ItemFileReadStore",
 myGridX.startup();
 
 
-function LoadGrid(){
+function LoadMonitorEvents(){
 
 var store = new dojox.data.XmlStore({url: "opensagageteventsmonitor", sendQuery: true, rootItem: 'row'});
 
@@ -56,7 +56,7 @@ partition: dataxml.getNumber(i, "partition"),
 enable: dataxml.getBool(i, "enable"),
 account: dataxml.getStringB64(i, "account"),
 name: dataxml.getStringB64(i, "name"),
-code: dataxml.getStringB64("code"),
+//code: dataxml.getString("code"),
 zu: dataxml.getNumber(i, "zu"),
 priority: dataxml.getNumber(i, "priority"),
 description: dataxml.getStringB64(i, "description"),
@@ -66,12 +66,12 @@ eventtype: dataxml.getStringB64(i, "eventtype")
 i++;
 }
 
-ItemFileWriteStore_1.clearOnClose = true;
-	ItemFileWriteStore_1.data = myData;
-	ItemFileWriteStore_1.close();
+ItemFileReadStore_1.clearOnClose = true;
+	ItemFileReadStore_1.data = myData;
+	ItemFileReadStore_1.close();
 
-		GridCalls.store = null;
-		GridCalls.setStore(ItemFileWriteStore_1);
+		myGridX.store = null;
+		myGridX.setStore(ItemFileReadStore_1);
 //GridCalls.startup();
 //alert('ok');
 },
@@ -85,7 +85,7 @@ alert(e);
 
 }
 
-function LoadMonitorEvents(){
+function LoadMonitorEventxxx(){
 //alert('Carga eventos');
  // Look up the node we'll stick the text under.
 //alert('Hola');
