@@ -711,8 +711,37 @@ return RetornoX;
 
 }
 
-public class AccountNotificationsTable:PostgreSQLConnection{
+public class NotificationTemplates:PostgreSQLConnection{
 
+//opensaga.fun_view_notification_templates_xml
+public string fun_view_notification_templates_xml(bool fieldtextasbase64 = true){
+
+string RetornoX = "";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {fieldtextasbase64.to_string()};
+
+var Resultado = Conexion.exec_params ("""SELECT * FROM opensaga.fun_view_notification_templates_xml($1::boolean) AS return""", valuesin.length, null, valuesin, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+//GLib.print(RetornoX);
+return RetornoX;
+}
 
 
 }
