@@ -53,7 +53,7 @@ function LoadGrid(){
 
 var store = new dojox.data.XmlStore({url: "usms_gettableformatnotif_xml", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch(onComplete: function(itemsrow, r){
+var request = store.fetch({onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
