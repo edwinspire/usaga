@@ -4,7 +4,7 @@
  */
 require(["dojo/ready", "dojo/data/ItemFileReadStore",
   "gridx/Grid",
-  "gridx/core/model/cache/Async", "dojox/xml/DomParser"], function(ready){
+  "gridx/core/model/cache/Async", "dojox/xml/DomParser", "dojox/data/XmlStore"], function(ready){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -30,6 +30,58 @@ require(["dojo/ready", "dojo/data/ItemFileReadStore",
 			{field:"eventtype", name: "eventtype"}
 		]);
 myGridX.startup();
+
+
+function LoadGrid(){
+
+var store = new dojox.data.XmlStore({url: "opensagageteventsmonitor", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i,
+id: dataxml.getNumber(i, "idevent"), 
+dateload: dataxml.getDate(i, "dateload"),
+idaccount: dataxml.getNumber(i, "idaccount"),
+partition: dataxml.getNumber(i, "partition"),
+enable: dataxml.getBool(i, "enable"),
+account: dataxml.getStringB64(i, "account"),
+name: dataxml.getStringB64(i, "name"),
+code: dataxml.getStringB64("code"),
+zu: dataxml.getNumber(i, "zu"),
+priority: dataxml.getNumber(i, "priority"),
+description: dataxml.getStringB64(i, "description"),
+ideventtype: dataxml.getNumber(i, "ideventtype"),
+eventtype: dataxml.getStringB64(i, "eventtype")
+};
+i++;
+}
+
+ItemFileWriteStore_1.clearOnClose = true;
+	ItemFileWriteStore_1.data = myData;
+	ItemFileWriteStore_1.close();
+
+		GridCalls.store = null;
+		GridCalls.setStore(ItemFileWriteStore_1);
+//GridCalls.startup();
+//alert('ok');
+},
+onError: function(e){
+alert(e);
+}
+});
+
+}
+
 
 }
 

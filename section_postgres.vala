@@ -207,6 +207,35 @@ public EventView(){
 }
 
 
+public string LastXml(int rows = 100, bool fieldtextasbase64 = true){
+string RetornoX = "<table></table>";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {rows.to_string(), fieldtextasbase64.to_string()};
+
+var Resultado = Conexion.exec_params ("SELECT * FROM opensaga.fun_view_last_events_xml($1::integer, $2::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+
+return RetornoX;
+}
+
+/*
 public string Last_Xml(){
 
 var Rows = XmlDatas.Node("events");
@@ -216,7 +245,8 @@ Rows->add_child(EventViewNodeXml(r).Row());
 }
 return XmlDatas.XmlDocToString(Rows);
 }
-
+*/
+/*
 public static XmlRow EventViewNodeXml(EventViewdb event){
 
 XmlRow Fila = new XmlRow();
@@ -254,8 +284,9 @@ Fila.addFieldString("dateprocess5", event.DateProcess1, true);
 
 return Fila;
 }
+*/
 
-
+/*
 public EventViewdb[] Last(int limit = 100){
 
 string[] valuesin = {limit.to_string()};
@@ -328,6 +359,7 @@ i++;
 
 return RetornoX;
 }
+*/
 
 }
 

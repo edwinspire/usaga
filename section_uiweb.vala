@@ -297,13 +297,13 @@ return Retorno;
 private uHttp.Response ResponseGetEventsMonitor(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 EventView Tabla = new EventView();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.Last_Xml().data;
+    Retorno.Data =  Tabla.LastXml().data;
 //print("ResponseGetEventsMonitor >>> \n%s\n", Tabla.Last_Xml());
 
 return Retorno;

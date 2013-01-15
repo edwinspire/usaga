@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Open S.A.G.A</title>
-<script type="text/javascript" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}]" src="lib/dojo/dojo/dojo.js"></script>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}]"></script>
 <script type="text/javascript">
 require([
   "dijit/dijit",
@@ -27,23 +27,13 @@ require([
 <script type="text/javascript" src="jsspire/functions.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </head>
-<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-appstates="{'states':[]}" id="myapp">
+<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-appstates="{'states':[]}" data-maq-comptype="desktop" id="myapp">
  <div style="width: 100%; display: block; height: 100%;">
    <span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-<span data-dojo-type="dijit.TitlePane" title="Monitor de eventos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" duration="200" open="false" style="min-width: 1em; width: 100%; height: auto;">
-<div>
-  <div data-dojo-type="dijit.form.Form" id="formMonitor" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" action="opensagageteventsmonitor">
-    <label style="padding-right: 3px;">
-      Eventos con prioridad menor que</label>
-    <input type="text" data-dojo-type="dijit.form.NumberTextBox" name="priority" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="2" required="required" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 30px;" value="20"></input>
-    <label style="padding-right: 3px; padding-left: 10px;">
-      Mostrar los</label>
-    <input type="text" data-dojo-type="dijit.form.NumberTextBox" name="limit" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="3" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 30px;" value="100"></input>
-    <label style="padding-left: 3px;">
-      ultimos eventos</label>
-  </div>
+<div class="dijitTitlePaneTitle">
+ <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+   Ultimos 100 eventos registrados</label>
 </div>
-</span>
 <table data-dojo-type="gridx.Grid" id="opensaga.event.monitor" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%; display: block;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_1"></table>
 </div>
 </body></html>
