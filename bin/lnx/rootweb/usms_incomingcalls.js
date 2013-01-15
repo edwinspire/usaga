@@ -46,7 +46,7 @@ CP.IdPhone = this.cell(event.rowId, 2, true).data();
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"idincall", name: "id", width: '20px'},
-			{field:"datecall", name: "datecall", width: '20px'},
+			{field:"datecall", name: "datecall"},
 			{field:"idport", name: "idport", width: '20px'},
 			{field:"idphone", name: "idphone"},
 			{field:"callaction", name: "callaction"},
