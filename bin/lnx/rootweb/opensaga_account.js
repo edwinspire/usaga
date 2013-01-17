@@ -173,7 +173,7 @@ datos.note = dijit.byId('account.basic.note').get('value');
     content: datos,
     handleAs: "text",
     load: function(dataX){
-//alert(dataX);
+
   var datar = dojox.xml.DomParser.parse(dataX);
 var xmldata = datar.byName('SQLFunReturn');
 
@@ -314,7 +314,7 @@ datos.note = dijit.byId('account.location.note').get('value');
     content: datos,
     handleAs: "text",
     load: function(dataX){
-//alert(dataX);
+
   var datar = dojox.xml.DomParser.parse(dataX);
 var xmldata = datar.byName('SQLFunReturn');
 
@@ -341,7 +341,7 @@ alert(errorx);
 ///// USUARIOS /////
 
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
-//alert(d.data);
+
 var userSelectBox = dijit.byId('opensaga.account.users.form.idcontact');
 userSelectBox.store = null;
 userSelectBox.store = d.data;
@@ -411,7 +411,7 @@ if(GlobalObject.IdAccount > 0){
     load: function(datass){
 
   var datar = dojox.xml.DomParser.parse(datass);
-//alert(datass);
+
 var xmldata = datar.byName('SQLFunReturn');
 var idcontactuser = xmldata[0].getAttribute("return");
 
@@ -496,7 +496,6 @@ if(inidaccount > 0){
     load: function(datass){
 
   var datar = dojox.xml.DomParser.parse(datass);
-//alert(datass);
 	// Get reference to our grid object. I set the id to "GridX" using
 	// the Maqetta properties palette.
 	var myGridX = dijit.byId("opensaga.account.users.gridx");
@@ -510,7 +509,7 @@ myData.identifier = "unique_id";
 var i = 0;
 var rowscount = xmldata.length;
 while(i<rowscount){
-//alert(i);
+
 myData.items[i] = {
 unique_id:i,
 //s: false, 
@@ -570,7 +569,6 @@ if(inidaccount > 0){
     load: function(datass){
 
   var datar = dojox.xml.DomParser.parse(datass);
-//alert(datass);
 	// Get reference to our grid object. I set the id to "GridX" using
 	// the Maqetta properties palette.
 	var myGridX = dijit.byId("opensaga.account.contacts.gridx");
@@ -584,7 +582,7 @@ myData.identifier = "unique_id";
 var i = 0;
 var rowscount = xmldata.length;
 while(i<rowscount){
-//alert(i);
+
 myData.items[i] = {
 unique_id:i,
 //s: false, 
@@ -670,7 +668,7 @@ AjaxSaveChangesPhonesTriggerGridx(item);
 });
 
         function formatter(){
-//alert(data);
+
 
             var w = new   dijit.form.CheckBox({
 //                  name: "checkBox",
@@ -744,7 +742,7 @@ myData.identifier = "unique_id";
 var i = 0;
 var rowscount = xmldata.length;
 while(i<rowscount){
-//alert(i);
+
 myData.items[i] = {
 unique_id:i,
 //s: false, 
@@ -887,7 +885,7 @@ myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
-alert(dataxml.getString(i, "enable_as_contact"));
+
 myData.items[i] = {
 unique_id:i,
 idcontact: dataxml.getNumber(i, "idcontact"), 
@@ -912,56 +910,6 @@ alert(e);
 }
 });
 
-/*
-  var xhrArgs = {
-    url: "opensagagetaccountcontactsgrid",
- content: {idaccount: GlobalObject.IdAccount},
-    handleAs: "text",
-    load: function(datass){
-  var datar = dojox.xml.DomParser.parse(datass);
-
-	// Get reference to our grid object. I set the id to "GridX" using
-	// the Maqetta properties palette.
-	if (AC.dijit.GxC) {
-
-var xmldata = datar.byName('row');
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-var i = 0;
-var rowscount = xmldata.length;
-while(i<rowscount){
-myData.items[i] = {
-unique_id:i,
-idcontact: xmldata[i].getAttribute("idcontact"), 
-enable_as_contact: xmldata[i].getAttribute("enable_as_contact"),
-priority: xmldata[i].getAttribute("prioritycontact"),    
-name: jsspire.Base64.decode(xmldata[i].getAttribute("lastname"))+' '+jsspire.Base64.decode(xmldata[i].getAttribute("firstname")),
-appointment: jsspire.Base64.decode(xmldata[i].getAttribute("appointment")),
-};
-
-i++;
-}
-
-	AC.GxCStore.clearOnClose = true;
-	AC.GxCStore.data = myData;
-	AC.GxCStore.close();
-
-		AC.dijit.GxC.store = null;
-		AC.dijit.GxC.setStore(AC.GxCStore);
-	}
-
-
- 
-    },
-    error: function(error){
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-
-*/
 }else{
 AC.GxCClear();
 }
