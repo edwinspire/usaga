@@ -70,7 +70,7 @@ require([
        <br></br>
        <label style="padding-right: 3px; padding-left: 10px;">
          Abonado:</label>
-       <input type="text" data-dojo-type="dijit.form.TextBox" id="account.basic.accountnum" title="Numero de abonado" name="account" value="0000" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+       <input type="text" data-dojo-type="dijit.form.TextBox" id="account.basic.accountnum" title="Numero de abonado" name="account" value="0000" intermediateChanges="false" trim="true" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="1234"></input>
        <label style="padding-right: 3px; padding-left: 10px;">
          Grupo:</label>
        <select data-dojo-type="dijit.form.FilteringSelect" id="account.basic.group" title="Grupo" name="idgroup" value="Ninguno" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
@@ -399,7 +399,7 @@ Domingo</option>
                     <label style="padding-left: 10px; padding-right: 3px;">
                       
                          Prioridad:</label>
-                    <input type="text" data-dojo-type="dijit.form.NumberSpinner" id="opensaga.account.contacts.priority" title="Numero de usuario en el sistema de alarma" name="priority" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;"></input>
+                    <input type="text" data-dojo-type="dijit.form.NumberSpinner" id="opensaga.account.contacts.priority" title="Numero de usuario en el sistema de alarma" name="priority" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="2" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;" value="5"></input>
                     <label style="padding-left: 10px; padding-right: 3px;">
                       
                          Designación:</label>
