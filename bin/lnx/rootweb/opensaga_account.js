@@ -210,7 +210,7 @@ ABE.dijit.Partition.set('value', xmldata[0].getAttribute("partition"));
 ABE.dijit.Enable.set('checked', StringToBool(xmldata[0].getAttribute("enable"))); 
 ABE.dijit.Num.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("account"))); 
 ABE.dijit.Select.set('value', xmldata[0].getAttribute("idaccount")); 
-ABE.dijit.Type.setValue(xmldata[0].getAttribute("type")); 
+ABE.dijit.Type.setValue(String(xmldata[0].getAttribute("type"))); 
 ABE.dijit.Note.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note"))); 
 }
 }
