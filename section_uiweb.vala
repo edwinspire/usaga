@@ -311,14 +311,13 @@ return Retorno;
 private uHttp.Response ResponseAccountSaveTable(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.fun_account_table_from_hashmap(request.Form).Xml().data;
-//print("ResponseAccountSaveTable >>> \n%s\n", Tabla.fun_account_table_from_hashmap(request.Form).Xml());
+    Retorno.Data =  Tabla.fun_account_table_xml_from_hashmap(request.Form).data;
 
 return Retorno;
 }

@@ -1048,7 +1048,7 @@ return Retorno;
 }
 
 
-public SQLFunReturn fun_account_table_from_hashmap(HashMap<string, string> Data){
+public string fun_account_table_xml_from_hashmap(HashMap<string, string> Data, bool fieldtextasbase64 = true){
 
 Accountdb Cuenta = Accountdb();
 
@@ -1058,7 +1058,6 @@ Cuenta.Id = int.parse(Data["idaccount"]);
 
 if(Data.has_key("enable")){
 Cuenta.Enable = bool.parse(Data["enable"]);
-//GLib.print("Cuenta Habilitada >>>> %s\n \n", Cuenta.Enable.to_string());
 }
 
 if(Data.has_key("account")){
@@ -1080,28 +1079,27 @@ if(Data.has_key("note")){
 Cuenta.Note = Data["note"];
 }
 //GLib.print("Llega hasta aqui 1 \n");
-return fun_account_table(Cuenta.Id, Cuenta.Enable, Cuenta.Account, Cuenta.Name, Cuenta.IdGroup, Cuenta.Partition, Cuenta.Type, Cuenta.Note);
+return fun_account_table_xml(Cuenta.Id, Cuenta.Enable, Cuenta.Account, Cuenta.Name, Cuenta.IdGroup, Cuenta.Partition, Cuenta.Type, Cuenta.Note, fieldtextasbase64);
 }
 
 // opensaga.fun_account_table(IN inidaccount integer, IN inenable boolean, IN inaccount text, IN inname text, IN inidgroup integer, IN inpartition integer, IN intype integer, IN innote text, OUT outidaccount integer, OUT outpgmsg text)
-public SQLFunReturn fun_account_table(int inidaccount, bool inenable, string inaccount, string inname, int inidgroup, int inpartition, AccountType intype, string innote){
+public string fun_account_table_xml(int inidaccount, bool inenable, string inaccount, string inname, int inidgroup, int inpartition, AccountType intype, string innote, bool fieldtextasbase64 = true){
 
-SQLFunReturn Retorno = new SQLFunReturn();
+string Retorno = "";
 //GLib.print("Llega hasta aqui %s => %s\n", inname, innote);
-string[] ValuesArray = {inidaccount.to_string(), inenable.to_string(), inaccount, inname, inidgroup.to_string(), inpartition.to_string(), ((int)intype).to_string(), innote};
+string[] ValuesArray = {inidaccount.to_string(), inenable.to_string(), inaccount, inname, inidgroup.to_string(), inpartition.to_string(), ((int)intype).to_string(), innote, fieldtextasbase64.to_string()};
 //GLib.print("Llega hasta aqui 3 \n");
 var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM opensaga.fun_account_table($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text);""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = Conexion.exec_params ("SELECT * FROM opensaga.fun_account_table_xml($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text, $9::boolean) as return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-//GLib.print("Llega hasta aqui 4 \n");
+
 foreach(var filas in this.Result_FieldName(ref Resultado)){
 //Retorno = int.parse(filas["fun_smsout_insert"]);
-Retorno.Return = filas["outreturn"].as_int();
-Retorno.Msg = filas["outpgmsg"].Value;
+Retorno = filas["return"].Value;
 }
 
 } else{
@@ -1110,7 +1108,7 @@ Retorno.Msg = filas["outpgmsg"].Value;
 
 }
 
-//GLib.print("Llega hasta aqui 5 \n");
+GLib.print("%s\n", Retorno);
 return Retorno;
 }
 

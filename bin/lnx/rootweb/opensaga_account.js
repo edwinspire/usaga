@@ -178,23 +178,25 @@ datos.note = dijit.byId('account.basic.note').get('value');
   var xhrArgs = {
     url: "opensagasaveaccount",
     content: datos,
-    handleAs: "text",
+    handleAs: "xml",
     load: function(dataX){
 
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('SQLFunReturn');
+var xmld = new jspireTableXmlDoc(dataX, 'row');
 
-if(xmldata.length > 0){
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
+
 GlobalObject.LoadItemsSelectAccount();
-var id = xmldata[0].getAttribute("return");
-alert(jsspire.Base64.decode(xmldata[0].getAttribute("msg")));
+var id = xmld.getNumber(0, "outreturn");
+
 if(id>=0){
 // Seteamos primero el id para que al ejecutar SaveAccountLocation no haya problema cuando se crea una cuenta nueva
-//dijit.byId('account.basic.id').set('value', id); 
 GlobalObject.IdAccount = id;
 AjaxLoadAccount();
 SaveAccountLocation();
 }
+
 }
 
     },
@@ -204,6 +206,7 @@ alert(errorx);
   }
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
+
 }
 
 
