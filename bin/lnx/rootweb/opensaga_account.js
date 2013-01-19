@@ -129,20 +129,24 @@ AccountSelected();
 });
 
 dojo.connect(dijit.byId('account.basic.newaccount'), 'onClick', function(e){
+ABE.dijit.Select.set('invalidMessage', 'El nombre de Abonado es permitido');
 GlobalObject.IdAccount = 0;
 ABE.ResetForms();
 AC.ResetAll();
 });
 
 dojo.connect(dijit.byId('account.basic.saveaccount'), 'onClick', function(e){
+ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 SaveAccount();
 });
 
 dojo.connect(dijit.byId('account.basic.deleteaccount'), 'onClick', function(e){
+ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 DeleteAccount();
 });
 
 dojo.connect(dijit.byId('account.contentpane.users'), 'onShow', function(e){
+ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 LoadAccountUsersGridx();
 });
 
@@ -813,7 +817,6 @@ dojo.connect(dijit.byId('opensaga.account.contacts.contactdata'), 'onClick', fun
 alert('contactdata en construccion');
 });
 
-
 // ACCOUNT CONTACTS
 var AC = {
 GxCStore: opensaga_account_contactsStore,
@@ -1234,10 +1237,8 @@ dijit.byId('account.location.geoy').constraints = {pattern: '###.###############
 
 GlobalObject.LoadItemsSelectAccount().LoadListIdContactName();
 //GlobalObject.LoadListIdContactName();
-
-
-//var userSelectBox = dijit.byId('opensaga.account.users.form.idcontact');
-//StoreContactIdAndName(userSelectBox);
+ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
+AC.dijit.Select.set('invalidMessage', 'Seleccione de la lista');
 
      });
 });
