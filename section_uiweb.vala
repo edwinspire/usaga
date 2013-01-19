@@ -246,15 +246,13 @@ return Retorno;
 private uHttp.Response ResponseAccountPhonesTriggerChangeTable(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 Tabla.GetParamCnx();
 
     Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).Xml().data;
-//print("ResponseAccountSaveTable >>> \n%s\n", Tabla.fun_account_table_from_hashmap(request.Form).Xml());
-
 return Retorno;
 }
 
