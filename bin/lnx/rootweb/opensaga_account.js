@@ -389,8 +389,6 @@ SaveFormAccountUser(true);
 
 function SaveFormAccountUser(deleteuser){
 
-//var inidaccount = dijit.byId('account.basic.id').get('value');
-
 var formdata = { idaccount: GlobalObject.IdAccount};
 formdata.idcontact = dijit.byId('opensaga.account.users.form.idcontact').get('value');
 
@@ -419,11 +417,11 @@ var xmldata = datar.byName('SQLFunReturn');
 var idcontactuser = xmldata[0].getAttribute("return");
 
 LoadAccountUsersGridx();
-
+alert(jsspire. Base64.decode(xmldata[0].getAttribute("msg")));
 if(idcontactuser == formdata.idcontact){
 LoadFormAccountUser(idcontactuser);
 }else{
-alert(jsspire. Base64.decode(xmldata[0].getAttribute("msg")));
+//alert(jsspire. Base64.decode(xmldata[0].getAttribute("msg")));
 			dojo.byId("opensaga.account.users.form").reset();
 }
 
