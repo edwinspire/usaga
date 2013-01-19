@@ -648,21 +648,6 @@ RetornoX = reg["return"].Value;
 return RetornoX;
 }
 
-public static XmlRow AccountContactRowNodeXml(AccountContactRow row){
-
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idcontact", row.IdContact);
-Fila.addFieldInt("idaccount", row.IdAccount);
-Fila.addFieldBool("enable", row.Enable);
-Fila.addFieldInt("priority", row.Priority);
-Fila.addFieldString("appointment", row.Appointment, true);
-Fila.addFieldString("note", row.Note, true);
-Fila.addFieldString("ts", row.TimeStamp, true);
-
-return Fila;
-}
-
 public string byIdXml(int idaccount, int idcontact, bool fieldtextasbase64 = true){
 
 string RetornoX = "";
@@ -688,49 +673,8 @@ RetornoX = reg["return"].Value;
 }else{
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-GLib.print(RetornoX);
+
 return RetornoX;
-}
-
-/*
-public string byIdXmlxxx(int idaccount, int idcontact){
-return XmlDatas.XmlDocToString(AccountContactRowNodeXml(this.byId(idaccount, idcontact)).Row());
-}
-*/
-
-public AccountContactRow byId(int idaccount, int idcontact){
-
-string[] valuesin = {idaccount.to_string(), idcontact.to_string()};
-AccountContactRow Retorno = AccountContactRow();
-var  Conexion = Postgres.connect_db (this.ConnString());
-
-if(Conexion.get_status () == ConnectionStatus.OK){
-
-var Resultado = Conexion.exec_params ("""SELECT * FROM opensaga.view_account_contacts WHERE idaccount = $1 AND idcontact = $2;""", valuesin.length, null, valuesin, null, null, 0);
-
-    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-
-foreach(var reg in this.Result_FieldName(ref Resultado)){
-
-Retorno.IdAccount = reg["idaccount"].as_int();
-Retorno.IdContact = reg["idcontact"].as_int();
-Retorno.Enable =  reg["enable_as_contact"].as_bool();
-Retorno.Priority = reg["prioritycontact"].as_int();
-Retorno.Appointment = reg["appointment"].Value;
-Retorno.TimeStamp = reg["ts"].Value;
-Retorno.Note = reg["note"].Value;
-//GLib.print("<<<<<<<<<<<<<<<<<<< %s   [%s]\n", Retorno.Enable.to_string(), reg["enable"].Value);
-}
-
-} else{
-	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
-    }
-
-}else{
-	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
-}
-
-return Retorno;
 }
 
 }
