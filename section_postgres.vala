@@ -663,9 +663,40 @@ Fila.addFieldString("ts", row.TimeStamp, true);
 return Fila;
 }
 
-public string byIdXml(int idaccount, int idcontact){
+public string byIdXml(int idaccount, int idcontact, bool fieldtextasbase64 = true){
+
+string RetornoX = "";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {idaccount.to_string(), idcontact.to_string(), fieldtextasbase64.to_string()};
+
+var Resultado = Conexion.exec_params ("""SELECT * FROM opensaga.fun_account_contacts_byid($1::integer, $2::integer, $3::boolean) AS return""", valuesin.length, null, valuesin, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+GLib.print(RetornoX);
+return RetornoX;
+}
+
+/*
+public string byIdXmlxxx(int idaccount, int idcontact){
 return XmlDatas.XmlDocToString(AccountContactRowNodeXml(this.byId(idaccount, idcontact)).Row());
 }
+*/
 
 public AccountContactRow byId(int idaccount, int idcontact){
 

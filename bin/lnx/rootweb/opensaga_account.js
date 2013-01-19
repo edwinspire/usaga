@@ -932,23 +932,22 @@ idcontact = idcontact*-1;
     handleAs: "xml",
     load: function(datass){
 
-var xmldata = datass.getElementsByTagName("row");
+//var xmldata = datass.getElementsByTagName("row");
+var xmld = new jspireTableXmlDoc(datass, 'row');
 
-if(xmldata.length > 0){
-//Objeto.dijit.Select.set('value', String(xmldata[0].getAttribute("idcontact"))); 
+if(xmld.length > 0){
+var outreturn = xmld.getInt(0, 'outreturn');
+if(outreturn == Objeto.dijit.Select.get('value')){
 
-//if(xmldata[0].getElementsByTagName('outreturn').item(0).firstChild.data == Objeto.dijit.Select.get('value')){
-if(jsspire.Xml.GetData(xmldata[0], 'outreturn') == Objeto.dijit.Select.get('value')){
-//alert(Base64.decode(xmldata[0].getElementsByTagName('outpgmsg').item(0).firstChild.data));
-alert(jsspire.Xml.GetDataFromBase64(xmldata[0], 'outpgmsg'));
-Objeto.LoadFormContact(Objeto.dijit.Select.get('value'));
-//Objeto.LoadFormContact(Objeto.dijit.Select.get('value'));
+alert(xmld.getStringB64(0, 'outpgmsg'));
+Objeto.LoadFormContact(outreturn);
+
 }else{
 Objeto.ResetOnSelectContact();
 }
 
-
-
+}else{
+Objeto.ResetOnSelectContact();
 }
 Objeto.LoadContactsGrid();
     },
@@ -1070,6 +1069,36 @@ LoadFormContact: function(iniidcontact){
 var Objeto = this;
 if(GlobalObject.IdAccount > 0){
 
+var store = new dojox.data.XmlStore({url: "opensagagetaccountcontact", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, idcontact: iniidcontact}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+alert('>>>>>> '+itemsrow.length);
+
+if(itemsrow.length>0){
+Objeto.dijit.Select.set('value', dataxml.getNumber(0, "idcontact")); 
+Objeto.dijit.Enable.set("checked", dataxml.getBool(0, "enable"));
+Objeto.dijit.Priority.set("value", dataxml.getNumber(0, "priority"));
+Objeto.dijit.Appointment.set('value', dataxml.getStringB64(0, "appointment"));
+Objeto.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
+Objeto.dijit.TS.set('value', dataxml.getString(0, "ts"));
+}else{
+Objeto.ResetOnSelectContact();
+iniidcontact = 0;
+}
+
+Objeto.LoadPhones(iniidcontact);
+
+},
+onError: function(e){
+alert(e);
+}
+});
+
+/*
+
   var xhrArgs = {
     url: "opensagagetaccountcontact",
  content: { idaccount: GlobalObject.IdAccount, idcontact: iniidcontact},
@@ -1085,6 +1114,9 @@ Objeto.dijit.Priority.set("value", xmldata[0].getAttribute("priority"));
 Objeto.dijit.Appointment.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("appointment")));
 Objeto.dijit.Note.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note")));
 Objeto.dijit.TS.set('value', xmldata[0].getAttribute("ts"));
+}else{
+Objeto.ResetOnSelectContact();
+iniidcontact = 0;
 }
 Objeto.LoadPhones(iniidcontact);
     },
@@ -1096,12 +1128,11 @@ alert(error);
 
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
-
-//LoadAccountPhonesTriggerGridx(iniidcontact);
-
+*/
 }else{
-			Objeto.Form.reset();
+Objeto.ResetOnSelectContact();
 }
+
 return Objeto;
 } 
 

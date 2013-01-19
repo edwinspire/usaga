@@ -208,13 +208,13 @@ return Retorno;
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetAccountContact(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 int idcontact = 0;
 int idaccount = 0;
-if(request.Form.has_key("idaccount") && request.Form.has_key("idcontact")){
-idcontact = int.parse(request.Form["idcontact"]);
-idaccount = int.parse(request.Form["idaccount"]);
+if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")){
+idcontact = int.parse(request.Query["idcontact"]);
+idaccount = int.parse(request.Query["idaccount"]);
 }
 AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
