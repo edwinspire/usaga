@@ -149,9 +149,12 @@ LoadAccountUsersGridx();
 
 
 function DeleteAccount(){
-//var id = dijit.byId('account.basic.id');
+if(GlobalObject.IdAccount>0){
 GlobalObject.IdAccount = GlobalObject.IdAccount*-1; //.set('value', id.get('value')*-1);
 SaveAccount();
+}else{
+ABE.ResetForms();
+}
 }
 
 function SaveAccount(){
