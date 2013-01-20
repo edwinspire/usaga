@@ -42,8 +42,8 @@ CP.IdPhone = this.cell(event.rowId, 2, true).data();
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"idnotiftempl", name: "id", width: '20px'},
-			{field:"description", name: "Descripción"},
-			{field:"message", name: "Mensaje"}
+			{field:"description", name: "Descripción", editable: 'true'},
+			{field:"message", name: "Mensaje" , editable: 'true'}
 		]);
 GridCalls.startup();
 }
