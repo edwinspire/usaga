@@ -131,7 +131,7 @@ email2: dijit.byId('usms.contact.email2'),
 Note: dijit.byId('usms.contact.note')
 },
 LoadContactSelected: function(){
-alert(GlobalObject.IdContact);
+
 if(GlobalObject.IdContact > 0){
 var store = new dojox.data.XmlStore({url: "usms_getcontactbyid_xml", sendQuery: true, rootItem: 'row'});
 
