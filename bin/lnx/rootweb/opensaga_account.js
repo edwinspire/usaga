@@ -381,7 +381,7 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		// Optionally change column structure on the grid
 		myAccountUsersGridX.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: CheckBox},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, type: dojox.grid.cells.Bool},
 			{field:"numuser", name: "#", width: '20px', editable: true, editor: NumberTextBox},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
@@ -653,6 +653,18 @@ this.dijit.GxPT.store = null;
 
 }
 
+function primaryFormatter(inDatum) {
+        if (inDatum == "true")
+        {
+          return true;
+        }
+        else
+        {
+          return false; 
+        }
+};
+
+
 	if (PTElements.dijit.GxPT) {
 
 		// Optionally change column structure on the grid
@@ -664,7 +676,7 @@ this.dijit.GxPT.store = null;
 			{field:"idprovider", name: "provider", width: '20px'},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"address", name: "Dirección", width: '150px'},
-			{field:"fromsms", name: "sms", width: '20px', editable: true,type: dojox.grid.cells.CheckBox },
+			{field:"fromsms", name: "sms", width: '20px', editable: true,   type: dojox.grid.cells.CheckBox,   formatter: primaryFormatter},
 			{field:"fromcall", name: "call", width: '20px', editable: true},
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
@@ -1083,8 +1095,9 @@ var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, idcontact:
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 if(itemsrow.length>0){
+alert(dataxml.getBool(0, "enable_as_contact"));
 Objeto.dijit.Select.set('value', dataxml.getNumber(0, "idcontact")); 
-Objeto.dijit.Enable.set("checked", dataxml.getBool(0, "enable"));
+Objeto.dijit.Enable.set("checked", dataxml.getBool(0, "enable_as_contact"));
 Objeto.dijit.Priority.set("value", dataxml.getNumber(0, "priority"));
 Objeto.dijit.Appointment.set('value', dataxml.getStringB64(0, "appointment"));
 Objeto.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
