@@ -698,7 +698,7 @@ clearInterval(interstore);
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
 					editor: 'dijit.form.Select',
 					editorArgs: {
-						props: 'store: fieldStore, labelAttr: "value"'}},
+						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"address", name: "Dirección", width: '150px'},
 			{field:"fromsms", name: "sms", width: '20px', editable: true, alwaysEditing: true,
@@ -721,7 +721,7 @@ AjaxSaveChangesPhonesTriggerGridx(item);
 
 
 function AjaxSaveChangesPhonesTriggerGridx(item){
-alert(item.idprovider);
+
 if(item.idaccount > 0 && item.idcontact > 0 && PTElements.dijit.GxPT){
 
   var xhrArgs = {
