@@ -701,13 +701,13 @@ clearInterval(interstore);
 						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"address", name: "Dirección", width: '150px'},
-			{field:"fromsms", name: "sms", width: '20px', editable: true, alwaysEditing: true,
-					editor: 'dijit.form.CheckBox',
-					editorArgs: {
-						valueField: 'checked'
-					}},
-			{field:"fromcall", name: "call", width: '20px', editable: true, alwaysEditing: true,
-					editor: 'dijit.form.CheckBox', type: dojox.grid.cells.CheckBox },
+//			{field:"fromsms", name: "sms", width: '20px', editable: true, alwaysEditing: true,
+//					editor: 'dijit.form.CheckBox',
+//					editorArgs: {
+//						valueField: 'checked'}},
+			{field:"fromsms", name: "sms", width: '20px', editable: true},
+
+			{field:"fromcall", name: "call", width: '20px', editable: true},
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
 PTElements.dijit.GxPT.startup();
