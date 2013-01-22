@@ -62,6 +62,14 @@ numrows = itemsrow.length;
 var myData = {identifier: "unique_id", items: []};
 myData.identifier = "unique_id";
 
+myData.items[-1] = {
+unique_id:-1,
+idnotiftempl: 0,
+description: '',
+message: '',
+ts: '1990-01-01'
+};
+
 var i = 0;
 while(i<numrows){
 myData.items[i] = {

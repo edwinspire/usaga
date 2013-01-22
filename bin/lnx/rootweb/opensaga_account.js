@@ -664,6 +664,28 @@ function primaryFormatter(inDatum) {
         }
 };
 
+function hyu(storeData, gridData) {
+alert(storeData);
+alert(gridData);
+}
+
+
+function hju(valueInEditor) {
+alert(valueInEditor);
+}
+
+// Est parte de codigo carga la lista de proveedores y los carga en un select 
+fieldStore = new Memory();
+fieldStorex = new jspireMemoryIdValueFromXmlStore(true, 'usms_provider_listidname_xml', 'row', 'idprovider', 'name').Load();
+
+// Se usa este interval para asegurarse de que los datos estan listos para cargarlos al store
+interstore = setInterval(function(){
+if(fieldStorex.isLoaded){
+fieldStore = fieldStorex.Memory();
+clearInterval(interstore);
+}
+}, 2000);
+
 
 	if (PTElements.dijit.GxPT) {
 
@@ -673,11 +695,19 @@ function primaryFormatter(inDatum) {
 			{field:"idphone", name: "idphone", width: '0px'},
 			{field:"enable", name: "*", width: '20px', editable: true, type: dojox.grid.cells.CheckBox},
 			{field:"type", name: "type", width: '20px'},
-			{field:"idprovider", name: "provider", width: '20px'},
+			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
+					editor: 'dijit.form.Select',
+					editorArgs: {
+						props: 'store: fieldStore, labelAttr: "value"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"address", name: "Dirección", width: '150px'},
-			{field:"fromsms", name: "sms", width: '20px', editable: true,   type: dojox.grid.cells.CheckBox,   formatter: primaryFormatter},
-			{field:"fromcall", name: "call", width: '20px', editable: true},
+			{field:"fromsms", name: "sms", width: '20px', editable: true, alwaysEditing: true,
+					editor: 'dijit.form.CheckBox',
+					editorArgs: {
+						valueField: 'checked'
+					}},
+			{field:"fromcall", name: "call", width: '20px', editable: true, alwaysEditing: true,
+					editor: 'dijit.form.CheckBox', type: dojox.grid.cells.CheckBox },
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
 PTElements.dijit.GxPT.startup();
@@ -687,23 +717,11 @@ PTElements.dijit.GxPT.startup();
 AjaxSaveChangesPhonesTriggerGridx(item);
 });
 
-        function formatter(){
 
-
-            var w = new   dijit.form.CheckBox({
-//                  name: "checkBox",
-            value: "agreed",
-            checked: false,
-            });
-            w._destroyOnRemove=true;
-
-   return '<input id="mycheck" name="mycheck" data-dojo-type="dijit/form/CheckBox" value="true" checked="checked"/>';
-//return 'checked';
-        }
 
 
 function AjaxSaveChangesPhonesTriggerGridx(item){
-
+alert(item.idprovider);
 if(item.idaccount > 0 && item.idcontact > 0 && PTElements.dijit.GxPT){
 
   var xhrArgs = {
