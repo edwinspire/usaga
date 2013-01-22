@@ -1095,10 +1095,9 @@ var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, idcontact:
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 if(itemsrow.length>0){
-alert(dataxml.getBool(0, "enable_as_contact"));
 Objeto.dijit.Select.set('value', dataxml.getNumber(0, "idcontact")); 
 Objeto.dijit.Enable.set("checked", dataxml.getBool(0, "enable_as_contact"));
-Objeto.dijit.Priority.set("value", dataxml.getNumber(0, "priority"));
+Objeto.dijit.Priority.set("value", dataxml.getNumber(0, "prioritycontact"));
 Objeto.dijit.Appointment.set('value', dataxml.getStringB64(0, "appointment"));
 Objeto.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
 Objeto.dijit.TS.set('value', dataxml.getString(0, "ts"));
