@@ -602,7 +602,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM opensaga.fun_account_table_xml($1::integer, $2::text, $3::text, $4::timestamp without time zone, $5::boolean) as return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = Conexion.exec_params ("SELECT * FROM opensaga.fun_notification_templates_edit_xml($1::integer, $2::text, $3::text, $4::timestamp without time zone, $5::boolean) as return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 

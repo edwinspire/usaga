@@ -25,9 +25,11 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-/////////////////
-///// BASIC /////
-// Account basic elements
+
+	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
+//alert('Edita '+ item.idnotiftempl);
+SaveData(item);
+});
 
 var GridCalls = dijit.byId('gridxnotif');
 
@@ -48,6 +50,35 @@ CP.IdPhone = this.cell(event.rowId, 2, true).data();
 GridCalls.startup();
 }
 
+
+function SaveData(item){
+
+  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
+  var xhrArgs = {
+    url: "opensaganotificationtemplatesedit",
+    content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
+    handleAs: "xml",
+    load: function(dataX){
+
+var xmld = new jspireTableXmlDoc(dataX, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
+
+
+}
+
+LoadGrid();
+
+    },
+    error: function(errorx){
+alert(errorx);
+    }
+  }
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
 
 function LoadGrid(){
 
