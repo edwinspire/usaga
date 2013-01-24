@@ -198,6 +198,7 @@ this.getString = function(i, field){
 return String(this.getValue(i, field));
 },
 this.getDate = function(i, field){
+
 // Se tuvo un problema al parsear las fechas ya que siempre devolvia un dia menos, con esto se soluciona
 var f = new Date(this.getString(i, field));
 f.setDate(f.getDate()+1); 
@@ -232,6 +233,7 @@ this.getString = function(i, field){
 return String(this.getValue(i, field));
 },
 this.getDate = function(i, field){
+
 // Se tuvo un problema al parsear las fechas ya que siempre devolvia un dia menos, con esto se soluciona
 var f = new Date(this.getString(i, field));
 f.setDate(f.getDate()+1); 
