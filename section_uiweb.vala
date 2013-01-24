@@ -44,7 +44,7 @@ S.VirtualUrl["opensagagetaccountphonesnotifeventtypegrid"] = "/opensagagetaccoun
 S.VirtualUrl["opensagagetaccountcontactstable"] = "/opensagagetaccountcontactstable";
 S.VirtualUrl["opensagagetaccountnotificationstable"] = "/opensagagetaccountnotificationstable";
 S.VirtualUrl["opensagagetviewnotificationtemplates"] = "/opensagagetviewnotificationtemplates";
-
+S.VirtualUrl["opensaganotificationtemplatesedit"] = "/opensaganotificationtemplatesedit";
 
 
 
@@ -124,6 +124,10 @@ break;
 case "/opensagagetviewnotificationtemplates":
 response = ResponseViewNotificationTemplates(request);
 break;
+case "/opensaganotificationtemplatesedit":
+response = ResponseNotificationTemplatesEdit(request);
+break;
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -131,6 +135,42 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+private uHttp.Response ResponseNotificationTemplatesEdit(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+int id = 0;
+string message = "";
+string description = "";
+string ts = "1990-01-01";
+
+if(request.Form.has_key("idnotiftempl")){
+id = int.parse(request.Form["idnotiftempl"]);
+}
+
+if(request.Form.has_key("message")){
+message = request.Form["message"];
+}
+
+
+if(request.Form.has_key("description")){
+description = request.Form["description"];
+}
+
+if(request.Form.has_key("ts")){
+ts = request.Form["ts"];
+}
+
+NotificationTemplates Tabla = new NotificationTemplates();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_notification_templates_edit_xml(id, description, message, ts, true).data;
+//print(Tabla.UserAndIdContact_Xml(id));
+return Retorno;
 }
 
 
