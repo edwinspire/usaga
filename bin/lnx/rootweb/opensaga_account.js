@@ -829,14 +829,12 @@ i++;
     error: function(error){
 //      targetNode.innerHTML = "An unexpected error occurred: " + error;
 alert(error);
-			PTElements.GxPTClear();
+			//PTElements.GxPTClear();
     }
   }
 
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
-}else{
-			PTElements.GxPTClear();
 }
 }
 

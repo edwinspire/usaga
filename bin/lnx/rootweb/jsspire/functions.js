@@ -198,7 +198,10 @@ this.getString = function(i, field){
 return String(this.getValue(i, field));
 },
 this.getDate = function(i, field){
-return new Date(this.getString(i, field));
+// Se tuvo un problema al parsear las fechas ya que siempre devolvia un dia menos, con esto se soluciona
+var f = new Date(this.getString(i, field));
+f.setDate(f.getDate()+1); 
+return f;
 },
 this.getStringB64 = function(i, field){
 return jsspire.Base64.decode(this.getValue(i, field));
@@ -229,7 +232,10 @@ this.getString = function(i, field){
 return String(this.getValue(i, field));
 },
 this.getDate = function(i, field){
-return new Date(this.getString(i, field));
+// Se tuvo un problema al parsear las fechas ya que siempre devolvia un dia menos, con esto se soluciona
+var f = new Date(this.getString(i, field));
+f.setDate(f.getDate()+1); 
+return f;
 },
 this.getStringB64 = function(i, field){
 return jsspire.Base64.decode(this.getValue(i, field));
