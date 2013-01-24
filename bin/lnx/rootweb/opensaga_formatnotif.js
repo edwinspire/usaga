@@ -88,8 +88,7 @@ ItemFileWriteStore_1.clearOnClose = true;
 
 		GridCalls.store = null;
 		GridCalls.setStore(ItemFileWriteStore_1);
-//GridCalls.startup();
-//alert('ok');
+
 },
 onError: function(e){
 alert(e);
