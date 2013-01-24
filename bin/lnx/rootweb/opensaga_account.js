@@ -488,6 +488,7 @@ LoadAccountPhonesTriggerGridx(iniidcontact);
 
 }else{
 			dojo.byId("opensaga.account.users.form").reset();
+LoadAccountPhonesTriggerGridx(0);
 }
 }
 
@@ -650,7 +651,15 @@ dijit: {
 GxPT: dijit.byId("opensaga.account.phonestrigger.gridx")
 },
 GxPTClear: function(){
-this.dijit.GxPT.store = null;
+
+	opensaga_account_users_ItemFileWriteStoreTriggerAlarm.clearOnClose = true;
+	opensaga_account_users_ItemFileWriteStoreTriggerAlarm.data =  {identifier: "unique_id", items: []};
+	opensaga_account_users_ItemFileWriteStoreTriggerAlarm.close();
+
+		// Tell our grid to reset itself
+		this.dijit.GxPT.store = null;
+		this.dijit.GxPT.setStore(opensaga_account_users_ItemFileWriteStoreTriggerAlarm);
+
 } 
 
 }
@@ -751,7 +760,7 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }else{
-LoadAccountPhonesTriggerGridx(item.idcontact);
+LoadAccountPhonesTriggerGridx(0);
 }
 
 }
@@ -759,6 +768,7 @@ LoadAccountPhonesTriggerGridx(item.idcontact);
 
 function LoadAccountPhonesTriggerGridx(inidcontact){
 
+			PTElements.GxPTClear();
 var inidaccount = GlobalObject.IdAccount;
 
 if(inidaccount > 0 && inidcontact > 0){
