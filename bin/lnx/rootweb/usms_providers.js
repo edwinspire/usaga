@@ -51,7 +51,7 @@ function SaveData(item){
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "usms_viewprovidertable_xml",
+    url: "usms_providertable_edit",
     content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
@@ -78,7 +78,7 @@ alert(errorx);
 
 function LoadGrid(){
 
-var store = new dojox.data.XmlStore({url: "opensagagetviewnotificationtemplates", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "usms_viewprovidertable_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
@@ -92,9 +92,11 @@ var i = 0;
 while(i<numrows){
 myData.items[i] = {
 unique_id:i,
-idnotiftempl: dataxml.getNumber(i, "idnotiftempl"),
-description: dataxml.getStringB64(i, "description"),
-message: dataxml.getStringB64(i, "message"),
+idprovider: dataxml.getNumber(i, "idprovider"),
+cimi: dataxml.getStringB64(i, "cimi"),
+enable: dataxml.getBool(i, "enable"),
+name: dataxml.getStringB64(i, "name"),
+note: dataxml.getStringB64(i, "note"),
 ts: dataxml.getString(i, "ts")
 };
 i++;
@@ -102,10 +104,12 @@ i++;
 
 
 myData.items[i] = {
-unique_id: i,
-idnotiftempl: 0,
-description: '',
-message: '',
+unique_id:i,
+idprovider: 0,
+cimi: '',
+enable: true,
+name: '',
+note: '',
 ts: '1990-01-01'
 };
 
