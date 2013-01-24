@@ -32,6 +32,10 @@ dojo.connect(dojo.byId('menu_call_in'), 'onclick', function(){
 ContentPage.url('usms_incomingcalls.html');
 });
 
+dojo.connect(dojo.byId('menu_providers'), 'onclick', function(){
+ContentPage.url('usms_providers.html');
+});
+
 dojo.connect(dojo.global, 'onresize', function(){
 AdjustheightContentPage();
 });
