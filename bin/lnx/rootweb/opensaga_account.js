@@ -493,6 +493,8 @@ LoadAccountPhonesTriggerGridx(iniidcontact);
 
 function LoadAccountUsersGridx(){
 
+dojo.byId("opensaga.account.users.form").reset();
+
 var inidaccount = GlobalObject.IdAccount;
 
 if(inidaccount > 0){
