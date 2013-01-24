@@ -60,7 +60,6 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
@@ -76,7 +75,7 @@ i++;
 
 
 myData.items[i] = {
-unique_id:-1 },
+unique_id: i,
 idnotiftempl: 0,
 description: '',
 message: '',
