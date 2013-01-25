@@ -20,10 +20,17 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
-"dojox/data/XmlStore"
+"dojox/data/XmlStore", 
+"gridx/modules/RowHeader",
+"gridx/modules/select/Row",
+"gridx/modules/IndirectSelect",
+"gridx/modules/extendedSelect/Row"
+
 ], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
+
+
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
@@ -32,6 +39,15 @@ SaveData(item);
 });
 
 var GridCalls = dijit.byId('gridxnotif');
+
+dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
+//	dom.byId('rowSelectedCount').value = selected.length;
+//	dom.byId('rowStatus').value = selected.join("\n");
+alert(selected.length +' > ' +selected);
+
+alert(GridCalls.cell(selected[0], 2, true).data());
+
+});
 
 	if (GridCalls) {
 /*
