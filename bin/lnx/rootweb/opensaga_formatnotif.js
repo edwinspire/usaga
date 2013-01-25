@@ -31,6 +31,9 @@ require(["dojo/ready",
          // logic that requires that Dojo is fully initialized should go here
 
 
+var ObjectTable = {
+this.RowSeleted: 0 
+} 
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
@@ -43,9 +46,11 @@ var GridCalls = dijit.byId('gridxnotif');
 dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
 //	dom.byId('rowSelectedCount').value = selected.length;
 //	dom.byId('rowStatus').value = selected.join("\n");
-alert(selected.length +' > ' +selected);
+//alert(selected.length +' > ' +selected);
 
-alert(GridCalls.cell(selected[0], 2, true).data());
+//alert(GridCalls.cell(selected[0], 2, true).data());
+// TODO, hacer que todo el id para incluirlo en la matriz
+ObjectTable.RowSeleted = selected;
 
 });
 
