@@ -13,15 +13,15 @@ ContentPage.size("100%", h+"px");
 }
 
 dojo.connect(dojo.byId('usaga_menuitem_login'), 'onclick', function(){
-ContentPage.url("opensagalogin.html");
+ContentPage.url("usagalogin.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_logout'), 'onclick', function(){
-ContentPage.url("opensagalogout.html");
+ContentPage.url("usagalogout.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_eventmonitor'), 'onclick', function(){
-ContentPage.url("opensagaeventmonitor.html");
+ContentPage.url("usagaeventmonitor.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_accounts'), 'onclick', function(){
@@ -62,11 +62,11 @@ dojo.connect(dojo.byId('usaga_menuitem_usms'), 'onclick', function(){
 window.open('usms.html','_blank');
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_aboutopensaga'), 'onclick', function(){
+dojo.connect(dojo.byId('usaga_menuitem_aboutusaga'), 'onclick', function(){
 alert('En construccion');
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_tutoOpenSAGA'), 'onclick', function(){
+dojo.connect(dojo.byId('usaga_menuitem_tutouSAGA'), 'onclick', function(){
 alert('En construccion');
 });
 
