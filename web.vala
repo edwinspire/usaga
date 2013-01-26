@@ -19,6 +19,7 @@ public uSagaServer(){
 
 print("Start uSAGA Version: 0.02\n");
 print("Licence: LGPL\n");
+print("Hosted: https://github.com/edwinspire\n");
 print("Contact: edwinspire@gmail.com\n");
 
 S.Port = 8081;
@@ -32,7 +33,7 @@ S.VirtualUrl["getaccountusersgrid.usaga"] = "/getaccountusersgrid.usaga";
 S.VirtualUrl["getaccountuser.usaga"] = "/getaccountuser.usaga";
 S.VirtualUrl["saveaccountuser.usaga"] = "/saveaccountuser.usaga";
 S.VirtualUrl["usaga_geteventsmonitor.usaga"] = "/usaga_geteventsmonitor.usaga";       
-S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
+//S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
 S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
 S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
 S.VirtualUrl["getaccountphonestriggerview.usaga"] = "/getaccountphonestriggerview.usaga";
@@ -44,7 +45,7 @@ S.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnot
 S.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
 S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
 S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
-S.VirtualUrl["usaganotificationtemplatesedit"] = "/usaganotificationtemplatesedit";
+S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
 
 
 
@@ -124,7 +125,7 @@ break;
 case "/getviewnotificationtemplates.usaga":
 response = ResponseViewNotificationTemplates(request);
 break;
-case "/usaganotificationtemplatesedit":
+case "/notificationtemplatesedit.usaga":
 response = ResponseNotificationTemplatesEdit(request);
 break;
 
