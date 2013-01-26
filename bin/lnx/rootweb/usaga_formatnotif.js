@@ -103,7 +103,7 @@ alert(errorx);
 
 function LoadGrid(){
 
-var store = new dojox.data.XmlStore({url: "usagagetviewnotificationtemplates", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "getviewnotificationtemplates.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 

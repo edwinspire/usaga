@@ -43,7 +43,7 @@ S.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
 S.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnotifeventtypegrid.usaga";
 S.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
 S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
-S.VirtualUrl["usagagetviewnotificationtemplates"] = "/usagagetviewnotificationtemplates";
+S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
 S.VirtualUrl["usaganotificationtemplatesedit"] = "/usaganotificationtemplatesedit";
 
 
@@ -121,7 +121,7 @@ break;
 case "/getaccountnotificationstable.usaga":
 response = ResponseAccountNotificationsTable(request);
 break;
-case "/usagagetviewnotificationtemplates":
+case "/getviewnotificationtemplates.usaga":
 response = ResponseViewNotificationTemplates(request);
 break;
 case "/usaganotificationtemplatesedit":
