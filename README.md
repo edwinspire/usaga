@@ -1,4 +1,4 @@
-opensaga
+usaga
 ========
 
-Free Project for Community Alarm Management (OpenSAGA)
+Micro Sistema Automatico de Gestion de Alarma
