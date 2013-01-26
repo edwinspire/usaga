@@ -24,6 +24,10 @@ dojo.connect(dojo.byId('menu_sms_out'), 'onclick', function(){
 ContentPage.url('usms_smsout.html');
 });
 
+dojo.connect(dojo.byId('menu_sms_in'), 'onclick', function(){
+ContentPage.url('usms_smsin.html');
+});
+
 dojo.connect(dojo.byId('menu_system_status'), 'onclick', function(){
 ContentPage.url('usms_status.html');
 });
