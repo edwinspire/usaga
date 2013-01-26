@@ -31,7 +31,7 @@ S.VirtualUrl["getaccountusersgrid.usaga"] = "/getaccountusersgrid.usaga";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
 S.VirtualUrl["getaccountuser.usaga"] = "/getaccountuser.usaga";
 S.VirtualUrl["saveaccountuser.usaga"] = "/saveaccountuser.usaga";
-S.VirtualUrl["usaga_geteventsmonitor"] = "/usaga_geteventsmonitor";       
+S.VirtualUrl["usaga_geteventsmonitor.usaga"] = "/usaga_geteventsmonitor.usaga";       
 S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
 S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
 S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
@@ -80,7 +80,7 @@ break;
 case "/saveaccountuser.usaga":
 response = ResponseAccountUsersTable(request);
 break;
-case "/usaga_geteventsmonitor":
+case "/usaga_geteventsmonitor.usaga":
 response = ResponseGetEventsMonitor(request);
 break;
 case "/opensagaaddaccountuser":

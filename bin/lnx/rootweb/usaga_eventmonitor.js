@@ -34,7 +34,7 @@ myGridX.startup();
 
 function LoadMonitorEvents(){
 
-var store = new dojox.data.XmlStore({url: "usagageteventsmonitor", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "usaga_geteventsmonitor.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
