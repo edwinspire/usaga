@@ -23,7 +23,7 @@ print("Contact: edwinspire@gmail.com\n");
 
 S.Port = 8081;
 
-S.Index = "opensaga.html";
+S.Index = "usaga.html";
 S.VirtualUrl["opensagagetaccount"] = "/opensagagetaccount";
 S.VirtualUrl["opensagasaveaccount"] = "/opensagasaveaccount";
 S.VirtualUrl["opensagagetvaluesselectbox"] = "/opensagagetvaluesselectbox"; 
