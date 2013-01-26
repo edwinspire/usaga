@@ -32,7 +32,7 @@ require(["dojo/ready",
 
 
 var ObjectTable = {
-this.RowSeleted: 0 
+RowSeleted: 0 
 } 
 
 

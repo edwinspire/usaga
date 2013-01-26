@@ -7,9 +7,11 @@
 
 require(["dojo/ready",  
 "dojo/on",
+"dojox/xml/DomParser",
 'dojo/store/Memory',
 "dojo/Evented",
 "dojo/data/ItemFileReadStore",
+"dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
@@ -18,14 +20,15 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
-"dojox/data/XmlStore"
-], function(ready, on, Memory, Evented, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+"dojox/data/XmlStore", 
+"gridx/modules/RowHeader",
+"gridx/modules/select/Row",
+"gridx/modules/IndirectSelect",
+"gridx/modules/extendedSelect/Row"
+
+], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-
-dojo.connect(dojo.byId('send'), 'onclick', function(){
-LoadGrid();
-});
 
 
 var ObjectTable = {
@@ -33,54 +36,76 @@ RowSeleted: 0
 } 
 
 
-	var myGridX = dijit.byId("idgridxtable");
-	if (myGridX) {
+	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
+//alert('Edita '+ item.idnotiftempl);
+SaveData(item);
+});
 
+var GridCalls = dijit.byId('gridxnotif');
 
+dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
+//	dom.byId('rowSelectedCount').value = selected.length;
+//	dom.byId('rowStatus').value = selected.join("\n");
+//alert(selected.length +' > ' +selected);
+
+//alert(GridCalls.cell(selected[0], 2, true).data());
+// TODO, hacer que todo el id para incluirlo en la matriz
+ObjectTable.RowSeleted = selected;
+
+});
+
+	if (GridCalls) {
+/*
+// Captura el evento cuando se hace click en una fila
+dojo.connect(GridCalls, 'onRowClick', function(event){
+//alert(this.cell(event.rowId, 2, true).data());
+CP.IdPhone = this.cell(event.rowId, 2, true).data();
+});
+*/
 		// Optionally change column structure on the grid
-		myGridX.setColumns([
-
-			{field:"idsmsout", name: "id"},
-			{field:"dateload", name: "dateload"},
-			{field:"idprovider", name: "idprovider"},
-			{field:"idsmstype", name: "idsmstype"},
-			{field:"idphone", name: "idphone"},
-			{field:"phone", name: "phone"},
-			{field:"datetosend", name: "datetosend"},
-			{field:"message", name: "message"},
-			{field:"dateprocess", name: "dateprocess"},
-			{field:"process", name: "process"},
-			{field:"priority", name: "priority"},
-			{field:"attempts", name: "attempts"},
-			{field:"idprovidersent", name: "idprovidersent"},
-			{field:"slices", name: "slices"},
-			{field:"slicessent", name: "slicessent"},
-			{field:"messageclass", name: "messageclass"},
-			{field:"report", name: "report"},
-			{field:"maxslices", name: "maxslices"},
-			{field:"enablemessageclass", name: "enablemessageclass"},
-			{field:"idport", name: "idport"},
-			{field:"flag1", name: "flag1"},
-			{field:"flag2", name: "flag2"},
-			{field:"flag3", name: "flag3"},
-			{field:"flag4", name: "flag4"},
-			{field:"flag5", name: "flag5"},
-			{field:"retryonfail", name: "retryonfail"},
-			{field:"maxtimelive", name: "maxtimelive"},
-			{field:"note", name: "note"}
+		GridCalls.setColumns([
+			{field:"idnotiftempl", name: "id", width: '20px'},
+			{field:"description", name: "Descripción", editable: 'true'},
+			{field:"message", name: "Mensaje" , editable: 'true'}
 		]);
+GridCalls.startup();
+}
 
-myGridX.startup();
+
+function SaveData(item){
+
+  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
+  var xhrArgs = {
+    url: "opensaganotificationtemplatesedit",
+    content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
+    handleAs: "xml",
+    load: function(dataX){
+
+var xmld = new jspireTableXmlDoc(dataX, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
 
 
 }
 
+LoadGrid();
+
+    },
+    error: function(errorx){
+alert(errorx);
+    }
+  }
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
 
 function LoadGrid(){
 
-var store = new dojox.data.XmlStore({url: "usms_smsoutviewtablefilter", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "opensagagetviewnotificationtemplates", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {fstart: getdate('fstart'), fend: getdate('fend'), nrows: dijit.byId('nrows').get('value')}, onComplete: function(itemsrow, r){
+var request = store.fetch({onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -90,49 +115,32 @@ var myData = {identifier: "unique_id", items: []};
 
 var i = 0;
 while(i<numrows){
-
 myData.items[i] = {
-unique_id:i, 
-idsmsout: dataxml.getNumber(i, "idsmsout"), 
-dateload: dataxml.getDate(i, "dateload"),
-idprovider: dataxml.getNumber(i, "idprovider"),
-idsmstype: dataxml.getNumber(i, "idsmstype"),
-idphone: dataxml.getNumber(i, "idphone"),
-phone: dataxml.getStringB64(i, "phone"),
-datetosend: dataxml.getDate(i, "datetosend"),
+unique_id:i,
+idnotiftempl: dataxml.getNumber(i, "idnotiftempl"),
+description: dataxml.getStringB64(i, "description"),
 message: dataxml.getStringB64(i, "message"),
-dateprocess: dataxml.getDate(i, "dateprocess"),
-process: dataxml.getNumber(i, "process"),
-priority: dataxml.getNumber(i, "priority"),
-attempts: dataxml.getNumber(i, "attempts"),
-idprovidersent: dataxml.getNumber(i, "idprovidersent"),
-slices: dataxml.getNumber(i, "slices"),
-slicessent: dataxml.getNumber(i, "slicessent"),
-messageclass: dataxml.getNumber(i, "messageclass"),
-report: dataxml.getBool(i, "report"),
-maxslices: dataxml.getNumber(i, "maxslices"),
-enablemessageclass: dataxml.getBool(i, "enablemessageclass"),
-idport: dataxml.getNumber(i, "idport"),
-flag1: dataxml.getNumber(i, "flag1"),
-flag2: dataxml.getNumber(i, "flag2"),
-flag3: dataxml.getNumber(i, "flag3"),
-flag4: dataxml.getNumber(i, "flag4"),
-flag5: dataxml.getNumber(i, "flag5"),
-retryonfail: dataxml.getNumber(i, "retryonfail"),
-maxtimelive: dataxml.getNumber(i, "maxtimelive"),
-note: dataxml.getStringB64(i, "note")
+ts: dataxml.getString(i, "ts")
 };
 i++;
 }
 
-	// Set new data on data store (the store has jsId set, so there's
-	// a global variable we can reference)
-	ItemFileReadStore_1.clearOnClose = true;
-	ItemFileReadStore_1.data = myData;
-	ItemFileReadStore_1.close();
 
-		myGridX.store = null;
-		myGridX.setStore(ItemFileReadStore_1);
+myData.items[i] = {
+unique_id: i,
+idnotiftempl: 0,
+description: '',
+message: '',
+ts: '1990-01-01'
+};
+
+ItemFileWriteStore_1.clearOnClose = true;
+	ItemFileWriteStore_1.data = myData;
+	ItemFileWriteStore_1.close();
+
+		GridCalls.store = null;
+		GridCalls.setStore(ItemFileWriteStore_1);
+
 },
 onError: function(e){
 alert(e);
@@ -142,13 +150,11 @@ alert(e);
 }
 
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-//setTimeout(LoadGrid, 5000);
+setTimeout(LoadGrid, 5000);
 
 
 
-function getdate(iddijit){
-return dojo.date.locale.format(dijit.byId(iddijit).get('value'), {datePattern: "yyyy-MM-dd", selector: "date"});
-}
+
 
 
 
