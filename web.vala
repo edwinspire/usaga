@@ -43,8 +43,8 @@ S.VirtualUrl["opensagagetaccountcontact"] = "/opensagagetaccountcontact";
 S.VirtualUrl["opensagagetaccountphonesnotifeventtypegrid"] = "/opensagagetaccountphonesnotifeventtypegrid";
 S.VirtualUrl["opensagagetaccountcontactstable"] = "/opensagagetaccountcontactstable";
 S.VirtualUrl["opensagagetaccountnotificationstable"] = "/opensagagetaccountnotificationstable";
-S.VirtualUrl["opensagagetviewnotificationtemplates"] = "/opensagagetviewnotificationtemplates";
-S.VirtualUrl["opensaganotificationtemplatesedit"] = "/opensaganotificationtemplatesedit";
+S.VirtualUrl["usagagetviewnotificationtemplates"] = "/usagagetviewnotificationtemplates";
+S.VirtualUrl["usaganotificationtemplatesedit"] = "/usaganotificationtemplatesedit";
 
 
 
@@ -121,10 +121,10 @@ break;
 case "/opensagagetaccountnotificationstable":
 response = ResponseAccountNotificationsTable(request);
 break;
-case "/opensagagetviewnotificationtemplates":
+case "/usagagetviewnotificationtemplates":
 response = ResponseViewNotificationTemplates(request);
 break;
-case "/opensaganotificationtemplatesedit":
+case "/usaganotificationtemplatesedit":
 response = ResponseNotificationTemplatesEdit(request);
 break;
 

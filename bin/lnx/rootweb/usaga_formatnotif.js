@@ -76,7 +76,7 @@ function SaveData(item){
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "opensaganotificationtemplatesedit",
+    url: "usaganotificationtemplatesedit",
     content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
@@ -103,7 +103,7 @@ alert(errorx);
 
 function LoadGrid(){
 
-var store = new dojox.data.XmlStore({url: "opensagagetviewnotificationtemplates", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "usagagetviewnotificationtemplates", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
