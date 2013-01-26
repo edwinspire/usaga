@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-26 12:30:35 ECT
+-- Started on 2013-01-26 12:33:37 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -2626,7 +2626,7 @@ $$;
 
 
 --
--- TOC entry 269 (class 1255 OID 25921)
+-- TOC entry 270 (class 1255 OID 25921)
 -- Dependencies: 787 9
 -- Name: fun_receiver_from_incomingcalls(); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -2684,7 +2684,7 @@ BEGIN
 -- Ingresamos el evento.
 eventsgenerated := eventsgenerated+1;
 
-INSERT INTO opensaga.events_generated_by_calls (idaccount, code, zu, priority, description, ideventtype, idincall, datetimeevent) VALUES (IdAccountInternal, 'A-CALL', Internalidcontact, InternalAlarmPriority, 'ALARMA! ' || Internallastname || ' ' || Internalfirstname || ' [' || Internalphone::text || ']', 72, VROWDATA.idincall, VROWDATA.datecall); 
+INSERT INTO usaga.events_generated_by_calls (idaccount, code, zu, priority, description, ideventtype, idincall, datetimeevent) VALUES (IdAccountInternal, 'A-CALL', Internalidcontact, InternalAlarmPriority, 'ALARMA! ' || Internallastname || ' ' || Internalfirstname || ' [' || Internalphone::text || ']', 72, VROWDATA.idincall, VROWDATA.datecall); 
         EXCEPTION WHEN unique_violation THEN
             -- Do nothing, and loop to try the UPDATE again.
             eventsgenerated := eventsgenerated-1;
@@ -2701,7 +2701,7 @@ END IF;
     CLOSE vcursor;
 
 -- Procesamos los eventos generados
-PERFORM opensaga.fun_auto_process_events();
+PERFORM usaga.fun_auto_process_events();
 
 RETURN;
 END;$$;
@@ -2709,7 +2709,7 @@ END;$$;
 
 --
 -- TOC entry 2635 (class 0 OID 0)
--- Dependencies: 269
+-- Dependencies: 270
 -- Name: FUNCTION fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -3018,7 +3018,7 @@ END;$$;
 
 
 --
--- TOC entry 270 (class 1255 OID 26417)
+-- TOC entry 269 (class 1255 OID 26417)
 -- Dependencies: 9 787
 -- Name: hearbeat(); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -3035,7 +3035,7 @@ END;$$;
 
 --
 -- TOC entry 2638 (class 0 OID 0)
--- Dependencies: 270
+-- Dependencies: 269
 -- Name: FUNCTION hearbeat(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -4642,7 +4642,7 @@ SET search_path = public, pg_catalog;
 
 --
 -- TOC entry 2411 (class 2604 OID 26180)
--- Dependencies: 211 212 212
+-- Dependencies: 212 211 212
 -- Name: idcity; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4660,7 +4660,7 @@ ALTER TABLE ONLY address_country ALTER COLUMN idcountry SET DEFAULT nextval('cou
 
 --
 -- TOC entry 2419 (class 2604 OID 26240)
--- Dependencies: 215 216 216
+-- Dependencies: 216 215 216
 -- Name: idsector; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4678,7 +4678,7 @@ ALTER TABLE ONLY address_states ALTER COLUMN idstate SET DEFAULT nextval('states
 
 --
 -- TOC entry 2423 (class 2604 OID 26260)
--- Dependencies: 218 217 218
+-- Dependencies: 217 218 218
 -- Name: idsubsector; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4887,7 +4887,7 @@ ALTER TABLE ONLY events ALTER COLUMN idevent SET DEFAULT nextval('events_idevent
 
 --
 -- TOC entry 2365 (class 2604 OID 17717)
--- Dependencies: 202 194 202
+-- Dependencies: 202 202 194
 -- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -5094,7 +5094,7 @@ ALTER TABLE ONLY keywords ALTER COLUMN idkeyword SET DEFAULT nextval('keywords_i
 
 --
 -- TOC entry 2415 (class 2604 OID 26205)
--- Dependencies: 213 214 214
+-- Dependencies: 214 213 214
 -- Name: idnotiftempl; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -6083,7 +6083,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-26 12:30:37 ECT
+-- Completed on 2013-01-26 12:33:39 ECT
 
 --
 -- PostgreSQL database dump complete
