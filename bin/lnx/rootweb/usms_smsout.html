@@ -51,8 +51,8 @@ require([
   <input type="text" data-dojo-type="dijit.form.NumberTextBox" id="nrows" title="Cantidad de registros" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="3" required="true" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 50px;" state="Incomplete" value="100"></input>
   <input type="submit" data-dojo-type="dijit.form.Button" id="send" intermediateChanges="false" label="Obtener" iconClass="dijitNoIcon"></input>
 </div>
-<div style="width: 100%; height: 100%; display: inline-block;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;a&quot;:&quot;b&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" id="idgridxtable" style="min-width: 1em; min-height: 1em; height: 100%; width: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'a',field:'a'}],store:ItemFileReadStore_1"></table>
+<div style="width: 100%; height: 100%; display: inline-block;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+<table data-dojo-type="gridx.Grid" id="idgridxtable" style="min-width: 1em; min-height: 1em; width: auto; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_1"></table>
 </div>
 </div>
  </body>

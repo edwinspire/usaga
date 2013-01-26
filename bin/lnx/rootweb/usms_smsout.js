@@ -41,14 +41,14 @@ RowSeleted: 0
 		myGridX.setColumns([
 
 			{field:"idsmsout", name: "id"},
-			{field:"dateload", name: "dateload"},
+			{field:"dateload", name: "dateload", width: "5%"},
 			{field:"idprovider", name: "idprovider"},
 			{field:"idsmstype", name: "idsmstype"},
 			{field:"idphone", name: "idphone"},
 			{field:"phone", name: "phone"},
-			{field:"datetosend", name: "datetosend"},
-			{field:"message", name: "message"},
-			{field:"dateprocess", name: "dateprocess"},
+			{field:"datetosend", name: "datetosend", width: "5%"},
+			{field:"message", name: "message", width: "15%"},
+			{field:"dateprocess", name: "dateprocess", width: "5%"},
 			{field:"process", name: "process"},
 			{field:"priority", name: "priority"},
 			{field:"attempts", name: "attempts"},
@@ -67,7 +67,7 @@ RowSeleted: 0
 			{field:"flag5", name: "flag5"},
 			{field:"retryonfail", name: "retryonfail"},
 			{field:"maxtimelive", name: "maxtimelive"},
-			{field:"note", name: "note"}
+			{field:"note", name: "note", width: "10%"}
 		]);
 
 myGridX.startup();
