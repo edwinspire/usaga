@@ -31,7 +31,7 @@ S.VirtualUrl["opensagagetaccountusersgrid"] = "/opensagagetaccountusersgrid";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
 S.VirtualUrl["opensagagetaccountuser"] = "/opensagagetaccountuser";
 S.VirtualUrl["opensagasaveaccountuser"] = "/opensagasaveaccountuser";
-S.VirtualUrl["opensagageteventsmonitor"] = "/opensagageteventsmonitor";       
+S.VirtualUrl["usagageteventsmonitor"] = "/usagageteventsmonitor";       
 S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
 S.VirtualUrl["opensagagetaccountlocation"] = "/opensagagetaccountlocation";
 S.VirtualUrl["opensagasaveaccountlocation"] = "/opensagasaveaccountlocation";
@@ -80,7 +80,7 @@ break;
 case "/opensagasaveaccountuser":
 response = ResponseAccountUsersTable(request);
 break;
-case "/opensagageteventsmonitor":
+case "/usagageteventsmonitor":
 response = ResponseGetEventsMonitor(request);
 break;
 case "/opensagaaddaccountuser":
