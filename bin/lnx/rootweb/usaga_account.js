@@ -38,7 +38,7 @@ MasterDiv: dojo.byId('usaga.account.divmaster'),
 LoadItemsSelectAccount: function(){
 var AccountSelectBox = dijit.byId('account.basic.accountselect');
   var xhrArgs = {
-    url: "opensagagetvaluesselectbox",
+    url: "getvaluesselectbox.usaga",
     handleAs: "text",
     load: function(dataX){
   var datar = dojox.xml.DomParser.parse(dataX);
@@ -176,7 +176,7 @@ datos.note = dijit.byId('account.basic.note').get('value');
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "opensagasaveaccount",
+    url: "saveaccount.usaga",
     content: datos,
     handleAs: "xml",
     load: function(dataX){
@@ -232,7 +232,7 @@ var formulario = dojo.byId("os.account.form.basic");
 if(GlobalObject.IdAccount>0){
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "opensagagetaccount",
+    url: "getaccount.usaga",
  content: { idaccount: GlobalObject.IdAccount},
     handleAs: "text",
     load: function(dataX){
@@ -276,7 +276,7 @@ var formulario = dojo.byId("account.location.form");
 if(inidaccount>0){
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "opensagagetaccountlocation",
+    url: "getaccountlocation.usaga",
  content: { idaccount: inidaccount},
     handleAs: "text",
     load: function(dataX){
@@ -320,7 +320,7 @@ datos.note = dijit.byId('account.location.note').get('value');
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "opensagasaveaccountlocation",
+    url: "saveaccountlocation.usaga",
     content: datos,
     handleAs: "text",
     load: function(dataX){
@@ -413,7 +413,7 @@ formdata.numuser = dijit.byId('usaga.account.users.form.numuser').get('value');
 if(GlobalObject.IdAccount > 0){
 
   var xhrArgs = {
-    url: "opensagasaveaccountuser",
+    url: "saveaccountuser.usaga",
  content: formdata,
     handleAs: "text",
     load: function(datass){
@@ -457,7 +457,7 @@ var inidaccount = GlobalObject.IdAccount;
 if(inidaccount > 0){
 
   var xhrArgs = {
-    url: "opensagagetaccountuser",
+    url: "getaccountuser.usaga",
  content: { idaccount: inidaccount, idcontact: iniidcontact},
     handleAs: "text",
     load: function(datass){
@@ -501,7 +501,7 @@ var inidaccount = GlobalObject.IdAccount;
 if(inidaccount > 0){
 
   var xhrArgs = {
-    url: "opensagagetaccountusersgrid",
+    url: "getaccountusersgrid.usaga",
  content: {idaccount: inidaccount},
     handleAs: "text",
     load: function(datass){
@@ -574,7 +574,7 @@ var inidaccount = GlobalObject.IdAccount;
 if(inidaccount > 0){
 
   var xhrArgs = {
-    url: "opensagagetaccountcontactsgrid",
+    url: "getaccountcontactsgrid.usaga",
  content: {idaccount: inidaccount},
     handleAs: "text",
     load: function(datass){
@@ -736,7 +736,7 @@ function AjaxSaveChangesPhonesTriggerGridx(item){
 if(item.idaccount > 0 && item.idcontact > 0 && PTElements.dijit.GxPT){
 
   var xhrArgs = {
-    url: "/opensagaaccountphonestriggerviewchanged",
+    url: "/accountphonestriggerviewchanged.usaga",
  content: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fromsms: item.fromsms, fromcall: item.fromcall, note: item.note},
     handleAs: "text",
     load: function(datass){
@@ -774,7 +774,7 @@ var inidaccount = GlobalObject.IdAccount;
 if(inidaccount > 0 && inidcontact > 0){
 
   var xhrArgs = {
-    url: "opensagagetaccountphonestriggerview",
+    url: "getaccountphonestriggerview.usaga",
  content: {idaccount: inidaccount, idcontact: inidcontact},
     handleAs: "text",
     load: function(datass){
@@ -787,7 +787,6 @@ if(inidaccount > 0 && inidcontact > 0){
 var xmldata = datar.byName('row');
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 var rowscount = xmldata.length;
@@ -919,7 +918,7 @@ LoadContactsGrid: function(){
 this.ResetOnSelectContact();
 if(GlobalObject.IdAccount > 0){
 
-var store = new dojox.data.XmlStore({url: "opensagagetaccountcontactsgrid", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "getaccountcontactsgrid.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idaccount: GlobalObject.IdAccount}, onComplete: function(itemsrow, r){
 
@@ -974,7 +973,7 @@ idcontact = idcontact*-1;
 }
 
   var xhrArgs = {
-    url: "opensagagetaccountcontactstable",
+    url: "getaccountcontactstable.usaga",
  content: {idaccount:GlobalObject.IdAccount, idcontact: idcontact, enable_as_contact: AC.dijit.Enable.get('checked'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: AC.dijit.Note.get('value'), ts: AC.dijit.TS.get('value')},
     handleAs: "xml",
     load: function(datass){
@@ -1016,7 +1015,7 @@ LoadPhonesNotifEvenTypes: function(idphone){
 
 if(idphone > 0){
 
-var store = new dojox.data.XmlStore({url: "opensagagetaccountphonesnotifeventtypegrid", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "getaccountphonesnotifeventtypegrid.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idphone: idphone}, onComplete: function(itemsrow, r){
 
@@ -1062,14 +1061,14 @@ LoadPhones: function(idcontact){
 
 if(idcontact > 0){
 
-var store = new dojox.data.XmlStore({url: "opensagagetaccountphonesnotifgrid", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "getaccountphonesnotifgrid.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idcontact: idcontact}, onComplete: function(itemsrow, r){
 
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
+
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 var i = 0;
@@ -1116,7 +1115,7 @@ LoadFormContact: function(iniidcontact){
 var Objeto = this;
 if(GlobalObject.IdAccount > 0){
 
-var store = new dojox.data.XmlStore({url: "opensagagetaccountcontact", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "getaccountcontact.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, idcontact: iniidcontact}, onComplete: function(itemsrow, r){
 
@@ -1228,7 +1227,7 @@ var Objeto = this;
 if(GlobalObject.IdAccount > 0 && itemStore.idcontact > 0){
 
   var xhrArgs = {
-    url: "opensagagetaccountnotificationstable",
+    url: "getaccountnotificationstable.usaga",
  content: {idnotifaccount: 0, idaccount:GlobalObject.IdAccount, idphone: itemStore.idphone, priority: itemStore.priority, sms: itemStore.sms, call: itemStore.call, smstext: itemStore.smstext, note: itemStore.note },
     handleAs: "xml",
     load: function(datass){

@@ -24,25 +24,25 @@ print("Contact: edwinspire@gmail.com\n");
 S.Port = 8081;
 
 S.Index = "usaga.html";
-S.VirtualUrl["opensagagetaccount"] = "/opensagagetaccount";
-S.VirtualUrl["opensagasaveaccount"] = "/opensagasaveaccount";
-S.VirtualUrl["opensagagetvaluesselectbox"] = "/opensagagetvaluesselectbox"; 
-S.VirtualUrl["opensagagetaccountusersgrid"] = "/opensagagetaccountusersgrid";
+S.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
+S.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
+S.VirtualUrl["getvaluesselectbox.usaga"] = "/getvaluesselectbox.usaga"; 
+S.VirtualUrl["getaccountusersgrid.usaga"] = "/getaccountusersgrid.usaga";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
-S.VirtualUrl["opensagagetaccountuser"] = "/opensagagetaccountuser";
-S.VirtualUrl["opensagasaveaccountuser"] = "/opensagasaveaccountuser";
-S.VirtualUrl["usagageteventsmonitor"] = "/usagageteventsmonitor";       
+S.VirtualUrl["getaccountuser.usaga"] = "/getaccountuser.usaga";
+S.VirtualUrl["saveaccountuser.usaga"] = "/saveaccountuser.usaga";
+S.VirtualUrl["usaga_geteventsmonitor"] = "/usaga_geteventsmonitor";       
 S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
-S.VirtualUrl["opensagagetaccountlocation"] = "/opensagagetaccountlocation";
-S.VirtualUrl["opensagasaveaccountlocation"] = "/opensagasaveaccountlocation";
-S.VirtualUrl["opensagagetaccountphonestriggerview"] = "/opensagagetaccountphonestriggerview";
-S.VirtualUrl["opensagaaccountphonestriggerviewchanged"] = "/opensagaaccountphonestriggerviewchanged";
-S.VirtualUrl["opensagagetaccountcontactsgrid"] = "/opensagagetaccountcontactsgrid";
-S.VirtualUrl["opensagagetaccountphonesnotifgrid"] = "/opensagagetaccountphonesnotifgrid";
-S.VirtualUrl["opensagagetaccountcontact"] = "/opensagagetaccountcontact";
-S.VirtualUrl["opensagagetaccountphonesnotifeventtypegrid"] = "/opensagagetaccountphonesnotifeventtypegrid";
-S.VirtualUrl["opensagagetaccountcontactstable"] = "/opensagagetaccountcontactstable";
-S.VirtualUrl["opensagagetaccountnotificationstable"] = "/opensagagetaccountnotificationstable";
+S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
+S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
+S.VirtualUrl["getaccountphonestriggerview.usaga"] = "/getaccountphonestriggerview.usaga";
+S.VirtualUrl["accountphonestriggerviewchanged.usaga"] = "/accountphonestriggerviewchanged.usaga";
+S.VirtualUrl["getaccountcontactsgrid.usaga"] = "/getaccountcontactsgrid.usaga";
+S.VirtualUrl["getaccountphonesnotifgrid.usaga"] = "/getaccountphonesnotifgrid.usaga";
+S.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
+S.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnotifeventtypegrid.usaga";
+S.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
+S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
 S.VirtualUrl["usagagetviewnotificationtemplates"] = "/usagagetviewnotificationtemplates";
 S.VirtualUrl["usaganotificationtemplatesedit"] = "/usaganotificationtemplatesedit";
 
@@ -62,63 +62,63 @@ public void RequestVirtualPageHandler(uHttpServer server, Request request, DataO
     uHttp.Response response = new uHttp.Response();
 //print("request.Path =>>>> %s\n", request.Path);
 switch(request.Path){
-case  "/opensagagetaccount":
+case  "/getaccount.usaga":
 response = ResponseGetAccount(request);
 break;
-case  "/opensagasaveaccount":
+case  "/saveaccount.usaga":
 response = ResponseAccountSaveTable(request);
 break;
-case "/opensagagetvaluesselectbox":
+case "/getvaluesselectbox.usaga":
 response = ResponseAccountsNamesToSelectBox(request);
 break;
-case "/opensagagetaccountusersgrid":
+case "/getaccountusersgrid.usaga":
 response = ResponseAccountUsersToGridx(request);
 break;
-case "/opensagagetaccountuser":
+case "/getaccountuser.usaga":
 response = ResponseGetUserAccount(request);
 break;
-case "/opensagasaveaccountuser":
+case "/saveaccountuser.usaga":
 response = ResponseAccountUsersTable(request);
 break;
-case "/usagageteventsmonitor":
+case "/usaga_geteventsmonitor":
 response = ResponseGetEventsMonitor(request);
 break;
 case "/opensagaaddaccountuser":
 response = ResponseAccountUserAddTable(request);
 break;
-case "/opensagagetaccountlocation":
+case "/getaccountlocation.usaga":
 response = ResponseAccountGetLocation(request);
 break;
-case "/opensagasaveaccountlocation":
+case "/saveaccountlocation.usaga":
 response = ResponseAccountLocationSaveTable(request);
 break;
 
-case "/opensagagetaccountphonestriggerview":
+case "/getaccountphonestriggerview.usaga":
 response = ResponseGetAccountPhonesTrigger(request);
 break;
 
-case "/opensagaaccountphonestriggerviewchanged":
+case "/accountphonestriggerviewchanged.usaga":
 response = ResponseAccountPhonesTriggerChangeTable(request);
 break;
 
-case "/opensagagetaccountcontactsgrid":
+case "/getaccountcontactsgrid.usaga":
 response = ResponseAccountContactsToGridx(request);
 break;
 
-case "/opensagagetaccountcontact":
+case "/getaccountcontact.usaga":
 response = ResponseGetAccountContact(request);
 break;
-case "/opensagagetaccountphonesnotifgrid":
+case "/getaccountphonesnotifgrid.usaga":
 response = ResponseAccountContactPhonesNotifToGridx(request);
 break;
 
-case "/opensagagetaccountphonesnotifeventtypegrid":
+case "/getaccountphonesnotifeventtypegrid.usaga":
 response = ResponseAccountContactPhonesNotifEventTypeToGridx(request);
 break;
-case "/opensagagetaccountcontactstable":
+case "/getaccountcontactstable.usaga":
 response = ResponseAccountContactsTable(request);
 break;
-case "/opensagagetaccountnotificationstable":
+case "/getaccountnotificationstable.usaga":
 response = ResponseAccountNotificationsTable(request);
 break;
 case "/usagagetviewnotificationtemplates":

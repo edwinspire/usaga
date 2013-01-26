@@ -13,15 +13,15 @@ ContentPage.size("100%", h+"px");
 }
 
 dojo.connect(dojo.byId('usaga_menuitem_login'), 'onclick', function(){
-ContentPage.url("usagalogin.html");
+ContentPage.url("usaga_login.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_logout'), 'onclick', function(){
-ContentPage.url("usagalogout.html");
+ContentPage.url("usaga_logout.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_eventmonitor'), 'onclick', function(){
-ContentPage.url("usagaeventmonitor.html");
+ContentPage.url("usaga_eventmonitor.html");
 });
 
 dojo.connect(dojo.byId('usaga_menuitem_accounts'), 'onclick', function(){
@@ -82,7 +82,7 @@ AdjustheightContentPage();
 
 
 AdjustheightContentPage();
-ContentPage.start().url("usagaeventmonitor.html");
+ContentPage.start().url("usaga_eventmonitor.html");
 
 
      });
