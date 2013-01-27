@@ -24,8 +24,9 @@ require(["dojo/ready",
 "gridx/modules/RowHeader",
 "gridx/modules/select/Row",
 "gridx/modules/IndirectSelect",
-"gridx/modules/extendedSelect/Row"
-
+"gridx/modules/extendedSelect/Row",
+"dijit/TooltipDialog",
+"dijit/popup"
 ], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
@@ -34,6 +35,52 @@ require(["dojo/ready",
 var ObjectTable = {
 RowSeleted: 0 
 } 
+
+
+        var myDialog = dijit.byId('idDialogNew');
+
+        dojo.connect(dojo.byId('new'), 'onclick', function(){
+            dijit.popup.open({
+                popup: myDialog,
+                around: dojo.byId('new')
+            });
+        });
+
+        dojo.connect(dojo.byId('newcancel'), 'onclick', function(){
+dijit.popup.close(myDialog);
+});
+
+        dojo.connect(dojo.byId('newok'), 'onclick', function(){
+dijit.popup.close(myDialog);
+SaveData({idnotiftempl: 0, description: dijit.byId('newdescrip').get('value'), message: dijit.byId('newMsg').get('value'), ts: '1990-01-01'});
+});
+
+        dojo.connect(dojo.byId('getdata'), 'onclick', function(){
+LoadGrid();
+});
+
+
+        var myDialogDelete = dijit.byId('idDialogDelete');
+
+        dojo.connect(dojo.byId('delete'), 'onclick', function(){
+if(ObjectTable.RowSeleted.length>0){
+            dijit.popup.open({
+                popup: myDialogDelete,
+                around: dojo.byId('delete')
+            });
+}
+        });
+
+        dojo.connect(dojo.byId('delcancel'), 'onclick', function(){
+dijit.popup.close(myDialogDelete);
+});
+
+        dojo.connect(dojo.byId('delok'), 'onclick', function(){
+dijit.popup.close(myDialogDelete);
+alert('Por implementar');
+//SaveData({idnotiftempl: 0, description: dijit.byId('newdescrip').get('value'), message: dijit.byId('newMsg').get('value'), ts: '1990-01-01'});
+});
+
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
@@ -125,7 +172,7 @@ ts: dataxml.getString(i, "ts")
 i++;
 }
 
-
+/*
 myData.items[i] = {
 unique_id: i,
 idnotiftempl: 0,
@@ -133,7 +180,7 @@ description: '',
 message: '',
 ts: '1990-01-01'
 };
-
+*/
 ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
 	ItemFileWriteStore_1.close();
@@ -150,7 +197,7 @@ alert(e);
 }
 
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-setTimeout(LoadGrid, 5000);
+setTimeout(LoadGrid, 10000);
 
 
 
