@@ -33,7 +33,7 @@ require(["dojo/ready",
 
 
 var ObjectTable = {
-RowSeleted: 0 
+IdToDelete: [] 
 } 
 
 
@@ -63,7 +63,7 @@ LoadGrid();
         var myDialogDelete = dijit.byId('idDialogDelete');
 
         dojo.connect(dojo.byId('delete'), 'onclick', function(){
-if(ObjectTable.RowSeleted.length>0){
+if(ObjectTable.IdToDelete.length>0){
             dijit.popup.open({
                 popup: myDialogDelete,
                 around: dojo.byId('delete')
@@ -77,8 +77,14 @@ dijit.popup.close(myDialogDelete);
 
         dojo.connect(dojo.byId('delok'), 'onclick', function(){
 dijit.popup.close(myDialogDelete);
-alert('Por implementar');
-//SaveData({idnotiftempl: 0, description: dijit.byId('newdescrip').get('value'), message: dijit.byId('newMsg').get('value'), ts: '1990-01-01'});
+//TODO: Reimplementar esta funcion para que el borrado se lo haga en la base de datos y no enviando registro por registro ya que resulta ineficiente este procedimiento.
+i = 0;
+num = ObjectTable.IdToDelete.length;
+while(i<num){
+SaveData({idnotiftempl: ObjectTable.IdToDelete[i]*-1, description: '', message: '', ts: '1990-01-01'});
+i++;
+}
+
 });
 
 
@@ -91,24 +97,20 @@ SaveData(item);
 var GridCalls = dijit.byId('gridxnotif');
 
 dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
-//	dom.byId('rowSelectedCount').value = selected.length;
-//	dom.byId('rowStatus').value = selected.join("\n");
-//alert(selected.length +' > ' +selected);
 
-//alert(GridCalls.cell(selected[0], 2, true).data());
-// TODO, hacer que todo el id para incluirlo en la matriz
-ObjectTable.RowSeleted = selected;
+ObjectTable.IdToDelete = [];
+numsel = selected.length;
+
+i = 0;
+while(i<numsel){
+ObjectTable.IdToDelete[i] = GridCalls.cell(selected[i], 1, true).data();
+i++;
+}
 
 });
 
 	if (GridCalls) {
-/*
-// Captura el evento cuando se hace click en una fila
-dojo.connect(GridCalls, 'onRowClick', function(event){
-//alert(this.cell(event.rowId, 2, true).data());
-CP.IdPhone = this.cell(event.rowId, 2, true).data();
-});
-*/
+
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"idnotiftempl", name: "id", width: '20px'},

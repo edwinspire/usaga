@@ -22,7 +22,9 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
-"dojox/data/XmlStore"
+"dojox/data/XmlStore",
+"dijit/TooltipDialog",
+"dijit/popup"
 ], function(ready, on, DomParser, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
@@ -104,9 +106,14 @@ return Objeto;
 }
 }
 
+
+
+
+
 // ACCOUNT BASIC ELEMENTS
 var ABE = {
 dijit:{
+DialogDelete: dijit.byId('idDialogDeleteAccount'),
 Partition: dijit.byId('account.basic.partition'), 
 Enable: dijit.byId('account.basic.enable'),
 Num: dijit.byId('account.basic.accountnum'),
@@ -116,13 +123,34 @@ Note: dijit.byId('account.basic.note')
 },
 dojo: {
 FormBasic: dojo.byId("os.account.form.basic"),
-FormLocation: dojo.byId("account.location.form")
+FormLocation: dojo.byId("account.location.form"),
+DeleteButton: dojo.byId('account.basic.deleteaccount')
 },
 ResetForms: function(){
 this.dojo.FormBasic.reset();
 this.dojo.FormLocation.reset();
 }
 }
+
+        dojo.connect(ABE.dojo.DeleteButton, 'onclick', function(){
+
+if(GlobalObject.IdAccount > 0){
+            dijit.popup.open({
+                popup: ABE.dijit.DialogDelete,
+                around: ABE.dojo.DeleteButton
+            });
+}
+        });
+
+        dojo.connect(dojo.byId('Accountdelcancel'), 'onclick', function(){
+dijit.popup.close(ABE.dijit.DialogDelete);
+});
+
+        dojo.connect(dojo.byId('Accountdelok'), 'onclick', function(){
+dijit.popup.close(ABE.dijit.DialogDelete);
+ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
+DeleteAccount();
+});
 
 dojo.connect(ABE.dijit.Select, 'onChange', function(e){
 AccountSelected();
@@ -140,11 +168,12 @@ ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista'
 SaveAccount();
 });
 
+/*
 dojo.connect(dijit.byId('account.basic.deleteaccount'), 'onClick', function(e){
 ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 DeleteAccount();
 });
-
+*/
 dojo.connect(dijit.byId('account.contentpane.users'), 'onShow', function(e){
 ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 LoadAccountUsersGridx();
