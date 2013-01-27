@@ -51,8 +51,8 @@ function SaveData(item){
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "usms_providertable_edit",
-    content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
+    url: "providereditxml.usms",
+    content: item,
     handleAs: "xml",
     load: function(dataX){
 
