@@ -1154,7 +1154,7 @@ var Objeto = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "notifyeditselectedphones.usaga",
-    content: {idaccount: GlobalObject.IdAccount, idphone: AC.GxNPSelectedRows},
+    content: {idaccount: GlobalObject.IdAccount, idphones: AC.GxNPSelectedRows, call: dijit.byId('usaga.notiftelf.call.all').get('checked'), sms: dijit.byId('usaga.notiftelf.sms.all').get('checked'), msg: dijit.byId('usaga.notiftelf.msg.all').get('value')},
     handleAs: "xml",
     load: function(dataX){
 

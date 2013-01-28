@@ -47,6 +47,8 @@ S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationsta
 S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
 S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
 
+S.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usaga";
+
 
 
 foreach(var u in uSMSServer.VirtualUrls().entries){
@@ -129,6 +131,10 @@ case "/notificationtemplatesedit.usaga":
 response = ResponseNotificationTemplatesEdit(request);
 break;
 
+case "/notifyeditselectedphones.usaga":
+response = ResponseAccountNotificationApplySelected(request);
+break;
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -137,6 +143,19 @@ break;
     server.serve_response( response, dos );
 
 }
+
+
+private uHttp.Response ResponseAccountNotificationApplySelected(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+AccountNotificationsTable Tabla = new AccountNotificationsTable();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_account_notifications_applyselected_xml_from_hasmap(request.Form).data;
+return Retorno;
+}
+
 
 private uHttp.Response ResponseNotificationTemplatesEdit(Request request){
 
