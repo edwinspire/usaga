@@ -1104,6 +1104,7 @@ var i = 0;
 while(i<numrows){
 myData.items[i] = {
 unique_id:i,
+idrow: i,
 idcontact: idcontact,
 idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
 idphone: dataxml.getNumber(i, "idphone"),
@@ -1139,6 +1140,37 @@ AC.GxCClear();
 }
 return this;
 },
+
+NotifyCall: function(allnotif){
+
+  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
+  var xhrArgs = {
+    url: "notifycall.usaga",
+    content: {idaccount: GlobalObject.IdAccount, all: allnotif},
+    handleAs: "xml",
+    load: function(dataX){
+
+var xmld = new jspireTableXmlDoc(dataX, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
+
+
+}
+
+LoadGrid();
+
+    },
+    error: function(errorx){
+alert(errorx);
+    }
+  }
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+},
+
+
 LoadFormContact: function(iniidcontact){
 
 var Objeto = this;
@@ -1180,6 +1212,39 @@ return Objeto;
 
 }
 
+dojo.connect(dojo.byId('usaga.telfnotif.message.all'), 'onclick', function(){
+
+            dijit.popup.open({
+                popup: dijit.byId('usaga.telfnotif.dialogMessageAll'),
+                around: dojo.byId('usaga.telfnotif.message.all')
+            });
+
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_ok'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
+alert('Aplicar');   
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.call.all'), 'onclick', function(){
+alert('Callall');
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.call.none'), 'onclick', function(){
+alert('Callnone');
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.sms.all'), 'onclick', function(){
+alert('smsall');
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.sms.none'), 'onclick', function(){
+alert('smsnone');
+});
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
 //alert(AC.dijit.Select);
 AC.dijit.Select.store = null;
@@ -1208,6 +1273,7 @@ AC.dijit.GxC.startup();
 	if (AC.dijit.GxNP) {
 
 AC.dijit.GxNP.setColumns([
+			{field:"idrow", name: "#", width: '30px'},
 			{field:"idnotifaccount", name: "id", width: '0px'},
 			{field:"idphone", name: "idp", width: '0px'},
 			{field:"phone", name: "Teléfono", width: '150px'},

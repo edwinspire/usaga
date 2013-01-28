@@ -38,6 +38,10 @@ require([
   "dijit/form/DateTextBox",
   "dijit/form/SimpleTextarea",
   "dijit/form/ValidationTextBox",
+  "dijit/TooltipDialog",
+  "dijit/Dialog",
+  "dijit/MenuBar",
+  "dijit/PopupMenuBarItem",
 "dijit/TooltipDialog",
 "dijit/Dialog"
 ]);
@@ -47,7 +51,7 @@ require([
 <script type="text/javascript" src="usaga_account.js"></script>
 <script type="text/javascript" src="jsspire/functions.js"></script>
 </head>
-<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
+<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" data-maq-appstates="{}" id="myapp">
  <div id="usaga.account.divmaster" style="width: 100%; height: 100%;">
    <div>
      <div class="dijitTitlePaneTitle">
@@ -369,7 +373,7 @@ Domingo</option>
    <div data-dojo-type="dijit.layout.ContentPane" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
      <div style="width: 100%; height: 100%;">
       <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
-        <div data-dojo-type="dijit.layout.ContentPane" id="usaga.account.contacts.contentpanegridx" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width: 215px;">
+        <div data-dojo-type="dijit.layout.ContentPane" id="usaga.account.contacts.contentpanegridx" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width:175px;">
           <div style="width: 100%; height: 100%;">
             <span data-dojo-type="dojo.data.ItemFileWriteStore" jsId="usaga_account_contactsStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
             <div class="dijitTitlePaneTitle">
@@ -388,93 +392,129 @@ Domingo</option>
             <input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.contactdata" title="Ver detalle del contacto" tabIndex="-1" intermediateChanges="false" label="Datos" iconClass="dijitIconUsers"></input>
             </span>
             <div style="width: 100%; height: 100%;">
-              <span data-dojo-type="dijit.layout.TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;"><div data-dojo-type="dijit.layout.ContentPane" title="Contacto" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
-                <div style="height: 100%; width: 100%; overflow: hidden;">
-                  <form id="usaga.account.contacts.form" style="width: 100%; height: 100%;">
-                    <select data-dojo-type="dijit.form.FilteringSelect" id="usaga.account.contacts.id" title="Seleccione el usuario" name="idcontact" value="0" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="display: block; width: auto; margin-bottom: 5px;">
-                      <option value="0">
+          <span data-dojo-type="dijit.layout.TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;"><div data-dojo-type="dijit.layout.ContentPane" title="Contacto" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
+               <div style="height: 100%; width: 100%; overflow: hidden;">
+                 <form id="usaga.account.contacts.form" style="width: 100%; height: 100%;">
+                   <select data-dojo-type="dijit.form.FilteringSelect" id="usaga.account.contacts.id" title="Seleccione el usuario" name="idcontact" value="0" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="display: block; width: auto; margin-bottom: 5px;">
+                     <option value="0">
+                       
+                       
                         
                            Ninguno Seleccionado</option>
-                    </select>
-                    <label style="padding-right: 3px; padding-left: 10px;">
+                   </select>
+                   <label style="padding-right: 3px; padding-left: 10px;">
+                     
+                     
                       
                          Habilitado:</label>
-                    <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.account.contacts.enable" title="Habilitado como usuario" name="enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-                    <label style="padding-left: 10px; padding-right: 3px;">
+                   <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.account.contacts.enable" title="Habilitado como usuario" name="enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+                   <label style="padding-left: 10px; padding-right: 3px;">
+                     
+                     
                       
                          Prioridad:</label>
-                    <input type="text" data-dojo-type="dijit.form.NumberSpinner" id="usaga.account.contacts.priority" title="Numero de usuario en el sistema de alarma" name="priority" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="2" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;" value="5"></input>
-                    <label style="padding-left: 10px; padding-right: 3px;">
+                   <input type="text" data-dojo-type="dijit.form.NumberSpinner" id="usaga.account.contacts.priority" title="Numero de usuario en el sistema de alarma" name="priority" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="2" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;" value="5"></input>
+                   <label style="padding-left: 10px; padding-right: 3px;">
+                     
+                     
                       
                          Designación:</label>
-                    <select data-dojo-type="dijit.form.ComboBox" id="usaga.account.contacts.appointment" title="Designaci&amp;oacute;n / Cargo / Puesto" name="appointment" value="Propietario" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-                      <option value="Propietario">
+                   <select data-dojo-type="dijit.form.ComboBox" id="usaga.account.contacts.appointment" title="Designaci&amp;oacute;n / Cargo / Puesto" name="appointment" value="Propietario" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+                     <option value="Propietario">
+                       
+                       
                         
                            Propietario</option>
-                      <option value="Administrador">
+                     <option value="Administrador">
+                       
+                       
                         
                            Administrador</option>
-                      <option value="Empleado">
+                     <option value="Empleado">
+                       
+                       
                         
                            Empleado</option>
-                      <option value="Vecino">
+                     <option value="Vecino">
+                       
+                       
                         
                            Vecino</option>
-                      <option value="Guardia">
+                     <option value="Guardia">
+                       
+                       
                         
                            Guardia</option>
-                      <option value="Gerente">
+                     <option value="Gerente">
+                       
+                       
                         
                            Gerente</option>
-                    </select>
-                    <label style="display: block;">
+                   </select>
+                   <label style="display: block;">
+                     
+                     
                       
                          Nota:</label>
-                    <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.account.contacts.note" name="note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-                    <input type="hidden" data-dojo-type="dijit.form.TextBox" id="usaga.account.contacts.ts" readOnly="readOnly" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-                  </form>
-                </div>
-              </div>
-              <div data-dojo-type="dijit.layout.ContentPane" title="Tel&amp;eacute;fonos - Notificaciones" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
-                <div style="width: 100%; height: 100%;">
-                  <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
-                    <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 40%;">
-                      <div style="width: 100%; height: 100%;">
-                        <div class="dijitTitlePaneTitle">
-                          <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+                   <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.account.contacts.note" name="note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+                   <input type="hidden" data-dojo-type="dijit.form.TextBox" id="usaga.account.contacts.ts" readOnly="readOnly" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+                 </form>
+               </div>
+             </div>
+             <div data-dojo-type="dijit.layout.ContentPane" title="Tel&amp;eacute;fonos - Notificaciones" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
+               <div style="width: 100%; height: 100%;">
+                 <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+                   <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 40%;">
+                     <div style="width: 100%; height: 100%;">
+                       <div class="dijitTitlePaneTitle">
+                         <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+                           
+                           
                             
                                Teléfonos</label>
-                        </div>
-                        <div style="width: 100%; height: 90%;">
-                          <span data-dojo-type="dojo.data.ItemFileWriteStore" id="usaga_account_contact_notifphonesStore_" jsId="usaga_account_contact_notifphonesStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-                          <table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifphonesgridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget'], store:usaga_account_contact_notifphonesStore"></table>
-                        </div>
-                      </div>
-                    </div>
-                    <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
-                      <div style="width: 100%; height: 100%;">
-                        <div title="Tipos de eventos para los cuales se debe enviar notifiaciones" class="dijitTitlePaneTitle">
-                          <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+                       </div>
+                       <div style="width: 100%; height: 90%;">
+                         <span data-dojo-type="dojo.data.ItemFileWriteStore" id="usaga_account_contact_notifphonesStore_" jsId="usaga_account_contact_notifphonesStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+                          <span data-dojo-type="dijit.MenuBar" tabIndex="0"><span data-dojo-type="dijit.PopupMenuBarItem" label="Llamar" iconClass="dijitNoIcon"><span data-dojo-type="dijit.Menu"><span data-dojo-type="dijit.MenuItem" label="Todos" id="usaga.telfnotif.call.all"></span><span data-dojo-type="dijit.MenuItem" label="Ninguno" id="usaga.telfnotif.call.none"></span>
+                         </span>
+                         </span><span data-dojo-type="dijit.PopupMenuBarItem" label="SMS" iconClass="dijitNoIcon"><span data-dojo-type="dijit.Menu"><span data-dojo-type="dijit.MenuItem" label="Todos" id="usaga.telfnotif.sms.all"></span><span data-dojo-type="dijit.MenuItem" label="Ninguno" id="usaga.telfnotif.sms.none"></span>
+                         </span>
+                         </span><span data-dojo-type="dijit.PopupMenuBarItem" label="Texto Notificaci&amp;oacute;n" iconClass="dijitIconMail"><span data-dojo-type="dijit.Menu"></span>
+</span></span>
+                         <div style="width: 100%; height: 100%;">
+                           <span data-dojo-type="dijit.Toolbar">
+                            <input type="button" data-dojo-type="dijit.form.Button" id="usaga.telfnotif.message.all" tabIndex="-1" intermediateChanges="false" label="Texto a todos" iconClass="dijitNoIcon"></input>
+                          </span><table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifphonesgridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget'], store:usaga_account_contact_notifphonesStore"></table>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
+                     <div style="width: 100%; height: 100%;">
+                       <div title="Tipos de eventos para los cuales se debe enviar notifiaciones" class="dijitTitlePaneTitle">
+                         <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+                           
+                           
                             
                                Tipo de Eventos</label>
-                        </div><span data-dojo-type="dijit.Toolbar">
+                       </div><span data-dojo-type="dijit.Toolbar">
 <input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifdefaulttypes" tabIndex="-1" intermediateChanges="false" label="Default" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifalltypes" tabIndex="-1" intermediateChanges="false" label="Todos" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifnonetype" tabIndex="-1" intermediateChanges="false" label="Ninguno" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifinvertselectiontype" tabIndex="-1" intermediateChanges="false" label="Invertir selecci&amp;oacute;n" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Copiar a tel&amp;eacute;fonos" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" label="Copiar a contactos"></input>
-</span>
-                        <div style="width: 100%; height: 90%;">
-                          <span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileReadStore_7" jsId="usaga_account_contact_notifeventtypeStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
-                          <table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifeventtypegridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:usaga_account_contact_notifeventtypeStore"></table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </span>
+                       <input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifalltypes" tabIndex="-1" intermediateChanges="false" label="Todos" iconClass="dijitNoIcon"></input>
+                       <input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifnonetype" tabIndex="-1" intermediateChanges="false" label="Ninguno" iconClass="dijitNoIcon"></input>
+                       <input type="button" data-dojo-type="dijit.form.Button" id="usaga.account.contacts.notifinvertselectiontype" tabIndex="-1" intermediateChanges="false" label="Invertir selecci&amp;oacute;n" iconClass="dijitNoIcon"></input>
+                       <input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Copiar a tel&amp;eacute;fonos" iconClass="dijitNoIcon"></input>
+                       <input type="button" data-dojo-type="dijit.form.Button" label="Copiar a contactos"></input>
+                       </span>
+                       <div style="width: 100%; height: 90%;">
+                         <span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileReadStore_7" jsId="usaga_account_contact_notifeventtypeStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+                         <table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifeventtypegridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:usaga_account_contact_notifeventtypeStore"></table>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             </span>
             </div>
           </div>
         </div>
@@ -804,5 +844,21 @@ Está seguro que desea eliminar el abonado?</label>
        <button dojoType="dijit.form.Button" type="button" id="Accountdelcancel">
          No</button>
      </div>
-</body>
-</html>
+</div>
+ <div id="usaga.telfnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog">
+   <form style="width: 240px;">
+<span style="width: 100%; text-align: right;">
+<label style="margin-right: 20px;">
+       
+Mensaje:</label>
+     <input type="text" data-dojo-type="dijit.form.TextBox" id="usaga.telfnotif.dialogMsg" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+     </span>
+     <div class="dijitDialogPaneActionBar">
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_ok">
+         Aplicar</button>
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_cancel">
+         Cancel</button>
+     </div>
+   </form>
+ </div>
+</body></html>
