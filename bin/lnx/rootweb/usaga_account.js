@@ -1093,6 +1093,8 @@ return this;
 },
 LoadPhones: function(idcontact){
 
+this.GxNPSelectedRows = [];
+
 if(idcontact > 0){
 
 var store = new dojox.data.XmlStore({url: "getaccountphonesnotifgrid.usaga", sendQuery: true, rootItem: 'row'});
