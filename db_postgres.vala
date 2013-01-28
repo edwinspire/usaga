@@ -781,7 +781,7 @@ sms = bool.parse(data["sms"]);
 }
 
 if(data.has_key("msg")){
-arrayidphones = data["msg"];
+msg = data["msg"];
 }
 
 return fun_account_notifications_applyselected_xml(idaccount, arrayidphones, call, sms, msg, fieldtextasbase64);
