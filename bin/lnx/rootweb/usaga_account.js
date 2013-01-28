@@ -23,6 +23,10 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore",
+"gridx/modules/RowHeader",
+"gridx/modules/select/Row",
+"gridx/modules/IndirectSelect",
+"gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
 ], function(ready, on, DomParser, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
@@ -893,6 +897,7 @@ var AC = {
 GxCStore: usaga_account_contactsStore,
 GxNPStore: usaga_account_contact_notifphonesStore,
 GxNETStore: usaga_account_contact_notifeventtypeStore,
+GxNPSelectedRows: [],
 dijit: {
 // Gridx Contacts
 GxC: dijit.byId('usaga.account.contacts.gridx'),
@@ -1103,8 +1108,7 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 var i = 0;
 while(i<numrows){
 myData.items[i] = {
-unique_id:i,
-idrow: i,
+unique_id:i+1,
 idcontact: idcontact,
 idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
 idphone: dataxml.getNumber(i, "idphone"),
@@ -1129,24 +1133,28 @@ AC.GxNPStore.clearOnClose = true;
 		AC.dijit.GxNP.store = null;
 		AC.dijit.GxNP.setStore(AC.GxNPStore);
 
+//AC.GxNPStore.fetch({query: {idrow: 2}, onItem: function(item){console.log('item phone ', AC.GxNPStore.getValue(item, 'phone')  );}, onBegin: function(total){ console.log("There are ", total, " items in this store."); } });
+
 },
 onError: function(e){
+AC.GxNPClear();
 alert(e);
 }
 });
 
 }else{
-AC.GxCClear();
+AC.GxNPClear();
 }
 return this;
 },
-
-NotifyCall: function(allnotif){
-
+// Aplica los cambios a los registros seleccionados
+NotifyEditSelected: function(){
+if(AC.GxNPSelectedRows.length>0){
+var Objeto = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "notifycall.usaga",
-    content: {idaccount: GlobalObject.IdAccount, all: allnotif},
+    url: "notifyeditselectedphones.usaga",
+    content: {idaccount: GlobalObject.IdAccount, idphone: AC.GxNPSelectedRows},
     handleAs: "xml",
     load: function(dataX){
 
@@ -1156,18 +1164,19 @@ if(xmld.length > 0){
 
 alert(xmld.getStringB64(0, 'outpgmsg'));
 
-
 }
 
-LoadGrid();
+Objeto.LoadPhones(AC.dijit.Select.get('value'));
 
     },
     error: function(errorx){
 alert(errorx);
+Objeto.LoadPhones(0);
     }
   }
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
+}
 },
 
 
@@ -1212,39 +1221,28 @@ return Objeto;
 
 }
 
-dojo.connect(dojo.byId('usaga.telfnotif.message.all'), 'onclick', function(){
+dojo.connect(dojo.byId('usaga.telfnotif.applytoall'), 'onclick', function(){
 
             dijit.popup.open({
                 popup: dijit.byId('usaga.telfnotif.dialogMessageAll'),
-                around: dojo.byId('usaga.telfnotif.message.all')
+                around: dojo.byId('usaga.telfnotif.applytoall')
             });
 
 });
 
+
+
 dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_ok'), 'onclick', function(){
    dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
-alert('Aplicar');   
+//alert('Aplicar');   
+AC.NotifyEditSelected();
 });
 
 dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', function(){
    dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
 });
 
-dojo.connect(dojo.byId('usaga.telfnotif.call.all'), 'onclick', function(){
-alert('Callall');
-});
 
-dojo.connect(dojo.byId('usaga.telfnotif.call.none'), 'onclick', function(){
-alert('Callnone');
-});
-
-dojo.connect(dojo.byId('usaga.telfnotif.sms.all'), 'onclick', function(){
-alert('smsall');
-});
-
-dojo.connect(dojo.byId('usaga.telfnotif.sms.none'), 'onclick', function(){
-alert('smsnone');
-});
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
 //alert(AC.dijit.Select);
 AC.dijit.Select.store = null;
@@ -1261,10 +1259,10 @@ var id = this.cell(event.rowId, 1, true).data();
 AC.LoadFormContact(id);
 });
 		AC.dijit.GxC.setColumns([
-			{field:"idcontact", name: "idcontact", width: '0px'},
+			{field:"idcontact", name: "idcontact", width: '0%'},
 			{field:"enable_as_contact", name: "*", width: '20px'},
 			{field:"priority", name: "priority", width: '20px'},
-			{field:"name", name: "nombre"},
+			{field:"name", name: "nombre", width: '150px'},
 			{field:"appointment", name: "Designacion"}
 		]);
 AC.dijit.GxC.startup();
@@ -1273,10 +1271,10 @@ AC.dijit.GxC.startup();
 	if (AC.dijit.GxNP) {
 
 AC.dijit.GxNP.setColumns([
-			{field:"idrow", name: "#", width: '30px'},
+			{field:"unique_id", name: "#", width: '20px'},
 			{field:"idnotifaccount", name: "id", width: '0px'},
 			{field:"idphone", name: "idp", width: '0px'},
-			{field:"phone", name: "Teléfono", width: '150px'},
+			{field:"phone", name: "Teléfono", width: '100px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
 			{field:"call", name: "call", width: '20px', editable: true},
@@ -1291,7 +1289,24 @@ AC.dijit.GxNP.startup();
 dojo.connect(AC.dijit.GxNP, 'onRowClick', function(event){
 //var id = this.cell(event.rowId, 2, true).data();
 //alert(id);
-AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 2, true).data());
+AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 3, true).data());
+});
+
+
+dojo.connect(AC.dijit.GxNP.select.row, 'onSelectionChange', function(selected){
+AC.GxNPSelectedRows = [];
+//alert(selected);
+numsel = selected.length;
+i = 0;
+while(i<numsel){
+// Aqui buscamos los datos desde el store y no desde la celda.
+AC.GxNPStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+//console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
+AC.GxNPSelectedRows[i] = AC.GxNPStore.getValue(item, 'idphone');
+} 
+});
+i++;
+}
 });
 		
 }

@@ -43,7 +43,11 @@ require([
   "dijit/MenuBar",
   "dijit/PopupMenuBarItem",
 "dijit/TooltipDialog",
-"dijit/Dialog"
+"dijit/Dialog",
+"gridx/modules/RowHeader",
+"gridx/modules/select/Row",
+"gridx/modules/IndirectSelect",
+"gridx/modules/extendedSelect/Row"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -375,13 +379,15 @@ Domingo</option>
       <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
         <div data-dojo-type="dijit.layout.ContentPane" id="usaga.account.contacts.contentpanegridx" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width:175px;">
           <div style="width: 100%; height: 100%;">
-            <span data-dojo-type="dojo.data.ItemFileWriteStore" jsId="usaga_account_contactsStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
-            <div class="dijitTitlePaneTitle">
+                        <div class="dijitTitlePaneTitle">
               <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
                 
                    Contactos</label>
             </div>
+<div style="width: 100%; height: 80%;">
+<span data-dojo-type="dojo.data.ItemFileWriteStore" jsId="usaga_account_contactsStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
             <table data-dojo-type="gridx.Grid" id="usaga.account.contacts.gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'s',field:'s'},{width:'auto',name:'*',field:'*'},{width:'auto',name:'IdAccount',field:'idaccount'},{width:'auto',name:'IdContact',field:'idcontact'},{width:'auto',name:'Nombre',field:'nombre'},{width:'auto',name:'Designación',field:'designación'}],store:usaga_account_contactsStore"></table>
+</div>
           </div>
         </div>
         <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="center" splitter="false" maxSize="Infinity">
@@ -473,18 +479,12 @@ Domingo</option>
                             
                                Teléfonos</label>
                        </div>
-                       <div style="width: 100%; height: 90%;">
+                       <div style="width: 100%; height: 85%;">
                          <span data-dojo-type="dojo.data.ItemFileWriteStore" id="usaga_account_contact_notifphonesStore_" jsId="usaga_account_contact_notifphonesStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-                          <span data-dojo-type="dijit.MenuBar" tabIndex="0"><span data-dojo-type="dijit.PopupMenuBarItem" label="Llamar" iconClass="dijitNoIcon"><span data-dojo-type="dijit.Menu"><span data-dojo-type="dijit.MenuItem" label="Todos" id="usaga.telfnotif.call.all"></span><span data-dojo-type="dijit.MenuItem" label="Ninguno" id="usaga.telfnotif.call.none"></span>
-                         </span>
-                         </span><span data-dojo-type="dijit.PopupMenuBarItem" label="SMS" iconClass="dijitNoIcon"><span data-dojo-type="dijit.Menu"><span data-dojo-type="dijit.MenuItem" label="Todos" id="usaga.telfnotif.sms.all"></span><span data-dojo-type="dijit.MenuItem" label="Ninguno" id="usaga.telfnotif.sms.none"></span>
-                         </span>
-                         </span><span data-dojo-type="dijit.PopupMenuBarItem" label="Texto Notificaci&amp;oacute;n" iconClass="dijitIconMail"><span data-dojo-type="dijit.Menu"></span>
-</span></span>
-                         <div style="width: 100%; height: 100%;">
+                          <div style="width: 100%; height: 100%;">
                            <span data-dojo-type="dijit.Toolbar">
-                            <input type="button" data-dojo-type="dijit.form.Button" id="usaga.telfnotif.message.all" tabIndex="-1" intermediateChanges="false" label="Texto a todos" iconClass="dijitNoIcon"></input>
-                          </span><table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifphonesgridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget'], store:usaga_account_contact_notifphonesStore"></table>
+                            <input type="button" data-dojo-type="dijit.form.Button" id="usaga.telfnotif.applytoall" tabIndex="-1" intermediateChanges="false" label="Aplicar a Selecci&amp;oacute;n" iconClass="dijitNoIcon"></input>
+                          </span><table data-dojo-type="gridx.Grid" id="usaga.account.contacts.notifphonesgridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:usaga_account_contact_notifphonesStore"></table>
                          </div>
                        </div>
                      </div>
@@ -833,7 +833,7 @@ Domingo</option>
    <div data-dojo-type="dijit.layout.ContentPane" title="Mantenimiento" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false"></div>
    </span>
  </div>
- <div id="idDialogDeleteAccount" data-dojo-type="dijit/TooltipDialog" style="width: 150px;">
+ <div id="idDialogDeleteAccount" data-dojo-type="dijit/TooltipDialog" style="width: 150px; display: none;">
      <span style="margin-bottom: 5px; width: 100%;">
 <label>
 Está seguro que desea eliminar el abonado?</label>
@@ -845,15 +845,40 @@ Está seguro que desea eliminar el abonado?</label>
          No</button>
      </div>
 </div>
- <div id="usaga.telfnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog">
-   <form style="width: 240px;">
-<span style="width: 100%; text-align: right;">
-<label style="margin-right: 20px;">
-       
-Mensaje:</label>
-     <input type="text" data-dojo-type="dijit.form.TextBox" id="usaga.telfnotif.dialogMsg" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-     </span>
-     <div class="dijitDialogPaneActionBar">
+ <div id="usaga.telfnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog" style="display: none;">
+   <form style="width: 250px;">
+   <label style="font-weight: bold;">
+     Estos cambios se aplicar&aacute;n a todos los registros que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
+   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+     <colgroup>
+       <col></col>
+       <col></col>
+     </colgroup>
+     <tbody>
+       <tr>
+         <td style="width: 75px;">
+           Llamar:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Enviar SMS:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Texto SMS:</td>
+         <td>
+           &nbsp;<textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.notiftelf.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
+</td>
+       </tr>
+     </tbody>
+   </table>
+<div class="dijitDialogPaneActionBar">
        <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_ok">
          Aplicar</button>
        <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_cancel">
