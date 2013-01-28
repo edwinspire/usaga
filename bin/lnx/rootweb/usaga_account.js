@@ -1135,8 +1135,6 @@ AC.GxNPStore.clearOnClose = true;
 		AC.dijit.GxNP.store = null;
 		AC.dijit.GxNP.setStore(AC.GxNPStore);
 
-//AC.GxNPStore.fetch({query: {idrow: 2}, onItem: function(item){console.log('item phone ', AC.GxNPStore.getValue(item, 'phone')  );}, onBegin: function(total){ console.log("There are ", total, " items in this store."); } });
-
 },
 onError: function(e){
 AC.GxNPClear();
