@@ -143,7 +143,7 @@ require([
        </div>
      </div>
    </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
+   <div data-dojo-type="dijit.layout.ContentPane" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false" id="ContentPaneTiempos">
      <div style="height: 100%; width: 100%;">
        <div></div>
        <div data-dojo-type="dijit.form.Form" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
@@ -374,7 +374,7 @@ Domingo</option>
        </div>
      </div>
    </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
+   <div data-dojo-type="dijit.layout.ContentPane" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneContactos">
      <div style="width: 100%; height: 100%;">
       <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
         <div data-dojo-type="dijit.layout.ContentPane" id="usaga.account.contacts.contentpanegridx" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width:175px;">
@@ -819,14 +819,14 @@ Domingo</option>
        </div>
      </div>
    </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Notificaciones por grupo" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
+   <div data-dojo-type="dijit.layout.ContentPane" title="Notificaciones por grupo" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneNotifyGroup">
      <div style="width: 100%; height: 100%;">
        <span data-dojo-type="dijit.TitlePane" title="Tipos de eventos para notificar a grupo" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" duration="200" open="true" style="min-width: 1em; width: 100%; height: auto;"><input type="button" data-dojo-type="dijit.form.Button" intermediateChanges="false" label="Valores predeterminados" iconClass="dijitNoIcon"></input>
        </span><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_6" jsId="ItemFileReadStore_6" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
        <table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 300px;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'IdAccount',field:'idaccount'},{width:'auto',name:'IdEventType',field:'ideventtype'},{width:'auto',name:'Evento',field:'evento'}],store:ItemFileReadStore_6"></table>
      </div>
    </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Eventos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
+   <div data-dojo-type="dijit.layout.ContentPane" title="Eventos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneEventos">
 <div style="height: 100%; width: 100%; overflow: hidden;">
    <div class="dijitTitlePaneTitle">
     <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
@@ -846,8 +846,8 @@ Domingo</option>
 </div>
 </div>
    </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Datos instalaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false"></div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Mantenimiento" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false"></div>
+   <div data-dojo-type="dijit.layout.ContentPane" title="Datos instalaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneDataInstall"></div>
+   <div data-dojo-type="dijit.layout.ContentPane" title="Mantenimiento" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneMantenimiento"></div>
    </span>
  </div>
  <div id="idDialogDeleteAccount" data-dojo-type="dijit/TooltipDialog" style="width: 150px; display: none;">

@@ -39,6 +39,17 @@ require(["dojo/ready",
 
 
 var GlobalObject = {
+DisabledContentPanes: function(disabled){
+
+dijit.byId('ContentPaneTiempos').attr('disabled',  disabled);
+dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
+dijit.byId('account.contentpane.users').attr('disabled',  disabled);
+dijit.byId('ContentPaneNotifyGroup').attr('disabled',  disabled);
+dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
+dijit.byId('ContentPaneDataInstall').attr('disabled',  disabled);
+dijit.byId('ContentPaneMantenimiento').attr('disabled',  disabled);
+
+},
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
 LoadItemsSelectAccount: function(){
@@ -263,6 +274,7 @@ function AjaxLoadAccount(){
 
 var formulario = dojo.byId("os.account.form.basic");
 if(GlobalObject.IdAccount>0){
+GlobalObject.DisabledContentPanes(false);
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "getaccount.usaga",
@@ -1486,6 +1498,17 @@ ANP.Save(item);
 });	
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
+//GlobalObject.DisabledContentPanes(true);
+GlobalObject.DisabledContentPanes(true);
+
+setInterval(function(){
+if(GlobalObject.IdAccount>1){
+GlobalObject.DisabledContentPanes(false);
+}else{
+GlobalObject.DisabledContentPanes(true);
+}
+}, 5000);
+
 dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 
