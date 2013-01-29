@@ -1426,7 +1426,7 @@ if(GlobalObject.IdAccount > 0){
 var start = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fstart'));
 var end = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fend'));
 
-var store = new dojox.data.XmlStore({url: "usaga_geteventsaccount.usaga", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "geteventsaccount.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, fstar: start.getDate(), fend: end.getDate()}, onComplete: function(itemsrow, r){
 

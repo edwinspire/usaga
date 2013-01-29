@@ -48,6 +48,7 @@ S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtempla
 S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
 
 S.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usaga";
+S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
 
 
 
@@ -133,6 +134,10 @@ break;
 
 case "/notifyeditselectedphones.usaga":
 response = ResponseAccountNotificationApplySelected(request);
+break;
+
+case "/geteventsaccount.usaga":
+response = ResponseAccountEvents(request);
 break;
 
 default:
