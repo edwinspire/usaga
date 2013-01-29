@@ -206,7 +206,7 @@ public EventView(){
 
 }
 
-public string byIdAccount(int idaccount, string start, string end,  bool fieldtextasbase64 = true){
+public string byIdAccount_xml(int idaccount, string start, string end,  bool fieldtextasbase64 = true){
 string RetornoX = "<table></table>";
 
 var  Conexion = Postgres.connect_db (this.ConnString());

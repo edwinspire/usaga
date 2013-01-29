@@ -145,6 +145,36 @@ break;
 }
 
 
+private uHttp.Response ResponseAccountEvents(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+EventView Tabla = new EventView();
+Tabla.GetParamCnx();
+
+int idaccount = 0;
+string start = "1990-01-01";
+string end = "2100-01-01";
+
+if(request.Query.has_key("idaccount")){
+idaccount = int.parse(request.Query["idaccount"]); 
+}
+
+if(request.Query.has_key("fstart")){
+start = int.parse(request.Query["fstart"]); 
+}
+
+if(request.Query.has_key("fend")){
+end = int.parse(request.Query["fend"]); 
+}
+
+
+
+Retorno.Data = Tabla.byIdAccount_xml(idaccount, start, end, true).data;
+return Retorno;
+}
+
 private uHttp.Response ResponseAccountNotificationApplySelected(Request request){
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
