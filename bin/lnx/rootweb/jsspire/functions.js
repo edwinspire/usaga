@@ -334,6 +334,20 @@ return this;
 
 }
 
+var jspireEditorArgsToGridxCellBoolean = {
+props: 'value: true',
+				fromEditor: function (d){
+		return Boolean(d);
+	},
+toEditor: function(storeData, gridData){
+r = false;
+if(gridData != "false"){
+r = true;
+}
+		return r;
+				}
+			}
+
 
 
 function StringToBool(value){

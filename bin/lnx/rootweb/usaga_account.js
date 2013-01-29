@@ -414,8 +414,11 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		// Optionally change column structure on the grid
 		myAccountUsersGridX.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, type: dojox.grid.cells.Bool},
-			{field:"numuser", name: "#", width: '20px', editable: true, editor: NumberTextBox},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			editorArgs: {
+				props: 'value: false'
+			}},
+			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
 		]);
@@ -731,6 +734,14 @@ clearInterval(interstore);
 }, 2000);
 
 
+	function getDate(d){
+		res = Boolean(d);
+alert('from '+res);
+		return res;
+	}
+
+
+
 	if (PTElements.dijit.GxPT) {
 
 		// Optionally change column structure on the grid
@@ -745,13 +756,12 @@ clearInterval(interstore);
 						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"address", name: "Dirección", width: '150px'},
-//			{field:"fromsms", name: "sms", width: '20px', editable: true, alwaysEditing: true,
-//					editor: 'dijit.form.CheckBox',
-//					editorArgs: {
-//						valueField: 'checked'}},
-			{field:"fromsms", name: "sms", width: '20px', editable: true},
+			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 
-			{field:"fromcall", name: "call", width: '20px', editable: true},
+			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+		editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true,
+			},
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
 PTElements.dijit.GxPT.startup();
