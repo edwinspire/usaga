@@ -206,6 +206,33 @@ public EventView(){
 
 }
 
+public string byIdAccount(int idaccount, string start, string end,  bool fieldtextasbase64 = true){
+string RetornoX = "<table></table>";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {idaccount.to_string(), start, end, fieldtextasbase64.to_string()};
+
+var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_view_account_events_xml($1::integer, $2::timestamp without time zone, $3::timestamp without time zone, $4::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+//GLib.print("ResponseGetEventsMonitor >>> \n%s\n", RetornoX);
+return RetornoX;
+}
 
 public string LastXml(int rows = 100, bool fieldtextasbase64 = true){
 string RetornoX = "<table></table>";

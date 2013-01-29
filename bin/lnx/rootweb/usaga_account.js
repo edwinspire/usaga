@@ -1391,6 +1391,11 @@ return Objeto;
 
 
 ///////////////////////////////////////////
+dojo.connect(dojo.byId('usaga.account.event.send'), 'onclick', function(){
+LoadGridEventsAccount();
+});
+
+
 	var GridEventsAccount = dijit.byId("usaga.account.event.grid");
 	if (GridEventsAccount) {
 
@@ -1430,7 +1435,6 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
@@ -1453,12 +1457,12 @@ eventtype: dataxml.getStringB64(i, "eventtype")
 i++;
 }
 
-ItemFileReadStore_1.clearOnClose = true;
-	ItemFileReadStore_1.data = myData;
-	ItemFileReadStore_1.close();
+usaga_account_event_store.clearOnClose = true;
+	usaga_account_event_store.data = myData;
+	usaga_account_event_store.close();
 
-		myGridX.store = null;
-		myGridX.setStore(ItemFileReadStore_1);
+		GridEventsAccount.store = null;
+		GridEventsAccount.setStore(usaga_account_event_store);
 //GridCalls.startup();
 //alert('ok');
 },
