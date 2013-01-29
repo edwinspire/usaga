@@ -334,6 +334,15 @@ return this;
 
 }
 
+var jspireGetDateFromDijitDateTextBox = function(DTB){
+this.DateTextBox: DTB,
+this.datePattern: "yyyy-MM-dd", 
+this.selector: "date"
+this.getDate = function(){
+return dojo.date.locale.format(this.DateTextBox.get('value'), {datePattern: this.datePattern, selector: this.selector});
+} 
+}
+
 var jspireEditorArgsToGridxCellBoolean = {
 props: 'value: true',
 				fromEditor: function (d){
