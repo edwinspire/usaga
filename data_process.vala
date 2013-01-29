@@ -104,7 +104,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 //GLib.print("Conectado\n");
-var Resultado = Conexion.exec("""SELECT * FROM usagasaga.hearbeat();""");
+var Resultado = Conexion.exec("""SELECT * FROM usaga.hearbeat();""");
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("OpenSAGA: \n");
