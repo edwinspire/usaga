@@ -1287,8 +1287,8 @@ AC.dijit.GxNP.setColumns([
 			{field:"phone", name: "Teléfono", width: '100px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
-			{field:"call", name: "call", width: '20px', editable: true},
-			{field:"sms", name: "sms", width: '20px', editable: true},
+			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
+			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
 			{field:"address", name: "Dirección", editable: false},
 	                {field:"note", name: "Nota", editable: true}

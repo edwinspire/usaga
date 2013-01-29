@@ -340,9 +340,11 @@ props: 'value: true',
 		return Boolean(d);
 	},
 toEditor: function(storeData, gridData){
-r = false;
-if(gridData != "false"){
 r = true;
+if(gridData == "false"){
+r = false;
+}else{
+r = Boolean(gridData);
 }
 		return r;
 				}
