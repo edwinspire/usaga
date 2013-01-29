@@ -1502,7 +1502,7 @@ ANP.Save(item);
 GlobalObject.DisabledContentPanes(true);
 
 setInterval(function(){
-if(GlobalObject.IdAccount>1){
+if(GlobalObject.IdAccount>0){
 GlobalObject.DisabledContentPanes(false);
 }else{
 GlobalObject.DisabledContentPanes(true);
