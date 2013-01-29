@@ -1390,7 +1390,8 @@ return Objeto;
 
 
 
-///////////////////////////////////////////
+///////////////////////////////////////////////////
+// MUESTRA LOS EVENTOS DE LA CUENTA EN UNA TABLA //
 dojo.connect(dojo.byId('usaga.account.event.send'), 'onclick', function(){
 LoadGridEventsAccount();
 });
