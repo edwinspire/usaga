@@ -167,11 +167,11 @@ idaccount = int.parse(request.Query["idaccount"]);
 }
 
 if(request.Query.has_key("fstart")){
-start = int.parse(request.Query["fstart"]); 
+start = request.Query["fstart"]; 
 }
 
 if(request.Query.has_key("fend")){
-end = int.parse(request.Query["fend"]); 
+end = request.Query["fend"]; 
 }
 
 
