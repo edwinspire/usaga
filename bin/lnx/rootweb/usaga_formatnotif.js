@@ -165,6 +165,8 @@ alert(errorx);
 
 function LoadGrid(){
 
+ObjectTable.IdToDelete = [];
+
 var store = new dojox.data.XmlStore({url: "getviewnotificationtemplates.usaga", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
