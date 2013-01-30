@@ -36,6 +36,19 @@ var ObjectTable = {
 IdToDelete: [] 
 } 
 
+        var myDialogShowLabels = dijit.byId('idshowLabels');
+
+        dojo.connect(dojo.byId('tags'), 'onclick', function(){
+            dijit.popup.open({
+                popup: myDialogShowLabels,
+                around: dojo.byId('tags')
+            });
+        });
+
+        dojo.connect(dojo.byId('ShowLabelClose'), 'onclick', function(){
+dijit.popup.close(myDialogShowLabels);
+});
+
 
         var myDialog = dijit.byId('idDialogNew');
 
