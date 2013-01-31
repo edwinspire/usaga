@@ -93,10 +93,9 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 alreadylasidevent = 0; 
+
 if(numrows > 0){
-LastIdEvent: dataxml.getNumber(0, "idevent");
-}else{
-LastIdEvent = 0;
+alreadylasidevent = dataxml.getNumber(0, "idevent");
 }
 
 if(alreadylasidevent > LastIdEvent){
