@@ -229,7 +229,7 @@ RetornoX = reg["return"].Value;
 }else{
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-GLib.print("fun_events_lastid_xml >>> \n%s\n", RetornoX);
+//GLib.print("fun_events_lastid_xml >>> \n%s\n", RetornoX);
 return RetornoX;
 }
 
@@ -1183,7 +1183,7 @@ return Retorno;
 }
 
 
-
+/*
 public Accountdb byId(int idaccount){
 
 string[] valuesin = {idaccount.to_string()};
@@ -1219,6 +1219,7 @@ Retorno.Note = reg["note"].Value;
 
 return Retorno;
 }
+*/
 
 
 public string fun_account_table_xml_from_hashmap(HashMap<string, string> Data, bool fieldtextasbase64 = true){
