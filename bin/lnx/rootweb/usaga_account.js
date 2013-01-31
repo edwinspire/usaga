@@ -1167,6 +1167,37 @@ AC.GxNPClear();
 }
 return this;
 },
+
+// Aplica los cambios a los telefonos de los contactos selecionados seleccionados
+NotifyEditToContactsSelected: function(){
+if(AC.GxNPSelectedContacts.length>0){
+var Objeto = this;
+  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
+  var xhrArgs = {
+    url: "notifyeditselectedcontacts.usaga",
+    content: {idaccount: GlobalObject.IdAccount, idphones: AC.GxNPSelectedContacts.toString(), call: dijit.byId('usaga.contactnotif.call.all').get('checked'), sms: dijit.byId('usaga.contactnotif.sms.all').get('checked'), msg: dijit.byId('usaga.contactnotif.msg.all').get('value')},
+    handleAs: "xml",
+    load: function(dataX){
+
+var xmld = new jspireTableXmlDoc(dataX, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
+
+}
+
+    },
+    error: function(errorx){
+alert(errorx);
+//Objeto.LoadPhones(0);
+    }
+  }
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+},
+
 // Aplica los cambios a los registros seleccionados
 NotifyEditSelected: function(){
 if(AC.GxNPSelectedRows.length>0){
@@ -1251,7 +1282,14 @@ dojo.connect(dojo.byId('usaga.contactnotif.applytoall'), 'onclick', function(){
 
 });
 
+dojo.connect(dojo.byId('usaga.contactnotif.dialogMessageAll_ok'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.contactnotif.dialogMessageAll'));
+//AC.NotifyEditSelected();
+});
 
+dojo.connect(dojo.byId('usaga.contactnotif.dialogMessageAll_cancel'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.contactnotif.dialogMessageAll'));
+});
 
 //////////////////////////////////////////////////////////////////////////////
 dojo.connect(dojo.byId('usaga.telfnotif.applytoall'), 'onclick', function(){
@@ -1267,7 +1305,6 @@ dojo.connect(dojo.byId('usaga.telfnotif.applytoall'), 'onclick', function(){
 
 dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_ok'), 'onclick', function(){
    dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
-//alert('Aplicar');   
 AC.NotifyEditSelected();
 });
 
