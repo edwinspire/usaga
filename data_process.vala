@@ -51,7 +51,7 @@ valuessms[0] = item.value.to_string();
 valuessms[1] = item.value_nick;
 
 
-var Resultado = Conexion.exec_params ("""SELECT usaga.fun_eventtype_default($1::integer, $2::text);""",  valuessms.length, null, valuessms, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT usaga.fun_eventtype_default($1::integer, $2::text);""",  valuessms);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 

@@ -521,7 +521,7 @@ return Retorno;
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetAccount(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 //print("ResponseGetAccount\n");
 int id = 0;
@@ -533,9 +533,7 @@ id = int.parse(request.Form["idaccount"]);
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-Retorno.Data = Tabla.byIdXml(id).data;
-
-//print("ResponseGetAccount id = %s\n%s\n", id.to_string(), Tabla.byIdXml(id));
+Retorno.Data = Tabla.fun_view_account_byid_xml(id).data;
 
 return Retorno;
 }

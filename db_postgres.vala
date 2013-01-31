@@ -214,7 +214,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {};
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_events_lastid_xml() AS return", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_events_lastid_xml() AS return", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -243,7 +243,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {idaccount.to_string(), start, end, fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_view_account_events_xml($1::integer, $2::timestamp without time zone, $3::timestamp without time zone, $4::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_events_xml($1::integer, $2::timestamp without time zone, $3::timestamp without time zone, $4::boolean) AS return", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -271,7 +271,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {rows.to_string(), fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_view_last_events_xml($1::integer, $2::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_last_events_xml($1::integer, $2::boolean) AS return", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -393,7 +393,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_account_phones_trigger_alarm_table($1::integer, $2::integer, $3::boolean, $4::boolean, $5::boolean, $6::text);""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_phones_trigger_alarm_table($1::integer, $2::integer, $3::boolean, $4::boolean, $5::boolean, $6::text);""",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -447,7 +447,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_users_trigger_phones_contacts($1::integer, $2::integer)", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_users_trigger_phones_contacts($1::integer, $2::integer)", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -558,7 +558,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {idaccount.to_string(), idcontact.to_string(), priority.to_string(), enable.to_string(), appointment, note, fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_contacts_table_xml($1::integer, $2::integer, $3::integer, $4::boolean, $5::text, $6::text, $7::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_contacts_table_xml($1::integer, $2::integer, $3::integer, $4::boolean, $5::text, $6::text, $7::boolean) AS return", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -587,7 +587,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {idaccount.to_string(), idcontact.to_string(), fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_account_contacts_byid($1::integer, $2::integer, $3::boolean) AS return""", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_contacts_byid($1::integer, $2::integer, $3::boolean) AS return""", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -622,7 +622,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {idaccount.to_string(), idphone.to_string(), fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_view_account_contact_notif_eventtypes_xml($1::integer, $2::integer, $3::boolean) AS return", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_contact_notif_eventtypes_xml($1::integer, $2::integer, $3::boolean) AS return", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -657,7 +657,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_notification_templates_edit_xml($1::integer, $2::text, $3::text, $4::timestamp without time zone, $5::boolean) as return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_notification_templates_edit_xml($1::integer, $2::text, $3::text, $4::timestamp without time zone, $5::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -686,7 +686,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_view_notification_templates_xml($1::boolean) AS return""", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_view_notification_templates_xml($1::boolean) AS return""", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -720,7 +720,7 @@ if(Conexion.get_status () == ConnectionStatus.OK){
 
 string[] valuesin = {idaccount.to_string(), idcontact.to_string(), fieldtextasbase64.to_string()};
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_view_account_notif_phones_xml($1::integer, $2::integer, $3::boolean) AS return""", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_view_account_notif_phones_xml($1::integer, $2::integer, $3::boolean) AS return""", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -794,7 +794,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_notifications_table_xml($1::integer, $2::integer, $3::integer, $4::integer, $5::boolean, $6::boolean, $7::text, $8::text, $9::timestamp without time zone, $10::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_notifications_table_xml($1::integer, $2::integer, $3::integer, $4::integer, $5::boolean, $6::boolean, $7::text, $8::text, $9::timestamp without time zone, $10::boolean) AS return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -853,7 +853,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_notifications_applyselected_xml($1::integer, $2::integer[], $3::boolean, $4::boolean, $5::text, $6::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_notifications_applyselected_xml($1::integer, $2::integer[], $3::boolean, $4::boolean, $5::text, $6::boolean) AS return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1019,7 +1019,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT idaccount, name FROM usaga.account ORDER BY $1::text;", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT idaccount, name FROM usaga.account ORDER BY $1::text;", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -1049,7 +1049,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_notifications_table_xml($1::integer, $2::integer, $3::integer, $4::integer, $5::boolean, $6::boolean, $7::text, $8::text, $9::timestamp without time zone, $10::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion,  "SELECT * FROM usaga.fun_account_notifications_table_xml($1::integer, $2::integer, $3::integer, $4::integer, $5::boolean, $6::boolean, $7::text, $8::text, $9::timestamp without time zone, $10::boolean) AS return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1076,7 +1076,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM  usaga.fun_view_account_contacts_xml($1::integer, $2::boolean) AS return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM  usaga.fun_view_account_contacts_xml($1::integer, $2::boolean) AS return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1111,7 +1111,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.view_account_users WHERE idaccount = $1 ORDER BY numuser, lastname, firstname", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.view_account_users WHERE idaccount = $1 ORDER BY numuser, lastname, firstname", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -1152,9 +1152,37 @@ i++;
 return RetornoX;
 }
 
+
+/*
 public string byIdXml(int idaccount){
 return XmlDatas.XmlDocToString(AccountNodeXml(this.byId(idaccount)).Row());
 }
+*/
+public string fun_view_account_byid_xml(int inidaccount, bool fieldtextasbase64 = true){
+
+string Retorno = "";
+string[] ValuesArray = {inidaccount.to_string(), fieldtextasbase64.to_string()};
+var  Conexion = Postgres.connect_db (this.ConnString());
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.($1::integer, $2::boolean) as return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+//GLib.print("%s\n", Retorno);
+return Retorno;
+}
+
+
 
 public Accountdb byId(int idaccount){
 
@@ -1164,7 +1192,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.account WHERE idaccount = $1;""", valuesin.length, null, valuesin, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.account WHERE idaccount = $1;""", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -1238,7 +1266,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_account_table_xml($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text, $9::boolean) as return;",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_table_xml($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text, $9::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
@@ -1282,7 +1310,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_account_users_add($1::integer, $2::integer);""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_users_add($1::integer, $2::integer);""",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1309,7 +1337,7 @@ SQLFunReturn Retorno = new SQLFunReturn();
 string[] ValuesArray = {inidaccount.to_string(), inidcontact.to_string(), inappointment, inenable.to_string(), innumuser.to_string(),  inkeyword, inpwd, innote};
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_account_users_table($1::integer, $2::integer, $3::text, $4::boolean, $5::integer, $6::text, $7::text, $8::text);""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_users_table($1::integer, $2::integer, $3::text, $4::boolean, $5::integer, $6::text, $7::text, $8::text);""",  ValuesArray);
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
 foreach(var filas in this.Result_FieldName(ref Resultado)){
@@ -1398,7 +1426,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.account_users WHERE idaccount=$1::integer  AND idcontact=$2::integer LIMIT 1""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.account_users WHERE idaccount=$1::integer  AND idcontact=$2::integer LIMIT 1""",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1505,7 +1533,7 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.fun_account_location_table($1::integer, $2::real, $3::real, $4::text, $5::text, $6::text);""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_location_table($1::integer, $2::real, $3::real, $4::text, $5::text, $6::text);""",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
@@ -1538,7 +1566,7 @@ if(idaccount > 0){
 string[] ValuesArray = {idaccount.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
-var Resultado = Conexion.exec_params ("""SELECT * FROM usaga.account_location WHERE idaccount=$1::integer LIMIT 1""",  ValuesArray.length, null, ValuesArray, null, null, 0);
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.account_location WHERE idaccount=$1::integer LIMIT 1""",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 //GLib.print("Llega hasta aqui 4 \n");
