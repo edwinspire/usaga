@@ -1165,7 +1165,7 @@ string[] ValuesArray = {inidaccount.to_string(), fieldtextasbase64.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.($1::integer, $2::boolean) as return;",  ValuesArray);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_byid_xml($1::integer, $2::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 

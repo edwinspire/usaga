@@ -269,8 +269,45 @@ ABE.dijit.Note.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note"
 }
 }
 
-// Carga el formulario de PostgreSQL
+
 function AjaxLoadAccount(){
+var formulario = dojo.byId("os.account.form.basic");
+if(GlobalObject.IdAccount>0){
+GlobalObject.DisabledContentPanes(false);
+
+var store = new dojox.data.XmlStore({url: "getaccount.usaga", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: { idaccount: GlobalObject.IdAccount}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+alreadylasidevent = 0; 
+
+if(numrows > 0){
+alreadylasidevent = dataxml.getNumber(0, "idevent");
+}
+
+if(alreadylasidevent > LastIdEvent){
+LastIdEvent = alreadylasidevent;
+LoadMonitorEvents();
+}
+
+},
+onError: function(e){
+alert(e);
+}
+});
+
+}else{
+formulario.reset();
+}
+
+}
+
+
+// Carga el formulario de PostgreSQL
+function AjaxLoadAccountxxxx(){
 
 var formulario = dojo.byId("os.account.form.basic");
 if(GlobalObject.IdAccount>0){
