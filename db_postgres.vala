@@ -960,22 +960,6 @@ Fila.addFieldString("keyword", user.KeyWord, true);
 return Fila;
 }
 
-public static XmlRow AccountContactViewNodeXml(AccountContactViewdb user){
-
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idcontact", user.IdContact);
-Fila.addFieldBool("enable", user.EnableContact);
-Fila.addFieldString("firstname", user.FirstName, true);
-Fila.addFieldString("lastname", user.LastName, true);
-Fila.addFieldInt("idaccount", user.IdAccount);
-Fila.addFieldInt("prioritycontact", user.PriorityContact);
-Fila.addFieldBool("enable_as_contact", user.EnableAsContact);
-Fila.addFieldString("appointment", user.Appointment, true);
-
-return Fila;
-}
-
 public static XmlRow AccountNodeXml(Accountdb account){
 
 XmlRow Fila = new XmlRow();
