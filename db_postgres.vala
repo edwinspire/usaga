@@ -960,21 +960,7 @@ Fila.addFieldString("keyword", user.KeyWord, true);
 return Fila;
 }
 
-public static XmlRow AccountNodeXml(Accountdb account){
 
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idaccount", account.Id);
-Fila.addFieldInt("idgroup", account.IdGroup);
-Fila.addFieldInt("partition", account.Partition);
-Fila.addFieldBool("enable", account.Enable);
-Fila.addFieldString("account", account.Account, true);
-Fila.addFieldString("name", account.Name, true);
-Fila.addFieldInt("type", (int)account.Type);
-Fila.addFieldString("note", account.Note, true);
-
-return Fila;
-}
 
 
 
