@@ -254,22 +254,6 @@ alert(errorx);
 }
 
 
-
-function XmlToFormAccountBasic(dataX){
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('row');
-if(xmldata.length > 0){
-GlobalObject.IdAccount = xmldata[0].getAttribute("idaccount")
-ABE.dijit.Partition.set('value', xmldata[0].getAttribute("partition"));
-ABE.dijit.Enable.set('checked', StringToBool(xmldata[0].getAttribute("enable"))); 
-ABE.dijit.Num.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("account"))); 
-ABE.dijit.Select.set('value', xmldata[0].getAttribute("idaccount")); 
-ABE.dijit.Type.setValue(String(xmldata[0].getAttribute("type"))); 
-ABE.dijit.Note.set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note"))); 
-}
-}
-
-
 function AjaxLoadAccount(){
 var formulario = dojo.byId("os.account.form.basic");
 if(GlobalObject.IdAccount>0){
@@ -285,13 +269,21 @@ numrows = itemsrow.length;
 alreadylasidevent = 0; 
 
 if(numrows > 0){
-alreadylasidevent = dataxml.getNumber(0, "idevent");
+
+GlobalObject.IdAccount = dataxml.getNumber(0, "idaccount")
+ABE.dijit.Partition.set('value', dataxml.getNumber(0, "partition"));
+ABE.dijit.Enable.set('checked', dataxml.getBool(0, "enable")); 
+ABE.dijit.Num.set('value', dataxml.getStringB64(0, "account")); 
+ABE.dijit.Select.set('value', dataxml.getNumber(0, "idaccount")); 
+ABE.dijit.Type.setValue(dataxml.getString(0, "type")); 
+ABE.dijit.Note.set('value', dataxml.getStringB64(0, "note")); 
+
+}else{
+formulario.reset();
 }
 
-if(alreadylasidevent > LastIdEvent){
-LastIdEvent = alreadylasidevent;
-LoadMonitorEvents();
-}
+AjaxLoadAccountLocation();
+LoadAccountPhonesTriggerGridx(0);
 
 },
 onError: function(e){
@@ -305,37 +297,6 @@ formulario.reset();
 
 }
 
-
-// Carga el formulario de PostgreSQL
-function AjaxLoadAccountxxxx(){
-
-var formulario = dojo.byId("os.account.form.basic");
-if(GlobalObject.IdAccount>0){
-GlobalObject.DisabledContentPanes(false);
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "getaccount.usaga",
- content: { idaccount: GlobalObject.IdAccount},
-    handleAs: "text",
-    load: function(dataX){
-XmlToFormAccountBasic(dataX);
-// Carga tambien la localizacion
-AjaxLoadAccountLocation();
-LoadAccountPhonesTriggerGridx(0);
-    },
-    error: function(errorx){
-formulario.reset();
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-
-}else{
-formulario.reset();
-}
-
-}
 
 function AccountSelected(){
 // Cargamos la cuenta solo si el registro existe
