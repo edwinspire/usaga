@@ -960,11 +960,6 @@ Fila.addFieldString("keyword", user.KeyWord, true);
 return Fila;
 }
 
-
-
-
-
-
 public string NameAndId_All_Xml(){
 
 var Rows = XmlDatas.Node("accounts");
