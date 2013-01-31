@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-01-31 07:13:10 ECT
+-- Started on 2013-01-31 09:40:19 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -1956,7 +1956,7 @@ END;$$;
 
 
 --
--- TOC entry 308 (class 1255 OID 27062)
+-- TOC entry 314 (class 1255 OID 27062)
 -- Dependencies: 9 797
 -- Name: fun_account_notifications_applyselected(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -1987,7 +1987,7 @@ INSERT INTO usaga.account_notifications (idaccount, idphone, priority, call, sms
 END IF;
 
 -- Sumamos 1
-IF internalidnotifaccount THEN
+IF internalidnotifaccount > 0 THEN
 outreturn := outreturn+1;
 END IF;
 
@@ -2109,20 +2109,22 @@ numphonesy INTEGER DEFAULT 0;
 BEGIN
 
 -- Recorremos cada idcontcat
+
 FOR i IN array_lower(idcontacts,1) .. array_upper(idcontacts,1) LOOP
 
 -- Verificamos que efectivamente cada idcontact pertenesca a la cuenta
-IF EXISTS(SELECT * FROM usaga.view_account_contacts WHERE idaccount = inidaccount AND idcontact = i) THEN
+IF EXISTS(SELECT * FROM usaga.view_account_contacts WHERE idaccount = inidaccount AND idcontact = idcontacts[i]) THEN
 numcontacts := numcontacts+1;
 -- Recorremos todos los telefonos que tiene ese contacto
-OPEN CursorPhones FOR SELECT idphone FROM phones WHERE idcontact = i;
+OPEN CursorPhones FOR SELECT idphone FROM phones WHERE idcontact = idcontacts[i];
 
-    loop
+    loop 
 
         FETCH CursorPhones INTO InternalIdPhone;
         EXIT WHEN NOT FOUND;
 
-SELECT outreturn INTO numphonesy FROM usaga.fun_account_notifications_applyselected(inidaccount, '{'||InternalIdPhone||'}'::INTEGER[], incall, insms, inmsg, false);
+
+SELECT xyz.outreturn INTO numphonesy FROM usaga.fun_account_notifications_applyselected(inidaccount, ARRAY[InternalIdPhone], incall, insms, inmsg, false) as xyz;
 numphonesx = numphonesx+numphonesy;
 
 
@@ -2148,7 +2150,7 @@ END;$$;
 
 
 --
--- TOC entry 314 (class 1255 OID 27076)
+-- TOC entry 313 (class 1255 OID 27076)
 -- Dependencies: 797 9
 -- Name: fun_account_notify_applied_to_selected_contacts_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -2333,7 +2335,7 @@ COMMENT ON FUNCTION fun_account_search_number(innumberaccount text) IS 'Busca el
 
 
 --
--- TOC entry 313 (class 1255 OID 27009)
+-- TOC entry 312 (class 1255 OID 27009)
 -- Dependencies: 9 797
 -- Name: fun_account_table(integer, boolean, text, text, integer, integer, integer, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -2563,7 +2565,7 @@ Envia notificaciones basados en los eventos y configuraciones del sistema';
 
 
 --
--- TOC entry 309 (class 1255 OID 27066)
+-- TOC entry 308 (class 1255 OID 27066)
 -- Dependencies: 797 9
 -- Name: fun_events_lastid_xml(); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -2672,7 +2674,7 @@ COMMENT ON FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) IS 
 
 
 --
--- TOC entry 311 (class 1255 OID 27069)
+-- TOC entry 310 (class 1255 OID 27069)
 -- Dependencies: 797 9
 -- Name: fun_insert_internal_event(integer, text, integer, text, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -2973,7 +2975,7 @@ END;$$;
 
 
 --
--- TOC entry 312 (class 1255 OID 27067)
+-- TOC entry 311 (class 1255 OID 27067)
 -- Dependencies: 797 9
 -- Name: fun_view_account_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -3164,7 +3166,7 @@ END;$$;
 
 
 --
--- TOC entry 310 (class 1255 OID 27068)
+-- TOC entry 309 (class 1255 OID 27068)
 -- Dependencies: 797 9
 -- Name: fun_view_account_location_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -6409,7 +6411,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-01-31 07:13:12 ECT
+-- Completed on 2013-01-31 09:40:22 ECT
 
 --
 -- PostgreSQL database dump complete

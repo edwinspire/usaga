@@ -611,81 +611,6 @@ alert(error);
 }
 
 
-////////////////////////////
-/////// CONTACTOS //////////
-function LoadAccountContactsGridx(){
-
-var inidaccount = GlobalObject.IdAccount;
-
-if(inidaccount > 0){
-
-  var xhrArgs = {
-    url: "getaccountcontactsgrid.usaga",
- content: {idaccount: inidaccount},
-    handleAs: "text",
-    load: function(datass){
-
-  var datar = dojox.xml.DomParser.parse(datass);
-	// Get reference to our grid object. I set the id to "GridX" using
-	// the Maqetta properties palette.
-	var myGridX = dijit.byId("usaga.account.contacts.gridx");
-	if (myGridX) {
-
-var xmldata = datar.byName('row');
-
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
-var i = 0;
-var rowscount = xmldata.length;
-while(i<rowscount){
-
-myData.items[i] = {
-unique_id:i,
-//s: false, 
-idcontact: xmldata[i].getAttribute("idcontact"), 
-enable_as_user: xmldata[i].getAttribute("enable_as_user"),
-numuser: xmldata[i].getAttribute("numuser"),
-//priority: xmldata[i].getAttribute("prioritycontact"),    
-name: jsspire.Base64.decode(xmldata[i].getAttribute("lastname"))+' '+jsspire.Base64.decode(xmldata[i].getAttribute("firstname")),
-appointment: jsspire.Base64.decode(xmldata[i].getAttribute("appointment")),
-};
-
-i++;
-}
-
-
-	// Set new data on data store (the store has jsId set, so there's
-	// a global variable we can reference)
-	var store = usaga_account_users_ItemFileWriteStoreUsers;
-	store.clearOnClose = true;
-	store.data = myData;
-	store.close();
-
-		// Tell our grid to reset itself
-		myGridX.store = null;
-		myGridX.setStore(store);
-	}
-
- 
-    },
-    error: function(error){
-//      targetNode.innerHTML = "An unexpected error occurred: " + error;
-alert(error);
-
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}else{
-			dijit.byId("usaga.account.contacts.gridx").store = null;
-}
-}
-
-
-
-
 ///////////////////////////////////////
 ///////////// PHONES TRIGGER //////////
 // Phones Trigger Elements
@@ -918,6 +843,7 @@ GxCStore: usaga_account_contactsStore,
 GxNPStore: usaga_account_contact_notifphonesStore,
 GxNETStore: usaga_account_contact_notifeventtypeStore,
 GxNPSelectedRows: [],
+GxNPSelectedContacts: [],
 dijit: {
 // Gridx Contacts
 GxC: dijit.byId('usaga.account.contacts.gridx'),
@@ -1114,6 +1040,7 @@ return this;
 LoadPhones: function(idcontact){
 
 this.GxNPSelectedRows = [];
+this.GxNPSelectedContacts = [];
 
 if(idcontact > 0){
 
@@ -1175,7 +1102,7 @@ var Objeto = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "notifyeditselectedcontacts.usaga",
-    content: {idaccount: GlobalObject.IdAccount, idphones: AC.GxNPSelectedContacts.toString(), call: dijit.byId('usaga.contactnotif.call.all').get('checked'), sms: dijit.byId('usaga.contactnotif.sms.all').get('checked'), msg: dijit.byId('usaga.contactnotif.msg.all').get('value')},
+    content: {idaccount: GlobalObject.IdAccount, idcontacts: AC.GxNPSelectedContacts.toString(), call: dijit.byId('usaga.contactnotif.call.all').get('checked'), sms: dijit.byId('usaga.contactnotif.sms.all').get('checked'), msg: dijit.byId('usaga.contactnotif.msg.all').get('value')},
     handleAs: "xml",
     load: function(dataX){
 
@@ -1186,7 +1113,7 @@ if(xmld.length > 0){
 alert(xmld.getStringB64(0, 'outpgmsg'));
 
 }
-
+AC.LoadContactsGrid();
     },
     error: function(errorx){
 alert(errorx);
@@ -1284,7 +1211,7 @@ dojo.connect(dojo.byId('usaga.contactnotif.applytoall'), 'onclick', function(){
 
 dojo.connect(dojo.byId('usaga.contactnotif.dialogMessageAll_ok'), 'onclick', function(){
    dijit.popup.close(dijit.byId('usaga.contactnotif.dialogMessageAll'));
-//AC.NotifyEditSelected();
+AC.NotifyEditToContactsSelected();
 });
 
 dojo.connect(dojo.byId('usaga.contactnotif.dialogMessageAll_cancel'), 'onclick', function(){
@@ -1362,6 +1289,9 @@ dojo.connect(AC.dijit.GxNP, 'onRowClick', function(event){
 AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 3, true).data());
 });
 
+		
+}
+
 
 dojo.connect(AC.dijit.GxNP.select.row, 'onSelectionChange', function(selected){
 AC.GxNPSelectedRows = [];
@@ -1378,10 +1308,23 @@ AC.GxNPSelectedRows[i] = AC.GxNPStore.getValue(item, 'idphone');
 i++;
 }
 });
-		
+
+dojo.connect(AC.dijit.GxC.select.row, 'onSelectionChange', function(selected){
+AC.GxNPSelectedContacts = [];
+//alert(selected);
+numsel = selected.length;
+i = 0;
+while(i<numsel){
+// Aqui buscamos los datos desde el store y no desde la celda.
+AC.GxCStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+//console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
+alert(i);
+AC.GxNPSelectedContacts[i] = AC.GxCStore.getValue(item, 'idcontact');
+} 
+});
+i++;
 }
-
-
+});
 
 
 
