@@ -1,4 +1,3 @@
-// 
 //  main.vala
 //  
 //  Author:
@@ -200,11 +199,40 @@ this.Note = Note;
 
 
 
-public class EventView:PostgreSQLConnection{
+public class EventTable:PostgreSQLConnection{
 
-public EventView(){
+public EventTable(){
 
 }
+
+public string fun_events_lastid_xml(){
+string RetornoX = "<table></table>";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {};
+
+var Resultado = Conexion.exec_params ("SELECT * FROM usaga.fun_events_lastid_xml() AS return", valuesin.length, null, valuesin, null, null, 0);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+//GLib.print("ResponseGetEventsMonitor >>> \n%s\n", RetornoX);
+return RetornoX;
+}
+
 
 public string byIdAccount_xml(int idaccount, string start, string end,  bool fieldtextasbase64 = true){
 string RetornoX = "<table></table>";

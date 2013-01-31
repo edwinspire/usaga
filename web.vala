@@ -49,6 +49,7 @@ S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.us
 
 S.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usaga";
 S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
+S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
 
 
@@ -140,6 +141,11 @@ case "/geteventsaccount.usaga":
 response = ResponseAccountEvents(request);
 break;
 
+case "/lastidevent.usaga":
+response = ResponseEventsLastIdXml(request);
+break;
+
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -149,13 +155,24 @@ break;
 
 }
 
+private uHttp.Response ResponseEventsLastIdXml(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+EventTable Tabla = new EventTable();
+Tabla.GetParamCnx();
+
+Retorno.Data = Tabla.fun_events_lastid_xml().data;
+return Retorno;
+}
 
 private uHttp.Response ResponseAccountEvents(Request request){
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
-EventView Tabla = new EventView();
+EventTable Tabla = new EventTable();
 Tabla.GetParamCnx();
 
 int idaccount = 0;
@@ -393,7 +410,7 @@ uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
-EventView Tabla = new EventView();
+EventTable Tabla = new EventTable();
 Tabla.GetParamCnx();
 
     Retorno.Data =  Tabla.LastXml().data;

@@ -8,6 +8,8 @@ require(["dojo/ready", "dojo/data/ItemFileReadStore",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
+var LastIdEvent = 0;
+
 	var myGridX = dijit.byId("usaga.event.monitor");
 	if (myGridX) {
 
@@ -31,6 +33,7 @@ require(["dojo/ready", "dojo/data/ItemFileReadStore",
 		]);
 myGridX.startup();
 
+}
 
 function LoadMonitorEvents(){
 
@@ -43,7 +46,6 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
@@ -72,8 +74,36 @@ ItemFileReadStore_1.clearOnClose = true;
 
 		myGridX.store = null;
 		myGridX.setStore(ItemFileReadStore_1);
-//GridCalls.startup();
-//alert('ok');
+
+},
+onError: function(e){
+alert(e);
+}
+});
+
+}
+
+function CheckLastIdEvent(){
+
+var store = new dojox.data.XmlStore({url: "lastidevent.usaga", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+alreadylasidevent = 0; 
+if(numrows > 0){
+LastIdEvent: dataxml.getNumber(0, "idevent");
+}else{
+LastIdEvent = 0;
+}
+
+if(alreadylasidevent > LastIdEvent){
+LastIdEvent = alreadylasidevent;
+LoadMonitorEvents();
+}
+
 },
 onError: function(e){
 alert(e);
@@ -83,14 +113,9 @@ alert(e);
 }
 
 
-}
-
-
-
-
 
 		
-window.setInterval(LoadMonitorEvents, 4000);
+window.setInterval(CheckLastIdEvent, 4000);
 
 
      });
