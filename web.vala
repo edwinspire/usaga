@@ -51,6 +51,8 @@ S.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usag
 S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
 S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
+S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+
 
 
 foreach(var u in uSMSServer.VirtualUrls().entries){
@@ -144,7 +146,9 @@ break;
 case "/lastidevent.usaga":
 response = ResponseEventsLastIdXml(request);
 break;
-
+case "/notifyeditselectedcontacts.usaga":
+response = ResponseAccountNotificationAppliedToSelectedContacts(request);
+break;
 
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
@@ -153,6 +157,18 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+
+private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+AccountNotificationsTable Tabla = new AccountNotificationsTable();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_account_notify_applied_to_selected_contacts_xml_hashmap(request.Form).data;
+return Retorno;
 }
 
 private uHttp.Response ResponseEventsLastIdXml(Request request){

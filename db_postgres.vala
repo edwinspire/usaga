@@ -842,6 +842,62 @@ msg = data["msg"];
 return fun_account_notifications_applyselected_xml(idaccount, arrayidphones, call, sms, msg, fieldtextasbase64);
 }
 
+public string fun_account_notify_applied_to_selected_contacts_xml_hashmap(HashMap<string, string> data, bool fieldtextasbase64 = true){
+
+int idaccount = 0;
+string arrayidcontacts = "";
+bool call = false;
+bool sms = false;
+string msg = "";
+
+if(data.has_key("idaccount")){
+idaccount = int.parse(data["idaccount"]);
+}
+
+if(data.has_key("idcontacts")){
+arrayidcontacts = data["idcontacts"];
+}
+
+if(data.has_key("call")){
+call = bool.parse(data["call"]);
+}
+
+if(data.has_key("sms")){
+sms = bool.parse(data["sms"]);
+}
+
+if(data.has_key("msg")){
+msg = data["msg"];
+}
+return fun_account_notify_applied_to_selected_contacts_xml(idaccount, arrayidcontacts, call, sms, msg, fieldtextasbase64);
+}
+
+public string fun_account_notify_applied_to_selected_contacts_xml(int idaccount, string arrayidcontacts, bool call, bool sms, string msg, bool fieldtextasbase64 = true){
+
+string Retorno = "";
+
+string[] ValuesArray = {idaccount.to_string(), "{"+arrayidcontacts+"}", call.to_string(), sms.to_string(), msg, fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_notify_applied_to_selected_contacts_xml($1::integer, $2::integer[], $3::boolean, $4::boolean, $5::text, $6::boolean) AS return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
 
 public string fun_account_notifications_applyselected_xml(int idaccount, string arrayidphones, bool call, bool sms, string msg, bool fieldtextasbase64 = true){
 

@@ -903,4 +903,45 @@ Está seguro que desea eliminar el abonado?</label>
      </div>
    </form>
  </div>
+ <div id="usaga.contactnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog" style="display: none;">
+   <form style="width: 250px;">
+   <label style="font-weight: bold;">
+     Estos cambios se aplicar&aacute;n a todos los teléfonos de todos los contactos que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
+   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+     <colgroup>
+       <col></col>
+       <col></col>
+     </colgroup>
+     <tbody>
+       <tr>
+         <td style="width: 75px;">
+           Llamar:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Enviar SMS:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Texto SMS:</td>
+         <td>
+           &nbsp;<textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.contactnotif.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
+</td>
+       </tr>
+     </tbody>
+   </table>
+<div class="dijitDialogPaneActionBar">
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_ok">
+         Aplicar</button>
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_cancel">
+         Cancel</button>
+     </div>
+   </form>
+ </div>
 </body></html>

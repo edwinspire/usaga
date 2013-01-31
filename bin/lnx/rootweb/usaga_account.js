@@ -1241,6 +1241,19 @@ return Objeto;
 
 }
 
+
+dojo.connect(dojo.byId('usaga.contactnotif.applytoall'), 'onclick', function(){
+
+            dijit.popup.open({
+                popup: dijit.byId('usaga.contactnotif.dialogMessageAll'),
+                around: dojo.byId('usaga.contactnotif.applytoall')
+            });
+
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////
 dojo.connect(dojo.byId('usaga.telfnotif.applytoall'), 'onclick', function(){
 
             dijit.popup.open({
