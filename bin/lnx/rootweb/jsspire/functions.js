@@ -360,6 +360,21 @@ r = Boolean(gridData);
 			}
 
 
+var jspireEditorArgsToGridxCellBooleanDisabled = {
+props: 'value: true, disabled: "true"',
+				fromEditor: function (d){
+		return Boolean(d);
+	},
+toEditor: function(storeData, gridData){
+r = true;
+if(gridData == "false"){
+r = false;
+}else{
+r = Boolean(gridData);
+}
+		return r;
+				}
+			}
 
 function StringToBool(value){
 //alert(value);

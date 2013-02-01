@@ -429,10 +429,7 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		// Optionally change column structure on the grid
 		myAccountUsersGridX.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
-			editorArgs: {
-				props: 'value: false'
-			}},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBooleanDisabled, alwaysEditing: true, disabled: true},
 			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
@@ -651,15 +648,7 @@ function primaryFormatter(inDatum) {
         }
 };
 
-function hyu(storeData, gridData) {
-alert(storeData);
-alert(gridData);
-}
 
-
-function hju(valueInEditor) {
-alert(valueInEditor);
-}
 
 // Est parte de codigo carga la lista de proveedores y los carga en un select 
 fieldStore = new Memory();
@@ -688,7 +677,7 @@ alert('from '+res);
 		PTElements.dijit.GxPT.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
 			{field:"idphone", name: "idphone", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, type: dojox.grid.cells.CheckBox},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 			{field:"type", name: "type", width: '20px'},
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
 					editor: 'dijit.form.Select',
@@ -912,7 +901,6 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 while(i<numrows){
@@ -1262,7 +1250,7 @@ AC.LoadFormContact(id);
 });
 		AC.dijit.GxC.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0%'},
-			{field:"enable_as_contact", name: "*", width: '20px'},
+			{field:"enable_as_contact", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBooleanDisabled, alwaysEditing: true},
 			{field:"priority", name: "priority", width: '20px'},
 			{field:"name", name: "nombre", width: '150px'},
 			{field:"appointment", name: "Designacion"}
