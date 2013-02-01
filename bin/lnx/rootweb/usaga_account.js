@@ -392,6 +392,8 @@ alert(errorx);
 
 ////////////////////
 ///// USUARIOS /////
+var myAccountUsersGridX = dijit.byId("usaga.account.users.gridx");
+
 
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
 
@@ -405,6 +407,9 @@ userSelectBox.readOnly = true;
 dojo.connect(dijit.byId("usaga.account.user.button.new"), 'onClick', function(){
 			dojo.byId("usaga.account.users.form").reset();
 dijit.byId("usaga.account.users.form.idcontact").readOnly = false;
+
+PTElements.GxPTClear();
+
 });
 
 dojo.connect(dijit.byId("usaga.account.user.button.save"), 'onClick', SaveFormAccountUser);
@@ -414,7 +419,7 @@ alert('No implementado');
 });
 
 
-var myAccountUsersGridX = dijit.byId("usaga.account.users.gridx");
+
 
 	if (myAccountUsersGridX) {
 // Captura el evento cuando se hace click en una fila
