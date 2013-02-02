@@ -1480,8 +1480,8 @@ GlobalObject.DisabledContentPanes(true);
 }
 }, 5000);
 
-dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
-dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
+//dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
+//dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 
 GlobalObject.LoadItemsSelectAccount().LoadListIdContactName();
 //GlobalObject.LoadListIdContactName();
