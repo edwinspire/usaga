@@ -331,6 +331,7 @@ this.Note = "";
 
 public class AccountPhonesTriggerAlarmTable:PostgreSQLConnection{
 
+/*
 public static XmlRow AccountPhonesTriggerAlarmViewdbNodeXml(AccountPhonesTriggerAlarmViewdb row){
 
 XmlRow Fila = new XmlRow();
@@ -350,6 +351,7 @@ Fila.addFieldString("note", row.Note, true);
 
 return Fila;
 }
+*/
 
 
 public SQLFunReturn fun_account_phones_trigger_alarm_table_from_hashmap(HashMap<string, string> form){
