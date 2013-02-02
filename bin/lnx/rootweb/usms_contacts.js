@@ -140,9 +140,9 @@ var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplet
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
+
 if(numrows > 0){
 var i = 0;
-
 FormContact.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
 FormContact.dijit.Firstname.set('value', dataxml.getStringB64(i, "firstname"));
 FormContact.dijit.Lastname.set('value', dataxml.getStringB64(i, "lastname"));
@@ -212,21 +212,19 @@ return Objeto;
 }
 
 
-dojo.connect(dijit.byId('usms.phones.new'), 'onClick', function(e){
+dojo.connect(dijit.byId('usms.save.contact.newtelf'), 'onClick', function(e){
 //CP.IdPhone = 0;
 CP.resetForm();
 //TODO Limpiar el resto de datos
 });
 
-dojo.connect(dijit.byId('usms.phones.map'), 'onClick', function(e){
 
-});
 
-dojo.connect(dijit.byId('usms.phones.del'), 'onClick', function(e){
+dojo.connect(dijit.byId('usms.save.contact.deltelf'), 'onClick', function(e){
 CP.Delete();
 });
 
-dojo.connect(dijit.byId('usms.phones.save'), 'onClick', function(e){
+dojo.connect(dijit.byId('usms.save.contact.savetelf'), 'onClick', function(e){
 CP.SaveForm();
 });
 
@@ -238,7 +236,7 @@ resetForm: function(){
 this.IdPhone = 0;
 this.dijit.Enable.reset();
 dojo.byId('usms.phones.formdata').reset();
-dojo.byId('usms.phones.formlocalization').reset();
+//dojo.byId('usms.phones.formlocalization').reset();
 },
 dijit: {
 Enable: dijit.byId('usms.phones.enable'),
@@ -261,7 +259,7 @@ IdPhone: 0,
 Gridx: dijit.byId('usms.contact.phone.grid'),
 GridxStore: ItemFileReadStore_contactphones,
 LoadGrid: function(){
-CP.resetForm();
+this.resetForm();
 var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
@@ -308,9 +306,9 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 if(numrows>0){
+
 var i = 0;
 
 CP.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
@@ -320,9 +318,9 @@ CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
 CP.dijit.Provider.set('value', dataxml.getString(i, "idprovider"));
 CP.dijit.Type.set('value', dataxml.getString(i, "typephone"));
 CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
-CP.dijit.Address.set('value', dataxml.getStringB64(i, "address"));
-CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
-CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
+//CP.dijit.Address.set('value', dataxml.getStringB64(i, "idaddress"));
+//CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
+//CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
 }else{
 CP.resetForm();
 }
@@ -346,7 +344,7 @@ var Objeto = this;
 
   var xhrArgs = {
     url: "usms_phonetable_xml",
- content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('checked'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), typephone: CP.dijit.Type.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), address: CP.dijit.Address.get('value'), geox: CP.dijit.GeoX.get('value'), geoy: CP.dijit.GeoY.get('value'), ts: CP.ts},
+ content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('checked'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), typephone: CP.dijit.Type.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), ts: CP.ts},
     handleAs: "xml",
     load: function(datass){
 
