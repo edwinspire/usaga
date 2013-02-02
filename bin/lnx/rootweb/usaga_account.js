@@ -684,7 +684,7 @@ alert('from '+res);
 					editorArgs: {
 						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
-			{field:"address", name: "Dirección", width: '150px'},
+//			{field:"address", name: "Dirección", width: '150px'},
 			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
 			editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 
@@ -737,8 +737,141 @@ LoadAccountPhonesTriggerGridx(0);
 
 }
 
-
 function LoadAccountPhonesTriggerGridx(inidcontact){
+
+			PTElements.GxPTClear();
+var inidaccount = GlobalObject.IdAccount;
+
+if(inidaccount > 0 && inidcontact > 0){
+
+var store = new dojox.data.XmlStore({url: "getaccountphonestriggerview.usaga", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idaccount: inidaccount, idcontact: inidcontact}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+
+var i = 0;
+while(i<numrows){
+
+myData.items[i] = {
+unique_id:i,
+//s: false, 
+idaccount: dataxml.getNumber(i, "idaccount"), 
+idphone: dataxml.getNumber(i, "idphone"), 
+idcontact: dataxml.getNumber(i, "idcontact"), 
+enable: dataxml.getBool(i, "trigger_alarm"),
+idprovider: dataxml.getNumber(i, "idprovider"),
+type: dataxml.getNumber(i, "type"),
+phone: dataxml.getStringB64(i, "phone"),
+//address: jsspire.Base64.decode(xmldata[i].getAttribute("address")),
+phone: dataxml.getStringB64(i, "phone"),
+fromsms: dataxml.getBool(i, "fromsms"),    
+fromcall: dataxml.getBool(i, "fromcall"),    
+note: dataxml.getStringB64(i, "note"),
+};
+i++;
+}
+
+	// Set new data on data store (the store has jsId set, so there's
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.clearOnClose = true;
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.data = myData;
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.close();
+
+		// Tell our grid to reset itself
+		PTElements.dijit.GxPT.store = null;
+		PTElements.dijit.GxPT.setStore(usaga_account_users_ItemFileWriteStoreTriggerAlarm);
+
+},
+onError: function(e){
+alert(e);
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  var xhrArgs = {
+    url: "getaccountphonestriggerview.usaga",
+ content: {idaccount: inidaccount, idcontact: inidcontact},
+    handleAs: "text",
+    load: function(datass){
+
+  var datar = dojox.xml.DomParser.parse(datass);
+
+//	var myGridX = dijit.byId("usaga.account.phonestrigger.gridx")
+	if (PTElements.dijit.GxPT) {
+
+var xmldata = datar.byName('row');
+
+var myData = {identifier: "unique_id", items: []};
+
+var i = 0;
+var rowscount = xmldata.length;
+while(i<rowscount){
+
+myData.items[i] = {
+unique_id:i,
+//s: false, 
+idaccount: xmldata[i].getAttribute("idaccount"), 
+idphone: xmldata[i].getAttribute("idphone"), 
+idcontact: xmldata[i].getAttribute("idcontact"), 
+enable: xmldata[i].getAttribute("trigger_alarm"),
+idprovider: xmldata[i].getAttribute("idprovider"),
+type: xmldata[i].getAttribute("type"),
+phone: jsspire.Base64.decode(xmldata[i].getAttribute("phone")),
+address: jsspire.Base64.decode(xmldata[i].getAttribute("address")),
+phone: jsspire.Base64.decode(xmldata[i].getAttribute("phone")),
+fromsms: xmldata[i].getAttribute("fromsms"),    
+fromcall: xmldata[i].getAttribute("fromcall"),    
+note: jsspire.Base64.decode(xmldata[i].getAttribute("note")),
+};
+
+i++;
+}
+
+
+	// Set new data on data store (the store has jsId set, so there's
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.clearOnClose = true;
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.data = myData;
+	usaga_account_users_ItemFileWriteStoreTriggerAlarm.close();
+
+		// Tell our grid to reset itself
+		PTElements.dijit.GxPT.store = null;
+		PTElements.dijit.GxPT.setStore(usaga_account_users_ItemFileWriteStoreTriggerAlarm);
+	}
+
+ 
+    },
+    error: function(error){
+//      targetNode.innerHTML = "An unexpected error occurred: " + error;
+alert(error);
+			//PTElements.GxPTClear();
+    }
+  }
+
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+*/
+}
+
+
+function xxxLoadAccountPhonesTriggerGridx(inidcontact){
 
 			PTElements.GxPTClear();
 var inidaccount = GlobalObject.IdAccount;

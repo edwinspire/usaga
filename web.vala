@@ -489,13 +489,13 @@ return Retorno;
 private uHttp.Response ResponseGetAccountPhonesTrigger(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Form).data;
+    Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Query).data;
 
 return Retorno;
 }

@@ -413,7 +413,7 @@ Retorno.Msg = filas["outpgmsg"].Value;
 return Retorno;
 }
 
-public string AccountPhonesTriggerAlarmViewdbXml_from_hashmap(HashMap<string, string> form){
+public string AccountPhonesTriggerAlarmViewdbXml_from_hashmap(HashMap<string, string> form, bool fieldtextasbase64 = true){
 
 int idaccount = 0;
 int idcontact = 0;
@@ -424,10 +424,11 @@ idcontact = int.parse(form["idcontact"]);
 if(form.has_key("idaccount")){
 idaccount = int.parse(form["idaccount"]);
 }
-return AccountPhonesTriggerAlarmViewdbXml(idaccount, idcontact);
+return fun_view_account_users_trigger_phones_contacts_xml(idaccount, idcontact, fieldtextasbase64);
 }
 
 
+/*
 public string AccountPhonesTriggerAlarmViewdbXml(int idaccount, int idcontact){
 var Rows = XmlDatas.Node("trigger");
 foreach(var r in AccountPhonesTriggerAlarmView(idaccount, idcontact)){
@@ -435,11 +436,12 @@ Rows->add_child(AccountPhonesTriggerAlarmViewdbNodeXml(r).Row());
 }
 return XmlDatas.XmlDocToString(Rows);
 }
+*/
 
-public AccountPhonesTriggerAlarmViewdb[] AccountPhonesTriggerAlarmView(int idaccount, int idcontact){
+public string fun_view_account_users_trigger_phones_contacts_xml(int idaccount, int idcontact, bool fieldtextasbase64 = true){
 
-string[] valuesin = {idaccount.to_string(), idcontact.to_string()};
-AccountPhonesTriggerAlarmViewdb[] RetornoX = new AccountPhonesTriggerAlarmViewdb[0];
+string[] valuesin = {idaccount.to_string(), idcontact.to_string(), fieldtextasbase64.to_string()};
+string RetornoX = "<table></table>";
 
 if(idaccount > 0 && idcontact > 0){
 
@@ -447,48 +449,25 @@ var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_users_trigger_phones_contacts($1::integer, $2::integer)", valuesin);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_users_trigger_phones_contacts_xml($1::integer, $2::integer, $3::boolean) as return;", valuesin);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
-var Registros = this.Result_FieldName(ref Resultado);
-
-RetornoX = new AccountPhonesTriggerAlarmViewdb[Registros.length];
-int i = 0;
-foreach(var reg in Registros){
-AccountPhonesTriggerAlarmViewdb Registro = AccountPhonesTriggerAlarmViewdb();
-Registro.IdAccount = reg["idaccount"].as_int();
-Registro.IdContact = reg["idcontact"].as_int();
-Registro.IdPhone = reg["idphone"].as_int();
-Registro.PhoneEnable = reg["phone_enable"].as_bool();
-Registro.Type = reg["type"].as_int();
-Registro.IdProvider = reg["idprovider"].as_int();
-Registro.Phone = reg["phone"].Value;
-Registro.Address = reg["address"].Value;
-Registro.TriggerEnable = reg["trigger_alarm"].as_bool();
-Registro.SMS = reg["fromsms"].as_bool();
-Registro.Call = reg["fromcall"].as_bool();
-Registro.Note = reg["note"].Value;
-
-RetornoX[i] = Registro;
-
-i++;
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
 }
 
-} else{
+}else{
 	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
     }
 
 }else{
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-
 }
 
 return RetornoX;
 }
-
-
 
 }
 
@@ -1204,44 +1183,6 @@ return Retorno;
 }
 
 
-/*
-public Accountdb byId(int idaccount){
-
-string[] valuesin = {idaccount.to_string()};
-Accountdb Retorno = Accountdb();
-var  Conexion = Postgres.connect_db (this.ConnString());
-
-if(Conexion.get_status () == ConnectionStatus.OK){
-
-var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.account WHERE idaccount = $1;""", valuesin);
-
-    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-
-foreach(var reg in this.Result_FieldName(ref Resultado)){
-
-Retorno.Id = reg["idaccount"].as_int();
-Retorno.IdGroup = reg["idgroup"].as_int();
-Retorno.Partition = reg["partition"].as_int();
-Retorno.Enable =  reg["enable"].as_bool();
-Retorno.Account = reg["account"].Value;
-Retorno.Name = reg["name"].Value;
-Retorno.Type = (AccountType)reg["type"].as_int();
-Retorno.Note = reg["note"].Value;
-//GLib.print("<<<<<<<<<<<<<<<<<<< %s   [%s]\n", Retorno.Enable.to_string(), reg["enable"].Value);
-}
-
-} else{
-	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
-    }
-
-}else{
-	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
-}
-
-return Retorno;
-}
-*/
-
 
 public string fun_account_table_xml_from_hashmap(HashMap<string, string> Data, bool fieldtextasbase64 = true){
 
@@ -1616,10 +1557,10 @@ return Retorno;
 
 
 
+
+
+
 }
-
-
-
 
 
 
