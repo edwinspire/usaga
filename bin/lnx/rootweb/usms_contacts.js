@@ -233,7 +233,7 @@ CP.SaveForm();
 // Contact Phones
 var CP = {
 ts: '1990-01-01',
-idaddress: 'xxxxxx',
+idaddress: '0',
 resetForm: function(){
 this.IdPhone = 0;
 this.dijit.Enable.reset();
@@ -261,7 +261,7 @@ IdPhone: 0,
 Gridx: dijit.byId('usms.contact.phone.grid'),
 GridxStore: ItemFileReadStore_contactphones,
 LoadGrid: function(){
-this.resetForm();
+CP.resetForm();
 var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
@@ -324,7 +324,7 @@ CP.dijit.Address.set('value', dataxml.getStringB64(i, "address"));
 CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
 CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
 }else{
-this.resetForm();
+CP.resetForm();
 }
 
 
