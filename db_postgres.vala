@@ -1042,7 +1042,7 @@ string RetornoX = "";
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
 string[] valuesin = {idaccount.to_string(), inidaddress.to_string(), inidlocation, ingeox.to_string(), ingeoy.to_string(), inmstreet, insstreet, inother, innote, ints, fieldtextasbase64.to_string()};
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM fun_address_edit_xml($1::integer, $2::integer, $3::text, $4::real, $5::real, $6::text, $7::text,  $8::text, $9::text, $10::timestamp without time zone, $11::boolean) AS return;", valuesin);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_address_edit_xml($1::integer, $2::integer, $3::text, $4::real, $5::real, $6::text, $7::text,  $8::text, $9::text, $10::timestamp without time zone, $11::boolean) AS return;", valuesin);
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 foreach(var reg in this.Result_FieldName(ref Resultado)){
 RetornoX = reg["return"].Value;

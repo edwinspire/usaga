@@ -127,7 +127,6 @@ return Objeto;
 
 // ACCOUNT BASIC ELEMENTS
 var ABE = {
-idaddress: 0,
 dijit:{
 DialogDelete: dijit.byId('idDialogDeleteAccount'),
 Partition: dijit.byId('account.basic.partition'), 
@@ -276,13 +275,13 @@ ABE.dijit.Enable.set('checked', dataxml.getBool(0, "enable"));
 ABE.dijit.Num.set('value', dataxml.getStringB64(0, "account")); 
 ABE.dijit.Select.set('value', dataxml.getNumber(0, "idaccount")); 
 ABE.dijit.Type.setValue(dataxml.getString(0, "type")); 
-ABE.dijit.Note.set('value', dataxml.getStringB64(0, "note")); 
-ABE.idaddress = dataxml.getNumber(0, "idaddress");
+ABE.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
+AA.AddressW.set('idaddress', dataxml.getNumber(0, "idaddress"));  
 }else{
 formulario.reset();
 }
 
-AA.Load(ABE.idaddress);
+AA.Load();
 LoadAccountPhonesTriggerGridx(0);
 
 },
@@ -314,16 +313,20 @@ AC.LoadContactsGrid();
 ///// ACCOUNT ADDRESS /////
 var AA = {
 AddressW : dijit.byId('usaga_account_address'),
-Load: function(id){
-
-this.AddressW.reset();
-
-if(id > 0){
+Delete: function(){
+this.AddressW.idaddress = this.AddressW.idaddress*-1;
+alert('Elimina '+this.AddressW.idaddress);
+this.Save();
+},
+Load: function(){
 
 var ObjectoW = this.AddressW;
+
+if(ObjectoW.idaddress > 0){
+
 var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaddress: id}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -349,6 +352,8 @@ alert(e);
 }
 });
 
+}else{
+ObjectoW.reset();
 }
 
 },
@@ -371,7 +376,8 @@ alert(xmld.getStringB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
-Este.Load(OWA.idaddress);
+ABE.idaddress = OWA.idaddress;
+Este.Load();
     },
 
     error: function(error)
@@ -390,7 +396,9 @@ dojo.connect(dojo.byId('accountwlocationaddress_save'), 'onclick', function(){
 AA.Save();
 });
 
-
+dojo.connect(dojo.byId('accountwlocationaddress_delete'), 'onclick', function(){
+AA.Delete();
+});
 
 
 
