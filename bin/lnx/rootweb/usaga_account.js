@@ -315,8 +315,9 @@ var AA = {
 AddressW : dijit.byId('usaga_account_address'),
 Delete: function(){
 this.AddressW.idaddress = this.AddressW.idaddress*-1;
-alert('Elimina '+this.AddressW.idaddress);
+if(this.AddressW.idaddress > 0){
 this.Save();
+}
 },
 Load: function(){
 
