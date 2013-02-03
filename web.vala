@@ -52,6 +52,7 @@ S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
 S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
 S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+S.VirtualUrl["fun_address_edit.usaga"] = "/fun_address_edit.usaga";
 
 
 
@@ -149,6 +150,9 @@ break;
 case "/notifyeditselectedcontacts.usaga":
 response = ResponseAccountNotificationAppliedToSelectedContacts(request);
 break;
+case "/fun_address_edit.usaga":
+response = ResponseAccountAddressTableEdit(request);
+break;
 
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
@@ -159,6 +163,19 @@ break;
 
 }
 
+private static uHttp.Response ResponseAccountAddressTableEdit(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+AccountTable Tabla = new AccountTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_address_edit_xml_from_hashmap(request.Form, true).data;
+
+return Retorno;
+}
 
 private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request){
 uHttp.Response Retorno = new uHttp.Response();

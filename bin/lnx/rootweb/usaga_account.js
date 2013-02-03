@@ -48,7 +48,7 @@ dijit.byId('ContentPaneNotifyGroup').attr('disabled',  disabled);
 dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 dijit.byId('ContentPaneDataInstall').attr('disabled',  disabled);
 dijit.byId('ContentPaneMantenimiento').attr('disabled',  disabled);
-
+dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 },
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
@@ -127,6 +127,7 @@ return Objeto;
 
 // ACCOUNT BASIC ELEMENTS
 var ABE = {
+idaddress: 0,
 dijit:{
 DialogDelete: dijit.byId('idDialogDeleteAccount'),
 Partition: dijit.byId('account.basic.partition'), 
@@ -138,12 +139,12 @@ Note: dijit.byId('account.basic.note')
 },
 dojo: {
 FormBasic: dojo.byId("os.account.form.basic"),
-FormLocation: dojo.byId("account.location.form"),
+//FormLocation: dojo.byId("account.location.form"),
 DeleteButton: dojo.byId('account.basic.deleteaccount')
 },
 ResetForms: function(){
 this.dojo.FormBasic.reset();
-this.dojo.FormLocation.reset();
+//this.dojo.FormLocation.reset();
 }
 }
 
@@ -266,7 +267,6 @@ var request = store.fetch({query: { idaccount: GlobalObject.IdAccount}, onComple
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
-alreadylasidevent = 0; 
 
 if(numrows > 0){
 
@@ -277,12 +277,12 @@ ABE.dijit.Num.set('value', dataxml.getStringB64(0, "account"));
 ABE.dijit.Select.set('value', dataxml.getNumber(0, "idaccount")); 
 ABE.dijit.Type.setValue(dataxml.getString(0, "type")); 
 ABE.dijit.Note.set('value', dataxml.getStringB64(0, "note")); 
-
+ABE.idaddress = dataxml.getNumber(0, "idaddress");
 }else{
 formulario.reset();
 }
 
-AjaxLoadAccountLocation();
+AA.Load(ABE.idaddress);
 LoadAccountPhonesTriggerGridx(0);
 
 },
@@ -310,84 +310,89 @@ AC.LoadContactsGrid();
 
 
 
+///////////////////////////
+///// ACCOUNT ADDRESS /////
+var AA = {
+AddressW : dijit.byId('usaga_account_address'),
+Load: function(id){
 
-////////////////////////
-///// LOCALIZACION /////
-function AjaxLoadAccountLocation(){
-var inidaccount = GlobalObject.IdAccount;
-var formulario = dojo.byId("account.location.form");
-if(inidaccount>0){
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "getaccountlocation.usaga",
- content: { idaccount: inidaccount},
-    handleAs: "text",
-    load: function(dataX){
-  var datar = dojox.xml.DomParser.parse(dataX);
+this.AddressW.reset();
 
-var xmldata = datar.byName('row');
-if(xmldata.length > 0){
+if(id > 0){
 
-//	 dijit.byId('account.location.idaccount').set('value', xmldata[0].getAttribute("idaccount")); 
-//	 dijit.byId('account.location.idaddress').set('value', xmldata[0].getAttribute("idaddress")); 
-	 dijit.byId('account.location.geox').set('value', xmldata[0].getAttribute("geox")*1); 
-	 dijit.byId('account.location.geoy').set('value', xmldata[0].getAttribute("geoy")*1); 
-	 dijit.byId('account.location.address').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("address"))); 
-	 dijit.byId('account.location.note').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note"))); 
+var ObjectoW = this.AddressW;
+var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idaddress: id}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+if(numrows > 0){
+i = 0;
+ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
+ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
+ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
+ObjectoW.set('mainstreet', dataxml.getStringB64(i, 'main_street'));
+ObjectoW.set('secundarystreet', dataxml.getStringB64(i, 'secundary_street'));
+ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
+ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
+ObjectoW.set('ts', dataxml.getString(i, 'ts'));
+ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
 }
-    },
-    error: function(errorx){
-formulario.reset();
-    }
-  }
 
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
+},
+onError: function(e){
+ObjectoW.reset();
+alert(e);
+}
+});
 
+}
+
+},
+Save: function(){
+// Objeto Widget Address
+var OWA = this.AddressW;
+var Este = this;
+
+  var xhrArgs = {
+    url: "fun_address_edit.usaga",
+ content: {idaddress: OWA.get('idaddress'), idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts'), idaccount: GlobalObject.IdAccount},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+OWA.idaddress = xmld.getInt(0, 'outreturn');
+alert(xmld.getStringB64(0, 'outpgmsg'));
 }else{
-formulario.reset();
+OWA.reset();
 }
-
-}
-
-function SaveAccountLocation(){
-var formulario = dojo.byId("account.location.form");
-var datos = {};
-//datos.idaccount = dijit.byId('account.basic.id').get('value'); 
-datos.idaccount = GlobalObject.IdAccount;
-datos.geox = dijit.byId('account.location.geox').get('value');
-datos.geoy = dijit.byId('account.location.geoy').get('value'); 
-datos.address = dijit.byId('account.location.address').get('value'); 
-//datos.name = dijit.byId('account.basic.accountselect').get('displayedValue'); 
-datos.note = dijit.byId('account.location.note').get('value');
-
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "saveaccountlocation.usaga",
-    content: datos,
-    handleAs: "text",
-    load: function(dataX){
-
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('SQLFunReturn');
-
-if(xmldata.length > 0){
-//LoadItemsSelectAccount();
-var id = xmldata[0].getAttribute("return");
-alert(jsspire.Base64.decode(xmldata[0].getAttribute("msg")));
-if(id>=0){
-AjaxLoadAccountLocation(id);
-}
-}
-
+Este.Load(OWA.idaddress);
     },
-    error: function(errorx){
-alert(errorx);
+
+    error: function(error)
+{
+OWA.reset();
+alert(error);
     }
   }
+
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }
+} 
+
+dojo.connect(dojo.byId('accountwlocationaddress_save'), 'onclick', function(){
+AA.Save();
+});
+
+
+
+
 
 
 ////////////////////
@@ -1487,6 +1492,8 @@ GlobalObject.LoadItemsSelectAccount().LoadListIdContactName();
 //GlobalObject.LoadListIdContactName();
 ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 AC.dijit.Select.set('invalidMessage', 'Seleccione de la lista');
+//dijit.byId('usaga_account_address').idps.set('value', 'Es la direccion');
+
 
      });
 });
