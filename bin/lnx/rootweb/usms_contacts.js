@@ -320,11 +320,9 @@ CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
 CP.dijit.Provider.set('value', dataxml.getString(i, "idprovider"));
 CP.dijit.Type.set('value', dataxml.getString(i, "typephone"));
 CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
-//CP.dijit.Address.set('value', dataxml.getStringB64(i, "idaddress"));
-//CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
-//CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
-PAddress.WidgetAddress.idaddress = dataxml.getFloat(i, "idaddress");
+PAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
 }else{
+PAddress.AddressW.reset();
 CP.resetForm();
 }
 GeneralLoadAddressForm(PAddress.AddressW);
@@ -406,6 +404,7 @@ CP.Gridx.startup();
 function GeneralLoadAddressForm(WidgetAddress){
 
 var ObjectoW = WidgetAddress;
+//alert('idaddress > '+ObjectoW.idaddress);
 
 if(ObjectoW.idaddress > 0){
 
