@@ -344,6 +344,8 @@ ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
 ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
 ObjectoW.set('ts', dataxml.getString(i, 'ts'));
 ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
+}else{
+ObjectoW.reset();
 }
 
 },

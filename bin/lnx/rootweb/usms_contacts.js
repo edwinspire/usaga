@@ -156,12 +156,14 @@ FormContact.dijit.email1.set('value', dataxml.getStringB64(i, "email1"));
 FormContact.dijit.email2.set('value', dataxml.getStringB64(i, "email2"));
 FormContact.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 FormContact.ts = dataxml.getStringB64(i, "ts");
+CAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
+GlobalObject.IdContact = dataxml.getNumber(i, "idcontact");
 }else{
 GlobalObject.IdContact = 0;
 FormContact.dojo.Form.reset();
 }
+GeneralLoadAddressForm(CAddress.AddressW);
 CP.LoadGrid();
-
 },
 onError: function(e){
 GlobalObject.IdContact = 0;
@@ -321,10 +323,11 @@ CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
 //CP.dijit.Address.set('value', dataxml.getStringB64(i, "idaddress"));
 //CP.dijit.GeoX.set('value', dataxml.getFloat(i, "geox"));
 //CP.dijit.GeoY.set('value', dataxml.getFloat(i, "geoy"));
+PAddress.WidgetAddress.idaddress = dataxml.getFloat(i, "idaddress");
 }else{
 CP.resetForm();
 }
-
+GeneralLoadAddressForm(PAddress.AddressW);
 
 },
 onError: function(e){
@@ -394,7 +397,241 @@ CP.LoadPhone();
 CP.Gridx.startup();
 }
 
+
+
+///////////////////////////
+///// CONTACT ADDRESS /////
+
+
+function GeneralLoadAddressForm(WidgetAddress){
+
+var ObjectoW = WidgetAddress;
+
+if(ObjectoW.idaddress > 0){
+
+var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
+
+var dataxml = new jspireTableXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+if(numrows > 0){
+i = 0;
+ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
+ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
+ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
+ObjectoW.set('mainstreet', dataxml.getStringB64(i, 'main_street'));
+ObjectoW.set('secundarystreet', dataxml.getStringB64(i, 'secundary_street'));
+ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
+ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
+ObjectoW.set('ts', dataxml.getString(i, 'ts'));
+ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
+}else{
+ObjectoW.reset();
+}
+
+},
+onError: function(e){
+ObjectoW.reset();
+alert(e);
+}
+});
+
+}else{
+ObjectoW.reset();
+}
+
+}
+
+
+var CAddress = {
+AddressW : dijit.byId('idwaddresscontact'),
+Delete: function(){
+if(this.AddressW.idaddress > 0){
+// Objeto Widget Address
+var OWA = this.AddressW;
+var Este = this;
+
+  var xhrArgs = {
+    url: "fun_contact_address_edit.usms",
+ content: {idcontact: GlobalObject.IdContact*-1, ts: OWA.get('ts')},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+OWA.idaddress = xmld.getInt(0, 'outreturn');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+OWA.reset();
+}
+GeneralLoadAddressForm(OWA);
+    },
+
+    error: function(error)
+{
+OWA.reset();
+alert(error);
+    }
+  }
+
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+},
+Save: function(){
+// Objeto Widget Address
+var OWA = this.AddressW;
+var Este = this;
+
+  var xhrArgs = {
+    url: "fun_contact_address_edit.usms",
+ content: {idcontact: GlobalObject.IdContact, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts')},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+OWA.idaddress = xmld.getInt(0, 'outreturn');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+OWA.reset();
+}
+//ABE.idaddress = OWA.idaddress;
+GeneralLoadAddressForm(OWA);
+    },
+
+    error: function(error)
+{
+OWA.reset();
+alert(error);
+    }
+  }
+
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+} 
+
+dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
+CAddress.Save();
+});
+
+dojo.connect(dojo.byId('usms.delete.contact.address'), 'onclick', function(){
+CAddress.Delete();
+});
+
+///////////////////////////////////////////////////
+// PHONE ADDRESS
+var PAddress = {
+AddressW : dijit.byId('idwaddresstelf'),
+Delete: function(){
+if(this.AddressW.idaddress > 0){
+// Objeto Widget Address
+var OWA = this.AddressW;
+var Este = this;
+
+  var xhrArgs = {
+    url: "fun_phone_address_edit.usms",
+ content: {idphone: CP.IdPhone*-1, ts: OWA.get('ts')},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+OWA.idaddress = xmld.getInt(0, 'outreturn');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+OWA.reset();
+}
+GeneralLoadAddressForm(OWA);
+    },
+
+    error: function(error)
+{
+OWA.reset();
+alert(error);
+    }
+  }
+
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+},
+Save: function(){
+// Objeto Widget Address
+var OWA = this.AddressW;
+var Este = this;
+
+  var xhrArgs = {
+    url: "fun_phone_address_edit.usms",
+ content: {idphone: CP.IdPhone, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts')},
+    handleAs: "xml",
+    load: function(datass){
+
+var xmld = new jspireTableXmlDoc(datass, 'row');
+
+if(xmld.length > 0){
+OWA.idaddress = xmld.getInt(0, 'outreturn');
+alert(xmld.getStringB64(0, 'outpgmsg'));
+}else{
+OWA.reset();
+}
+//ABE.idaddress = OWA.idaddress;
+GeneralLoadAddressForm(OWA);
+    },
+
+    error: function(error)
+{
+OWA.reset();
+alert(error);
+    }
+  }
+
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+}
+} 
+
+dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
+PAddress.Save();
+});
+
+dojo.connect(dojo.byId('usms.save.contact.deladdresstelf'), 'onclick', function(){
+PAddress.Delete();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
