@@ -625,7 +625,10 @@ var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.
 
 
 
+dijit.byId('idwaddresscontact').on('onok', function(x){
+alert(x.value);
 
+});
 
 
 
