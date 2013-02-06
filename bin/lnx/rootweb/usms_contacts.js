@@ -41,12 +41,7 @@ dojo.connect(dijit.byId('usms.contact.save'), 'onClick', function(e){
 FormContact.SaveForm();
 });
 
-/*
-dojo.connect(dijit.byId('usms.contact.del'), 'onClick', function(e){
-GlobalObject.IdContact = GlobalObject.IdContact*-1;
-FormContact.SaveForm();
-});
-*/
+
 
 var GlobalObject = {
 IdContact: 0,
@@ -223,10 +218,6 @@ CP.resetForm();
 });
 
 
-
-dojo.connect(dijit.byId('usms.save.contact.deltelf'), 'onClick', function(e){
-CP.Delete();
-});
 
 dojo.connect(dijit.byId('usms.save.contact.savetelf'), 'onClick', function(e){
 CP.SaveForm();
@@ -531,7 +522,7 @@ if(this.AddressW.idaddress > 0){
 // Objeto Widget Address
 var OWA = this.AddressW;
 var Este = this;
-
+//alert('eliminamos dir de '+CP.IdPhone);
   var xhrArgs = {
     url: "fun_phone_address_edit.usms",
  content: {idphone: CP.IdPhone*-1, ts: OWA.get('ts')},
@@ -599,18 +590,6 @@ dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function
 PAddress.Save();
 });
 
-dojo.connect(dojo.byId('usms.save.contact.deladdresstelf'), 'onclick', function(){
-PAddress.Delete();
-});
-
-
-
-
-
-
-
-
-
 
 
 
@@ -635,6 +614,19 @@ var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
 dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
 CAddress.Delete();
 });
+
+var dialogdeletphone = dijit.byId('dialogconfirmdeletecontactphone');
+dialogdeletphone.setowner('usms.save.contact.deltelf', 'onclick').on('onok', function(){
+CP.Delete();
+});
+
+var dialogdeletphoneaddress = dijit.byId('dialogconfirmdeletecontactaddressphone');
+dialogdeletphoneaddress.setowner('usms.save.contact.deladdresstelf', 'onclick').on('onok', function(){
+PAddress.Delete();
+});
+
+
+
 
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
