@@ -41,11 +41,12 @@ dojo.connect(dijit.byId('usms.contact.save'), 'onClick', function(e){
 FormContact.SaveForm();
 });
 
+/*
 dojo.connect(dijit.byId('usms.contact.del'), 'onClick', function(e){
 GlobalObject.IdContact = GlobalObject.IdContact*-1;
 FormContact.SaveForm();
 });
-
+*/
 
 var GlobalObject = {
 IdContact: 0,
@@ -112,7 +113,7 @@ GlobalObject.LoadGrid();
 
 
 var FormContact = {
-ts: '',
+ts: '1990-001-01',
 dojo: {
 Form: dojo.byId('usms.contact.form')
 },
@@ -161,6 +162,7 @@ GlobalObject.IdContact = dataxml.getNumber(i, "idcontact");
 }else{
 GlobalObject.IdContact = 0;
 FormContact.dojo.Form.reset();
+CAddress.AddressW.idaddress = 0;
 }
 GeneralLoadAddressForm(CAddress.AddressW);
 CP.LoadGrid();
@@ -181,7 +183,7 @@ var Objeto = this;
 
   var xhrArgs = {
     url: "contacts_table_edit.usms",
- content: {idcontact:GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('checked'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
+ content: {idcontact: GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('checked'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
     handleAs: "xml",
     load: function(datass){
 
@@ -209,7 +211,7 @@ alert(error);
 
   var deferred = dojo.xhrPost(xhrArgs);
 
-return Objeto;
+//return Objeto;
 }
 }
 
@@ -520,10 +522,6 @@ dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
 CAddress.Save();
 });
 
-dojo.connect(dojo.byId('usms.delete.contact.address'), 'onclick', function(){
-CAddress.Delete();
-});
-
 ///////////////////////////////////////////////////
 // PHONE ADDRESS
 var PAddress = {
@@ -618,21 +616,25 @@ PAddress.Delete();
 
 var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
 
-
-
-
-
-
-
-
+/*
 dijit.byId('idwaddresscontact').on('onok', function(x){
 alert(x.value);
-
 });
 
+*/
 
+var dialogdeletc = dijit.byId('dialogconfirmdeletecontact');
+dialogdeletc.setowner('usms.contact.del', 'onclick').on('onok', function(){
+if(GlobalObject.IdContact>0){
+GlobalObject.IdContact = GlobalObject.IdContact*-1;
+FormContact.SaveForm();
+}
+});
 
-
+var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
+dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
+CAddress.Delete();
+});
 
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
