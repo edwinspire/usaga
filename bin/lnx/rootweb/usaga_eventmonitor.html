@@ -18,13 +18,16 @@ require([
   "dijit/TitlePane",
   "dijit/form/Form",
   "dijit/form/NumberTextBox",
-  "dijit/form/NumberSpinner"
+  "dijit/form/NumberSpinner",
+ "dijit/form/CheckBox"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/dojox/form/resources/Rating.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
 </style>
+<script type="text/javascript" src="/jspire/core.js"></script>
+<script type="text/javascript" src="/jspire/ajax.js"></script>
+<script type="text/javascript" src="/jspire/dijit.js"></script>
 <script type="text/javascript" src="usaga_eventmonitor.js"></script>
-<script type="text/javascript" src="jsspire/functions.js"></script>
 </head>
 <body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-appstates="{'states':[]}" data-maq-comptype="desktop" id="myapp">
  <div style="width: 100%; display: block; height: 100%;">
@@ -33,6 +36,6 @@ require([
  <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
    Ultimos 100 eventos registrados</label>
 </div>
-<table data-dojo-type="gridx.Grid" id="usaga.event.monitor" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%; display: block;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_1"></table>
+<table data-dojo-type="gridx.Grid" id="usaga.event.monitor" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%; display: block;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Edit', 'gridx/modules/CellWidget'], store:ItemFileReadStore_1"></table>
 </div>
 </body></html>

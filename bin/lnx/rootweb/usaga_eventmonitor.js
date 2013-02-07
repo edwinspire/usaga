@@ -2,9 +2,10 @@
  * This file is provided for custom JavaScript logic that your HTML files might need.
  * Maqetta includes this JavaScript file by default within HTML pages authored in Maqetta.
  */
+
 require(["dojo/ready", "dojo/data/ItemFileReadStore",
   "gridx/Grid",
-  "gridx/core/model/cache/Async", "dojox/xml/DomParser", "dojox/data/XmlStore"], function(ready){
+  "gridx/core/model/cache/Async", "dojox/xml/DomParser", "dojox/data/XmlStore",   "dijit/form/CheckBox", 'gridx/modules/Edit', 'gridx/modules/CellWidget'], function(ready){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -13,22 +14,21 @@ var LastIdEvent = 0;
 	var myGridX = dijit.byId("usaga.event.monitor");
 	if (myGridX) {
 
-
 		// Optionally change column structure on the grid
 		myGridX.setColumns([
 
-			{field:"id", name: "id", width: '20px'},
-			{field:"dateload", name: "dateload", width: '80px'},
-			{field:"idaccount", name: "idaccount", width: '75px'},
-			{field:"partition", name: "partition", width: '60px'},
-			{field:"enable", name: "enable", width: '60px'},
-			{field:"account", name: "account", width: '100px'},
-			{field:"name", name: "name", width: '100px'},
-			{field:"code", name: "code"},
-			{field:"zu", name: "zu"},
-			{field:"priority", name: "priority"},
+			{field:"id", name: "id", width: '25px'},
+			{field:"dateload", name: "dateload", width: '85px'},
+			{field:"idaccount", name: "idaccount", width: '45px'},
+			{field:"partition", name: "partition", width: '40px'},
+			{field:"enable", name: "enable", width: '40px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
+			{field:"account", name: "account", width: '50px'},
+			{field:"name", name: "name", width: '150px'},
+			{field:"code", name: "code", width: '20px'},
+			{field:"zu", name: "zu", width: '15px'},
+			{field:"priority", name: "priority", width: '25px'},
 			{field:"description", name: "description"},
-			{field:"ideventtype", name: "ideventtype"},
+			{field:"ideventtype", name: "ideventtype", width: '40px'},
 			{field:"eventtype", name: "eventtype"}
 		]);
 myGridX.startup();
@@ -41,7 +41,7 @@ var store = new dojox.data.XmlStore({url: "usaga_geteventsmonitor.usaga", sendQu
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -52,18 +52,18 @@ while(i<numrows){
 myData.items[i] = {
 unique_id:i,
 id: dataxml.getNumber(i, "idevent"), 
-dateload: dataxml.getDate(i, "dateload"),
+dateload: dataxml.getString(i, "dateload"),
 idaccount: dataxml.getNumber(i, "idaccount"),
 partition: dataxml.getNumber(i, "partition"),
 enable: dataxml.getBool(i, "enable"),
-account: dataxml.getStringB64(i, "account"),
-name: dataxml.getStringB64(i, "name"),
-code: dataxml.getStringB64(i, "code"),
+account: dataxml.getStringFromB64(i, "account"),
+name: dataxml.getStringFromB64(i, "name"),
+code: dataxml.getStringFromB64(i, "code"),
 zu: dataxml.getNumber(i, "zu"),
 priority: dataxml.getNumber(i, "priority"),
-description: dataxml.getStringB64(i, "description"),
+description: dataxml.getStringFromB64(i, "description"),
 ideventtype: dataxml.getNumber(i, "ideventtype"),
-eventtype: dataxml.getStringB64(i, "eventtype")
+eventtype: dataxml.getStringFromB64(i, "eventtype")
 };
 i++;
 }
@@ -89,7 +89,7 @@ var store = new dojox.data.XmlStore({url: "lastidevent.usaga", sendQuery: true, 
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 alreadylasidevent = 0; 
@@ -110,8 +110,6 @@ alert(e);
 });
 
 }
-
-
 
 		
 window.setInterval(CheckLastIdEvent, 4000);
