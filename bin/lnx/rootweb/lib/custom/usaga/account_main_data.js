@@ -65,7 +65,7 @@ idaddress: function(){
 return _idaddress;
 },
 idaccount: function(){
-return 0;
+return this.account_select.get('value');
 },
 // Carga la lista accounts en el FilteringSelect
 _LoadListAccounts: function(){

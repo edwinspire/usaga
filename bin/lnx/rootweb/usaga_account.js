@@ -168,6 +168,7 @@ ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
 ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
 ObjectoW.set('ts', dataxml.getString(i, 'ts'));
 ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
+//alert(ObjectoW.idaddress+'  '+dataxml.getNumber(i, 'idaddress'));
 }else{
 ObjectoW.reset();
 }
@@ -191,7 +192,7 @@ var Este = this;
 
   var xhrArgs = {
     url: "fun_address_edit.usaga",
- content: {idaddress: OWA.get('idaddress'), idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts'), idaccount: GlobalObject.IdAccount},
+ content: {idaddress: OWA.idaddress, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts'), idaccount: Account_Main_Data.idaccount()},
     handleAs: "xml",
     load: function(datass){
 
@@ -203,7 +204,7 @@ alert(xmld.getStringB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
-ABE.idaddress = OWA.idaddress;
+//ABE.idaddress = OWA.idaddress;
 Este.Load();
     },
 
@@ -1300,12 +1301,14 @@ alert(e);
 }
 
 
-	dijit.byId('account_main').on('onloadaccount', function(d){
+var Account_Main_Data = dijit.byId('account_main');
+
+	Account_Main_Data.on('onloadaccount', function(d){
 
 if(d.idaccount > 0){
 GlobalObject.DisabledContentPanes(false);
 }else{
-GlobalObject.DisabledContentPanes(false);
+GlobalObject.DisabledContentPanes(true);
 }
 
 AA.AddressW.idaddress = d.idaddress;
@@ -1327,7 +1330,7 @@ ANP.Save(item);
 GlobalObject.DisabledContentPanes(true);
 
 setInterval(function(){
-if(GlobalObject.IdAccount>0){
+if(Account_Main_Data.idaccount()>0){
 GlobalObject.DisabledContentPanes(false);
 }else{
 GlobalObject.DisabledContentPanes(true);
