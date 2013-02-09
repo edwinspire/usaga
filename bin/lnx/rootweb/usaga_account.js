@@ -53,41 +53,10 @@ dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
 LoadItemsSelectAccount: function(){
-//var AccountSelectBox = dijit.byId('account.basic.accountselect');
   
-var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(dijit.byId('account.basic.accountselect'), true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name');
+var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(ABE.dijit.Select, true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name');
 Fload.Load();
-/*
-var xhrArgs = {
-    url: "getvaluesselectbox.usaga",
-    handleAs: "text",
-    load: function(dataX){
-  var datar = dojox.xml.DomParser.parse(dataX);
-var xmldata = datar.byName('row');
-if(xmldata.length > 0){
-var Items = [{}];
-var len = xmldata.length;
-var i = 0;
-var idaccount = 0;
 
-while(i<len){
-idaccount = xmldata[i].getAttribute("idaccount");
-Items[i] =    {name: jsspire.Base64.decode(xmldata[i].getAttribute("name")), id: idaccount};
-i++;
-}
-
-    var stateStore = new Memory({data: Items});
-AccountSelectBox.store = stateStore;
-AccountSelectBox.startup();
-}
-
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  var deferred = dojo.xhrGet(xhrArgs);
-*/
 return this;
 },
 
@@ -219,7 +188,7 @@ datos.idaccount = GlobalObject.IdAccount;
 datos.partition = dijit.byId('account.basic.partition').get('value');
 datos.enable = dijit.byId('account.basic.enable').get('checked'); 
 datos.account = dijit.byId('account.basic.accountnum').get('value'); 
-datos.name = dijit.byId('account.basic.accountselect').get('displayedValue'); 
+datos.name = ABE.dijit.Select.get('displayedValue'); 
 datos.type = dijit.byId('account.basic.accountType').get('value');
 datos.note = dijit.byId('account.basic.note').get('value');
 
