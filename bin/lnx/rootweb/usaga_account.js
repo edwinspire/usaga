@@ -196,53 +196,7 @@ ABE.ResetForms();
 }
 }
 
-function SaveAccount(){
-var formulario = dojo.byId("os.account.form.basic");
-var datos = {};
-//datos.idaccount = dijit.byId('account.basic.id').get('value'); 
-datos.idaccount = GlobalObject.IdAccount; 
-//datos.idgroup = ThisObject.get('idgroup');
-datos.partition = dijit.byId('account.basic.partition').get('value');
-datos.enable = dijit.byId('account.basic.enable').get('checked'); 
-datos.account = dijit.byId('account.basic.accountnum').get('value'); 
-datos.name = ABE.dijit.Select.get('displayedValue'); 
-datos.type = dijit.byId('account.basic.accountType').get('value');
-datos.note = dijit.byId('account.basic.note').get('value');
 
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "saveaccount.usaga",
-    content: datos,
-    handleAs: "xml",
-    load: function(dataX){
-
-var xmld = new jspireTableXmlDoc(dataX, 'row');
-
-if(xmld.length > 0){
-
-alert(xmld.getStringB64(0, 'outpgmsg'));
-
-GlobalObject.LoadFilteringSelectAccount();
-var id = xmld.getNumber(0, "outreturn");
-
-if(id>=0){
-// Seteamos primero el id para que al ejecutar SaveAccountLocation no haya problema cuando se crea una cuenta nueva
-GlobalObject.IdAccount = id;
-AjaxLoadAccount();
-SaveAccountLocation();
-}
-
-}
-
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-
-}
 
 
 function AjaxLoadAccount(){

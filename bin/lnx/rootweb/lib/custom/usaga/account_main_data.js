@@ -16,7 +16,16 @@ t._LoadAccountSelected();
 });
 
 
+dojo.connect(t.button_new, 'onClick', function(e){
+t.account_select.set('invalidMessage', 'El nombre de Abonado es permitido');
+t._resetall();
+t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
+});
 
+dojo.connect(t.button_save, 'onClick', function(e){
+t.account_select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
+t._save();
+});
 
 
 
@@ -37,6 +46,10 @@ t._LoadListAccounts();
         this._changeBackground(this.baseBackgroundColor);
     });
 */
+},
+_resetall: function(){
+this.form_data.reset();
+this._idaddress = 0;
 },
 _idaddress: 0,
 idaddress: function(){
@@ -93,6 +106,54 @@ t.form_data.reset();
 
 
 }
+},
+// Guarda los datos en el servidor
+_save: function(){
+var t = this;
+var datos = {};
+datos.idaccount = t.account_select.get('value'); 
+datos.idgroup = t.idgroup.get('idgroup');
+datos.partition = t.partition.get('value');
+datos.enable = t.enable.get('checked'); 
+datos.account = t.account.get('value'); 
+datos.name = t.account_select.get('displayedValue'); 
+datos.type = t.idtype.get('value');
+datos.note = t.note.get('value');
+
+  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
+  var xhrArgs = {
+    url: "saveaccount.usaga",
+    content: datos,
+    handleAs: "xml",
+    load: function(dataX){
+
+var xmld = new jspireTableXmlDoc(dataX, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringB64(0, 'outpgmsg'));
+
+t._LoadListAccounts();
+var id = xmld.getNumber(0, "outreturn");
+
+if(id>=0){
+t.account_select.set('value', id);
+}else{
+t._resetall();
+}
+t._LoadAccountSelected();
+}
+
+    },
+    error: function(errorx){
+t._resetall();
+t._LoadAccountSelected();
+alert(errorx);
+    }
+  }
+  // Call the asynchronous xhrGet
+  var deferred = dojo.xhrPost(xhrArgs);
+
 }
 
 
