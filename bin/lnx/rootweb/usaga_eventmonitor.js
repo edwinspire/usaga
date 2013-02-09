@@ -19,14 +19,14 @@ var LastIdEvent = 0;
 
 			{field:"id", name: "id", width: '25px'},
 			{field:"dateload", name: "dateload", width: '85px'},
-			{field:"idaccount", name: "idaccount", width: '45px'},
+			{field:"idaccount", name: "idaccount", width: '50px'},
 			{field:"partition", name: "partition", width: '40px'},
 			{field:"enable", name: "enable", width: '40px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
 			{field:"account", name: "account", width: '50px'},
 			{field:"name", name: "name", width: '150px'},
-			{field:"code", name: "code", width: '20px'},
+			{field:"code", name: "code", width: '25px'},
 			{field:"zu", name: "zu", width: '15px'},
-			{field:"priority", name: "priority", width: '25px'},
+			{field:"priority", name: "priority", width: '30px'},
 			{field:"description", name: "description"},
 			{field:"ideventtype", name: "ideventtype", width: '40px'},
 			{field:"eventtype", name: "eventtype"}

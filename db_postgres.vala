@@ -1077,6 +1077,36 @@ Fila.addFieldString("keyword", user.KeyWord, true);
 return Fila;
 }
 
+
+public string fun_view_idaccounts_names_xml(bool fieldtextasbase64 = true){
+
+string Retorno = "";
+
+string[] ValuesArray = {fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion,  "SELECT * FROM usaga.fun_view_idaccounts_names_xml($1::boolean) AS return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
+
+/*
 public string NameAndId_All_Xml(){
 
 var Rows = XmlDatas.Node("accounts");
@@ -1090,7 +1120,10 @@ Rows->add_child(Fila.Row());
 }
 return XmlDatas.XmlDocToString(Rows);
 }
+*/
 
+
+/*
 public HashMap<int, string> NameAndId_All(){
 
 string[] valuesin = {"name"};
@@ -1119,7 +1152,7 @@ RetornoX[reg["idaccount"].as_int()] = reg["name"].Value;
 
 return RetornoX;
 }
-
+*/
 
 public string fun_account_notifications_table_xml(int idnotifaccount, int idaccount, int idphone, int priority, bool call, bool sms, string smstext, string note, string ts, bool fieldtextasbase64 = true){
 

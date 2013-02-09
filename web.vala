@@ -520,13 +520,13 @@ return Retorno;
 private uHttp.Response ResponseAccountsNamesToSelectBox(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.NameAndId_All_Xml().data;
+    Retorno.Data =  Tabla.fun_view_idaccounts_names_xml().data;
 //print(Tabla.NameAndId_All_Xml());
 
 return Retorno;
