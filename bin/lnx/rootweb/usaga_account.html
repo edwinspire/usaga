@@ -48,7 +48,8 @@ require([
   "gridx/modules/IndirectSelect",
   "gridx/modules/extendedSelect/Row",
   "widgets/usms/wlocation",
-  "widgets/usms/waddress"
+  "widgets/usms/waddress",
+  "widgets/usaga/account_main_data"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -66,58 +67,8 @@ require([
          ABONADO</label>
      </div>
    </div><span data-dojo-type="dijit.layout.TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;"><div data-dojo-type="dijit.layout.ContentPane" title="Principal" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false">
-     <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="account.basic.newaccount" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitNoIcon"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="account.basic.saveaccount" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="account.basic.deleteaccount" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-</span>
-     <form id="os.account.form.basic" style="width: 100%; height: auto;">
-     <input type="text" data-dojo-type="dijit.form.NumberTextBox" id="account.basic.id" title="Id de la cuenta" name="idaccount" readOnly="readOnly" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 20px; display: none;"></input>
-       <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="account.basic.enable" title="Habilitado" name="enable" intermediateChanges="false" iconClass="dijitNoIcon" style="margin-right: 10px; margin-left: 10px;"></input>
-       <label>
-         Nombre:</label>
-       <select data-dojo-type="dijit.form.FilteringSelect" id="account.basic.accountselect" title="Seleccione el abonado" name="name" value="0" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="margin: 2px; width: 50%;">
-         <option value="0">
-           Ninguno Seleccionado</option>
-       </select>
-       <br></br>
-       <label style="padding-right: 3px; padding-left: 10px;">
-         Abonado:</label>
-       <input type="text" data-dojo-type="dijit.form.TextBox" id="account.basic.accountnum" title="Numero de abonado" name="account" value="0000" intermediateChanges="false" trim="true" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="1234"></input>
-       <label style="padding-right: 3px; padding-left: 10px;">
-         Grupo:</label>
-       <select data-dojo-type="dijit.form.FilteringSelect" id="account.basic.group" title="Grupo" name="idgroup" value="Ninguno" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-         <option value="Ninguno">
-           Ninguno</option>
-       </select>
-       <label style="padding-right: 3px; padding-left: 10px;">
-         Particion:</label>
-       <input type="text" data-dojo-type="dijit.form.NumberSpinner" id="account.basic.partition" title="Partici&amp;oacute;n" name="partition" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;" value="0" maxLength="2"></input>
-       <label style="padding-right: 3px; padding-left: 10px;">
-         Tipo:</label>
-       <select data-dojo-type="dijit.form.Select" id="account.basic.accountType" title="Tipo de cuenta" type="text" name="type" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
-         <option value="0" selected="selected">
-           
-          
-          
-
-       
-        
-          
-          
-       No definido</option>
-         <option value="1" selected="selected">Domicilio</option>
-         <option value="2" selected="selected">Local Comercial</option>
-         <option value="3" selected="selected">Institución Educativa</option>
-         <option value="4" selected="selected">Institución Pública</option>
-
-       </select>
-       <label style="display: inline-block; width: 100%;">
-         Nota:</label>
-       <textarea type="text" data-dojo-type="dijit.form.Textarea" id="account.basic.note" title="Notas" name="note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-       <div></div>
-     </form>
-     </div>
+ <div data-dojo-type="usaga.account_main_data" id="account_main" style="width: 100%; height: 100%;"></div>
+</div>
 <div data-dojo-type="dijit.layout.ContentPane" title="Localización" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false" id="ContentPaneLocaliz">
  <div style="width: 100%;"><span data-dojo-type="dijit.Toolbar">
 <input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave" id="accountwlocationaddress_save"></input>
@@ -903,21 +854,21 @@ Está seguro que desea eliminar el abonado?</label>
          <td style="width: 75px;">
            Llamar:</td>
          <td>
-           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
 </td>
        </tr>
        <tr>
          <td>
            Enviar SMS:</td>
          <td>
-           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
 </td>
        </tr>
        <tr>
          <td>
            Texto SMS:</td>
          <td>
-           &nbsp;<textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.contactnotif.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
+           <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.contactnotif.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
 </td>
        </tr>
      </tbody>

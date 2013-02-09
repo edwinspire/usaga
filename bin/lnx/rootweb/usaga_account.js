@@ -52,7 +52,7 @@ dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 },
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
-LoadItemsSelectAccount: function(){
+LoadFilteringSelectAccount: function(){
   
 var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(ABE.dijit.Select, true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name');
 Fload.Load();
@@ -62,6 +62,10 @@ return this;
 
 LoadListIdContactName: function(){
 var Objeto = this;
+
+//var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(dijit.byId('usaga.account.users.form.idcontact'), true, 'usms_getcontactslistidcontactname_xml', 'row', 'idcontact', 'name');
+//Fload.Load();
+
 var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
@@ -70,9 +74,7 @@ var dataxml = new jspireTableXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
+//var myData = {identifier: "unique_id", items: []};
 
 if(numrows > 0){
 var Items = [];
@@ -83,7 +85,21 @@ while(i<numrows){
 Items[i] =    {name: dataxml.getStringB64(i, 'name'), id: dataxml.getNumber(i, "idcontact")};
 i++;
 }
-on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
+//on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
+var d = new Memory({data: Items});
+
+//----var userSelectBox = dijit.byId('usaga.account.users.form.idcontact');
+var userSelectBox = dijit.byId('usaga.account.users.form.idcontact');
+userSelectBox.store = null;
+userSelectBox.store = d;
+userSelectBox.startup();
+userSelectBox.readOnly = true;
+
+AC.dijit.Select.store = null;
+AC.dijit.Select.store = d;
+AC.dijit.Select.startup();
+AC.dijit.Select.readOnly = true;
+
 }
 
 },
@@ -91,6 +107,7 @@ onError: function(e){
 alert(e);
 }
 });
+
 return Objeto;
 }
 }
@@ -205,7 +222,7 @@ if(xmld.length > 0){
 
 alert(xmld.getStringB64(0, 'outpgmsg'));
 
-GlobalObject.LoadItemsSelectAccount();
+GlobalObject.LoadFilteringSelectAccount();
 var id = xmld.getNumber(0, "outreturn");
 
 if(id>=0){
@@ -384,7 +401,7 @@ AA.Delete();
 ///// USUARIOS /////
 var myAccountUsersGridX = dijit.byId("usaga.account.users.gridx");
 
-
+/*
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
 
 var userSelectBox = dijit.byId('usaga.account.users.form.idcontact');
@@ -393,6 +410,7 @@ userSelectBox.store = d.data;
 userSelectBox.startup();
 userSelectBox.readOnly = true;
 });
+*/
 
 dojo.connect(dijit.byId("usaga.account.user.button.new"), 'onClick', function(){
 			dojo.byId("usaga.account.users.form").reset();
@@ -1209,7 +1227,7 @@ dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', fu
    dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
 });
 
-
+/*
 on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
 //alert(AC.dijit.Select);
 AC.dijit.Select.store = null;
@@ -1217,6 +1235,7 @@ AC.dijit.Select.store = d.data;
 AC.dijit.Select.startup();
 AC.dijit.Select.readOnly = true;
 });
+*/
 
 	if (AC.dijit.GxC) {
 // Captura el evento cuando se hace click en una fila
@@ -1473,9 +1492,9 @@ GlobalObject.DisabledContentPanes(true);
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 
-GlobalObject.LoadItemsSelectAccount().LoadListIdContactName();
+//GlobalObject.LoadFilteringSelectAccount().LoadListIdContactName();
 //GlobalObject.LoadListIdContactName();
-ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
+//ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 AC.dijit.Select.set('invalidMessage', 'Seleccione de la lista');
 //dijit.byId('usaga_account_address').idps.set('value', 'Es la direccion');
 
