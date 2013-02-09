@@ -27,7 +27,7 @@ S.Port = 8081;
 S.Index = "usaga.html";
 S.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
 S.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
-S.VirtualUrl["getvaluesselectbox.usaga"] = "/getvaluesselectbox.usaga"; 
+S.VirtualUrl["fun_view_idaccounts_names_xml.usaga"] = "/fun_view_idaccounts_names_xml.usaga"; 
 S.VirtualUrl["getaccountusersgrid.usaga"] = "/getaccountusersgrid.usaga";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
 S.VirtualUrl["getaccountuser.usaga"] = "/getaccountuser.usaga";
@@ -76,7 +76,7 @@ break;
 case  "/saveaccount.usaga":
 response = ResponseAccountSaveTable(request);
 break;
-case "/getvaluesselectbox.usaga":
+case "/fun_view_idaccounts_names_xml.usaga":
 response = ResponseAccountsNamesToSelectBox(request);
 break;
 case "/getaccountusersgrid.usaga":

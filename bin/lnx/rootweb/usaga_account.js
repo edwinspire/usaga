@@ -53,8 +53,12 @@ dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
 LoadItemsSelectAccount: function(){
-var AccountSelectBox = dijit.byId('account.basic.accountselect');
-  var xhrArgs = {
+//var AccountSelectBox = dijit.byId('account.basic.accountselect');
+  
+var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(dijit.byId('account.basic.accountselect'), true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name');
+Fload.Load();
+/*
+var xhrArgs = {
     url: "getvaluesselectbox.usaga",
     handleAs: "text",
     load: function(dataX){
@@ -83,6 +87,7 @@ alert(errorx);
     }
   }
   var deferred = dojo.xhrGet(xhrArgs);
+*/
 return this;
 },
 
