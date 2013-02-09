@@ -116,141 +116,20 @@ return Objeto;
 
 
 
-// ACCOUNT BASIC ELEMENTS
-var ABE = {
-dijit:{
-DialogDelete: dijit.byId('idDialogDeleteAccount'),
-Partition: dijit.byId('account.basic.partition'), 
-Enable: dijit.byId('account.basic.enable'),
-Num: dijit.byId('account.basic.accountnum'),
-Select: dijit.byId('account.basic.accountselect'),
-Type: dijit.byId('account.basic.accountType'),
-Note: dijit.byId('account.basic.note')
-},
-dojo: {
-FormBasic: dojo.byId("os.account.form.basic"),
-//FormLocation: dojo.byId("account.location.form"),
-DeleteButton: dojo.byId('account.basic.deleteaccount')
-},
-ResetForms: function(){
-this.dojo.FormBasic.reset();
-//this.dojo.FormLocation.reset();
-}
-}
 
-        dojo.connect(ABE.dojo.DeleteButton, 'onclick', function(){
 
-if(GlobalObject.IdAccount > 0){
-            dijit.popup.open({
-                popup: ABE.dijit.DialogDelete,
-                around: ABE.dojo.DeleteButton
-            });
-}
-        });
 
-        dojo.connect(dojo.byId('Accountdelcancel'), 'onclick', function(){
-dijit.popup.close(ABE.dijit.DialogDelete);
-});
-
-        dojo.connect(dojo.byId('Accountdelok'), 'onclick', function(){
-dijit.popup.close(ABE.dijit.DialogDelete);
-ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
-DeleteAccount();
-});
-
-dojo.connect(ABE.dijit.Select, 'onChange', function(e){
-AccountSelected();
-});
-
-dojo.connect(dijit.byId('account.basic.newaccount'), 'onClick', function(e){
-ABE.dijit.Select.set('invalidMessage', 'El nombre de Abonado es permitido');
-GlobalObject.IdAccount = 0;
-ABE.ResetForms();
-AC.ResetAll();
-});
-
-dojo.connect(dijit.byId('account.basic.saveaccount'), 'onClick', function(e){
-ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
-SaveAccount();
-});
-
-/*
-dojo.connect(dijit.byId('account.basic.deleteaccount'), 'onClick', function(e){
-ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
-DeleteAccount();
-});
-*/
 dojo.connect(dijit.byId('account.contentpane.users'), 'onShow', function(e){
-ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
+//ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
 LoadAccountUsersGridx();
 });
 
 
 
-function DeleteAccount(){
-if(GlobalObject.IdAccount>0){
-GlobalObject.IdAccount = GlobalObject.IdAccount*-1; //.set('value', id.get('value')*-1);
-SaveAccount();
-}else{
-ABE.ResetForms();
-}
-}
 
 
 
 
-function AjaxLoadAccount(){
-var formulario = dojo.byId("os.account.form.basic");
-if(GlobalObject.IdAccount>0){
-GlobalObject.DisabledContentPanes(false);
-
-var store = new dojox.data.XmlStore({url: "getaccount.usaga", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: { idaccount: GlobalObject.IdAccount}, onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-if(numrows > 0){
-
-GlobalObject.IdAccount = dataxml.getNumber(0, "idaccount")
-ABE.dijit.Partition.set('value', dataxml.getNumber(0, "partition"));
-ABE.dijit.Enable.set('checked', dataxml.getBool(0, "enable")); 
-ABE.dijit.Num.set('value', dataxml.getStringB64(0, "account")); 
-ABE.dijit.Select.set('value', dataxml.getNumber(0, "idaccount")); 
-ABE.dijit.Type.setValue(dataxml.getString(0, "type")); 
-ABE.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
-AA.AddressW.set('idaddress', dataxml.getNumber(0, "idaddress"));  
-}else{
-formulario.reset();
-}
-
-AA.Load();
-LoadAccountPhonesTriggerGridx(0);
-
-},
-onError: function(e){
-alert(e);
-}
-});
-
-}else{
-formulario.reset();
-}
-
-}
-
-
-function AccountSelected(){
-// Cargamos la cuenta solo si el registro existe
-//var selector = dijit.byId('account.basic.accountselect');
-if(ABE.dijit.Select.state != 'Error'){
-GlobalObject.IdAccount = ABE.dijit.Select.get('value');
-AjaxLoadAccount();
-AC.LoadContactsGrid();
-}
-}
 
 
 
@@ -1421,7 +1300,19 @@ alert(e);
 }
 
 
+	dijit.byId('account_main').on('onloadaccount', function(d){
 
+if(d.idaccount > 0){
+GlobalObject.DisabledContentPanes(false);
+}else{
+GlobalObject.DisabledContentPanes(false);
+}
+
+AA.AddressW.idaddress = d.idaddress;
+AA.Load();
+
+
+});	
 
 
 

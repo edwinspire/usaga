@@ -11,6 +11,12 @@ postCreate: function(){
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
  var t = this;
+
+// Generamos un id aleatorio porque el tooltipdialogconfirmation solo funciona pasando como parametro el id del elemento
+id_button_delete = 'account_main_data'+Math.random()+'id_button_delete';
+ 
+t.button_delete.set("id", id_button_delete);
+
 dojo.connect(t.account_select, 'onChange', function(e){
 t._LoadAccountSelected();
 });
@@ -27,6 +33,9 @@ t.account_select.set('invalidMessage', 'Debe seleccionar un abonado de la lista'
 t._save();
 });
 
+t.dialogconfirmdeleteaccount.setowner(t.button_delete.get("id"), 'onclick').on('onok', function(){
+t._delete();
+});
 
 
 t._LoadListAccounts();
@@ -107,10 +116,22 @@ t.form_data.reset();
 
 }
 },
-// Guarda los datos en el servidor
+
+_delete: function(){
+idccountdelete = this.account_select.get('value');
+if(idccountdelete > 0){
+var datos = {};
+datos.idaccount = idccountdelete*-1; 
+t._actionsave(datos);
+}
+},
+
 _save: function(){
+
 var t = this;
 var datos = {};
+idaccountsave = t.account_select.get('value');
+if(idaccountsave >= 0){
 datos.idaccount = t.account_select.get('value'); 
 datos.idgroup = t.idgroup.get('idgroup');
 datos.partition = t.partition.get('value');
@@ -119,11 +140,17 @@ datos.account = t.account.get('value');
 datos.name = t.account_select.get('displayedValue'); 
 datos.type = t.idtype.get('value');
 datos.note = t.note.get('value');
+t._actionsave(datos);
+}
 
+},
+// Guarda los datos en el servidor
+_actionsave: function(data){
+var t = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "saveaccount.usaga",
-    content: datos,
+    content: data,
     handleAs: "xml",
     load: function(dataX){
 

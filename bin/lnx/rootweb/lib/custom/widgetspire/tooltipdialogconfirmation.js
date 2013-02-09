@@ -17,15 +17,11 @@ postCreate: function(){
     // Run any parent postCreate processes - can be done at any point
 //    this.inherited(arguments);
  
-    // Set up our mouseenter/leave events - using dijit._Widget's connect
-    // means that our callback will execute with `this` set to our widget
     this.connect(this.byes, "onClick", function(e) {
-//alert('Prsiona ok');
 this.emit('onok', {});
 this.close();
     });
     this.connect(this.bno, "onClick", function(e) {
-//alert('Prsiona no');
 this.close();
     });
 
@@ -41,10 +37,12 @@ open: function(){
             });
 return this;
 },
-setowner: function(owner_, onevent){
+// El owner_ es el id del componente que va a utilizar el dialogo
+setowner: function(idowner_, onevent){
 var o = this;
-o.owner = dojo.byId(owner_);
-        dojo.connect(dojo.byId(owner_), onevent, function(){
+// Solo funciona con dojo.byId, no funciona con dijit
+o.owner = dojo.byId(idowner_);
+        dojo.connect(o.owner, onevent, function(){
 o.open();
 });
 return o;
