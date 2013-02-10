@@ -26,7 +26,8 @@ require(["dojo/ready",
 "gridx/modules/IndirectSelect",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
-"dijit/popup"
+"dijit/popup",
+"dijit/form/CheckBox"
 ], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
@@ -114,10 +115,10 @@ i++;
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"ideventtype", name: "id", width: '20px'},
-			{field:"name", name: "Nombre", editable: 'false'},
+			{field:"name", name: "Nombre"},
 			{field:"label", name: "Etiqueta", editable: 'true'},
-			{field:"accountdefault", name: "accountdefault" , editable: 'true'},
-			{field:"groupdefault", name: "groupdefault" , editable: 'true'},
+			{field:"accountdefault", name: "accountdefault" , editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: true},
+			{field:"groupdefault", name: "groupdefault" , editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: true},
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
 GridCalls.startup();
