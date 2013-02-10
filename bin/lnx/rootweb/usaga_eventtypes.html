@@ -25,7 +25,8 @@ require([
   "dijit/Menu",
   "dijit/form/TextBox",
 "dijit/TooltipDialog",
-"dijit/Dialog"
+"dijit/Dialog",
+  "widgets/widgetspire/tooltipdialogconfirmation"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -37,13 +38,12 @@ require([
  <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
 <div class="dijitTitlePaneTitle">
 <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-   Notificaciones Predeterminadas</label>
+   Tipos de Eventos del Sistema</label>
 </div>
 <span data-dojo-type="dijit.Toolbar">
 <input type="button" data-dojo-type="dijit.form.Button" id="getdata" tabIndex="-1" intermediateChanges="false" label="Cargar tabla" iconClass="dijitIconTable"></input>
 <input type="button" data-dojo-type="dijit.form.Button" id="new" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitEditorIcon dijitEditorIconNewPage"></input>
 <input type="button" data-dojo-type="dijit.form.Button" id="delete" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitEditorIcon dijitEditorIconDelete"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="tags" tabIndex="-1" intermediateChanges="false" label="Abreviaciones" iconClass="dijitIconBookmark" title="Muestra las abreviaciones permitidas para incluir datos en el mensaje"></input>
 </span><table data-dojo-type="gridx.Grid" id="gridxnotif" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'s',field:'s'},{width:'auto',name:'IdNotif',field:'idnotif'},{width:'auto',name:'Descripcion',field:'descripcion'},{width:'auto',name:'Formato',field:'formato'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileWriteStore_1"></table>
 </div>
  <div id="idDialogNew" data-dojo-type="dijit/TooltipDialog" style="display: none;">
@@ -68,17 +68,7 @@ Mensaje:</label>
      </div>
    </form>
  </div>
- <div id="idDialogDelete" data-dojo-type="dijit/TooltipDialog" style="display: none; width: 150px;">
-     <span style="margin-bottom: 5px; width: 100%;">
-<label>
-Está seguro que desea eliminar los registros seleccionados?</label>
-     </span>
-     <div class="dijitDialogPaneActionBar">
-       <input type="button" data-dojo-type="dijit.form.Button" id="delok" intermediateChanges="false" label="Si" iconClass="dijitNoIcon"></input>
-       <input type="button" data-dojo-type="dijit.form.Button" id="delcancel" intermediateChanges="false" label="No" iconClass="dijitNoIcon"></input>
-     </div>
- </div>
- <div id="idshowLabels" data-dojo-type="dijit/TooltipDialog" style="width: auto; display: none;">
+  <div id="idshowLabels" data-dojo-type="dijit/TooltipDialog" style="width: auto; display: none;">
      <span style="margin-bottom: 5px; width: 100%;">
 <label>
 Etiquetas permitidas:</label>
@@ -283,6 +273,7 @@ Datos del sistema</label>
        <input type="button" data-dojo-type="dijit.form.Button" id="ShowLabelClose" intermediateChanges="false" label="Cerrar" iconClass="dijitNoIcon"></input>
      </div>
      </div>
+ <div id="dialogdeleteselection" data-dojo-type="widgetspire.tooltipdialogconfirmation" style="display: none !important;"></div>
 </body>
 </html>
 

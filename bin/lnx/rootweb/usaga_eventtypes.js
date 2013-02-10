@@ -73,23 +73,9 @@ LoadGrid();
 });
 
 
-        var myDialogDelete = dijit.byId('idDialogDelete');
+        var myDialogDelete = dijit.byId('dialogdeleteselection');
 
-        dojo.connect(dojo.byId('delete'), 'onclick', function(){
-if(ObjectTable.IdToDelete.length>0){
-            dijit.popup.open({
-                popup: myDialogDelete,
-                around: dojo.byId('delete')
-            });
-}
-        });
-
-        dojo.connect(dojo.byId('delcancel'), 'onclick', function(){
-dijit.popup.close(myDialogDelete);
-});
-
-        dojo.connect(dojo.byId('delok'), 'onclick', function(){
-dijit.popup.close(myDialogDelete);
+myDialogDelete.setowner('delete', 'onclick').on('onok', function(){
 //TODO: Reimplementar esta funcion para que el borrado se lo haga en la base de datos y no enviando registro por registro ya que resulta ineficiente este procedimiento.
 i = 0;
 num = ObjectTable.IdToDelete.length;
@@ -97,8 +83,9 @@ while(i<num){
 SaveData({idnotiftempl: ObjectTable.IdToDelete[i]*-1, description: '', message: '', ts: '1990-01-01'});
 i++;
 }
-
 });
+
+
 
 
 
@@ -129,7 +116,6 @@ i++;
 			{field:"ideventtype", name: "id", width: '20px'},
 			{field:"name", name: "Nombre", editable: 'false'},
 			{field:"label", name: "Etiqueta", editable: 'true'},
-			{field:"priority", name: "Prioridad" , editable: 'true', width: '30px'},
 			{field:"accountdefault", name: "accountdefault" , editable: 'true'},
 			{field:"groupdefault", name: "groupdefault" , editable: 'true'},
 			{field:"note", name: "nota" , editable: 'true'}
