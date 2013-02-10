@@ -53,7 +53,15 @@ S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
 S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 S.VirtualUrl["fun_address_edit.usaga"] = "/fun_address_edit.usaga";
+S.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
 
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
 
 foreach(var u in uSMSServer.VirtualUrls().entries){
@@ -154,6 +162,10 @@ case "/fun_address_edit.usaga":
 response = ResponseAccountAddressTableEdit(request);
 break;
 
+case "/fun_view_eventtypes_xml.usaga":
+response = ResponseViewEventTypesXml(request);
+break;
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -161,6 +173,20 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+private static uHttp.Response ResponseViewEventTypesXml(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+EventTypesTable Tabla = new EventTypesTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_view_eventtypes_xml(true).data;
+
+return Retorno;
 }
 
 private static uHttp.Response ResponseAccountAddressTableEdit(Request request){
