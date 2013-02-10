@@ -1240,7 +1240,7 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-public string AccountUsersViewXml(int idaccount){
+public string AccountUsersViewXmlgg(int idaccount){
 var Rows = XmlDatas.Node("users");
 foreach(var r in AccountUsersView(idaccount)){
 Rows->add_child(AccountUserViewNodeXml(r).Row());

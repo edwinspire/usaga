@@ -37,18 +37,6 @@ var ObjectTable = {
 IdToDelete: [] 
 } 
 
-        var myDialogShowLabels = dijit.byId('idshowLabels');
-
-        dojo.connect(dojo.byId('tags'), 'onclick', function(){
-            dijit.popup.open({
-                popup: myDialogShowLabels,
-                around: dojo.byId('tags')
-            });
-        });
-
-        dojo.connect(dojo.byId('ShowLabelClose'), 'onclick', function(){
-dijit.popup.close(myDialogShowLabels);
-});
 
 
         var myDialog = dijit.byId('idDialogNew');
@@ -111,14 +99,14 @@ i++;
 });
 
 	if (GridCalls) {
-
+var eargs = jspire.dijit.gridx.EditorArgsToBoolean;
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"ideventtype", name: "id", width: '20px'},
 			{field:"name", name: "Nombre"},
 			{field:"label", name: "Etiqueta", editable: 'true'},
-			{field:"accountdefault", name: "accountdefault" , editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: true},
-			{field:"groupdefault", name: "groupdefault" , editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: true},
+			{field:"accountdefault", name: "accountdefault" ,  editor: "dijit.form.CheckBox", editorArgs: eargs, alwaysEditing: 'true'},
+			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: eargs, alwaysEditing: 'true'},
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
 GridCalls.startup();
@@ -190,7 +178,6 @@ ItemFileWriteStore_1.clearOnClose = true;
 
 		GridCalls.store = null;
 		GridCalls.setStore(ItemFileWriteStore_1);
-
 },
 onError: function(e){
 alert(e);

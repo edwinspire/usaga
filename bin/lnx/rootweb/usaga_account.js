@@ -261,7 +261,7 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		// Optionally change column structure on the grid
 		myAccountUsersGridX.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.diji.gridx.EditorArgsToBoolean, alwaysEditing: true, disabled: true},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true, disabled: true},
 			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
