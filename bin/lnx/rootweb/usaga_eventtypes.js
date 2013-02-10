@@ -133,11 +133,11 @@ function SaveData(item){
     handleAs: "xml",
     load: function(dataX){
 
-var xmld = new jspireTableXmlDoc(dataX, 'row');
+var xmld = new jspire.XmlDocFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 
 }
@@ -161,7 +161,7 @@ var store = new dojox.data.XmlStore({url: "fun_view_eventtypes_xml.usaga", sendQ
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -172,12 +172,12 @@ while(i<numrows){
 myData.items[i] = {
 unique_id:i,
 ideventtype: dataxml.getNumber(i, "ideventtype"),
-name: dataxml.getStringB64(i, "name"),
-label: dataxml.getStringB64(i, "label"),
+name: dataxml.getStringFromB64(i, "name"),
+label: dataxml.getStringFromB64(i, "label"),
 priority: dataxml.getNumber(i, "priority"),
 accountdefault: dataxml.getBool(i, "accountdefault"),
 groupdefault: dataxml.getBool(i, "groupdefault"),
-note: dataxml.getStringB64(i, "note"),
+note: dataxml.getStringFromB64(i, "note"),
 ts: dataxml.getString(i, "ts")
 };
 i++;
