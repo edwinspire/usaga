@@ -55,7 +55,7 @@ S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.
 S.VirtualUrl["fun_address_edit.usaga"] = "/fun_address_edit.usaga";
 S.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
 
-//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+S.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
@@ -166,6 +166,10 @@ case "/fun_view_eventtypes_xml.usaga":
 response = ResponseViewEventTypesXml(request);
 break;
 
+case "/fun_eventtypes_edit_xml.usaga":
+response = ResponseEventTypesEditXml(request);
+break;
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -173,6 +177,20 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+private static uHttp.Response ResponseEventTypesEditXml(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+EventTypesTable Tabla = new EventTypesTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_eventtypes_edit_xml_from_hashmap(request.Form, true).data;
+
+return Retorno;
 }
 
 private static uHttp.Response ResponseViewEventTypesXml(Request request){
