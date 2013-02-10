@@ -199,6 +199,78 @@ this.Note = Note;
 
 public class EventTypesTable:PostgreSQLConnection{
 
+
+public string  fun_eventtypes_edit_xml_from_hashmap(HashMap<string, string> data, bool fieldtextasbase64 = true){
+
+int ideventtype = 0;
+int priority = 0;
+string label = "";
+bool accountdefault = false;
+bool groupdefault = false;
+string note = "";
+string ts = "1990-01-01";
+
+if(data.has_key("ideventtype")){
+ideventtype = int.parse(data["ideventtype"]);
+}
+
+if(data.has_key("priority")){
+priority = int.parse(data["priority"]);
+}
+
+if(data.has_key("label")){
+label = data["label"];
+}
+
+if(data.has_key("accountdefault")){
+accountdefault = bool.parse(data["accountdefault"]);
+}
+
+if(data.has_key("groupdefault")){
+groupdefault = bool.parse(data["groupdefault"]);
+}
+
+if(data.has_key("note")){
+note = data["note"];
+}
+
+if(data.has_key("ts")){
+ts = data["ts"];
+}
+return fun_eventtypes_edit_xml(ideventtype, priority, label, accountdefault, groupdefault, note, ts, fieldtextasbase64);
+}
+
+//usaga.fun_eventtypes_edit_xml(inideventtype integer, inpriority integer, inlabel text, inadefault boolean, ingdefault boolean, innote text, ints timestamp without time zone, fieldtextasbase64 boolean)
+
+
+
+public string  fun_eventtypes_edit_xml(int ideventtype, int priority, string label, bool accountdefault, bool groupdefault, string note, string ts, bool fieldtextasbase64 = true){
+
+string Retorno = "<table></table>";
+
+string[] ValuesArray = {ideventtype.to_string(), priority.to_string(), label, accountdefault.to_string(), groupdefault.to_string(), note, ts,  fieldtextasbase64.to_string()};
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM  usaga.fun_eventtypes_edit_xml($1::integer, $2::integer, $3::text, $4::boolean, $5::boolean, $6::text, $7::timestamp without time zone, $8::boolean) AS return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
 public string fun_view_eventtypes_xml(bool fieldtextasbase64 = true){
 string RetornoX = "<table></table>";
 
@@ -1240,7 +1312,7 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-public string AccountUsersViewXmlgg(int idaccount){
+public string AccountUsersViewXml(int idaccount){
 var Rows = XmlDatas.Node("users");
 foreach(var r in AccountUsersView(idaccount)){
 Rows->add_child(AccountUserViewNodeXml(r).Row());
