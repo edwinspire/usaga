@@ -52,19 +52,9 @@ dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 },
 IdAccount: 0,
 MasterDiv: dojo.byId('usaga.account.divmaster'),
-LoadFilteringSelectAccount: function(){
-  
-var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(ABE.dijit.Select, true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name');
-Fload.Load();
 
-return this;
-},
-
-LoadListIdContactName: function(){
+LoadListIdContactsNames: function(){
 var Objeto = this;
-
-//var Fload = new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(dijit.byId('usaga.account.users.form.idcontact'), true, 'usms_getcontactslistidcontactname_xml', 'row', 'idcontact', 'name');
-//Fload.Load();
 
 var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
 
@@ -286,7 +276,7 @@ SaveFormAccountUser(true);
 
 function SaveFormAccountUser(deleteuser){
 
-var formdata = { idaccount: GlobalObject.IdAccount};
+var formdata = { idaccount: Account_Main_Data.idaccount()};
 formdata.idcontact = dijit.byId('usaga.account.users.form.idcontact').get('value');
 
 if(deleteuser == true){
@@ -300,7 +290,7 @@ formdata.pwd = dijit.byId('usaga.account.users.form.pwd').get('value');
 formdata.note = dijit.byId('usaga.account.users.form.note').get('value');
 formdata.numuser = dijit.byId('usaga.account.users.form.numuser').get('value');
 
-if(GlobalObject.IdAccount > 0){
+if(Account_Main_Data.idaccount() > 0){
 
   var xhrArgs = {
     url: "saveaccountuser.usaga",
@@ -342,7 +332,7 @@ dijit.byId("usaga.account.users.form.idcontact").readOnly = true;
 
 function LoadFormAccountUser(iniidcontact){
 
-var inidaccount = GlobalObject.IdAccount;
+var inidaccount = Account_Main_Data.idaccount();
 
 if(inidaccount > 0){
 
@@ -386,7 +376,7 @@ function LoadAccountUsersGridx(){
 
 dojo.byId("usaga.account.users.form").reset();
 
-var inidaccount = GlobalObject.IdAccount;
+var inidaccount = Account_Main_Data.idaccount();
 
 if(inidaccount > 0){
 
@@ -479,16 +469,6 @@ GxPTClear: function(){
 
 }
 
-function primaryFormatter(inDatum) {
-        if (inDatum == "true")
-        {
-          return true;
-        }
-        else
-        {
-          return false; 
-        }
-};
 
 
 
@@ -582,7 +562,7 @@ LoadAccountPhonesTriggerGridx(0);
 function LoadAccountPhonesTriggerGridx(inidcontact){
 
 			PTElements.GxPTClear();
-var inidaccount = GlobalObject.IdAccount;
+var inidaccount = Account_Main_Data.idaccount();
 
 if(inidaccount > 0 && inidcontact > 0){
 
@@ -719,11 +699,12 @@ this.GxNETClear();
 },
 LoadContactsGrid: function(){
 this.ResetOnSelectContact();
-if(GlobalObject.IdAccount > 0){
+var _idaccount = Account_Main_Data.idaccount(); 
+if(_idaccount > 0){
 
 var store = new dojox.data.XmlStore({url: "getaccountcontactsgrid.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount: GlobalObject.IdAccount}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount: _idaccount}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -768,7 +749,7 @@ return this;
 SaveForm: function(deleteReg){
 
 var Objeto = this;
-if(AC.dijit.Select.get('value') > 0 && GlobalObject.IdAccount > 0){
+if(AC.dijit.Select.get('value') > 0 && Account_Main_Data.idaccount() > 0){
 idcontact = AC.dijit.Select.get('value');
 if(deleteReg){
 idcontact = idcontact*-1;
@@ -776,7 +757,7 @@ idcontact = idcontact*-1;
 
   var xhrArgs = {
     url: "getaccountcontactstable.usaga",
- content: {idaccount:GlobalObject.IdAccount, idcontact: idcontact, enable_as_contact: AC.dijit.Enable.get('checked'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: AC.dijit.Note.get('value'), ts: AC.dijit.TS.get('value')},
+ content: {idaccount:Account_Main_Data.idaccount(), idcontact: idcontact, enable_as_contact: AC.dijit.Enable.get('checked'), priority: AC.dijit.Priority.get('value'), appointment: AC.dijit.Appointment.get('value'), note: AC.dijit.Note.get('value'), ts: AC.dijit.TS.get('value')},
     handleAs: "xml",
     load: function(datass){
 
@@ -819,7 +800,7 @@ if(idphone > 0){
 
 var store = new dojox.data.XmlStore({url: "getaccountphonesnotifeventtypegrid.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idphone: idphone}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount:Account_Main_Data.idaccount(), idphone: idphone}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -868,7 +849,7 @@ if(idcontact > 0){
 
 var store = new dojox.data.XmlStore({url: "getaccountphonesnotifgrid.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount:GlobalObject.IdAccount, idcontact: idcontact}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount:Account_Main_Data.idaccount(), idcontact: idcontact}, onComplete: function(itemsrow, r){
 
 numrows = itemsrow.length;
 
@@ -924,7 +905,7 @@ var Objeto = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "notifyeditselectedcontacts.usaga",
-    content: {idaccount: GlobalObject.IdAccount, idcontacts: AC.GxNPSelectedContacts.toString(), call: dijit.byId('usaga.contactnotif.call.all').get('checked'), sms: dijit.byId('usaga.contactnotif.sms.all').get('checked'), msg: dijit.byId('usaga.contactnotif.msg.all').get('value')},
+    content: {idaccount: Account_Main_Data.idaccount(), idcontacts: AC.GxNPSelectedContacts.toString(), call: dijit.byId('usaga.contactnotif.call.all').get('checked'), sms: dijit.byId('usaga.contactnotif.sms.all').get('checked'), msg: dijit.byId('usaga.contactnotif.msg.all').get('value')},
     handleAs: "xml",
     load: function(dataX){
 
@@ -954,7 +935,7 @@ var Objeto = this;
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "notifyeditselectedphones.usaga",
-    content: {idaccount: GlobalObject.IdAccount, idphones: AC.GxNPSelectedRows.toString(), call: dijit.byId('usaga.notiftelf.call.all').get('checked'), sms: dijit.byId('usaga.notiftelf.sms.all').get('checked'), msg: dijit.byId('usaga.notiftelf.msg.all').get('value')},
+    content: {idaccount: Account_Main_Data.idaccount(), idphones: AC.GxNPSelectedRows.toString(), call: dijit.byId('usaga.notiftelf.call.all').get('checked'), sms: dijit.byId('usaga.notiftelf.sms.all').get('checked'), msg: dijit.byId('usaga.notiftelf.msg.all').get('value')},
     handleAs: "xml",
     load: function(dataX){
 
@@ -983,11 +964,11 @@ Objeto.LoadPhones(0);
 LoadFormContact: function(iniidcontact){
 
 var Objeto = this;
-if(GlobalObject.IdAccount > 0){
+if(Account_Main_Data.idaccount() > 0){
 
 var store = new dojox.data.XmlStore({url: "getaccountcontact.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, idcontact: iniidcontact}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount: Account_Main_Data.idaccount(), idcontact: iniidcontact}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -1170,11 +1151,11 @@ Save: function(itemStore){
 
 var Objeto = this;
 
-if(GlobalObject.IdAccount > 0 && itemStore.idcontact > 0){
+if(Account_Main_Data.idaccount() > 0 && itemStore.idcontact > 0){
 
   var xhrArgs = {
     url: "getaccountnotificationstable.usaga",
- content: {idnotifaccount: 0, idaccount:GlobalObject.IdAccount, idphone: itemStore.idphone, priority: itemStore.priority, sms: itemStore.sms, call: itemStore.call, smstext: itemStore.smstext, note: itemStore.note },
+ content: {idnotifaccount: 0, idaccount:Account_Main_Data.idaccount(), idphone: itemStore.idphone, priority: itemStore.priority, sms: itemStore.sms, call: itemStore.call, smstext: itemStore.smstext, note: itemStore.note },
     handleAs: "xml",
     load: function(datass){
 
@@ -1248,14 +1229,14 @@ GridEventsAccount.startup();
 }
 
 function LoadGridEventsAccount(){
-if(GlobalObject.IdAccount > 0){
+if(Account_Main_Data.idaccount() > 0){
 
 var start = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fstart'));
 var end = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fend'));
 
 var store = new dojox.data.XmlStore({url: "geteventsaccount.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount: GlobalObject.IdAccount, fstar: start.getDate(), fend: end.getDate()}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount: Account_Main_Data.idaccount(), fstar: start.getDate(), fend: end.getDate()}, onComplete: function(itemsrow, r){
 
 var dataxml = new jspireTableXmlStore(store, itemsrow);
 
@@ -1311,8 +1292,16 @@ GlobalObject.DisabledContentPanes(false);
 GlobalObject.DisabledContentPanes(true);
 }
 
+// Carga la lista de contactos (de usms) para ponerlos el los FilteringSelect de contactos y usuarios de usaga
+GlobalObject.LoadListIdContactsNames();
+
+// Carga los datos de direcciones
 AA.AddressW.idaddress = d.idaddress;
 AA.Load();
+
+// Carga los datos de contactos
+AC.LoadContactsGrid();
+
 
 
 });	
