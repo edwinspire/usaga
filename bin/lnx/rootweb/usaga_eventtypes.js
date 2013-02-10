@@ -117,8 +117,8 @@ function SaveData(item){
 
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
-    url: "notificationtemplatesedit.usaga",
-    content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
+    url: "fun_eventtypes_edit_xml.usaga",
+    content: {ideventtype: item.ideventtype, name: item.name, priority: item.priority, note: item.note, accountdefault: item.accountdefault, groupdefault: item.groupdefault, ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
 
