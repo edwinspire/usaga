@@ -21,13 +21,11 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore", 
-"dijit/TooltipDialog",
-"dijit/popup",
 "dijit/form/CheckBox"
 ], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-
+/*
 
 var ObjectTable = {
 IdToDelete: [] 
@@ -69,7 +67,7 @@ SaveData({idnotiftempl: ObjectTable.IdToDelete[i]*-1, description: '', message: 
 i++;
 }
 });
-
+*/
 
 
 
@@ -81,9 +79,9 @@ SaveData(item);
 
 var GridCalls = dijit.byId('gridxnotif');
 
+/*
 dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
 
-ObjectTable.IdToDelete = [];
 numsel = selected.length;
 
 i = 0;
@@ -93,7 +91,7 @@ i++;
 }
 
 });
-
+*/
 	if (GridCalls) {
 var eargs = jspire.dijit.gridx.EditorArgsToBoolean;
 		// Optionally change column structure on the grid
@@ -139,8 +137,6 @@ alert(errorx);
 }
 
 function LoadGrid(){
-
-ObjectTable.IdToDelete = [];
 
 var store = new dojox.data.XmlStore({url: "fun_view_eventtypes_xml.usaga", sendQuery: true, rootItem: 'row'});
 
