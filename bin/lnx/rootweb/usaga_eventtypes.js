@@ -28,7 +28,8 @@ require(["dojo/ready",
 
 
 dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-alert('Edita '+ item.ideventtype+' '+attribute+' '+oldValue+' '+newValue);
+//alert('Edita '+ item.ideventtype+' '+attribute+' '+oldValue+' '+newValue);
+alert( item.groupdefault);
 SaveData(item);
 });
 
@@ -36,14 +37,13 @@ var GridxTable = dijit.byId('gridxdata');
 
 
 	if (GridxTable) {
-var eargs = jspire.dijit.gridx.EditorArgsToBoolean;
 		// Optionally change column structure on the grid
 		GridxTable.setColumns([
 			{field:"ideventtype", name: "id", width: '20px'},
 			{field:"name", name: "Nombre"},
 			{field:"label", name: "Etiqueta", editable: 'true'},
-			{field:"accountdefault", name: "accountdefault" ,  editor: "dijit.form.CheckBox", editorArgs: eargs, alwaysEditing: 'true'},
-			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: eargs, alwaysEditing: 'true'},
+			{field:"accountdefault", name: "accountdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: 'true'},
+			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToBoolean, alwaysEditing: 'true'},
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
 GridxTable.startup();
@@ -55,7 +55,7 @@ function SaveData(item){
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "fun_eventtypes_edit_xml.usaga",
-    content: {ideventtype: item.ideventtype, label: item.label, priority: item.priority, note: item.note, accountdefault: item.accountdefault.to_string(), groupdefault: item.groupdefault.to_string(), ts: item.ts},
+    content: {ideventtype: item.ideventtype, label: item.label, priority: item.priority, note: item.note, accountdefault: item.accountdefault.to_string(), groupdefault: item.groupdefault, ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
 

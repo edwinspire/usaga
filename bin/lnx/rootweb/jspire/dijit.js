@@ -6,7 +6,7 @@ gridx: {
 EditorArgsToCellBoolean: {
 props: 'value: true',
 				fromEditor: function (d){
-		return d.toString().to_boolean();
+		return Boolean(d);
 	},
 toEditor: function(storeData, gridData){
 /*
@@ -18,7 +18,7 @@ r = Boolean(gridData);
 }
 		return r;
 */
-gridData.toString().to_boolean()
+gridData.toString().to_boolean();
 				}
 			},
 
