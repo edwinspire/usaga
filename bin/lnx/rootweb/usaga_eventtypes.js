@@ -10,92 +10,35 @@ require(["dojo/ready",
 "dojox/xml/DomParser",
 'dojo/store/Memory',
 "dojo/Evented",
-"dojo/data/ItemFileReadStore",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
 	'gridx/modules/CellWidget',
 	'gridx/modules/Edit',
+"dijit/form/CheckBox",
   "dijit/form/NumberTextBox",
+  "dijit/form/TextBox",
 "gridx/modules/VirtualVScroller",
-"dojox/grid/cells/dijit",
-"dojox/data/XmlStore", 
-"dijit/form/CheckBox"
-], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+"dojox/data/XmlStore"
+], function(ready, on, DomParser, Memory, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-/*
-
-var ObjectTable = {
-IdToDelete: [] 
-} 
 
 
 
-        var myDialog = dijit.byId('idDialogNew');
-
-        dojo.connect(dojo.byId('new'), 'onclick', function(){
-            dijit.popup.open({
-                popup: myDialog,
-                around: dojo.byId('new')
-            });
-        });
-
-        dojo.connect(dojo.byId('newcancel'), 'onclick', function(){
-dijit.popup.close(myDialog);
-});
-
-        dojo.connect(dojo.byId('newok'), 'onclick', function(){
-dijit.popup.close(myDialog);
-SaveData({idnotiftempl: 0, description: dijit.byId('newdescrip').get('value'), message: dijit.byId('newMsg').get('value'), ts: '1990-01-01'});
-});
-
-        dojo.connect(dojo.byId('getdata'), 'onclick', function(){
-LoadGrid();
-});
-
-
-        var myDialogDelete = dijit.byId('dialogdeleteselection');
-
-myDialogDelete.setowner('delete', 'onclick').on('onok', function(){
-//TODO: Reimplementar esta funcion para que el borrado se lo haga en la base de datos y no enviando registro por registro ya que resulta ineficiente este procedimiento.
-i = 0;
-num = ObjectTable.IdToDelete.length;
-while(i<num){
-SaveData({idnotiftempl: ObjectTable.IdToDelete[i]*-1, description: '', message: '', ts: '1990-01-01'});
-i++;
-}
-});
-*/
-
-
-
-
-	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idnotiftempl);
+dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
+alert('Edita '+ item.ideventtype+' '+attribute+' '+oldValue+' '+newValue);
 SaveData(item);
 });
 
-var GridCalls = dijit.byId('gridxnotif');
+var GridxTable = dijit.byId('gridxdata');
 
-/*
-dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
 
-numsel = selected.length;
-
-i = 0;
-while(i<numsel){
-ObjectTable.IdToDelete[i] = GridCalls.cell(selected[i], 1, true).data();
-i++;
-}
-
-});
-*/
-	if (GridCalls) {
+	if (GridxTable) {
 var eargs = jspire.dijit.gridx.EditorArgsToBoolean;
 		// Optionally change column structure on the grid
-		GridCalls.setColumns([
+		GridxTable.setColumns([
 			{field:"ideventtype", name: "id", width: '20px'},
 			{field:"name", name: "Nombre"},
 			{field:"label", name: "Etiqueta", editable: 'true'},
@@ -103,7 +46,7 @@ var eargs = jspire.dijit.gridx.EditorArgsToBoolean;
 			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: eargs, alwaysEditing: 'true'},
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
-GridCalls.startup();
+GridxTable.startup();
 }
 
 
@@ -112,7 +55,7 @@ function SaveData(item){
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "fun_eventtypes_edit_xml.usaga",
-    content: {ideventtype: item.ideventtype, label: item.label, priority: item.priority, note: item.note, accountdefault: String(item.accountdefault).to_string(), groupdefault: String(item.groupdefault).to_string(), ts: item.ts},
+    content: {ideventtype: item.ideventtype, label: item.label, priority: item.priority, note: item.note, accountdefault: item.accountdefault.to_string(), groupdefault: item.groupdefault.to_string(), ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
 
@@ -168,8 +111,8 @@ ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
 	ItemFileWriteStore_1.close();
 
-		GridCalls.store = null;
-		GridCalls.setStore(ItemFileWriteStore_1);
+		GridxTable.store = null;
+		GridxTable.setStore(ItemFileWriteStore_1);
 },
 onError: function(e){
 alert(e);

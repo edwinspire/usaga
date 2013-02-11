@@ -6,10 +6,19 @@ gridx: {
 EditorArgsToCellBoolean: {
 props: 'value: true',
 				fromEditor: function (d){
-		return String(d).to_boolean();
+		return d.toString().to_boolean();
 	},
 toEditor: function(storeData, gridData){
-		return String(gridData).to_boolean();
+/*
+r = true;
+if(gridData == "false"){
+r = false;
+}else{
+r = Boolean(gridData);
+}
+		return r;
+*/
+gridData.toString().to_boolean()
 				}
 			},
 
@@ -20,7 +29,13 @@ props: 'value: true, disabled: "true"',
 		return Boolean(d);
 	},
 toEditor: function(storeData, gridData){
-		return String(gridData).to_boolean();
+r = true;
+if(gridData == "false"){
+r = false;
+}else{
+r = Boolean(gridData);
+}
+		return r;
 				}
 			}
 
