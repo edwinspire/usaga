@@ -9,7 +9,7 @@ props: 'value: true',
 		return Boolean(d);
 	},
 toEditor: function(storeData, gridData){
-/*
+
 r = true;
 if(gridData == "false"){
 r = false;
@@ -17,8 +17,7 @@ r = false;
 r = Boolean(gridData);
 }
 		return r;
-*/
-gridData.toString().to_boolean();
+
 				}
 			},
 
