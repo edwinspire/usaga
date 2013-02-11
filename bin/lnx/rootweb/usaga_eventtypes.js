@@ -112,7 +112,7 @@ function SaveData(item){
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "fun_eventtypes_edit_xml.usaga",
-    content: {ideventtype: item.ideventtype, name: item.name, priority: item.priority, note: item.note, accountdefault: item.accountdefault, groupdefault: item.groupdefault, ts: item.ts},
+    content: {ideventtype: item.ideventtype, label: item.label, priority: item.priority, note: item.note, accountdefault: String(item.accountdefault).to_string(), groupdefault: String(item.groupdefault).to_string(), ts: item.ts},
     handleAs: "xml",
     load: function(dataX){
 
