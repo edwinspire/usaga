@@ -28,8 +28,6 @@ require(["dojo/ready",
 
 
 dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-alert('Edita '+ item.ideventtype+' '+attribute+' '+oldValue+' '+newValue);
-//alert( item.groupdefault);
 SaveData(item);
 });
 

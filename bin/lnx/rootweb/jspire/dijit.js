@@ -7,11 +7,11 @@ gridx: {
 EditorArgsToCellBoolean: {
 props: 'value: true',
 				fromEditor: function (d){
-alert('>>'+d);
-		return Boolean(d);
+d1 = d+'';
+		return d1.to_boolean();
 	},
 toEditor: function(storeData, gridData){
-
+/*
 r = true;
 if(gridData == "false"){
 r = false;
@@ -19,6 +19,9 @@ r = false;
 r = Boolean(gridData);
 }
 		return r;
+*/
+r = gridData+'';
+return r.to_boolean();
 
 				}
 			},
@@ -27,16 +30,21 @@ r = Boolean(gridData);
 EditorArgsToCellBooleanDisabled: {
 props: 'value: true, disabled: "true"',
 				fromEditor: function (d){
-		return Boolean(d);
+d1 = d+'';
+		return d1.to_boolean();
 	},
 toEditor: function(storeData, gridData){
+/*
 r = true;
 if(gridData == "false"){
 r = false;
 }else{
 r = Boolean(gridData);
 }
-		return r;
+*/
+//		return r;
+r = gridData+'';
+return r.to_boolean();
 				}
 			}
 
