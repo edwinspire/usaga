@@ -44,6 +44,7 @@ var GridxTable = dijit.byId('gridxdata');
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
 GridxTable.startup();
+
 }
 
 
