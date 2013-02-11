@@ -101,6 +101,7 @@ groupdefault: dataxml.getBool(i, "groupdefault"),
 note: dataxml.getStringFromB64(i, "note"),
 ts: dataxml.getString(i, "ts")
 };
+
 i++;
 }
 
