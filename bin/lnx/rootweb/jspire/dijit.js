@@ -1,3 +1,4 @@
+
 jspire.dijit = {
 
 gridx: {
@@ -6,6 +7,7 @@ gridx: {
 EditorArgsToCellBoolean: {
 props: 'value: true',
 				fromEditor: function (d){
+alert('>>'+d);
 		return Boolean(d);
 	},
 toEditor: function(storeData, gridData){

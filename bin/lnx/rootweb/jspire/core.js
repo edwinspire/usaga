@@ -147,7 +147,7 @@ Base64: {
 // Convierte una cadena en Booleano
 String.prototype.to_boolean = function(){
 var Return = false;
-if(this == "false"){
+if(this == 'false' || this == 'FALSE'){
 Return = false;
 }else{
 Return = Boolean(this);
