@@ -19,6 +19,7 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
+"dojo/request",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore", 
 "gridx/modules/RowHeader",
@@ -26,9 +27,8 @@ require(["dojo/ready",
 "gridx/modules/IndirectSelect",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
-"dijit/popup",
-"dojo/request"
-], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+"dijit/popup"
+], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -139,14 +139,22 @@ function LoadGrid(){
 ObjectTable.IdToDelete = [];
 
             // Request the text file
-            request.get("").then(
+            request.get("fun_view_groups_xml.usaga", {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
                 function(response){
                     // Display the text file content
-                    resultDiv.innerHTML = "<pre>"+response+"</pre>";
+alert(response);
+var d = new jspire.XmlDocFromXhr(response, 'row');
+
+
+alert(d.getStringB64(0, 'name'));
+
                 },
                 function(error){
                     // Display the error returned
-                    resultDiv.innerHTML = "<div class=\"error\">"+error+"<div>";
+alert(error);
                 }
             );
    
