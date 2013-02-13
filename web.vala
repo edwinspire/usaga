@@ -56,8 +56,8 @@ S.VirtualUrl["fun_address_edit.usaga"] = "/fun_address_edit.usaga";
 S.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
 
 S.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga";
-//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
-//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+S.VirtualUrl["fun_view_groups_xml.usaga"] = "/fun_view_groups_xml.usaga";
+S.VirtualUrl["fun_groups_edit_xml_from_hashmap.usaga"] = "/fun_groups_edit_xml_from_hashmap.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
@@ -170,6 +170,14 @@ case "/fun_eventtypes_edit_xml.usaga":
 response = ResponseEventTypesEditXml(request);
 break;
 
+case "/fun_view_groups_xml.usaga":
+response = response_fun_view_groups_xml(request);
+break;
+
+case "/fun_groups_edit_xml_from_hashmap.usaga":
+response = response_fun_groups_edit_xml_from_hashmap(request);
+break;
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -177,6 +185,28 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+private uHttp.Response response_fun_groups_edit_xml_from_hashmap(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+GroupsTable Tabla = new GroupsTable();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_groups_edit_xml_from_hashmap(request.Form).data;
+return Retorno;
+}
+
+private uHttp.Response response_fun_view_groups_xml(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+GroupsTable Tabla = new GroupsTable();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_view_groups_xml().data;
+return Retorno;
 }
 
 private static uHttp.Response ResponseEventTypesEditXml(Request request){
@@ -323,6 +353,7 @@ return Retorno;
 }
 
 
+
 private uHttp.Response ResponseViewNotificationTemplates(Request request){
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
@@ -331,7 +362,6 @@ uHttp.Response Retorno = new uHttp.Response();
 NotificationTemplates Tabla = new NotificationTemplates();
 Tabla.GetParamCnx();
 Retorno.Data = Tabla.fun_view_notification_templates_xml().data;
-//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
 return Retorno;
 }
 

@@ -396,7 +396,101 @@ return RetornoX;
 
 }
 
+public class GroupsTable:PostgreSQLConnection{
 
+public string fun_view_groups_xml(bool fieldtextasbase64 = true){
+
+string[] valuesin = {fieldtextasbase64.to_string()};
+string RetornoX = "<table></table>";
+
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_groups_xml($1::boolean) as return;", valuesin);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+
+
+return RetornoX;
+}
+
+
+public string fun_groups_edit_xml_from_hashmap(HashMap<string, string> data, bool fieldtextasbase64 = true){
+
+int idgroup = 0;
+bool enable = false;
+string name = "";
+string note = "";
+string ts = "1990-01-01";
+
+if(data.has_key("idgroup")){
+idgroup = int.parse(data["idgroup"]);
+}
+
+if(data.has_key("enable")){
+enable = bool.parse(data["enable"]);
+}
+
+if(data.has_key("name")){
+name = data["name"];
+}
+
+if(data.has_key("note")){
+note = data["note"];
+}
+
+if(data.has_key("ts")){
+ts = data["ts"];
+}
+
+return fun_groups_edit_xml(idgroup, enable, name, note, ts, fieldtextasbase64);
+}
+
+//usaga.fun_groups_edit_xml(inidgroup integer, inenable boolean, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean)
+public string fun_groups_edit_xml(int idgroup, bool enable, string name, string note, string ts, bool fieldtextasbase64 = true){
+
+string[] valuesin = {idgroup.to_string(), enable.to_string(), name, note, ts, fieldtextasbase64.to_string()};
+string RetornoX = "<table></table>";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_groups_edit_xml($1::integer, $2::boolean, $3::text, $4::text, $5::timestamp without time zone, $6::boolean) as return;", valuesin);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+
+return RetornoX;
+}
+
+
+}
 
 public struct AccountPhonesTriggerAlarmViewdb{
 
