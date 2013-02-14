@@ -58,12 +58,11 @@ LoadGrid();
 //--
         var myDialogDelete = dijit.byId('iddialogdelete');
 myDialogDelete.setowner('delete', 'onclick').on('onok', function(){
-//TODO: Reimplementar esta funcion para que el borrado se lo haga en la base de datos y no enviando registro por registro ya que resulta ineficiente este procedimiento.
-i = 0;
-num = ObjectTable.IdToDelete.length;
-while(i<num){
-SaveData({idnotiftempl: ObjectTable.IdToDelete[i]*-1, description: '', message: '', ts: '1990-01-01'});
-i++;
+
+if(ObjectTable.IdToDelete.length > 0){
+Delete();
+}else{
+alert('No hay registros seleccionados');
 }
 });
 
@@ -96,6 +95,27 @@ i++;
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
 GridxTable.startup();
+}
+
+
+// Elimina los seleccionados
+function Delete(){
+
+request.post('fun_groups_remove_selected_xml.usaga', {
+   handleAs: "xml",
+data: {idgroups: ObjectTable.IdToDelete.toString()}
+}).then(function(response){
+
+var xmld = new jspire.XmlDocFromXhr(response, 'row');
+
+if(xmld.length > 0){
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
+}
+LoadGrid();
+}, function(error){
+alert(error);
+});
+
 }
 
 // Guarda los datos
