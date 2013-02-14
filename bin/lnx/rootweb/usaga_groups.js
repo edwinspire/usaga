@@ -105,6 +105,25 @@ GridxTable.startup();
 
 function SaveData(item){
 
+request.post('fun_groups_edit_xml_from_hashmap.usaga', {
+   handleAs: "xml",
+data: {idgroup: item.idgroup,  enable: item.enable, name: item.name, note: item.note}
+}).then(function(response){
+
+var xmld = new jspire.XmlDocFromXhr(response, 'row');
+
+if(xmld.length > 0){
+
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
+
+}
+
+}, function(error){
+alert(error);
+});
+
+
+/*
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "notificationtemplatesedit.usaga",
@@ -129,6 +148,7 @@ alert(errorx);
   }
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
+*/
 }
 
 function LoadGrid(){
