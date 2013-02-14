@@ -50,7 +50,7 @@ dijit.popup.close(myDialog);
 
         dojo.connect(dojo.byId('newok'), 'onclick', function(){
 dijit.popup.close(myDialog);
-SaveData({idnotiftempl: 0, description: dijit.byId('newdescrip').get('value'), message: dijit.byId('newMsg').get('value'), ts: '1990-01-01'});
+SaveData({idgroup: 0, enable: dijit.byId('idenable').get('checked'), name: dijit.byId('idname').get('value'), note: dijit.byId('idnote').get('value'), ts: '1990-01-01'});
 });
 
         dojo.connect(dojo.byId('getdata'), 'onclick', function(){
@@ -113,42 +113,14 @@ data: {idgroup: item.idgroup,  enable: item.enable, name: item.name, note: item.
 var xmld = new jspire.XmlDocFromXhr(response, 'row');
 
 if(xmld.length > 0){
-
 alert(xmld.getStringFromB64(0, 'outpgmsg'));
-
 }
-
+LoadGrid();
 }, function(error){
 alert(error);
 });
 
 
-/*
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "notificationtemplatesedit.usaga",
-    content: {idnotiftempl: item.idnotiftempl, description: item.description, message: item.message, ts: item.ts},
-    handleAs: "xml",
-    load: function(dataX){
-
-var xmld = new jspireTableXmlDoc(dataX, 'row');
-
-if(xmld.length > 0){
-
-alert(xmld.getStringB64(0, 'outpgmsg'));
-
-}
-
-LoadGrid();
-
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-*/
 }
 
 function LoadGrid(){
