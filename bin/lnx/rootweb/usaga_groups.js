@@ -40,22 +40,22 @@ IdToDelete: []
                 around: dojo.byId('new')
             });
         });
-
+//--
         dojo.connect(dojo.byId('newcancel'), 'onclick', function(){
 dijit.popup.close(myDialog);
 });
-
+//--
         dojo.connect(dojo.byId('newok'), 'onclick', function(){
 dijit.popup.close(myDialog);
 SaveData({idgroup: 0, enable: dijit.byId('idenable').get('checked'), name: dijit.byId('idname').get('value'), note: dijit.byId('idnote').get('value'), ts: '1990-01-01'});
 dojo.byId('idformnew').reset();
 });
-
+//--
         dojo.connect(dojo.byId('getdata'), 'onclick', function(){
 LoadGrid();
 });
 
-
+//--
         var myDialogDelete = dijit.byId('iddialogdelete');
 myDialogDelete.setowner('delete', 'onclick').on('onok', function(){
 //TODO: Reimplementar esta funcion para que el borrado se lo haga en la base de datos y no enviando registro por registro ya que resulta ineficiente este procedimiento.
@@ -69,23 +69,20 @@ i++;
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idnotiftempl);
 SaveData(item);
 });
 
 var GridxTable = dijit.byId('gridxt');
 
+// Capturamos el evento onSelectionChange de la gridx 
 dojo.connect(GridxTable.select.row, 'onSelectionChange', function(selected){
-
 ObjectTable.IdToDelete = [];
 numsel = selected.length;
-
 i = 0;
 while(i<numsel){
 ObjectTable.IdToDelete[i] = GridxTable.cell(selected[i], 1, true).data();
 i++;
 }
-
 });
 
 	if (GridxTable) {
@@ -101,7 +98,7 @@ i++;
 GridxTable.startup();
 }
 
-
+// Guarda los datos
 function SaveData(item){
 
 request.post('fun_groups_edit_xml_from_hashmap.usaga', {
@@ -119,9 +116,9 @@ LoadGrid();
 alert(error);
 });
 
-
 }
 
+// Carga la tabla con los datos
 function LoadGrid(){
 
 ObjectTable.IdToDelete = [];

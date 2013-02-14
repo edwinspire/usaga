@@ -398,6 +398,32 @@ return RetornoX;
 
 public class GroupsTable:PostgreSQLConnection{
 
+
+public string fun_groups_remove_selected_xml(string idgroups, bool fieldtextasbase64 = true){
+
+string Retorno = "";
+
+string[] ValuesArray = {"{"+idgroups+"}", fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_groups_remove_selected_xml($1::integer[], $2::boolean) AS return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
 public string fun_view_groups_xml(bool fieldtextasbase64 = true){
 
 string[] valuesin = {fieldtextasbase64.to_string()};
