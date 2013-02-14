@@ -51,6 +51,7 @@ dijit.popup.close(myDialog);
         dojo.connect(dojo.byId('newok'), 'onclick', function(){
 dijit.popup.close(myDialog);
 SaveData({idgroup: 0, enable: dijit.byId('idenable').get('checked'), name: dijit.byId('idname').get('value'), note: dijit.byId('idnote').get('value'), ts: '1990-01-01'});
+dojo.byId('idformnew').reset();
 });
 
         dojo.connect(dojo.byId('getdata'), 'onclick', function(){
