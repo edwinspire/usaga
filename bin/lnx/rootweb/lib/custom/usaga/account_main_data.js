@@ -39,6 +39,7 @@ t._delete();
 
 
 t._LoadListAccounts();
+t._LoadListGroups();
 
 },
 _resetall: function(){
@@ -55,6 +56,10 @@ return this.account_select.get('value');
 // Carga la lista accounts en el FilteringSelect
 _LoadListAccounts: function(){
 new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(this.account_select, true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name').Load();
+},
+// Carga la lista accounts en el FilteringSelect
+_LoadListGroups: function(){
+new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(this.idgroup, true, 'fun_view_groups_xml.usaga', 'row', 'idgroup', 'name').Load();
 },
 // Carga el account seleccionado
 _LoadAccountSelected: function(){
@@ -76,6 +81,7 @@ if(numrows > 0){
 _idaccount = dataxml.getNumber(0, "idaccount");
 t.partition.set('value', dataxml.getNumber(0, "partition"));
 t.enable.set('checked', dataxml.getBool(0, "enable")); 
+t.idgroup.set('value', dataxml.getString(0, "idgroup"));
 t.account.set('value', dataxml.getStringB64(0, "account")); 
 t.account_select.set('value', _idaccount); 
 t.idtype.setValue(dataxml.getString(0, "type")); 
