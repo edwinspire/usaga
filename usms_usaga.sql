@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.7
 -- Dumped by pg_dump version 9.1.7
--- Started on 2013-02-14 06:21:30 ECT
+-- Started on 2013-02-14 06:40:00 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -3125,7 +3125,7 @@ END;$$;
 
 
 --
--- TOC entry 340 (class 1255 OID 27360)
+-- TOC entry 341 (class 1255 OID 27360)
 -- Dependencies: 836 9
 -- Name: fun_groups_remove_selected(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -3137,11 +3137,11 @@ outpgmsg := 'Ninguna accion realizada';
 outreturn := 0;
 
 
-FOR i IN array_lower(idphones,1) .. array_upper(idphones,1) LOOP
+FOR i IN array_lower(idgroups,1) .. array_upper(idgroups,1) LOOP
 
 -- Buscamos si existe el registro
 
-IF EXISTS(SELECT * FROM usaga.groups WHERE idgroups[i]) THEN
+IF EXISTS(SELECT * FROM usaga.groups WHERE idgroup = idgroups[i]) THEN
 DELETE FROM usaga.groups WHERE idgroup = idgroups[i];
 outreturn := outreturn+1;
 END IF;
@@ -3160,7 +3160,7 @@ END;$$;
 
 
 --
--- TOC entry 341 (class 1255 OID 27361)
+-- TOC entry 340 (class 1255 OID 27361)
 -- Dependencies: 836 9
 -- Name: fun_groups_remove_selected_xml(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -7327,7 +7327,7 @@ ALTER TABLE ONLY account_users
 
 --
 -- TOC entry 2618 (class 2606 OID 26491)
--- Dependencies: 2537 184 185 2671
+-- Dependencies: 184 185 2537 2671
 -- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -7377,7 +7377,7 @@ ALTER TABLE ONLY account_contacts
 
 --
 -- TOC entry 2623 (class 2606 OID 26540)
--- Dependencies: 191 193 2553 2671
+-- Dependencies: 2553 191 193 2671
 -- Name: fk_idnotifaccount_eetype; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -7387,7 +7387,7 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 --
 -- TOC entry 2619 (class 2606 OID 26496)
--- Dependencies: 185 2547 187 2671
+-- Dependencies: 2547 187 185 2671
 -- Name: fk_idpanelmodel; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -7417,7 +7417,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-02-14 06:21:32 ECT
+-- Completed on 2013-02-14 06:40:02 ECT
 
 --
 -- PostgreSQL database dump complete
