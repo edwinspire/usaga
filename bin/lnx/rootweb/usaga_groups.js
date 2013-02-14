@@ -7,8 +7,6 @@
 
 require(["dojo/ready",  
 "dojo/on",
-'dojo/store/Memory',
-"dojo/Evented",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -19,14 +17,13 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojo/request",
 "dojox/grid/cells/dijit",
-"dojox/data/XmlStore", 
 "gridx/modules/RowHeader",
 "gridx/modules/select/Row",
 "gridx/modules/IndirectSelect",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, Memory, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
+], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -96,7 +93,8 @@ i++;
 		// Optionally change column structure on the grid
 		GridxTable.setColumns([
 			{field:"idgroup", name: "id", width: '20px'},
-			{field:"enable", name: "*", editable: 'true'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			editorArgs: jspire.dijit.gridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"name", name: "Nombre", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
@@ -166,19 +164,6 @@ alert(error);
                 }
             );
 }
-
-// Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-//setTimeout(LoadGrid, 10000);
-
-
-
-
-
-
-
-
-
-
 
 
 
