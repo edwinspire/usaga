@@ -14,7 +14,7 @@ require([
   "dijit/Toolbar",
   "dijit/form/Button",
   "dojox/io/xhrScriptPlugin",
-  "dojo/data/ItemFileReadStore",
+  "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
   "dojox/data/CsvStore"
@@ -22,7 +22,10 @@ require([
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
 </style>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="jspire/core.js"></script>
+<script type="text/javascript" src="jspire/ajax.js"></script>
+<script type="text/javascript" src="jspire/dijit.js"></script>
+<script type="text/javascript" src="usaga_groups.js"></script>
 </head>
 <body class="claro" data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
  <div style="width: 100%; height: 100%;">
@@ -85,28 +88,28 @@ require([
       </tr>
       <tr>
         <td>
-         <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_1"></table>
+         <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_1"></table>
 </div>
        </td>
         <td>
-          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_2" jsId="ItemFileReadStore_2" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_2"></table>
+          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_2" jsId="ItemFileWriteStore_2" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_2"></table>
 </div>
 </td>
         <td>
-          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_3" jsId="ItemFileReadStore_3" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_3"></table>
+          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_3" jsId="ItemFileWriteStore_3" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_3"></table>
 </div>
 </td>
         <td>
-          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_4" jsId="ItemFileReadStore_4" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_4"></table>
+          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_4" jsId="ItemFileWriteStore_4" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_4"></table>
 </div>
 </td>
         <td>
-          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_5" jsId="ItemFileReadStore_5" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_5"></table>
+          <div style="width: 100%; height: 100%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_5" jsId="ItemFileWriteStore_5" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+<table data-dojo-type="gridx.Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_5"></table>
 </div>
 </td>
       </tr>
