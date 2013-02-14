@@ -424,7 +424,7 @@ RetornoX = reg["return"].Value;
 	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
 
-
+//GLib.print("%s\n", RetornoX);
 return RetornoX;
 }
 

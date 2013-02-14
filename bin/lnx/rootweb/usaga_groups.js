@@ -7,10 +7,8 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
 'dojo/store/Memory',
 "dojo/Evented",
-"dojo/data/ItemFileReadStore",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -28,7 +26,7 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
+], function(ready, on, Memory, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -77,31 +75,31 @@ i++;
 SaveData(item);
 });
 
-var GridCalls = dijit.byId('gridxnotif');
+var GridxTable = dijit.byId('gridxt');
 
-dojo.connect(GridCalls.select.row, 'onSelectionChange', function(selected){
+dojo.connect(GridxTable.select.row, 'onSelectionChange', function(selected){
 
 ObjectTable.IdToDelete = [];
 numsel = selected.length;
 
 i = 0;
 while(i<numsel){
-ObjectTable.IdToDelete[i] = GridCalls.cell(selected[i], 1, true).data();
+ObjectTable.IdToDelete[i] = GridxTable.cell(selected[i], 1, true).data();
 i++;
 }
 
 });
 
-	if (GridCalls) {
+	if (GridxTable) {
 
 		// Optionally change column structure on the grid
-		GridCalls.setColumns([
+		GridxTable.setColumns([
 			{field:"idgroup", name: "id", width: '20px'},
 			{field:"enable", name: "*", editable: 'true'},
 			{field:"name", name: "Nombre", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
-GridCalls.startup();
+GridxTable.startup();
 }
 
 
@@ -119,7 +117,6 @@ var xmld = new jspireTableXmlDoc(dataX, 'row');
 if(xmld.length > 0){
 
 alert(xmld.getStringB64(0, 'outpgmsg'));
-
 
 }
 
@@ -144,64 +141,41 @@ ObjectTable.IdToDelete = [];
             handleAs: "xml"
         }).then(
                 function(response){
-                    // Display the text file content
-alert(response);
 var d = new jspire.XmlDocFromXhr(response, 'row');
 
+numrows = d.length;
 
-alert(d.getStringB64(0, 'name'));
+var myData = {identifier: "unique_id", items: []};
 
+var i = 0;
+while(i<numrows){
+
+myData.items[i] = {
+unique_id:i,
+idgroup: d.getNumber(i, "idgroup"),
+name: d.getStringFromB64(i, "name"),
+note: d.getStringFromB64(i, "note"),
+enable: d.getBool(i, "enable"),
+ts: d.getString(i, "ts")
+};
+i++;
+}
+ItemFileWriteStore_1.clearOnClose = true;
+	ItemFileWriteStore_1.data = myData;
+	ItemFileWriteStore_1.close();
+
+		GridxTable.store = null;
+		GridxTable.setStore(ItemFileWriteStore_1);
                 },
                 function(error){
                     // Display the error returned
 alert(error);
                 }
             );
-   
-    
-
-/*
-var store = new dojox.data.XmlStore({url: "getviewnotificationtemplates.usaga", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-
-var i = 0;
-while(i<numrows){
-myData.items[i] = {
-unique_id:i,
-idnotiftempl: dataxml.getNumber(i, "idnotiftempl"),
-description: dataxml.getStringB64(i, "description"),
-message: dataxml.getStringB64(i, "message"),
-ts: dataxml.getString(i, "ts")
-};
-i++;
-}
-
-
-ItemFileWriteStore_1.clearOnClose = true;
-	ItemFileWriteStore_1.data = myData;
-	ItemFileWriteStore_1.close();
-
-		GridCalls.store = null;
-		GridCalls.setStore(ItemFileWriteStore_1);
-
-},
-onError: function(e){
-alert(e);
-}
-});
-*/
-
 }
 
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-setTimeout(LoadGrid, 10000);
+//setTimeout(LoadGrid, 10000);
 
 
 

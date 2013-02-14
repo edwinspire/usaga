@@ -8,7 +8,7 @@ this.getValue = function(i, field){
 return this.rows[i].getElementsByTagName(field).item(0).firstChild.data;
 },
 this.getBool = function(i, field){
-return jsspire.StringToBool(this.getValue(i, field));
+return this.getString(i, field).to_boolean();
 },
 this.getNumber = function(i, field){
 return Number(this.getValue(i, field));
