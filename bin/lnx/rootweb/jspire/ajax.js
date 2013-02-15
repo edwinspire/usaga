@@ -5,6 +5,9 @@ this.ElementsByTagName = getElementsByTagName,
 this.rows = this.xml.getElementsByTagName(this.ElementsByTagName),
 this.length = this.rows.length,
 this.getValue = function(i, field){
+
+//alert(this.rows[i].getElementsByTagName(field).item(0).firstChild.data);
+
 return this.rows[i].getElementsByTagName(field).item(0).firstChild.data;
 },
 this.getBool = function(i, field){

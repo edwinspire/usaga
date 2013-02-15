@@ -81,7 +81,15 @@ if(numrows > 0){
 _idaccount = dataxml.getNumber(0, "idaccount");
 t.partition.set('value', dataxml.getNumber(0, "partition"));
 t.enable.set('checked', dataxml.getBool(0, "enable")); 
-t.idgroup.set('value', dataxml.getString(0, "idgroup"));
+
+// Esto es para verificar que sea un numero valido ya que los valores nulos no son enviados desde postgres
+_idgroup = dataxml.getNumber(0, "idgroup");
+if(isNaN(_idgroup)){
+t.idgroup.reset();
+}else{
+t.idgroup.set('value', _idgroup);
+}
+
 t.account.set('value', dataxml.getStringB64(0, "account")); 
 t.account_select.set('value', _idaccount); 
 t.idtype.setValue(dataxml.getString(0, "type")); 
@@ -124,7 +132,7 @@ var datos = {};
 idaccountsave = t.account_select.get('value');
 if(idaccountsave >= 0){
 datos.idaccount = t.account_select.get('value'); 
-datos.idgroup = t.idgroup.get('idgroup');
+datos.idgroup = t.idgroup.get('value');
 datos.partition = t.partition.get('value');
 datos.enable = t.enable.get('checked'); 
 datos.account = t.account.get('value'); 
