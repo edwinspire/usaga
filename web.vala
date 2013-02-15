@@ -702,9 +702,6 @@ catch(ThreadError e){
 print(e.message);
 }
 
-
-//this.ResetAndLoadDevices();
-print("Connect: http://localhost:%s\n", S.Port.to_string());
     S.run();
 }
 

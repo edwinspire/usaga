@@ -15,21 +15,7 @@ public class uSagaProcessData:PostgresuSMS{
 public uSagaProcessData(){
 
 }
-/*
-// Inicia un hilo asincrono que corre el proceso
-public void Run(){
-print("Run()\n");
 
-try{
-Thread.create<void>(this.Procesa, false);
-this.log(LogLevelFlags.LEVEL_MESSAGE, "Running");
-}
-catch(ThreadError e){
-print(e.message);
-}
-
-}
-*/
 
 // opensaga.fun_eventtype_default
 public void fun_eventtype_default(){
@@ -91,7 +77,7 @@ HearBeat();
 }else if(i>200){
 i=-1;
 }
-GLib.print(i.to_string());
+//GLib.print(i.to_string());
 i++;
 }
 
