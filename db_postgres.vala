@@ -424,6 +424,36 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
+public string fun_view_idgroup_name_xml(bool fieldtextasbase64 = true){
+
+string[] valuesin = {fieldtextasbase64.to_string()};
+string RetornoX = "<table></table>";
+
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_idgroup_name_xml($1::boolean) as return;", valuesin);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+}else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+
+//GLib.print("%s\n", RetornoX);
+return RetornoX;
+}
+
 public string fun_view_groups_xml(bool fieldtextasbase64 = true){
 
 string[] valuesin = {fieldtextasbase64.to_string()};
@@ -1583,7 +1613,7 @@ Retorno = filas["return"].Value;
 
 }
 
-//GLib.print("%s\n", Retorno);
+GLib.print("%s\n", Retorno);
 return Retorno;
 }
 

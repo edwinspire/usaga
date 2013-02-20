@@ -7,7 +7,7 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
+"dojo/request",
 'dojo/store/Memory',
   "dijit/form/FilteringSelect", 
 "dojo/Evented",
@@ -23,7 +23,7 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore"
-], function(ready, on, DomParser, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 

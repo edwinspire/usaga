@@ -4,6 +4,8 @@
  */
 require(["dojo/ready", "dojo/window"], function(ready){
      ready(function(){
+
+
          // logic that requires that Dojo is fully initialized should go here
 var ContentPage = dijit.byId("idContentPageMaster");
 

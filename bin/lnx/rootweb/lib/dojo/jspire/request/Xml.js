@@ -1,19 +1,33 @@
-// Objeto que representa una tabla de datos (filas y columnas) en formato xml obtenido desde dojo.xhrPost o dojo.xhrGet (handleAs: 'xml')
-jspire.XmlDocFromXhr = function (xmldoc, getElementsByTagName){
+//>>built
+define("jspire/request/Xml",["dojo/_base/declare", "jspire/crypto/Base64"],function(_1){
+
+return {
+
+getFromXhr: function (xmldoc, getElementsByTagName){
 this.xml = xmldoc,
 this.ElementsByTagName = getElementsByTagName,
 this.rows = this.xml.getElementsByTagName(this.ElementsByTagName),
 this.length = this.rows.length,
 this.getValue = function(i, field){
+var r = '';
 // Esto lo hacemos asi para evitar problemas cuando los datos no existen, si ese es el caso devuelve una cadena vacia en lugar de null
-var x = this.rows[i].getElementsByTagName(field).item(0).firstChild;
-if(x){
-x = x.data;
+var _a = this.rows[i].getElementsByTagName(field);
+if(_a){
+var _b = _a.item(0);
+if(_b){
+var _c = _b.firstChild;
+if(_c){
+r = _c.data;
 }else{
-console.log('jspire.XmlDocFromXhr: No existen datos para row '+i+' campo '+field+', se devuelve una cadena vacia en lugar de null.');
-x = '';
+console.log('No existe firstChild del item(0) del TagName '+field+' en el elemento '+1);
 }
-return x;
+}else{
+console.log('No existe el item(0) del TagName '+field+' en el elemento '+1);
+}
+}else{
+console.log('No existe el TagName '+field+' en el elemento '+1);
+}
+return r;
 },
 this.getBool = function(i, field){
 return this.getString(i, field).to_boolean();
@@ -36,11 +50,9 @@ return this.getString(i, field).to_date();
 this.getStringFromB64 = function(i, field){
 return this.getString(i, field).from_base64();
 }
-}
+},
 
-
-// Objeto que representa una tabla de datos (filas y columnas) en formato xml obtenido desde un dojox.data.XmlStore
-jspire.XmlDocFromXmlStore = function (xmlstore, xmlitems){
+getFromXmlStore: function (xmlstore, xmlitems){
 this.store = xmlstore,
 this.items = xmlitems,
 this.lengthItems = this.items.length,
@@ -69,3 +81,7 @@ this.getStringFromB64 = function(i, field){
 return this.getString(i, field).from_base64();
 }
 }
+
+
+};
+});

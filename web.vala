@@ -59,7 +59,7 @@ S.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga"
 S.VirtualUrl["fun_view_groups_xml.usaga"] = "/fun_view_groups_xml.usaga";
 S.VirtualUrl["fun_groups_edit_xml_from_hashmap.usaga"] = "/fun_groups_edit_xml_from_hashmap.usaga";
 S.VirtualUrl["fun_groups_remove_selected_xml.usaga"] = "/fun_groups_remove_selected_xml.usaga";
-//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+S.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
@@ -182,6 +182,11 @@ case "/fun_groups_remove_selected_xml.usaga":
 response = response_fun_groups_remove_selected_xml(request);
 break;
 
+case "/fun_view_idgroup_name_xml.usaga":
+response = response_fun_view_idgroup_name_xml(request);
+break;
+
+
 default:
 response = uSMSServer.ResponseToVirtualRequest(request);
 break;
@@ -189,6 +194,18 @@ break;
 
     server.serve_response( response, dos );
 
+}
+
+private uHttp.Response response_fun_view_idgroup_name_xml(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+GroupsTable Tabla = new GroupsTable();
+Tabla.GetParamCnx();
+
+Retorno.Data = Tabla.fun_view_idgroup_name_xml(true).data;
+return Retorno;
 }
 
 private uHttp.Response response_fun_groups_remove_selected_xml(Request request){
@@ -441,7 +458,7 @@ idaccount = int.parse(request.Query["idaccount"]);
 AccountNotificationsTable Tabla = new AccountNotificationsTable();
 Tabla.GetParamCnx();
 Retorno.Data = Tabla.byIdContact(idaccount, idcontact).data;
-GLib.print(Tabla.byIdContact(idaccount, idcontact, true));
+//GLib.print(Tabla.byIdContact(idaccount, idcontact, true));
 return Retorno;
 }
 

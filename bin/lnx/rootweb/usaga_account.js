@@ -395,7 +395,6 @@ if(inidaccount > 0){
 var xmldata = datar.byName('row');
 
 var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
 
 var i = 0;
 var rowscount = xmldata.length;
@@ -871,7 +870,6 @@ priority: dataxml.getNumber(i, "priority"),
 call: dataxml.getBool(i, "call"),
 sms: dataxml.getBool(i, "sms"),
 smstext: dataxml.getStringB64(i, "smstext"),
-address: dataxml.getStringB64(i, "address"),
 note: dataxml.getStringB64(i, "note")
 };
 
@@ -1081,7 +1079,6 @@ AC.dijit.GxNP.setColumns([
 			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
-			{field:"address", name: "Dirección", editable: false},
 	                {field:"note", name: "Nota", editable: true}
 		]);
 AC.dijit.GxNP.startup();
@@ -1305,8 +1302,6 @@ AC.LoadContactsGrid();
 
 
 });	
-
-
 
 
 	dojo.connect(usaga_account_contact_notifphonesStore, 'onSet', function(item, attribute, oldValue, newValue){

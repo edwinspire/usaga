@@ -1,8 +1,11 @@
 define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
-'dojo/text!./account_main_data.html'
-],function(declare,_Widget,_Templated,templateString){
+'dojo/text!./account_main_data.html',
+'dojo/request',
+"jspire/form/FilteringSelect",
+"jspire/request/Xml"
+],function(declare,_Widget,_Templated,templateString, R, jsFS, RXml){
 
  return declare('usaga.account_main_data',[ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -10,7 +13,11 @@ define(['dojo/_base/declare',
 postCreate: function(){
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
+
  var t = this;
+
+jsFS.addXmlLoader(t.account_select, 'fun_view_idaccounts_names_xml.usaga', 'row', {}, 'idaccount', 'name');
+jsFS.addXmlLoader(t.idgroup, 'fun_view_idgroup_name_xml.usaga', 'row', {}, 'idgroup', 'name');
 
 // Generamos un id aleatorio porque el tooltipdialogconfirmation solo funciona pasando como parametro el id del elemento
 id_button_delete = 'account_main_data'+Math.random()+'id_button_delete';
@@ -38,8 +45,8 @@ t._delete();
 });
 
 
-t._LoadListAccounts();
-t._LoadListGroups();
+t.account_select.Load();
+t.idgroup.Load();
 
 },
 _resetall: function(){
@@ -53,14 +60,6 @@ return _idaddress;
 idaccount: function(){
 return this.account_select.get('value');
 },
-// Carga la lista accounts en el FilteringSelect
-_LoadListAccounts: function(){
-new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(this.account_select, true, 'fun_view_idaccounts_names_xml.usaga', 'row', 'idaccount', 'name').Load();
-},
-// Carga la lista accounts en el FilteringSelect
-_LoadListGroups: function(){
-new jspire.dijit.FilteringSelect.FilteringSelectLoadFromXml(this.idgroup, true, 'fun_view_groups_xml.usaga', 'row', 'idgroup', 'name').Load();
-},
 // Carga el account seleccionado
 _LoadAccountSelected: function(){
 if(this.account_select.state != 'Error'){
@@ -70,31 +69,33 @@ var _idaccount = t.account_select.get('value');
 
 if(_idaccount > 0){
 
-var s = new dojox.data.XmlStore({url: "getaccount.usaga", sendQuery: true, rootItem: 'row'});
-var request = s.fetch({query: { idaccount: _idaccount}, onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(s, itemsrow);
-
-numrows = itemsrow.length;
+   R.get('getaccount.usaga', {
+		query: {idaccount: _idaccount},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+numrows = d.length;
 
 if(numrows > 0){
-_idaccount = dataxml.getNumber(0, "idaccount");
-t.partition.set('value', dataxml.getNumber(0, "partition"));
-t.enable.set('checked', dataxml.getBool(0, "enable")); 
+_idaccount = d.getNumber(0, "idaccount");
+t.partition.set('value', d.getNumber(0, "partition"));
+t.enable.set('checked', d.getBool(0, "enable")); 
 
 // Esto es para verificar que sea un numero valido ya que los valores nulos no son enviados desde postgres
-_idgroup = dataxml.getNumber(0, "idgroup");
-if(isNaN(_idgroup)){
+_idgroup = d.getNumber(0, "idgroup");
+if(isNaN(_idgroup) || _idgroup < 1){
 t.idgroup.reset();
 }else{
 t.idgroup.set('value', _idgroup);
 }
 
-t.account.set('value', dataxml.getStringB64(0, "account")); 
+t.account.set('value', d.getStringFromB64(0, "account")); 
 t.account_select.set('value', _idaccount); 
-t.idtype.setValue(dataxml.getString(0, "type")); 
-t.note.set('value', dataxml.getStringB64(0, "note"));
-t._idaddress = dataxml.getNumber(0, "idaddress"); 
+t.idtype.setValue(d.getString(0, "type")); 
+t.note.set('value', d.getStringFromB64(0, "note"));
+t._idaddress = d.getNumber(0, "idaddress"); 
 
 }else{
 t._idaddress = 0;
@@ -102,11 +103,15 @@ t.form_data.reset();
 }
 t.emit('onloadaccount', {idaccount: _idaccount, idaddress: t._idaddress}); 
 
-},
-onError: function(e){
-alert(e);
-}
-});
+
+
+
+                },
+                function(error){
+                    // Display the error returned
+alert(error);
+                }
+            );
 
 }else{
 t.form_data.reset();
@@ -144,8 +149,45 @@ t._actionsave(datos);
 
 },
 // Guarda los datos en el servidor
-_actionsave: function(data){
+_actionsave: function(_data){
 var t = this;
+
+   R.post('saveaccount.usaga', {
+		data: _data,
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+
+alert(d.getStringFromB64(0, 'outpgmsg'));
+
+t._LoadListAccounts();
+var id = d.getNumber(0, "outreturn");
+
+if(id>=0){
+t.account_select.set('value', id);
+}else{
+t._resetall();
+}
+t._LoadAccountSelected();
+}
+
+
+
+
+                },
+                function(error){
+                    // Display the error returned
+t._resetall();
+t._LoadAccountSelected();
+alert(errorx);
+                }
+            );
+
+/*
   // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
   var xhrArgs = {
     url: "saveaccount.usaga",
@@ -157,7 +199,7 @@ var xmld = new jspireTableXmlDoc(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 t._LoadListAccounts();
 var id = xmld.getNumber(0, "outreturn");
@@ -179,16 +221,8 @@ alert(errorx);
   }
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
-
-}
-
-
-
-
-
-
-
-
+*/
+},
 
   
 });
