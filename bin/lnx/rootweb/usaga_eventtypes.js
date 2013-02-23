@@ -7,8 +7,6 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
-'dojo/store/Memory',
 "dojo/Evented",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
@@ -20,12 +18,12 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
   "dijit/form/TextBox",
 "gridx/modules/VirtualVScroller",
+"jspire/Gridx",
+"jspire/request/Xml",
 "dojox/data/XmlStore"
-], function(ready, on, DomParser, Memory, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, CheckBox, NumberTextBox, TextBox, VirtualVScroller, jsGridx, RXml){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-
-
 
 dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
 SaveData(item);
@@ -39,8 +37,8 @@ var GridxTable = dijit.byId('gridxdata');
 			{field:"ideventtype", name: "id", width: '20px'},
 			{field:"name", name: "Nombre"},
 			{field:"label", name: "Etiqueta", editable: 'true'},
-			{field:"accountdefault", name: "accountdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToCellBoolean, alwaysEditing: 'true'},
-			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToCellBoolean, alwaysEditing: 'true'},
+			{field:"accountdefault", name: "accountdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: 'true'},
+			{field:"groupdefault", name: "groupdefault" ,  editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: 'true'},
 			{field:"note", name: "nota" , editable: 'true'}
 		]);
 GridxTable.startup();
@@ -57,7 +55,7 @@ function SaveData(item){
     handleAs: "xml",
     load: function(dataX){
 
-var xmld = new jspire.XmlDocFromXhr(dataX, 'row');
+var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
@@ -78,13 +76,9 @@ alert(errorx);
 }
 
 function LoadGrid(){
-
 var store = new dojox.data.XmlStore({url: "fun_view_eventtypes_xml.usaga", sendQuery: true, rootItem: 'row'});
-
 var request = store.fetch({onComplete: function(itemsrow, r){
-
-var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
-
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 numrows = itemsrow.length;
 
 var myData = {identifier: "unique_id", items: []};

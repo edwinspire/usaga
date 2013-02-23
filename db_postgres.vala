@@ -585,30 +585,7 @@ this.Note = "";
 
 public class AccountPhonesTriggerAlarmTable:PostgreSQLConnection{
 
-/*
-public static XmlRow AccountPhonesTriggerAlarmViewdbNodeXml(AccountPhonesTriggerAlarmViewdb row){
-
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idaccount", row.IdAccount);
-Fila.addFieldInt("idcontact", row.IdContact);
-Fila.addFieldInt("idphone", row.IdPhone);
-Fila.addFieldBool("phone_enable", row.PhoneEnable);
-Fila.addFieldInt("type", row.Type);
-Fila.addFieldInt("idprovider", row.IdProvider);
-Fila.addFieldString("phone", row.Phone, true);
-Fila.addFieldString("address", row.Address, true);
-Fila.addFieldBool("trigger_alarm", row.TriggerEnable);
-Fila.addFieldBool("fromsms", row.SMS);
-Fila.addFieldBool("fromcall", row.Call);
-Fila.addFieldString("note", row.Note, true);
-
-return Fila;
-}
-*/
-
-
-public SQLFunReturn fun_account_phones_trigger_alarm_table_from_hashmap(HashMap<string, string> form){
+public string fun_account_phones_trigger_alarm_table_from_hashmap(HashMap<string, string> form, bool fieldtextasbase64 = true){
 int inidaccount = 0;
 int inidphone = 0;
 bool inenable = false;
@@ -635,30 +612,24 @@ if(form.has_key("note")){
 innote = form["note"];
 }
 
-return fun_account_phones_trigger_alarm_table(inidaccount, inidphone, inenable, infromsms, infromcall, innote);
+return fun_account_phones_trigger_alarm_table(inidaccount, inidphone, inenable, infromsms, infromcall, innote, fieldtextasbase64);
 }
 
 //fun_account_phones_trigger_alarm_table(IN inidaccount integer, IN inidphone integer, IN inenable boolean, IN infromsms boolean, IN infromcall boolean, IN innote text, OUT outreturn integer, OUT outpgmsg text)
-public SQLFunReturn fun_account_phones_trigger_alarm_table(int inidaccount, int inidphone, bool inenable, bool infromsms, bool infromcall, string innote){
+public string fun_account_phones_trigger_alarm_table(int inidaccount, int inidphone, bool inenable, bool infromsms, bool infromcall, string innote, bool fieldtextasbase64 = true){
 
-SQLFunReturn Retorno = new SQLFunReturn();
-//GLib.print("Llega hasta aqui %s => %s\n", inname, innote);
-string[] ValuesArray = {inidaccount.to_string(), inidphone.to_string(), inenable.to_string(), infromsms.to_string(), infromcall.to_string(), innote};
-//GLib.print("Llega hasta aqui 3 \n");
+string Retorno = "<table></table>";
+string[] ValuesArray = {inidaccount.to_string(), inidphone.to_string(), inenable.to_string(), infromsms.to_string(), infromcall.to_string(), innote, fieldtextasbase64.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_phones_trigger_alarm_table($1::integer, $2::integer, $3::boolean, $4::boolean, $5::boolean, $6::text);""",  ValuesArray);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_phones_trigger_alarm_table_xml($1::integer, $2::integer, $3::boolean, $4::boolean, $5::boolean, $6::text, $7::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-//GLib.print("Llega hasta aqui 4 \n");
-foreach(var filas in this.Result_FieldName(ref Resultado)){
-//Retorno = int.parse(filas["fun_smsout_insert"]);
-Retorno.Return = filas["outreturn"].as_int();
-Retorno.Msg = filas["outpgmsg"].Value;
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+Retorno = reg["return"].Value;
 }
-
 } else{
 	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
     }
@@ -683,16 +654,6 @@ idaccount = int.parse(form["idaccount"]);
 return fun_view_account_users_trigger_phones_contacts_xml(idaccount, idcontact, fieldtextasbase64);
 }
 
-
-/*
-public string AccountPhonesTriggerAlarmViewdbXml(int idaccount, int idcontact){
-var Rows = XmlDatas.Node("trigger");
-foreach(var r in AccountPhonesTriggerAlarmView(idaccount, idcontact)){
-Rows->add_child(AccountPhonesTriggerAlarmViewdbNodeXml(r).Row());
-}
-return XmlDatas.XmlDocToString(Rows);
-}
-*/
 
 public string fun_view_account_users_trigger_phones_contacts_xml(int idaccount, int idcontact, bool fieldtextasbase64 = true){
 
@@ -1310,28 +1271,6 @@ RetornoX = reg["return"].Value;
 return RetornoX;
 }
 
-
-public static XmlRow AccountUserViewNodeXml(AccountUsersViewdb user){
-
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idcontact", user.IdContact);
-Fila.addFieldBool("enable", user.EnableContact);
-Fila.addFieldString("firstname", user.FirstName, true);
-Fila.addFieldString("lastname", user.LastName, true);
-Fila.addFieldInt("idaccount", user.IdAccount);
-Fila.addFieldInt("prioritycontact", user.PriorityContact);
-Fila.addFieldBool("enable_as_contact", user.EnableAsContact);
-Fila.addFieldString("appointment", user.Appointment, true);
-Fila.addFieldBool("enable_as_user", user.EnableAsUser);
-Fila.addFieldInt("numuser", user.NumUser);
-Fila.addFieldString("pwd", user.Pwd, true);
-Fila.addFieldString("keyword", user.KeyWord, true);
-
-return Fila;
-}
-
-
 public string fun_view_idaccounts_names_xml(bool fieldtextasbase64 = true){
 
 string Retorno = "";
@@ -1359,54 +1298,6 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-
-/*
-public string NameAndId_All_Xml(){
-
-var Rows = XmlDatas.Node("accounts");
-
-foreach(var r in NameAndId_All().entries){
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idaccount", r.key);
-Fila.addFieldString("name", r.value, true);
-Rows->add_child(Fila.Row());
-}
-return XmlDatas.XmlDocToString(Rows);
-}
-*/
-
-
-/*
-public HashMap<int, string> NameAndId_All(){
-
-string[] valuesin = {"name"};
-HashMap<int, string> RetornoX = new HashMap<int, string>();
-RetornoX[0] = "Ninguno seleccionado";
-
-var  Conexion = Postgres.connect_db (this.ConnString());
-
-if(Conexion.get_status () == ConnectionStatus.OK){
-
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT idaccount, name FROM usaga.account ORDER BY $1::text;", valuesin);
-
-    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-
-foreach(var reg in this.Result_FieldName(ref Resultado)){
-RetornoX[reg["idaccount"].as_int()] = reg["name"].Value;
-}
-
-} else{
-	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
-    }
-
-}else{
-	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
-}
-
-return RetornoX;
-}
-*/
 
 public string fun_account_notifications_table_xml(int idnotifaccount, int idaccount, int idphone, int priority, bool call, bool sms, string smstext, string note, string ts, bool fieldtextasbase64 = true){
 
@@ -1462,71 +1353,31 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-public string AccountUsersViewXml(int idaccount){
-var Rows = XmlDatas.Node("users");
-foreach(var r in AccountUsersView(idaccount)){
-Rows->add_child(AccountUserViewNodeXml(r).Row());
-}
-return XmlDatas.XmlDocToString(Rows);
-}
+public string fun_view_account_users_xml(int inidaccount, bool fieldtextasbase64 = true){
 
-
-public AccountUsersViewdb[] AccountUsersView(int idaccount){
-
-string[] valuesin = {idaccount.to_string()};
-AccountUsersViewdb[] RetornoX = new AccountUsersViewdb[0];
-
+string Retorno = "";
+string[] ValuesArray = {inidaccount.to_string(), fieldtextasbase64.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
-
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.view_account_users WHERE idaccount = $1 ORDER BY numuser, lastname, firstname", valuesin);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_users_xml($1::integer, $2::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
-//var Etiqueta = new StringBuilder();
-
-var Registros = this.Result_FieldName(ref Resultado);
-
-RetornoX = new AccountUsersViewdb[Registros.length];
-int i = 0;
-foreach(var reg in Registros){
-AccountUsersViewdb Registro = AccountUsersViewdb();
-Registro.IdContact = reg["idcontact"].as_int();
-Registro.EnableContact = reg["enable"].as_bool();
-Registro.FirstName = reg["firstname"].Value;
-Registro.LastName = reg["lastname"].Value;
-Registro.IdAccount = reg["idaccount"].as_int();
-Registro.PriorityContact = reg["prioritycontact"].as_int();
-Registro.EnableAsContact = reg["enable_as_contact"].as_bool();
-Registro.Appointment = reg["appointment"].Value;
-Registro.EnableAsUser = reg["enable_as_user"].as_bool();
-Registro.NumUser = reg["numuser"].as_int();
-Registro.Pwd = reg["pwd"].Value;
-Registro.KeyWord = reg["keyword"].Value;
-
-RetornoX[i] = Registro;
-
-i++;
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+Retorno = filas["return"].Value;
 }
 
 } else{
 	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
     }
 
-}else{
-	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
 }
-
-return RetornoX;
+//GLib.print("%s\n", Retorno);
+return Retorno;
 }
 
 
-/*
-public string byIdXml(int idaccount){
-return XmlDatas.XmlDocToString(AccountNodeXml(this.byId(idaccount)).Row());
-}
-*/
 public string fun_view_account_byid_xml(int inidaccount, bool fieldtextasbase64 = true){
 
 string Retorno = "";
@@ -1613,7 +1464,6 @@ Retorno = filas["return"].Value;
 
 }
 
-GLib.print("%s\n", Retorno);
 return Retorno;
 }
 
@@ -1663,22 +1513,20 @@ return Retorno;
 }
 
 //usaga.fun_account_users_table(IN inidaccount integer, IN inidcontact integer, IN inappointment text, IN inenable boolean, IN innumuser integer, IN inkeyword text, IN inpwd text, IN innote text, OUT outreturn integer, OUT outmsg text)
- public SQLFunReturn fun_account_users_table(int inidaccount, int inidcontact, string inappointment, bool inenable, int innumuser, string inkeyword, string inpwd, string  innote = ""){
+ public string fun_account_users_table_xml(int inidaccount, int inidcontact, string inappointment, bool inenable, int innumuser, string inkeyword, string inpwd, string  innote = "", bool fieldtextasbase64 = true){
 
-SQLFunReturn Retorno = new SQLFunReturn();
-string[] ValuesArray = {inidaccount.to_string(), inidcontact.to_string(), inappointment, inenable.to_string(), innumuser.to_string(),  inkeyword, inpwd, innote};
+string Retorno = "<table></table>";
+string[] ValuesArray = {inidaccount.to_string(), inidcontact.to_string(), inappointment, inenable.to_string(), innumuser.to_string(),  inkeyword, inpwd, innote, fieldtextasbase64.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
-var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.fun_account_users_table($1::integer, $2::integer, $3::text, $4::boolean, $5::integer, $6::text, $7::text, $8::text);""",  ValuesArray);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_users_table_xml($1::integer, $2::integer, $3::text, $4::boolean, $5::integer, $6::text, $7::text, $8::text, $9::boolean) as return;",  ValuesArray);
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-//GLib.print("Llega hasta aqui 4 \n");
+
 foreach(var filas in this.Result_FieldName(ref Resultado)){
 //Retorno = int.parse(filas["fun_smsout_insert"]);
-Retorno.Return = filas["outreturn"].as_int();
-Retorno.Msg = filas["outpgmsg"].Value;
-
-//GLib.print("OUT %s => %i\n", filas["outreturn"].Value, filas["outreturn"].as_int());
+Retorno = filas["return"].Value;
 }
+
 } else{
 	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
     }
@@ -1691,86 +1539,60 @@ return Retorno;
  
 
 
-public SQLFunReturn fun_account_users_table_from_hashmap(HashMap<string, string> Data){
+public string fun_account_users_table_xml_from_hashmap(HashMap<string, string> Data, bool fieldtextasbase64 = true){
 
-AccountUserdb Registro = AccountUserdb();
+int IdAccount = 0;
+int IdContact = 0;
+string Appointment = "";
+bool Enable = false;
+int NumUser = 0;
+string KeyWord = "";
+string Password = "";
+string Note = "";
 
 if(Data.has_key("idaccount")){
-Registro.IdAccount = int.parse(Data["idaccount"]);
+IdAccount = int.parse(Data["idaccount"]);
 }
 if(Data.has_key("idcontact")){
-Registro.IdContact = int.parse(Data["idcontact"]);
+IdContact = int.parse(Data["idcontact"]);
 }
 if(Data.has_key("numuser")){
-Registro.NumUser = int.parse(Data["numuser"]);
+NumUser = int.parse(Data["numuser"]);
 }
 if(Data.has_key("enable")){
-Registro.Enable = bool.parse(Data["enable"]);
-//GLib.print("Cuenta Habilitada >>>> %s\n \n", Registro.Enable.to_string());
+Enable = bool.parse(Data["enable"]);
 }
 
 if(Data.has_key("keyword")){
-Registro.KeyWord = Data["keyword"];
+KeyWord = Data["keyword"];
 }
 if(Data.has_key("pwd")){
-Registro.Password = Data["pwd"];
+Password = Data["pwd"];
 }
 
 if(Data.has_key("appointment")){
-Registro.Appointment = Data["appointment"];
+Appointment = Data["appointment"];
 }
 
 if(Data.has_key("note")){
-Registro.Note = Data["note"];
+Note = Data["note"];
 }
-//GLib.print("Llega hasta aqui 1 \n");
-return fun_account_users_table(Registro.IdAccount, Registro.IdContact, Registro.Appointment, Registro.Enable, Registro.NumUser, Registro.KeyWord, Registro.Password, Registro.Note);
-}
-
-
-
-
-public static XmlRow AccountUserNodeXml(AccountUserdb user){
-
-XmlRow Fila = new XmlRow();
-Fila.Name = "row";
-Fila.addFieldInt("idaccount", user.IdAccount);
-Fila.addFieldInt("idcontact", user.IdContact);
-Fila.addFieldString("appointment", user.Appointment, true);
-Fila.addFieldBool("enable", user.Enable);
-Fila.addFieldString("keyword", user.KeyWord, true);
-Fila.addFieldString("pwd", user.Password, true);
-Fila.addFieldInt("numuser", user.NumUser);
-Fila.addFieldString("note", user.Note, true);
-
-return Fila;
+return fun_account_users_table_xml(IdAccount, IdContact, Appointment, Enable, NumUser, KeyWord, Password, Note, fieldtextasbase64);
 }
 
-public string UserbyIdContactXml(int idaccount, int idcontact){
-return XmlDatas.XmlDocToString(AccountUserNodeXml(this.UserbyIdContact(idaccount, idcontact)).Row());
-}
-
-
-public AccountUserdb UserbyIdContact(int idaccount, int idcontact){
-AccountUserdb Retorno = AccountUserdb();
-string[] ValuesArray = {idaccount.to_string(), idcontact.to_string()};
+public string fun_view_account_user_byidaccountidcontact_xml(int idaccount, int idcontact, bool fieldtextasbase64 = true){
+string Retorno = "<table></table>";
+string[] ValuesArray = {idaccount.to_string(), idcontact.to_string(), fieldtextasbase64.to_string()};
 var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, """SELECT * FROM usaga.account_users WHERE idaccount=$1::integer  AND idcontact=$2::integer LIMIT 1""",  ValuesArray);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_user_byidaccountidcontact_xml($1::integer, $2::integer, $3::boolean) AS return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-//GLib.print("Llega hasta aqui 4 \n");
 foreach(var filas in this.Result_FieldName(ref Resultado)){
-Retorno.IdAccount = filas["idaccount"].as_int();
-Retorno.IdContact = filas["idcontact"].as_int();
-Retorno.Enable = filas["enable_as_user"].as_bool();
-Retorno.KeyWord = filas["keyword"].Value;
-Retorno.Appointment = filas["appointment"].Value;
-Retorno.Password = filas["pwd"].Value;
-Retorno.NumUser = filas["numuser"].as_int();
-Retorno.Note = filas["note_user"].Value;
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
 }
 
 } else{
@@ -1788,6 +1610,7 @@ return Retorno;
 
 
 
+/*
 public struct AccountLocationdb{
 
 public int IdAccount;
@@ -1808,10 +1631,12 @@ this.Note = "";
 
 }
 
+
+
 public class AccountLocationTable:PostgreSQLConnection{
 
 
-public static XmlRow AccountLocationNodeXml(AccountLocationdb location){
+private static XmlRow AccountLocationNodeXml(AccountLocationdb location){
 
 XmlRow Fila = new XmlRow();
 Fila.Name = "row";
@@ -1922,7 +1747,7 @@ return Retorno;
 
 }
 
-
+*/
 
 
 

@@ -16,6 +16,8 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
 "dojo/request",
+"jspire/request/Xml",
+"jspire/Gridx",
 "dojox/grid/cells/dijit",
 "gridx/modules/RowHeader",
 "gridx/modules/select/Row",
@@ -23,7 +25,7 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request){
+], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -90,7 +92,7 @@ i++;
 		GridxTable.setColumns([
 			{field:"idgroup", name: "id", width: '20px'},
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
-			editorArgs: jspire.dijit.gridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"name", name: "Nombre", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
@@ -106,7 +108,7 @@ request.post('fun_groups_remove_selected_xml.usaga', {
 data: {idgroups: ObjectTable.IdToDelete.toString()}
 }).then(function(response){
 
-var xmld = new jspire.XmlDocFromXhr(response, 'row');
+var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
 alert(xmld.getStringFromB64(0, 'outpgmsg'));
@@ -126,7 +128,7 @@ request.post('fun_groups_edit_xml_from_hashmap.usaga', {
 data: {idgroup: item.idgroup,  enable: item.enable, name: item.name, note: item.note}
 }).then(function(response){
 
-var xmld = new jspire.XmlDocFromXhr(response, 'row');
+var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
 alert(xmld.getStringFromB64(0, 'outpgmsg'));
@@ -149,7 +151,7 @@ ObjectTable.IdToDelete = [];
             handleAs: "xml"
         }).then(
                 function(response){
-var d = new jspire.XmlDocFromXhr(response, 'row');
+var d = new RXml.getFromXhr(response, 'row');
 
 numrows = d.length;
 

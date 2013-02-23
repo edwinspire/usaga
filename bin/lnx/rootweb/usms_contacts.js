@@ -21,9 +21,12 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
+"jspire/request/Xml",
+"jspire/Gridx",
+"jspire/form/FilteringSelect",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore"
-], function(ready, on, request, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, RXml, jsGridx, jsFS){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -56,7 +59,7 @@ var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -69,7 +72,7 @@ myData.items[i] = {
 unique_id:i,
 idcontact: dataxml.getNumber(i, "idcontact"),
 enable: dataxml.getBool(i, "enable"),
-name: dataxml.getStringB64(i, "name"),
+name: dataxml.getStringFromB64(i, "name"),
 };
 i++;
 }
@@ -99,7 +102,7 @@ FormContact.LoadContactSelected();
 		// Optionally change column structure on the grid
 		GlobalObject.dijit.Grid.setColumns([
 			{field:"idcontact", name: "id", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBooleanDisabled, alwaysEditing: true},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"name", name: "Nombre"},
 		]);
 GlobalObject.dijit.Grid.startup();
@@ -133,25 +136,25 @@ var store = new dojox.data.XmlStore({url: "usms_getcontactbyid_xml", sendQuery: 
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
 if(numrows > 0){
 var i = 0;
 FormContact.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
-FormContact.dijit.Firstname.set('value', dataxml.getStringB64(i, "firstname"));
-FormContact.dijit.Lastname.set('value', dataxml.getStringB64(i, "lastname"));
-FormContact.dijit.Title.set('value', dataxml.getStringB64(i, "title"));
+FormContact.dijit.Firstname.set('value', dataxml.getStringFromB64(i, "firstname"));
+FormContact.dijit.Lastname.set('value', dataxml.getStringFromB64(i, "lastname"));
+FormContact.dijit.Title.set('value', dataxml.getStringFromB64(i, "title"));
 FormContact.dijit.Birthday.set('value', dataxml.getDate(i, "birthday"));
 FormContact.dijit.Gender.set('value', dataxml.getNumber(i, "gender"));
 FormContact.dijit.IdentificationType.set('value', dataxml.getNumber(i, "typeofid"));
-FormContact.dijit.Identification.set('value', dataxml.getStringB64(i, "identification"));
-FormContact.dijit.Web.set('value', dataxml.getStringB64(i, "web"));
-FormContact.dijit.email1.set('value', dataxml.getStringB64(i, "email1"));
-FormContact.dijit.email2.set('value', dataxml.getStringB64(i, "email2"));
-FormContact.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
-FormContact.ts = dataxml.getStringB64(i, "ts");
+FormContact.dijit.Identification.set('value', dataxml.getStringFromB64(i, "identification"));
+FormContact.dijit.Web.set('value', dataxml.getStringFromB64(i, "web"));
+FormContact.dijit.email1.set('value', dataxml.getStringFromB64(i, "email1"));
+FormContact.dijit.email2.set('value', dataxml.getStringFromB64(i, "email2"));
+FormContact.dijit.Note.set('value', dataxml.getStringFromB64(i, "note"));
+FormContact.ts = dataxml.getStringFromB64(i, "ts");
 CAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
 GlobalObject.IdContact = dataxml.getNumber(i, "idcontact");
 }else{
@@ -182,12 +185,12 @@ var Objeto = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 
 GlobalObject.IdContact = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }else{
 GlobalObject.IdContact = 0;
@@ -259,7 +262,7 @@ var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontac
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -273,7 +276,7 @@ unique_id:i,
 idcontact: dataxml.getNumber(i, "idcontact"),
 idphone: dataxml.getNumber(i, "idphone"),
 enable: dataxml.getBool(i, "enable"),
-phone: dataxml.getStringB64(i, "phone"),
+phone: dataxml.getStringFromB64(i, "phone"),
 };
 i++;
 }
@@ -296,7 +299,7 @@ var store = new dojox.data.XmlStore({url: "usms_getphonebyid_xml", sendQuery: tr
 
 var request = store.fetch({query: {idphone: CP.IdPhone}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -307,12 +310,12 @@ if(numrows>0){
 var i = 0;
 
 CP.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
-CP.dijit.Phone.set('value', dataxml.getStringB64(i, "phone"));
-CP.dijit.Ext.set('value', dataxml.getStringB64(i, "phone_ext"));
+CP.dijit.Phone.set('value', dataxml.getStringFromB64(i, "phone"));
+CP.dijit.Ext.set('value', dataxml.getStringFromB64(i, "phone_ext"));
 CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
 CP.dijit.Provider.set('value', dataxml.getString(i, "idprovider"));
 CP.dijit.Type.set('value', dataxml.getString(i, "typephone"));
-CP.dijit.Note.set('value', dataxml.getStringB64(i, "note"));
+CP.dijit.Note.set('value', dataxml.getStringFromB64(i, "note"));
 PAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
 }else{
 PAddress.AddressW.reset();
@@ -342,13 +345,13 @@ var Objeto = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 CP.LoadGrid();
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 CP.IdPhone = xmld.getInt(0, 'outreturn');
 CP.LoadPhone();
 
@@ -382,7 +385,7 @@ CP.LoadPhone();
 		CP.Gridx.setColumns([
 			{field:"idcontact", name: "idc", width: '0px'},
 			{field:"idphone", name: "idp", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBooleanDisabled, alwaysEditing: true},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"phone", name: "Teléfono"},
 		]);
 CP.Gridx.startup();
@@ -405,7 +408,7 @@ var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: tr
 
 var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -414,10 +417,10 @@ i = 0;
 ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
 ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
 ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
-ObjectoW.set('mainstreet', dataxml.getStringB64(i, 'main_street'));
-ObjectoW.set('secundarystreet', dataxml.getStringB64(i, 'secundary_street'));
-ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
-ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
+ObjectoW.set('mainstreet', dataxml.getStringFromB64(i, 'main_street'));
+ObjectoW.set('secundarystreet', dataxml.getStringFromB64(i, 'secundary_street'));
+ObjectoW.set('other', dataxml.getStringFromB64(i, 'other'));
+ObjectoW.set('note', dataxml.getStringFromB64(i, 'note'));
 ObjectoW.set('ts', dataxml.getString(i, 'ts'));
 ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
 }else{
@@ -452,11 +455,11 @@ var Este = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
@@ -485,11 +488,11 @@ var Este = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
@@ -529,11 +532,11 @@ var Este = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
@@ -562,11 +565,11 @@ var Este = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
@@ -590,17 +593,13 @@ dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function
 PAddress.Save();
 });
 
+//(filteringselect, url, ri, q, id, name)
+
+jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
+
+//var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
 
 
-
-var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
-
-/*
-dijit.byId('idwaddresscontact').on('onok', function(x){
-alert(x.value);
-});
-
-*/
 
 var dialogdeletc = dijit.byId('dialogconfirmdeletecontact');
 dialogdeletc.setowner('usms.contact.del', 'onclick').on('onok', function(){
@@ -632,7 +631,7 @@ PAddress.Delete();
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
-loadProviderlist.Load();
+CP.dijit.Provider.Load();
 
 
      });

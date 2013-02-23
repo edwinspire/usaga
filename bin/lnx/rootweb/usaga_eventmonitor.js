@@ -3,9 +3,17 @@
  * Maqetta includes this JavaScript file by default within HTML pages authored in Maqetta.
  */
 
-require(["dojo/ready", "dojo/data/ItemFileReadStore",
+require(["dojo/ready", 
+'jspire/Gridx',
+'jspire/request/Xml',
+"dojo/data/ItemFileReadStore",
   "gridx/Grid",
-  "gridx/core/model/cache/Async", "dojox/xml/DomParser", "dojox/data/XmlStore",   "dijit/form/CheckBox", 'gridx/modules/Edit', 'gridx/modules/CellWidget'], function(ready){
+  "gridx/core/model/cache/Async",
+ "dojox/data/XmlStore",
+   "dijit/form/CheckBox",
+'gridx/modules/VirtualVScroller',
+ 'gridx/modules/Edit',
+ 'gridx/modules/CellWidget'], function(ready, jsGridx, RXml){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -21,7 +29,7 @@ var LastIdEvent = 0;
 			{field:"dateload", name: "dateload", width: '85px'},
 			{field:"idaccount", name: "idaccount", width: '50px'},
 			{field:"partition", name: "partition", width: '40px'},
-			{field:"enable", name: "enable", width: '40px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspire.dijit.gridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
+			{field:"enable", name: "enable", width: '40px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
 			{field:"account", name: "account", width: '50px'},
 			{field:"name", name: "name", width: '150px'},
 			{field:"code", name: "code", width: '25px'},
@@ -41,7 +49,7 @@ var store = new dojox.data.XmlStore({url: "usaga_geteventsmonitor.usaga", sendQu
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -89,7 +97,7 @@ var store = new dojox.data.XmlStore({url: "lastidevent.usaga", sendQuery: true, 
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspire.XmlDocFromXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 alreadylasidevent = 0; 

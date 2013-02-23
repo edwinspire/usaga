@@ -7,7 +7,6 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
 'dojo/store/Memory',
   "dijit/form/FilteringSelect", 
 "dojo/Evented",
@@ -21,6 +20,10 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
+"jspire/request/Xml",
+"dojo/request",
+"jspire/Gridx",
+"jspire/form/DateTextBox",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore",
 "gridx/modules/RowHeader",
@@ -29,7 +32,7 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, DomParser, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, RXml, request, jsGridx, jsDateTextBox){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -60,7 +63,7 @@ var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -72,7 +75,7 @@ var Items = [];
 //var len = xmldata.length;
 var i = 0;
 while(i<numrows){
-Items[i] =    {name: dataxml.getStringB64(i, 'name'), id: dataxml.getNumber(i, "idcontact")};
+Items[i] =    {name: dataxml.getStringFromB64(i, 'name'), id: dataxml.getNumber(i, "idcontact")};
 i++;
 }
 //on.emit(Objeto.MasterDiv, "onListIdContactNameLoaded", {data: new Memory({data: Items})});
@@ -143,7 +146,7 @@ var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: tr
 
 var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -152,10 +155,10 @@ i = 0;
 ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
 ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
 ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
-ObjectoW.set('mainstreet', dataxml.getStringB64(i, 'main_street'));
-ObjectoW.set('secundarystreet', dataxml.getStringB64(i, 'secundary_street'));
-ObjectoW.set('other', dataxml.getStringB64(i, 'other'));
-ObjectoW.set('note', dataxml.getStringB64(i, 'note'));
+ObjectoW.set('mainstreet', dataxml.getStringFromB64(i, 'main_street'));
+ObjectoW.set('secundarystreet', dataxml.getStringFromB64(i, 'secundary_street'));
+ObjectoW.set('other', dataxml.getStringFromB64(i, 'other'));
+ObjectoW.set('note', dataxml.getStringFromB64(i, 'note'));
 ObjectoW.set('ts', dataxml.getString(i, 'ts'));
 ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
 //alert(ObjectoW.idaddress+'  '+dataxml.getNumber(i, 'idaddress'));
@@ -186,11 +189,11 @@ var Este = this;
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
@@ -225,17 +228,6 @@ AA.Delete();
 ///// USUARIOS /////
 var myAccountUsersGridX = dijit.byId("usaga.account.users.gridx");
 
-/*
-on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
-
-var userSelectBox = dijit.byId('usaga.account.users.form.idcontact');
-userSelectBox.store = null;
-userSelectBox.store = d.data;
-userSelectBox.startup();
-userSelectBox.readOnly = true;
-});
-*/
-
 dojo.connect(dijit.byId("usaga.account.user.button.new"), 'onClick', function(){
 			dojo.byId("usaga.account.users.form").reset();
 dijit.byId("usaga.account.users.form.idcontact").readOnly = false;
@@ -261,7 +253,7 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		// Optionally change column structure on the grid
 		myAccountUsersGridX.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true, disabled: true},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true, disabled: true},
 			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px', editable: true}
@@ -292,38 +284,27 @@ formdata.numuser = dijit.byId('usaga.account.users.form.numuser').get('value');
 
 if(Account_Main_Data.idaccount() > 0){
 
-  var xhrArgs = {
-    url: "saveaccountuser.usaga",
- content: formdata,
-    handleAs: "text",
-    load: function(datass){
+request.post('fun_account_users_table_xml_from_hashmap.usaga', {
+   handleAs: "xml",
+data: formdata
+}).then(function(response){
 
-  var datar = dojox.xml.DomParser.parse(datass);
+var xmld = new RXml.getFromXhr(response, 'row');
 
-var xmldata = datar.byName('SQLFunReturn');
-var idcontactuser = xmldata[0].getAttribute("return");
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
+var idcontactuser = xmld.getNumber(0, 'outreturn');
 LoadAccountUsersGridx();
-alert(jsspire. Base64.decode(xmldata[0].getAttribute("msg")));
 if(idcontactuser == formdata.idcontact){
 LoadFormAccountUser(idcontactuser);
 }else{
-//alert(jsspire. Base64.decode(xmldata[0].getAttribute("msg")));
-			dojo.byId("usaga.account.users.form").reset();
+	dojo.byId("usaga.account.users.form").reset();
 }
 
- 
-    },
-    error: function(error){
-//      targetNode.innerHTML = "An unexpected error occurred: " + error;
+}, function(error){
 alert(error);
-			dojo.byId("usaga.account.users.form").reset();
+});
 
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
 }else{
 			dojo.byId("usaga.account.users.form").reset();
 }
@@ -336,35 +317,33 @@ var inidaccount = Account_Main_Data.idaccount();
 
 if(inidaccount > 0){
 
-  var xhrArgs = {
-    url: "getaccountuser.usaga",
- content: { idaccount: inidaccount, idcontact: iniidcontact},
-    handleAs: "text",
-    load: function(datass){
+request.get('fun_view_account_user_byidaccountidcontact_xml.usaga', {
+   handleAs: "xml",
+query:  {idaccount: inidaccount, idcontact: iniidcontact}
+}).then(function(response){
 
-  var datar = dojox.xml.DomParser.parse(datass);
-var xmldata = datar.byName('row');
+var xmld = new RXml.getFromXhr(response, 'row');
 
-dijit.byId('usaga.account.users.form.idcontact').set('value', String(xmldata[0].getAttribute("idcontact"))); 
-dijit.byId('usaga.account.users.form.enable').set("checked", StringToBool(xmldata[0].getAttribute("enable")));
-dijit.byId('usaga.account.users.form.numuser').set("value", xmldata[0].getAttribute("numuser"));
-dijit.byId('usaga.account.users.form.appointment').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("appointment")));
-dijit.byId('usaga.account.users.form.keyword').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("keyword")));
-dijit.byId('usaga.account.users.form.pwd').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("pwd")));
-dijit.byId('usaga.account.users.form.note').set('value', jsspire.Base64.decode(xmldata[0].getAttribute("note")));
+if(xmld.length > 0){
 
-    },
-    error: function(error){
-//      targetNode.innerHTML = "An unexpected error occurred: " + error;
-alert(error);
+dijit.byId('usaga.account.users.form.idcontact').set('value', xmld.getString(0, 'idcontact')); 
+dijit.byId('usaga.account.users.form.enable').set("checked", xmld.getBool(0, 'enable'));
+dijit.byId('usaga.account.users.form.numuser').set("value", xmld.getNumber(0, 'numuser'));
+dijit.byId('usaga.account.users.form.appointment').set('value', xmld.getStringFromB64(0, 'appointment'));
+dijit.byId('usaga.account.users.form.keyword').set('value', xmld.getStringFromB64(0, 'keyword'));
+dijit.byId('usaga.account.users.form.pwd').set('value', xmld.getStringFromB64(0, 'pwd'));
+dijit.byId('usaga.account.users.form.note').set('value', xmld.getStringFromB64(0, 'note'));
 
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
+}else{
+iniidcontact = 0;
+}
 
 LoadAccountPhonesTriggerGridx(iniidcontact);
+
+}, function(error){
+LoadAccountPhonesTriggerGridx(iniidcontact);
+alert(error);
+});
 
 }else{
 			dojo.byId("usaga.account.users.form").reset();
@@ -378,42 +357,39 @@ dojo.byId("usaga.account.users.form").reset();
 
 var inidaccount = Account_Main_Data.idaccount();
 
+var myData = {identifier: "unique_id", items: []};
+	var myGridX = dijit.byId("usaga.account.users.gridx");
+
 if(inidaccount > 0){
 
-  var xhrArgs = {
-    url: "getaccountusersgrid.usaga",
- content: {idaccount: inidaccount},
-    handleAs: "text",
-    load: function(datass){
+request.get('fun_view_account_users_xml.usaga', {
+   handleAs: "xml",
+query:  {idaccount: inidaccount}
+}).then(function(response){
 
-  var datar = dojox.xml.DomParser.parse(datass);
-	// Get reference to our grid object. I set the id to "GridX" using
-	// the Maqetta properties palette.
-	var myGridX = dijit.byId("usaga.account.users.gridx");
-	if (myGridX) {
+var xmld = new RXml.getFromXhr(response, 'row');
 
-var xmldata = datar.byName('row');
-
-var myData = {identifier: "unique_id", items: []};
+if(xmld.length > 0){
 
 var i = 0;
-var rowscount = xmldata.length;
+var rowscount = xmld.length;
 while(i<rowscount){
 
 myData.items[i] = {
 unique_id:i,
 //s: false, 
-idcontact: xmldata[i].getAttribute("idcontact"), 
-enable_as_user: xmldata[i].getAttribute("enable_as_user"),
-numuser: xmldata[i].getAttribute("numuser"),
-//priority: xmldata[i].getAttribute("prioritycontact"),    
-name: jsspire.Base64.decode(xmldata[i].getAttribute("lastname"))+' '+jsspire.Base64.decode(xmldata[i].getAttribute("firstname")),
-appointment: jsspire.Base64.decode(xmldata[i].getAttribute("appointment")),
+idcontact: xmld.getNumber(i, 'idcontact'), 
+enable_as_user: xmld.getBool(i, 'enable_as_user'),
+numuser: xmld.getNumber(i, 'numuser'),
+name: xmld.getStringFromB64(i, 'lastname')+' '+xmld.getStringFromB64(i, 'firstname'),
+appointment: xmld.getStringFromB64(i, 'appointment'),
 };
 
 i++;
 }
 
+
+}
 
 	// Set new data on data store (the store has jsId set, so there's
 	// a global variable we can reference)
@@ -425,19 +401,11 @@ i++;
 		// Tell our grid to reset itself
 		myGridX.store = null;
 		myGridX.setStore(store);
-	}
 
- 
-    },
-    error: function(error){
-//      targetNode.innerHTML = "An unexpected error occurred: " + error;
+}, function(error){
 alert(error);
+});
 
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
 }else{
 			dijit.byId("usaga.account.users.gridx").store = null;
 }
@@ -469,36 +437,29 @@ GxPTClear: function(){
 }
 
 
-
-
-// Est parte de codigo carga la lista de proveedores y los carga en un select 
-fieldStore = new Memory();
-fieldStorex = new jspireMemoryIdValueFromXmlStore(true, 'usms_provider_listidname_xml', 'row', 'idprovider', 'name').Load();
-
-// Se usa este interval para asegurarse de que los datos estan listos para cargarlos al store
-interstore = setInterval(function(){
-if(fieldStorex.isLoaded){
-fieldStore = fieldStorex.Memory();
-clearInterval(interstore);
+// Creamos esta funcion paralela para cargar la lista de proveedores en los select que van dentro de la grid, como la carga es asincrona fue necesario crear la estructura de la gridx una vez esten listos los datos para los selects.
+PTElements.dijit.GxPT.setColumnsNew = function(){
+            // Request the text file
+   request.get('usms_provider_listidname_xml', {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+var Items = [];
+numfields = d.length;
+var i = 0;
+while(i<numfields){
+Items[i] =    {value: d.getStringFromB64(i, 'name'), id: d.getString(i, 'idprovider')};
+i++;
 }
-}, 2000);
 
+fieldStore = new Memory({data: Items});
 
-	function getDate(d){
-		res = Boolean(d);
-alert('from '+res);
-		return res;
-	}
-
-
-
-	if (PTElements.dijit.GxPT) {
-
-		// Optionally change column structure on the grid
 		PTElements.dijit.GxPT.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0px'},
 			{field:"idphone", name: "idphone", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"type", name: "type", width: '20px'},
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
 					editor: 'dijit.form.Select',
@@ -507,15 +468,29 @@ alert('from '+res);
 			{field:"phone", name: "Teléfono", width: '150px'},
 //			{field:"address", name: "Dirección", width: '150px'},
 			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
-			editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
+			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 
 			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
-		editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true,
+		editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true,
 			},
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
 PTElements.dijit.GxPT.startup();
+
+
+                },
+                function(error){
+alert(error);
+                }
+            );
+
 }
+
+
+
+
+PTElements.dijit.GxPT.setColumnsNew();
+
 
 	dojo.connect(usaga_account_users_ItemFileWriteStoreTriggerAlarm, 'onSet', function(item, attribute, oldValue, newValue){
 AjaxSaveChangesPhonesTriggerGridx(item);
@@ -528,35 +503,33 @@ function AjaxSaveChangesPhonesTriggerGridx(item){
 
 if(item.idaccount > 0 && item.idcontact > 0 && PTElements.dijit.GxPT){
 
-  var xhrArgs = {
-    url: "/accountphonestriggerviewchanged.usaga",
- content: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fromsms: item.fromsms, fromcall: item.fromcall, note: item.note},
-    handleAs: "text",
-    load: function(datass){
+request.post('fun_account_phones_trigger_alarm_table_from_hashmap.usaga', {
+   handleAs: "xml",
+data: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fromsms: item.fromsms, fromcall: item.fromcall, note: item.note}
+}).then(function(response){
 
-  var datar = dojox.xml.DomParser.parse(datass);
+var xmld = new RXml.getFromXhr(response, 'row');
 
-var xmldata = datar.byName('SQLFunReturn');
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
-if(xmldata.length > 0){
-var id = xmldata[0].getAttribute("return");
-alert(jsspire.Base64.decode(xmldata[0].getAttribute("msg")));
+var idcontactuser = xmld.getNumber(0, 'outreturn');
+LoadAccountUsersGridx();
+if(idcontactuser == formdata.idcontact){
+LoadFormAccountUser(idcontactuser);
+}else{
+	dojo.byId("usaga.account.users.form").reset();
 }
-LoadAccountPhonesTriggerGridx(item.idcontact);
 
-    },
-    error: function(error){
-LoadAccountPhonesTriggerGridx(item.idcontact);
+}, function(error){
 alert(error);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
+});
+
 }else{
 LoadAccountPhonesTriggerGridx(0);
 }
 
 }
+
 
 function LoadAccountPhonesTriggerGridx(inidcontact){
 
@@ -569,7 +542,7 @@ var store = new dojox.data.XmlStore({url: "getaccountphonestriggerview.usaga", s
 
 var request = store.fetch({query: {idaccount: inidaccount, idcontact: inidcontact}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -587,12 +560,12 @@ idcontact: dataxml.getNumber(i, "idcontact"),
 enable: dataxml.getBool(i, "trigger_alarm"),
 idprovider: dataxml.getNumber(i, "idprovider"),
 type: dataxml.getNumber(i, "type"),
-phone: dataxml.getStringB64(i, "phone"),
+phone: dataxml.getStringFromB64(i, "phone"),
 //address: jsspire.Base64.decode(xmldata[i].getAttribute("address")),
-phone: dataxml.getStringB64(i, "phone"),
+phone: dataxml.getStringFromB64(i, "phone"),
 fromsms: dataxml.getBool(i, "fromsms"),    
 fromcall: dataxml.getBool(i, "fromcall"),    
-note: dataxml.getStringB64(i, "note"),
+note: dataxml.getStringFromB64(i, "note"),
 };
 i++;
 }
@@ -705,7 +678,7 @@ var store = new dojox.data.XmlStore({url: "getaccountcontactsgrid.usaga", sendQu
 
 var request = store.fetch({query: {idaccount: _idaccount}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -719,8 +692,8 @@ unique_id:i,
 idcontact: dataxml.getNumber(i, "idcontact"), 
 enable_as_contact: dataxml.getBool(i, "enable_as_contact"),
 priority: dataxml.getNumber(i, "prioritycontact"),    
-name: dataxml.getStringB64(i, "lastname")+' '+dataxml.getStringB64(i, "firstname"),
-appointment: dataxml.getStringB64(i, "appointment"),
+name: dataxml.getStringFromB64(i, "lastname")+' '+dataxml.getStringFromB64(i, "firstname"),
+appointment: dataxml.getStringFromB64(i, "appointment"),
 };
 
 i++;
@@ -761,13 +734,13 @@ idcontact = idcontact*-1;
     load: function(datass){
 
 //var xmldata = datass.getElementsByTagName("row");
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 var outreturn = xmld.getInt(0, 'outreturn');
 if(outreturn == Objeto.dijit.Select.get('value')){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 Objeto.LoadFormContact(outreturn);
 
 }else{
@@ -801,7 +774,7 @@ var store = new dojox.data.XmlStore({url: "getaccountphonesnotifeventtypegrid.us
 
 var request = store.fetch({query: {idaccount:Account_Main_Data.idaccount(), idphone: idphone}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -815,7 +788,7 @@ unique_id:i,
 idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
 ideventtype: dataxml.getNumber(i, "ideventtype"),
 enable: dataxml.getBool(i, "enable"),
-label: dataxml.getStringB64(i, "label"),
+label: dataxml.getStringFromB64(i, "label"),
 ts: dataxml.getValue(i, "ts"),
 };
 i++;
@@ -855,7 +828,7 @@ numrows = itemsrow.length;
 var myData = {identifier: "unique_id", items: []};
 
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 var i = 0;
 while(i<numrows){
 myData.items[i] = {
@@ -864,13 +837,13 @@ idcontact: idcontact,
 idnotifaccount: dataxml.getNumber(i, "idnotifaccount"),
 idphone: dataxml.getNumber(i, "idphone"),
 idprovider: dataxml.getNumber(i, "idprovider"),
-phone: dataxml.getStringB64(i, "phone"),
+phone: dataxml.getStringFromB64(i, "phone"),
 idaccount: dataxml.getNumber(i, "idaccount"),
 priority: dataxml.getNumber(i, "priority"),    
 call: dataxml.getBool(i, "call"),
 sms: dataxml.getBool(i, "sms"),
-smstext: dataxml.getStringB64(i, "smstext"),
-note: dataxml.getStringB64(i, "note")
+smstext: dataxml.getStringFromB64(i, "smstext"),
+note: dataxml.getStringFromB64(i, "note")
 };
 
 i++;
@@ -907,11 +880,11 @@ var Objeto = this;
     handleAs: "xml",
     load: function(dataX){
 
-var xmld = new jspireTableXmlDoc(dataX, 'row');
+var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 AC.LoadContactsGrid();
@@ -937,11 +910,11 @@ var Objeto = this;
     handleAs: "xml",
     load: function(dataX){
 
-var xmld = new jspireTableXmlDoc(dataX, 'row');
+var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 
@@ -968,14 +941,14 @@ var store = new dojox.data.XmlStore({url: "getaccountcontact.usaga", sendQuery: 
 
 var request = store.fetch({query: {idaccount: Account_Main_Data.idaccount(), idcontact: iniidcontact}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 if(itemsrow.length>0){
 Objeto.dijit.Select.set('value', dataxml.getNumber(0, "idcontact")); 
 Objeto.dijit.Enable.set("checked", dataxml.getBool(0, "enable_as_contact"));
 Objeto.dijit.Priority.set("value", dataxml.getNumber(0, "prioritycontact"));
-Objeto.dijit.Appointment.set('value', dataxml.getStringB64(0, "appointment"));
-Objeto.dijit.Note.set('value', dataxml.getStringB64(0, "note"));
+Objeto.dijit.Appointment.set('value', dataxml.getStringFromB64(0, "appointment"));
+Objeto.dijit.Note.set('value', dataxml.getStringFromB64(0, "note"));
 Objeto.dijit.TS.set('value', dataxml.getString(0, "ts"));
 }else{
 Objeto.ResetOnSelectContact();
@@ -1040,15 +1013,6 @@ dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', fu
    dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
 });
 
-/*
-on(GlobalObject.MasterDiv, 'onListIdContactNameLoaded', function(d){
-//alert(AC.dijit.Select);
-AC.dijit.Select.store = null;
-AC.dijit.Select.store = d.data;
-AC.dijit.Select.startup();
-AC.dijit.Select.readOnly = true;
-});
-*/
 
 	if (AC.dijit.GxC) {
 // Captura el evento cuando se hace click en una fila
@@ -1059,7 +1023,7 @@ AC.LoadFormContact(id);
 });
 		AC.dijit.GxC.setColumns([
 			{field:"idcontact", name: "idcontact", width: '0%'},
-			{field:"enable_as_contact", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBooleanDisabled, alwaysEditing: true},
+			{field:"enable_as_contact", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
 			{field:"priority", name: "priority", width: '20px'},
 			{field:"name", name: "nombre", width: '150px'},
 			{field:"appointment", name: "Designacion"}
@@ -1076,8 +1040,8 @@ AC.dijit.GxNP.setColumns([
 			{field:"phone", name: "Teléfono", width: '100px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
-			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
-			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jspireEditorArgsToGridxCellBoolean, alwaysEditing: true},
+			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
 	                {field:"note", name: "Nota", editable: true}
 		]);
@@ -1156,13 +1120,13 @@ if(Account_Main_Data.idaccount() > 0 && itemStore.idcontact > 0){
     handleAs: "xml",
     load: function(datass){
 
-var xmld = new jspireTableXmlDoc(datass, 'row');
+var xmld = new RXml.getFromXhr(datass, 'row');
 
 if(xmld.length > 0){
 
 if(xmld.getInt(0, 'outreturn') > 0){
 //alert('pasa');
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 //Objeto.ResetOnSelectContact();
 }
@@ -1196,6 +1160,10 @@ return Objeto;
 
 ///////////////////////////////////////////////////
 // MUESTRA LOS EVENTOS DE LA CUENTA EN UNA TABLA //
+
+jsDateTextBox.addGetDateFunction(dijit.byId('usaga.account.event.fstart'));
+jsDateTextBox.addGetDateFunction(dijit.byId('usaga.account.event.fend'));
+
 dojo.connect(dojo.byId('usaga.account.event.send'), 'onclick', function(){
 LoadGridEventsAccount();
 });
@@ -1228,14 +1196,11 @@ GridEventsAccount.startup();
 function LoadGridEventsAccount(){
 if(Account_Main_Data.idaccount() > 0){
 
-var start = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fstart'));
-var end = new jspireGetDateFromDijitDateTextBox(dijit.byId('usaga.account.event.fend'));
-
 var store = new dojox.data.XmlStore({url: "geteventsaccount.usaga", sendQuery: true, rootItem: 'row'});
 
-var request = store.fetch({query: {idaccount: Account_Main_Data.idaccount(), fstar: start.getDate(), fend: end.getDate()}, onComplete: function(itemsrow, r){
+var request = store.fetch({query: {idaccount: Account_Main_Data.idaccount(), fstar: dijit.byId('usaga.account.event.fstart')._getDate(), fend: dijit.byId('usaga.account.event.fend')._getDate()}, onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -1250,14 +1215,14 @@ dateload: dataxml.getDate(i, "dateload"),
 idaccount: dataxml.getNumber(i, "idaccount"),
 partition: dataxml.getNumber(i, "partition"),
 enable: dataxml.getBool(i, "enable"),
-account: dataxml.getStringB64(i, "account"),
-name: dataxml.getStringB64(i, "name"),
-code: dataxml.getStringB64(i, "code"),
+account: dataxml.getStringFromB64(i, "account"),
+name: dataxml.getStringFromB64(i, "name"),
+code: dataxml.getStringFromB64(i, "code"),
 zu: dataxml.getNumber(i, "zu"),
 priority: dataxml.getNumber(i, "priority"),
-description: dataxml.getStringB64(i, "description"),
+description: dataxml.getStringFromB64(i, "description"),
 ideventtype: dataxml.getNumber(i, "ideventtype"),
-eventtype: dataxml.getStringB64(i, "eventtype")
+eventtype: dataxml.getStringFromB64(i, "eventtype")
 };
 i++;
 }

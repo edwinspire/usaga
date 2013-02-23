@@ -7,10 +7,7 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
-'dojo/store/Memory',
 "dojo/Evented",
-"dojo/data/ItemFileReadStore",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -19,6 +16,7 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
+"jspire/request/Xml",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore", 
 "gridx/modules/RowHeader",
@@ -27,7 +25,7 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, Evented, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, RXml){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -143,11 +141,11 @@ function SaveData(item){
     handleAs: "xml",
     load: function(dataX){
 
-var xmld = new jspireTableXmlDoc(dataX, 'row');
+var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringB64(0, 'outpgmsg'));
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
 
 
 }
@@ -171,7 +169,7 @@ var store = new dojox.data.XmlStore({url: "getviewnotificationtemplates.usaga", 
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
-var dataxml = new jspireTableXmlStore(store, itemsrow);
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
 
 numrows = itemsrow.length;
 
@@ -182,22 +180,13 @@ while(i<numrows){
 myData.items[i] = {
 unique_id:i,
 idnotiftempl: dataxml.getNumber(i, "idnotiftempl"),
-description: dataxml.getStringB64(i, "description"),
-message: dataxml.getStringB64(i, "message"),
+description: dataxml.getStringFromB64(i, "description"),
+message: dataxml.getStringFromB64(i, "message"),
 ts: dataxml.getString(i, "ts")
 };
 i++;
 }
 
-/*
-myData.items[i] = {
-unique_id: i,
-idnotiftempl: 0,
-description: '',
-message: '',
-ts: '1990-01-01'
-};
-*/
 ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
 	ItemFileWriteStore_1.close();

@@ -3,7 +3,7 @@ using GLib;
 using Gee;
 using edwinspire.uSMS;
 //using edwinspire.GSM.MODEM;
-using Xml;
+//using Xml;
 using edwinspire.uHttp;
 
 namespace edwinspire.uSAGA{
@@ -28,16 +28,16 @@ S.Index = "usaga.html";
 S.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
 S.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
 S.VirtualUrl["fun_view_idaccounts_names_xml.usaga"] = "/fun_view_idaccounts_names_xml.usaga"; 
-S.VirtualUrl["getaccountusersgrid.usaga"] = "/getaccountusersgrid.usaga";
+S.VirtualUrl["fun_view_account_users_xml.usaga"] = "/fun_view_account_users_xml.usaga";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
-S.VirtualUrl["getaccountuser.usaga"] = "/getaccountuser.usaga";
-S.VirtualUrl["saveaccountuser.usaga"] = "/saveaccountuser.usaga";
+S.VirtualUrl["fun_view_account_user_byidaccountidcontact_xml.usaga"] = "/fun_view_account_user_byidaccountidcontact_xml.usaga";
+S.VirtualUrl["fun_account_users_table_xml_from_hashmap.usaga"] = "/fun_account_users_table_xml_from_hashmap.usaga";
 S.VirtualUrl["usaga_geteventsmonitor.usaga"] = "/usaga_geteventsmonitor.usaga";       
 //S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
-S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
-S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
+//S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
+//S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
 S.VirtualUrl["getaccountphonestriggerview.usaga"] = "/getaccountphonestriggerview.usaga";
-S.VirtualUrl["accountphonestriggerviewchanged.usaga"] = "/accountphonestriggerviewchanged.usaga";
+S.VirtualUrl["fun_account_phones_trigger_alarm_table_from_hashmap.usaga"] = "/fun_account_phones_trigger_alarm_table_from_hashmap.usaga";
 S.VirtualUrl["getaccountcontactsgrid.usaga"] = "/getaccountcontactsgrid.usaga";
 S.VirtualUrl["getaccountphonesnotifgrid.usaga"] = "/getaccountphonesnotifgrid.usaga";
 S.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
@@ -87,14 +87,14 @@ break;
 case "/fun_view_idaccounts_names_xml.usaga":
 response = ResponseAccountsNamesToSelectBox(request);
 break;
-case "/getaccountusersgrid.usaga":
-response = ResponseAccountUsersToGridx(request);
+case "/fun_view_account_users_xml.usaga":
+response = request_fun_view_account_users_xml(request);
 break;
-case "/getaccountuser.usaga":
-response = ResponseGetUserAccount(request);
+case "/fun_view_account_user_byidaccountidcontact_xml.usaga":
+response = request_fun_view_account_user_byidaccountidcontact_xml(request);
 break;
-case "/saveaccountuser.usaga":
-response = ResponseAccountUsersTable(request);
+case "/fun_account_users_table_xml_from_hashmap.usaga":
+response = fun_account_users_table_xml_from_hashmap(request);
 break;
 case "/usaga_geteventsmonitor.usaga":
 response = ResponseGetEventsMonitor(request);
@@ -102,19 +102,22 @@ break;
 case "/opensagaaddaccountuser":
 response = ResponseAccountUserAddTable(request);
 break;
+/*
 case "/getaccountlocation.usaga":
 response = ResponseAccountGetLocation(request);
 break;
+*/
+/*
 case "/saveaccountlocation.usaga":
 response = ResponseAccountLocationSaveTable(request);
 break;
-
+*/
 case "/getaccountphonestriggerview.usaga":
 response = ResponseGetAccountPhonesTrigger(request);
 break;
 
-case "/accountphonestriggerviewchanged.usaga":
-response = ResponseAccountPhonesTriggerChangeTable(request);
+case "/fun_account_phones_trigger_alarm_table_from_hashmap.usaga":
+response = request_fun_account_phones_trigger_alarm_table_from_hashmap(request);
 break;
 
 case "/getaccountcontactsgrid.usaga":
@@ -501,7 +504,7 @@ return Retorno;
 
 
 
-private uHttp.Response ResponseAccountPhonesTriggerChangeTable(Request request){
+private uHttp.Response request_fun_account_phones_trigger_alarm_table_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
@@ -510,10 +513,11 @@ uHttp.Response Retorno = new uHttp.Response();
 AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).Xml().data;
+    Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).data;
 return Retorno;
 }
 
+/*
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseAccountLocationSaveTable(Request request){
 
@@ -529,7 +533,8 @@ Tabla.GetParamCnx();
 
 return Retorno;
 }
-
+*/
+/*
 private uHttp.Response ResponseAccountGetLocation(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
@@ -548,7 +553,7 @@ Tabla.GetParamCnx();
 //print(Tabla.UserAndIdContact_Xml(id));
 return Retorno;
 }
-
+*/
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetEventsMonitor(Request request){
 
@@ -601,16 +606,16 @@ return Retorno;
 }
 
 
-private uHttp.Response ResponseAccountUsersTable(Request request){
+private uHttp.Response fun_account_users_table_xml_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.fun_account_users_table_from_hashmap(request.Form).Xml().data;
+    Retorno.Data =  Tabla.fun_account_users_table_xml_from_hashmap(request.Form).data;
 
 return Retorno;
 }
@@ -645,21 +650,21 @@ Tabla.GetParamCnx();
 return Retorno;
 }
 
-private uHttp.Response ResponseAccountUsersToGridx(Request request){
+private uHttp.Response request_fun_view_account_users_xml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 
 int id = 0;
-if(request.Form.has_key("idaccount")){
-id = int.parse(request.Form["idaccount"]);
+if(request.Query.has_key("idaccount")){
+id = int.parse(request.Query["idaccount"]);
 }
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.AccountUsersViewXml(id).data;
+    Retorno.Data =  Tabla.fun_view_account_users_xml(id).data;
 //print(Tabla.UserAndIdContact_Xml(id));
 return Retorno;
 }
@@ -685,23 +690,23 @@ return Retorno;
 }
 
 // Recibe los datos y los actualiza en la base de datos.
-private uHttp.Response ResponseGetUserAccount(Request request){
+private uHttp.Response request_fun_view_account_user_byidaccountidcontact_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
+  Retorno.Header.ContentType = "text/xml";
     Retorno.Header.Status = StatusCode.OK;
 //print("ResponseGetAccount\n");
 int idcontact = 0;
 int idaccount = 0;
 
-if(request.Form.has_key("idaccount") && request.Form.has_key("idcontact")){
-idcontact = int.parse(request.Form["idcontact"]);
-idaccount = int.parse(request.Form["idaccount"]);
+if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")){
+idcontact = int.parse(request.Query["idcontact"]);
+idaccount = int.parse(request.Query["idaccount"]);
 }
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-Retorno.Data = Tabla.UserbyIdContactXml(idaccount, idcontact).data;
+Retorno.Data = Tabla.fun_view_account_user_byidaccountidcontact_xml(idaccount, idcontact).data;
 
 return Retorno;
 }

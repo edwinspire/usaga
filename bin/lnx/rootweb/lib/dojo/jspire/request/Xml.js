@@ -1,5 +1,5 @@
 //>>built
-define("jspire/request/Xml",["dojo/_base/declare", "jspire/crypto/Base64"],function(_1){
+define("jspire/request/Xml",["dojo/_base/declare", "jspire/crypto/Base64", "jspire/String"],function(_1){
 
 return {
 
@@ -83,5 +83,5 @@ return this.getString(i, field).from_base64();
 }
 
 
-};
+}
 });

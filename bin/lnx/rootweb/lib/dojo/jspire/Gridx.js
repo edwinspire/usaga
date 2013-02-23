@@ -1,5 +1,5 @@
 //>>built
-define("jspire/Gridx",["dojo/_base/declare"],function(_1){
+define("jspire/Gridx",["dojo/_base/declare", "jspire/String"],function(_1){
 
 return {
 

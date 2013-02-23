@@ -10,6 +10,7 @@ define(['dojo/_base/declare',
  return declare('usaga.account_main_data',[ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+Id: 0,
 postCreate: function(){
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
@@ -52,6 +53,7 @@ t.idgroup.Load();
 _resetall: function(){
 this.form_data.reset();
 this._idaddress = 0;
+this.Id = 0;
 },
 _idaddress: 0,
 idaddress: function(){
@@ -62,15 +64,15 @@ return this.account_select.get('value');
 },
 // Carga el account seleccionado
 _LoadAccountSelected: function(){
-if(this.account_select.state != 'Error'){
-
 var t = this;
-var _idaccount = t.account_select.get('value');
 
-if(_idaccount > 0){
+if(t.account_select.state != 'Error'){
+t.Id = t.account_select.get('value');
+
+if(t.Id > 0){
 
    R.get('getaccount.usaga', {
-		query: {idaccount: _idaccount},
+		query: {idaccount: t.Id},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -79,7 +81,7 @@ var d = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
 
 if(numrows > 0){
-_idaccount = d.getNumber(0, "idaccount");
+t.Id = d.getNumber(0, "idaccount");
 t.partition.set('value', d.getNumber(0, "partition"));
 t.enable.set('checked', d.getBool(0, "enable")); 
 
@@ -92,7 +94,7 @@ t.idgroup.set('value', _idgroup);
 }
 
 t.account.set('value', d.getStringFromB64(0, "account")); 
-t.account_select.set('value', _idaccount); 
+t.account_select.set('value', t.Id); 
 t.idtype.setValue(d.getString(0, "type")); 
 t.note.set('value', d.getStringFromB64(0, "note"));
 t._idaddress = d.getNumber(0, "idaddress"); 
@@ -101,7 +103,7 @@ t._idaddress = d.getNumber(0, "idaddress");
 t._idaddress = 0;
 t.form_data.reset();
 }
-t.emit('onloadaccount', {idaccount: _idaccount, idaddress: t._idaddress}); 
+t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
 
 
 
@@ -122,11 +124,11 @@ t.form_data.reset();
 },
 
 _delete: function(){
-idccountdelete = this.account_select.get('value');
+idccountdelete = this.Id;
 if(idccountdelete > 0){
 var datos = {};
-datos.idaccount = idccountdelete*-1; 
-t._actionsave(datos);
+datos.idaccount = this.Id*-1; 
+this._actionsave(datos);
 }
 },
 
@@ -134,9 +136,8 @@ _save: function(){
 
 var t = this;
 var datos = {};
-idaccountsave = t.account_select.get('value');
-if(idaccountsave >= 0){
-datos.idaccount = t.account_select.get('value'); 
+if(t.Id >= 0){
+datos.idaccount = t.Id; 
 datos.idgroup = t.idgroup.get('value');
 datos.partition = t.partition.get('value');
 datos.enable = t.enable.get('checked'); 
@@ -164,10 +165,10 @@ if(d.length > 0){
 
 alert(d.getStringFromB64(0, 'outpgmsg'));
 
-t._LoadListAccounts();
-var id = d.getNumber(0, "outreturn");
+t.account_select.Load();
+var id = d.getInt(0, "outreturn");
 
-if(id>=0){
+if(id>0){
 t.account_select.set('value', id);
 }else{
 t._resetall();
@@ -187,41 +188,7 @@ alert(errorx);
                 }
             );
 
-/*
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "saveaccount.usaga",
-    content: data,
-    handleAs: "xml",
-    load: function(dataX){
 
-var xmld = new jspireTableXmlDoc(dataX, 'row');
-
-if(xmld.length > 0){
-
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-
-t._LoadListAccounts();
-var id = xmld.getNumber(0, "outreturn");
-
-if(id>=0){
-t.account_select.set('value', id);
-}else{
-t._resetall();
-}
-t._LoadAccountSelected();
-}
-
-    },
-    error: function(errorx){
-t._resetall();
-t._LoadAccountSelected();
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-*/
 },
 
   
