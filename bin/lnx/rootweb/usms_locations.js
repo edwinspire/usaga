@@ -173,15 +173,12 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-alert('deberia'+i);
 t.Store.clearOnClose = true;
 	t.Store.data = myData;
 	t.Store.close();
 
 		t.Grid.store = null;
 		t.Grid.setStore(t.Store);
-t.Grid.startup();
-alert('ok');
                 },
                 function(error){
                     // Display the error returned
