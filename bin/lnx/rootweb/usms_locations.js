@@ -23,96 +23,136 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var ObjectBase = function(){
+// Objeto base con funciones comunes
+var ObjectBase = function(l, g, s, dd, od){
 this.id= 0,
+this.level = l,
 this.to_delete= [],
 this.label= '',
+this.Grid = dijit.byId(g),
+this.Store = s,
+this.iddialogdel = dd,
+this.idownerdel = od,
 this.title= 'Selección: ',
-this.setHeaderLabel= function(country){
-this.label.innerHTML = this.title+'['+country+']';
-}
-}
-
-var Country = new ObjectBase();
-Country.title = 'País: ';
-Country.label = dojo.byId('labcountry');
-
-
-        var dcountrydialognew = dijit.byId('countrydialognew');
-dcountrydialognew.setowner('newcountry', 'onclick').innerHTML('<form id="countryform">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>       <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="countryname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="País"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="countrycode" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de país"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-
-SaveCountry({idcountry:0, name: dijit.byId('countryname').get('value'), code: dijit.byId('countrycode').get('value')});
-
-dojo.byId('countryform').reset();
-});
-
-
-// Carga los datos al hacer click
-dijit.byId('loadcountry').on('Click', function(){
-LoadGridCountry();
-});
-
-// Elimina los registros seleccionados
-        var dcountrydialogdel = dijit.byId('countrydialogdel');
-dcountrydialogdel.setowner('delcountry', 'onclick').on('onok', function(){
-DeleteCountry();
-});
-
-
-var egridcountry = dijit.byId('gridcountry');
-if(egridcountry){
-		egridcountry.setColumns([
-			{field:"unique_id", name: "#", width: '20px'},
-			{field:"name", name: "Nombre", editable: true},
-     			{field:"code", name: "Código", editable: true}
-		]);
-egridcountry.startup();
-}
-
-
-dojo.connect(egridcountry, 'onRowClick', function(event){
-d = this.cell(event.rowId, 1, true).data();
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreCountry.fetch({query: {unique_id: d}, onItem: function(item){
-Country.id = StoreCountry.getValue(item, 'idcountry');
-Country.setHeaderLabel(StoreCountry.getValue(item, 'name'));
-}
-});
-
-LoadGridState(); 
-
-});
-
+this.setHeaderLabel= function(label){
+this.label.innerHTML = this.title+'['+label+']';
+},
+this.onLoad = function(){
+alert('No implementado');
+},
+this.connect_all = function(){
+this.connect_onSelectionToDelete();
+this.connect_onSet();
+this.connect_onDelete();
+this.connect_onRowClick();
+},
+this.connect_onSet = function(){
+var t = this;
 // Guarda los cambios
-dojo.connect(StoreCountry, 'onSet', function(item, attribute, oldValue, newValue){
-SaveCountry(item);
+dojo.connect(t.Store, 'onSet', function(item, attribute, oldValue, newValue){
+t.save(item);
 });
-
+},
+this.connect_onSelectionToDelete = function(){
+var t = this;
 // Obtiene los ids de los registros que se van a eliminar y los guarda en una matriz
-dojo.connect(egridcountry.select.row, 'onSelectionChange', function(selected){
-Country.to_delete = [];
+dojo.connect(t.Grid.select.row, 'onSelectionChange', function(selected){
+t.to_delete = [];
 numsel = selected.length;
 i = 0;
-
 while(i<numsel){
 // Aqui buscamos los datos desde el store y no desde la celda.
-StoreCountry.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-Country.to_delete[i] = StoreCountry.getValue(item, 'idcountry');
+t.Store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+t.to_delete[i] = t.Store.getValue(item, 'idpk');
 } 
 });
 i++;
 }
-//console.log('Borrar: '+Country.to_delete.toString());
+});
+},
+this.onRowClick = function(){
+alert('onRowClick no implementado');
+},
+this.connect_onRowClick = function(){
+var t = this;
+dojo.connect(t.Grid, 'onRowClick', function(event){
+d = this.cell(event.rowId, 1, true).data();
+// Aqui buscamos los datos desde el store y no desde la celda.
+t.Store.fetch({query: {unique_id: d}, onItem: function(item){
+t.id = t.Store.getValue(item, 'idpk');
+t.setHeaderLabel(t.Store.getValue(item, 'name'));
+}
+});
+t.onRowClick();
+});
+},
+this.connect_onDelete = function(){
+// Elimina los registros seleccionados
+var t = this;
+        var dialogdel = dijit.byId(this.iddialogdel);
+dialogdel.setowner(this.idownerdel, 'onclick').on('onok', function(){
+t.delete();
+});
+},
+this.save = function (item){
+var t = this;
+var d = {level: t.level, idpk:item.idpk, idfk: item.idfk, name: item.name, code: item.code, ts: item.ts};
+request.post('fun_location_level_edit_xml_from_hashmap.usms', {
+   handleAs: "xml",
+data: d,
+}).then(function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+
+if(xmld.length > 0){
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
+}
+t.onLoad();
+}, function(error){
+t.onLoad();
+alert(error);
 });
 
-// Carga los datos
-function LoadGridCountry(){
-Country.id = 0;
-Country.to_delete = [];
-Country.setHeaderLabel('---');
-LoadGridState();
+},
+this.delete = function(){
+var t = this;
+request.post('fun_location_level_remove_selected_xml.usms', {
+   handleAs: "xml",
+data: {ids: t.to_delete.toString(), level: t.level},
+}).then(function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+
+if(xmld.length > 0){
+alert(xmld.getStringFromB64(0, 'outpgmsg'));
+}
+t.onLoad();
+}, function(error){
+t.onLoad();
+alert(error);
+});
+
+}
+}
+
+//Construimos el objeto con todas las funciones necesarias
+var L1 = new ObjectBase(1, 'gridL1', StoreL1, 'L1dialogdel', 'delL1');
+L1.title = 'Nivel-1: ';
+L1.label = dojo.byId('labL1');
+L1.connect_all();
+L1.onRowClick = function(){
+L2.onLoad();
+}
+L1.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+
+L2.onLoad();
             // Request the text file
-            request.get("fun_view_country_xml.usms", {
+            request.get("fun_view_location_level_xml.usms", {
+	query: {level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -120,27 +160,28 @@ LoadGridState();
 var d = new RXml.getFromXhr(response, 'row');
 
 numrows = d.length;
-
 var myData = {identifier: "unique_id", items: []};
-
 var i = 0;
 while(i<numrows){
 
 myData.items[i] = {
 unique_id:i+1,
-idcountry: d.getNumber(i, "idcountry"),
+idpk: d.getNumber(i, "idl1"),
 name: d.getStringFromB64(i, "name"),
 code: d.getStringFromB64(i, "code"),
 ts: d.getString(i, "ts")
 };
 i++;
 }
-StoreCountry.clearOnClose = true;
-	StoreCountry.data = myData;
-	StoreCountry.close();
+alert('deberia'+i);
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
-		egridcountry.store = null;
-		egridcountry.setStore(StoreCountry);
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+t.Grid.startup();
+alert('ok');
                 },
                 function(error){
                     // Display the error returned
@@ -150,135 +191,53 @@ alert(error);
 
 }
 
-// Guarda los datos
-function SaveCountry(item){
 
-request.post('fun_location_country_edit_xml_from_hashmap.usms', {
-   handleAs: "xml",
-data: item,
-}).then(function(response){
+        var dL1dialognew = dijit.byId('L1dialognew');
+dL1dialognew.setowner('newL1', 'onclick').innerHTML('<form id="L1form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>       <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 
-var xmld = new RXml.getFromXhr(response, 'row');
+L1.save({name: dijit.byId('L1name').get('value'), code: dijit.byId('L1code').get('value')});
 
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridCountry();
-}, function(error){
-LoadGridCountry();
-alert(error);
+dojo.byId('L1form').reset();
 });
 
-}
-
-// Guarda los datos
-function DeleteCountry(){
-
-request.post('fun_location_country_remove_selected_xml.usms', {
-   handleAs: "xml",
-data: {ids: Country.to_delete.toString()},
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridCountry();
-}, function(error){
-LoadGridCountry();
-alert(error);
+// Carga los datos al hacer click
+dijit.byId('loadL1').on('Click', function(){
+L1.onLoad();
 });
 
+if(L1.Grid){
+		L1.Grid.setColumns([
+			{field:"unique_id", name: "#", width: '20px'},
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
+		]);
+L1.Grid.startup();
 }
-
-
-
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var State = new ObjectBase();
-State.title = 'Estado / Provincia: ';
-State.label = dojo.byId('labstate');
-
-
-        var dstatedialognew = dijit.byId('statedialognew');
-dstatedialognew.setowner('newstate', 'onclick').innerHTML('<form id="stateform">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="statename" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="statecode" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(Country.id > 0){
-SaveState({idcountry: Country.id, name: dijit.byId('statename').get('value'), code: dijit.byId('statecode').get('value')});
-}else{
-alert('No hay un país seleccionado');
+//Construimos el objeto con todas las funciones necesarias
+var L2 = new ObjectBase(2, 'gridL2', StoreL2, 'L2dialogdel', 'delL2');
+L2.title = 'Nivel 2: : ';
+L2.label = dojo.byId('labL2');
+L2.connect_all();
+L2.onRowClick = function(){
+L3.onLoad();
 }
-dojo.byId('stateform').reset();
-});
-
-// Elimina los registros seleccionados
-        var dstatedialogdel = dijit.byId('statedialogdel');
-dstatedialogdel.setowner('delstate', 'onclick').on('onok', function(){
-DeleteState();
-});
-
-
-var egridstate = dijit.byId('gridstate');
-if(egridstate){
-		egridstate.setColumns([
-			{field:"unique_id", name: "#", width: '20px'},
-			{field:"name", name: "Nombre", editable: true},
-     			{field:"code", name: "Código", editable: true}
-		]);
-egridstate.startup();
-}
-
-
-// 
-dojo.connect(egridstate, 'onRowClick', function(event){
-d = this.cell(event.rowId, 1, true).data();
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreState.fetch({query: {unique_id: d}, onItem: function(item){
-State.id = StoreState.getValue(item, 'idstate');
-State.setHeaderLabel(StoreState.getValue(item, 'name'));
-} 
-});
-LoadGridCity();
-});
-
-// Guarda los cambios
-dojo.connect(StoreState, 'onSet', function(item, attribute, oldValue, newValue){
-SaveState(item);
-});
-
-
-// Obtiene los ids de los registros que se van a eliminar y los guarda en una matriz
-dojo.connect(egridstate.select.row, 'onSelectionChange', function(selected){
-State.to_delete = [];
-numsel = selected.length;
-i = 0;
-
-while(i<numsel){
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreState.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-State.to_delete[i] = StoreState.getValue(item, 'idcountry');
-} 
-});
-i++;
-}
-//console.log('Borrar: '+Country.to_delete.toString());
-});
-
-// Carga los datos
-function LoadGridState(){
-State.id = 0;
-State.to_delete = [];
-State.setHeaderLabel('---');
-LoadGridCity();
+L2.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+L3.onLoad();
 var myData = {identifier: "unique_id", items: []};
 
-if(Country.id > 0){
+if(L1.id > 0){
             // Request the text file
-            request.get("fun_view_state_by_idcountry_xml.usms", {
-	query: {idcountry: Country.id},
+            request.get("fun_view_location_level_xml.usms", {
+	query: {idfk: L1.id, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -292,20 +251,20 @@ while(i<numrows){
 
 myData.items[i] = {
 unique_id:i+1,
-idcountry: d.getNumber(i, "idcountry"),
-idstate: d.getNumber(i, "idstate"),
+idfk: d.getNumber(i, "idl1"),
+idpk: d.getNumber(i, "idl2"),
 name: d.getStringFromB64(i, "name"),
 code: d.getStringFromB64(i, "code"),
 ts: d.getString(i, "ts")
 };
 i++;
 }
-StoreState.clearOnClose = true;
-	StoreState.data = myData;
-	StoreState.close();
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
-		egridstate.store = null;
-		egridstate.setStore(StoreState);
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
                 },
                 function(error){
                     // Display the error returned
@@ -313,141 +272,61 @@ alert(error);
                 }
             );
 }else{
-StoreState.clearOnClose = true;
-	StoreState.data = myData;
-	StoreState.close();
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
-		egridstate.store = null;
-		egridstate.setStore(StoreState);
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
 }
 }
 
-// Guarda los datos
-function SaveState(item){
 
-request.post('fun_location_state_edit_xml_from_hashmap.usms', {
-   handleAs: "xml",
-data: item
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+        var dL2dialognew = dijit.byId('L2dialognew');
+dL2dialognew.setowner('newstate', 'onclick').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+if(L1.id > 0){
+L2.save({idfk: L1.id, name: dijit.byId('L2name').get('value'), code: dijit.byId('L2code').get('value')});
+}else{
+alert('No hay un nivel superior seleccionado');
 }
-LoadGridState();
-}, function(error){
-LoadGridState();
-alert(error);
+dojo.byId('L2form').reset();
 });
 
-}
 
 
-// Elimina los datos seleccionados
-function DeleteState(){
-
-request.post('fun_location_state_remove_selected_xml.usms', {
-   handleAs: "xml",
-data: {ids: State.to_delete.toString()},
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridState();
-}, function(error){
-LoadGridState();
-alert(error);
-});
-
+if(L2.Grid){
+		L2.Grid.setColumns([
+			{field:"unique_id", name: "#", width: '20px'},
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
+		]);
+L2.Grid.startup();
 }
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-var City = new ObjectBase();
-City.title = 'Ciudad: ';
-City.label = dojo.byId('labcity');
-
-
-        var dcitydialognew = dijit.byId('citydialognew');
-dcitydialognew.setowner('newcity', 'onclick').innerHTML('<form id="cityform">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="cityname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="citycode" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(State.id > 0){
-SaveCity({idstate: State.id, name: dijit.byId('cityname').get('value'), code: dijit.byId('citycode').get('value')});
-}else{
-alert('No hay un estado seleccionado');
+//Construimos el objeto con todas las funciones necesarias
+var L3 = new ObjectBase(3, 'L3Grid', StoreL3, 'L3dialogdel', 'delL3');
+L3.title = 'Nivel 3: : ';
+L3.label = dojo.byId('labL3');
+L3.connect_all();
+L3.onRowClick = function(){
+L4.onLoad();
 }
-
-dojo.byId('cityform').reset();
-});
-
-var egridcity = dijit.byId('gridcity');
-if(egridcity){
-		egridcity.setColumns([
-			{field:"unique_id", name: "#", width: '15px'},
-			{field:"name", name: "Nombre", editable: true},
-     			{field:"code", name: "Código", editable: true}
-		]);
-egridcity.startup();
-}
-
-// Elimina los registros seleccionados
-        var dcitydialogdel = dijit.byId('citydialogdel');
-dcitydialogdel.setowner('delcity', 'onclick').on('onok', function(){
-DeleteCity();
-});
-
-// 
-dojo.connect(egridcity, 'onRowClick', function(event){
-d = this.cell(event.rowId, 1, true).data();
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreCity.fetch({query: {unique_id: d}, onItem: function(item){
-City.id = StoreCity.getValue(item, 'idcity');
-City.setHeaderLabel(StoreCity.getValue(item, 'name'));
-} 
-});
-LoadGridSector();
-});
-
-// Guarda los cambios
-dojo.connect(StoreCity, 'onSet', function(item, attribute, oldValue, newValue){
-SaveCity(item);
-});
-
-
-// Obtiene los ids de los registros que se van a eliminar y los guarda en una matriz
-dojo.connect(egridcity.select.row, 'onSelectionChange', function(selected){
-City.to_delete = [];
-numsel = selected.length;
-i = 0;
-
-while(i<numsel){
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreCity.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-City.to_delete[i] = StoreCity.getValue(item, 'idcity');
-} 
-});
-i++;
-}
-//console.log('Borrar: '+Country.to_delete.toString());
-});
-
-// Carga los datos
-function LoadGridCity(){
-City.id = 0;
-City.to_delete = [];
-City.setHeaderLabel('---');
-LoadGridSector();
+L3.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+L4.onLoad();
 var myData = {identifier: "unique_id", items: []};
 
-if(State.id > 0){
+if(L2.id > 0){
             // Request the text file
-            request.get("fun_view_city_by_idstate_xml.usms", {
-	query: {idstate: State.id},
+            request.get("fun_view_location_level_xml.usms", {
+	query: {idfk: L2.id, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -461,20 +340,20 @@ while(i<numrows){
 
 myData.items[i] = {
 unique_id:i+1,
-idcity: d.getNumber(i, "idcity"),
-idstate: d.getNumber(i, "idstate"),
+idfk: d.getNumber(i, "idl2"),
+idpk: d.getNumber(i, "idl3"),
 name: d.getStringFromB64(i, "name"),
 code: d.getStringFromB64(i, "code"),
 ts: d.getString(i, "ts")
 };
 i++;
 }
-StoreCity.clearOnClose = true;
-	StoreCity.data = myData;
-	StoreCity.close();
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
-		egridcity.store = null;
-		egridcity.setStore(StoreCity);
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
                 },
                 function(error){
                     // Display the error returned
@@ -482,396 +361,318 @@ alert(error);
                 }
             );
 }else{
-StoreCity.clearOnClose = true;
-	StoreCity.data = myData;
-	StoreCity.close();
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
-		egridcity.store = null;
-		egridcity.setStore(StoreCity);
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
 }
 }
 
-// Guarda los datos
-function SaveCity(item){
 
-request.post('fun_location_city_edit_xml_from_hashmap.usms', {
-   handleAs: "xml",
-data: item,
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+        var dL3dialognew = dijit.byId('L3dialognew');
+dL3dialognew.setowner('newL3', 'onclick').innerHTML('<form id="L3form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+if(L2.id > 0){
+L3.save({idfk: L2.id, name: dijit.byId('L3name').get('value'), code: dijit.byId('L3code').get('value')});
+}else{
+alert('No hay un nivel superior seleccionado');
 }
-LoadGridCity();
-}, function(error){
-LoadGridCity();
-alert(error);
+
+dojo.byId('L3form').reset();
 });
 
+if(L3.Grid){
+		L3.Grid.setColumns([
+			{field:"unique_id", name: "#", width: '15px'},
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
+		]);
+L3.Grid.startup();
 }
 
 
-// Elimina los datos seleccionados
-function DeleteCity(){
+////////////////////////////////////////////////////////////////////////
 
-request.post('fun_location_city_remove_selected_xml.usms', {
-   handleAs: "xml",
-data: {ids: City.to_delete.toString()},
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+//Construimos el objeto con todas las funciones necesarias
+var L4 = new ObjectBase(4, 'GridL4', StoreL4, 'L4dialogdel', 'delL4');
+L4.title = 'Nivel 4: ';
+L4.label = dojo.byId('labL4');
+L4.connect_all();
+L4.onRowClick = function(){
+//L5.onLoad();
 }
-LoadGridCity();
-}, function(error){
-LoadGridCity();
+L4.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+//TODO: L5.onLoad();
+var myData = {identifier: "unique_id", items: []};
+
+if(L3.id > 0){
+            // Request the text file
+            request.get("fun_view_location_level_xml.usms", {
+	query: {idfk: L3.id, level: t.level},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+var i = 0;
+while(i<numrows){
+
+myData.items[i] = {
+unique_id:i+1,
+idfk: d.getNumber(i, "idl3"),
+idpk: d.getNumber(i, "idl4"),
+name: d.getStringFromB64(i, "name"),
+code: d.getStringFromB64(i, "code"),
+ts: d.getString(i, "ts")
+};
+i++;
+}
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+                },
+                function(error){
+                    // Display the error returned
 alert(error);
-});
+                }
+            );
+}else{
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
 
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+}
 }
 
+        var dL4dialognew = dijit.byId('L4dialognew');
+dL4dialognew.setowner('newL4', 'onclick').innerHTML('<form id="L4form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+if(L3.id > 0){
+L4.save({idfk: L3.id, name: dijit.byId('L4name').get('value'), code: dijit.byId('L4code').get('value')});
+}else{
+alert('No hay un nivel superior seleccionado');
+}
+
+dojo.byId('L4form').reset();
+});
+       
+
+
+if(L4.Grid){
+		L4.Grid.setColumns([
+			{field:"unique_id", name: "#", width: '15px'},
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
+		]);
+L4.Grid.startup();
+}
+
+////////////////////////////////////////////////////////////////////////
+
+//Construimos el objeto con todas las funciones necesarias
+var L5 = new ObjectBase(5, 'GridL5', StoreL5, 'L5dialogdel', 'delL5');
+L5.title = 'Nivel 5: ';
+L5.label = dojo.byId('labL5');
+L5.connect_all();
+L5.onRowClick = function(){
+L6.onLoad();
+}
+L5.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+L6.onLoad();
+var myData = {identifier: "unique_id", items: []};
+
+if(L4.id > 0){
+            // Request the text file
+            request.get("fun_view_location_level_xml.usms", {
+	query: {idfk: L4.id, level: t.level},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+var i = 0;
+while(i<numrows){
+
+myData.items[i] = {
+unique_id:i+1,
+idfk: d.getNumber(i, "idl4"),
+idpk: d.getNumber(i, "idl5"),
+name: d.getStringFromB64(i, "name"),
+code: d.getStringFromB64(i, "code"),
+ts: d.getString(i, "ts")
+};
+i++;
+}
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+                },
+                function(error){
+                    // Display the error returned
+alert(error);
+                }
+            );
+}else{
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+}
+}
+
+        var dL5dialognew = dijit.byId('L5dialognew');
+dL5dialognew.setowner('newL5', 'onclick').innerHTML('<form id="L5form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+if(L4.id > 0){
+L5.save({idfk: L4.id, name: dijit.byId('L5name').get('value'), code: dijit.byId('L5code').get('value')});
+}else{
+alert('No hay un nivel superior seleccionado');
+}
+
+dojo.byId('L5form').reset();
+});
+       
+
+
+if(L5.Grid){
+		L5.Grid.setColumns([
+			{field:"unique_id", name: "#", width: '15px'},
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
+		]);
+L5.Grid.startup();
+}
 
 
 
 ////////////////////////////////////////////////////////////////////////
 
-var Sector = new ObjectBase();
-Sector.title = 'Sector: ';
-Sector.label = dojo.byId('labsector');
+//Construimos el objeto con todas las funciones necesarias
+var L6 = new ObjectBase(6, 'GridL6', StoreL6, 'L6dialogdel', 'delL6');
+L6.title = 'Nivel 6: ';
+L6.label = dojo.byId('labL6');
+L6.connect_all();
+L6.onRowClick = function(){
+}
+L6.onLoad = function(){
+var t = this;
+t.id = 0;
+t.to_delete = [];
+t.setHeaderLabel('---');
+var myData = {identifier: "unique_id", items: []};
 
-        var dsectordialognew = dijit.byId('sectordialognew');
-dsectordialognew.setowner('newsector', 'onclick').innerHTML('<form id="sectorform"> <div>  <label style="margin-right: 3px;">    Nombre:</label>  <input type="text" data-dojo-type="dijit.form.TextBox" id="sectorname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"  placeHolder="Sector"></input>  <input style="display:none" type="text" data-dojo-type="dijit.form.TextBox"></input></div> </form>').on('onok', function(){
-if(City.id > 0){
-SaveSector({idcity: City.id, name: dijit.byId('sectorname').get('value')});
+if(L5.id > 0){
+            // Request the text file
+            request.get("fun_view_location_level_xml.usms", {
+	query: {idfk: L5.id, level: t.level},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+var i = 0;
+while(i<numrows){
+
+myData.items[i] = {
+unique_id:i+1,
+idfk: d.getNumber(i, "idl5"),
+idpk: d.getNumber(i, "idl6"),
+name: d.getStringFromB64(i, "name"),
+code: d.getStringFromB64(i, "code"),
+ts: d.getString(i, "ts")
+};
+i++;
+}
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+                },
+                function(error){
+                    // Display the error returned
+alert(error);
+                }
+            );
 }else{
-alert('No hay una ciudad seleccionada');
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+}
 }
 
-dojo.byId('sectorform').reset();
+        var dL6dialognew = dijit.byId('L6dialognew');
+dL6dialognew.setowner('newL6', 'onclick').innerHTML('<form id="L6form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+if(L5.id > 0){
+L6.save({idfk: L5.id, name: dijit.byId('L6name').get('value'), code: dijit.byId('L6code').get('value')});
+}else{
+alert('No hay un nivel superior seleccionado');
+}
+
+dojo.byId('L6form').reset();
 });
        
 
-var egridsector = dijit.byId('gridsector');
-if(egridsector){
-		egridsector.setColumns([
+
+if(L6.Grid){
+		L6.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '15px'},
-			{field:"name", name: "Nombre", editable: true}
+			{field:"name", name: "Nombre", editable: true},
+     			{field:"code", name: "Código", editable: true}
 		]);
-egridsector.startup();
-}
-
-// Elimina los registros seleccionados
-        var dsectordialogdel = dijit.byId('sectordialogdel');
-dsectordialogdel.setowner('delsector', 'onclick').on('onok', function(){
-DeleteSector();
-});
-
-// 
-dojo.connect(egridsector, 'onRowClick', function(event){
-d = this.cell(event.rowId, 1, true).data();
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreSector.fetch({query: {unique_id: d}, onItem: function(item){
-Sector.id = StoreSector.getValue(item, 'idsector');
-Sector.setHeaderLabel(StoreSector.getValue(item, 'name'));
-} 
-});
-LoadGridSubSector();
-});
-
-// Guarda los cambios
-dojo.connect(StoreSector, 'onSet', function(item, attribute, oldValue, newValue){
-SaveSector(item);
-});
-
-
-// Obtiene los ids de los registros que se van a eliminar y los guarda en una matriz
-dojo.connect(egridsector.select.row, 'onSelectionChange', function(selected){
-Sector.to_delete = [];
-numsel = selected.length;
-i = 0;
-
-while(i<numsel){
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreSector.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-Sector.to_delete[i] = StoreSector.getValue(item, 'idsector');
-} 
-});
-i++;
-}
-//console.log('Borrar: '+Country.to_delete.toString());
-});
-
-// Carga los datos
-function LoadGridSector(){
-Sector.id = 0;
-Sector.to_delete = [];
-Sector.setHeaderLabel('---');
-LoadGridSubSector();
-var myData = {identifier: "unique_id", items: []};
-
-if(City.id > 0){
-            // Request the text file
-            request.get("fun_view_sector_by_idcity_xml.usms", {
-	query: {idcity: City.id},
-            // Parse data from xml
-            handleAs: "xml"
-        }).then(
-                function(response){
-var d = new RXml.getFromXhr(response, 'row');
-
-numrows = d.length;
-
-var i = 0;
-while(i<numrows){
-
-myData.items[i] = {
-unique_id:i+1,
-idcity: d.getNumber(i, "idcity"),
-idsector: d.getNumber(i, "idsector"),
-name: d.getStringFromB64(i, "name"),
-ts: d.getString(i, "ts")
-};
-i++;
-}
-StoreSector.clearOnClose = true;
-	StoreSector.data = myData;
-	StoreSector.close();
-
-		egridsector.store = null;
-		egridsector.setStore(StoreSector);
-                },
-                function(error){
-                    // Display the error returned
-alert(error);
-                }
-            );
-}else{
-StoreSector.clearOnClose = true;
-	StoreSector.data = myData;
-	StoreSector.close();
-
-		egridsector.store = null;
-		egridsector.setStore(StoreSector);
-}
-}
-
-// Guarda los datos
-function SaveSector(item){
-
-request.post('fun_location_sector_edit_xml_from_hashmap.usms', {
-   handleAs: "xml",
-data: item,
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridSector();
-}, function(error){
-LoadGridSector();
-alert(error);
-});
-
-}
-
-
-// Elimina los datos seleccionados
-function DeleteSector(){
-
-request.post('fun_location_sector_remove_selected_xml.usms', {
-   handleAs: "xml",
-data: {ids: Sector.to_delete.toString()},
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridSector();
-}, function(error){
-LoadGridSector();
-alert(error);
-});
-
+L6.Grid.startup();
 }
 
 
 
-//////////////////////////////////////////////////////////////////////////
-
-
-var SubSector = new ObjectBase();
-SubSector.title = 'SubSector: ';
-SubSector.label = dojo.byId('labsubsector');
-
-
-        var dsubsectordialognew = dijit.byId('subsectordialognew');
-dsubsectordialognew.setowner('newsub', 'onclick').innerHTML('<form id="subsectorform">  <div>  <label style="margin-right: 3px;">    Nombre:</label>  <input type="text" data-dojo-type="dijit.form.TextBox" id="subsectorname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"  placeHolder="Subsector"></input>  <input style="display:none" type="text" data-dojo-type="dijit.form.TextBox"></input></div></form>').on('onok', function(){
-if(Sector.id > 0){
-SaveSubSector({idsector: Sector.id, name: dijit.byId('subsectorname').get('value')});
-}else{
-alert('No hay ningun sector cargado');
-}
-dojo.byId('subsectorform').reset();
-});
-        
-var egridsub = dijit.byId('gridsub');
-if(egridsub){
-		egridsub.setColumns([
-			{field:"unique_id", name: "#", width: '20px'},
-			{field:"name", name: "Nombre", editable: true}
-		]);
-egridsub.startup();
-}
 
 
 
-// Elimina los registros seleccionados
-        var dsubdialogdel = dijit.byId('subdialogdel');
-dsubdialogdel.setowner('delsub', 'onclick').on('onok', function(){
-DeleteSubSector();
-});
 
 
-/*
-// 
-dojo.connect(egridsub, 'onRowClick', function(event){
-d = this.cell(event.rowId, 1, true).data();
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreSubSector.fetch({query: {unique_id: d}, onItem: function(item){
-Sector.id = StoreSector.getValue(item, 'idsector');
-//console.log(Country.id);
-} 
-});
-
-});
-*/
-
-// Guarda los cambios
-dojo.connect(StoreSubSector, 'onSet', function(item, attribute, oldValue, newValue){
-SaveSubSector(item);
-});
 
 
-// Obtiene los ids de los registros que se van a eliminar y los guarda en una matriz
-dojo.connect(egridsub.select.row, 'onSelectionChange', function(selected){
-SubSector.to_delete = [];
-numsel = selected.length;
-i = 0;
-
-while(i<numsel){
-// Aqui buscamos los datos desde el store y no desde la celda.
-StoreSubSector.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-SubSector.to_delete[i] = StoreSubSector.getValue(item, 'idsubsector');
-} 
-});
-i++;
-}
-//console.log('Borrar: '+Country.to_delete.toString());
-});
-
-// Carga los datos
-function LoadGridSubSector(){
-SubSector.id = 0;
-SubSector.to_delete = [];
-
-var myData = {identifier: "unique_id", items: []};
-
-if(Sector.id > 0){
-            // Request the text file
-            request.get("fun_view_subsector_by_idsector_xml.usms", {
-	query: {idsector: Sector.id},
-            // Parse data from xml
-            handleAs: "xml"
-        }).then(
-                function(response){
-var d = new RXml.getFromXhr(response, 'row');
-
-numrows = d.length;
-
-var i = 0;
-while(i<numrows){
-
-myData.items[i] = {
-unique_id:i+1,
-idsubsector: d.getNumber(i, "idsubsector"),
-idsector: d.getNumber(i, "idsector"),
-name: d.getStringFromB64(i, "name"),
-ts: d.getString(i, "ts")
-};
-i++;
-}
-StoreSubSector.clearOnClose = true;
-	StoreSubSector.data = myData;
-	StoreSubSector.close();
-
-		egridsub.store = null;
-		egridsub.setStore(StoreSubSector);
-                },
-                function(error){
-                    // Display the error returned
-alert(error);
-                }
-            );
-}else{
-StoreSubSector.clearOnClose = true;
-	StoreSubSector.data = myData;
-	StoreSubSector.close();
-
-		egridsub.store = null;
-		egridsub.setStore(StoreSubSector);
-}
-}
-
-// Guarda los datos
-function SaveSubSector(item){
-
-request.post('fun_location_subsector_edit_xml_from_hashmap.usms', {
-   handleAs: "xml",
-data: item,
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridSubSector();
-}, function(error){
-LoadGridSubSector();
-alert(error);
-});
-
-}
 
 
-// Elimina los datos seleccionados
-function DeleteSubSector(){
 
-request.post('fun_location_subsector_remove_selected_xml.usms', {
-   handleAs: "xml",
-data: {ids: SubSector.to_delete.toString()},
-}).then(function(response){
 
-var xmld = new RXml.getFromXhr(response, 'row');
 
-if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}
-LoadGridSubSector();
-}, function(error){
-LoadGridSubSector();
-alert(error);
-});
 
-}
+
+
+
+
+
 
 
 

@@ -13,51 +13,60 @@ postCreate: function(){
 
 var t = this;
 
-jsFS.addXmlLoader(t.fsidcountry, 'fun_view_country_xml.usms', 'row', {}, 'idcountry', 'name');
-jsFS.addXmlLoader(t.fsidstate, 'fun_view_state_by_idcountry_xml.usms', 'row', {}, 'idstate', 'name');
-jsFS.addXmlLoader(t.fsidcity, 'fun_view_city_by_idstate_xml.usms', 'row', {}, 'idcity', 'name');
-jsFS.addXmlLoader(t.fsidsector, 'fun_view_sector_by_idcity_xml.usms', 'row', {}, 'idsector', 'name');
-jsFS.addXmlLoader(t.fsidsubsector, 'fun_view_subsector_by_idsector_xml.usms', 'row', {}, 'idsubsector', 'name');
+jsFS.addXmlLoader(t.fsL1, 'fun_view_location_level_xml.usms', 'row', {level: 1}, 'idl1', 'name');
+jsFS.addXmlLoader(t.fsL2, 'fun_view_location_level_xml.usms', 'row', {}, 'idl2', 'name');
+jsFS.addXmlLoader(t.fsL3, 'fun_view_location_level_xml.usms', 'row', {}, 'idl3', 'name');
+jsFS.addXmlLoader(t.fsL4, 'fun_view_location_level_xml.usms', 'row', {}, 'idl4', 'name');
+jsFS.addXmlLoader(t.fsL5, 'fun_view_location_level_xml.usms', 'row', {}, 'idl5', 'name');
+jsFS.addXmlLoader(t.fsL6, 'fun_view_location_level_xml.usms', 'row', {}, 'idl6', 'name');
 
-t.fsidcountry.on('Change', function(e){
+t.fsL1.on('Change', function(e){
 
-t._resetfs(t.fsidstate);
-t._resetfs(t.fsidcity);
-t._resetfs(t.fsidsector);
-t._resetfs(t.fsidsubsector);
+t._resetfs(t.fsL2);
+t._resetfs(t.fsL3);
+t._resetfs(t.fsL4);
+t._resetfs(t.fsL5);
+t._resetfs(t.fsL6);
 
-t.fsidstate._Query = {idcountry: this.get('value')};
-t.fsidstate.Load();
+t.fsL2._Query = {level: 2, idfk: this.get('value')};
+t.fsL2.Load();
 });
 
-t.fsidstate.on('Change', function(e){
+t.fsL2.on('Change', function(e){
 
-t._resetfs(t.fsidcity);
-t._resetfs(t.fsidsector);
-t._resetfs(t.fsidsubsector);
+t._resetfs(t.fsL3);
+t._resetfs(t.fsL4);
+t._resetfs(t.fsL5);
+t._resetfs(t.fsL6);
 
-t.fsidcity._Query = {idstate: this.get('value')};
-t.fsidcity.Load();
+t.fsL3._Query = {level: 3, idfk: this.get('value')};
+t.fsL3.Load();
 });
 
-t.fsidcity.on('Change', function(e){
+t.fsL3.on('Change', function(e){
 
-t._resetfs(t.fsidsector);
-t._resetfs(t.fsidsubsector);
+t._resetfs(t.fsL4);
+t._resetfs(t.fsL5);
+t._resetfs(t.fsL6);
 
-t.fsidsector._Query = {idcity: this.get('value')};
-t.fsidsector.Load();
+t.fsL4._Query = {level: 4, idfk: this.get('value')};
+t.fsL4.Load();
 });
 
-t.fsidsector.on('Change', function(e){
-t._resetfs(t.fsidsubsector);
-t.fsidsubsector._Query = {idsector: this.get('value')};
-t.fsidsubsector.Load();
+t.fsL4.on('Change', function(e){
+t._resetfs(t.fsL5);
+t._resetfs(t.fsL6);
+t.fsL5._Query = {level: 5, idfk: this.get('value')};
+t.fsL5.Load();
 });
 
+t.fsL5.on('Change', function(e){
+t._resetfs(t.fsL6);
+t.fsL6._Query = {level: 6,  idfk: this.get('value')};
+t.fsL6.Load();
+});
 
-
-this.LoadCountry();
+this.LoadL1();
 
 
     // Get a DOM node reference for the root of our widget
@@ -74,18 +83,19 @@ fs.store = new M({data: Items});
 fs.startup();
 fs.reset();
 },
-LoadCountry: function(){
-this.fsidcountry.Load();
+LoadL1: function(){
+this.fsL1.Load();
 },
 getLocation: function(){
 var r = '000000';
 
-var _a = this.fsidcountry.get('value');
-var _b = this.fsidstate.get('value');
-var _c = this.fsidcity.get('value');
-var _d = this.fsidsector.get('value');
-var _e = this.fsidsubsector.get('value');
-r = '1'+_a+_b+_c+_d+_e;
+var _a = this.fsL1.get('value');
+var _b = this.fsL2.get('value');
+var _c = this.fsL3.get('value');
+var _d = this.fsL4.get('value');
+var _e = this.fsL5.get('value');
+var _f = this.fsL6.get('value');
+r = '1'+_a+_b+_c+_d+_e+_f;
 
 return r;
 }

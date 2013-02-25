@@ -43,81 +43,95 @@ require([
        <col></col>
        <col></col>
        <col></col>
+       <col></col>
      </colgroup>
      <tbody>
        <tr style="height: 20px;">
          <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-radius: 6px; -moz-border-radius: 6px; max-height: 10px;" class="dijitTitlePaneTitle">
-           <label id="labcountry">País</label></td>
+           <label id="labL1">País</label></td>
          <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="dijitTitlePaneTitle">
-           <label id="labstate">Estado / Provincia</label></td>
+           <label id="labL2">Estado / Provincia</label></td>
          <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-radius: 6px; -moz-border-radius: 6px;" class="dijitTitlePaneTitle">
-           <label id="labcity">Ciudad</label></td>
+           <label id="labL3">Ciudad</label></td>
          <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="dijitTitlePaneTitle">
-           <label id="labsector">Sector</label></td>
+           <label id="labL4">Sector</label></td>
          <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="dijitTitlePaneTitle">
-           <label id="labsubsector">SubSector</label></td>
+           <label id="labL5">SubSector</label></td>
+         <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;" class="dijitTitlePaneTitle">
+           <label id="labL6">SubSector2</label></td>
        </tr>
        <tr style="height: 25px;">
          <td style="border-left: 1px solid black; border-right: 1px solid black;"><span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="loadcountry" tabIndex="-1" intermediateChanges="false" label="Cargar" iconClass="dijitIconTable"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="newcountry" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delcountry" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="loadL1" tabIndex="-1" intermediateChanges="false" label="Cargar" iconClass="dijitIconTable"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="newL1" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL1" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span></td>
          <td style="border-left: 1px solid black; border-right: 1px solid black;"><span data-dojo-type="dijit.Toolbar">
 <input type="button" data-dojo-type="dijit.form.Button" id="newstate" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delstate" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL2" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span></td>
          <td style="border-left: 1px solid black; border-right: 1px solid black;">
            <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="newcity" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delcity" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="newL3" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL3" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span></td>
          <td style="border-left: 1px solid black; border-right: 1px solid black;">
            <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="newsector" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delsector" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="newL4" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL4" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span></td>
          <td style="border-left: 1px solid black; border-right: 1px solid black;">
            <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="newsub" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delsub" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="newL5" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL5" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+</span></td>
+         <td style="border-left: 1px solid black; border-right: 1px solid black;">
+           <span data-dojo-type="dijit.Toolbar">
+<input type="button" data-dojo-type="dijit.form.Button" id="newL6" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconSave"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="delL6" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span></td>
        </tr>
        <tr>
          <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
-           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreCountry" jsId="StoreCountry" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-           <table data-dojo-type="gridx.Grid" id="gridcountry" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreCountry"></table>
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL1" jsId="StoreL1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="gridL1" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL1"></table>
          </td>
          <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
-           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreState" jsId="StoreState" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-           <table data-dojo-type="gridx.Grid" id="gridstate" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreState"></table>
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL2" jsId="StoreL2" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="gridL2" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL2"></table>
          </td>
          <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
-           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreCity" jsId="StoreCity" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-           <table data-dojo-type="gridx.Grid" id="gridcity" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreCity"></table>
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL3" jsId="StoreL3" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="L3Grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL3"></table>
          </td>
          <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
-           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreSector" jsId="StoreSector" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-           <table data-dojo-type="gridx.Grid" id="gridsector" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreSector"></table>
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL4" jsId="StoreL4" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="GridL4" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL4"></table>
          </td>
          <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
-           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreSubSector" jsId="StoreSubSector" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
-           <table data-dojo-type="gridx.Grid" id="gridsub" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreSubSector"></table>
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL5" jsId="StoreL5" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="GridL5" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL5"></table>
+         </td>
+         <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
+           <span data-dojo-type="dojo.data.ItemFileWriteStore" id="StoreL6" jsId="StoreL6" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+           <table data-dojo-type="gridx.Grid" id="GridL6" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:StoreL6"></table>
          </td>
        </tr>
      </tbody>
    </table>
  </div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="countrydialogdel" style="height: auto; width: 50px; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="statedialogdel" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="citydialogdel" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="sectordialogdel" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="subdialogdel" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="countrydialognew" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="statedialognew" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="citydialognew" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="sectordialognew" style="height: auto; width: auto; display: none !important;"></div>
- <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="subsectordialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L1dialogdel" style="height: auto; width: 50px; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L2dialogdel" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L3dialogdel" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L4dialogdel" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L5dialogdel" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L6dialogdel" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L1dialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L2dialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L3dialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L4dialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L5dialognew" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="L6dialognew" style="height: auto; width: auto; display: none !important;"></div>
 
 
 
