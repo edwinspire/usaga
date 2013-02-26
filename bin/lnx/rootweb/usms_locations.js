@@ -22,7 +22,7 @@ require(["dojo/ready",
 ], function(ready, on, ItemFileWriteStore, request, Grid, Async, Focus, CellWidget, Edit, VirtualVScroller, RXml){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-
+//dojo.parser.parse('myapp');
 // Objeto base con funciones comunes
 var ObjectBase = function(l, g, s, dd, od){
 this.id= 0,
@@ -89,8 +89,8 @@ t.onRowClick();
 this.connect_onDelete = function(){
 // Elimina los registros seleccionados
 var t = this;
-        var dialogdel = dijit.byId(this.iddialogdel);
-dialogdel.setowner(this.idownerdel, 'onclick').on('onok', function(){
+        var dialogdel = dijit.byId(t.iddialogdel);
+dialogdel.setowner(t.idownerdel, 'onclick').on('onok', function(){
 t.delete();
 });
 },
@@ -136,7 +136,9 @@ alert(error);
 }
 
 //Construimos el objeto con todas las funciones necesarias
-var L1 = new ObjectBase(1, 'gridL1', StoreL1, 'L1dialogdel', 'delL1');
+
+
+var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'L1dialogdel', 'delL1');
 L1.title = 'Nivel-1: ';
 L1.label = dojo.byId('labL1');
 L1.connect_all();
@@ -216,7 +218,7 @@ L1.Grid.startup();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L2 = new ObjectBase(2, 'gridL2', StoreL2, 'L2dialogdel', 'delL2');
+var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'L2dialogdel', 'delL2');
 L2.title = 'Nivel 2: : ';
 L2.label = dojo.byId('labL2');
 L2.connect_all();
@@ -280,7 +282,7 @@ t.Store.clearOnClose = true;
 
 
         var dL2dialognew = dijit.byId('L2dialognew');
-dL2dialognew.setowner('newstate', 'onclick').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL2dialognew.setowner('newL2', 'onclick').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L1.id > 0){
 L2.save({idfk: L1.id, name: dijit.byId('L2name').get('value'), code: dijit.byId('L2code').get('value')});
 }else{
@@ -305,7 +307,7 @@ L2.Grid.startup();
 ///////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L3 = new ObjectBase(3, 'L3Grid', StoreL3, 'L3dialogdel', 'delL3');
+var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'L3dialogdel', 'delL3');
 L3.title = 'Nivel 3: : ';
 L3.label = dojo.byId('labL3');
 L3.connect_all();
@@ -397,14 +399,14 @@ L4.title = 'Nivel 4: ';
 L4.label = dojo.byId('labL4');
 L4.connect_all();
 L4.onRowClick = function(){
-//L5.onLoad();
+L5.onLoad();
 }
 L4.onLoad = function(){
 var t = this;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
-//TODO: L5.onLoad();
+L5.onLoad();
 var myData = {identifier: "unique_id", items: []};
 
 if(L3.id > 0){
