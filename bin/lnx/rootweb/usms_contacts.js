@@ -162,7 +162,8 @@ GlobalObject.IdContact = 0;
 FormContact.dojo.Form.reset();
 CAddress.AddressW.idaddress = 0;
 }
-GeneralLoadAddressForm(CAddress.AddressW);
+//GeneralLoadAddressForm(CAddress.AddressW);
+CAddress.AddressW.load(CAddress.AddressW.idaddress);
 CP.LoadGrid();
 },
 onError: function(e){
@@ -321,7 +322,8 @@ PAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
 PAddress.AddressW.reset();
 CP.resetForm();
 }
-GeneralLoadAddressForm(PAddress.AddressW);
+//GeneralLoadAddressForm(PAddress.AddressW);
+PAddress.AddressW.load(PAddress.AddressW.idaddress);
 
 },
 onError: function(e){
@@ -396,7 +398,7 @@ CP.Gridx.startup();
 ///////////////////////////
 ///// CONTACT ADDRESS /////
 
-
+/*
 function GeneralLoadAddressForm(WidgetAddress){
 
 var ObjectoW = WidgetAddress;
@@ -440,7 +442,7 @@ ObjectoW.reset();
 
 }
 
-
+*/
 var CAddress = {
 AddressW : dijit.byId('idwaddresscontact'),
 Delete: function(){
@@ -463,7 +465,8 @@ alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
-GeneralLoadAddressForm(OWA);
+//GeneralLoadAddressForm(OWA);
+OWA.load(OWA.idaddress);
     },
 
     error: function(error)
@@ -497,7 +500,8 @@ alert(xmld.getStringFromB64(0, 'outpgmsg'));
 OWA.reset();
 }
 //ABE.idaddress = OWA.idaddress;
-GeneralLoadAddressForm(OWA);
+//GeneralLoadAddressForm(OWA);
+OWA.load(OWA.idaddress);
     },
 
     error: function(error)
@@ -540,7 +544,8 @@ alert(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 OWA.reset();
 }
-GeneralLoadAddressForm(OWA);
+//GeneralLoadAddressForm(OWA);
+OWA.load(OWA.idaddress);
     },
 
     error: function(error)
@@ -574,7 +579,8 @@ alert(xmld.getStringFromB64(0, 'outpgmsg'));
 OWA.reset();
 }
 //ABE.idaddress = OWA.idaddress;
-GeneralLoadAddressForm(OWA);
+//GeneralLoadAddressForm(OWA);
+OWA.load(OWA.idaddress);
     },
 
     error: function(error)
