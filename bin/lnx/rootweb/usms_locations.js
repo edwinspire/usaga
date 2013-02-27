@@ -21,6 +21,16 @@ require(["dojo/ready",
 "dijit/form/TextBox"
 ], function(ready, on, ItemFileWriteStore, request, Grid, Async, Focus, CellWidget, Edit, VirtualVScroller, RXml){
      ready(function(){
+
+var nameLevel = {
+L1: 'Nivel 1: ',
+L2: 'Nivel 2: ',
+L3: 'Nivel 3: ',
+L4: 'Nivel 4: ',
+L5: 'Nivel 5: ',
+L6: 'Nivel 6: '
+}
+
          // logic that requires that Dojo is fully initialized should go here
 //dojo.parser.parse('myapp');
 // Objeto base con funciones comunes
@@ -139,7 +149,7 @@ alert(error);
 
 
 var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'L1dialogdel', 'delL1');
-L1.title = 'Nivel-1: ';
+L1.title = nameLevel.L1;
 L1.label = dojo.byId('labL1');
 L1.connect_all();
 L1.onRowClick = function(){
@@ -219,7 +229,7 @@ L1.Grid.startup();
 
 //Construimos el objeto con todas las funciones necesarias
 var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'L2dialogdel', 'delL2');
-L2.title = 'Nivel 2: : ';
+L2.title = nameLevel.L2;
 L2.label = dojo.byId('labL2');
 L2.connect_all();
 L2.onRowClick = function(){
@@ -308,7 +318,7 @@ L2.Grid.startup();
 
 //Construimos el objeto con todas las funciones necesarias
 var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'L3dialogdel', 'delL3');
-L3.title = 'Nivel 3: : ';
+L3.title = nameLevel.L3;
 L3.label = dojo.byId('labL3');
 L3.connect_all();
 L3.onRowClick = function(){
@@ -395,7 +405,7 @@ L3.Grid.startup();
 
 //Construimos el objeto con todas las funciones necesarias
 var L4 = new ObjectBase(4, 'GridL4', StoreL4, 'L4dialogdel', 'delL4');
-L4.title = 'Nivel 4: ';
+L4.title = nameLevel.L4;
 L4.label = dojo.byId('labL4');
 L4.connect_all();
 L4.onRowClick = function(){
@@ -482,7 +492,7 @@ L4.Grid.startup();
 
 //Construimos el objeto con todas las funciones necesarias
 var L5 = new ObjectBase(5, 'GridL5', StoreL5, 'L5dialogdel', 'delL5');
-L5.title = 'Nivel 5: ';
+L5.title = nameLevel.L5;
 L5.label = dojo.byId('labL5');
 L5.connect_all();
 L5.onRowClick = function(){
@@ -571,7 +581,7 @@ L5.Grid.startup();
 
 //Construimos el objeto con todas las funciones necesarias
 var L6 = new ObjectBase(6, 'GridL6', StoreL6, 'L6dialogdel', 'delL6');
-L6.title = 'Nivel 6: ';
+L6.title = nameLevel.L6;
 L6.label = dojo.byId('labL6');
 L6.connect_all();
 L6.onRowClick = function(){
