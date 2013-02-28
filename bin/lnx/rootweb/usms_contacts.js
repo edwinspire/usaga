@@ -400,219 +400,32 @@ CP.Gridx.startup();
 ///////////////////////////
 ///// CONTACT ADDRESS /////
 
-/*
-function GeneralLoadAddressForm(WidgetAddress){
-
-var ObjectoW = WidgetAddress;
-//alert('idaddress > '+ObjectoW.idaddress);
-
-if(ObjectoW.idaddress > 0){
-
-var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-if(numrows > 0){
-i = 0;
-ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
-ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
-ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
-ObjectoW.set('mainstreet', dataxml.getStringFromB64(i, 'main_street'));
-ObjectoW.set('secundarystreet', dataxml.getStringFromB64(i, 'secundary_street'));
-ObjectoW.set('other', dataxml.getStringFromB64(i, 'other'));
-ObjectoW.set('note', dataxml.getStringFromB64(i, 'note'));
-ObjectoW.set('ts', dataxml.getString(i, 'ts'));
-ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
-}else{
-ObjectoW.reset();
-}
-
-},
-onError: function(e){
-ObjectoW.reset();
-alert(e);
-}
-});
-
-}else{
-ObjectoW.reset();
-}
-
-}
-
-*/
 var CAddress = {
 AddressW : dijit.byId('idwaddresscontact'),
-LocationW : dijit.byId('idwlocationcontact'),
-Delete: function(){
-if(this.AddressW.idaddress > 0){
-// Objeto Widget Address
-var OWA = this.AddressW;
-var Este = this;
-
-  var xhrArgs = {
-    url: "fun_contact_address_edit.usms",
- content: {idcontact: GlobalObject.IdContact*-1, ts: OWA.get('ts')},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-if(xmld.length > 0){
-OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}else{
-OWA.reset();
-}
-//GeneralLoadAddressForm(OWA);
-OWA.load(OWA.idaddress);
-    },
-
-    error: function(error)
-{
-OWA.reset();
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}
-}
-/*,
-Save: function(){
-// Objeto Widget Address
-var OWA = this.AddressW;
-var Este = this;
-
-  var xhrArgs = {
-    url: "fun_contact_address_edit.usms",
- content: {idcontact: GlobalObject.IdContact, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts')},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-if(xmld.length > 0){
-OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}else{
-OWA.reset();
-}
-//ABE.idaddress = OWA.idaddress;
-//GeneralLoadAddressForm(OWA);
-OWA.load(OWA.idaddress);
-    },
-
-    error: function(error)
-{
-OWA.reset();
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}
-*/
+LocationW : dijit.byId('idwlocationcontact')
 } 
 
 
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
+if(GlobalObject.IdContact){
 CAddress.AddressW.save();
+}
 });
 
 ///////////////////////////////////////////////////
 // PHONE ADDRESS
 var PAddress = {
 AddressW : dijit.byId('idwaddresstelf'),
-LocationW : dijit.byId('idwlocationtelf'),
-Delete: function(){
-if(this.AddressW.idaddress > 0){
-// Objeto Widget Address
-var OWA = this.AddressW;
-var Este = this;
-//alert('eliminamos dir de '+CP.IdPhone);
-  var xhrArgs = {
-    url: "fun_phone_address_edit.usms",
- content: {idphone: CP.IdPhone*-1, ts: OWA.get('ts')},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-if(xmld.length > 0){
-OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}else{
-OWA.reset();
-}
-//GeneralLoadAddressForm(OWA);
-OWA.load(OWA.idaddress);
-    },
-
-    error: function(error)
-{
-OWA.reset();
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}
-}
-/*,
-Save: function(){
-// Objeto Widget Address
-var OWA = this.AddressW;
-var Este = this;
-
-  var xhrArgs = {
-    url: "fun_phone_address_edit.usms",
- content: {idphone: CP.IdPhone, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts')},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-if(xmld.length > 0){
-OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}else{
-OWA.reset();
-}
-//ABE.idaddress = OWA.idaddress;
-//GeneralLoadAddressForm(OWA);
-OWA.load(OWA.idaddress);
-    },
-
-    error: function(error)
-{
-OWA.reset();
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}
-*/
+LocationW : dijit.byId('idwlocationtelf')
 } 
 
 dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
+if(GlobalObject.IdContact){
 PAddress.AddressW.save();
+}
 });
 
-//(filteringselect, url, ri, q, id, name)
-
 jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
-
-//var loadProviderlist  = new jspireLoadFilteringSelectFromTableXmlStore(CP.dijit.Provider, true, "usms_provider_listidname_xml", "row", "idprovider", "name");
 
 
 
@@ -626,7 +439,7 @@ FormContact.SaveForm();
 
 var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
 dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
-CAddress.Delete();
+CAddress.AddressW.delete();
 });
 
 var dialogdeletphone = dijit.byId('dialogconfirmdeletecontactphone');
@@ -636,7 +449,7 @@ CP.Delete();
 
 var dialogdeletphoneaddress = dijit.byId('dialogconfirmdeletecontactaddressphone');
 dialogdeletphoneaddress.setowner('usms.save.contact.deladdresstelf', 'onclick').on('onok', function(){
-PAddress.Delete();
+PAddress.AddressW.delete();
 });
 
 

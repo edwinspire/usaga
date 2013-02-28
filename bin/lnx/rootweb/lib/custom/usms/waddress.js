@@ -22,24 +22,7 @@ postCreate: function(){
 this.reset();
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
- 
 
-/*
-    // Run any parent postCreate processes - can be done at any point
-    this.inherited(arguments);
- 
-    // Set our DOM node's background color to white -
-    // smoothes out the mouseenter/leave event animations
-    dojo.style(domNode, "backgroundColor", this.baseBackgroundColor);
-    // Set up our mouseenter/leave events - using dijit._Widget's connect
-    // means that our callback will execute with `this` set to our widget
-    this.connect(domNode, "onmouseenter", function(e) {
-        this._changeBackground(this.mouseBackgroundColor);
-    });
-    this.connect(domNode, "onmouseleave", function(e) {
-        this._changeBackground(this.baseBackgroundColor);
-    });
-*/
 },
 values: function(){
 var t = this;
@@ -64,6 +47,7 @@ idlocation: t.idlocation
 load: function(id){
 var t = this;
 t.idaddress = id;
+if(t.idaddress > 0){
             // Request the text file
             request.get("fun_view_address_byid_xml.usms", {
             // Parse data from xml
@@ -105,6 +89,9 @@ t.emit('onloaddata', t.values());
 alert(error);
                 }
             );
+}else{
+t.reset();
+}
 
 },
 save: function(){
@@ -122,6 +109,7 @@ numrows = d.length;
 
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
+t.load(t.idaddress);
 alert(d.getStringFromB64(0, 'outpgmsg'));
 }else{
 t.reset();
@@ -137,6 +125,41 @@ alert(error);
                 }
             );
 
+},
+delete: function(){
+var t = this;
+if(t.idaddress > 0){
+            // Request the text file
+            request.post("fun_address_edit_xml.usms", {
+            // Parse data from xml
+	data: {idaddress: t.idaddress*-1},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+if(d.length > 0){
+t.idaddress = d.getInt(0, 'outreturn');
+t.load(t.idaddress);
+alert(d.getStringFromB64(0, 'outpgmsg'));
+}else{
+t.reset();
+}
+
+//t.emit('onloaddata', t.values());
+                },
+                function(error){
+                    // Display the error returned
+t.reset();
+//t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
+}else{
+t.reset();
+}
 }
 
 
