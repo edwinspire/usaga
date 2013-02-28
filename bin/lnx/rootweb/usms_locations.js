@@ -47,6 +47,15 @@ this.title= 'Selección: ',
 this.setHeaderLabel= function(label){
 this.label.innerHTML = this.title+'['+label+']';
 },
+this.setDataGrid = function(myData){
+var t = this;
+t.Store.clearOnClose = true;
+	t.Store.data = myData;
+	t.Store.close();
+
+		t.Grid.store = null;
+		t.Grid.setStore(t.Store);
+},
 this.onLoad = function(){
 alert('No implementado');
 },
@@ -185,12 +194,8 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
+t.setDataGrid(myData);
 
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
                 },
                 function(error){
                     // Display the error returned
@@ -268,12 +273,7 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
@@ -281,12 +281,7 @@ alert(error);
                 }
             );
 }else{
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
 }
 }
 
@@ -357,12 +352,7 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
@@ -370,12 +360,7 @@ alert(error);
                 }
             );
 }else{
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
 }
 }
 
@@ -444,12 +429,7 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
@@ -457,12 +437,7 @@ alert(error);
                 }
             );
 }else{
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
 }
 }
 
@@ -531,12 +506,7 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
@@ -544,12 +514,7 @@ alert(error);
                 }
             );
 }else{
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
 }
 }
 
@@ -618,12 +583,7 @@ ts: d.getString(i, "ts")
 };
 i++;
 }
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
@@ -631,12 +591,7 @@ alert(error);
                 }
             );
 }else{
-t.Store.clearOnClose = true;
-	t.Store.data = myData;
-	t.Store.close();
-
-		t.Grid.store = null;
-		t.Grid.setStore(t.Store);
+t.setDataGrid(myData);
 }
 }
 
@@ -661,24 +616,6 @@ if(L6.Grid){
 		]);
 L6.Grid.startup();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

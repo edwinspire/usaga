@@ -18,79 +18,6 @@ this.idform.reset();
 idaddress: 0,
 ts: '1990-01-01',
 idlocation: '0',
-_setIdAddressAttr: function(id) {
-        // Using our avatarNode attach point, set its value
-this.idaddress = id;
-return this;
-},
-_getIdAddressAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idaddress;
-},
-_settsAttr: function(ts) {
-        // Using our avatarNode attach point, set its value
-this.ts = ts;
-return this;
-},
-_gettsAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.ts;
-},
-_setMainstreetAttr: function(ms) {
-        // Using our avatarNode attach point, set its value
-this.idps.set('value', ms);
-return this;
-},
-_getMainstreetAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idps.get('value');
-},
-_setSecundarystreetAttr: function(ss) {
-        // Using our avatarNode attach point, set its value
-this.idss.set('value', ss);
-return this;
-},
-_getSecundarystreetAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idss.get('value');
-},
-_setOtherAttr: function(o) {
-        // Using our avatarNode attach point, set its value
-this.ido.set('value', o);
-return this;
-},
-_getOtherAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.ido.get('value');
-},
-_setNoteAttr: function(n) {
-        // Using our avatarNode attach point, set its value
-this.idn.set('value', n);
-return this;
-},
-_getNoteAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idn.get('value');
-},
-_setGeoxAttr: function(x) {
-        // Using our avatarNode attach point, set its value
-this.idgeox.set('value', x);
-return this;
-},
-_getGeoxAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idgeox.get('value');
-},
-_setGeoyAttr: function(y) {
-        // Using our avatarNode attach point, set its value
-this.idgeoy.set('value', y);
-this.emit('onok', {value: y});
-return this;
-},
-_getGeoyAttr: function() {
-        // Using our avatarNode attach point, get its value
-return this.idgeoy.get('value');
-},
 postCreate: function(){
 this.reset();
     // Get a DOM node reference for the root of our widget
@@ -138,7 +65,7 @@ load: function(id){
 var t = this;
 t.idaddress = id;
             // Request the text file
-            request.get("get_address_byid.usms", {
+            request.get("fun_view_address_byid_xml.usms", {
             // Parse data from xml
 	query: {idaddress: t.idaddress},
             handleAs: "xml"
@@ -175,6 +102,37 @@ t.emit('onloaddata', t.values());
                     // Display the error returned
 t.reset();
 t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
+
+},
+save: function(){
+var t = this;
+            // Request the text file
+            request.post("fun_address_edit_xml.usms", {
+            // Parse data from xml
+	data: t.values(),
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+if(d.length > 0){
+t.idaddress = d.getInt(0, 'outreturn');
+alert(d.getStringFromB64(0, 'outpgmsg'));
+}else{
+t.reset();
+}
+
+//t.emit('onloaddata', t.values());
+                },
+                function(error){
+                    // Display the error returned
+t.reset();
+//t.emit('onloaddata', t.values());
 alert(error);
                 }
             );

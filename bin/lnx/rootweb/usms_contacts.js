@@ -30,6 +30,8 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
+var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'}
+
 /////////////////
 ///// BASIC /////
 // Account basic elements
@@ -445,6 +447,7 @@ ObjectoW.reset();
 */
 var CAddress = {
 AddressW : dijit.byId('idwaddresscontact'),
+LocationW : dijit.byId('idwlocationcontact'),
 Delete: function(){
 if(this.AddressW.idaddress > 0){
 // Objeto Widget Address
@@ -479,7 +482,8 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }
-},
+}
+/*,
 Save: function(){
 // Objeto Widget Address
 var OWA = this.AddressW;
@@ -514,16 +518,19 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }
+*/
 } 
 
+
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
-CAddress.Save();
+CAddress.AddressW.save();
 });
 
 ///////////////////////////////////////////////////
 // PHONE ADDRESS
 var PAddress = {
 AddressW : dijit.byId('idwaddresstelf'),
+LocationW : dijit.byId('idwlocationtelf'),
 Delete: function(){
 if(this.AddressW.idaddress > 0){
 // Objeto Widget Address
@@ -558,7 +565,8 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }
-},
+}
+/*,
 Save: function(){
 // Objeto Widget Address
 var OWA = this.AddressW;
@@ -593,10 +601,11 @@ alert(error);
   // Call the asynchronous xhrGet
   var deferred = dojo.xhrPost(xhrArgs);
 }
+*/
 } 
 
 dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
-PAddress.Save();
+PAddress.AddressW.save();
 });
 
 //(filteringselect, url, ri, q, id, name)
@@ -637,6 +646,8 @@ PAddress.Delete();
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
+CAddress.LocationW._setLabels(namesLabelsLocations);
+PAddress.LocationW._setLabels(namesLabelsLocations);
 CP.dijit.Provider.Load();
 
 

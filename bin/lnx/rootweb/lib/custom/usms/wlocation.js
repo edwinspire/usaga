@@ -3,15 +3,67 @@ define(['dojo/_base/declare',
 'dijit/_Templated',
 'dojo/text!./wlocation.html',
 'jspire/form/FilteringSelect',
-'dojo/store/Memory'
-],function(declare,_Widget,_Templated,templateString, jsFS, M){
+'dojo/store/Memory',
+'dojo/dom-style'
+],function(declare,_Widget,_Templated,templateString, jsFS, M, Style){
 
  return declare('usms.wlocation',[ _Widget, _Templated], {
        widgetsInTemplate:true,
-       templateString:templateString ,
+       templateString:templateString,
+_setLabels: function(l){
+var r = 0;
+var t = this;
+t.labL1.innerHTML = l.L1;
+if(r<l.L1.length){
+r = l.L1.length;
+}
+
+t.labL2.innerHTML = l.L2;
+if(r<l.L2.length){
+r = l.L2.length;
+}
+
+t.labL3.innerHTML = l.L3;
+if(r<l.L3.length){
+r = l.L3.length;
+}
+
+t.labL4.innerHTML = l.L4;
+if(r<l.L4.length){
+r = l.L4.length;
+}
+
+t.labL5.innerHTML = l.L5;
+if(r<l.L5.length){
+r = l.L5.length;
+}
+
+t.labL6.innerHTML = l.L6;
+if(r<l.L6.length){
+r = l.L6.length;
+}
+t._setWidth((r*2));
+},
+_setWidth: function(w){
+labs = [];
+labs[0] = this.labL1;
+labs[1] = this.labL2;
+labs[2] = this.labL3;
+labs[3] = this.labL4;
+labs[4] = this.labL5;
+labs[5] = this.labL6;
+
+i = 0;
+while(i<6){
+//Style.set(labs[i], "margin-right", w+'px');
+i++;
+}
+
+},
 postCreate: function(){
 
 var t = this;
+t._setLabels({L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'});
 
 jsFS.addXmlLoader(t.fsL1, 'fun_view_location_level_xml.usms', 'row', {level: 1}, 'idl1', 'name');
 jsFS.addXmlLoader(t.fsL2, 'fun_view_location_level_xml.usms', 'row', {}, 'idl2', 'name');
