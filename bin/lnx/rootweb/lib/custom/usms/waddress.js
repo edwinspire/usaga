@@ -64,7 +64,7 @@ if(numrows > 0){
 i = 0;
 t.idaddress = d.getNumber(i, 'idaddress');
 t.idgeox.set('value',  d.getFloat(i, 'geox'));
-//t.idgeoyset('value', d.getFloat(i, 'geoy'));
+t.idgeoyset('value', d.getFloat(i, 'geoy'));
 t.idf1.set('value', d.getStringFromB64(i, 'field1'));
 t.idf2.set('value', d.getStringFromB64(i, 'field2'));
 t.idf3.set('value',d.getStringFromB64(i, 'field3'));
