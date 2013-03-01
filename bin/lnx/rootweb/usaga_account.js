@@ -137,79 +137,11 @@ this.Save();
 }
 },
 Load: function(){
-
-var ObjectoW = this.AddressW;
-
-if(ObjectoW.idaddress > 0){
-
-var store = new dojox.data.XmlStore({url: 'get_address_byid.usms', sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idaddress: ObjectoW.idaddress}, onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-if(numrows > 0){
-i = 0;
-ObjectoW.set('idaddress', dataxml.getNumber(i, 'idaddress'));
-ObjectoW.set('geox', dataxml.getFloat(i, 'geox'));
-ObjectoW.set('geoy', dataxml.getFloat(i, 'geoy'));
-ObjectoW.set('mainstreet', dataxml.getStringFromB64(i, 'main_street'));
-ObjectoW.set('secundarystreet', dataxml.getStringFromB64(i, 'secundary_street'));
-ObjectoW.set('other', dataxml.getStringFromB64(i, 'other'));
-ObjectoW.set('note', dataxml.getStringFromB64(i, 'note'));
-ObjectoW.set('ts', dataxml.getString(i, 'ts'));
-ObjectoW.set('idlocation', dataxml.getString(i, 'idlocation'));
-//alert(ObjectoW.idaddress+'  '+dataxml.getNumber(i, 'idaddress'));
-}else{
-ObjectoW.reset();
-}
-
-},
-onError: function(e){
-ObjectoW.reset();
-alert(e);
-}
-});
-
-}else{
-ObjectoW.reset();
-}
-
+this.AddressW.load(this.AddressW.idaddress);
 },
 Save: function(){
 // Objeto Widget Address
-var OWA = this.AddressW;
-var Este = this;
-
-  var xhrArgs = {
-    url: "fun_address_edit.usaga",
- content: {idaddress: OWA.idaddress, idlocation: OWA.get('idlocation'), geox: OWA.get('geox'), geoy: OWA.get('geoy'), main_street: OWA.get('mainstreet'), secundary_street: OWA.get('secundarystreet'), other: OWA.get('other'), note: OWA.get('note'), ts: OWA.get('ts'), idaccount: Account_Main_Data.idaccount()},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-if(xmld.length > 0){
-OWA.idaddress = xmld.getInt(0, 'outreturn');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
-}else{
-OWA.reset();
-}
-//ABE.idaddress = OWA.idaddress;
-Este.Load();
-    },
-
-    error: function(error)
-{
-OWA.reset();
-alert(error);
-    }
-  }
-
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
+this.AddressW.save();
 }
 } 
 
@@ -553,7 +485,6 @@ while(i<numrows){
 
 myData.items[i] = {
 unique_id:i,
-//s: false, 
 idaccount: dataxml.getNumber(i, "idaccount"), 
 idphone: dataxml.getNumber(i, "idphone"), 
 idcontact: dataxml.getNumber(i, "idcontact"), 
@@ -561,7 +492,6 @@ enable: dataxml.getBool(i, "trigger_alarm"),
 idprovider: dataxml.getNumber(i, "idprovider"),
 type: dataxml.getNumber(i, "type"),
 phone: dataxml.getStringFromB64(i, "phone"),
-//address: jsspire.Base64.decode(xmldata[i].getAttribute("address")),
 phone: dataxml.getStringFromB64(i, "phone"),
 fromsms: dataxml.getBool(i, "fromsms"),    
 fromcall: dataxml.getBool(i, "fromcall"),    
