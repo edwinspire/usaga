@@ -405,6 +405,40 @@ AddressW : dijit.byId('idwaddresscontact'),
 LocationW : dijit.byId('idwlocationcontact')
 } 
 
+CAddress.AddressW.save = function(){
+var t = this;
+var dat = t.values();
+dat.idcontact = GlobalObject.IdContact;
+            // Request the text file
+            request.post("fun_contact_address_edit_xml.usms", {
+            // Parse data from xml
+	data: dat,
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+if(d.length > 0){
+t.idaddress = d.getInt(0, 'outreturn');
+t.load(t.idaddress);
+alert(d.getStringFromB64(0, 'outpgmsg'));
+}else{
+t.reset();
+}
+
+                },
+                function(error){
+                    // Display the error returned
+t.reset();
+//t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
+
+}
+
 
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
 if(GlobalObject.IdContact){
@@ -418,6 +452,42 @@ var PAddress = {
 AddressW : dijit.byId('idwaddresstelf'),
 LocationW : dijit.byId('idwlocationtelf')
 } 
+
+PAddress.AddressW.save = function(){
+var t = this;
+var dat = t.values();
+dat.idphone = CP.IdPhone;
+            // Request the text file
+            request.post("fun_phones_address_edit_xml.usms", {
+            // Parse data from xml
+	data: dat,
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+if(d.length > 0){
+t.idaddress = d.getInt(0, 'outreturn');
+t.load(t.idaddress);
+alert(d.getStringFromB64(0, 'outpgmsg'));
+}else{
+t.reset();
+}
+
+                },
+                function(error){
+                    // Display the error returned
+t.reset();
+//t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
+
+}
+
+
 
 dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
 if(GlobalObject.IdContact){
