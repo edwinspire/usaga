@@ -18,7 +18,21 @@ this.idform.reset();
 idaddress: 0,
 ts: '1990-01-01',
 idlocation: '0',
+_setLabels: function(l){
+var t = this;
+t.idf1.innerHTML = l.f1;
+t.idf2.innerHTML = l.f2;
+t.idf3.innerHTML = l.f3;
+t.idf4.innerHTML = l.f4;
+t.idf5.innerHTML = l.f5;
+t.idf6.innerHTML = l.f6;
+t.idf7.innerHTML = l.f7;
+t.idf8.innerHTML = l.f8;
+t.idf9.innerHTML = l.f9;
+t.idf10.innerHTML = l.f10;
+},
 postCreate: function(){
+this._setLabels({f1: 'Campo 1: ', f2: 'Campo 2:', f3: 'Campo 3:', f4: 'Campo 4:', f5: 'Campo 5:', f6: 'Campo 6:', f7: 'Campo 7:', f8: 'Campo 8:', f9: 'Campo 9:', f10: 'Campo 10:'});
 this.reset();
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
@@ -63,8 +77,17 @@ var myData = {identifier: "unique_id", items: []};
 if(numrows > 0){
 i = 0;
 t.idaddress = d.getNumber(i, 'idaddress');
-t.idgeox.set('value',  d.getFloat(i, 'geox'));
-t.idgeoyset('value', d.getFloat(i, 'geoy'));
+
+_geox = d.getString(i, "geox");
+t.idgeox.set('value',  _geox);
+
+_geoy = d.getString(i, "geoy");
+if(isNaN(_geoy) || _geoy < 1){
+t.idgeoy.set('value',  '0');
+}else{
+t.idgeoy.set('value',  _geoy);
+}
+
 t.idf1.set('value', d.getStringFromB64(i, 'field1'));
 t.idf2.set('value', d.getStringFromB64(i, 'field2'));
 t.idf3.set('value',d.getStringFromB64(i, 'field3'));
