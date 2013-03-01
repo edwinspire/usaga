@@ -63,7 +63,7 @@ var myData = {identifier: "unique_id", items: []};
 if(numrows > 0){
 i = 0;
 t.idaddress = d.getNumber(i, 'idaddress');
-//t.idgeox.set('value',  d.getFloat(i, 'geox'));
+t.idgeox.set('value',  d.getFloat(i, 'geox'));
 //t.idgeoyset('value', d.getFloat(i, 'geoy'));
 t.idf1.set('value', d.getStringFromB64(i, 'field1'));
 t.idf2.set('value', d.getStringFromB64(i, 'field2'));
@@ -115,7 +115,7 @@ alert(d.getStringFromB64(0, 'outpgmsg'));
 t.reset();
 }
 
-//t.emit('onloaddata', t.values());
+t.emit('onsavedata', t.values());
                 },
                 function(error){
                     // Display the error returned

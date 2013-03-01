@@ -120,12 +120,6 @@ t.fsL6.Load();
 
 this.LoadL1();
 
-
-    // Get a DOM node reference for the root of our widget
- //   var domNode = this.domNode;
-//dojo.parser.parse(this.domNode);
-//dojo.require('dojo.store.Memory');
-
 },
 _resetfs: function(fs){
 Items = [];

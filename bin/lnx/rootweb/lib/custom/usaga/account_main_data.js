@@ -55,8 +55,13 @@ this.form_data.reset();
 this._idaddress = 0;
 this.Id = 0;
 },
+setIdAddress: function(id){
+// Seteamos el nuevo idaddress (si fue modificado) y enviamos los datos para guardarlos.
+this._idaddress = id;
+this._save();
+},
 _idaddress: 0,
-idaddress: function(){
+getIdAddress: function(){
 return _idaddress;
 },
 idaccount: function(){
@@ -137,7 +142,8 @@ _save: function(){
 var t = this;
 var datos = {};
 if(t.Id >= 0){
-datos.idaccount = t.Id; 
+datos.idaccount = t.Id;
+datos.idaddress = t._idaddress;  
 datos.idgroup = t.idgroup.get('value');
 datos.partition = t.partition.get('value');
 datos.enable = t.enable.get('checked'); 
