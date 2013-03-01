@@ -135,11 +135,39 @@ this.AddressW.save();
 }
 } 
 
-AA.AddressW.on('onsavedata', function(data){
-Account_Main_Data.setIdAddress(data.idaddress);
-});
+AA.AddressW.save = function(){
+var t = this;
+var dat = t.values();
+dat.idaccount = Account_Main_Data.idaccount();
+            // Request the text file
+            request.post("fun_account_address_edit_xml.usaga", {
+            // Parse data from xml
+	data: dat,
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
 
+numrows = d.length;
 
+if(d.length > 0){
+t.idaddress = d.getInt(0, 'outreturn');
+t.load(t.idaddress);
+alert(d.getStringFromB64(0, 'outpgmsg'));
+}else{
+t.reset();
+}
+
+                },
+                function(error){
+                    // Display the error returned
+t.reset();
+//t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
+
+}
 
 
 dojo.connect(dojo.byId('accountwlocationaddress_save'), 'onclick', function(){

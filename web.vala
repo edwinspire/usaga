@@ -52,7 +52,7 @@ S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
 S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
 S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
-//S.VirtualUrl["fun_address_edit.usaga"] = "/fun_address_edit.usaga";
+S.VirtualUrl["fun_account_address_edit_xml.usaga"] = "/fun_account_address_edit_xml.usaga";
 S.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
 
 S.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga";
@@ -161,11 +161,11 @@ break;
 case "/notifyeditselectedcontacts.usaga":
 response = ResponseAccountNotificationAppliedToSelectedContacts(request);
 break;
-/*
-case "/fun_address_edit.usaga":
-response = ResponseAccountAddressTableEdit(request);
+
+case "/fun_account_address_edit_xml.usaga":
+response = response_fun_account_address_edit_xml_from_hashmap(request);
 break;
-*/
+
 case "/fun_view_eventtypes_xml.usaga":
 response = ResponseViewEventTypesXml(request);
 break;
@@ -280,8 +280,8 @@ Tabla.GetParamCnx();
 return Retorno;
 }
 
-/*
-private static uHttp.Response ResponseAccountAddressTableEdit(Request request){
+
+private static uHttp.Response response_fun_account_address_edit_xml_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
   Retorno.Header.ContentType = "text/xml";
@@ -290,11 +290,11 @@ uHttp.Response Retorno = new uHttp.Response();
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
 
-    Retorno.Data =  Tabla.fun_address_edit_xml_from_hashmap(request.Form, true).data;
+    Retorno.Data =  Tabla.fun_account_address_edit_xml_from_hashmap(request.Form, true).data;
 
 return Retorno;
 }
-*/
+
 
 private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request){
 uHttp.Response Retorno = new uHttp.Response();

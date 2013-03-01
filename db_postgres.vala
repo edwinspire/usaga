@@ -1192,6 +1192,41 @@ this.Appointment = "";
 
 public class AccountTable:PostgreSQLConnection{
 
+public string  fun_account_address_edit_xml_from_hashmap(HashMap<string, string> data, bool fieldtextasbase64 = true){ 
+
+int idaccount = 0;
+
+if(data.has_key("idaccount")){
+idaccount = int.parse(data["idaccount"]);
+}
+AddressRowData RowData = AddressTable.rowdata_from_hashmap(data);
+
+return fun_account_address_edit_xml(idaccount, RowData.idlocation, RowData.geox, RowData.geoy, RowData.f1, RowData.f2, RowData.f3, RowData.f4, RowData.f5, RowData.f6, RowData.f7, RowData.f8, RowData.f9, RowData.f10, RowData.ts, fieldtextasbase64);
+}
+
+public string  fun_account_address_edit_xml(int idcontact, string inidlocation, double ingeox, double ingeoy, string f1, string f2, string f3, string f4, string f5, string f6, string f7, string f8, string f9, string f10, string ints, bool fieldtextasbase64 = true){
+string RetornoX = "";
+var  Conexion = Postgres.connect_db (this.ConnString());
+if(Conexion.get_status () == ConnectionStatus.OK){
+string[] valuesin = {idcontact.to_string(), inidlocation, ingeox.to_string(), ingeoy.to_string(), f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, ints, fieldtextasbase64.to_string()};
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM  usaga.fun_account_address_edit_xml($1::integer, $2::text, $3::double precision, $4::double precision, $5::text, $6::text,  $7::text, $8::text, $9::text, $10::text, $11::text, $12::text, $13::text, $14::text, $15::timestamp without time zone, $16::boolean) AS return;", valuesin);
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+return RetornoX;
+}
+
+
+
+
+
 /*
 public string fun_address_edit_xml_from_hashmap(HashMap<string, string> data, bool fieldtextasbase64 = true){ 
 
@@ -1415,7 +1450,6 @@ int IdGroup = 0;
 int Partition = 0;
 int Type = 0;
 string Note = "";
-int IdAddress = 0;
 
 if(Data.has_key("idaccount")){
 Id = int.parse(Data["idaccount"]);
@@ -1444,26 +1478,22 @@ if(Data.has_key("note")){
 Note = Data["note"];
 }
 
-if(Data.has_key("idaddress")){
-IdAddress = int.parse(Data["idaddress"]);
-}
-
 //GLib.print("Llega hasta aqui 1 \n");
-return fun_account_table_xml(Id, Enable, Account, Name, IdGroup, Partition, Type, Note, IdAddress, fieldtextasbase64);
+return fun_account_table_xml(Id, Enable, Account, Name, IdGroup, Partition, Type, Note, fieldtextasbase64);
 }
 
 // usaga.fun_account_table(IN inidaccount integer, IN inenable boolean, IN inaccount text, IN inname text, IN inidgroup integer, IN inpartition integer, IN intype integer, IN innote text, OUT outidaccount integer, OUT outpgmsg text)
-public string fun_account_table_xml(int inidaccount, bool inenable, string inaccount, string inname, int inidgroup, int inpartition, int intype, string innote, int inidaddress, bool fieldtextasbase64 = true){
+public string fun_account_table_xml(int inidaccount, bool inenable, string inaccount, string inname, int inidgroup, int inpartition, int intype, string innote, bool fieldtextasbase64 = true){
 
 string Retorno = "";
 //GLib.print("Llega hasta aqui %s => %s\n", inname, innote);
-string[] ValuesArray = {inidaccount.to_string(), inenable.to_string(), inaccount, inname, inidgroup.to_string(), inpartition.to_string(), intype.to_string(), innote, inidaddress.to_string(), fieldtextasbase64.to_string()};
+string[] ValuesArray = {inidaccount.to_string(), inenable.to_string(), inaccount, inname, inidgroup.to_string(), inpartition.to_string(), intype.to_string(), innote, fieldtextasbase64.to_string()};
 //GLib.print("Llega hasta aqui 3 \n");
 var  Conexion = Postgres.connect_db (this.ConnString());
 
 if(Conexion.get_status () == ConnectionStatus.OK){
 
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_table_xml($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text, $9::integer, $10::boolean) as return;",  ValuesArray);
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_account_table_xml($1::integer, $2::boolean, $3::text, $4::text, $5::integer, $6::integer, $7::integer, $8::text, $9::boolean) as return;",  ValuesArray);
 
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 
