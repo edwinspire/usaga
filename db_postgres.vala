@@ -84,44 +84,6 @@ this.DateProcess5 = "";
 
 }
 
-
-/*
-public struct EVENTdb {
-
-public int ID, IdAccount, ZU, IdPhone, Priority;
-		public bool Enable;
-		public DateTime Date, Load;
-		public string Code, Descrip, Note;
-		public EventType EventTypeA, EventTypeM;
-public SysProcess Process;
-		public Tramit Tramit;
-public EVENTdb(int ID, int IdAccount, int ZU, int IdPhone, int Priority, bool Enable, DateTime Date, DateTime Load, string Code, string Descrip, string Note, EventType EventTypeA, EventType EventTypeM, SysProcess Process, Tramit Tramit){
-		
-this.ID = ID;
-this.IdAccount = IdAccount;	
-			this.ZU = ZU;	
-			this.IdPhone = IdPhone;	
-			this.Priority = Priority;	
-			this.Enable = Enable;	
-			this.Date = Date;	
-			this.Load = Load;	
-			this.Code = Code;	
-			this.Descrip = Descrip;	
-			this.Note = Note;	
-this.EventTypeA = EventTypeA;
-			this.EventTypeM = EventTypeM;
-			this.Process = Process;
-			this.Tramit = Tramit;
-			
-		}
-	}
-*/
-
-
-
-
-//usaga.fun_account_insert_update(IN inidaccount integer, IN inpartition integer, IN inenable boolean, IN inaccount text, IN inname text, IN intype integer, IN innote text, OUT outidaccount integer, OUT outpgmsg text)
-
 public struct AccountUserdb{
 
 public int IdAccount; 
