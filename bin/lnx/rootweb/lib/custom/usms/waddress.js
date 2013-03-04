@@ -11,6 +11,7 @@ define(['dojo/_base/declare',
 reset: function(){
 this.resetForm();
 this.idaddress = 0;
+this.idlocation = 0;
 },   
 resetForm: function(){
 this.idform.reset();
@@ -99,7 +100,7 @@ t.idf8.set('value', d.getStringFromB64(i, 'field8'));
 t.idf9.set('value', d.getStringFromB64(i, 'field9'));
 t.idf10.set('value', d.getStringFromB64(i, 'field10'));
 t.ts = d.getString(i, 'ts');
-t.idlocation = d.getString(i, 'idlocation');
+t.idlocation = d.getInt(i, 'idlocation');
 }else{
 t.reset();
 }
@@ -114,6 +115,7 @@ alert(error);
             );
 }else{
 t.reset();
+t.emit('onloaddata', t.values());
 }
 
 },

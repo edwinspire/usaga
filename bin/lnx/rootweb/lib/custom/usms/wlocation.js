@@ -4,8 +4,10 @@ define(['dojo/_base/declare',
 'dojo/text!./wlocation.html',
 'jspire/form/FilteringSelect',
 'dojo/store/Memory',
-'dojo/dom-style'
-],function(declare,_Widget,_Templated,templateString, jsFS, M, Style){
+'dojo/dom-style',
+'dojo/request',
+'jspire/request/Xml'
+],function(declare,_Widget,_Templated,templateString, jsFS, M, Style, request, RXml){
 
  return declare('usms.wlocation',[ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -44,6 +46,7 @@ r = l.L6.length;
 }
 t._setWidth((r*2));
 },
+_to_set_location: {idl1: '0', idl2: '0', idl3: '0', idl4: '0', idl5: '0', idl6: '0'},
 _setWidth: function(w){
 labs = [];
 labs[0] = this.labL1;
@@ -60,90 +63,179 @@ i++;
 }
 
 },
+_addFSLFunctions: function(fsL, level_){
+
+fsL.setLocation = function(v){
+if(!v){
+v = '0';
+}
+if(v >= 0){
+this.set('value', v);
+}
+
+}
+
+
+fsL.empty = function(){
+Items = [];
+Items[0] =  {name: 'Ninguno', id: '0'};
+this.store = null;
+this.store = new M({data: Items});
+this.startup();
+this.set('value', '0');
+}
+
+
+//level_ = level, fk = llave foranea
+fsL.newLoad = function(fk){
+if(fk > 0 && level_ > 0){
+this._Query = {level: level_,  idfk: fk};
+this.Load();
+}else{
+this.empty();
+}
+
+}
+
+},
 postCreate: function(){
 
 var t = this;
 t._setLabels({L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'});
 
-jsFS.addXmlLoader(t.fsL1, 'fun_view_location_level_xml.usms', 'row', {level: 1}, 'idl1', 'name');
-jsFS.addXmlLoader(t.fsL2, 'fun_view_location_level_xml.usms', 'row', {}, 'idl2', 'name');
-jsFS.addXmlLoader(t.fsL3, 'fun_view_location_level_xml.usms', 'row', {}, 'idl3', 'name');
-jsFS.addXmlLoader(t.fsL4, 'fun_view_location_level_xml.usms', 'row', {}, 'idl4', 'name');
-jsFS.addXmlLoader(t.fsL5, 'fun_view_location_level_xml.usms', 'row', {}, 'idl5', 'name');
-jsFS.addXmlLoader(t.fsL6, 'fun_view_location_level_xml.usms', 'row', {}, 'idl6', 'name');
+jsFS.addXmlLoader(t.fsL1, 'fun_view_location_level_xml.usms', 'row', {level: 1}, 'idl1', 'name', {name: 'Ninguno', id: '0'});
+
+jsFS.addXmlLoader(t.fsL2, 'fun_view_location_level_xml.usms', 'row', {}, 'idl2', 'name', {name: 'Ninguno', id: '0'});
+t._addFSLFunctions(t.fsL2, 2);
+
+jsFS.addXmlLoader(t.fsL3, 'fun_view_location_level_xml.usms', 'row', {}, 'idl3', 'name', {name: 'Ninguno', id: '0'});
+t._addFSLFunctions(t.fsL3, 3);
+
+jsFS.addXmlLoader(t.fsL4, 'fun_view_location_level_xml.usms', 'row', {}, 'idl4', 'name', {name: 'Ninguno', id: '0'});
+t._addFSLFunctions(t.fsL4, 4);
+
+jsFS.addXmlLoader(t.fsL5, 'fun_view_location_level_xml.usms', 'row', {}, 'idl5', 'name', {name: 'Ninguno', id: '0'});
+t._addFSLFunctions(t.fsL5, 5);
+
+jsFS.addXmlLoader(t.fsL6, 'fun_view_location_level_xml.usms', 'row', {}, 'idl6', 'name', {name: 'Ninguno', id: '0'});
+t._addFSLFunctions(t.fsL6, 6);
 
 t.fsL1.on('Change', function(e){
-
-t._resetfs(t.fsL2);
-t._resetfs(t.fsL3);
-t._resetfs(t.fsL4);
-t._resetfs(t.fsL5);
-t._resetfs(t.fsL6);
-
-t.fsL2._Query = {level: 2, idfk: this.get('value')};
-t.fsL2.Load();
+t.fsL2.newLoad(this.get('value'));
 });
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL1.on('onloaddata', function(){
+t.fsL1.set('value', t._to_set_location.idl1);
+t._to_set_location.idl1 = 0;
+});
+
 
 t.fsL2.on('Change', function(e){
-
-t._resetfs(t.fsL3);
-t._resetfs(t.fsL4);
-t._resetfs(t.fsL5);
-t._resetfs(t.fsL6);
-
-t.fsL3._Query = {level: 3, idfk: this.get('value')};
-t.fsL3.Load();
+t.fsL3.newLoad(this.get('value'));
 });
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL2.on('onloaddata', function(){
+t.fsL2.setLocation(t._to_set_location.idl2);
+t._to_set_location.idl2 = 0;
+});
+
 
 t.fsL3.on('Change', function(e){
-
-t._resetfs(t.fsL4);
-t._resetfs(t.fsL5);
-t._resetfs(t.fsL6);
-
-t.fsL4._Query = {level: 4, idfk: this.get('value')};
-t.fsL4.Load();
+t.fsL4.newLoad(this.get('value'));
 });
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL3.on('onloaddata', function(){
+t.fsL3.setLocation(t._to_set_location.idl3);
+t._to_set_location.idl3 = 0;
+});
+
+
 
 t.fsL4.on('Change', function(e){
-t._resetfs(t.fsL5);
-t._resetfs(t.fsL6);
-t.fsL5._Query = {level: 5, idfk: this.get('value')};
-t.fsL5.Load();
+t.fsL5.newLoad(this.get('value'));
 });
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL4.on('onloaddata', function(){
+t.fsL4.setLocation(t._to_set_location.idl4);
+t._to_set_location.idl4 = 0;
+});
+
+
 
 t.fsL5.on('Change', function(e){
-t._resetfs(t.fsL6);
-t.fsL6._Query = {level: 6,  idfk: this.get('value')};
-t.fsL6.Load();
+t.fsL6.newLoad(this.get('value'));
+});
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL5.on('onloaddata', function(){
+t.fsL5.setLocation(t._to_set_location.idl5);
+t._to_set_location.idl5 = 0;
 });
 
-this.LoadL1();
 
+// Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
+t.fsL6.on('onloaddata', function(){
+t.fsL6.setLocation(t._to_set_location.idl6);
+t._to_set_location.idl6 = 0;
+});
 },
-_resetfs: function(fs){
-Items = [];
-Items[0] =  {name: 'Ninguno', id: 0};
-fs.store = null;
-fs.store = new M({data: Items});
-fs.startup();
-fs.reset();
-},
-LoadL1: function(){
-this.fsL1.Load();
+values: function(){
+var rv = {
+idl1: this.fsL1.get('value'),
+idl2: this.fsL2.get('value'),
+idl3: this.fsL3.get('value'),
+idl4: this.fsL4.get('value'),
+idl5: this.fsL5.get('value'),
+idl6: this.fsL6.get('value')
+}
+return rv;
 },
 getLocation: function(){
-var r = '000000';
+var rl = this.values();
+rl = ''+rl.idl1+rl.idl2+rl.idl3+rl.idl4+rl.idl5+rl.idl6;
+return rl;
+},
+setLocation: function(idlocation){
+this.fsL1.Load();
+this.getidslocations(idlocation);
+},
+getidslocations: function(id_){
+var ids = {};
+var t = this;
+            // Request the text file
+            request.get("fun_view_locations_ids_from_idlocation_xml.usms", {
+            // Parse data from xml
+	query: {idlocation: id_},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
 
-var _a = this.fsL1.get('value');
-var _b = this.fsL2.get('value');
-var _c = this.fsL3.get('value');
-var _d = this.fsL4.get('value');
-var _e = this.fsL5.get('value');
-var _f = this.fsL6.get('value');
-r = '1'+_a+_b+_c+_d+_e+_f;
-
-return r;
+if(d.length > 0){
+t._to_set_location.idl1 = d.getString(0, 'idl1');
+//console.log('1 '+t._to_set_location.idl1);
+t._to_set_location.idl2 = d.getString(0, 'idl2');
+//console.log('2 '+t._to_set_location.idl2);
+t._to_set_location.idl3 = d.getString(0, 'idl3');
+//console.log('3 '+t._to_set_location.idl3);
+t._to_set_location.idl4 = d.getString(0, 'idl4');
+//console.log('4 '+t._to_set_location.idl4);
+t._to_set_location.idl5 = d.getString(0, 'idl5');
+//console.log('5 '+t._to_set_location.idl5);
+t._to_set_location.idl6 = d.getString(0, 'idl6');
+//console.log('6 '+t._to_set_location.idl6);
+}else{
+t._to_set_location= {idl1: '0', idl2: '0', idl3: '0', idl4: '0', idl5: '0', idl6: '0'};
+}
+t.fsL1.Load();
+//t.emit('onsavedata', t.values());
+                },
+                function(error){
+                    // Display the error returned
+t._to_set_location= {idl1: '0', idl2: '0', idl3: '0', idl4: '0', idl5: '0', idl6: '0'};
+//t.emit('onloaddata', t.values());
+alert(error);
+                }
+            );
 }
 
 

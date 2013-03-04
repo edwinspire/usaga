@@ -1166,12 +1166,12 @@ AddressRowData RowData = AddressTable.rowdata_from_hashmap(data);
 return fun_account_address_edit_xml(idaccount, RowData.idlocation, RowData.geox, RowData.geoy, RowData.f1, RowData.f2, RowData.f3, RowData.f4, RowData.f5, RowData.f6, RowData.f7, RowData.f8, RowData.f9, RowData.f10, RowData.ts, fieldtextasbase64);
 }
 
-public string  fun_account_address_edit_xml(int idcontact, string inidlocation, double ingeox, double ingeoy, string f1, string f2, string f3, string f4, string f5, string f6, string f7, string f8, string f9, string f10, string ints, bool fieldtextasbase64 = true){
+public string  fun_account_address_edit_xml(int idcontact, int inidlocation, double ingeox, double ingeoy, string f1, string f2, string f3, string f4, string f5, string f6, string f7, string f8, string f9, string f10, string ints, bool fieldtextasbase64 = true){
 string RetornoX = "";
 var  Conexion = Postgres.connect_db (this.ConnString());
 if(Conexion.get_status () == ConnectionStatus.OK){
-string[] valuesin = {idcontact.to_string(), inidlocation, ingeox.to_string(), ingeoy.to_string(), f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, ints, fieldtextasbase64.to_string()};
-var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM  usaga.fun_account_address_edit_xml($1::integer, $2::text, $3::double precision, $4::double precision, $5::text, $6::text,  $7::text, $8::text, $9::text, $10::text, $11::text, $12::text, $13::text, $14::text, $15::timestamp without time zone, $16::boolean) AS return;", valuesin);
+string[] valuesin = {idcontact.to_string(), inidlocation.to_string(), ingeox.to_string(), ingeoy.to_string(), f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, ints, fieldtextasbase64.to_string()};
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM  usaga.fun_account_address_edit_xml($1::integer, $2::integer, $3::double precision, $4::double precision, $5::text, $6::text,  $7::text, $8::text, $9::text, $10::text, $11::text, $12::text, $13::text, $14::text, $15::timestamp without time zone, $16::boolean) AS return;", valuesin);
     if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
 foreach(var reg in this.Result_FieldName(ref Resultado)){
 RetornoX = reg["return"].Value;

@@ -123,6 +123,7 @@ LoadAccountUsersGridx();
 ///// ACCOUNT ADDRESS /////
 var AA = {
 AddressW : dijit.byId('usaga_account_address'),
+LocationW : dijit.byId('usaga_account_location'),
 Delete: function(){
 this.AddressW.delete();
 },
@@ -170,7 +171,13 @@ alert(error);
 }
 
 
+AA.AddressW.on('onloaddata', function(d){
+AA.LocationW.setLocation(d.idlocation)
+});
+
+
 dojo.connect(dojo.byId('accountwlocationaddress_save'), 'onclick', function(){
+AA.AddressW.idlocation = AA.LocationW.getLocation();
 AA.Save();
 });
 
