@@ -458,6 +458,10 @@ AddressW : dijit.byId('idwaddresstelf'),
 LocationW : dijit.byId('idwlocationtelf')
 } 
 
+PAddress.AddressW.on('onloaddata', function(d){
+PAddress.LocationW.setLocation(d.idlocation)
+});
+
 PAddress.AddressW.save = function(){
 var t = this;
 var dat = t.values();
