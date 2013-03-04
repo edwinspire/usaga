@@ -405,6 +405,10 @@ AddressW : dijit.byId('idwaddresscontact'),
 LocationW : dijit.byId('idwlocationcontact')
 } 
 
+CAddress.AddressW.on('onloaddata', function(d){
+CAddress.LocationW.setLocation(d.idlocation)
+});
+
 CAddress.AddressW.save = function(){
 var t = this;
 var dat = t.values();
@@ -442,6 +446,7 @@ alert(error);
 
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
 if(GlobalObject.IdContact){
+CAddress.AddressW.idlocation = CAddress.LocationW.getLocation();
 CAddress.AddressW.save();
 }
 });
@@ -491,6 +496,7 @@ alert(error);
 
 dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
 if(GlobalObject.IdContact){
+PAddress.AddressW.idlocation = PAddress.LocationW.getLocation();
 PAddress.AddressW.save();
 }
 });
