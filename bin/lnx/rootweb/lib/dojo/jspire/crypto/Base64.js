@@ -1,5 +1,5 @@
 //>>built
-define("jspire/crypto/Base64",["dojo/_base/declare"],function(_1, _2){
+define("jspire/crypto/Base64",["dojo/_base/declare"],function(_1){
 
 // Base64 (Codifica y decodifica)
 var _x= {
