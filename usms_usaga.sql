@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.8
 -- Dumped by pg_dump version 9.1.8
--- Started on 2013-03-11 07:40:09 ECT
+-- Started on 2013-03-12 05:21:04 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -174,7 +174,7 @@ END;$$;
 
 --
 -- TOC entry 325 (class 1255 OID 27778)
--- Dependencies: 884 5
+-- Dependencies: 5 884
 -- Name: fun_address_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -989,7 +989,7 @@ END;$$;
 
 --
 -- TOC entry 343 (class 1255 OID 27609)
--- Dependencies: 5 884
+-- Dependencies: 884 5
 -- Name: fun_location_level4_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1043,7 +1043,7 @@ END;$$;
 
 --
 -- TOC entry 344 (class 1255 OID 27610)
--- Dependencies: 884 5
+-- Dependencies: 5 884
 -- Name: fun_location_level5_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1097,7 +1097,7 @@ END;$$;
 
 --
 -- TOC entry 345 (class 1255 OID 27611)
--- Dependencies: 884 5
+-- Dependencies: 5 884
 -- Name: fun_location_level6_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1151,7 +1151,7 @@ END;$$;
 
 --
 -- TOC entry 360 (class 1255 OID 27617)
--- Dependencies: 5 884
+-- Dependencies: 884 5
 -- Name: fun_location_level_edit_xml(integer, integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -4286,7 +4286,7 @@ Envia notificaciones basados en los eventos y configuraciones del sistema';
 
 --
 -- TOC entry 333 (class 1255 OID 27786)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_events_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4831,36 +4831,36 @@ CREATE FUNCTION fun_notification_gen_message(inidevent integer, insmstext text) 
     AS $$DECLARE
 
 Retorno TEXT DEFAULT '';
---InternalIdNotifTemplate INTEGER DEFAULT 0;
+
+IIdAddressAccount INTEGER DEFAULT 0;
+IIdLocationAccount INTEGER DEFAULT 0;
+
 Internalidphone INTEGER DEFAULT 0;
+
 IIdAddressContact INTEGER DEFAULT 0;
 IIdLocationContact INTEGER DEFAULT 0;
 
 IIdAddressPhone INTEGER DEFAULT 0;
 IIdLocationPhone INTEGER DEFAULT 0;
 
-
---ContactROWDATA   view_contacts_phones%ROWTYPE;
 EventROWDATA   usaga.events%ROWTYPE;
-
---u TEXT[];
---ntarray TEXT[];
-
 
 BEGIN
 
 SELECT * INTO EventROWDATA FROM usaga.events WHERE idevent = inidevent LIMIT 1;
 Retorno := trim(insmstext);
 
+-- DATOS RELACIONADOS CON LA CUENTA DE ABONADO
 Retorno := usaga.fun_account_getdata_string(COALESCE(EventROWDATA.idaccount, 0), 'ACC', Retorno);
+SELECT idaddress INTO IIdAddressAccount FROM usaga.account WHERE idaccount = EventROWDATA.idaccount;
+Retorno := fun_address_getdata_string(COALESCE(IIdAddressAccount, 0), 'ACCA', Retorno);
+SELECT idlocation INTO IIdLocationAccount FROM address WHERE idaddress = IIdAddressAccount;
+Retorno := fun_location_getdata_string(COALESCE(IIdLocationAccount, 0), 'ACCL', Retorno);
+
+-- DATOS RELACIONADOS CON EL USUARIO QUE GENERA LA ALARMA
 Retorno := fun_contact_getdata_string(COALESCE(EventROWDATA.idcontact, 0), 'ACCU', Retorno);
-
---TODO: Localizacion y direccion de la cuenta
-
---
 SELECT idaddress INTO IIdAddressContact FROM contacts WHERE idcontact = EventROWDATA.idcontact;
 Retorno := fun_address_getdata_string(COALESCE(IIdAddressContact, 0), 'ACCAU', Retorno);
---
 SELECT idlocation INTO IIdLocationContact FROM address WHERE idaddress = IIdAddressContact;
 Retorno := fun_location_getdata_string(COALESCE(IIdLocationContact, 0), 'ACCLU', Retorno);
 
@@ -4870,15 +4870,15 @@ IF EventROWDATA.ideventtype = 72 THEN
 SELECT idphone INTO Internalidphone FROM incomingcalls WHERE idincall = (SELECT idincall FROM usaga.events_generated_by_calls WHERE idevent = EventROWDATA.idevent);
 END IF;
 
---
+-- DATOS RELACIONADOS CON EL TELEFONO QUE GENERA LA ALARMA (En caso de ser una alarma tipo 72)
+Retorno := fun_phone_getdata_string(Internalidphone, 'ACCPU', Retorno);
 SELECT idaddress INTO IIdAddressPhone FROM phones WHERE idphone = Internalidphone;
 Retorno := fun_address_getdata_string(COALESCE(IIdAddressPhone, 0), 'ACCAUP', Retorno);
---
 SELECT idlocation INTO IIdLocationPhone FROM address WHERE idaddress = IIdAddressPhone;
 Retorno := fun_location_getdata_string(COALESCE(IIdLocationContact, 0), 'ACCLUP', Retorno);
 
-Retorno := fun_phone_getdata_string(Internalidphone, 'ACCPU', Retorno);
-
+-- DATOS RELACIONADOS CON EL EVENTO
+Retorno := usaga.fun_events_getdata_string(inidevent, 'ACCE', Retorno);
 
 
 RETURN Retorno;
@@ -9354,7 +9354,7 @@ ALTER TABLE ONLY account_users
 
 --
 -- TOC entry 2670 (class 2606 OID 26491)
--- Dependencies: 185 184 2581 2725
+-- Dependencies: 184 2581 185 2725
 -- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9434,7 +9434,7 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 --
 -- TOC entry 2671 (class 2606 OID 26496)
--- Dependencies: 185 187 2591 2725
+-- Dependencies: 2591 185 187 2725
 -- Name: fk_idpanelmodel; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9464,7 +9464,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-03-11 07:40:11 ECT
+-- Completed on 2013-03-12 05:21:06 ECT
 
 --
 -- PostgreSQL database dump complete
