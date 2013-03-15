@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.8
 -- Dumped by pg_dump version 9.1.8
--- Started on 2013-03-13 07:08:13 ECT
+-- Started on 2013-03-15 07:12:54 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -13,9 +13,9 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 2733 (class 1262 OID 16384)
--- Dependencies: 2732
--- Name: usms; Type: COMMENT; Schema: -; Owner: postgres
+-- TOC entry 2751 (class 1262 OID 16384)
+-- Dependencies: 2750
+-- Name: usms; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON DATABASE usms IS 'Base de datos de uSMS.';
@@ -23,35 +23,33 @@ COMMENT ON DATABASE usms IS 'Base de datos de uSMS.';
 
 --
 -- TOC entry 9 (class 2615 OID 16964)
--- Name: usaga; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: usaga; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA usaga;
 
 
-ALTER SCHEMA usaga OWNER TO postgres;
-
 --
--- TOC entry 2735 (class 0 OID 0)
+-- TOC entry 2754 (class 0 OID 0)
 -- Dependencies: 9
--- Name: SCHEMA usaga; Type: COMMENT; Schema: -; Owner: postgres
+-- Name: SCHEMA usaga; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON SCHEMA usaga IS 'Esquema de detos de uSAGA';
 
 
 --
--- TOC entry 237 (class 3079 OID 11644)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- TOC entry 239 (class 3079 OID 11644)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2736 (class 0 OID 0)
--- Dependencies: 237
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- TOC entry 2755 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -60,9 +58,9 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 284 (class 1255 OID 26815)
--- Dependencies: 884 5
--- Name: ctrl_ts(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 286 (class 1255 OID 26815)
+-- Dependencies: 5 891
+-- Name: ctrl_ts(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION ctrl_ts() RETURNS trigger
@@ -75,12 +73,10 @@ END;
 $$;
 
 
-ALTER FUNCTION public.ctrl_ts() OWNER TO postgres;
-
 --
--- TOC entry 363 (class 1255 OID 27675)
--- Dependencies: 5 884
--- Name: delete_idaddress_on_delete_owner(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 365 (class 1255 OID 27675)
+-- Dependencies: 891 5
+-- Name: delete_idaddress_on_delete_owner(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION delete_idaddress_on_delete_owner() RETURNS trigger
@@ -99,21 +95,19 @@ RETURN OLD;
 END;$$;
 
 
-ALTER FUNCTION public.delete_idaddress_on_delete_owner() OWNER TO postgres;
-
 --
--- TOC entry 2737 (class 0 OID 0)
--- Dependencies: 363
--- Name: FUNCTION delete_idaddress_on_delete_owner(); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2756 (class 0 OID 0)
+-- Dependencies: 365
+-- Name: FUNCTION delete_idaddress_on_delete_owner(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION delete_idaddress_on_delete_owner() IS 'Elimina el registro de la tabla address cuando el registro es eliminado de contacts';
 
 
 --
--- TOC entry 366 (class 1255 OID 27764)
--- Dependencies: 884 5
--- Name: fun_address_edit(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 368 (class 1255 OID 27764)
+-- Dependencies: 5 891
+-- Name: fun_address_edit(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_address_edit(inidaddress integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -161,12 +155,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION public.fun_address_edit(inidaddress integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 367 (class 1255 OID 27765)
--- Dependencies: 884 5
--- Name: fun_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 369 (class 1255 OID 27765)
+-- Dependencies: 891 5
+-- Name: fun_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_address_edit_xml(inidaddress integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -180,12 +172,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_address_edit_xml(inidaddress integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 325 (class 1255 OID 27778)
--- Dependencies: 884 5
--- Name: fun_address_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 327 (class 1255 OID 27778)
+-- Dependencies: 891 5
+-- Name: fun_address_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_address_getdata_string(inidaddress integer, prefix text, stringfields text) RETURNS text
@@ -271,12 +261,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_address_getdata_string(inidaddress integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 324 (class 1255 OID 27776)
--- Dependencies: 884 5
--- Name: fun_contact_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 326 (class 1255 OID 27776)
+-- Dependencies: 891 5
+-- Name: fun_contact_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_contact_address_edit_xml(inidcontact integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -316,12 +304,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_contact_address_edit_xml(inidcontact integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 337 (class 1255 OID 27777)
--- Dependencies: 884 5
--- Name: fun_contact_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 339 (class 1255 OID 27777)
+-- Dependencies: 891 5
+-- Name: fun_contact_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_contact_getdata_string(inidcontact integer, prefix text, stringfields text) RETURNS text
@@ -412,12 +398,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_contact_getdata_string(inidcontact integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 299 (class 1255 OID 26962)
--- Dependencies: 5 884
--- Name: fun_contact_search_by_name(text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 301 (class 1255 OID 26962)
+-- Dependencies: 891 5
+-- Name: fun_contact_search_by_name(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_contact_search_by_name(infirstname text, inlastname text) RETURNS integer
@@ -437,12 +421,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_contact_search_by_name(infirstname text, inlastname text) OWNER TO postgres;
-
 --
--- TOC entry 2738 (class 0 OID 0)
--- Dependencies: 299
--- Name: FUNCTION fun_contact_search_by_name(infirstname text, inlastname text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2757 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: FUNCTION fun_contact_search_by_name(infirstname text, inlastname text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_contact_search_by_name(infirstname text, inlastname text) IS 'Obtiene el idcontact segun el firstname y lastname pasado como parametro.
@@ -450,9 +432,9 @@ Si no lo encuentra devuelve 0.';
 
 
 --
--- TOC entry 362 (class 1255 OID 27267)
--- Dependencies: 5 884
--- Name: fun_contacts_edit(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 364 (class 1255 OID 27267)
+-- Dependencies: 5 891
+-- Name: fun_contacts_edit(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_contacts_edit(inidcontact integer, inenable boolean, intitle text, infirstname text, inlastname text, ingender integer, inbirthday date, intypeofid integer, inidentification text, inweb text, inemail1 text, inemail2 text, inidaddress integer, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -521,12 +503,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION public.fun_contacts_edit(inidcontact integer, inenable boolean, intitle text, infirstname text, inlastname text, ingender integer, inbirthday date, intypeofid integer, inidentification text, inweb text, inemail1 text, inemail2 text, inidaddress integer, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 335 (class 1255 OID 27268)
--- Dependencies: 884 5
--- Name: fun_contacts_edit_xml(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 337 (class 1255 OID 27268)
+-- Dependencies: 5 891
+-- Name: fun_contacts_edit_xml(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_contacts_edit_xml(inidcontact integer, inenable boolean, intitle text, infirstname text, inlastname text, ingender integer, inbirthday date, intypeofid integer, inidentification text, inweb text, inemail1 text, inemail2 text, inidaddress integer, innote text, fieldtextasbase64 boolean) RETURNS text
@@ -546,12 +526,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_contacts_edit_xml(inidcontact integer, inenable boolean, intitle text, infirstname text, inlastname text, ingender integer, inbirthday date, intypeofid integer, inidentification text, inweb text, inemail1 text, inemail2 text, inidaddress integer, innote text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 258 (class 1255 OID 16818)
--- Dependencies: 884 5
--- Name: fun_correntportproviders_get_idprovider(integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 260 (class 1255 OID 16818)
+-- Dependencies: 891 5
+-- Name: fun_correntportproviders_get_idprovider(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_correntportproviders_get_idprovider(inidport integer) RETURNS integer
@@ -571,21 +549,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_correntportproviders_get_idprovider(inidport integer) OWNER TO postgres;
-
 --
--- TOC entry 2739 (class 0 OID 0)
--- Dependencies: 258
--- Name: FUNCTION fun_correntportproviders_get_idprovider(inidport integer); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2758 (class 0 OID 0)
+-- Dependencies: 260
+-- Name: FUNCTION fun_correntportproviders_get_idprovider(inidport integer); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_correntportproviders_get_idprovider(inidport integer) IS 'Obtiene el idprovider desde la tabla currentportsproviders segun el idport pasado como parametro.';
 
 
 --
--- TOC entry 269 (class 1255 OID 16714)
--- Dependencies: 5 884
--- Name: fun_currentportsproviders_insertupdate(integer, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 271 (class 1255 OID 16714)
+-- Dependencies: 5 891
+-- Name: fun_currentportsproviders_insertupdate(integer, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text) RETURNS integer
@@ -626,21 +602,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text) OWNER TO postgres;
-
 --
--- TOC entry 2740 (class 0 OID 0)
--- Dependencies: 269
--- Name: FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2759 (class 0 OID 0)
+-- Dependencies: 271
+-- Name: FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text) IS 'Funcion que inserta o actualiza los datos de la tabla currentportsproviders con datos enviados desde el puerto serial.';
 
 
 --
--- TOC entry 271 (class 1255 OID 25899)
--- Dependencies: 884 5
--- Name: fun_idphone_from_phone(text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 273 (class 1255 OID 25899)
+-- Dependencies: 5 891
+-- Name: fun_idphone_from_phone(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_idphone_from_phone(inphone text) RETURNS integer
@@ -664,21 +638,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_idphone_from_phone(inphone text) OWNER TO postgres;
-
 --
--- TOC entry 2741 (class 0 OID 0)
--- Dependencies: 271
--- Name: FUNCTION fun_idphone_from_phone(inphone text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2760 (class 0 OID 0)
+-- Dependencies: 273
+-- Name: FUNCTION fun_idphone_from_phone(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_idphone_from_phone(inphone text) IS 'Obtenemos el idphone segun el phone pasado como parametro';
 
 
 --
--- TOC entry 252 (class 1255 OID 16846)
--- Dependencies: 884 5
--- Name: fun_incomingcalls_insert(timestamp without time zone, integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 254 (class 1255 OID 16846)
+-- Dependencies: 891 5
+-- Name: fun_incomingcalls_insert(timestamp without time zone, integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text) RETURNS integer
@@ -708,21 +680,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2742 (class 0 OID 0)
--- Dependencies: 252
--- Name: FUNCTION fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2761 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: FUNCTION fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text) IS 'Registra las llamadas entrantes provenientes de los modems';
 
 
 --
--- TOC entry 259 (class 1255 OID 16847)
--- Dependencies: 5 884
--- Name: fun_incomingcalls_insert_online(integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 261 (class 1255 OID 16847)
+-- Dependencies: 5 891
+-- Name: fun_incomingcalls_insert_online(integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text) RETURNS integer
@@ -732,21 +702,19 @@ RETURN fun_incomingcalls_insert('now()', inidport, incallaction, inphone, innote
 END;$$;
 
 
-ALTER FUNCTION public.fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2743 (class 0 OID 0)
--- Dependencies: 259
--- Name: FUNCTION fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2762 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: FUNCTION fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text) IS 'Funcion para insertar la fecha en modo online, registra la llamada con la fecha actual.';
 
 
 --
--- TOC entry 326 (class 1255 OID 27779)
--- Dependencies: 5 884
--- Name: fun_location_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 328 (class 1255 OID 27779)
+-- Dependencies: 5 891
+-- Name: fun_location_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_getdata_string(inidlocation integer, prefix text, stringfields text) RETURNS text
@@ -853,12 +821,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_getdata_string(inidlocation integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 359 (class 1255 OID 27603)
--- Dependencies: 884 5
--- Name: fun_location_level1_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 361 (class 1255 OID 27603)
+-- Dependencies: 5 891
+-- Name: fun_location_level1_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level1_edit_xml(inidl1 integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -913,12 +879,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level1_edit_xml(inidl1 integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 329 (class 1255 OID 27607)
--- Dependencies: 5 884
--- Name: fun_location_level2_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 331 (class 1255 OID 27607)
+-- Dependencies: 891 5
+-- Name: fun_location_level2_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level2_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -969,12 +933,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level2_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 330 (class 1255 OID 27608)
--- Dependencies: 5 884
--- Name: fun_location_level3_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 332 (class 1255 OID 27608)
+-- Dependencies: 891 5
+-- Name: fun_location_level3_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level3_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1025,12 +987,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level3_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 343 (class 1255 OID 27609)
--- Dependencies: 5 884
--- Name: fun_location_level4_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 345 (class 1255 OID 27609)
+-- Dependencies: 891 5
+-- Name: fun_location_level4_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level4_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1081,12 +1041,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level4_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 344 (class 1255 OID 27610)
--- Dependencies: 884 5
--- Name: fun_location_level5_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 346 (class 1255 OID 27610)
+-- Dependencies: 5 891
+-- Name: fun_location_level5_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level5_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1137,12 +1095,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level5_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 345 (class 1255 OID 27611)
--- Dependencies: 884 5
--- Name: fun_location_level6_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 347 (class 1255 OID 27611)
+-- Dependencies: 5 891
+-- Name: fun_location_level6_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level6_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1193,12 +1149,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level6_edit_xml(idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 360 (class 1255 OID 27617)
--- Dependencies: 5 884
--- Name: fun_location_level_edit_xml(integer, integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 362 (class 1255 OID 27617)
+-- Dependencies: 5 891
+-- Name: fun_location_level_edit_xml(integer, integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level_edit_xml(l integer, idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1231,12 +1185,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level_edit_xml(l integer, idpk integer, idfk integer, inname text, incode text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 355 (class 1255 OID 27615)
--- Dependencies: 5 884
--- Name: fun_location_level_remove_selected_xml(integer, integer[], boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 357 (class 1255 OID 27615)
+-- Dependencies: 891 5
+-- Name: fun_location_level_remove_selected_xml(integer, integer[], boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_location_level_remove_selected_xml(l integer, ids integer[], fieldtextasbase64 boolean) RETURNS text
@@ -1297,12 +1249,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_location_level_remove_selected_xml(l integer, ids integer[], fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 261 (class 1255 OID 17669)
--- Dependencies: 884 5
--- Name: fun_modem_insert(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 263 (class 1255 OID 17669)
+-- Dependencies: 5 891
+-- Name: fun_modem_insert(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text) RETURNS integer
@@ -1321,21 +1271,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2744 (class 0 OID 0)
--- Dependencies: 261
--- Name: FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2763 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text) IS 'Inserta los datos de un modem';
 
 
 --
--- TOC entry 270 (class 1255 OID 25896)
--- Dependencies: 5 884
--- Name: fun_phone_from_idphone(integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 272 (class 1255 OID 25896)
+-- Dependencies: 5 891
+-- Name: fun_phone_from_idphone(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phone_from_idphone(inidphone integer) RETURNS text
@@ -1359,21 +1307,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_phone_from_idphone(inidphone integer) OWNER TO postgres;
-
 --
--- TOC entry 2745 (class 0 OID 0)
--- Dependencies: 270
--- Name: FUNCTION fun_phone_from_idphone(inidphone integer); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2764 (class 0 OID 0)
+-- Dependencies: 272
+-- Name: FUNCTION fun_phone_from_idphone(inidphone integer); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_phone_from_idphone(inidphone integer) IS 'Obtiene el numero telefonico desde la tabla phones segun el idphone';
 
 
 --
--- TOC entry 336 (class 1255 OID 27783)
--- Dependencies: 884 5
--- Name: fun_phone_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 338 (class 1255 OID 27783)
+-- Dependencies: 5 891
+-- Name: fun_phone_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phone_getdata_string(inidphone integer, prefix text, stringfields text) RETURNS text
@@ -1449,12 +1395,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_phone_getdata_string(inidphone integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 272 (class 1255 OID 25900)
--- Dependencies: 5 884
--- Name: fun_phone_idphone_check(integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 274 (class 1255 OID 25900)
+-- Dependencies: 891 5
+-- Name: fun_phone_idphone_check(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phone_idphone_check(inidphone integer, inphone text, OUT outidphone integer, OUT outphone text) RETURNS record
@@ -1489,12 +1433,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION public.fun_phone_idphone_check(inidphone integer, inphone text, OUT outidphone integer, OUT outphone text) OWNER TO postgres;
-
 --
--- TOC entry 302 (class 1255 OID 26980)
--- Dependencies: 884 5
--- Name: fun_phone_search_by_number(text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 304 (class 1255 OID 26980)
+-- Dependencies: 891 5
+-- Name: fun_phone_search_by_number(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phone_search_by_number(inphone text) RETURNS integer
@@ -1514,21 +1456,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_phone_search_by_number(inphone text) OWNER TO postgres;
-
 --
--- TOC entry 2746 (class 0 OID 0)
--- Dependencies: 302
--- Name: FUNCTION fun_phone_search_by_number(inphone text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2765 (class 0 OID 0)
+-- Dependencies: 304
+-- Name: FUNCTION fun_phone_search_by_number(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_phone_search_by_number(inphone text) IS 'Busca el id segun el numero telefonico';
 
 
 --
--- TOC entry 323 (class 1255 OID 27768)
--- Dependencies: 884 5
--- Name: fun_phones_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 325 (class 1255 OID 27768)
+-- Dependencies: 5 891
+-- Name: fun_phones_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phones_address_edit_xml(inidphone integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1564,12 +1504,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.fun_phones_address_edit_xml(inidphone integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 350 (class 1255 OID 27274)
--- Dependencies: 5 884
--- Name: fun_phones_table(integer, integer, boolean, text, integer, integer, text, integer, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 352 (class 1255 OID 27274)
+-- Dependencies: 891 5
+-- Name: fun_phones_table(integer, integer, boolean, text, integer, integer, text, integer, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phones_table(inidphone integer, inidcontact integer, inenable boolean, inphone text, intypephone integer, inidprovider integer, inphone_ext text, inidaddress integer, inubiphone integer, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -1638,12 +1576,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION public.fun_phones_table(inidphone integer, inidcontact integer, inenable boolean, inphone text, intypephone integer, inidprovider integer, inphone_ext text, inidaddress integer, inubiphone integer, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 338 (class 1255 OID 27275)
--- Dependencies: 884 5
--- Name: fun_phones_table_xml(integer, integer, boolean, text, integer, integer, text, integer, integer, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 340 (class 1255 OID 27275)
+-- Dependencies: 891 5
+-- Name: fun_phones_table_xml(integer, integer, boolean, text, integer, integer, text, integer, integer, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_phones_table_xml(inidphone integer, inidcontact integer, inenable boolean, inphone text, intypephone integer, inidprovider integer, inphone_ext text, inidaddress integer, inubiphone integer, innote text, ts timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1663,12 +1599,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_phones_table_xml(inidphone integer, inidcontact integer, inenable boolean, inphone text, intypephone integer, inidprovider integer, inphone_ext text, inidaddress integer, inubiphone integer, innote text, ts timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 265 (class 1255 OID 17670)
--- Dependencies: 5 884
--- Name: fun_portmodem_update(integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 267 (class 1255 OID 17670)
+-- Dependencies: 891 5
+-- Name: fun_portmodem_update(integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_portmodem_update(inidport integer, inport text, incimi text, inimei text, inmanufacturer text, inmodel text, inrevision text) RETURNS boolean
@@ -1686,21 +1620,19 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION public.fun_portmodem_update(inidport integer, inport text, incimi text, inimei text, inmanufacturer text, inmodel text, inrevision text) OWNER TO postgres;
-
 --
--- TOC entry 2747 (class 0 OID 0)
--- Dependencies: 265
--- Name: FUNCTION fun_portmodem_update(inidport integer, inport text, incimi text, inimei text, inmanufacturer text, inmodel text, inrevision text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2766 (class 0 OID 0)
+-- Dependencies: 267
+-- Name: FUNCTION fun_portmodem_update(inidport integer, inport text, incimi text, inimei text, inmanufacturer text, inmodel text, inrevision text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_portmodem_update(inidport integer, inport text, incimi text, inimei text, inmanufacturer text, inmodel text, inrevision text) IS 'Actualiza los registros del puerto y del modem que esta usando la base de datos.';
 
 
 --
--- TOC entry 314 (class 1255 OID 27040)
--- Dependencies: 884 5
--- Name: fun_provider_edit(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 316 (class 1255 OID 27040)
+-- Dependencies: 891 5
+-- Name: fun_provider_edit(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_provider_edit(inidprovider integer, inenable boolean, incimi text, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -1750,12 +1682,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION public.fun_provider_edit(inidprovider integer, inenable boolean, incimi text, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 313 (class 1255 OID 27039)
--- Dependencies: 884 5
--- Name: fun_provider_edit_xml(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 315 (class 1255 OID 27039)
+-- Dependencies: 5 891
+-- Name: fun_provider_edit_xml(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_provider_edit_xml(inidprovider integer, inenable boolean, incimi text, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -1774,12 +1704,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_provider_edit_xml(inidprovider integer, inenable boolean, incimi text, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 304 (class 1255 OID 26982)
--- Dependencies: 5 884
--- Name: fun_providers_idname_xml(boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 306 (class 1255 OID 26982)
+-- Dependencies: 5 891
+-- Name: fun_providers_idname_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean DEFAULT true) RETURNS text
@@ -1809,21 +1737,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_providers_idname_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2748 (class 0 OID 0)
--- Dependencies: 304
--- Name: FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2767 (class 0 OID 0)
+-- Dependencies: 306
+-- Name: FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean) IS 'Devuelve la lista de proveedores unicamente los campos id y name';
 
 
 --
--- TOC entry 257 (class 1255 OID 16828)
--- Dependencies: 5 884
--- Name: fun_smsin_insert(integer, integer, timestamp without time zone, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 259 (class 1255 OID 16828)
+-- Dependencies: 891 5
+-- Name: fun_smsin_insert(integer, integer, timestamp without time zone, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text) RETURNS integer
@@ -1852,21 +1778,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2749 (class 0 OID 0)
--- Dependencies: 257
--- Name: FUNCTION fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2768 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: FUNCTION fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text) IS 'Funcion para almacenar sms entrantes en la tabla smsin';
 
 
 --
--- TOC entry 273 (class 1255 OID 16800)
--- Dependencies: 884 5
--- Name: fun_smsout_insert(integer, integer, integer, integer, text, timestamp without time zone, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 275 (class 1255 OID 16800)
+-- Dependencies: 5 891
+-- Name: fun_smsout_insert(integer, integer, integer, integer, text, timestamp without time zone, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
@@ -1910,12 +1834,10 @@ RETURN retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2750 (class 0 OID 0)
--- Dependencies: 273
--- Name: FUNCTION fun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2769 (class 0 OID 0)
+-- Dependencies: 275
+-- Name: FUNCTION fun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) IS 'Ingresa un sms en la tabla smsout haciendo chequeos previos.
@@ -1924,9 +1846,9 @@ Devuelve:
 
 
 --
--- TOC entry 264 (class 1255 OID 17668)
--- Dependencies: 5 884
--- Name: fun_smsout_insert_sendnow(integer, integer, integer, integer, text, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 266 (class 1255 OID 17668)
+-- Dependencies: 891 5
+-- Name: fun_smsout_insert_sendnow(integer, integer, integer, integer, text, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
@@ -1940,21 +1862,19 @@ RETURN retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2751 (class 0 OID 0)
--- Dependencies: 264
--- Name: FUNCTION fun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2770 (class 0 OID 0)
+-- Dependencies: 266
+-- Name: FUNCTION fun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) IS 'Ingresa un sms en la tabla smsout haciendo chequeos previos.';
 
 
 --
--- TOC entry 262 (class 1255 OID 17665)
--- Dependencies: 884 5
--- Name: fun_smsout_preparenewsmsautoprovider(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 264 (class 1255 OID 17665)
+-- Dependencies: 891 5
+-- Name: fun_smsout_preparenewsmsautoprovider(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_preparenewsmsautoprovider() RETURNS boolean
@@ -1983,12 +1903,10 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_preparenewsmsautoprovider() OWNER TO postgres;
-
 --
--- TOC entry 2752 (class 0 OID 0)
--- Dependencies: 262
--- Name: FUNCTION fun_smsout_preparenewsmsautoprovider(); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2771 (class 0 OID 0)
+-- Dependencies: 264
+-- Name: FUNCTION fun_smsout_preparenewsmsautoprovider(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_preparenewsmsautoprovider() IS 'Prepara para enviar los smsout nuevos que han sido marcados como autoproveedor';
@@ -2000,8 +1918,8 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 173 (class 1259 OID 16579)
--- Dependencies: 2306 2307 2308 2309 2310 2311 2312 2313 2314 2315 2316 2317 2318 2319 2320 2321 2322 2323 2324 2325 2326 2327 2328 2329 2330 2331 2332 2333 1817 5 1817
--- Name: smsout; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2313 2314 2315 2316 2317 2318 2319 2320 2321 2322 2323 2324 2325 2326 2327 2328 2329 2330 2331 2332 2333 2334 2335 2336 2337 2338 2339 2340 1824 5 1824
+-- Name: smsout; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smsout (
@@ -2038,66 +1956,64 @@ CREATE TABLE smsout (
 );
 
 
-ALTER TABLE public.smsout OWNER TO postgres;
-
 --
--- TOC entry 2753 (class 0 OID 0)
+-- TOC entry 2772 (class 0 OID 0)
 -- Dependencies: 173
--- Name: TABLE smsout; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE smsout; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE smsout IS 'Tabla de mensajes salientes';
 
 
 --
--- TOC entry 2754 (class 0 OID 0)
+-- TOC entry 2773 (class 0 OID 0)
 -- Dependencies: 173
--- Name: COLUMN smsout.idsmstype; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout.idsmstype; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout.idsmstype IS 'Estado del envio del sms';
 
 
 --
--- TOC entry 2755 (class 0 OID 0)
+-- TOC entry 2774 (class 0 OID 0)
 -- Dependencies: 173
--- Name: COLUMN smsout.idphone; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout.idphone; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout.idphone IS 'Se es identificado el numero con un idphone se escribe este campo';
 
 
 --
--- TOC entry 2756 (class 0 OID 0)
+-- TOC entry 2775 (class 0 OID 0)
 -- Dependencies: 173
--- Name: COLUMN smsout.phone; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout.phone; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout.phone IS 'Numero telefonico';
 
 
 --
--- TOC entry 2757 (class 0 OID 0)
+-- TOC entry 2776 (class 0 OID 0)
 -- Dependencies: 173
--- Name: COLUMN smsout.datetosend; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout.datetosend; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout.datetosend IS 'Fecha programada de envio';
 
 
 --
--- TOC entry 2758 (class 0 OID 0)
+-- TOC entry 2777 (class 0 OID 0)
 -- Dependencies: 173
--- Name: COLUMN smsout.priority; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout.priority; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout.priority IS 'Prioridad de envio del sms. 5 es el valor de fabrica. 0 es la maxima prioridad.';
 
 
 --
--- TOC entry 274 (class 1255 OID 16715)
--- Dependencies: 5 884 732
--- Name: fun_smsout_to_send(integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 276 (class 1255 OID 16715)
+-- Dependencies: 5 734 891
+-- Name: fun_smsout_to_send(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_to_send(inidport integer DEFAULT 0) RETURNS smsout
@@ -2161,12 +2077,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_to_send(inidport integer) OWNER TO postgres;
-
 --
--- TOC entry 2759 (class 0 OID 0)
--- Dependencies: 274
--- Name: FUNCTION fun_smsout_to_send(inidport integer); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2778 (class 0 OID 0)
+-- Dependencies: 276
+-- Name: FUNCTION fun_smsout_to_send(inidport integer); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_to_send(inidport integer) IS 'Selecciona un sms de smsout para enviarlo.
@@ -2174,9 +2088,9 @@ COMMENT ON FUNCTION fun_smsout_to_send(inidport integer) IS 'Selecciona un sms d
 
 
 --
--- TOC entry 268 (class 1255 OID 17664)
--- Dependencies: 884 5
--- Name: fun_smsout_update_expired(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 270 (class 1255 OID 17664)
+-- Dependencies: 891 5
+-- Name: fun_smsout_update_expired(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_update_expired() RETURNS boolean
@@ -2188,21 +2102,19 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_update_expired() OWNER TO postgres;
-
 --
--- TOC entry 2760 (class 0 OID 0)
--- Dependencies: 268
--- Name: FUNCTION fun_smsout_update_expired(); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2779 (class 0 OID 0)
+-- Dependencies: 270
+-- Name: FUNCTION fun_smsout_update_expired(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_update_expired() IS 'Pone como expirados los mensajes que han sobrepasado su tiempo de vida';
 
 
 --
--- TOC entry 249 (class 1255 OID 16799)
--- Dependencies: 5 884
--- Name: fun_smsout_updatestatus(integer, integer, integer, integer, integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 251 (class 1255 OID 16799)
+-- Dependencies: 891 5
+-- Name: fun_smsout_updatestatus(integer, integer, integer, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text) RETURNS integer
@@ -2273,12 +2185,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text) OWNER TO postgres;
-
 --
--- TOC entry 2761 (class 0 OID 0)
--- Dependencies: 249
--- Name: FUNCTION fun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2780 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: FUNCTION fun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text) IS 'Actualiza el estado de envio del sms.';
@@ -2286,8 +2196,8 @@ COMMENT ON FUNCTION fun_smsout_updatestatus(inidsmsout integer, inprocess intege
 
 --
 -- TOC entry 180 (class 1259 OID 16745)
--- Dependencies: 2346 2347 2348 2349 2350 5
--- Name: smsoutoptions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2353 2354 2355 2356 2357 5
+-- Name: smsoutoptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smsoutoptions (
@@ -2302,48 +2212,46 @@ CREATE TABLE smsoutoptions (
 );
 
 
-ALTER TABLE public.smsoutoptions OWNER TO postgres;
-
 --
--- TOC entry 2762 (class 0 OID 0)
+-- TOC entry 2781 (class 0 OID 0)
 -- Dependencies: 180
--- Name: TABLE smsoutoptions; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE smsoutoptions; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE smsoutoptions IS 'Opciones globales adicionales para envio de mensajes de texto.';
 
 
 --
--- TOC entry 2763 (class 0 OID 0)
+-- TOC entry 2782 (class 0 OID 0)
 -- Dependencies: 180
--- Name: COLUMN smsoutoptions.enable; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsoutoptions.enable; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsoutoptions.enable IS 'usms toma el ultimo registro habilitado para su funcionamiento ignorando los anteriores';
 
 
 --
--- TOC entry 2764 (class 0 OID 0)
+-- TOC entry 2783 (class 0 OID 0)
 -- Dependencies: 180
--- Name: COLUMN smsoutoptions.name; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsoutoptions.name; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsoutoptions.name IS 'Nombre opcional';
 
 
 --
--- TOC entry 2765 (class 0 OID 0)
+-- TOC entry 2784 (class 0 OID 0)
 -- Dependencies: 180
--- Name: COLUMN smsoutoptions.report; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsoutoptions.report; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsoutoptions.report IS 'Solicita reporte de recibido para cada sms';
 
 
 --
--- TOC entry 2766 (class 0 OID 0)
+-- TOC entry 2785 (class 0 OID 0)
 -- Dependencies: 180
--- Name: COLUMN smsoutoptions.retryonfail; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsoutoptions.retryonfail; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsoutoptions.retryonfail IS '0 = No intenta reenviar el sms en caso de falla.
@@ -2351,9 +2259,9 @@ COMMENT ON COLUMN smsoutoptions.retryonfail IS '0 = No intenta reenviar el sms e
 
 
 --
--- TOC entry 2767 (class 0 OID 0)
+-- TOC entry 2786 (class 0 OID 0)
 -- Dependencies: 180
--- Name: COLUMN smsoutoptions.maxslices; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsoutoptions.maxslices; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsoutoptions.maxslices IS 'Numero maximo de sms que se enviara cuando el texto del mensaje es largo.
@@ -2362,9 +2270,9 @@ Si 0 o 1 de fabrica.';
 
 
 --
--- TOC entry 263 (class 1255 OID 17663)
--- Dependencies: 5 747 884
--- Name: fun_smsoutoptions_current(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 265 (class 1255 OID 17663)
+-- Dependencies: 891 749 5
+-- Name: fun_smsoutoptions_current(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_smsoutoptions_current() RETURNS smsoutoptions
@@ -2408,21 +2316,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.fun_smsoutoptions_current() OWNER TO postgres;
-
 --
--- TOC entry 2768 (class 0 OID 0)
--- Dependencies: 263
--- Name: FUNCTION fun_smsoutoptions_current(); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2787 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: FUNCTION fun_smsoutoptions_current(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_smsoutoptions_current() IS 'Obtiene los valores de smsoutoptions actualmente usadas.';
 
 
 --
--- TOC entry 340 (class 1255 OID 27273)
--- Dependencies: 5 884
--- Name: fun_view_address_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 342 (class 1255 OID 27273)
+-- Dependencies: 891 5
+-- Name: fun_view_address_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_address_byid_xml(inidaddress integer, fieldtextasbase64 boolean) RETURNS text
@@ -2461,12 +2367,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_address_byid_xml(inidaddress integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 301 (class 1255 OID 26959)
--- Dependencies: 884 5
--- Name: fun_view_contacts_byidcontact_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 303 (class 1255 OID 26959)
+-- Dependencies: 891 5
+-- Name: fun_view_contacts_byidcontact_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -2497,21 +2401,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2769 (class 0 OID 0)
--- Dependencies: 301
--- Name: FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2788 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean) IS 'Devuelve un contacto segun el parametro idcontact en formato xml.';
 
 
 --
--- TOC entry 296 (class 1255 OID 26958)
--- Dependencies: 5 884
--- Name: fun_view_contacts_to_list_xml(boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 298 (class 1255 OID 26958)
+-- Dependencies: 891 5
+-- Name: fun_view_contacts_to_list_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean DEFAULT true) RETURNS text
@@ -2542,21 +2444,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_contacts_to_list_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2770 (class 0 OID 0)
--- Dependencies: 296
--- Name: FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2789 (class 0 OID 0)
+-- Dependencies: 298
+-- Name: FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean) IS 'Lista de contactos con datos basicos, para ser usado en un combobox o lista simplificada.';
 
 
 --
--- TOC entry 303 (class 1255 OID 26983)
--- Dependencies: 884 5
--- Name: fun_view_incomingcalls_xml(timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 305 (class 1255 OID 26983)
+-- Dependencies: 5 891
+-- Name: fun_view_incomingcalls_xml(timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -2587,21 +2487,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2771 (class 0 OID 0)
--- Dependencies: 303
--- Name: FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2790 (class 0 OID 0)
+-- Dependencies: 305
+-- Name: FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean) IS 'Obtiene la tabla entre las fechas seleccionadas en formato xml';
 
 
 --
--- TOC entry 361 (class 1255 OID 27622)
--- Dependencies: 884 5
--- Name: fun_view_location_level_xml(integer, integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 363 (class 1255 OID 27622)
+-- Dependencies: 891 5
+-- Name: fun_view_location_level_xml(integer, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_location_level_xml(l integer, idfk integer, fieldtextasbase64 boolean) RETURNS text
@@ -2674,12 +2572,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_location_level_xml(l integer, idfk integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 365 (class 1255 OID 27761)
--- Dependencies: 884 5
--- Name: fun_view_locations_ids_from_idlocation_xml(numeric); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 367 (class 1255 OID 27761)
+-- Dependencies: 5 891
+-- Name: fun_view_locations_ids_from_idlocation_xml(numeric); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_locations_ids_from_idlocation_xml(inidlocation numeric) RETURNS text
@@ -2700,12 +2596,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_locations_ids_from_idlocation_xml(inidlocation numeric) OWNER TO postgres;
-
 --
--- TOC entry 253 (class 1255 OID 26960)
--- Dependencies: 884 5
--- Name: fun_view_phones_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 255 (class 1255 OID 26960)
+-- Dependencies: 891 5
+-- Name: fun_view_phones_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_phones_byid_xml(inidphone integer, fieldtextasbase64 boolean) RETURNS text
@@ -2736,12 +2630,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_phones_byid_xml(inidphone integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 300 (class 1255 OID 26976)
--- Dependencies: 884 5
--- Name: fun_view_phones_byidcontact_simplified_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 302 (class 1255 OID 26976)
+-- Dependencies: 891 5
+-- Name: fun_view_phones_byidcontact_simplified_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_phones_byidcontact_simplified_xml(inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -2772,12 +2664,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_phones_byidcontact_simplified_xml(inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 308 (class 1255 OID 27021)
--- Dependencies: 884 5
--- Name: fun_view_provider_table_xml(boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 310 (class 1255 OID 27021)
+-- Dependencies: 5 891
+-- Name: fun_view_provider_table_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean DEFAULT true) RETURNS text
@@ -2807,21 +2697,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_provider_table_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2772 (class 0 OID 0)
--- Dependencies: 308
--- Name: FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2791 (class 0 OID 0)
+-- Dependencies: 310
+-- Name: FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean) IS 'Devuelve la tabla en formato xml';
 
 
 --
--- TOC entry 310 (class 1255 OID 27038)
--- Dependencies: 884 5
--- Name: fun_view_smsin_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 312 (class 1255 OID 27038)
+-- Dependencies: 5 891
+-- Name: fun_view_smsin_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_smsin_table_filter_xml(datestart timestamp without time zone, dateend timestamp without time zone, maxrows integer, fieldtextasbase64 boolean) RETURNS text
@@ -2852,12 +2740,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_smsin_table_filter_xml(datestart timestamp without time zone, dateend timestamp without time zone, maxrows integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 287 (class 1255 OID 27026)
--- Dependencies: 5 884
--- Name: fun_view_smsout_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 289 (class 1255 OID 27026)
+-- Dependencies: 891 5
+-- Name: fun_view_smsout_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION fun_view_smsout_table_filter_xml(datestart timestamp without time zone, dateend timestamp without time zone, maxrows integer, fieldtextasbase64 boolean) RETURNS text
@@ -2888,12 +2774,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION public.fun_view_smsout_table_filter_xml(datestart timestamp without time zone, dateend timestamp without time zone, maxrows integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 341 (class 1255 OID 27333)
--- Dependencies: 5 884
--- Name: trigger_idaddress_to_cero(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 343 (class 1255 OID 27333)
+-- Dependencies: 891 5
+-- Name: trigger_idaddress_to_cero(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION trigger_idaddress_to_cero() RETURNS trigger
@@ -2912,12 +2796,10 @@ END IF;
 END;$$;
 
 
-ALTER FUNCTION public.trigger_idaddress_to_cero() OWNER TO postgres;
-
 --
--- TOC entry 2773 (class 0 OID 0)
--- Dependencies: 341
--- Name: FUNCTION trigger_idaddress_to_cero(); Type: COMMENT; Schema: public; Owner: postgres
+-- TOC entry 2792 (class 0 OID 0)
+-- Dependencies: 343
+-- Name: FUNCTION trigger_idaddress_to_cero(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION trigger_idaddress_to_cero() IS 'Cuando seteamos el campo idaddress a 0 esto elimina ese registro de la tabla address.
@@ -2925,9 +2807,9 @@ COMMENT ON FUNCTION trigger_idaddress_to_cero() IS 'Cuando seteamos el campo ida
 
 
 --
--- TOC entry 331 (class 1255 OID 27774)
--- Dependencies: 5 884
--- Name: xxxfun_location_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 333 (class 1255 OID 27774)
+-- Dependencies: 5 891
+-- Name: xxxfun_location_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxfun_location_getdata_string(inidlocation integer, stringfields text) RETURNS text
@@ -3029,12 +2911,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.xxxfun_location_getdata_string(inidlocation integer, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 372 (class 1255 OID 27773)
--- Dependencies: 5 884
--- Name: xxxxfun_address_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 374 (class 1255 OID 27773)
+-- Dependencies: 891 5
+-- Name: xxxxfun_address_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_address_getdata_string(inidaddress integer, stringfields text) RETURNS text
@@ -3119,12 +2999,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_address_getdata_string(inidaddress integer, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 369 (class 1255 OID 27732)
--- Dependencies: 5 884
--- Name: xxxxfun_contact_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 371 (class 1255 OID 27732)
+-- Dependencies: 5 891
+-- Name: xxxxfun_contact_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_contact_address_edit_xml(inidcontact integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -3164,12 +3042,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_contact_address_edit_xml(inidcontact integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 371 (class 1255 OID 27767)
--- Dependencies: 884 5
--- Name: xxxxfun_contact_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 373 (class 1255 OID 27767)
+-- Dependencies: 891 5
+-- Name: xxxxfun_contact_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_contact_address_edit_xml(inidcontact integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -3209,12 +3085,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_contact_address_edit_xml(inidcontact integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 292 (class 1255 OID 27772)
--- Dependencies: 884 5
--- Name: xxxxfun_contact_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 294 (class 1255 OID 27772)
+-- Dependencies: 5 891
+-- Name: xxxxfun_contact_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_contact_getdata_string(inidcontact integer, stringfields text) RETURNS text
@@ -3301,12 +3175,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_contact_getdata_string(inidcontact integer, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 373 (class 1255 OID 27775)
--- Dependencies: 884 5
--- Name: xxxxfun_phone_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 375 (class 1255 OID 27775)
+-- Dependencies: 5 891
+-- Name: xxxxfun_phone_getdata_string(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_phone_getdata_string(inidphone integer, stringfields text) RETURNS text
@@ -3381,12 +3253,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_phone_getdata_string(inidphone integer, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 288 (class 1255 OID 27730)
--- Dependencies: 5 884
--- Name: xxxxfun_phones_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 290 (class 1255 OID 27730)
+-- Dependencies: 5 891
+-- Name: xxxxfun_phones_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_phones_address_edit_xml(inidphone integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -3422,14 +3292,12 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION public.xxxxfun_phones_address_edit_xml(inidphone integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 368 (class 1255 OID 27766)
--- Dependencies: 884 9
--- Name: fun_account_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 370 (class 1255 OID 27766)
+-- Dependencies: 9 891
+-- Name: fun_account_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_address_edit_xml(inidaccount integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -3462,12 +3330,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_address_edit_xml(inidaccount integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 254 (class 1255 OID 27005)
--- Dependencies: 884 9
--- Name: fun_account_contacts_byid(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 256 (class 1255 OID 27005)
+-- Dependencies: 891 9
+-- Name: fun_account_contacts_byid(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_contacts_byid(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -3497,12 +3363,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_contacts_byid(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 295 (class 1255 OID 26932)
--- Dependencies: 9 884
--- Name: fun_account_contacts_table(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 297 (class 1255 OID 26932)
+-- Dependencies: 891 9
+-- Name: fun_account_contacts_table(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -3556,21 +3420,19 @@ END;
 $$;
 
 
-ALTER FUNCTION usaga.fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 2774 (class 0 OID 0)
--- Dependencies: 295
--- Name: FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2793 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) IS 'Agrega, edita y elimina contactos de una cuenta.';
 
 
 --
--- TOC entry 297 (class 1255 OID 26948)
--- Dependencies: 884 9
--- Name: fun_account_contacts_table_xml(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 299 (class 1255 OID 26948)
+-- Dependencies: 891 9
+-- Name: fun_account_contacts_table_xml(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_contacts_table_xml(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean) RETURNS text
@@ -3588,12 +3450,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_contacts_table_xml(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 279 (class 1255 OID 25923)
--- Dependencies: 884 9
--- Name: fun_account_event_notifications_sms(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 281 (class 1255 OID 25923)
+-- Dependencies: 9 891
+-- Name: fun_account_event_notifications_sms(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_event_notifications_sms() RETURNS boolean
@@ -3667,21 +3527,19 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_event_notifications_sms() OWNER TO postgres;
-
 --
--- TOC entry 2775 (class 0 OID 0)
--- Dependencies: 279
--- Name: FUNCTION fun_account_event_notifications_sms(); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2794 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: FUNCTION fun_account_event_notifications_sms(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_event_notifications_sms() IS 'Genere notificaciones (sms) segun se haya programado para cada cliente.';
 
 
 --
--- TOC entry 342 (class 1255 OID 27784)
--- Dependencies: 9 884
--- Name: fun_account_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 344 (class 1255 OID 27784)
+-- Dependencies: 891 9
+-- Name: fun_account_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_getdata_string(inidaccount integer, prefix text, stringfields text) RETURNS text
@@ -3756,12 +3614,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_getdata_string(inidaccount integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 281 (class 1255 OID 26359)
--- Dependencies: 884 9
--- Name: fun_account_insert_update(integer, integer, boolean, text, text, integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 283 (class 1255 OID 26359)
+-- Dependencies: 9 891
+-- Name: fun_account_insert_update(integer, integer, boolean, text, text, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_insert_update(inidaccount integer, inpartition integer, inenable boolean, inaccount text, inname text, intype integer, innote text, OUT outidaccount integer, OUT outpgmsg text) RETURNS record
@@ -3816,12 +3672,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_insert_update(inidaccount integer, inpartition integer, inenable boolean, inaccount text, inname text, intype integer, innote text, OUT outidaccount integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 2776 (class 0 OID 0)
--- Dependencies: 281
--- Name: FUNCTION fun_account_insert_update(inidaccount integer, inpartition integer, inenable boolean, inaccount text, inname text, intype integer, innote text, OUT outidaccount integer, OUT outpgmsg text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2795 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: FUNCTION fun_account_insert_update(inidaccount integer, inpartition integer, inenable boolean, inaccount text, inname text, intype integer, innote text, OUT outidaccount integer, OUT outpgmsg text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_insert_update(inidaccount integer, inpartition integer, inenable boolean, inaccount text, inname text, intype integer, innote text, OUT outidaccount integer, OUT outpgmsg text) IS 'Funcion inserta o actualiza registros de la tabla accounts. Realiza verificacion de datos antes de realizar la operacion.
@@ -3835,9 +3689,9 @@ el id de la cuenta
 
 
 --
--- TOC entry 311 (class 1255 OID 26854)
--- Dependencies: 9 884
--- Name: fun_account_location_table(integer, real, real, text, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 313 (class 1255 OID 26854)
+-- Dependencies: 9 891
+-- Name: fun_account_location_table(integer, real, real, text, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_location_table(inidaccount integer, ingeox real, ingeoy real, inaddress text, inidaddress text, innote text, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -3879,12 +3733,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_location_table(inidaccount integer, ingeox real, ingeoy real, inaddress text, inidaddress text, innote text, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 327 (class 1255 OID 27062)
--- Dependencies: 884 9
--- Name: fun_account_notifications_applyselected(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 329 (class 1255 OID 27062)
+-- Dependencies: 9 891
+-- Name: fun_account_notifications_applyselected(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notifications_applyselected(inidaccount integer, idphones integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -3930,12 +3782,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notifications_applyselected(inidaccount integer, idphones integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 315 (class 1255 OID 27064)
--- Dependencies: 884 9
--- Name: fun_account_notifications_applyselected_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 317 (class 1255 OID 27064)
+-- Dependencies: 891 9
+-- Name: fun_account_notifications_applyselected_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notifications_applyselected_xml(inidaccount integer, idphones integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean) RETURNS text
@@ -3954,12 +3804,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notifications_applyselected_xml(inidaccount integer, idphones integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 275 (class 1255 OID 26946)
--- Dependencies: 9 884
--- Name: fun_account_notifications_table(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 277 (class 1255 OID 26946)
+-- Dependencies: 891 9
+-- Name: fun_account_notifications_table(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notifications_table(inidnotifaccount integer, inidaccount integer, inidphone integer, inpriority integer, incall boolean, insms boolean, insmstext text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -3998,12 +3846,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notifications_table(inidnotifaccount integer, inidaccount integer, inidphone integer, inpriority integer, incall boolean, insms boolean, insmstext text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 298 (class 1255 OID 26944)
--- Dependencies: 9 884
--- Name: fun_account_notifications_table_xml(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 300 (class 1255 OID 26944)
+-- Dependencies: 9 891
+-- Name: fun_account_notifications_table_xml(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notifications_table_xml(inidnotifaccount integer, inidaccount integer, inidphone integer, prioinrity integer, incall boolean, insms boolean, insmstext text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -4022,12 +3868,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notifications_table_xml(inidnotifaccount integer, inidaccount integer, inidphone integer, prioinrity integer, incall boolean, insms boolean, insmstext text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 334 (class 1255 OID 27075)
--- Dependencies: 884 9
--- Name: fun_account_notify_applied_to_selected_contacts(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 336 (class 1255 OID 27075)
+-- Dependencies: 9 891
+-- Name: fun_account_notify_applied_to_selected_contacts(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notify_applied_to_selected_contacts(inidaccount integer, idcontacts integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -4083,12 +3927,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notify_applied_to_selected_contacts(inidaccount integer, idcontacts integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 321 (class 1255 OID 27076)
--- Dependencies: 9 884
--- Name: fun_account_notify_applied_to_selected_contacts_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 323 (class 1255 OID 27076)
+-- Dependencies: 891 9
+-- Name: fun_account_notify_applied_to_selected_contacts_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_notify_applied_to_selected_contacts_xml(inidaccount integer, idcontacts integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean) RETURNS text
@@ -4107,12 +3949,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_notify_applied_to_selected_contacts_xml(inidaccount integer, idcontacts integer[], incall boolean, insms boolean, inmsg text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 290 (class 1255 OID 26870)
--- Dependencies: 9 884
--- Name: fun_account_phones_trigger_alarm_isuser(integer, integer); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 292 (class 1255 OID 26870)
+-- Dependencies: 891 9
+-- Name: fun_account_phones_trigger_alarm_isuser(integer, integer); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer) RETURNS boolean
@@ -4139,12 +3979,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer) OWNER TO postgres;
-
 --
--- TOC entry 2777 (class 0 OID 0)
--- Dependencies: 290
--- Name: FUNCTION fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2796 (class 0 OID 0)
+-- Dependencies: 292
+-- Name: FUNCTION fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer) IS 'Chequea que el idphone pasado como parametro pertenesca a un usuario de la cuenta, caso contrario lo elimina.
@@ -4152,9 +3990,9 @@ Devuelve true si es usuario y false si no lo es.';
 
 
 --
--- TOC entry 356 (class 1255 OID 27460)
--- Dependencies: 9 884
--- Name: fun_account_phones_trigger_alarm_table_xml(integer, integer, boolean, boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 358 (class 1255 OID 27460)
+-- Dependencies: 9 891
+-- Name: fun_account_phones_trigger_alarm_table_xml(integer, integer, boolean, boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_phones_trigger_alarm_table_xml(inidaccount integer, inidphone integer, inenable boolean, infromsms boolean, infromcall boolean, innote text, fieldtextasbase64 boolean) RETURNS text
@@ -4209,12 +4047,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_phones_trigger_alarm_table_xml(inidaccount integer, inidphone integer, inenable boolean, infromsms boolean, infromcall boolean, innote text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 250 (class 1255 OID 17933)
--- Dependencies: 884 9
--- Name: fun_account_search_name(text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 252 (class 1255 OID 17933)
+-- Dependencies: 891 9
+-- Name: fun_account_search_name(text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_search_name(innameaccount text) RETURNS integer
@@ -4234,21 +4070,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_search_name(innameaccount text) OWNER TO postgres;
-
 --
--- TOC entry 2778 (class 0 OID 0)
--- Dependencies: 250
--- Name: FUNCTION fun_account_search_name(innameaccount text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2797 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: FUNCTION fun_account_search_name(innameaccount text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_search_name(innameaccount text) IS 'Devuelve el idaccount de la cuenta que tiene el nombre pasado como parametro, si no hay cuentas con ese nombre devuelve 0, devuelve -1 en caso de falla';
 
 
 --
--- TOC entry 251 (class 1255 OID 17934)
--- Dependencies: 884 9
--- Name: fun_account_search_number(text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 253 (class 1255 OID 17934)
+-- Dependencies: 9 891
+-- Name: fun_account_search_number(text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_search_number(innumberaccount text) RETURNS integer
@@ -4268,21 +4102,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_search_number(innumberaccount text) OWNER TO postgres;
-
 --
--- TOC entry 2779 (class 0 OID 0)
--- Dependencies: 251
--- Name: FUNCTION fun_account_search_number(innumberaccount text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2798 (class 0 OID 0)
+-- Dependencies: 253
+-- Name: FUNCTION fun_account_search_number(innumberaccount text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_account_search_number(innumberaccount text) IS 'Busca el idaccount basado en el numero pasado como parametro';
 
 
 --
--- TOC entry 364 (class 1255 OID 27733)
--- Dependencies: 884 9
--- Name: fun_account_table_xml(integer, boolean, text, text, integer, integer, integer, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 366 (class 1255 OID 27733)
+-- Dependencies: 891 9
+-- Name: fun_account_table_xml(integer, boolean, text, text, integer, integer, integer, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_table_xml(inidaccount integer, inenable boolean, inaccount text, inname text, inidgroup integer, inpartition integer, intype integer, innote text, fieldtextasbase64 boolean) RETURNS text
@@ -4368,12 +4200,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_account_table_xml(inidaccount integer, inenable boolean, inaccount text, inname text, inidgroup integer, inpartition integer, intype integer, innote text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 286 (class 1255 OID 27456)
--- Dependencies: 9 884
--- Name: fun_account_users_table_xml(integer, integer, text, boolean, integer, text, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 288 (class 1255 OID 27456)
+-- Dependencies: 891 9
+-- Name: fun_account_users_table_xml(integer, integer, text, boolean, integer, text, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_account_users_table_xml(inidaccount integer, inidcontact integer, inappointment text, inenable boolean, innumuser integer, inkeyword text, inpwd text, innote text, fieldtextasbase64 boolean) RETURNS text
@@ -4429,12 +4259,10 @@ END;
 $$;
 
 
-ALTER FUNCTION usaga.fun_account_users_table_xml(inidaccount integer, inidcontact integer, inappointment text, inenable boolean, innumuser integer, inkeyword text, inpwd text, innote text, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 277 (class 1255 OID 25922)
--- Dependencies: 884 9
--- Name: fun_auto_process_events(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 279 (class 1255 OID 25922)
+-- Dependencies: 891 9
+-- Name: fun_auto_process_events(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_auto_process_events() RETURNS boolean
@@ -4446,12 +4274,10 @@ RETURN TRUE;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_auto_process_events() OWNER TO postgres;
-
 --
--- TOC entry 2780 (class 0 OID 0)
--- Dependencies: 277
--- Name: FUNCTION fun_auto_process_events(); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2799 (class 0 OID 0)
+-- Dependencies: 279
+-- Name: FUNCTION fun_auto_process_events(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_auto_process_events() IS 'Procesa los eventos:
@@ -4459,9 +4285,9 @@ Envia notificaciones basados en los eventos y configuraciones del sistema';
 
 
 --
--- TOC entry 333 (class 1255 OID 27786)
--- Dependencies: 9 884
--- Name: fun_events_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 335 (class 1255 OID 27786)
+-- Dependencies: 891 9
+-- Name: fun_events_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_events_getdata_string(inidevent integer, prefix text, stringfields text) RETURNS text
@@ -4534,12 +4360,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_events_getdata_string(inidevent integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 317 (class 1255 OID 27066)
--- Dependencies: 9 884
--- Name: fun_events_lastid_xml(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 319 (class 1255 OID 27066)
+-- Dependencies: 891 9
+-- Name: fun_events_lastid_xml(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_events_lastid_xml() RETURNS text
@@ -4557,12 +4381,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_events_lastid_xml() OWNER TO postgres;
-
 --
--- TOC entry 255 (class 1255 OID 17544)
--- Dependencies: 884 9
--- Name: fun_eventtype_default(integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 257 (class 1255 OID 17544)
+-- Dependencies: 891 9
+-- Name: fun_eventtype_default(integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_eventtype_default(inid integer, inname text) RETURNS integer
@@ -4585,21 +4407,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_eventtype_default(inid integer, inname text) OWNER TO postgres;
-
 --
--- TOC entry 2781 (class 0 OID 0)
--- Dependencies: 255
--- Name: FUNCTION fun_eventtype_default(inid integer, inname text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2800 (class 0 OID 0)
+-- Dependencies: 257
+-- Name: FUNCTION fun_eventtype_default(inid integer, inname text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion usada internamente por opesaga para reflejar los EventType usados por el sistema.';
 
 
 --
--- TOC entry 348 (class 1255 OID 27355)
--- Dependencies: 9 884
--- Name: fun_eventtypes_edit(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 350 (class 1255 OID 27355)
+-- Dependencies: 9 891
+-- Name: fun_eventtypes_edit(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_eventtypes_edit(inideventtype integer, inpriority integer, inlabel text, inadefault boolean, ingdefault boolean, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -4631,12 +4451,10 @@ END;
 $$;
 
 
-ALTER FUNCTION usaga.fun_eventtypes_edit(inideventtype integer, inpriority integer, inlabel text, inadefault boolean, ingdefault boolean, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 256 (class 1255 OID 27354)
--- Dependencies: 9 884
--- Name: fun_eventtypes_edit_xml(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 258 (class 1255 OID 27354)
+-- Dependencies: 9 891
+-- Name: fun_eventtypes_edit_xml(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_eventtypes_edit_xml(inideventtype integer, inpriority integer, inlabel text, inadefault boolean, ingdefault boolean, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -4654,12 +4472,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_eventtypes_edit_xml(inideventtype integer, inpriority integer, inlabel text, inadefault boolean, ingdefault boolean, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 332 (class 1255 OID 27785)
--- Dependencies: 884 9
--- Name: fun_eventtypes_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 334 (class 1255 OID 27785)
+-- Dependencies: 891 9
+-- Name: fun_eventtypes_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_eventtypes_getdata_string(inideventtype integer, prefix text, stringfields text) RETURNS text
@@ -4726,12 +4542,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_eventtypes_getdata_string(inideventtype integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 283 (class 1255 OID 26416)
--- Dependencies: 9 884
--- Name: fun_generate_test_report(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 285 (class 1255 OID 26416)
+-- Dependencies: 9 891
+-- Name: fun_generate_test_report(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_generate_test_report(OUT outeventsgenerated integer) RETURNS integer
@@ -4743,21 +4557,19 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_generate_test_report(OUT outeventsgenerated integer) OWNER TO postgres;
-
 --
--- TOC entry 2782 (class 0 OID 0)
--- Dependencies: 283
--- Name: FUNCTION fun_generate_test_report(OUT outeventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2801 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: FUNCTION fun_generate_test_report(OUT outeventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_generate_test_report(OUT outeventsgenerated integer) IS 'Genera los eventos de reporte de prueba enviados a los clientes.';
 
 
 --
--- TOC entry 280 (class 1255 OID 26131)
--- Dependencies: 9 884
--- Name: fun_get_priority_from_ideventtype(integer); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 282 (class 1255 OID 26131)
+-- Dependencies: 9 891
+-- Name: fun_get_priority_from_ideventtype(integer); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) RETURNS integer
@@ -4774,21 +4586,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_get_priority_from_ideventtype(inideventtype integer) OWNER TO postgres;
-
 --
--- TOC entry 2783 (class 0 OID 0)
--- Dependencies: 280
--- Name: FUNCTION fun_get_priority_from_ideventtype(inideventtype integer); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2802 (class 0 OID 0)
+-- Dependencies: 282
+-- Name: FUNCTION fun_get_priority_from_ideventtype(inideventtype integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) IS 'Devuelve la prioridad segun el ideventtype';
 
 
 --
--- TOC entry 375 (class 1255 OID 27787)
--- Dependencies: 884 9
--- Name: fun_group_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 377 (class 1255 OID 27787)
+-- Dependencies: 9 891
+-- Name: fun_group_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_group_getdata_string(inidgroup integer, prefix text, stringfields text) RETURNS text
@@ -4847,12 +4657,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_group_getdata_string(inidgroup integer, prefix text, stringfields text) OWNER TO postgres;
-
 --
--- TOC entry 352 (class 1255 OID 27357)
--- Dependencies: 9 884
--- Name: fun_groups_edit(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 354 (class 1255 OID 27357)
+-- Dependencies: 891 9
+-- Name: fun_groups_edit(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_groups_edit(inidgroup integer, inenable boolean, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outpgmsg text, OUT outreturn integer) RETURNS record
@@ -4901,12 +4709,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_groups_edit(inidgroup integer, inenable boolean, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outpgmsg text, OUT outreturn integer) OWNER TO postgres;
-
 --
--- TOC entry 351 (class 1255 OID 27358)
--- Dependencies: 9 884
--- Name: fun_groups_edit_xml(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 353 (class 1255 OID 27358)
+-- Dependencies: 9 891
+-- Name: fun_groups_edit_xml(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_groups_edit_xml(inidgroup integer, inenable boolean, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -4924,12 +4730,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_groups_edit_xml(inidgroup integer, inenable boolean, inname text, innote text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 354 (class 1255 OID 27360)
--- Dependencies: 9 884
--- Name: fun_groups_remove_selected(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 356 (class 1255 OID 27360)
+-- Dependencies: 9 891
+-- Name: fun_groups_remove_selected(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_groups_remove_selected(idgroups integer[], fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -4961,12 +4765,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_groups_remove_selected(idgroups integer[], fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 353 (class 1255 OID 27361)
--- Dependencies: 884 9
--- Name: fun_groups_remove_selected_xml(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 355 (class 1255 OID 27361)
+-- Dependencies: 891 9
+-- Name: fun_groups_remove_selected_xml(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_groups_remove_selected_xml(idgroups integer[], fieldtextasbase64 boolean) RETURNS text
@@ -4984,12 +4786,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_groups_remove_selected_xml(idgroups integer[], fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 320 (class 1255 OID 27069)
--- Dependencies: 9 884
--- Name: fun_insert_internal_event(integer, text, integer, text, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 322 (class 1255 OID 27069)
+-- Dependencies: 9 891
+-- Name: fun_insert_internal_event(integer, text, integer, text, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_insert_internal_event(inidaccount integer, incode text, inpriority integer, indescription text, inideventtype integer, inprocess integer, innote text) RETURNS integer
@@ -5002,12 +4802,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_insert_internal_event(inidaccount integer, incode text, inpriority integer, indescription text, inideventtype integer, inprocess integer, innote text) OWNER TO postgres;
-
 --
--- TOC entry 357 (class 1255 OID 27466)
--- Dependencies: 9 884
--- Name: fun_insert_system_log(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 359 (class 1255 OID 27466)
+-- Dependencies: 891 9
+-- Name: fun_insert_system_log(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_insert_system_log(inpriority integer, indescription text, innote text) RETURNS integer
@@ -5022,12 +4820,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_insert_system_log(inpriority integer, indescription text, innote text) OWNER TO postgres;
-
 --
--- TOC entry 376 (class 1255 OID 27788)
--- Dependencies: 884 9
--- Name: fun_notification_gen_message(integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 378 (class 1255 OID 27788)
+-- Dependencies: 891 9
+-- Name: fun_notification_gen_message(integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_notification_gen_message(inidevent integer, insmstext text) RETURNS text
@@ -5100,12 +4896,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_notification_gen_message(inidevent integer, insmstext text) OWNER TO postgres;
-
 --
--- TOC entry 312 (class 1255 OID 27016)
--- Dependencies: 884 9
--- Name: fun_notification_templates_edit(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 314 (class 1255 OID 27016)
+-- Dependencies: 891 9
+-- Name: fun_notification_templates_edit(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_notification_templates_edit(inidnotiftempl integer, indescription text, inmessage text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) RETURNS record
@@ -5140,12 +4934,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_notification_templates_edit(inidnotiftempl integer, indescription text, inmessage text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text) OWNER TO postgres;
-
 --
--- TOC entry 307 (class 1255 OID 27019)
--- Dependencies: 884 9
--- Name: fun_notification_templates_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 309 (class 1255 OID 27019)
+-- Dependencies: 9 891
+-- Name: fun_notification_templates_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_notification_templates_edit_xml(inidnotiftempl integer, indescription text, inmessage text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -5164,12 +4956,10 @@ END;
 $$;
 
 
-ALTER FUNCTION usaga.fun_notification_templates_edit_xml(inidnotiftempl integer, indescription text, inmessage text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 278 (class 1255 OID 25921)
--- Dependencies: 9 884
--- Name: fun_receiver_from_incomingcalls(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 280 (class 1255 OID 25921)
+-- Dependencies: 9 891
+-- Name: fun_receiver_from_incomingcalls(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer) RETURNS record
@@ -5248,12 +5038,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer) OWNER TO postgres;
-
 --
--- TOC entry 2784 (class 0 OID 0)
--- Dependencies: 278
--- Name: FUNCTION fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2803 (class 0 OID 0)
+-- Dependencies: 280
+-- Name: FUNCTION fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_receiver_from_incomingcalls(OUT calls integer, OUT eventsgenerated integer) IS 'Funcion procesa las llamadas recibidas en la tabla inomngcalls, genera el evento.
@@ -5266,9 +5054,9 @@ process:
 
 
 --
--- TOC entry 282 (class 1255 OID 26415)
--- Dependencies: 884 9
--- Name: fun_receiver_from_incomingsmss(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 284 (class 1255 OID 26415)
+-- Dependencies: 9 891
+-- Name: fun_receiver_from_incomingsmss(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_receiver_from_incomingsmss(OUT outsmss integer, OUT outeventsgenerated integer) RETURNS record
@@ -5283,12 +5071,10 @@ RETURN;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_receiver_from_incomingsmss(OUT outsmss integer, OUT outeventsgenerated integer) OWNER TO postgres;
-
 --
--- TOC entry 358 (class 1255 OID 27465)
--- Dependencies: 9 884
--- Name: fun_set_incomingcalls_without_owner_from_usms(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 360 (class 1255 OID 27465)
+-- Dependencies: 9 891
+-- Name: fun_set_incomingcalls_without_owner_from_usms(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_set_incomingcalls_without_owner_from_usms() RETURNS integer
@@ -5329,21 +5115,19 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_set_incomingcalls_without_owner_from_usms() OWNER TO postgres;
-
 --
--- TOC entry 2785 (class 0 OID 0)
--- Dependencies: 358
--- Name: FUNCTION fun_set_incomingcalls_without_owner_from_usms(); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2804 (class 0 OID 0)
+-- Dependencies: 360
+-- Name: FUNCTION fun_set_incomingcalls_without_owner_from_usms(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_set_incomingcalls_without_owner_from_usms() IS 'Setea todas las llamadas entrantes que tiene idphone < 0 a flag1 = 3 (Numero telefonico sin propietario) y las registramos en la tabla de eventos';
 
 
 --
--- TOC entry 319 (class 1255 OID 27067)
--- Dependencies: 884 9
--- Name: fun_view_account_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 321 (class 1255 OID 27067)
+-- Dependencies: 9 891
+-- Name: fun_view_account_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_byid_xml(inidaccount integer, fieldtextasbase64 boolean) RETURNS text
@@ -5374,12 +5158,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_byid_xml(inidaccount integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 293 (class 1255 OID 26920)
--- Dependencies: 9 884
--- Name: fun_view_account_contact_notif_eventtypes(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 295 (class 1255 OID 26920)
+-- Dependencies: 891 9
+-- Name: fun_view_account_contact_notif_eventtypes(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone) RETURNS SETOF record
@@ -5435,21 +5217,19 @@ END
 $$;
 
 
-ALTER FUNCTION usaga.fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone) OWNER TO postgres;
-
 --
--- TOC entry 2786 (class 0 OID 0)
--- Dependencies: 293
--- Name: FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2805 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone) IS 'Vista de los tipos de eventos habilitados para un determinado idaccountnotif';
 
 
 --
--- TOC entry 266 (class 1255 OID 26939)
--- Dependencies: 9 884
--- Name: fun_view_account_contact_notif_eventtypes_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 268 (class 1255 OID 26939)
+-- Dependencies: 9 891
+-- Name: fun_view_account_contact_notif_eventtypes_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_contact_notif_eventtypes_xml(inidaccount integer, inidphone integer, fieldtextasbase64 boolean) RETURNS text
@@ -5467,12 +5247,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_contact_notif_eventtypes_xml(inidaccount integer, inidphone integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 309 (class 1255 OID 26994)
--- Dependencies: 884 9
--- Name: fun_view_account_contacts_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 311 (class 1255 OID 26994)
+-- Dependencies: 9 891
+-- Name: fun_view_account_contacts_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_contacts_xml(inidaccount integer, fieldtextasbase64 boolean) RETURNS text
@@ -5503,12 +5281,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_contacts_xml(inidaccount integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 316 (class 1255 OID 27065)
--- Dependencies: 9 884
--- Name: fun_view_account_events_xml(integer, timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 318 (class 1255 OID 27065)
+-- Dependencies: 9 891
+-- Name: fun_view_account_events_xml(integer, timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_events_xml(inidaccount integer, datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -5539,12 +5315,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_events_xml(inidaccount integer, datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 318 (class 1255 OID 27068)
--- Dependencies: 9 884
--- Name: fun_view_account_location_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 320 (class 1255 OID 27068)
+-- Dependencies: 9 891
+-- Name: fun_view_account_location_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_location_byid_xml(inidaccount integer, fieldtextasbase64 boolean) RETURNS text
@@ -5575,12 +5349,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_location_byid_xml(inidaccount integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 322 (class 1255 OID 27276)
--- Dependencies: 884 9
--- Name: fun_view_account_notif_phones(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 324 (class 1255 OID 27276)
+-- Dependencies: 9 891
+-- Name: fun_view_account_notif_phones(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_notif_phones(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean, OUT idnotifcontact integer, OUT idaccount integer, OUT idcontact integer, OUT idphone integer, OUT phone_enable boolean, OUT type integer, OUT idprovider integer, OUT phone text, OUT priority integer, OUT call boolean, OUT sms boolean, OUT smstext text, OUT note text, OUT ts timestamp without time zone) RETURNS SETOF record
@@ -5633,12 +5405,10 @@ END
 $$;
 
 
-ALTER FUNCTION usaga.fun_view_account_notif_phones(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean, OUT idnotifcontact integer, OUT idaccount integer, OUT idcontact integer, OUT idphone integer, OUT phone_enable boolean, OUT type integer, OUT idprovider integer, OUT phone text, OUT priority integer, OUT call boolean, OUT sms boolean, OUT smstext text, OUT note text, OUT ts timestamp without time zone) OWNER TO postgres;
-
 --
--- TOC entry 267 (class 1255 OID 26938)
--- Dependencies: 9 884
--- Name: fun_view_account_notif_phones_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 269 (class 1255 OID 26938)
+-- Dependencies: 9 891
+-- Name: fun_view_account_notif_phones_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_notif_phones_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -5656,12 +5426,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_notif_phones_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 291 (class 1255 OID 27458)
--- Dependencies: 9 884
--- Name: fun_view_account_user_byidaccountidcontact_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 293 (class 1255 OID 27458)
+-- Dependencies: 9 891
+-- Name: fun_view_account_user_byidaccountidcontact_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_user_byidaccountidcontact_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -5692,12 +5460,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_user_byidaccountidcontact_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 328 (class 1255 OID 27278)
--- Dependencies: 884 9
--- Name: fun_view_account_users_trigger_phones_contacts(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 330 (class 1255 OID 27278)
+-- Dependencies: 891 9
+-- Name: fun_view_account_users_trigger_phones_contacts(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_users_trigger_phones_contacts(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean, OUT idaccount integer, OUT idcontact integer, OUT idphone integer, OUT phone_enable boolean, OUT type integer, OUT idprovider integer, OUT phone text, OUT trigger_alarm boolean, OUT fromsms boolean, OUT fromcall boolean, OUT note text) RETURNS SETOF record
@@ -5745,12 +5511,10 @@ END;
 $$;
 
 
-ALTER FUNCTION usaga.fun_view_account_users_trigger_phones_contacts(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean, OUT idaccount integer, OUT idcontact integer, OUT idphone integer, OUT phone_enable boolean, OUT type integer, OUT idprovider integer, OUT phone text, OUT trigger_alarm boolean, OUT fromsms boolean, OUT fromcall boolean, OUT note text) OWNER TO postgres;
-
 --
--- TOC entry 339 (class 1255 OID 27279)
--- Dependencies: 884 9
--- Name: fun_view_account_users_trigger_phones_contacts_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 341 (class 1255 OID 27279)
+-- Dependencies: 9 891
+-- Name: fun_view_account_users_trigger_phones_contacts_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_users_trigger_phones_contacts_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) RETURNS text
@@ -5768,12 +5532,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_users_trigger_phones_contacts_xml(inidaccount integer, inidcontact integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 294 (class 1255 OID 27459)
--- Dependencies: 884 9
--- Name: fun_view_account_users_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 296 (class 1255 OID 27459)
+-- Dependencies: 9 891
+-- Name: fun_view_account_users_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_account_users_xml(inidaccount integer, fieldtextasbase64 boolean) RETURNS text
@@ -5804,12 +5566,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_account_users_xml(inidaccount integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 349 (class 1255 OID 27350)
--- Dependencies: 9 884
--- Name: fun_view_eventtypes_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 351 (class 1255 OID 27350)
+-- Dependencies: 9 891
+-- Name: fun_view_eventtypes_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_eventtypes_xml(fieldtextasbase64 boolean) RETURNS text
@@ -5840,12 +5600,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_eventtypes_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 347 (class 1255 OID 27356)
--- Dependencies: 9 884
--- Name: fun_view_groups_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 349 (class 1255 OID 27356)
+-- Dependencies: 9 891
+-- Name: fun_view_groups_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_groups_xml(fieldtextasbase64 boolean) RETURNS text
@@ -5876,12 +5634,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_groups_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 346 (class 1255 OID 27349)
--- Dependencies: 884 9
--- Name: fun_view_idaccounts_names_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 348 (class 1255 OID 27349)
+-- Dependencies: 9 891
+-- Name: fun_view_idaccounts_names_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_idaccounts_names_xml(fieldtextasbase64 boolean) RETURNS text
@@ -5912,12 +5668,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_idaccounts_names_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 260 (class 1255 OID 27455)
--- Dependencies: 9 884
--- Name: fun_view_idgroup_name_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 262 (class 1255 OID 27455)
+-- Dependencies: 9 891
+-- Name: fun_view_idgroup_name_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_idgroup_name_xml(fieldtextasbase64 boolean) RETURNS text
@@ -5948,12 +5702,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_idgroup_name_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 306 (class 1255 OID 26986)
--- Dependencies: 884 9
--- Name: fun_view_last_events_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 308 (class 1255 OID 26986)
+-- Dependencies: 9 891
+-- Name: fun_view_last_events_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean) RETURNS text
@@ -5984,21 +5736,19 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 2787 (class 0 OID 0)
--- Dependencies: 306
--- Name: FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2806 (class 0 OID 0)
+-- Dependencies: 308
+-- Name: FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean) IS 'Muestra los ultimos eventos registrados en formato xml';
 
 
 --
--- TOC entry 305 (class 1255 OID 26984)
--- Dependencies: 9 884
--- Name: fun_view_notification_templates_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 307 (class 1255 OID 26984)
+-- Dependencies: 9 891
+-- Name: fun_view_notification_templates_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION fun_view_notification_templates_xml(fieldtextasbase64 boolean) RETURNS text
@@ -6029,12 +5779,10 @@ RETURN '<table>'||Retorno||'</table>';
 END;$$;
 
 
-ALTER FUNCTION usaga.fun_view_notification_templates_xml(fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 276 (class 1255 OID 26417)
--- Dependencies: 884 9
--- Name: hearbeat(); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 278 (class 1255 OID 26417)
+-- Dependencies: 9 891
+-- Name: hearbeat(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION hearbeat() RETURNS timestamp without time zone
@@ -6047,21 +5795,19 @@ RETURN now();
 END;$$;
 
 
-ALTER FUNCTION usaga.hearbeat() OWNER TO postgres;
-
 --
--- TOC entry 2788 (class 0 OID 0)
--- Dependencies: 276
--- Name: FUNCTION hearbeat(); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2807 (class 0 OID 0)
+-- Dependencies: 278
+-- Name: FUNCTION hearbeat(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION hearbeat() IS 'Genera un evento de funcionmiento de la receptora';
 
 
 --
--- TOC entry 289 (class 1255 OID 27771)
--- Dependencies: 884 9
--- Name: xxxfun_notification_gen_message_user(integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 291 (class 1255 OID 27771)
+-- Dependencies: 9 891
+-- Name: xxxfun_notification_gen_message_user(integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION xxxfun_notification_gen_message_user(inidaccount integer, inidcontact integer, msg text) RETURNS text
@@ -6150,12 +5896,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.xxxfun_notification_gen_message_user(inidaccount integer, inidcontact integer, msg text) OWNER TO postgres;
-
 --
--- TOC entry 285 (class 1255 OID 27731)
--- Dependencies: 884 9
--- Name: xxxxfun_account_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 287 (class 1255 OID 27731)
+-- Dependencies: 891 9
+-- Name: xxxxfun_account_address_edit_xml(integer, text, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_account_address_edit_xml(inidaccount integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) RETURNS text
@@ -6188,12 +5932,10 @@ RETURN '<table><row><outreturn>'||outreturn::text||'</outreturn><outpgmsg>'||out
 END;$$;
 
 
-ALTER FUNCTION usaga.xxxxfun_account_address_edit_xml(inidaccount integer, inidlocation text, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean) OWNER TO postgres;
-
 --
--- TOC entry 370 (class 1255 OID 27770)
--- Dependencies: 884 9
--- Name: xxxxfun_notification_gen_message_user(text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 372 (class 1255 OID 27770)
+-- Dependencies: 891 9
+-- Name: xxxxfun_notification_gen_message_user(text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION xxxxfun_notification_gen_message_user(msg text) RETURNS text
@@ -6239,12 +5981,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.xxxxfun_notification_gen_message_user(msg text) OWNER TO postgres;
-
 --
--- TOC entry 374 (class 1255 OID 26215)
--- Dependencies: 9 884
--- Name: xxxxxxfun_notification_gen_message(integer, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: postgres
+-- TOC entry 376 (class 1255 OID 26215)
+-- Dependencies: 9 891
+-- Name: xxxxxxfun_notification_gen_message(integer, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
 CREATE FUNCTION xxxxxxfun_notification_gen_message(inidaccount integer, inidevent integer, inideventtype integer, insmstext text) RETURNS text
@@ -6270,12 +6010,10 @@ RETURN Retorno;
 END;$$;
 
 
-ALTER FUNCTION usaga.xxxxxxfun_notification_gen_message(inidaccount integer, inidevent integer, inideventtype integer, insmstext text) OWNER TO postgres;
-
 --
--- TOC entry 2789 (class 0 OID 0)
--- Dependencies: 374
--- Name: FUNCTION xxxxxxfun_notification_gen_message(inidaccount integer, inidevent integer, inideventtype integer, insmstext text); Type: COMMENT; Schema: usaga; Owner: postgres
+-- TOC entry 2808 (class 0 OID 0)
+-- Dependencies: 376
+-- Name: FUNCTION xxxxxxfun_notification_gen_message(inidaccount integer, inidevent integer, inideventtype integer, insmstext text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON FUNCTION xxxxxxfun_notification_gen_message(inidaccount integer, inidevent integer, inideventtype integer, insmstext text) IS 'Genera el texto del mensaje que se enviara como notificcion';
@@ -6285,8 +6023,8 @@ SET search_path = public, pg_catalog;
 
 --
 -- TOC entry 225 (class 1259 OID 27136)
--- Dependencies: 2527 2529 2530 2531 2532 1815 1815 1815 1815 1815 1815 1815 1815 1815 1815 5
--- Name: address; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2534 2536 2537 2538 2539 1822 1822 1822 5 1822 1822 1822 1822 1822 1822 1822
+-- Name: address; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE address (
@@ -6309,48 +6047,46 @@ CREATE TABLE address (
 );
 
 
-ALTER TABLE public.address OWNER TO postgres;
-
 --
--- TOC entry 2790 (class 0 OID 0)
+-- TOC entry 2809 (class 0 OID 0)
 -- Dependencies: 225
--- Name: TABLE address; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE address; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE address IS 'Tabla de Direcciones, contiene todas las direcciones de las diferentes tablas.';
 
 
 --
--- TOC entry 2791 (class 0 OID 0)
+-- TOC entry 2810 (class 0 OID 0)
 -- Dependencies: 225
--- Name: COLUMN address.xxxidlocation; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN address.xxxidlocation; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN address.xxxidlocation IS 'Representa el id formado por pais, ciudad, estado, sector, subsector, obtenido de la view_location';
 
 
 --
--- TOC entry 2792 (class 0 OID 0)
+-- TOC entry 2811 (class 0 OID 0)
 -- Dependencies: 225
--- Name: COLUMN address.field1; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN address.field1; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN address.field1 IS 'Calle principal';
 
 
 --
--- TOC entry 2793 (class 0 OID 0)
+-- TOC entry 2812 (class 0 OID 0)
 -- Dependencies: 225
--- Name: COLUMN address.field2; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN address.field2; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN address.field2 IS 'Calle secundaria';
 
 
 --
--- TOC entry 2794 (class 0 OID 0)
+-- TOC entry 2813 (class 0 OID 0)
 -- Dependencies: 225
--- Name: COLUMN address.field3; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN address.field3; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN address.field3 IS 'Otros detalles';
@@ -6358,8 +6094,8 @@ COMMENT ON COLUMN address.field3 IS 'Otros detalles';
 
 --
 -- TOC entry 177 (class 1259 OID 16622)
--- Dependencies: 2339 2340 2341 5 1817
--- Name: blacklist; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2346 2347 2348 1824 5
+-- Name: blacklist; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE blacklist (
@@ -6371,12 +6107,10 @@ CREATE TABLE blacklist (
 );
 
 
-ALTER TABLE public.blacklist OWNER TO postgres;
-
 --
--- TOC entry 2795 (class 0 OID 0)
+-- TOC entry 2814 (class 0 OID 0)
 -- Dependencies: 177
--- Name: TABLE blacklist; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE blacklist; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE blacklist IS 'Lista de numeros a los que no se enviaran sms.';
@@ -6385,7 +6119,7 @@ COMMENT ON TABLE blacklist IS 'Lista de numeros a los que no se enviaran sms.';
 --
 -- TOC entry 176 (class 1259 OID 16620)
 -- Dependencies: 177 5
--- Name: blacklist_idbl_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: blacklist_idbl_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE blacklist_idbl_seq
@@ -6396,12 +6130,10 @@ CREATE SEQUENCE blacklist_idbl_seq
     CACHE 1;
 
 
-ALTER TABLE public.blacklist_idbl_seq OWNER TO postgres;
-
 --
--- TOC entry 2796 (class 0 OID 0)
+-- TOC entry 2815 (class 0 OID 0)
 -- Dependencies: 176
--- Name: blacklist_idbl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: blacklist_idbl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE blacklist_idbl_seq OWNED BY blacklist.idbl;
@@ -6409,8 +6141,8 @@ ALTER SEQUENCE blacklist_idbl_seq OWNED BY blacklist.idbl;
 
 --
 -- TOC entry 165 (class 1259 OID 16387)
--- Dependencies: 2259 2260 2261 2262 2263 2264 2265 2266 2267 2268 2269 2270 2271 5
--- Name: contacts; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2266 2267 2268 2269 2270 2271 2272 2273 2274 2275 2276 2277 2278 5
+-- Name: contacts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE contacts (
@@ -6432,12 +6164,10 @@ CREATE TABLE contacts (
 );
 
 
-ALTER TABLE public.contacts OWNER TO postgres;
-
 --
--- TOC entry 2797 (class 0 OID 0)
+-- TOC entry 2816 (class 0 OID 0)
 -- Dependencies: 165
--- Name: TABLE contacts; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE contacts; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE contacts IS 'Datos basicos de contactos';
@@ -6446,7 +6176,7 @@ COMMENT ON TABLE contacts IS 'Datos basicos de contactos';
 --
 -- TOC entry 164 (class 1259 OID 16385)
 -- Dependencies: 165 5
--- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE contacts_id_seq
@@ -6457,12 +6187,10 @@ CREATE SEQUENCE contacts_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.contacts_id_seq OWNER TO postgres;
-
 --
--- TOC entry 2798 (class 0 OID 0)
+-- TOC entry 2817 (class 0 OID 0)
 -- Dependencies: 164
--- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE contacts_id_seq OWNED BY contacts.idcontact;
@@ -6470,8 +6198,8 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.idcontact;
 
 --
 -- TOC entry 178 (class 1259 OID 16696)
--- Dependencies: 2342 2343 2344 5
--- Name: currentportsproviders; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2349 2350 2351 5
+-- Name: currentportsproviders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE currentportsproviders (
@@ -6485,66 +6213,64 @@ CREATE TABLE currentportsproviders (
 );
 
 
-ALTER TABLE public.currentportsproviders OWNER TO postgres;
-
 --
--- TOC entry 2799 (class 0 OID 0)
+-- TOC entry 2818 (class 0 OID 0)
 -- Dependencies: 178
--- Name: TABLE currentportsproviders; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE currentportsproviders; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE currentportsproviders IS 'Tabla de relacion entre puertos y proveedor que estan usando actualmente';
 
 
 --
--- TOC entry 2800 (class 0 OID 0)
+-- TOC entry 2819 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.idport; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.idport; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.idport IS 'IdPort, dato proveniente de la tabla serialport de usmsd.sqlite';
 
 
 --
--- TOC entry 2801 (class 0 OID 0)
+-- TOC entry 2820 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.port; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.port; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.port IS 'Dato proveniente de la tabla serialport de usmsd.sqlite';
 
 
 --
--- TOC entry 2802 (class 0 OID 0)
+-- TOC entry 2821 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.cimi; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.cimi; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.cimi IS 'Dato proveniente del modem';
 
 
 --
--- TOC entry 2803 (class 0 OID 0)
+-- TOC entry 2822 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.imei; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.imei; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.imei IS 'Dato proveniente del modem';
 
 
 --
--- TOC entry 2804 (class 0 OID 0)
+-- TOC entry 2823 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.idprovider; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.idprovider; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.idprovider IS 'Dato proveniente de la tabla provider usndo como referencia el campo cimi para obtenerlo.';
 
 
 --
--- TOC entry 2805 (class 0 OID 0)
+-- TOC entry 2824 (class 0 OID 0)
 -- Dependencies: 178
--- Name: COLUMN currentportsproviders.lastupdate; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN currentportsproviders.lastupdate; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN currentportsproviders.lastupdate IS 'Fecha de la ultima actualizacion. Si este campo exede de 2 minuto en relacion a la fecha actual deberia eliminarse.';
@@ -6552,8 +6278,8 @@ COMMENT ON COLUMN currentportsproviders.lastupdate IS 'Fecha de la ultima actual
 
 --
 -- TOC entry 182 (class 1259 OID 16833)
--- Dependencies: 2352 2353 2354 2355 2356 2357 2358 2359 2360 2361 2362 5
--- Name: incomingcalls; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2359 2360 2361 2362 2363 2364 2365 2366 2367 2368 2369 5
+-- Name: incomingcalls; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE incomingcalls (
@@ -6574,39 +6300,37 @@ CREATE TABLE incomingcalls (
 );
 
 
-ALTER TABLE public.incomingcalls OWNER TO postgres;
-
 --
--- TOC entry 2806 (class 0 OID 0)
+-- TOC entry 2825 (class 0 OID 0)
 -- Dependencies: 182
--- Name: TABLE incomingcalls; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE incomingcalls; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE incomingcalls IS 'Registro de llamadas entrantes';
 
 
 --
--- TOC entry 2807 (class 0 OID 0)
+-- TOC entry 2826 (class 0 OID 0)
 -- Dependencies: 182
--- Name: COLUMN incomingcalls.datecall; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN incomingcalls.datecall; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN incomingcalls.datecall IS 'Fecha de recepcion de la llamada.';
 
 
 --
--- TOC entry 2808 (class 0 OID 0)
+-- TOC entry 2827 (class 0 OID 0)
 -- Dependencies: 182
--- Name: COLUMN incomingcalls.idport; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN incomingcalls.idport; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN incomingcalls.idport IS 'Idport por el cual se recibio la llamada.';
 
 
 --
--- TOC entry 2809 (class 0 OID 0)
+-- TOC entry 2828 (class 0 OID 0)
 -- Dependencies: 182
--- Name: COLUMN incomingcalls.callaction; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN incomingcalls.callaction; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN incomingcalls.callaction IS 'Accion tomada ante esa llamada: ignorada, rechazada, contestada';
@@ -6615,7 +6339,7 @@ COMMENT ON COLUMN incomingcalls.callaction IS 'Accion tomada ante esa llamada: i
 --
 -- TOC entry 181 (class 1259 OID 16831)
 -- Dependencies: 5 182
--- Name: incomingcalls_idincall_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: incomingcalls_idincall_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE incomingcalls_idincall_seq
@@ -6626,12 +6350,10 @@ CREATE SEQUENCE incomingcalls_idincall_seq
     CACHE 1;
 
 
-ALTER TABLE public.incomingcalls_idincall_seq OWNER TO postgres;
-
 --
--- TOC entry 2810 (class 0 OID 0)
+-- TOC entry 2829 (class 0 OID 0)
 -- Dependencies: 181
--- Name: incomingcalls_idincall_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: incomingcalls_idincall_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE incomingcalls_idincall_seq OWNED BY incomingcalls.idincall;
@@ -6640,7 +6362,7 @@ ALTER SEQUENCE incomingcalls_idincall_seq OWNED BY incomingcalls.idincall;
 --
 -- TOC entry 224 (class 1259 OID 27134)
 -- Dependencies: 225 5
--- Name: loc_level1_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: loc_level1_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level1_seq
@@ -6651,12 +6373,10 @@ CREATE SEQUENCE loc_level1_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level1_seq OWNER TO postgres;
-
 --
--- TOC entry 2811 (class 0 OID 0)
+-- TOC entry 2830 (class 0 OID 0)
 -- Dependencies: 224
--- Name: loc_level1_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level1_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level1_seq OWNED BY address.idaddress;
@@ -6664,8 +6384,8 @@ ALTER SEQUENCE loc_level1_seq OWNED BY address.idaddress;
 
 --
 -- TOC entry 207 (class 1259 OID 26134)
--- Dependencies: 2497 2498 2499 2500 5
--- Name: location_level1; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2504 2505 2506 2507 5
+-- Name: location_level1; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level1 (
@@ -6676,12 +6396,10 @@ CREATE TABLE location_level1 (
 );
 
 
-ALTER TABLE public.location_level1 OWNER TO postgres;
-
 --
--- TOC entry 2812 (class 0 OID 0)
+-- TOC entry 2831 (class 0 OID 0)
 -- Dependencies: 207
--- Name: TABLE location_level1; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE location_level1; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE location_level1 IS 'Nivel 1.
@@ -6690,8 +6408,8 @@ Usarlo preferentemente para el pais';
 
 --
 -- TOC entry 206 (class 1259 OID 26132)
--- Dependencies: 207 5
--- Name: loc_level5_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 5 207
+-- Name: loc_level5_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level5_seq
@@ -6702,12 +6420,10 @@ CREATE SEQUENCE loc_level5_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level5_seq OWNER TO postgres;
-
 --
--- TOC entry 2813 (class 0 OID 0)
+-- TOC entry 2832 (class 0 OID 0)
 -- Dependencies: 206
--- Name: loc_level5_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level5_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level5_seq OWNED BY location_level1.idl1;
@@ -6715,8 +6431,8 @@ ALTER SEQUENCE loc_level5_seq OWNED BY location_level1.idl1;
 
 --
 -- TOC entry 215 (class 1259 OID 26237)
--- Dependencies: 2513 2514 2515 5 1815 1815
--- Name: location_level5; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2520 2521 2522 1822 1822 5
+-- Name: location_level5; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level5 (
@@ -6728,12 +6444,10 @@ CREATE TABLE location_level5 (
 );
 
 
-ALTER TABLE public.location_level5 OWNER TO postgres;
-
 --
 -- TOC entry 214 (class 1259 OID 26235)
--- Dependencies: 5 215
--- Name: loc_level2_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 215 5
+-- Name: loc_level2_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level2_seq
@@ -6744,12 +6458,10 @@ CREATE SEQUENCE loc_level2_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level2_seq OWNER TO postgres;
-
 --
--- TOC entry 2814 (class 0 OID 0)
+-- TOC entry 2833 (class 0 OID 0)
 -- Dependencies: 214
--- Name: loc_level2_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level2_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level2_seq OWNED BY location_level5.idl5;
@@ -6757,8 +6469,8 @@ ALTER SEQUENCE loc_level2_seq OWNED BY location_level5.idl5;
 
 --
 -- TOC entry 209 (class 1259 OID 26156)
--- Dependencies: 2501 2502 2503 2504 5
--- Name: location_level2; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2508 2509 2510 2511 5
+-- Name: location_level2; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level2 (
@@ -6770,12 +6482,10 @@ CREATE TABLE location_level2 (
 );
 
 
-ALTER TABLE public.location_level2 OWNER TO postgres;
-
 --
--- TOC entry 2815 (class 0 OID 0)
+-- TOC entry 2834 (class 0 OID 0)
 -- Dependencies: 209
--- Name: TABLE location_level2; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE location_level2; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE location_level2 IS 'Estados o provincias';
@@ -6783,8 +6493,8 @@ COMMENT ON TABLE location_level2 IS 'Estados o provincias';
 
 --
 -- TOC entry 208 (class 1259 OID 26154)
--- Dependencies: 209 5
--- Name: loc_level6_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 5 209
+-- Name: loc_level6_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level6_seq
@@ -6795,12 +6505,10 @@ CREATE SEQUENCE loc_level6_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level6_seq OWNER TO postgres;
-
 --
--- TOC entry 2816 (class 0 OID 0)
+-- TOC entry 2835 (class 0 OID 0)
 -- Dependencies: 208
--- Name: loc_level6_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level6_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level6_seq OWNED BY location_level2.idl2;
@@ -6808,8 +6516,8 @@ ALTER SEQUENCE loc_level6_seq OWNED BY location_level2.idl2;
 
 --
 -- TOC entry 217 (class 1259 OID 26257)
--- Dependencies: 2516 2517 2518 1815 5 1817
--- Name: location_level6; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2523 2524 2525 1822 5 1824
+-- Name: location_level6; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level6 (
@@ -6821,12 +6529,10 @@ CREATE TABLE location_level6 (
 );
 
 
-ALTER TABLE public.location_level6 OWNER TO postgres;
-
 --
 -- TOC entry 216 (class 1259 OID 26255)
 -- Dependencies: 5 217
--- Name: loc_level3_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: loc_level3_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level3_seq
@@ -6837,12 +6543,10 @@ CREATE SEQUENCE loc_level3_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level3_seq OWNER TO postgres;
-
 --
--- TOC entry 2817 (class 0 OID 0)
+-- TOC entry 2836 (class 0 OID 0)
 -- Dependencies: 216
--- Name: loc_level3_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level3_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level3_seq OWNED BY location_level6.idl6;
@@ -6850,8 +6554,8 @@ ALTER SEQUENCE loc_level3_seq OWNED BY location_level6.idl6;
 
 --
 -- TOC entry 211 (class 1259 OID 26177)
--- Dependencies: 2505 2506 2507 1817 5
--- Name: location_level4; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2512 2513 2514 5 1824
+-- Name: location_level4; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level4 (
@@ -6863,12 +6567,10 @@ CREATE TABLE location_level4 (
 );
 
 
-ALTER TABLE public.location_level4 OWNER TO postgres;
-
 --
 -- TOC entry 210 (class 1259 OID 26175)
--- Dependencies: 5 211
--- Name: loc_level4_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 211 5
+-- Name: loc_level4_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE loc_level4_seq
@@ -6879,12 +6581,10 @@ CREATE SEQUENCE loc_level4_seq
     CACHE 1;
 
 
-ALTER TABLE public.loc_level4_seq OWNER TO postgres;
-
 --
--- TOC entry 2818 (class 0 OID 0)
+-- TOC entry 2837 (class 0 OID 0)
 -- Dependencies: 210
--- Name: loc_level4_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: loc_level4_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE loc_level4_seq OWNED BY location_level4.idl4;
@@ -6892,8 +6592,8 @@ ALTER SEQUENCE loc_level4_seq OWNED BY location_level4.idl4;
 
 --
 -- TOC entry 233 (class 1259 OID 27498)
--- Dependencies: 2557 2558 2559 2560 5
--- Name: location_level3; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2564 2565 2566 2567 5
+-- Name: location_level3; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE location_level3 (
@@ -6905,12 +6605,10 @@ CREATE TABLE location_level3 (
 );
 
 
-ALTER TABLE public.location_level3 OWNER TO postgres;
-
 --
--- TOC entry 2819 (class 0 OID 0)
+-- TOC entry 2838 (class 0 OID 0)
 -- Dependencies: 233
--- Name: TABLE location_level3; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE location_level3; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE location_level3 IS 'Estados o provincias';
@@ -6918,8 +6616,8 @@ COMMENT ON TABLE location_level3 IS 'Estados o provincias';
 
 --
 -- TOC entry 200 (class 1259 OID 17582)
--- Dependencies: 2444 2445 2446 2447 2448 5 1817 1817 1817
--- Name: modem; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2451 2452 2453 2454 2455 5 1824 1824 1824
+-- Name: modem; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE modem (
@@ -6933,12 +6631,10 @@ CREATE TABLE modem (
 );
 
 
-ALTER TABLE public.modem OWNER TO postgres;
-
 --
--- TOC entry 2820 (class 0 OID 0)
+-- TOC entry 2839 (class 0 OID 0)
 -- Dependencies: 200
--- Name: TABLE modem; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE modem; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE modem IS 'Modems que han sido automaticamente registrados por el sistema';
@@ -6947,7 +6643,7 @@ COMMENT ON TABLE modem IS 'Modems que han sido automaticamente registrados por e
 --
 -- TOC entry 199 (class 1259 OID 17580)
 -- Dependencies: 200 5
--- Name: modem_idmodem_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: modem_idmodem_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE modem_idmodem_seq
@@ -6958,12 +6654,10 @@ CREATE SEQUENCE modem_idmodem_seq
     CACHE 1;
 
 
-ALTER TABLE public.modem_idmodem_seq OWNER TO postgres;
-
 --
--- TOC entry 2821 (class 0 OID 0)
+-- TOC entry 2840 (class 0 OID 0)
 -- Dependencies: 199
--- Name: modem_idmodem_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: modem_idmodem_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE modem_idmodem_seq OWNED BY modem.idmodem;
@@ -6971,8 +6665,8 @@ ALTER SEQUENCE modem_idmodem_seq OWNED BY modem.idmodem;
 
 --
 -- TOC entry 167 (class 1259 OID 16423)
--- Dependencies: 2273 2274 2275 2276 2277 2278 2279 2280 2281 2282 5
--- Name: phones; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2280 2281 2282 2283 2284 2285 2286 2287 2288 2289 5
+-- Name: phones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE phones (
@@ -6991,21 +6685,19 @@ CREATE TABLE phones (
 );
 
 
-ALTER TABLE public.phones OWNER TO postgres;
-
 --
--- TOC entry 2822 (class 0 OID 0)
+-- TOC entry 2841 (class 0 OID 0)
 -- Dependencies: 167
--- Name: TABLE phones; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE phones; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE phones IS 'Numeros telefonicos de contactos.';
 
 
 --
--- TOC entry 2823 (class 0 OID 0)
+-- TOC entry 2842 (class 0 OID 0)
 -- Dependencies: 167
--- Name: COLUMN phones.typephone; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN phones.typephone; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN phones.typephone IS '0: No especificado
@@ -7016,7 +6708,7 @@ COMMENT ON COLUMN phones.typephone IS '0: No especificado
 --
 -- TOC entry 166 (class 1259 OID 16421)
 -- Dependencies: 5 167
--- Name: phones_idphone_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: phones_idphone_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE phones_idphone_seq
@@ -7027,12 +6719,10 @@ CREATE SEQUENCE phones_idphone_seq
     CACHE 1;
 
 
-ALTER TABLE public.phones_idphone_seq OWNER TO postgres;
-
 --
--- TOC entry 2824 (class 0 OID 0)
+-- TOC entry 2843 (class 0 OID 0)
 -- Dependencies: 166
--- Name: phones_idphone_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: phones_idphone_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE phones_idphone_seq OWNED BY phones.idphone;
@@ -7040,8 +6730,8 @@ ALTER SEQUENCE phones_idphone_seq OWNED BY phones.idphone;
 
 --
 -- TOC entry 169 (class 1259 OID 16452)
--- Dependencies: 2284 2285 2286 2287 2288 5
--- Name: provider; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2291 2292 2293 2294 2295 5
+-- Name: provider; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE provider (
@@ -7054,30 +6744,28 @@ CREATE TABLE provider (
 );
 
 
-ALTER TABLE public.provider OWNER TO postgres;
-
 --
--- TOC entry 2825 (class 0 OID 0)
+-- TOC entry 2844 (class 0 OID 0)
 -- Dependencies: 169
--- Name: TABLE provider; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE provider; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE provider IS 'Proveedores de telefonia';
 
 
 --
--- TOC entry 2826 (class 0 OID 0)
+-- TOC entry 2845 (class 0 OID 0)
 -- Dependencies: 169
--- Name: COLUMN provider.cimi; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN provider.cimi; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN provider.cimi IS 'Obtiene desde el modem con el comando AT+CIMI, numero de identificacion inico de cada proveedor';
 
 
 --
--- TOC entry 2827 (class 0 OID 0)
+-- TOC entry 2846 (class 0 OID 0)
 -- Dependencies: 169
--- Name: COLUMN provider.name; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN provider.name; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN provider.name IS 'Nombre del proveedor';
@@ -7086,7 +6774,7 @@ COMMENT ON COLUMN provider.name IS 'Nombre del proveedor';
 --
 -- TOC entry 168 (class 1259 OID 16450)
 -- Dependencies: 5 169
--- Name: provider_idprovider_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: provider_idprovider_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE provider_idprovider_seq
@@ -7097,21 +6785,150 @@ CREATE SEQUENCE provider_idprovider_seq
     CACHE 1;
 
 
-ALTER TABLE public.provider_idprovider_seq OWNER TO postgres;
-
 --
--- TOC entry 2828 (class 0 OID 0)
+-- TOC entry 2847 (class 0 OID 0)
 -- Dependencies: 168
--- Name: provider_idprovider_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: provider_idprovider_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE provider_idprovider_seq OWNED BY provider.idprovider;
 
 
 --
+-- TOC entry 238 (class 1259 OID 27815)
+-- Dependencies: 2569 2570 2571 2572 2573 2574 5
+-- Name: sim; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sim (
+    idsim bigint NOT NULL,
+    idprovider integer,
+    enable boolean DEFAULT true NOT NULL,
+    phone text,
+    smsout_request_reports boolean,
+    smsout_retryonfail integer DEFAULT 3 NOT NULL,
+    smsout_max_length integer DEFAULT 1 NOT NULL,
+    smsout_max_lifetime integer DEFAULT 10 NOT NULL,
+    smsout_enabled_other_providers boolean DEFAULT false NOT NULL,
+    idmodem integer,
+    on_incommingcall integer DEFAULT 0 NOT NULL
+);
+
+
+--
+-- TOC entry 2848 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: TABLE sim; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE sim IS 'Lista de tarjetas SIM GSM, para poder identificar cada tarjeta SIM en el sistema debe tener registrado un contacto con nombre usms, en el numero telefonico debe constar en numero telefonico de esa SIM. 
+En los campos de esta tabla tenemos datos que ingresar, el proveedor al que pertenece esa SIM es importante el sistema.';
+
+
+--
+-- TOC entry 2849 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.enable; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.enable IS 'Habilitado el uso de esta SIM';
+
+
+--
+-- TOC entry 2850 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.phone; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.phone IS 'Numero telefonico de esta sim, este campo no es editable, usms lo obtiene de contacto almacenado en la SIM';
+
+
+--
+-- TOC entry 2851 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.smsout_request_reports; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.smsout_request_reports IS 'Solicitar siempre reporte de entrega de sms enviados';
+
+
+--
+-- TOC entry 2852 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.smsout_retryonfail; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.smsout_retryonfail IS 'Numero maximo de intentos al enviar un sms';
+
+
+--
+-- TOC entry 2853 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.smsout_max_length; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.smsout_max_length IS 'Longitud maxima de mensajes en que un texto largo puede dividirse.  Si el texto exede esta cantidad el resto del mensaje será ignorado.';
+
+
+--
+-- TOC entry 2854 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.smsout_max_lifetime; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.smsout_max_lifetime IS 'Tiempo maximo de vida del mensaje: Si exede este tiempo y el mensaje no pudo ser enviado se lo marcará como caducado o expirado.
+Tiempo en minutos.';
+
+
+--
+-- TOC entry 2855 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.smsout_enabled_other_providers; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.smsout_enabled_other_providers IS 'Habilita el uso de esta SIM para enviar mensajes a otras operadoras.';
+
+
+--
+-- TOC entry 2856 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: COLUMN sim.on_incommingcall; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN sim.on_incommingcall IS 'Accion a tomar en caso de recibir una llamada entrante.
+0 = Ignorar
+1 = Responder
+2 = Rechazar
+ ';
+
+
+--
+-- TOC entry 237 (class 1259 OID 27813)
+-- Dependencies: 238 5
+-- Name: sim_idsim_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sim_idsim_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2857 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: sim_idsim_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sim_idsim_seq OWNED BY sim.idsim;
+
+
+--
 -- TOC entry 171 (class 1259 OID 16522)
--- Dependencies: 2290 2291 2292 2293 2294 2295 2296 2297 2298 2299 2300 2301 2302 2303 2304 1817 5 1817
--- Name: smsin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2297 2298 2299 2300 2301 2302 2303 2304 2305 2306 2307 2308 2309 2310 2311 1824 5 1824
+-- Name: smsin; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smsin (
@@ -7134,12 +6951,10 @@ CREATE TABLE smsin (
 );
 
 
-ALTER TABLE public.smsin OWNER TO postgres;
-
 --
--- TOC entry 2829 (class 0 OID 0)
+-- TOC entry 2858 (class 0 OID 0)
 -- Dependencies: 171
--- Name: TABLE smsin; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE smsin; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE smsin IS 'Tabla de sms entrantes';
@@ -7147,8 +6962,8 @@ COMMENT ON TABLE smsin IS 'Tabla de sms entrantes';
 
 --
 -- TOC entry 229 (class 1259 OID 27197)
--- Dependencies: 2546 2547 2548 2549 2550 2551 2552 2553 2554 2555 2556 5
--- Name: smsin_consumer; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2553 2554 2555 2556 2557 2558 2559 2560 2561 2562 2563 5
+-- Name: smsin_consumer; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smsin_consumer (
@@ -7167,21 +6982,19 @@ CREATE TABLE smsin_consumer (
 );
 
 
-ALTER TABLE public.smsin_consumer OWNER TO postgres;
-
 --
--- TOC entry 2830 (class 0 OID 0)
+-- TOC entry 2859 (class 0 OID 0)
 -- Dependencies: 229
--- Name: TABLE smsin_consumer; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE smsin_consumer; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE smsin_consumer IS 'Tabla con los flags (aplicaciones que consumen el sms)';
 
 
 --
--- TOC entry 2831 (class 0 OID 0)
+-- TOC entry 2860 (class 0 OID 0)
 -- Dependencies: 229
--- Name: COLUMN smsin_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsin_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsin_consumer.dateprocessf1 IS 'Date Process f1';
@@ -7190,7 +7003,7 @@ COMMENT ON COLUMN smsin_consumer.dateprocessf1 IS 'Date Process f1';
 --
 -- TOC entry 228 (class 1259 OID 27195)
 -- Dependencies: 229 5
--- Name: smsin_consumer_idsmsinf_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: smsin_consumer_idsmsinf_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smsin_consumer_idsmsinf_seq
@@ -7201,12 +7014,10 @@ CREATE SEQUENCE smsin_consumer_idsmsinf_seq
     CACHE 1;
 
 
-ALTER TABLE public.smsin_consumer_idsmsinf_seq OWNER TO postgres;
-
 --
--- TOC entry 2832 (class 0 OID 0)
+-- TOC entry 2861 (class 0 OID 0)
 -- Dependencies: 228
--- Name: smsin_consumer_idsmsinf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: smsin_consumer_idsmsinf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsin_consumer_idsmsinf_seq OWNED BY smsin_consumer.idsmsinf;
@@ -7214,8 +7025,8 @@ ALTER SEQUENCE smsin_consumer_idsmsinf_seq OWNED BY smsin_consumer.idsmsinf;
 
 --
 -- TOC entry 170 (class 1259 OID 16520)
--- Dependencies: 171 5
--- Name: smsin_idsmsin_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 5 171
+-- Name: smsin_idsmsin_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smsin_idsmsin_seq
@@ -7226,12 +7037,10 @@ CREATE SEQUENCE smsin_idsmsin_seq
     CACHE 1;
 
 
-ALTER TABLE public.smsin_idsmsin_seq OWNER TO postgres;
-
 --
--- TOC entry 2833 (class 0 OID 0)
+-- TOC entry 2862 (class 0 OID 0)
 -- Dependencies: 170
--- Name: smsin_idsmsin_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: smsin_idsmsin_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsin_idsmsin_seq OWNED BY smsin.idsmsin;
@@ -7239,8 +7048,8 @@ ALTER SEQUENCE smsin_idsmsin_seq OWNED BY smsin.idsmsin;
 
 --
 -- TOC entry 227 (class 1259 OID 27173)
--- Dependencies: 2533 2535 2536 2537 2538 2539 2540 2541 2542 2543 2544 5
--- Name: smsout_consumer; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2540 2542 2543 2544 2545 2546 2547 2548 2549 2550 2551 5
+-- Name: smsout_consumer; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smsout_consumer (
@@ -7259,21 +7068,19 @@ CREATE TABLE smsout_consumer (
 );
 
 
-ALTER TABLE public.smsout_consumer OWNER TO postgres;
-
 --
--- TOC entry 2834 (class 0 OID 0)
+-- TOC entry 2863 (class 0 OID 0)
 -- Dependencies: 227
--- Name: TABLE smsout_consumer; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE smsout_consumer; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE smsout_consumer IS 'Tabla con los flags (aplicaciones que consumen el sms)';
 
 
 --
--- TOC entry 2835 (class 0 OID 0)
+-- TOC entry 2864 (class 0 OID 0)
 -- Dependencies: 227
--- Name: COLUMN smsout_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN smsout_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN smsout_consumer.dateprocessf1 IS 'Date Process f1';
@@ -7281,8 +7088,8 @@ COMMENT ON COLUMN smsout_consumer.dateprocessf1 IS 'Date Process f1';
 
 --
 -- TOC entry 226 (class 1259 OID 27171)
--- Dependencies: 227 5
--- Name: smsout_consumer_idsmsoutf_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Dependencies: 5 227
+-- Name: smsout_consumer_idsmsoutf_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smsout_consumer_idsmsoutf_seq
@@ -7293,12 +7100,10 @@ CREATE SEQUENCE smsout_consumer_idsmsoutf_seq
     CACHE 1;
 
 
-ALTER TABLE public.smsout_consumer_idsmsoutf_seq OWNER TO postgres;
-
 --
--- TOC entry 2836 (class 0 OID 0)
+-- TOC entry 2865 (class 0 OID 0)
 -- Dependencies: 226
--- Name: smsout_consumer_idsmsoutf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: smsout_consumer_idsmsoutf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsout_consumer_idsmsoutf_seq OWNED BY smsout_consumer.idsmsoutf;
@@ -7307,7 +7112,7 @@ ALTER SEQUENCE smsout_consumer_idsmsoutf_seq OWNED BY smsout_consumer.idsmsoutf;
 --
 -- TOC entry 172 (class 1259 OID 16577)
 -- Dependencies: 5 173
--- Name: smsout_idsmsout_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: smsout_idsmsout_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smsout_idsmsout_seq
@@ -7318,12 +7123,10 @@ CREATE SEQUENCE smsout_idsmsout_seq
     CACHE 1;
 
 
-ALTER TABLE public.smsout_idsmsout_seq OWNER TO postgres;
-
 --
--- TOC entry 2837 (class 0 OID 0)
+-- TOC entry 2866 (class 0 OID 0)
 -- Dependencies: 172
--- Name: smsout_idsmsout_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: smsout_idsmsout_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsout_idsmsout_seq OWNED BY smsout.idsmsout;
@@ -7332,7 +7135,7 @@ ALTER SEQUENCE smsout_idsmsout_seq OWNED BY smsout.idsmsout;
 --
 -- TOC entry 179 (class 1259 OID 16743)
 -- Dependencies: 180 5
--- Name: smsoutoptions_idsmsoutopt_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: smsoutoptions_idsmsoutopt_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smsoutoptions_idsmsoutopt_seq
@@ -7343,12 +7146,10 @@ CREATE SEQUENCE smsoutoptions_idsmsoutopt_seq
     CACHE 1;
 
 
-ALTER TABLE public.smsoutoptions_idsmsoutopt_seq OWNER TO postgres;
-
 --
--- TOC entry 2838 (class 0 OID 0)
+-- TOC entry 2867 (class 0 OID 0)
 -- Dependencies: 179
--- Name: smsoutoptions_idsmsoutopt_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: smsoutoptions_idsmsoutopt_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsoutoptions_idsmsoutopt_seq OWNED BY smsoutoptions.idsmsoutopt;
@@ -7356,68 +7157,58 @@ ALTER SEQUENCE smsoutoptions_idsmsoutopt_seq OWNED BY smsoutoptions.idsmsoutopt;
 
 --
 -- TOC entry 232 (class 1259 OID 27461)
--- Dependencies: 2254 5
--- Name: view_callin; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2261 5
+-- Name: view_callin; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW view_callin AS
     SELECT incomingcalls.idincall, incomingcalls.datecall, incomingcalls.idport, incomingcalls.callaction, incomingcalls.idphone, incomingcalls.phone, incomingcalls.flag1, incomingcalls.flag2, incomingcalls.flag3, incomingcalls.flag4, incomingcalls.flag5, phones.idcontact, phones.enable, phones.phone AS phone_phone, phones.typephone AS type, phones.idprovider FROM incomingcalls, phones WHERE (incomingcalls.idphone = phones.idphone);
 
 
-ALTER TABLE public.view_callin OWNER TO postgres;
-
 --
 -- TOC entry 230 (class 1259 OID 27244)
--- Dependencies: 2252 5
--- Name: view_contacts_phones; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2259 5
+-- Name: view_contacts_phones; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW view_contacts_phones AS
     SELECT contacts.idcontact, contacts.enable AS contact_enable, contacts.title, contacts.firstname, contacts.lastname, contacts.gender, contacts.birthday, contacts.typeofid, contacts.identification, contacts.web, contacts.email1, contacts.email2, phones.idphone, phones.enable AS phone_enable, phones.typephone AS type, phones.idprovider, phones.ubiphone, phones.phone, phones.phone_ext, phones.idaddresshhhhhhh AS idaddress, phones.note FROM (contacts LEFT JOIN phones ON ((contacts.idcontact = phones.idcontact)));
 
 
-ALTER TABLE public.view_contacts_phones OWNER TO postgres;
-
 --
 -- TOC entry 234 (class 1259 OID 27738)
--- Dependencies: 2255 1815 1817 1815 1815 1817 5
--- Name: view_locations; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2262 5 1824 1822 1822 1824 1822
+-- Name: view_locations; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW view_locations AS
     SELECT l1.idl1, l1.name AS l1name, l1.code AS l1code, l2.idl2, l2.name AS l2name, l2.code AS l2code, l3.idl3, l3.name AS l3name, l3.code AS l3code, l4.idl4, l4.name AS l4name, l4.code AS l4code, l5.idl5, l5.name AS l5name, l5.code AS l5code, l6.idl6, l6.name AS l6name, l6.code AS l6code FROM (((((location_level1 l1 LEFT JOIN location_level2 l2 ON ((l1.idl1 = l2.idl1))) LEFT JOIN location_level3 l3 ON ((l2.idl2 = l3.idl2))) LEFT JOIN location_level4 l4 ON ((l3.idl3 = l4.idl3))) LEFT JOIN location_level5 l5 ON ((l4.idl4 = l5.idl4))) LEFT JOIN location_level6 l6 ON ((l5.idl5 = l6.idl5)));
 
 
-ALTER TABLE public.view_locations OWNER TO postgres;
-
 --
 -- TOC entry 235 (class 1259 OID 27747)
--- Dependencies: 2256 5 1815 1817 1815 1815 1817
--- Name: view_locations_full; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2263 1822 5 1822 1824 1822 1824
+-- Name: view_locations_full; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW view_locations_full AS
     ((((SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, view_locations.idl2, view_locations.l2name, view_locations.l2code, view_locations.idl3, view_locations.l3name, view_locations.l3code, view_locations.idl4, view_locations.l4name, view_locations.l4code, view_locations.idl5, view_locations.l5name, view_locations.l5code, view_locations.idl6, view_locations.l6name, view_locations.l6code FROM view_locations UNION SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, NULL::bigint AS idl2, NULL::text AS l2name, NULL::text AS l2code, NULL::bigint AS idl3, NULL::text AS l3name, NULL::text AS l3code, NULL::bigint AS idl4, NULL::text AS l4name, NULL::text AS l4code, NULL::bigint AS idl5, NULL::text AS l5name, NULL::text AS l5code, NULL::bigint AS idl6, NULL::text AS l6name, NULL::text AS l6code FROM view_locations WHERE (view_locations.idl1 > 0)) UNION SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, view_locations.idl2, view_locations.l2name, view_locations.l2code, NULL::bigint AS idl3, NULL::text AS l3name, NULL::text AS l3code, NULL::bigint AS idl4, NULL::text AS l4name, NULL::text AS l4code, NULL::bigint AS idl5, NULL::text AS l5name, NULL::text AS l5code, NULL::bigint AS idl6, NULL::text AS l6name, NULL::text AS l6code FROM view_locations WHERE ((view_locations.idl1 > 0) AND (view_locations.idl2 > 0))) UNION SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, view_locations.idl2, view_locations.l2name, view_locations.l2code, view_locations.idl3, view_locations.l3name, view_locations.l3code, NULL::bigint AS idl4, NULL::text AS l4name, NULL::text AS l4code, NULL::bigint AS idl5, NULL::text AS l5name, NULL::text AS l5code, NULL::bigint AS idl6, NULL::text AS l6name, NULL::text AS l6code FROM view_locations WHERE (((view_locations.idl1 > 0) AND (view_locations.idl2 > 0)) AND (view_locations.idl3 > 0))) UNION SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, view_locations.idl2, view_locations.l2name, view_locations.l2code, view_locations.idl3, view_locations.l3name, view_locations.l3code, view_locations.idl4, view_locations.l4name, view_locations.l4code, NULL::bigint AS idl5, NULL::text AS l5name, NULL::text AS l5code, NULL::bigint AS idl6, NULL::text AS l6name, NULL::text AS l6code FROM view_locations WHERE ((((view_locations.idl1 > 0) AND (view_locations.idl2 > 0)) AND (view_locations.idl3 > 0)) AND (view_locations.idl4 > 0))) UNION SELECT view_locations.idl1, view_locations.l1name, view_locations.l1code, view_locations.idl2, view_locations.l2name, view_locations.l2code, view_locations.idl3, view_locations.l3name, view_locations.l3code, view_locations.idl4, view_locations.l4name, view_locations.l4code, view_locations.idl5, view_locations.l5name, view_locations.l5code, NULL::bigint AS idl6, NULL::text AS l6name, NULL::text AS l6code FROM view_locations WHERE (((((view_locations.idl1 > 0) AND (view_locations.idl2 > 0)) AND (view_locations.idl3 > 0)) AND (view_locations.idl4 > 0)) AND (view_locations.idl5 > 0));
 
 
-ALTER TABLE public.view_locations_full OWNER TO postgres;
-
 --
 -- TOC entry 236 (class 1259 OID 27756)
--- Dependencies: 2257 5
--- Name: view_location_idlocation; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2264 5
+-- Name: view_location_idlocation; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW view_location_idlocation AS
     SELECT ((((((COALESCE((view_locations_full.idl1)::text, '0'::text) || COALESCE((view_locations_full.idl2)::text, '0'::text)) || COALESCE((view_locations_full.idl3)::text, '0'::text)) || COALESCE((view_locations_full.idl4)::text, '0'::text)) || COALESCE((view_locations_full.idl5)::text, '0'::text)) || COALESCE((view_locations_full.idl6)::text, '0'::text)))::numeric AS idlocation, view_locations_full.idl1, view_locations_full.idl2, view_locations_full.idl3, view_locations_full.idl4, view_locations_full.idl5, view_locations_full.idl6 FROM view_locations_full;
 
 
-ALTER TABLE public.view_location_idlocation OWNER TO postgres;
-
 --
 -- TOC entry 175 (class 1259 OID 16599)
--- Dependencies: 2335 2336 2337 1817 5
--- Name: whitelist; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Dependencies: 2342 2343 2344 1824 5
+-- Name: whitelist; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE whitelist (
@@ -7429,12 +7220,10 @@ CREATE TABLE whitelist (
 );
 
 
-ALTER TABLE public.whitelist OWNER TO postgres;
-
 --
--- TOC entry 2839 (class 0 OID 0)
+-- TOC entry 2868 (class 0 OID 0)
 -- Dependencies: 175
--- Name: TABLE whitelist; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE whitelist; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON TABLE whitelist IS 'Lista de numeros para envio de sms sin restriccion';
@@ -7443,7 +7232,7 @@ COMMENT ON TABLE whitelist IS 'Lista de numeros para envio de sms sin restriccio
 --
 -- TOC entry 174 (class 1259 OID 16597)
 -- Dependencies: 175 5
--- Name: whitelist_idwl_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: whitelist_idwl_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE whitelist_idwl_seq
@@ -7454,12 +7243,10 @@ CREATE SEQUENCE whitelist_idwl_seq
     CACHE 1;
 
 
-ALTER TABLE public.whitelist_idwl_seq OWNER TO postgres;
-
 --
--- TOC entry 2840 (class 0 OID 0)
+-- TOC entry 2869 (class 0 OID 0)
 -- Dependencies: 174
--- Name: whitelist_idwl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: whitelist_idwl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE whitelist_idwl_seq OWNED BY whitelist.idwl;
@@ -7467,22 +7254,20 @@ ALTER SEQUENCE whitelist_idwl_seq OWNED BY whitelist.idwl;
 
 --
 -- TOC entry 223 (class 1259 OID 27102)
--- Dependencies: 2251 1817 1817 1815 5
--- Name: xxxview_locations; Type: VIEW; Schema: public; Owner: postgres
+-- Dependencies: 2258 1822 1824 5 1824
+-- Name: xxxview_locations; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW xxxview_locations AS
     SELECT countryx.idl1 AS idcountry, countryx.name AS country, countryx.code AS country_code, statesx.idl2 AS idstate, statesx.name AS state, statesx.code AS state_code, cityx.idl4 AS idcity, cityx.name AS city, sectorx.idl5 AS idsector, sectorx.name AS sector, subsectorx.idl6 AS idsubsector, subsectorx.name AS subsector, ((((('1'::text || (COALESCE(countryx.idl1, (0)::bigint))::text) || (COALESCE(statesx.idl2, (0)::bigint))::text) || (COALESCE(cityx.idl4, (0)::bigint))::text) || (COALESCE(sectorx.idl5, (0)::bigint))::text) || COALESCE(subsectorx.idl6, (0)::bigint)) AS idlocation FROM ((((location_level1 countryx LEFT JOIN location_level2 statesx ON ((countryx.idl1 = statesx.idl1))) LEFT JOIN location_level4 cityx ON ((statesx.idl2 = cityx.idl3))) LEFT JOIN location_level5 sectorx ON ((cityx.idl4 = sectorx.idl4))) LEFT JOIN location_level6 subsectorx ON ((sectorx.idl5 = subsectorx.idl5)));
 
 
-ALTER TABLE public.xxxview_locations OWNER TO postgres;
-
 SET search_path = usaga, pg_catalog;
 
 --
 -- TOC entry 184 (class 1259 OID 16976)
--- Dependencies: 2364 2365 2366 2367 2368 2369 2370 2371 9 1817
--- Name: account; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2371 2372 2373 2374 2375 2376 2377 2378 1824 9
+-- Name: account; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account (
@@ -7500,21 +7285,19 @@ CREATE TABLE account (
 );
 
 
-ALTER TABLE usaga.account OWNER TO postgres;
-
 --
--- TOC entry 2841 (class 0 OID 0)
+-- TOC entry 2870 (class 0 OID 0)
 -- Dependencies: 184
--- Name: TABLE account; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account IS 'Cuenta de usuario';
 
 
 --
--- TOC entry 2842 (class 0 OID 0)
+-- TOC entry 2871 (class 0 OID 0)
 -- Dependencies: 184
--- Name: COLUMN account.account; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN account.account; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN account.account IS 'Numero de cuenta en 4 digitos';
@@ -7522,8 +7305,8 @@ COMMENT ON COLUMN account.account IS 'Numero de cuenta en 4 digitos';
 
 --
 -- TOC entry 202 (class 1259 OID 17772)
--- Dependencies: 2471 2472 2473 2474 2475 2476 2477 9 1815
--- Name: account_contacts; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2478 2479 2480 2481 2482 2483 2484 1822 9
+-- Name: account_contacts; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_contacts (
@@ -7537,21 +7320,19 @@ CREATE TABLE account_contacts (
 );
 
 
-ALTER TABLE usaga.account_contacts OWNER TO postgres;
-
 --
--- TOC entry 2843 (class 0 OID 0)
+-- TOC entry 2872 (class 0 OID 0)
 -- Dependencies: 202
--- Name: TABLE account_contacts; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account_contacts; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account_contacts IS 'Usuarios del sistema, tiene acceso al sistema ';
 
 
 --
--- TOC entry 2844 (class 0 OID 0)
+-- TOC entry 2873 (class 0 OID 0)
 -- Dependencies: 202
--- Name: COLUMN account_contacts.prioritycontact; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN account_contacts.prioritycontact; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN account_contacts.prioritycontact IS 'Priordad de comunicar novedad a este contacto';
@@ -7560,7 +7341,7 @@ COMMENT ON COLUMN account_contacts.prioritycontact IS 'Priordad de comunicar nov
 --
 -- TOC entry 183 (class 1259 OID 16974)
 -- Dependencies: 9 184
--- Name: account_idaccount_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Name: account_idaccount_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE account_idaccount_seq
@@ -7571,12 +7352,10 @@ CREATE SEQUENCE account_idaccount_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.account_idaccount_seq OWNER TO postgres;
-
 --
--- TOC entry 2845 (class 0 OID 0)
+-- TOC entry 2874 (class 0 OID 0)
 -- Dependencies: 183
--- Name: account_idaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: account_idaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE account_idaccount_seq OWNED BY account.idaccount;
@@ -7584,8 +7363,8 @@ ALTER SEQUENCE account_idaccount_seq OWNED BY account.idaccount;
 
 --
 -- TOC entry 185 (class 1259 OID 17049)
--- Dependencies: 2372 2373 2374 2375 2376 2377 2378 2379 2380 9
--- Name: account_installationdata; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2379 2380 2381 2382 2383 2384 2385 2386 2387 9
+-- Name: account_installationdata; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_installationdata (
@@ -7601,30 +7380,28 @@ CREATE TABLE account_installationdata (
 );
 
 
-ALTER TABLE usaga.account_installationdata OWNER TO postgres;
-
 --
--- TOC entry 2846 (class 0 OID 0)
+-- TOC entry 2875 (class 0 OID 0)
 -- Dependencies: 185
--- Name: TABLE account_installationdata; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account_installationdata; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account_installationdata IS 'Datos basico acerca de la instalacion del sistema de alarma';
 
 
 --
--- TOC entry 2847 (class 0 OID 0)
+-- TOC entry 2876 (class 0 OID 0)
 -- Dependencies: 185
--- Name: COLUMN account_installationdata.idaccount; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN account_installationdata.idaccount; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN account_installationdata.idaccount IS 'idaccount a la que pertenecen estos datos';
 
 
 --
--- TOC entry 2848 (class 0 OID 0)
+-- TOC entry 2877 (class 0 OID 0)
 -- Dependencies: 185
--- Name: COLUMN account_installationdata.installercode; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN account_installationdata.installercode; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN account_installationdata.installercode IS 'Codigo de instalador del panel de control';
@@ -7632,8 +7409,8 @@ COMMENT ON COLUMN account_installationdata.installercode IS 'Codigo de instalado
 
 --
 -- TOC entry 189 (class 1259 OID 17143)
--- Dependencies: 2388 2389 2390 2391 2392 2393 2394 1817 9
--- Name: xxxaccount_location; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2395 2396 2397 2398 2399 2400 2401 9 1824
+-- Name: xxxaccount_location; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE xxxaccount_location (
@@ -7648,30 +7425,28 @@ CREATE TABLE xxxaccount_location (
 );
 
 
-ALTER TABLE usaga.xxxaccount_location OWNER TO postgres;
-
 --
--- TOC entry 2849 (class 0 OID 0)
+-- TOC entry 2878 (class 0 OID 0)
 -- Dependencies: 189
--- Name: TABLE xxxaccount_location; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE xxxaccount_location; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE xxxaccount_location IS 'Localizacion de la cuenta';
 
 
 --
--- TOC entry 2850 (class 0 OID 0)
+-- TOC entry 2879 (class 0 OID 0)
 -- Dependencies: 189
--- Name: COLUMN xxxaccount_location.geox; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN xxxaccount_location.geox; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN xxxaccount_location.geox IS 'Ubicacion georeferenciada';
 
 
 --
--- TOC entry 2851 (class 0 OID 0)
+-- TOC entry 2880 (class 0 OID 0)
 -- Dependencies: 189
--- Name: COLUMN xxxaccount_location.address; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN xxxaccount_location.address; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN xxxaccount_location.address IS 'Detalle de la direccion, puntos de referencia, etc.';
@@ -7679,8 +7454,8 @@ COMMENT ON COLUMN xxxaccount_location.address IS 'Detalle de la direccion, punto
 
 --
 -- TOC entry 188 (class 1259 OID 17141)
--- Dependencies: 9 189
--- Name: account_location_idlocation_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Dependencies: 189 9
+-- Name: account_location_idlocation_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE account_location_idlocation_seq
@@ -7691,12 +7466,10 @@ CREATE SEQUENCE account_location_idlocation_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.account_location_idlocation_seq OWNER TO postgres;
-
 --
--- TOC entry 2852 (class 0 OID 0)
+-- TOC entry 2881 (class 0 OID 0)
 -- Dependencies: 188
--- Name: account_location_idlocation_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: account_location_idlocation_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE account_location_idlocation_seq OWNED BY xxxaccount_location.idlocation;
@@ -7704,8 +7477,8 @@ ALTER SEQUENCE account_location_idlocation_seq OWNED BY xxxaccount_location.idlo
 
 --
 -- TOC entry 191 (class 1259 OID 17176)
--- Dependencies: 2396 2397 2398 2399 2400 2401 2402 2403 1817 9 1817
--- Name: account_notifications; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2403 2404 2405 2406 2407 2408 2409 2410 1824 9 1824
+-- Name: account_notifications; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_notifications (
@@ -7721,12 +7494,10 @@ CREATE TABLE account_notifications (
 );
 
 
-ALTER TABLE usaga.account_notifications OWNER TO postgres;
-
 --
--- TOC entry 2853 (class 0 OID 0)
+-- TOC entry 2882 (class 0 OID 0)
 -- Dependencies: 191
--- Name: TABLE account_notifications; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account_notifications; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account_notifications IS 'Contactos a donde se enviara las notificaciones en caso de alarma';
@@ -7734,8 +7505,8 @@ COMMENT ON TABLE account_notifications IS 'Contactos a donde se enviara las noti
 
 --
 -- TOC entry 193 (class 1259 OID 17261)
--- Dependencies: 2405 2406 2407 9
--- Name: account_notifications_eventtype; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2412 2413 2414 9
+-- Name: account_notifications_eventtype; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_notifications_eventtype (
@@ -7746,12 +7517,10 @@ CREATE TABLE account_notifications_eventtype (
 );
 
 
-ALTER TABLE usaga.account_notifications_eventtype OWNER TO postgres;
-
 --
--- TOC entry 2854 (class 0 OID 0)
+-- TOC entry 2883 (class 0 OID 0)
 -- Dependencies: 193
--- Name: TABLE account_notifications_eventtype; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account_notifications_eventtype; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account_notifications_eventtype IS 'Tipos de eventos para cada notificacion.
@@ -7760,8 +7529,8 @@ TODO: Verificar llaves unicas';
 
 --
 -- TOC entry 192 (class 1259 OID 17259)
--- Dependencies: 9 193
--- Name: account_notifications_eventtype_idnotifphoneeventtype_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Dependencies: 193 9
+-- Name: account_notifications_eventtype_idnotifphoneeventtype_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq
@@ -7772,12 +7541,10 @@ CREATE SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.account_notifications_eventtype_idnotifphoneeventtype_seq OWNER TO postgres;
-
 --
--- TOC entry 2855 (class 0 OID 0)
+-- TOC entry 2884 (class 0 OID 0)
 -- Dependencies: 192
--- Name: account_notifications_eventtype_idnotifphoneeventtype_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: account_notifications_eventtype_idnotifphoneeventtype_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq OWNED BY account_notifications_eventtype.idnotifphoneeventtype;
@@ -7785,8 +7552,8 @@ ALTER SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq OWNED B
 
 --
 -- TOC entry 221 (class 1259 OID 26445)
--- Dependencies: 2524 2525 2526 9
--- Name: account_notifications_group; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2531 2532 2533 9
+-- Name: account_notifications_group; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_notifications_group (
@@ -7797,12 +7564,10 @@ CREATE TABLE account_notifications_group (
 );
 
 
-ALTER TABLE usaga.account_notifications_group OWNER TO postgres;
-
 --
--- TOC entry 2856 (class 0 OID 0)
+-- TOC entry 2885 (class 0 OID 0)
 -- Dependencies: 221
--- Name: TABLE account_notifications_group; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE account_notifications_group; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE account_notifications_group IS 'Tipos de eventos que se enviaran a los grupos';
@@ -7810,8 +7575,8 @@ COMMENT ON TABLE account_notifications_group IS 'Tipos de eventos que se enviara
 
 --
 -- TOC entry 190 (class 1259 OID 17174)
--- Dependencies: 191 9
--- Name: account_notifications_idnotifaccount_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Dependencies: 9 191
+-- Name: account_notifications_idnotifaccount_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE account_notifications_idnotifaccount_seq
@@ -7822,12 +7587,10 @@ CREATE SEQUENCE account_notifications_idnotifaccount_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.account_notifications_idnotifaccount_seq OWNER TO postgres;
-
 --
--- TOC entry 2857 (class 0 OID 0)
+-- TOC entry 2886 (class 0 OID 0)
 -- Dependencies: 190
--- Name: account_notifications_idnotifaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: account_notifications_idnotifaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE account_notifications_idnotifaccount_seq OWNED BY account_notifications.idnotifaccount;
@@ -7835,8 +7598,8 @@ ALTER SEQUENCE account_notifications_idnotifaccount_seq OWNED BY account_notific
 
 --
 -- TOC entry 204 (class 1259 OID 18107)
--- Dependencies: 2490 2491 2492 2493 2494 2495 2496 9 1817
--- Name: account_phones_trigger_alarm; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2497 2498 2499 2500 2501 2502 2503 1824 9
+-- Name: account_phones_trigger_alarm; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_phones_trigger_alarm (
@@ -7850,12 +7613,10 @@ CREATE TABLE account_phones_trigger_alarm (
 );
 
 
-ALTER TABLE usaga.account_phones_trigger_alarm OWNER TO postgres;
-
 --
 -- TOC entry 203 (class 1259 OID 18087)
--- Dependencies: 2484 2485 2486 2487 2488 202 1815 1817 1817 9
--- Name: account_users; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2491 2492 2493 2494 2495 1824 1824 9 202 1822
+-- Name: account_users; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE account_users (
@@ -7868,12 +7629,10 @@ CREATE TABLE account_users (
 INHERITS (account_contacts);
 
 
-ALTER TABLE usaga.account_users OWNER TO postgres;
-
 --
--- TOC entry 2858 (class 0 OID 0)
+-- TOC entry 2887 (class 0 OID 0)
 -- Dependencies: 203
--- Name: COLUMN account_users.numuser; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN account_users.numuser; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN account_users.numuser IS 'Numero de usuario';
@@ -7881,8 +7640,8 @@ COMMENT ON COLUMN account_users.numuser IS 'Numero de usuario';
 
 --
 -- TOC entry 195 (class 1259 OID 17289)
--- Dependencies: 2408 2409 2410 2411 2412 2413 2414 2415 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 1817 9
--- Name: events; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2415 2416 2417 2418 2419 2420 2421 2422 2424 2425 2426 2427 2428 2429 2430 2431 2432 2433 2434 2435 1824 9
+-- Name: events; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE events (
@@ -7911,12 +7670,10 @@ CREATE TABLE events (
 );
 
 
-ALTER TABLE usaga.events OWNER TO postgres;
-
 --
--- TOC entry 2859 (class 0 OID 0)
+-- TOC entry 2888 (class 0 OID 0)
 -- Dependencies: 195
--- Name: TABLE events; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE events; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE events IS 'Eventos del sistema
@@ -7924,9 +7681,9 @@ TODO: Ver la posibilidad de crear llave unica usando todos los campos';
 
 
 --
--- TOC entry 2860 (class 0 OID 0)
+-- TOC entry 2889 (class 0 OID 0)
 -- Dependencies: 195
--- Name: COLUMN events.dateload; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN events.dateload; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN events.dateload IS 'Fecha de ingreso del evento';
@@ -7934,8 +7691,8 @@ COMMENT ON COLUMN events.dateload IS 'Fecha de ingreso del evento';
 
 --
 -- TOC entry 201 (class 1259 OID 17714)
--- Dependencies: 2468 1817 9 195
--- Name: events_generated_by_calls; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2475 9 1824 195
+-- Name: events_generated_by_calls; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE events_generated_by_calls (
@@ -7944,12 +7701,10 @@ CREATE TABLE events_generated_by_calls (
 INHERITS (events);
 
 
-ALTER TABLE usaga.events_generated_by_calls OWNER TO postgres;
-
 --
--- TOC entry 2861 (class 0 OID 0)
+-- TOC entry 2890 (class 0 OID 0)
 -- Dependencies: 201
--- Name: TABLE events_generated_by_calls; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE events_generated_by_calls; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE events_generated_by_calls IS 'Tabla de eventos generados por llamadas telefonicas.
@@ -7959,7 +7714,7 @@ No permite eventos con misma hora, mismo idphone, etc, no permite eventos repeti
 --
 -- TOC entry 194 (class 1259 OID 17287)
 -- Dependencies: 195 9
--- Name: events_idevent_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Name: events_idevent_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE events_idevent_seq
@@ -7970,12 +7725,10 @@ CREATE SEQUENCE events_idevent_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.events_idevent_seq OWNER TO postgres;
-
 --
--- TOC entry 2862 (class 0 OID 0)
+-- TOC entry 2891 (class 0 OID 0)
 -- Dependencies: 194
--- Name: events_idevent_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: events_idevent_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE events_idevent_seq OWNED BY events.idevent;
@@ -7983,8 +7736,8 @@ ALTER SEQUENCE events_idevent_seq OWNED BY events.idevent;
 
 --
 -- TOC entry 196 (class 1259 OID 17352)
--- Dependencies: 2429 2430 2431 2432 2433 2434 2435 2436 9
--- Name: eventtypes; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2436 2437 2438 2439 2440 2441 2442 2443 9
+-- Name: eventtypes; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE eventtypes (
@@ -7999,21 +7752,19 @@ CREATE TABLE eventtypes (
 );
 
 
-ALTER TABLE usaga.eventtypes OWNER TO postgres;
-
 --
--- TOC entry 2863 (class 0 OID 0)
+-- TOC entry 2892 (class 0 OID 0)
 -- Dependencies: 196
--- Name: TABLE eventtypes; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE eventtypes; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE eventtypes IS 'Tipos de eventos. Enumeracion interna desde OpenSAGA, usar unicamente los que no estan reservados.';
 
 
 --
--- TOC entry 2864 (class 0 OID 0)
+-- TOC entry 2893 (class 0 OID 0)
 -- Dependencies: 196
--- Name: COLUMN eventtypes.name; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: COLUMN eventtypes.name; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON COLUMN eventtypes.name IS 'Nombre del evento';
@@ -8021,8 +7772,8 @@ COMMENT ON COLUMN eventtypes.name IS 'Nombre del evento';
 
 --
 -- TOC entry 220 (class 1259 OID 26381)
--- Dependencies: 2520 2521 2522 2523 9 1817 1817
--- Name: groups; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2527 2528 2529 2530 1824 9 1824
+-- Name: groups; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE groups (
@@ -8034,12 +7785,10 @@ CREATE TABLE groups (
 );
 
 
-ALTER TABLE usaga.groups OWNER TO postgres;
-
 --
 -- TOC entry 219 (class 1259 OID 26379)
 -- Dependencies: 9 220
--- Name: groups_idgroup_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Name: groups_idgroup_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE groups_idgroup_seq
@@ -8050,12 +7799,10 @@ CREATE SEQUENCE groups_idgroup_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.groups_idgroup_seq OWNER TO postgres;
-
 --
--- TOC entry 2865 (class 0 OID 0)
+-- TOC entry 2894 (class 0 OID 0)
 -- Dependencies: 219
--- Name: groups_idgroup_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: groups_idgroup_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE groups_idgroup_seq OWNED BY groups.idgroup;
@@ -8063,8 +7810,8 @@ ALTER SEQUENCE groups_idgroup_seq OWNED BY groups.idgroup;
 
 --
 -- TOC entry 198 (class 1259 OID 17389)
--- Dependencies: 2438 2439 2440 2441 2442 1817 9
--- Name: keywords; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2445 2446 2447 2448 2449 9 1824
+-- Name: keywords; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE keywords (
@@ -8077,12 +7824,10 @@ CREATE TABLE keywords (
 );
 
 
-ALTER TABLE usaga.keywords OWNER TO postgres;
-
 --
--- TOC entry 2866 (class 0 OID 0)
+-- TOC entry 2895 (class 0 OID 0)
 -- Dependencies: 198
--- Name: TABLE keywords; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE keywords; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE keywords IS 'Lista de palabras claves a reconocer en los sms';
@@ -8091,7 +7836,7 @@ COMMENT ON TABLE keywords IS 'Lista de palabras claves a reconocer en los sms';
 --
 -- TOC entry 197 (class 1259 OID 17387)
 -- Dependencies: 198 9
--- Name: keywords_idkeyword_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Name: keywords_idkeyword_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE keywords_idkeyword_seq
@@ -8102,12 +7847,10 @@ CREATE SEQUENCE keywords_idkeyword_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.keywords_idkeyword_seq OWNER TO postgres;
-
 --
--- TOC entry 2867 (class 0 OID 0)
+-- TOC entry 2896 (class 0 OID 0)
 -- Dependencies: 197
--- Name: keywords_idkeyword_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: keywords_idkeyword_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE keywords_idkeyword_seq OWNED BY keywords.idkeyword;
@@ -8115,8 +7858,8 @@ ALTER SEQUENCE keywords_idkeyword_seq OWNED BY keywords.idkeyword;
 
 --
 -- TOC entry 213 (class 1259 OID 26202)
--- Dependencies: 2510 2511 2512 1815 9 1815
--- Name: notification_templates; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2517 2518 2519 1822 9 1822
+-- Name: notification_templates; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE notification_templates (
@@ -8127,12 +7870,10 @@ CREATE TABLE notification_templates (
 );
 
 
-ALTER TABLE usaga.notification_templates OWNER TO postgres;
-
 --
--- TOC entry 2868 (class 0 OID 0)
+-- TOC entry 2897 (class 0 OID 0)
 -- Dependencies: 213
--- Name: TABLE notification_templates; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE notification_templates; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE notification_templates IS 'Plantilla de notificaciones, usa valores predeterminados para las notificaciones.
@@ -8165,8 +7906,8 @@ DATOS DEL EVENTO
 
 --
 -- TOC entry 212 (class 1259 OID 26200)
--- Dependencies: 213 9
--- Name: notification_templates_idnotiftempl_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Dependencies: 9 213
+-- Name: notification_templates_idnotiftempl_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE notification_templates_idnotiftempl_seq
@@ -8177,12 +7918,10 @@ CREATE SEQUENCE notification_templates_idnotiftempl_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.notification_templates_idnotiftempl_seq OWNER TO postgres;
-
 --
--- TOC entry 2869 (class 0 OID 0)
+-- TOC entry 2898 (class 0 OID 0)
 -- Dependencies: 212
--- Name: notification_templates_idnotiftempl_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: notification_templates_idnotiftempl_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE notification_templates_idnotiftempl_seq OWNED BY notification_templates.idnotiftempl;
@@ -8190,8 +7929,8 @@ ALTER SEQUENCE notification_templates_idnotiftempl_seq OWNED BY notification_tem
 
 --
 -- TOC entry 187 (class 1259 OID 17108)
--- Dependencies: 2382 2383 2384 2385 2386 9
--- Name: panelmodel; Type: TABLE; Schema: usaga; Owner: postgres; Tablespace: 
+-- Dependencies: 2389 2390 2391 2392 2393 9
+-- Name: panelmodel; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
 CREATE TABLE panelmodel (
@@ -8204,12 +7943,10 @@ CREATE TABLE panelmodel (
 );
 
 
-ALTER TABLE usaga.panelmodel OWNER TO postgres;
-
 --
--- TOC entry 2870 (class 0 OID 0)
+-- TOC entry 2899 (class 0 OID 0)
 -- Dependencies: 187
--- Name: TABLE panelmodel; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: TABLE panelmodel; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON TABLE panelmodel IS 'Modelos de paneles de control de alarma';
@@ -8217,8 +7954,8 @@ COMMENT ON TABLE panelmodel IS 'Modelos de paneles de control de alarma';
 
 --
 -- TOC entry 186 (class 1259 OID 17106)
--- Dependencies: 9 187
--- Name: panelmodel_idpanelmodel_seq; Type: SEQUENCE; Schema: usaga; Owner: postgres
+-- Dependencies: 187 9
+-- Name: panelmodel_idpanelmodel_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
 CREATE SEQUENCE panelmodel_idpanelmodel_seq
@@ -8229,12 +7966,10 @@ CREATE SEQUENCE panelmodel_idpanelmodel_seq
     CACHE 1;
 
 
-ALTER TABLE usaga.panelmodel_idpanelmodel_seq OWNER TO postgres;
-
 --
--- TOC entry 2871 (class 0 OID 0)
+-- TOC entry 2900 (class 0 OID 0)
 -- Dependencies: 186
--- Name: panelmodel_idpanelmodel_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: postgres
+-- Name: panelmodel_idpanelmodel_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
 
 ALTER SEQUENCE panelmodel_idpanelmodel_seq OWNED BY panelmodel.idpanelmodel;
@@ -8242,32 +7977,28 @@ ALTER SEQUENCE panelmodel_idpanelmodel_seq OWNED BY panelmodel.idpanelmodel;
 
 --
 -- TOC entry 222 (class 1259 OID 26909)
--- Dependencies: 2250 9 1815
--- Name: view_account_contacts; Type: VIEW; Schema: usaga; Owner: postgres
+-- Dependencies: 2257 9 1822
+-- Name: view_account_contacts; Type: VIEW; Schema: usaga; Owner: -
 --
 
 CREATE VIEW view_account_contacts AS
     SELECT DISTINCT ON (tabla.idaccount, tabla.idcontact) tabla.idaccount, tabla.idcontact, tabla.enable, tabla.firstname, tabla.lastname, tabla.prioritycontact, tabla.enable_as_contact, tabla.appointment, tabla.ts, tabla.note FROM (SELECT account_contacts.idaccount, contacts.idcontact, contacts.enable, contacts.firstname, contacts.lastname, account_contacts.prioritycontact, account_contacts.enable AS enable_as_contact, account_contacts.appointment, account_contacts.ts, account_contacts.note FROM account_contacts, public.contacts WHERE (contacts.idcontact = account_contacts.idcontact) ORDER BY account_contacts.ts DESC) tabla ORDER BY tabla.idaccount, tabla.idcontact, tabla.ts DESC;
 
 
-ALTER TABLE usaga.view_account_contacts OWNER TO postgres;
-
 --
 -- TOC entry 231 (class 1259 OID 27249)
--- Dependencies: 2253 9
--- Name: view_account_phones_trigger_alarm; Type: VIEW; Schema: usaga; Owner: postgres
+-- Dependencies: 2260 9
+-- Name: view_account_phones_trigger_alarm; Type: VIEW; Schema: usaga; Owner: -
 --
 
 CREATE VIEW view_account_phones_trigger_alarm AS
     SELECT account.idaccount, account.enable, account.account, account.name, account.type, account_phones_trigger_alarm.idphone, (SELECT phones.phone FROM public.phones WHERE (phones.idphone = account_phones_trigger_alarm.idphone)) AS phone, (SELECT phones.idprovider FROM public.phones WHERE (phones.idphone = account_phones_trigger_alarm.idphone)) AS idprovider, (SELECT phones.idaddresshhhhhhh AS idaddress FROM public.phones WHERE (phones.idphone = account_phones_trigger_alarm.idphone)) AS idaddress, account_phones_trigger_alarm.enable AS trigger_enable, account_phones_trigger_alarm.fromcall, account_phones_trigger_alarm.fromsms FROM account, account_phones_trigger_alarm WHERE (account.idaccount = account_phones_trigger_alarm.idaccount);
 
 
-ALTER TABLE usaga.view_account_phones_trigger_alarm OWNER TO postgres;
-
 --
--- TOC entry 2872 (class 0 OID 0)
+-- TOC entry 2901 (class 0 OID 0)
 -- Dependencies: 231
--- Name: VIEW view_account_phones_trigger_alarm; Type: COMMENT; Schema: usaga; Owner: postgres
+-- Name: VIEW view_account_phones_trigger_alarm; Type: COMMENT; Schema: usaga; Owner: -
 --
 
 COMMENT ON VIEW view_account_phones_trigger_alarm IS 'TODO: Cambiar la vista usando left join para mejorar desempeño';
@@ -8275,151 +8006,156 @@ COMMENT ON VIEW view_account_phones_trigger_alarm IS 'TODO: Cambiar la vista usa
 
 --
 -- TOC entry 205 (class 1259 OID 26127)
--- Dependencies: 2248 9 1817 1817
--- Name: view_account_users; Type: VIEW; Schema: usaga; Owner: postgres
+-- Dependencies: 2255 1824 1824 9
+-- Name: view_account_users; Type: VIEW; Schema: usaga; Owner: -
 --
 
 CREATE VIEW view_account_users AS
     SELECT contacts.idcontact, contacts.enable, contacts.firstname, contacts.lastname, account_users.idaccount, account_users.prioritycontact, account_users.enable AS enable_as_contact, account_users.appointment, account_users.enable_as_user, account_users.numuser, account_users.pwd, account_users.keyword FROM account_users, public.contacts WHERE (contacts.idcontact = account_users.idcontact);
 
 
-ALTER TABLE usaga.view_account_users OWNER TO postgres;
-
 --
 -- TOC entry 218 (class 1259 OID 26345)
--- Dependencies: 2249 9
--- Name: view_events; Type: VIEW; Schema: usaga; Owner: postgres
+-- Dependencies: 2256 9
+-- Name: view_events; Type: VIEW; Schema: usaga; Owner: -
 --
 
 CREATE VIEW view_events AS
     SELECT events.idevent, events.dateload, events.idaccount, account.partition, account.enable, account.account, account.name, account.type, events.code, events.zu, events.priority, events.description, events.ideventtype, (SELECT eventtypes.label FROM eventtypes WHERE (eventtypes.ideventtype = events.ideventtype)) AS eventtype, events.datetimeevent, events.process1, events.process2, events.process3, events.process4, events.process5, events.dateprocess1, events.dateprocess2, events.dateprocess4, events.dateprocess3, events.dateprocess5 FROM (events LEFT JOIN account ON ((events.idaccount = account.idaccount)));
 
 
-ALTER TABLE usaga.view_events OWNER TO postgres;
-
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2528 (class 2604 OID 27139)
+-- TOC entry 2535 (class 2604 OID 27139)
 -- Dependencies: 224 225 225
--- Name: idaddress; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idaddress; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY address ALTER COLUMN idaddress SET DEFAULT nextval('loc_level1_seq'::regclass);
 
 
 --
--- TOC entry 2338 (class 2604 OID 16625)
+-- TOC entry 2345 (class 2604 OID 16625)
 -- Dependencies: 177 176 177
--- Name: idbl; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idbl; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY blacklist ALTER COLUMN idbl SET DEFAULT nextval('blacklist_idbl_seq'::regclass);
 
 
 --
--- TOC entry 2258 (class 2604 OID 16390)
+-- TOC entry 2265 (class 2604 OID 16390)
 -- Dependencies: 165 164 165
--- Name: idcontact; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idcontact; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY contacts ALTER COLUMN idcontact SET DEFAULT nextval('contacts_id_seq'::regclass);
 
 
 --
--- TOC entry 2351 (class 2604 OID 16836)
+-- TOC entry 2358 (class 2604 OID 16836)
 -- Dependencies: 181 182 182
--- Name: idincall; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idincall; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY incomingcalls ALTER COLUMN idincall SET DEFAULT nextval('incomingcalls_idincall_seq'::regclass);
 
 
 --
--- TOC entry 2508 (class 2604 OID 27590)
--- Dependencies: 211 210 211
--- Name: idl4; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2515 (class 2604 OID 27590)
+-- Dependencies: 210 211 211
+-- Name: idl4; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level4 ALTER COLUMN idl4 SET DEFAULT nextval('loc_level4_seq'::regclass);
 
 
 --
--- TOC entry 2443 (class 2604 OID 17585)
--- Dependencies: 200 199 200
--- Name: idmodem; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2450 (class 2604 OID 17585)
+-- Dependencies: 199 200 200
+-- Name: idmodem; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY modem ALTER COLUMN idmodem SET DEFAULT nextval('modem_idmodem_seq'::regclass);
 
 
 --
--- TOC entry 2272 (class 2604 OID 16426)
+-- TOC entry 2279 (class 2604 OID 16426)
 -- Dependencies: 167 166 167
--- Name: idphone; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idphone; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY phones ALTER COLUMN idphone SET DEFAULT nextval('phones_idphone_seq'::regclass);
 
 
 --
--- TOC entry 2283 (class 2604 OID 16455)
+-- TOC entry 2290 (class 2604 OID 16455)
 -- Dependencies: 169 168 169
--- Name: idprovider; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idprovider; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY provider ALTER COLUMN idprovider SET DEFAULT nextval('provider_idprovider_seq'::regclass);
 
 
 --
--- TOC entry 2289 (class 2604 OID 16525)
+-- TOC entry 2568 (class 2604 OID 27818)
+-- Dependencies: 238 237 238
+-- Name: idsim; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sim ALTER COLUMN idsim SET DEFAULT nextval('sim_idsim_seq'::regclass);
+
+
+--
+-- TOC entry 2296 (class 2604 OID 16525)
 -- Dependencies: 170 171 171
--- Name: idsmsin; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idsmsin; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsin ALTER COLUMN idsmsin SET DEFAULT nextval('smsin_idsmsin_seq'::regclass);
 
 
 --
--- TOC entry 2545 (class 2604 OID 27200)
+-- TOC entry 2552 (class 2604 OID 27200)
 -- Dependencies: 229 228 229
--- Name: idsmsinf; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idsmsinf; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsin_consumer ALTER COLUMN idsmsinf SET DEFAULT nextval('smsin_consumer_idsmsinf_seq'::regclass);
 
 
 --
--- TOC entry 2305 (class 2604 OID 16582)
+-- TOC entry 2312 (class 2604 OID 16582)
 -- Dependencies: 172 173 173
--- Name: idsmsout; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: idsmsout; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsout ALTER COLUMN idsmsout SET DEFAULT nextval('smsout_idsmsout_seq'::regclass);
 
 
 --
--- TOC entry 2534 (class 2604 OID 27176)
--- Dependencies: 226 227 227
--- Name: idsmsoutf; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2541 (class 2604 OID 27176)
+-- Dependencies: 227 226 227
+-- Name: idsmsoutf; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsout_consumer ALTER COLUMN idsmsoutf SET DEFAULT nextval('smsout_consumer_idsmsoutf_seq'::regclass);
 
 
 --
--- TOC entry 2345 (class 2604 OID 16748)
--- Dependencies: 180 179 180
--- Name: idsmsoutopt; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2352 (class 2604 OID 16748)
+-- Dependencies: 179 180 180
+-- Name: idsmsoutopt; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsoutoptions ALTER COLUMN idsmsoutopt SET DEFAULT nextval('smsoutoptions_idsmsoutopt_seq'::regclass);
 
 
 --
--- TOC entry 2334 (class 2604 OID 16602)
--- Dependencies: 175 174 175
--- Name: idwl; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2341 (class 2604 OID 16602)
+-- Dependencies: 174 175 175
+-- Name: idwl; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY whitelist ALTER COLUMN idwl SET DEFAULT nextval('whitelist_idwl_seq'::regclass);
@@ -8428,333 +8164,333 @@ ALTER TABLE ONLY whitelist ALTER COLUMN idwl SET DEFAULT nextval('whitelist_idwl
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2363 (class 2604 OID 16979)
+-- TOC entry 2370 (class 2604 OID 16979)
 -- Dependencies: 183 184 184
--- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account ALTER COLUMN idaccount SET DEFAULT nextval('account_idaccount_seq'::regclass);
 
 
 --
--- TOC entry 2395 (class 2604 OID 17179)
--- Dependencies: 190 191 191
--- Name: idnotifaccount; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- TOC entry 2402 (class 2604 OID 17179)
+-- Dependencies: 191 190 191
+-- Name: idnotifaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_notifications ALTER COLUMN idnotifaccount SET DEFAULT nextval('account_notifications_idnotifaccount_seq'::regclass);
 
 
 --
--- TOC entry 2404 (class 2604 OID 17264)
+-- TOC entry 2411 (class 2604 OID 17264)
 -- Dependencies: 193 192 193
--- Name: idnotifphoneeventtype; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idnotifphoneeventtype; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_notifications_eventtype ALTER COLUMN idnotifphoneeventtype SET DEFAULT nextval('account_notifications_eventtype_idnotifphoneeventtype_seq'::regclass);
 
 
 --
--- TOC entry 2478 (class 2604 OID 18090)
+-- TOC entry 2485 (class 2604 OID 18090)
 -- Dependencies: 203 203
--- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN idaccount SET DEFAULT 0;
 
 
 --
--- TOC entry 2479 (class 2604 OID 18091)
+-- TOC entry 2486 (class 2604 OID 18091)
 -- Dependencies: 203 203
--- Name: idcontact; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idcontact; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN idcontact SET DEFAULT 0;
 
 
 --
--- TOC entry 2480 (class 2604 OID 18092)
+-- TOC entry 2487 (class 2604 OID 18092)
 -- Dependencies: 203 203
--- Name: prioritycontact; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: prioritycontact; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN prioritycontact SET DEFAULT 5;
 
 
 --
--- TOC entry 2481 (class 2604 OID 18093)
+-- TOC entry 2488 (class 2604 OID 18093)
 -- Dependencies: 203 203
--- Name: enable; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: enable; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN enable SET DEFAULT true;
 
 
 --
--- TOC entry 2482 (class 2604 OID 18094)
+-- TOC entry 2489 (class 2604 OID 18094)
 -- Dependencies: 203 203
--- Name: appointment; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: appointment; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN appointment SET DEFAULT ''::text;
 
 
 --
--- TOC entry 2483 (class 2604 OID 18095)
+-- TOC entry 2490 (class 2604 OID 18095)
 -- Dependencies: 203 203
--- Name: note; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: note; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN note SET DEFAULT ''::text;
 
 
 --
--- TOC entry 2489 (class 2604 OID 26457)
+-- TOC entry 2496 (class 2604 OID 26457)
 -- Dependencies: 203 203
--- Name: ts; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: ts; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users ALTER COLUMN ts SET DEFAULT now();
 
 
 --
--- TOC entry 2416 (class 2604 OID 17292)
+-- TOC entry 2423 (class 2604 OID 17292)
 -- Dependencies: 195 194 195
--- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events ALTER COLUMN idevent SET DEFAULT nextval('events_idevent_seq'::regclass);
 
 
 --
--- TOC entry 2460 (class 2604 OID 17717)
--- Dependencies: 201 201 194
--- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- TOC entry 2467 (class 2604 OID 17717)
+-- Dependencies: 201 194 201
+-- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN idevent SET DEFAULT nextval('events_idevent_seq'::regclass);
 
 
 --
--- TOC entry 2461 (class 2604 OID 17718)
+-- TOC entry 2468 (class 2604 OID 17718)
 -- Dependencies: 201 201
--- Name: dateload; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateload; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateload SET DEFAULT now();
 
 
 --
--- TOC entry 2462 (class 2604 OID 17719)
+-- TOC entry 2469 (class 2604 OID 17719)
 -- Dependencies: 201 201
--- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN idaccount SET DEFAULT 0;
 
 
 --
--- TOC entry 2463 (class 2604 OID 17720)
+-- TOC entry 2470 (class 2604 OID 17720)
 -- Dependencies: 201 201
--- Name: code; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: code; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN code SET DEFAULT '0000'::text;
 
 
 --
--- TOC entry 2464 (class 2604 OID 17721)
+-- TOC entry 2471 (class 2604 OID 17721)
 -- Dependencies: 201 201
--- Name: zu; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: zu; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN zu SET DEFAULT 0;
 
 
 --
--- TOC entry 2465 (class 2604 OID 17722)
+-- TOC entry 2472 (class 2604 OID 17722)
 -- Dependencies: 201 201
--- Name: priority; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: priority; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN priority SET DEFAULT 5;
 
 
 --
--- TOC entry 2466 (class 2604 OID 17723)
+-- TOC entry 2473 (class 2604 OID 17723)
 -- Dependencies: 201 201
--- Name: description; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: description; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN description SET DEFAULT ''::text;
 
 
 --
--- TOC entry 2467 (class 2604 OID 17724)
+-- TOC entry 2474 (class 2604 OID 17724)
 -- Dependencies: 201 201
--- Name: ideventtype; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: ideventtype; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN ideventtype SET DEFAULT 0;
 
 
 --
--- TOC entry 2469 (class 2604 OID 18022)
+-- TOC entry 2476 (class 2604 OID 18022)
 -- Dependencies: 201 201
--- Name: datetimeevent; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: datetimeevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN datetimeevent SET DEFAULT now();
 
 
 --
--- TOC entry 2449 (class 2604 OID 25925)
+-- TOC entry 2456 (class 2604 OID 25925)
 -- Dependencies: 201 201
--- Name: process1; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: process1; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process1 SET DEFAULT 0;
 
 
 --
--- TOC entry 2450 (class 2604 OID 25942)
+-- TOC entry 2457 (class 2604 OID 25942)
 -- Dependencies: 201 201
--- Name: process2; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: process2; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process2 SET DEFAULT 0;
 
 
 --
--- TOC entry 2451 (class 2604 OID 25959)
+-- TOC entry 2458 (class 2604 OID 25959)
 -- Dependencies: 201 201
--- Name: process3; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: process3; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process3 SET DEFAULT 0;
 
 
 --
--- TOC entry 2452 (class 2604 OID 25976)
+-- TOC entry 2459 (class 2604 OID 25976)
 -- Dependencies: 201 201
--- Name: process4; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: process4; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process4 SET DEFAULT 0;
 
 
 --
--- TOC entry 2453 (class 2604 OID 25993)
+-- TOC entry 2460 (class 2604 OID 25993)
 -- Dependencies: 201 201
--- Name: process5; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: process5; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process5 SET DEFAULT 0;
 
 
 --
--- TOC entry 2454 (class 2604 OID 26010)
+-- TOC entry 2461 (class 2604 OID 26010)
 -- Dependencies: 201 201
--- Name: note; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: note; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN note SET DEFAULT ' '::text;
 
 
 --
--- TOC entry 2455 (class 2604 OID 26033)
+-- TOC entry 2462 (class 2604 OID 26033)
 -- Dependencies: 201 201
--- Name: dateprocess1; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateprocess1; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess1 SET DEFAULT now();
 
 
 --
--- TOC entry 2456 (class 2604 OID 26050)
+-- TOC entry 2463 (class 2604 OID 26050)
 -- Dependencies: 201 201
--- Name: dateprocess2; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateprocess2; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess2 SET DEFAULT now();
 
 
 --
--- TOC entry 2457 (class 2604 OID 26067)
+-- TOC entry 2464 (class 2604 OID 26067)
 -- Dependencies: 201 201
--- Name: dateprocess3; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateprocess3; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess3 SET DEFAULT now();
 
 
 --
--- TOC entry 2458 (class 2604 OID 26084)
+-- TOC entry 2465 (class 2604 OID 26084)
 -- Dependencies: 201 201
--- Name: dateprocess4; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateprocess4; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess4 SET DEFAULT now();
 
 
 --
--- TOC entry 2459 (class 2604 OID 26101)
+-- TOC entry 2466 (class 2604 OID 26101)
 -- Dependencies: 201 201
--- Name: dateprocess5; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: dateprocess5; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess5 SET DEFAULT now();
 
 
 --
--- TOC entry 2470 (class 2604 OID 26572)
+-- TOC entry 2477 (class 2604 OID 26572)
 -- Dependencies: 201 201
--- Name: ts; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: ts; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN ts SET DEFAULT now();
 
 
 --
--- TOC entry 2519 (class 2604 OID 26384)
--- Dependencies: 219 220 220
--- Name: idgroup; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- TOC entry 2526 (class 2604 OID 26384)
+-- Dependencies: 220 219 220
+-- Name: idgroup; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY groups ALTER COLUMN idgroup SET DEFAULT nextval('groups_idgroup_seq'::regclass);
 
 
 --
--- TOC entry 2437 (class 2604 OID 17392)
+-- TOC entry 2444 (class 2604 OID 17392)
 -- Dependencies: 198 197 198
--- Name: idkeyword; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idkeyword; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY keywords ALTER COLUMN idkeyword SET DEFAULT nextval('keywords_idkeyword_seq'::regclass);
 
 
 --
--- TOC entry 2509 (class 2604 OID 26205)
+-- TOC entry 2516 (class 2604 OID 26205)
 -- Dependencies: 212 213 213
--- Name: idnotiftempl; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idnotiftempl; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY notification_templates ALTER COLUMN idnotiftempl SET DEFAULT nextval('notification_templates_idnotiftempl_seq'::regclass);
 
 
 --
--- TOC entry 2381 (class 2604 OID 17111)
+-- TOC entry 2388 (class 2604 OID 17111)
 -- Dependencies: 186 187 187
--- Name: idpanelmodel; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idpanelmodel; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY panelmodel ALTER COLUMN idpanelmodel SET DEFAULT nextval('panelmodel_idpanelmodel_seq'::regclass);
 
 
 --
--- TOC entry 2387 (class 2604 OID 17146)
+-- TOC entry 2394 (class 2604 OID 17146)
 -- Dependencies: 189 188 189
--- Name: idlocation; Type: DEFAULT; Schema: usaga; Owner: postgres
+-- Name: idlocation; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY xxxaccount_location ALTER COLUMN idlocation SET DEFAULT nextval('account_location_idlocation_seq'::regclass);
@@ -8763,9 +8499,9 @@ ALTER TABLE ONLY xxxaccount_location ALTER COLUMN idlocation SET DEFAULT nextval
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2564 (class 2606 OID 16428)
--- Dependencies: 167 167 2729
--- Name: id; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2578 (class 2606 OID 16428)
+-- Dependencies: 167 167 2747
+-- Name: id; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY phones
@@ -8773,9 +8509,9 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2562 (class 2606 OID 16400)
--- Dependencies: 165 165 2729
--- Name: idcontact; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2576 (class 2606 OID 16400)
+-- Dependencies: 165 165 2747
+-- Name: idcontact; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY contacts
@@ -8783,9 +8519,9 @@ ALTER TABLE ONLY contacts
 
 
 --
--- TOC entry 2652 (class 2606 OID 27152)
--- Dependencies: 225 225 2729
--- Name: pk_idaddress; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2666 (class 2606 OID 27152)
+-- Dependencies: 225 225 2747
+-- Name: pk_idaddress; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY address
@@ -8793,9 +8529,9 @@ ALTER TABLE ONLY address
 
 
 --
--- TOC entry 2574 (class 2606 OID 16632)
--- Dependencies: 177 177 2729
--- Name: pk_idbl; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2588 (class 2606 OID 16632)
+-- Dependencies: 177 177 2747
+-- Name: pk_idbl; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY blacklist
@@ -8803,9 +8539,9 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2576 (class 2606 OID 16704)
--- Dependencies: 178 178 2729
--- Name: pk_idcpp; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2590 (class 2606 OID 16704)
+-- Dependencies: 178 178 2747
+-- Name: pk_idcpp; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY currentportsproviders
@@ -8813,9 +8549,9 @@ ALTER TABLE ONLY currentportsproviders
 
 
 --
--- TOC entry 2580 (class 2606 OID 16845)
--- Dependencies: 182 182 2729
--- Name: pk_idincall; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2594 (class 2606 OID 16845)
+-- Dependencies: 182 182 2747
+-- Name: pk_idincall; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY incomingcalls
@@ -8823,9 +8559,9 @@ ALTER TABLE ONLY incomingcalls
 
 
 --
--- TOC entry 2624 (class 2606 OID 27512)
--- Dependencies: 207 207 2729
--- Name: pk_idl1; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2638 (class 2606 OID 27512)
+-- Dependencies: 207 207 2747
+-- Name: pk_idl1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level1
@@ -8833,9 +8569,9 @@ ALTER TABLE ONLY location_level1
 
 
 --
--- TOC entry 2628 (class 2606 OID 27497)
--- Dependencies: 209 209 2729
--- Name: pk_idl2; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2642 (class 2606 OID 27497)
+-- Dependencies: 209 209 2747
+-- Name: pk_idl2; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level2
@@ -8843,9 +8579,9 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2662 (class 2606 OID 27509)
--- Dependencies: 233 233 2729
--- Name: pk_idl3; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2676 (class 2606 OID 27509)
+-- Dependencies: 233 233 2747
+-- Name: pk_idl3; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level3
@@ -8853,9 +8589,9 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2632 (class 2606 OID 27495)
--- Dependencies: 211 211 2729
--- Name: pk_idl4; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2646 (class 2606 OID 27495)
+-- Dependencies: 211 211 2747
+-- Name: pk_idl4; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level4
@@ -8863,9 +8599,9 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2638 (class 2606 OID 27493)
--- Dependencies: 215 215 2729
--- Name: pk_idl5; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2652 (class 2606 OID 27493)
+-- Dependencies: 215 215 2747
+-- Name: pk_idl5; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level5
@@ -8873,9 +8609,9 @@ ALTER TABLE ONLY location_level5
 
 
 --
--- TOC entry 2642 (class 2606 OID 27491)
--- Dependencies: 217 217 2729
--- Name: pk_idl6; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2656 (class 2606 OID 27491)
+-- Dependencies: 217 217 2747
+-- Name: pk_idl6; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level6
@@ -8883,9 +8619,9 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2610 (class 2606 OID 17587)
--- Dependencies: 200 200 2729
--- Name: pk_idmodem; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2624 (class 2606 OID 17587)
+-- Dependencies: 200 200 2747
+-- Name: pk_idmodem; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY modem
@@ -8893,9 +8629,9 @@ ALTER TABLE ONLY modem
 
 
 --
--- TOC entry 2566 (class 2606 OID 16464)
--- Dependencies: 169 169 2729
--- Name: pk_idprovider; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2580 (class 2606 OID 16464)
+-- Dependencies: 169 169 2747
+-- Name: pk_idprovider; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY provider
@@ -8903,9 +8639,19 @@ ALTER TABLE ONLY provider
 
 
 --
--- TOC entry 2568 (class 2606 OID 16528)
--- Dependencies: 171 171 2729
--- Name: pk_idsmsin; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2680 (class 2606 OID 27829)
+-- Dependencies: 238 238 2747
+-- Name: pk_idsim_sim; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sim
+    ADD CONSTRAINT pk_idsim_sim PRIMARY KEY (idsim);
+
+
+--
+-- TOC entry 2582 (class 2606 OID 16528)
+-- Dependencies: 171 171 2747
+-- Name: pk_idsmsin; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsin
@@ -8913,9 +8659,9 @@ ALTER TABLE ONLY smsin
 
 
 --
--- TOC entry 2658 (class 2606 OID 27213)
--- Dependencies: 229 229 2729
--- Name: pk_idsmsinf; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2672 (class 2606 OID 27213)
+-- Dependencies: 229 229 2747
+-- Name: pk_idsmsinf; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsin_consumer
@@ -8923,9 +8669,9 @@ ALTER TABLE ONLY smsin_consumer
 
 
 --
--- TOC entry 2654 (class 2606 OID 27189)
--- Dependencies: 227 227 2729
--- Name: pk_idsmsoutf; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2668 (class 2606 OID 27189)
+-- Dependencies: 227 227 2747
+-- Name: pk_idsmsoutf; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsout_consumer
@@ -8933,9 +8679,9 @@ ALTER TABLE ONLY smsout_consumer
 
 
 --
--- TOC entry 2578 (class 2606 OID 16756)
--- Dependencies: 180 180 2729
--- Name: pk_idsmsoutopt; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2592 (class 2606 OID 16756)
+-- Dependencies: 180 180 2747
+-- Name: pk_idsmsoutopt; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsoutoptions
@@ -8943,9 +8689,9 @@ ALTER TABLE ONLY smsoutoptions
 
 
 --
--- TOC entry 2572 (class 2606 OID 16609)
--- Dependencies: 175 175 2729
--- Name: pk_idwl; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2586 (class 2606 OID 16609)
+-- Dependencies: 175 175 2747
+-- Name: pk_idwl; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY whitelist
@@ -8953,9 +8699,9 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2570 (class 2606 OID 16596)
--- Dependencies: 173 173 2729
--- Name: pk_smsout; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2584 (class 2606 OID 16596)
+-- Dependencies: 173 173 2747
+-- Name: pk_smsout; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsout
@@ -8963,9 +8709,9 @@ ALTER TABLE ONLY smsout
 
 
 --
--- TOC entry 2660 (class 2606 OID 27805)
--- Dependencies: 229 229 2729
--- Name: uni_idsmsin_smsin_c; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2674 (class 2606 OID 27805)
+-- Dependencies: 229 229 2747
+-- Name: uni_idsmsin_smsin_c; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsin_consumer
@@ -8973,9 +8719,9 @@ ALTER TABLE ONLY smsin_consumer
 
 
 --
--- TOC entry 2656 (class 2606 OID 27812)
--- Dependencies: 227 227 2729
--- Name: uni_idsmsout_smsout_c; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2670 (class 2606 OID 27812)
+-- Dependencies: 227 227 2747
+-- Name: uni_idsmsout_smsout_c; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smsout_consumer
@@ -8983,9 +8729,9 @@ ALTER TABLE ONLY smsout_consumer
 
 
 --
--- TOC entry 2612 (class 2606 OID 17624)
--- Dependencies: 200 200 2729
--- Name: uni_imei_modem; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2626 (class 2606 OID 17624)
+-- Dependencies: 200 200 2747
+-- Name: uni_imei_modem; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY modem
@@ -8993,9 +8739,9 @@ ALTER TABLE ONLY modem
 
 
 --
--- TOC entry 2626 (class 2606 OID 27514)
--- Dependencies: 207 207 2729
--- Name: uni_name_loc_l1; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2640 (class 2606 OID 27514)
+-- Dependencies: 207 207 2747
+-- Name: uni_name_loc_l1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level1
@@ -9003,9 +8749,9 @@ ALTER TABLE ONLY location_level1
 
 
 --
--- TOC entry 2630 (class 2606 OID 27525)
--- Dependencies: 209 209 209 2729
--- Name: uni_name_loc_l2; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2644 (class 2606 OID 27525)
+-- Dependencies: 209 209 209 2747
+-- Name: uni_name_loc_l2; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level2
@@ -9013,9 +8759,9 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2664 (class 2606 OID 27532)
--- Dependencies: 233 233 233 2729
--- Name: uni_name_loc_l3; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2678 (class 2606 OID 27532)
+-- Dependencies: 233 233 233 2747
+-- Name: uni_name_loc_l3; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level3
@@ -9023,9 +8769,9 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2634 (class 2606 OID 27548)
--- Dependencies: 211 211 211 2729
--- Name: uni_name_loc_l4; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2648 (class 2606 OID 27548)
+-- Dependencies: 211 211 211 2747
+-- Name: uni_name_loc_l4; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level4
@@ -9033,9 +8779,9 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2644 (class 2606 OID 27570)
--- Dependencies: 217 217 217 2729
--- Name: uni_name_loc_l6; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2658 (class 2606 OID 27570)
+-- Dependencies: 217 217 217 2747
+-- Name: uni_name_loc_l6; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level6
@@ -9043,9 +8789,9 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2640 (class 2606 OID 27563)
--- Dependencies: 215 215 215 2729
--- Name: uni_nme_loc_l5; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- TOC entry 2654 (class 2606 OID 27563)
+-- Dependencies: 215 215 215 2747
+-- Name: uni_nme_loc_l5; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY location_level5
@@ -9055,9 +8801,9 @@ ALTER TABLE ONLY location_level5
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2618 (class 2606 OID 18076)
--- Dependencies: 202 202 202 2729
--- Name: pk_account_contacts; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2632 (class 2606 OID 18076)
+-- Dependencies: 202 202 202 2747
+-- Name: pk_account_contacts; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_contacts
@@ -9065,9 +8811,9 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2650 (class 2606 OID 26454)
--- Dependencies: 221 221 221 2729
--- Name: pk_account_notif_group; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2664 (class 2606 OID 26454)
+-- Dependencies: 221 221 221 2747
+-- Name: pk_account_notif_group; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_notifications_group
@@ -9075,9 +8821,9 @@ ALTER TABLE ONLY account_notifications_group
 
 
 --
--- TOC entry 2622 (class 2606 OID 18120)
--- Dependencies: 204 204 204 2729
--- Name: pk_account_triggers_phones; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2636 (class 2606 OID 18120)
+-- Dependencies: 204 204 204 2747
+-- Name: pk_account_triggers_phones; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_phones_trigger_alarm
@@ -9085,9 +8831,9 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2620 (class 2606 OID 26886)
--- Dependencies: 203 203 203 2729
--- Name: pk_account_users; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2634 (class 2606 OID 26886)
+-- Dependencies: 203 203 203 2747
+-- Name: pk_account_users; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_users
@@ -9095,9 +8841,9 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2582 (class 2606 OID 16987)
--- Dependencies: 184 184 2729
--- Name: pk_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2596 (class 2606 OID 16987)
+-- Dependencies: 184 184 2747
+-- Name: pk_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account
@@ -9105,9 +8851,9 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2604 (class 2606 OID 17295)
--- Dependencies: 195 195 2729
--- Name: pk_idevent; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2618 (class 2606 OID 17295)
+-- Dependencies: 195 195 2747
+-- Name: pk_idevent; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY events
@@ -9115,9 +8861,9 @@ ALTER TABLE ONLY events
 
 
 --
--- TOC entry 2614 (class 2606 OID 17730)
--- Dependencies: 201 201 2729
--- Name: pk_idevent_from_call; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2628 (class 2606 OID 17730)
+-- Dependencies: 201 201 2747
+-- Name: pk_idevent_from_call; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY events_generated_by_calls
@@ -9125,9 +8871,9 @@ ALTER TABLE ONLY events_generated_by_calls
 
 
 --
--- TOC entry 2606 (class 2606 OID 17362)
--- Dependencies: 196 196 2729
--- Name: pk_ideventtype; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2620 (class 2606 OID 17362)
+-- Dependencies: 196 196 2747
+-- Name: pk_ideventtype; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY eventtypes
@@ -9135,9 +8881,9 @@ ALTER TABLE ONLY eventtypes
 
 
 --
--- TOC entry 2646 (class 2606 OID 26392)
--- Dependencies: 220 220 2729
--- Name: pk_idgroup; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2660 (class 2606 OID 26392)
+-- Dependencies: 220 220 2747
+-- Name: pk_idgroup; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY groups
@@ -9145,9 +8891,9 @@ ALTER TABLE ONLY groups
 
 
 --
--- TOC entry 2588 (class 2606 OID 17061)
--- Dependencies: 185 185 2729
--- Name: pk_idinstallationdata; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2602 (class 2606 OID 17061)
+-- Dependencies: 185 185 2747
+-- Name: pk_idinstallationdata; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_installationdata
@@ -9155,9 +8901,9 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2608 (class 2606 OID 17399)
--- Dependencies: 198 198 2729
--- Name: pk_idkeyword; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2622 (class 2606 OID 17399)
+-- Dependencies: 198 198 2747
+-- Name: pk_idkeyword; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY keywords
@@ -9165,9 +8911,9 @@ ALTER TABLE ONLY keywords
 
 
 --
--- TOC entry 2594 (class 2606 OID 17156)
--- Dependencies: 189 189 2729
--- Name: pk_idlocation; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2608 (class 2606 OID 17156)
+-- Dependencies: 189 189 2747
+-- Name: pk_idlocation; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY xxxaccount_location
@@ -9175,9 +8921,9 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2598 (class 2606 OID 17182)
--- Dependencies: 191 191 2729
--- Name: pk_idnotifaccount; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2612 (class 2606 OID 17182)
+-- Dependencies: 191 191 2747
+-- Name: pk_idnotifaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_notifications
@@ -9185,9 +8931,9 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2602 (class 2606 OID 17266)
--- Dependencies: 193 193 2729
--- Name: pk_idnotifphoneeventtype; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2616 (class 2606 OID 17266)
+-- Dependencies: 193 193 2747
+-- Name: pk_idnotifphoneeventtype; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_notifications_eventtype
@@ -9195,9 +8941,9 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 
 --
--- TOC entry 2636 (class 2606 OID 26212)
--- Dependencies: 213 213 2729
--- Name: pk_idnotiftempl; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2650 (class 2606 OID 26212)
+-- Dependencies: 213 213 2747
+-- Name: pk_idnotiftempl; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY notification_templates
@@ -9205,9 +8951,9 @@ ALTER TABLE ONLY notification_templates
 
 
 --
--- TOC entry 2592 (class 2606 OID 17119)
--- Dependencies: 187 187 2729
--- Name: pk_idpanelmodel; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2606 (class 2606 OID 17119)
+-- Dependencies: 187 187 2747
+-- Name: pk_idpanelmodel; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY panelmodel
@@ -9215,9 +8961,9 @@ ALTER TABLE ONLY panelmodel
 
 
 --
--- TOC entry 2600 (class 2606 OID 17988)
--- Dependencies: 191 191 191 2729
--- Name: uni_acc_notyf_idacc_idphone; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2614 (class 2606 OID 17988)
+-- Dependencies: 191 191 191 2747
+-- Name: uni_acc_notyf_idacc_idphone; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_notifications
@@ -9225,9 +8971,9 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2584 (class 2606 OID 26363)
--- Dependencies: 184 184 2729
--- Name: uni_account_account; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2598 (class 2606 OID 26363)
+-- Dependencies: 184 184 2747
+-- Name: uni_account_account; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account
@@ -9235,9 +8981,9 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2586 (class 2606 OID 17949)
--- Dependencies: 184 184 2729
--- Name: uni_account_name; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2600 (class 2606 OID 17949)
+-- Dependencies: 184 184 2747
+-- Name: uni_account_name; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account
@@ -9245,9 +8991,9 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2616 (class 2606 OID 18043)
--- Dependencies: 201 201 201 201 201 2729
--- Name: uni_event_from_calls; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2630 (class 2606 OID 18043)
+-- Dependencies: 201 201 201 201 201 2747
+-- Name: uni_event_from_calls; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY events_generated_by_calls
@@ -9255,9 +9001,9 @@ ALTER TABLE ONLY events_generated_by_calls
 
 
 --
--- TOC entry 2590 (class 2606 OID 17073)
--- Dependencies: 185 185 2729
--- Name: uni_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2604 (class 2606 OID 17073)
+-- Dependencies: 185 185 2747
+-- Name: uni_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY account_installationdata
@@ -9265,9 +9011,9 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2596 (class 2606 OID 17173)
--- Dependencies: 189 189 2729
--- Name: uni_idaccount_alocation; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2610 (class 2606 OID 17173)
+-- Dependencies: 189 189 2747
+-- Name: uni_idaccount_alocation; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY xxxaccount_location
@@ -9275,9 +9021,9 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2648 (class 2606 OID 26394)
--- Dependencies: 220 220 2729
--- Name: uni_name_groups; Type: CONSTRAINT; Schema: usaga; Owner: postgres; Tablespace: 
+-- TOC entry 2662 (class 2606 OID 26394)
+-- Dependencies: 220 220 2747
+-- Name: uni_name_groups; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY groups
@@ -9287,171 +9033,171 @@ ALTER TABLE ONLY groups
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2693 (class 2620 OID 27676)
--- Dependencies: 363 165 2729
--- Name: contacts_ondelete_delete_address; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2711 (class 2620 OID 27676)
+-- Dependencies: 165 365 2747
+-- Name: contacts_ondelete_delete_address; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER contacts_ondelete_delete_address AFTER DELETE ON contacts FOR EACH ROW EXECUTE PROCEDURE delete_idaddress_on_delete_owner();
 
 
 --
--- TOC entry 2695 (class 2620 OID 27677)
--- Dependencies: 363 167 2729
--- Name: phones_ondelete_on_delete_address_owner; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2713 (class 2620 OID 27677)
+-- Dependencies: 167 365 2747
+-- Name: phones_ondelete_on_delete_address_owner; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER phones_ondelete_on_delete_address_owner AFTER DELETE ON phones FOR EACH ROW EXECUTE PROCEDURE delete_idaddress_on_delete_owner();
 
 
 --
--- TOC entry 2726 (class 2620 OID 27154)
--- Dependencies: 225 284 2729
--- Name: ts_address; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2744 (class 2620 OID 27154)
+-- Dependencies: 286 225 2747
+-- Name: ts_address; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_address AFTER UPDATE ON address FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2701 (class 2620 OID 26828)
--- Dependencies: 177 284 2729
--- Name: ts_blacklist; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2719 (class 2620 OID 26828)
+-- Dependencies: 177 286 2747
+-- Name: ts_blacklist; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_blacklist BEFORE UPDATE ON blacklist FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2694 (class 2620 OID 26829)
--- Dependencies: 165 284 2729
--- Name: ts_contacts; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2712 (class 2620 OID 26829)
+-- Dependencies: 165 286 2747
+-- Name: ts_contacts; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_contacts BEFORE UPDATE ON contacts FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2703 (class 2620 OID 26830)
--- Dependencies: 182 284 2729
--- Name: ts_incomingcalls; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2721 (class 2620 OID 26830)
+-- Dependencies: 182 286 2747
+-- Name: ts_incomingcalls; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_incomingcalls BEFORE UPDATE ON incomingcalls FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2718 (class 2620 OID 26824)
--- Dependencies: 207 284 2729
--- Name: ts_loc_level1; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2736 (class 2620 OID 26824)
+-- Dependencies: 207 286 2747
+-- Name: ts_loc_level1; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level1 BEFORE UPDATE ON location_level1 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2719 (class 2620 OID 26827)
--- Dependencies: 284 209 2729
--- Name: ts_loc_level2; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2737 (class 2620 OID 26827)
+-- Dependencies: 209 286 2747
+-- Name: ts_loc_level2; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level2 BEFORE UPDATE ON location_level2 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2727 (class 2620 OID 27510)
--- Dependencies: 284 233 2729
--- Name: ts_loc_level3; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2745 (class 2620 OID 27510)
+-- Dependencies: 233 286 2747
+-- Name: ts_loc_level3; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level3 BEFORE UPDATE ON location_level3 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2720 (class 2620 OID 26822)
--- Dependencies: 211 284 2729
--- Name: ts_loc_level4; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2738 (class 2620 OID 26822)
+-- Dependencies: 286 211 2747
+-- Name: ts_loc_level4; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level4 BEFORE UPDATE ON location_level4 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2722 (class 2620 OID 26825)
--- Dependencies: 215 284 2729
--- Name: ts_loc_level5; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2740 (class 2620 OID 26825)
+-- Dependencies: 286 215 2747
+-- Name: ts_loc_level5; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level5 BEFORE UPDATE ON location_level5 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2723 (class 2620 OID 26826)
--- Dependencies: 217 284 2729
--- Name: ts_loc_level6; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2741 (class 2620 OID 26826)
+-- Dependencies: 286 217 2747
+-- Name: ts_loc_level6; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_loc_level6 BEFORE UPDATE ON location_level6 FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2714 (class 2620 OID 26831)
--- Dependencies: 200 284 2729
--- Name: ts_modem; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2732 (class 2620 OID 26831)
+-- Dependencies: 286 200 2747
+-- Name: ts_modem; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_modem BEFORE UPDATE ON modem FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2696 (class 2620 OID 26832)
--- Dependencies: 284 167 2729
--- Name: ts_phones; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2714 (class 2620 OID 26832)
+-- Dependencies: 167 286 2747
+-- Name: ts_phones; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_phones BEFORE UPDATE ON phones FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2697 (class 2620 OID 26833)
--- Dependencies: 284 169 2729
--- Name: ts_provider; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2715 (class 2620 OID 26833)
+-- Dependencies: 286 169 2747
+-- Name: ts_provider; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_provider BEFORE UPDATE ON provider FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2698 (class 2620 OID 26834)
--- Dependencies: 284 171 2729
--- Name: ts_smsin; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2716 (class 2620 OID 26834)
+-- Dependencies: 286 171 2747
+-- Name: ts_smsin; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_smsin BEFORE UPDATE ON smsin FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2699 (class 2620 OID 26835)
--- Dependencies: 173 284 2729
--- Name: ts_smsout; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2717 (class 2620 OID 26835)
+-- Dependencies: 286 173 2747
+-- Name: ts_smsout; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_smsout BEFORE UPDATE ON smsout FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2702 (class 2620 OID 26836)
--- Dependencies: 284 180 2729
--- Name: ts_smsoutoptions; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2720 (class 2620 OID 26836)
+-- Dependencies: 180 286 2747
+-- Name: ts_smsoutoptions; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_smsoutoptions BEFORE UPDATE ON smsoutoptions FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
 
 
 --
--- TOC entry 2700 (class 2620 OID 26837)
--- Dependencies: 175 284 2729
--- Name: ts_whitelist; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 2718 (class 2620 OID 26837)
+-- Dependencies: 175 286 2747
+-- Name: ts_whitelist; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER ts_whitelist BEFORE UPDATE ON whitelist FOR EACH ROW EXECUTE PROCEDURE ctrl_ts();
@@ -9460,144 +9206,144 @@ CREATE TRIGGER ts_whitelist BEFORE UPDATE ON whitelist FOR EACH ROW EXECUTE PROC
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2705 (class 2620 OID 27723)
--- Dependencies: 363 184 2729
--- Name: account_ondelete_on_delete_address_owner; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2723 (class 2620 OID 27723)
+-- Dependencies: 365 184 2747
+-- Name: account_ondelete_on_delete_address_owner; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER account_ondelete_on_delete_address_owner AFTER DELETE ON account FOR EACH ROW EXECUTE PROCEDURE public.delete_idaddress_on_delete_owner();
 
 
 --
--- TOC entry 2704 (class 2620 OID 26838)
--- Dependencies: 284 184 2729
--- Name: ts_account; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2722 (class 2620 OID 26838)
+-- Dependencies: 286 184 2747
+-- Name: ts_account; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account BEFORE UPDATE ON account FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2715 (class 2620 OID 26839)
--- Dependencies: 284 202 2729
--- Name: ts_account_contacts; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2733 (class 2620 OID 26839)
+-- Dependencies: 286 202 2747
+-- Name: ts_account_contacts; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_contacts BEFORE UPDATE ON account_contacts FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2706 (class 2620 OID 26840)
--- Dependencies: 185 284 2729
--- Name: ts_account_installationdata; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2724 (class 2620 OID 26840)
+-- Dependencies: 286 185 2747
+-- Name: ts_account_installationdata; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_installationdata BEFORE UPDATE ON account_installationdata FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2708 (class 2620 OID 26841)
--- Dependencies: 284 189 2729
--- Name: ts_account_location; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2726 (class 2620 OID 26841)
+-- Dependencies: 189 286 2747
+-- Name: ts_account_location; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_location BEFORE UPDATE ON xxxaccount_location FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2709 (class 2620 OID 26842)
--- Dependencies: 191 284 2729
--- Name: ts_account_notifications; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2727 (class 2620 OID 26842)
+-- Dependencies: 286 191 2747
+-- Name: ts_account_notifications; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_notifications BEFORE UPDATE ON account_notifications FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2710 (class 2620 OID 26843)
--- Dependencies: 284 193 2729
--- Name: ts_account_notifications_eventtype; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2728 (class 2620 OID 26843)
+-- Dependencies: 193 286 2747
+-- Name: ts_account_notifications_eventtype; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_notifications_eventtype BEFORE UPDATE ON account_notifications_eventtype FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2725 (class 2620 OID 26844)
--- Dependencies: 221 284 2729
--- Name: ts_account_notifications_group; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2743 (class 2620 OID 26844)
+-- Dependencies: 221 286 2747
+-- Name: ts_account_notifications_group; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_notifications_group BEFORE UPDATE ON account_notifications_group FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2717 (class 2620 OID 26845)
--- Dependencies: 204 284 2729
--- Name: ts_account_phones_trigger_alarm; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2735 (class 2620 OID 26845)
+-- Dependencies: 204 286 2747
+-- Name: ts_account_phones_trigger_alarm; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_phones_trigger_alarm BEFORE UPDATE ON account_phones_trigger_alarm FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2716 (class 2620 OID 26846)
--- Dependencies: 203 284 2729
--- Name: ts_account_users; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2734 (class 2620 OID 26846)
+-- Dependencies: 286 203 2747
+-- Name: ts_account_users; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_account_users BEFORE UPDATE ON account_users FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2711 (class 2620 OID 26847)
--- Dependencies: 284 195 2729
--- Name: ts_events; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2729 (class 2620 OID 26847)
+-- Dependencies: 195 286 2747
+-- Name: ts_events; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_events BEFORE UPDATE ON events FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2712 (class 2620 OID 26848)
--- Dependencies: 196 284 2729
--- Name: ts_eventtypes; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2730 (class 2620 OID 26848)
+-- Dependencies: 196 286 2747
+-- Name: ts_eventtypes; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_eventtypes BEFORE UPDATE ON eventtypes FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2724 (class 2620 OID 26849)
--- Dependencies: 284 220 2729
--- Name: ts_groups; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2742 (class 2620 OID 26849)
+-- Dependencies: 220 286 2747
+-- Name: ts_groups; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_groups BEFORE UPDATE ON groups FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2713 (class 2620 OID 26850)
--- Dependencies: 284 198 2729
--- Name: ts_keywords; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2731 (class 2620 OID 26850)
+-- Dependencies: 198 286 2747
+-- Name: ts_keywords; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_keywords BEFORE UPDATE ON keywords FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2721 (class 2620 OID 26851)
--- Dependencies: 284 213 2729
--- Name: ts_notification_templates; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2739 (class 2620 OID 26851)
+-- Dependencies: 213 286 2747
+-- Name: ts_notification_templates; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_notification_templates BEFORE UPDATE ON notification_templates FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
 
 
 --
--- TOC entry 2707 (class 2620 OID 26852)
--- Dependencies: 187 284 2729
--- Name: ts_panelmodel; Type: TRIGGER; Schema: usaga; Owner: postgres
+-- TOC entry 2725 (class 2620 OID 26852)
+-- Dependencies: 187 286 2747
+-- Name: ts_panelmodel; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
 CREATE TRIGGER ts_panelmodel BEFORE UPDATE ON panelmodel FOR EACH ROW EXECUTE PROCEDURE public.ctrl_ts();
@@ -9606,9 +9352,9 @@ CREATE TRIGGER ts_panelmodel BEFORE UPDATE ON panelmodel FOR EACH ROW EXECUTE PR
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2665 (class 2606 OID 27639)
--- Dependencies: 225 165 2651 2729
--- Name: fk_idaddress_contacts; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2681 (class 2606 OID 27639)
+-- Dependencies: 225 2665 165 2747
+-- Name: fk_idaddress_contacts; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY contacts
@@ -9616,9 +9362,9 @@ ALTER TABLE ONLY contacts
 
 
 --
--- TOC entry 2667 (class 2606 OID 27669)
--- Dependencies: 2651 167 225 2729
--- Name: fk_idaddress_phones; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2683 (class 2606 OID 27669)
+-- Dependencies: 2665 225 167 2747
+-- Name: fk_idaddress_phones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY phones
@@ -9626,9 +9372,9 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2666 (class 2606 OID 27664)
--- Dependencies: 2561 165 167 2729
--- Name: fk_idcontact; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2682 (class 2606 OID 27664)
+-- Dependencies: 2575 167 165 2747
+-- Name: fk_idcontact; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY phones
@@ -9636,9 +9382,9 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2686 (class 2606 OID 27578)
--- Dependencies: 2623 209 207 2729
--- Name: fk_idl1_loc_l2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2702 (class 2606 OID 27578)
+-- Dependencies: 207 209 2637 2747
+-- Name: fk_idl1_loc_l2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level2
@@ -9646,9 +9392,9 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2692 (class 2606 OID 27585)
--- Dependencies: 233 209 2627 2729
--- Name: fk_idl2_loc_l3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2708 (class 2606 OID 27585)
+-- Dependencies: 209 2641 233 2747
+-- Name: fk_idl2_loc_l3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level3
@@ -9656,9 +9402,9 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2687 (class 2606 OID 27542)
--- Dependencies: 211 2661 233 2729
--- Name: fk_idl3_loc_l4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2703 (class 2606 OID 27542)
+-- Dependencies: 233 2675 211 2747
+-- Name: fk_idl3_loc_l4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level4
@@ -9666,9 +9412,9 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2688 (class 2606 OID 27592)
--- Dependencies: 2631 215 211 2729
--- Name: fk_idl4_loc_l5; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2704 (class 2606 OID 27592)
+-- Dependencies: 2645 215 211 2747
+-- Name: fk_idl4_loc_l5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level5
@@ -9676,9 +9422,9 @@ ALTER TABLE ONLY location_level5
 
 
 --
--- TOC entry 2689 (class 2606 OID 27598)
--- Dependencies: 2637 215 217 2729
--- Name: fk_idl5_l6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2705 (class 2606 OID 27598)
+-- Dependencies: 215 2651 217 2747
+-- Name: fk_idl5_l6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY location_level6
@@ -9686,9 +9432,19 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2670 (class 2606 OID 26709)
--- Dependencies: 2563 167 177 2729
--- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2710 (class 2606 OID 27835)
+-- Dependencies: 238 2623 200 2747
+-- Name: fk_idmodem_sim; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sim
+    ADD CONSTRAINT fk_idmodem_sim FOREIGN KEY (idmodem) REFERENCES modem(idmodem) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- TOC entry 2686 (class 2606 OID 26709)
+-- Dependencies: 2577 177 167 2747
+-- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY blacklist
@@ -9696,9 +9452,9 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2668 (class 2606 OID 26805)
--- Dependencies: 2563 175 167 2729
--- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2684 (class 2606 OID 26805)
+-- Dependencies: 175 2577 167 2747
+-- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY whitelist
@@ -9706,9 +9462,9 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2671 (class 2606 OID 26714)
--- Dependencies: 177 169 2565 2729
--- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2687 (class 2606 OID 26714)
+-- Dependencies: 169 177 2579 2747
+-- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY blacklist
@@ -9716,9 +9472,9 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2669 (class 2606 OID 26810)
--- Dependencies: 2565 169 175 2729
--- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2685 (class 2606 OID 26810)
+-- Dependencies: 175 169 2579 2747
+-- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY whitelist
@@ -9726,9 +9482,19 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2691 (class 2606 OID 27799)
--- Dependencies: 171 2567 229 2729
--- Name: fk_idsmsin_smsin_c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2709 (class 2606 OID 27830)
+-- Dependencies: 2579 238 169 2747
+-- Name: fk_idprovider_sim; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sim
+    ADD CONSTRAINT fk_idprovider_sim FOREIGN KEY (idprovider) REFERENCES provider(idprovider) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- TOC entry 2707 (class 2606 OID 27799)
+-- Dependencies: 229 171 2581 2747
+-- Name: fk_idsmsin_smsin_c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsin_consumer
@@ -9736,9 +9502,9 @@ ALTER TABLE ONLY smsin_consumer
 
 
 --
--- TOC entry 2690 (class 2606 OID 27806)
--- Dependencies: 173 2569 227 2729
--- Name: fk_idsmsout_smsout_c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2706 (class 2606 OID 27806)
+-- Dependencies: 173 227 2583 2747
+-- Name: fk_idsmsout_smsout_c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smsout_consumer
@@ -9748,9 +9514,9 @@ ALTER TABLE ONLY smsout_consumer
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2684 (class 2606 OID 26561)
--- Dependencies: 2581 204 184 2729
--- Name: fk_accnt_trigg_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2700 (class 2606 OID 26561)
+-- Dependencies: 2595 204 184 2747
+-- Name: fk_accnt_trigg_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_phones_trigger_alarm
@@ -9758,9 +9524,9 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2685 (class 2606 OID 26566)
--- Dependencies: 204 2563 167 2729
--- Name: fk_accnt_trigg_idphone; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2701 (class 2606 OID 26566)
+-- Dependencies: 204 167 2577 2747
+-- Name: fk_accnt_trigg_idphone; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_phones_trigger_alarm
@@ -9768,9 +9534,9 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2682 (class 2606 OID 26887)
--- Dependencies: 203 2581 184 2729
--- Name: fk_account_users_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2698 (class 2606 OID 26887)
+-- Dependencies: 203 2595 184 2747
+-- Name: fk_account_users_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users
@@ -9778,9 +9544,9 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2683 (class 2606 OID 26892)
--- Dependencies: 203 2561 165 2729
--- Name: fk_account_users_idcontact; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2699 (class 2606 OID 26892)
+-- Dependencies: 203 165 2575 2747
+-- Name: fk_account_users_idcontact; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_users
@@ -9788,9 +9554,9 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2674 (class 2606 OID 26491)
--- Dependencies: 185 2581 184 2729
--- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2690 (class 2606 OID 26491)
+-- Dependencies: 2595 185 184 2747
+-- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_installationdata
@@ -9798,9 +9564,9 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2676 (class 2606 OID 27280)
--- Dependencies: 2581 189 184 2729
--- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2692 (class 2606 OID 27280)
+-- Dependencies: 2595 189 184 2747
+-- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY xxxaccount_location
@@ -9808,9 +9574,9 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2680 (class 2606 OID 26921)
--- Dependencies: 184 2581 202 2729
--- Name: fk_idaccount_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2696 (class 2606 OID 26921)
+-- Dependencies: 2595 184 202 2747
+-- Name: fk_idaccount_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_contacts
@@ -9818,9 +9584,9 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2677 (class 2606 OID 26871)
--- Dependencies: 2581 184 191 2729
--- Name: fk_idaccount_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2693 (class 2606 OID 26871)
+-- Dependencies: 184 2595 191 2747
+-- Name: fk_idaccount_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_notifications
@@ -9828,9 +9594,9 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2673 (class 2606 OID 27718)
--- Dependencies: 2651 184 225 2729
--- Name: fk_idaddress_account; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2689 (class 2606 OID 27718)
+-- Dependencies: 184 2665 225 2747
+-- Name: fk_idaddress_account; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account
@@ -9838,9 +9604,9 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2681 (class 2606 OID 26926)
--- Dependencies: 2561 202 165 2729
--- Name: fk_idcontact_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2697 (class 2606 OID 26926)
+-- Dependencies: 2575 165 202 2747
+-- Name: fk_idcontact_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_contacts
@@ -9848,9 +9614,9 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2672 (class 2606 OID 27713)
--- Dependencies: 2645 184 220 2729
--- Name: fk_idgroup_account; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2688 (class 2606 OID 27713)
+-- Dependencies: 220 2659 184 2747
+-- Name: fk_idgroup_account; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account
@@ -9858,9 +9624,9 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2679 (class 2606 OID 26540)
--- Dependencies: 191 2597 193 2729
--- Name: fk_idnotifaccount_eetype; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2695 (class 2606 OID 26540)
+-- Dependencies: 2611 193 191 2747
+-- Name: fk_idnotifaccount_eetype; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_notifications_eventtype
@@ -9868,9 +9634,9 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 
 --
--- TOC entry 2675 (class 2606 OID 26496)
--- Dependencies: 187 185 2591 2729
--- Name: fk_idpanelmodel; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2691 (class 2606 OID 26496)
+-- Dependencies: 2605 185 187 2747
+-- Name: fk_idpanelmodel; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_installationdata
@@ -9878,16 +9644,28 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2678 (class 2606 OID 26876)
--- Dependencies: 2563 167 191 2729
--- Name: fk_idphone_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: postgres
+-- TOC entry 2694 (class 2606 OID 26876)
+-- Dependencies: 167 191 2577 2747
+-- Name: fk_idphone_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
 ALTER TABLE ONLY account_notifications
     ADD CONSTRAINT fk_idphone_notif FOREIGN KEY (idphone) REFERENCES public.phones(idphone) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2013-03-13 07:08:16 ECT
+--
+-- TOC entry 2753 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: -
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-03-15 07:12:57 ECT
 
 --
 -- PostgreSQL database dump complete
