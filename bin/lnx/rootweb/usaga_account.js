@@ -1045,7 +1045,7 @@ while(i<numsel){
 // Aqui buscamos los datos desde el store y no desde la celda.
 AC.GxCStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
 //console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
-alert(i);
+//alert(i);
 AC.GxNPSelectedContacts[i] = AC.GxCStore.getValue(item, 'idcontact');
 } 
 });
