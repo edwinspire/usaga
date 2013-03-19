@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.8
 -- Dumped by pg_dump version 9.1.8
--- Started on 2013-03-15 07:12:54 ECT
+-- Started on 2013-03-19 11:46:56 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -4852,7 +4852,7 @@ BEGIN
 Retorno := trim(insmstext);
 
 -- Verificamos si el mensaje tiene el formato &NTXX que representa el idnotiftempl, si existe utilizamos ese mensaje.
-idnt :=  to_number((regexp_matches(Retorno, '&NT(\d\d)'))[1], '999');
+idnt :=  to_number((regexp_matches(Retorno, '&NT(\d\d\d)'))[1], '999');
     --raise notice 'idnt = %',idnt; 
 IF  EXISTS(SELECT * FROM usaga.notification_templates WHERE idnotiftempl = idnt) THEN
 SELECT message INTO Retorno FROM usaga.notification_templates WHERE idnotiftempl = idnt;
@@ -9034,7 +9034,7 @@ SET search_path = public, pg_catalog;
 
 --
 -- TOC entry 2711 (class 2620 OID 27676)
--- Dependencies: 165 365 2747
+-- Dependencies: 365 165 2747
 -- Name: contacts_ondelete_delete_address; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9043,7 +9043,7 @@ CREATE TRIGGER contacts_ondelete_delete_address AFTER DELETE ON contacts FOR EAC
 
 --
 -- TOC entry 2713 (class 2620 OID 27677)
--- Dependencies: 167 365 2747
+-- Dependencies: 365 167 2747
 -- Name: phones_ondelete_on_delete_address_owner; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9070,7 +9070,7 @@ CREATE TRIGGER ts_blacklist BEFORE UPDATE ON blacklist FOR EACH ROW EXECUTE PROC
 
 --
 -- TOC entry 2712 (class 2620 OID 26829)
--- Dependencies: 165 286 2747
+-- Dependencies: 286 165 2747
 -- Name: ts_contacts; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9088,7 +9088,7 @@ CREATE TRIGGER ts_incomingcalls BEFORE UPDATE ON incomingcalls FOR EACH ROW EXEC
 
 --
 -- TOC entry 2736 (class 2620 OID 26824)
--- Dependencies: 207 286 2747
+-- Dependencies: 286 207 2747
 -- Name: ts_loc_level1; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9097,7 +9097,7 @@ CREATE TRIGGER ts_loc_level1 BEFORE UPDATE ON location_level1 FOR EACH ROW EXECU
 
 --
 -- TOC entry 2737 (class 2620 OID 26827)
--- Dependencies: 209 286 2747
+-- Dependencies: 286 209 2747
 -- Name: ts_loc_level2; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9124,7 +9124,7 @@ CREATE TRIGGER ts_loc_level4 BEFORE UPDATE ON location_level4 FOR EACH ROW EXECU
 
 --
 -- TOC entry 2740 (class 2620 OID 26825)
--- Dependencies: 286 215 2747
+-- Dependencies: 215 286 2747
 -- Name: ts_loc_level5; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9133,7 +9133,7 @@ CREATE TRIGGER ts_loc_level5 BEFORE UPDATE ON location_level5 FOR EACH ROW EXECU
 
 --
 -- TOC entry 2741 (class 2620 OID 26826)
--- Dependencies: 286 217 2747
+-- Dependencies: 217 286 2747
 -- Name: ts_loc_level6; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9142,7 +9142,7 @@ CREATE TRIGGER ts_loc_level6 BEFORE UPDATE ON location_level6 FOR EACH ROW EXECU
 
 --
 -- TOC entry 2732 (class 2620 OID 26831)
--- Dependencies: 286 200 2747
+-- Dependencies: 200 286 2747
 -- Name: ts_modem; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9169,7 +9169,7 @@ CREATE TRIGGER ts_provider BEFORE UPDATE ON provider FOR EACH ROW EXECUTE PROCED
 
 --
 -- TOC entry 2716 (class 2620 OID 26834)
--- Dependencies: 286 171 2747
+-- Dependencies: 171 286 2747
 -- Name: ts_smsin; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9178,7 +9178,7 @@ CREATE TRIGGER ts_smsin BEFORE UPDATE ON smsin FOR EACH ROW EXECUTE PROCEDURE ct
 
 --
 -- TOC entry 2717 (class 2620 OID 26835)
--- Dependencies: 286 173 2747
+-- Dependencies: 173 286 2747
 -- Name: ts_smsout; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9187,7 +9187,7 @@ CREATE TRIGGER ts_smsout BEFORE UPDATE ON smsout FOR EACH ROW EXECUTE PROCEDURE 
 
 --
 -- TOC entry 2720 (class 2620 OID 26836)
--- Dependencies: 180 286 2747
+-- Dependencies: 286 180 2747
 -- Name: ts_smsoutoptions; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9196,7 +9196,7 @@ CREATE TRIGGER ts_smsoutoptions BEFORE UPDATE ON smsoutoptions FOR EACH ROW EXEC
 
 --
 -- TOC entry 2718 (class 2620 OID 26837)
--- Dependencies: 175 286 2747
+-- Dependencies: 286 175 2747
 -- Name: ts_whitelist; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9252,7 +9252,7 @@ CREATE TRIGGER ts_account_location BEFORE UPDATE ON xxxaccount_location FOR EACH
 
 --
 -- TOC entry 2727 (class 2620 OID 26842)
--- Dependencies: 286 191 2747
+-- Dependencies: 191 286 2747
 -- Name: ts_account_notifications; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9270,7 +9270,7 @@ CREATE TRIGGER ts_account_notifications_eventtype BEFORE UPDATE ON account_notif
 
 --
 -- TOC entry 2743 (class 2620 OID 26844)
--- Dependencies: 221 286 2747
+-- Dependencies: 286 221 2747
 -- Name: ts_account_notifications_group; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9297,7 +9297,7 @@ CREATE TRIGGER ts_account_users BEFORE UPDATE ON account_users FOR EACH ROW EXEC
 
 --
 -- TOC entry 2729 (class 2620 OID 26847)
--- Dependencies: 195 286 2747
+-- Dependencies: 286 195 2747
 -- Name: ts_events; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9315,7 +9315,7 @@ CREATE TRIGGER ts_eventtypes BEFORE UPDATE ON eventtypes FOR EACH ROW EXECUTE PR
 
 --
 -- TOC entry 2742 (class 2620 OID 26849)
--- Dependencies: 220 286 2747
+-- Dependencies: 286 220 2747
 -- Name: ts_groups; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9333,7 +9333,7 @@ CREATE TRIGGER ts_keywords BEFORE UPDATE ON keywords FOR EACH ROW EXECUTE PROCED
 
 --
 -- TOC entry 2739 (class 2620 OID 26851)
--- Dependencies: 213 286 2747
+-- Dependencies: 286 213 2747
 -- Name: ts_notification_templates; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9342,7 +9342,7 @@ CREATE TRIGGER ts_notification_templates BEFORE UPDATE ON notification_templates
 
 --
 -- TOC entry 2725 (class 2620 OID 26852)
--- Dependencies: 187 286 2747
+-- Dependencies: 286 187 2747
 -- Name: ts_panelmodel; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9665,7 +9665,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-03-15 07:12:57 ECT
+-- Completed on 2013-03-19 11:46:59 ECT
 
 --
 -- PostgreSQL database dump complete
