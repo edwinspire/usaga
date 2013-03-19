@@ -22,9 +22,9 @@ print("Licence: LGPL\n");
 print("Hosted: https://github.com/edwinspire\n");
 print("Contact: edwinspire@gmail.com\n");
 
-S.Port = 8081;
+//S.Port = 8081;
 
-S.Index = "usaga.html";
+//S.Index = "usaga.html";
 S.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
 S.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
 S.VirtualUrl["fun_view_idaccounts_names_xml.usaga"] = "/fun_view_idaccounts_names_xml.usaga"; 
@@ -716,7 +716,6 @@ return Retorno;
 
 // Inicia y corre el servidor asincronicamente
 public void Run(){
-S.RequestPrintOnConsole = true;
 
 uSagaProcessData Pro = new uSagaProcessData();
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Untitled</title>
+<script type="text/javascript" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[], mblLoadCompatPattern: /\/opensaga\/themes\/.*\.css$/" src="lib/dojo/dojo/dojo.js"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/Toolbar",
+  "dijit/form/Button",
+  "widgets/widgetspire/tooltipdialogconfirmation",
+  "dijit/form/TextBox",
+  "dojox/io/xhrScriptPlugin",
+  "dojo/data/ItemFileReadStore",
+  "gridx/Grid",
+  "gridx/core/model/cache/Async",
+  "dojox/data/CsvStore",
+  "dijit/TooltipDialog"
+]);
+</script>
+<style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
+</style>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body class="claro" data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
+ <div style="width: 100%; height: 100%; overflow: hidden;">
+  <div style="margin-bottom: 5px;" class="dijitTitlePaneTitle">
+   <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+     Pa&iacute;s</label>
+ </div>
+<span data-dojo-type="dijit.Toolbar">
+<input type="button" data-dojo-type="dijit.form.Button" id="idnew" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitNoIcon"></input>
+<input type="button" data-dojo-type="dijit.form.Button" id="iddelete" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitNoIcon"></input>
+</span>
+<div data-dojo-type="widgetspire.tooltipdialogconfirmation" id="iddialogdelete" style="height: auto; width: auto; display: none !important;"></div>
+<div id="iddialognew" style="display: none !important;">
+ <table style="border-collapse:collapse;table-layout:auto;width:100%;height:auto;" border="0">
+   <colgroup>
+     <col></col>
+     <col></col>
+   </colgroup>
+   <tbody>
+     <tr>
+       <td style="width: 50px;">
+         &nbsp;<label>
+Nombre:</label>
+</td>
+       <td>
+         &nbsp;<input type="text" data-dojo-type="dijit.form.TextBox" id="idname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" title="Nombre del pa&amp;iacute;s"></input>
+</td>
+     </tr>
+     <tr>
+       <td>
+         &nbsp;<label>
+C&oacute;digo:</label>
+</td>
+       <td>
+         &nbsp;<input type="text" data-dojo-type="dijit.form.TextBox" id="idcode" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" title="C&amp;oacute;digo de pa&amp;iacute;s"></input>
+</td>
+     </tr>
+   </tbody>
+ </table>
+</div>
+<span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:[1],&quot;id&quot;:[&quot;1&quot;],&quot;label&quot;:[&quot;Label 1&quot;]}]}"></span>
+<table data-dojo-type="gridx.Grid" id="idgridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_1"></table>
+</div>
+</body>
+</html>

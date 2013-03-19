@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Untitled</title>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[], mblLoadCompatPattern: /\/opensaga\/themes\/.*\.css$/"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/form/FilteringSelect",
+  "dijit/form/NumberTextBox",
+  "dijit/form/Textarea"
+]);
+</script>
+<style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "app.css";
+</style>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body class="claro" data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
+ <div>
+   <span style="margin-top: 2px; margin-bottom: 2px; margin-right: 3px; margin-left: 3px;">
+<label style="margin-right: 5px;">
+   
+Geox:</label>
+<input type="text" data-dojo-type="dijit.form.NumberTextBox" id="idgeox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo."></input>
+</span><span style="margin-top: 2px; margin-bottom: 2px; margin-right: 3px; margin-left: 3px;">
+<label style="margin-right: 5px;">
+   
+Geoy:</label>
+<input type="text" data-dojo-type="dijit.form.NumberTextBox" id="idgeoy" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo."></input>
+</span>
+   <div>
+   <span style="display: block;">
+<label style="display: inline-block;">
+       
+Calles:</label>
+     </span>
+<span style="margin-top: 2px; margin-right: 3px; margin-bottom: 2px; margin-left: 3px;">
+<label style="margin-right: 5px;">
+   
+Principal:</label>
+<textarea type="text" data-dojo-type="dijit.form.Textarea" id="idps" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: auto;"></textarea>
+</span>
+<span style="margin-top: 2px; margin-right: 3px; margin-bottom: 2px; margin-left: 3px;">
+<label style="margin-right: 5px;">
+     
+  Secundaria:</label>
+<textarea type="text" data-dojo-type="dijit.form.Textarea" id="idss" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: auto;"></textarea>
+</span><span style="margin-top: 2px; margin-right: 3px; margin-bottom: 2px; margin-left: 3px;">
+<label style="margin-right: 5px;">
+     Otros:</label>
+<textarea type="text" data-dojo-type="dijit.form.Textarea" id="ido" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: auto;"></textarea>
+</span><span style="display: block; margin-top: 5px;">
+<label style="display: inline-block;">
+       Notas:</label>
+     </span>
+   </div>
+   <textarea type="text" data-dojo-type="dijit.form.Textarea" id="idn" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+ </div>
+</body>
+</html>
