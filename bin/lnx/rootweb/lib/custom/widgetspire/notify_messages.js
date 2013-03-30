@@ -13,16 +13,13 @@ postCreate: function(){
 
 },
 setText: function(t){
- var node = domConstruct.create("div");
-domStyle.set(node, {
-      backgroundColor: "white",
-      border: "1px solid black",
-      margin: "0.5em",
-      textAlign: "right"
-    });
+ var node = domConstruct.create("span");
+node.innerHTML = '<div id="notify" style="border: 1px solid #FF8635; border-radius: 6px; -moz-border-radius: 6px; width: 206px; background-color: transparent; background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#f3b71f)); background-image: -o-linear-gradient(white, #f3b71f); background-image: -ms-linear-gradient(white, #f3b71f); background-image: -moz-linear-gradient(white, #f3b71f); background-image: -webkit-linear-gradient(white, #f3b71f); background-image: linear-gradient(white, #f3b71f); text-align: center; height: auto;">     <label style="color: #553204;">'+t+'</label>   </div>';
 
 
-node.innerHTML = t;
+
+
+//node.innerHTML = t;
 
   domConstruct.place(node, this.container);
 
