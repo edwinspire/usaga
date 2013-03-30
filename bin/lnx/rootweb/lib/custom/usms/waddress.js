@@ -110,7 +110,7 @@ t.emit('onloaddata', t.values());
                     // Display the error returned
 t.reset();
 t.emit('onloaddata', t.values());
-alert(error);
+console.log(error);
                 }
             );
 }else{
@@ -135,7 +135,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-alert(d.getStringFromB64(0, 'outpgmsg'));
+console.log(d.getStringFromB64(0, 'outpgmsg'));
 }else{
 t.reset();
 }
@@ -146,7 +146,7 @@ t.emit('onsavedata', t.values());
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-alert(error);
+console.log(error);
                 }
             );
 
@@ -168,7 +168,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-alert(d.getStringFromB64(0, 'outpgmsg'));
+console.log(d.getStringFromB64(0, 'outpgmsg'));
 }else{
 t.reset();
 }
@@ -179,7 +179,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-alert(error);
+console.log(error);
                 }
             );
 }else{
