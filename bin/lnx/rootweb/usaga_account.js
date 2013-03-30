@@ -100,7 +100,7 @@ AC.dijit.Select.readOnly = true;
 
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 
@@ -157,7 +157,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-alert(d.getStringFromB64(0, 'outpgmsg'));
+console.log(d.getStringFromB64(0, 'outpgmsg'));
 }else{
 t.reset();
 }
@@ -167,7 +167,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-alert(error);
+console.log(error);
                 }
             );
 
@@ -206,7 +206,7 @@ PTElements.GxPTClear();
 dojo.connect(dijit.byId("usaga.account.user.button.save"), 'onClick', SaveFormAccountUser);
 dojo.connect(dijit.byId("usaga.account.user.button.del"), 'onClick', DeleteFormAccountUser);
 dojo.connect(dijit.byId("usaga.account.user.button.contactdata"), 'onClick', function(){
-alert('No implementado');
+console.log('No implementado');
 });
 
 
@@ -258,7 +258,7 @@ data: formdata
 
 var xmld = new RXml.getFromXhr(response, 'row');
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 
 var idcontactuser = xmld.getNumber(0, 'outreturn');
 LoadAccountUsersGridx();
@@ -269,7 +269,7 @@ LoadFormAccountUser(idcontactuser);
 }
 
 }, function(error){
-alert(error);
+console.log(error);
 });
 
 }else{
@@ -309,7 +309,7 @@ LoadAccountPhonesTriggerGridx(iniidcontact);
 
 }, function(error){
 LoadAccountPhonesTriggerGridx(iniidcontact);
-alert(error);
+console.log(error);
 });
 
 }else{
@@ -370,7 +370,7 @@ i++;
 		myGridX.setStore(store);
 
 }, function(error){
-alert(error);
+console.log(error);
 });
 
 }else{
@@ -447,7 +447,7 @@ PTElements.dijit.GxPT.startup();
 
                 },
                 function(error){
-alert(error);
+console.log(error);
                 }
             );
 
@@ -477,7 +477,7 @@ data: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fr
 
 var xmld = new RXml.getFromXhr(response, 'row');
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 
 var idcontactuser = xmld.getNumber(0, 'outreturn');
 LoadAccountUsersGridx();
@@ -488,7 +488,7 @@ LoadFormAccountUser(idcontactuser);
 }
 
 }, function(error){
-alert(error);
+console.log(error);
 });
 
 }else{
@@ -546,7 +546,7 @@ i++;
 
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 
@@ -561,20 +561,20 @@ alert(e);
 // Account Contacts
 
 dojo.connect(dijit.byId('usaga.account.contacts.new'), 'onClick', function(){
-//alert('Nuevo');
+
 AC.ResetOnSelectContact();
 AC.dijit.Select.readOnly = false;
 });
 dojo.connect(dijit.byId('usaga.account.contacts.save'), 'onClick', function(){
-//alert('save');
+
 AC.SaveForm(false);
 });
 dojo.connect(dijit.byId('usaga.account.contacts.del'), 'onClick', function(){
-//alert('del');
+
 AC.SaveForm(true);
 });
 dojo.connect(dijit.byId('usaga.account.contacts.contactdata'), 'onClick', function(){
-alert('contactdata en construccion');
+console.log('contactdata en construccion');
 });
 
 // ACCOUNT CONTACTS
@@ -672,7 +672,7 @@ i++;
 		AC.dijit.GxC.setStore(AC.GxCStore);
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 
@@ -705,7 +705,7 @@ if(xmld.length > 0){
 var outreturn = xmld.getInt(0, 'outreturn');
 if(outreturn == Objeto.dijit.Select.get('value')){
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 Objeto.LoadFormContact(outreturn);
 
 }else{
@@ -721,7 +721,7 @@ Objeto.LoadContactsGrid();
     error: function(error)
 {
 Objeto.LoadContactsGrid();
-alert(error);
+console.log(error);
     }
   }
 
@@ -768,7 +768,7 @@ AC.GxNETStore.clearOnClose = true;
 
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 
@@ -824,7 +824,7 @@ AC.GxNPStore.clearOnClose = true;
 },
 onError: function(e){
 AC.GxNPClear();
-alert(e);
+console.log(e);
 }
 });
 
@@ -849,13 +849,13 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 AC.LoadContactsGrid();
     },
     error: function(errorx){
-alert(errorx);
+console.log(errorx);
 //Objeto.LoadPhones(0);
     }
   }
@@ -879,7 +879,7 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 
@@ -887,7 +887,7 @@ Objeto.LoadPhones(AC.dijit.Select.get('value'));
 
     },
     error: function(errorx){
-alert(errorx);
+console.log(errorx);
 Objeto.LoadPhones(0);
     }
   }
@@ -924,7 +924,7 @@ Objeto.LoadPhones(iniidcontact);
 
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 
@@ -1014,8 +1014,6 @@ AC.dijit.GxNP.startup();
 
 // Captura el evento cuando se hace click en una fila
 dojo.connect(AC.dijit.GxNP, 'onRowClick', function(event){
-//var id = this.cell(event.rowId, 2, true).data();
-//alert(id);
 AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 3, true).data());
 });
 
@@ -1025,7 +1023,6 @@ AC.LoadPhonesNotifEvenTypes(this.cell(event.rowId, 3, true).data());
 
 dojo.connect(AC.dijit.GxNP.select.row, 'onSelectionChange', function(selected){
 AC.GxNPSelectedRows = [];
-//alert(selected);
 numsel = selected.length;
 i = 0;
 while(i<numsel){
@@ -1041,14 +1038,12 @@ i++;
 
 dojo.connect(AC.dijit.GxC.select.row, 'onSelectionChange', function(selected){
 AC.GxNPSelectedContacts = [];
-//alert(selected);
 numsel = selected.length;
 i = 0;
 while(i<numsel){
 // Aqui buscamos los datos desde el store y no desde la celda.
 AC.GxCStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
 //console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
-//alert(i);
 AC.GxNPSelectedContacts[i] = AC.GxCStore.getValue(item, 'idcontact');
 } 
 });
@@ -1090,8 +1085,7 @@ var xmld = new RXml.getFromXhr(datass, 'row');
 if(xmld.length > 0){
 
 if(xmld.getInt(0, 'outreturn') > 0){
-//alert('pasa');
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+console.log(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 //Objeto.ResetOnSelectContact();
 }
@@ -1104,7 +1098,7 @@ AC.LoadPhones(itemStore.idcontact);
     error: function(error)
 {
 AC.LoadPhones(itemStore.idcontact);
-alert(error);
+console.log(error);
     }
   }
 	
@@ -1199,10 +1193,9 @@ usaga_account_event_store.clearOnClose = true;
 		GridEventsAccount.store = null;
 		GridEventsAccount.setStore(usaga_account_event_store);
 //GridCalls.startup();
-//alert('ok');
 },
 onError: function(e){
-alert(e);
+console.log(e);
 }
 });
 }
@@ -1235,7 +1228,6 @@ AC.LoadContactsGrid();
 
 
 	dojo.connect(usaga_account_contact_notifphonesStore, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idcontact);
 ANP.Save(item);
 });	
 
