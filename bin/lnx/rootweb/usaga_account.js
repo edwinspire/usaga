@@ -24,6 +24,7 @@ require(["dojo/ready",
 "dojo/request",
 "jspire/Gridx",
 "jspire/form/DateTextBox",
+"dojo/dom-style",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore",
 "gridx/modules/RowHeader",
@@ -32,7 +33,7 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup"
-], function(ready, on, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, RXml, request, jsGridx, jsDateTextBox){
+], function(ready, on, Memory, FilteringSelect, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, CheckBox, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, RXml, request, jsGridx, jsDateTextBox, domStyle){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -49,8 +50,10 @@ dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
 dijit.byId('account.contentpane.users').attr('disabled',  disabled);
 dijit.byId('ContentPaneNotifyGroup').attr('disabled',  disabled);
 dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
-dijit.byId('ContentPaneDataInstall').attr('disabled',  disabled);
-dijit.byId('ContentPaneMantenimiento').attr('disabled',  disabled);
+
+//dijit.byId('ContentPaneDataInstall').attr('disabled',  disabled);
+//dijit.byId('ContentPaneMantenimiento').attr('disabled',  disabled);
+
 dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 },
 IdAccount: 0,
