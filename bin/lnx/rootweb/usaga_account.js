@@ -41,6 +41,9 @@ require(["dojo/ready",
 ///// BASIC /////
 // Account basic elements
 
+var NotifyMSG = dijit.byId('notify');
+
+NotifyMSG.setText('Ha ingresado a USAGA');
 
 var GlobalObject = {
 DisabledContentPanes: function(disabled){
@@ -100,7 +103,7 @@ AC.dijit.Select.readOnly = true;
 
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -157,7 +160,8 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-console.log(d.getStringFromB64(0, 'outpgmsg'));
+//NotifyMSG.setText(d.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(d.getStringFromB64(0, 'outpgmsg'));
 }else{
 t.reset();
 }
@@ -167,7 +171,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-console.log(error);
+NotifyMSG.setText(error);
                 }
             );
 
@@ -206,7 +210,7 @@ PTElements.GxPTClear();
 dojo.connect(dijit.byId("usaga.account.user.button.save"), 'onClick', SaveFormAccountUser);
 dojo.connect(dijit.byId("usaga.account.user.button.del"), 'onClick', DeleteFormAccountUser);
 dojo.connect(dijit.byId("usaga.account.user.button.contactdata"), 'onClick', function(){
-console.log('No implementado');
+NotifyMSG.setText('No implementado');
 });
 
 
@@ -258,7 +262,8 @@ data: formdata
 
 var xmld = new RXml.getFromXhr(response, 'row');
 
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
+
 
 var idcontactuser = xmld.getNumber(0, 'outreturn');
 LoadAccountUsersGridx();
@@ -269,7 +274,7 @@ LoadFormAccountUser(idcontactuser);
 }
 
 }, function(error){
-console.log(error);
+NotifyMSG.setText(error);
 });
 
 }else{
@@ -309,7 +314,7 @@ LoadAccountPhonesTriggerGridx(iniidcontact);
 
 }, function(error){
 LoadAccountPhonesTriggerGridx(iniidcontact);
-console.log(error);
+NotifyMSG.setText(error);
 });
 
 }else{
@@ -370,7 +375,7 @@ i++;
 		myGridX.setStore(store);
 
 }, function(error){
-console.log(error);
+NotifyMSG.setText(error);
 });
 
 }else{
@@ -447,7 +452,7 @@ PTElements.dijit.GxPT.startup();
 
                 },
                 function(error){
-console.log(error);
+NotifyMSG.setText(error);
                 }
             );
 
@@ -477,7 +482,7 @@ data: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fr
 
 var xmld = new RXml.getFromXhr(response, 'row');
 
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 
 var idcontactuser = xmld.getNumber(0, 'outreturn');
 LoadAccountUsersGridx();
@@ -488,7 +493,7 @@ LoadFormAccountUser(idcontactuser);
 }
 
 }, function(error){
-console.log(error);
+NotifyMSG.setText(error);
 });
 
 }else{
@@ -546,7 +551,7 @@ i++;
 
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -574,7 +579,7 @@ dojo.connect(dijit.byId('usaga.account.contacts.del'), 'onClick', function(){
 AC.SaveForm(true);
 });
 dojo.connect(dijit.byId('usaga.account.contacts.contactdata'), 'onClick', function(){
-console.log('contactdata en construccion');
+NotifyMSG.setText('contactdata en construccion');
 });
 
 // ACCOUNT CONTACTS
@@ -672,7 +677,7 @@ i++;
 		AC.dijit.GxC.setStore(AC.GxCStore);
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -705,7 +710,7 @@ if(xmld.length > 0){
 var outreturn = xmld.getInt(0, 'outreturn');
 if(outreturn == Objeto.dijit.Select.get('value')){
 
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 Objeto.LoadFormContact(outreturn);
 
 }else{
@@ -721,7 +726,7 @@ Objeto.LoadContactsGrid();
     error: function(error)
 {
 Objeto.LoadContactsGrid();
-console.log(error);
+NotifyMSG.setText(error);
     }
   }
 
@@ -768,7 +773,7 @@ AC.GxNETStore.clearOnClose = true;
 
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -824,7 +829,7 @@ AC.GxNPStore.clearOnClose = true;
 },
 onError: function(e){
 AC.GxNPClear();
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -849,13 +854,13 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 AC.LoadContactsGrid();
     },
     error: function(errorx){
-console.log(errorx);
+NotifyMSG.setText(errorx);
 //Objeto.LoadPhones(0);
     }
   }
@@ -879,7 +884,7 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 
 }
 
@@ -887,7 +892,7 @@ Objeto.LoadPhones(AC.dijit.Select.get('value'));
 
     },
     error: function(errorx){
-console.log(errorx);
+NotifyMSG.setText(errorx);
 Objeto.LoadPhones(0);
     }
   }
@@ -924,7 +929,7 @@ Objeto.LoadPhones(iniidcontact);
 
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 
@@ -1028,7 +1033,7 @@ i = 0;
 while(i<numsel){
 // Aqui buscamos los datos desde el store y no desde la celda.
 AC.GxNPStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-//console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
+//NotifyMSG.setText('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
 AC.GxNPSelectedRows[i] = AC.GxNPStore.getValue(item, 'idphone');
 } 
 });
@@ -1043,7 +1048,7 @@ i = 0;
 while(i<numsel){
 // Aqui buscamos los datos desde el store y no desde la celda.
 AC.GxCStore.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-//console.log('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
+//NotifyMSG.setText('id phone ', AC.GxNPStore.getValue(item, 'idphone')  );
 AC.GxNPSelectedContacts[i] = AC.GxCStore.getValue(item, 'idcontact');
 } 
 });
@@ -1085,7 +1090,7 @@ var xmld = new RXml.getFromXhr(datass, 'row');
 if(xmld.length > 0){
 
 if(xmld.getInt(0, 'outreturn') > 0){
-console.log(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 }else{
 //Objeto.ResetOnSelectContact();
 }
@@ -1098,7 +1103,7 @@ AC.LoadPhones(itemStore.idcontact);
     error: function(error)
 {
 AC.LoadPhones(itemStore.idcontact);
-console.log(error);
+NotifyMSG.setText(error);
     }
   }
 	
@@ -1195,7 +1200,7 @@ usaga_account_event_store.clearOnClose = true;
 //GridCalls.startup();
 },
 onError: function(e){
-console.log(e);
+NotifyMSG.setText(e);
 }
 });
 }
