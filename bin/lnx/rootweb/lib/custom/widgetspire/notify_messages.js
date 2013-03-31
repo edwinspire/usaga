@@ -25,7 +25,7 @@ node.innerHTML = '<div id="notify" style="border: 1px solid #FF8635; border-radi
 
 setTimeout(function(){
 dojo.destroy(node);
-}, 10000);
+}, 15000);
 
 //   <div id="notify" style="border: 1px solid black; border-radius: 6px; -moz-border-radius: 6px;">fjffjfjjf</div>
 }   

@@ -34,6 +34,10 @@ var ObjectTable = {
 IdToDelete: [] 
 } 
 
+var NotifyMSG = dijit.byId('notify');
+
+//NotifyMSG.setText('Plantillas de notificaciones de alarma');
+
         var myDialogShowLabels = dijit.byId('idshowLabels');
 
         dojo.connect(dojo.byId('tags'), 'onclick', function(){
@@ -101,7 +105,7 @@ i++;
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idnotiftempl);
+//NotifyMSG.setText('Edita '+ item.idnotiftempl);
 SaveData(item);
 });
 
@@ -145,7 +149,7 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
 
 
 }
@@ -154,7 +158,7 @@ LoadGrid();
 
     },
     error: function(errorx){
-alert(errorx);
+NotifyMSG.setText(errorx);
     }
   }
   // Call the asynchronous xhrGet
@@ -196,7 +200,7 @@ ItemFileWriteStore_1.clearOnClose = true;
 
 },
 onError: function(e){
-alert(e);
+NotifyMSG.setText(e);
 }
 });
 

@@ -51,7 +51,7 @@ DisabledContentPanes: function(disabled){
 dijit.byId('ContentPaneTiempos').attr('disabled',  disabled);
 dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
 dijit.byId('account.contentpane.users').attr('disabled',  disabled);
-dijit.byId('ContentPaneNotifyGroup').attr('disabled',  disabled);
+//dijit.byId('ContentPaneNotifyGroup').attr('disabled',  disabled);
 dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 
 //dijit.byId('ContentPaneDataInstall').attr('disabled',  disabled);

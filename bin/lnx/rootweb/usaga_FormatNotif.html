@@ -25,7 +25,8 @@ require([
   "dijit/Menu",
   "dijit/form/TextBox",
 "dijit/TooltipDialog",
-"dijit/Dialog"
+"dijit/Dialog",
+  "widgets/widgetspire/notify_messages"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -726,6 +727,7 @@ IdLocation</td>
        <input type="button" data-dojo-type="dijit.form.Button" id="ShowLabelClose" intermediateChanges="false" label="Cerrar" iconClass="dijitNoIcon"></input>
      </div>
      </div>
+ <div id="notify" data-dojo-type="widgetspire.notify_messages" style="display: block !important;"></div>
 </body>
 </html>
 

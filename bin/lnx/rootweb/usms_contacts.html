@@ -35,7 +35,8 @@ require([
   "widgets/usms/waddress",
   "widgets/widgetspire/tooltipdialogconfirmation",
 "dojo/request",
-'dojo/store/Memory'
+'dojo/store/Memory',
+  "widgets/widgetspire/notify_messages"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -96,7 +97,7 @@ require([
              Nombre:</label>
            <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.firstname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
          </div>
-         <div style="width: auto; height: auto; display: inline-block;">
+         <div style="width: auto; height: auto; display: block;">
            <label>
              Apellido:</label>
            <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
@@ -331,6 +332,7 @@ require([
  <div id="dialogconfirmdeletecontactaddress" data-dojo-type="widgetspire.tooltipdialogconfirmation" style="display: none !important;"></div>
  <div id="dialogconfirmdeletecontactphone" data-dojo-type="widgetspire.tooltipdialogconfirmation" style="display: none !important;"></div>
  <div id="dialogconfirmdeletecontactaddressphone" data-dojo-type="widgetspire.tooltipdialogconfirmation" style="display: none !important;"></div>
+ <div id="notify" data-dojo-type="widgetspire.notify_messages" style="display: block !important;"></div>
 </body>
 </html>
 
