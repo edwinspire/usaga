@@ -1209,6 +1209,12 @@ NotifyMSG.setText(e);
 
 var Account_Main_Data = dijit.byId('account_main');
 
+Account_Main_Data.on('notify_message', function(m){
+NotifyMSG.setText(m.message);
+});
+
+
+
 	Account_Main_Data.on('onloadaccount', function(d){
 
 if(d.idaccount > 0){

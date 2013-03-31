@@ -77,207 +77,651 @@ Está seguro que desea eliminar los registros seleccionados?</label>
        <input type="button" data-dojo-type="dijit.form.Button" id="delcancel" intermediateChanges="false" label="No" iconClass="dijitNoIcon"></input>
      </div>
  </div>
- <div id="idshowLabels" data-dojo-type="dijit/TooltipDialog" style="width: auto; display: none;">
-     <span style="margin-bottom: 5px; width: 100%;">
+ <div id="idshowLabels" data-dojo-type="dijit/TooltipDialog" style="width: 450px; height: auto; display: none;">
+<div style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="dijitTitlePaneTitle" style="vertical-align: middle;">
+   <label>
+     Abreviaciones (Etiquetas) permitidas</label>
+ </div>
+  <table style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto; text-align: left; vertical-align: top;" border="0">
+    <colgroup>
+      <col></col>
+      <col></col>
+      <col></col>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: none; vertical-align: top;">
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
+           <label>
+             ABONADO - B&aacute;sico</label>
+         </div>
+          <table border="0" style="border:1px solid black;border-collapse:collapse;table-layout:fixed;width:100%;height:auto;">
+          <colgroup style="border: 1px solid black;">
+              <col style="border: 1px solid black; width: 45px;"></col>
+              <col></col>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A01</td>
+                <td>
+                  IdAccount</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A02</td>
+                <td style="border: 1px solid black;">
+                  Partición</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A03</td>
+                <td>
+                  Habilitado</td>
+              </tr>
+              <tr>
+                <td>
+                  &amp;A04</td>
+                <td style="border: 1px solid black;">
+                  Número de abonado</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A05</td>
+                <td>
+                  Nombre de abonado</td>
+              </tr>
+              <tr>
+                <td>
+                  &amp;A06</td>
+                <td style="border: 1px solid black;">
+                  Tipo de abonado</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A07</td>
+                <td>
+                  Fecha de creación</td>
+              </tr>
+              <tr>
+                <td>
+                  &amp;A08</td>
+                <td style="border: 1px solid black;">
+                  IdGrupo</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid black;">
+                  &amp;A09</td>
+                <td>
+                  IdAddress</td>
+              </tr>
+              <tr>
+                <td>
+                  &amp;A10</td>
+                <td style="border: 1px solid black;">
+                  Nota</td>
+              </tr>
+            </tbody>
+          </table>
+          </td>
+        <td style="vertical-align: top;">
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
 <label>
-Etiquetas permitidas:</label>
-     </span>
-     <table border="0" style="border-collapse:collapse;table-layout:fixed;width:306px;height:118px;">
-       <colgroup>
-         <col></col>
-         <col></col>
-       </colgroup>
-       <tbody>
-         <tr>
-           <td style="vertical-align: top;">
-             <div style="margin: 5px;">
-               <div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-                  Datos de abonado</label>
-              </div>
-               <table border="1" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-                 <colgroup>
-                   <col></col>
-                   <col></col>
-                 </colgroup>
-                 <tbody>
-                   <tr>
-                     <th>
-                       &amp;A01</th>
-                     <th>
-                       Grupo</th>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A02</td>
-                     <td>
-                       Subgrupo</td>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A03</td>
-                     <td>
-                       Nombre abonado</td>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A04</td>
-                     <td>
-                       Número abonado</td>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A05</td>
-                     <td>
-                       Dirección abonado</td>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A06</td>
-                     <td>
-                       Coordenadas abonado</td>
-                   </tr>
-                   <tr>
-                     <td>
-                       &amp;A07</td>
-                     <td>
-                       &nbsp;</td>
-                   </tr>
-                 </tbody>
-               </table>
-             </div>
-           </td>
-           <td style="vertical-align: top;">
-             <div style="margin: 5px;">
-<div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-Datos de usuario</label>
+ABONADO - Dirección</label>
 </div>
-<table border="1" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup>
-<col></col>
+<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+<colgroup style="border: 1px solid black;">
+<col style="border: 1px solid black; width: 45px;"></col>
 <col></col>
 </colgroup>
 <tbody>
 <tr>
-<th>
-&amp;U01</th>
-<th>
-Nombre completo</th>
+<td style="border: 1px solid black;">
+&amp;AA01</td>
+<td>
+IdAddress</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA02</td>
+<td style="border: 1px solid black;">
+IdLocation</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA03</td>
+<td>
+GeoX</td>
 </tr>
 <tr>
 <td>
-&amp;U02</td>
+&amp;AA04</td>
+<td style="border: 1px solid black;">
+GeoY</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA05</td>
 <td>
-Número de teléfono (que generó la alarma)</td>
+Campo 1</td>
 </tr>
 <tr>
 <td>
-&amp;U03</td>
+&amp;AA06</td>
+<td style="border: 1px solid black;">
+Campo 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA07</td>
 <td>
-Tipo de teléfono</td>
+Campo 3</td>
 </tr>
 <tr>
 <td>
-&amp;U04</td>
+&amp;AA08</td>
+<td style="border: 1px solid black;">
+Campo 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA09</td>
 <td>
-Dirección del teléfono</td>
+Campo 5</td>
 </tr>
 <tr>
 <td>
-&amp;U05</td>
+&amp;AA10</td>
+<td style="border: 1px solid black;">
+Campo 6</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA11</td>
 <td>
-Coordenadas del teléfono</td>
+Campo 7</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
+&amp;AA12</td>
+<td style="border: 1px solid black;">
+Campo 8</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AA13</td>
 <td>
-&nbsp;</td>
+Campo 9</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
-<td>
-&nbsp;</td>
+&amp;AA14</td>
+<td style="border: 1px solid black;">
+Campo 10</td>
 </tr>
 </tbody>
 </table>
-</div>
 </td>
-         </tr>
-         <tr>
-           <td style="vertical-align: top;">
-             <div style="margin: 5px;">
-<div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-Datos del Evento</label>
+        <td style="vertical-align: top;">
+          
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
+<label>
+ABONADO - Localización</label>
 </div>
-<table border="1" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup>
-<col></col>
+<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+<colgroup style="border: 1px solid black;">
+<col style="border: 1px solid black; width: 45px;"></col>
 <col></col>
 </colgroup>
 <tbody>
 <tr>
-<th>
-&amp;E01</th>
-<th>
-Descripción del evento</th>
+<td style="border: 1px solid black;">
+&amp;AL01</td>
+<td>
+ID Nivel 1</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL02</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 1</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; vertical-align: top;">
+&amp;AL03</td>
+<td>
+Código de área Nivel 1</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
+&amp;AL04</td>
+<td style="border: 1px solid black;">
+ID Nivel 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL05</td>
 <td>
-&nbsp;</td>
+Nombre Nivel 2</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
+&amp;AL06</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL07</td>
 <td>
-&nbsp;</td>
+ID Nivel 3</td>
+</tr>
+<tr>
+<td>
+&amp;AL08</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 3</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL09</td>
+<td>
+Código de área Nivel 3</td>
+</tr>
+<tr>
+<td>
+&amp;AL10</td>
+<td style="border: 1px solid black;">
+ID Nivel 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL11</td>
+<td>
+Nombre Nivel 4</td>
+</tr>
+<tr>
+<td>
+&amp;AL12</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL13</td>
+<td>
+ID Nivel 5</td>
+</tr>
+<tr>
+<td>
+&amp;AL14</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 5</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; vertical-align: top;">
+&amp;AL15</td>
+<td>
+Código de área Nivel 5</td>
+</tr>
+<tr>
+<td>
+&amp;AL16</td>
+<td style="border: 1px solid black;">
+ID Nivel 6</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL17</td>
+<td>
+Nombre Nivel 6</td>
+</tr>
+<tr>
+<td>
+&amp;AL18</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 7</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AL19</td>
+<td>
+IdLocation</td>
 </tr>
 </tbody>
 </table>
-</div>
 </td>
-           <td style="vertical-align: top;">
-             <div id="5px" style="margin: 1em;">
-<div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-Datos del sistema</label>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Datos b&amp;aacute;sico del usuario que genera la alarma">
+<label>
+USUARIO - Básico</label>
 </div>
-<table border="1" style="border-collapse:collapse;table-layout:fixed;width:100%;height:auto;">
-<colgroup>
-<col></col>
+<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+<colgroup style="border: 1px solid black;">
+<col style="border: 1px solid black; width: 45px;"></col>
 <col></col>
 </colgroup>
 <tbody>
 <tr>
-<th>
-&nbsp;</th>
-<th>
-&nbsp;</th>
+<td style="border: 1px solid black;">
+&amp;AU01</td>
+<td>
+IdContact</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU02</td>
+<td style="border: 1px solid black;">
+Habilitado</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU03</td>
+<td>
+Título</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
+&amp;AU04</td>
+<td style="border: 1px solid black;">
+Nombre</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU05</td>
 <td>
-&nbsp;</td>
+Apellido</td>
 </tr>
 <tr>
 <td>
-&nbsp;</td>
+&amp;AU06</td>
+<td style="border: 1px solid black;">
+Género - Sexo</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU07</td>
 <td>
-&nbsp;</td>
+Fecha Nacimiento</td>
+</tr>
+<tr>
+<td>
+&amp;AU08</td>
+<td style="border: 1px solid black;">
+Tipo de Identificación</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU09</td>
+<td>
+Identificación</td>
+</tr>
+<tr>
+<td>
+&amp;AU10</td>
+<td style="border: 1px solid black;">
+Web</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU11</td>
+<td>
+email 1</td>
+</tr>
+<tr>
+<td>
+&amp;AU12</td>
+<td style="border: 1px solid black;">
+email 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AU13</td>
+<td>
+IdAddress</td>
+</tr>
+<tr>
+<td>
+&amp;AU14</td>
+<td style="border: 1px solid black;">
+Nota</td>
 </tr>
 </tbody>
 </table>
-</div>
 </td>
-         </tr>
-       </tbody>
-     </table>
+        <td style="vertical-align: top;">
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Direcci&amp;oacute;n del usuario que genera la alarma">
+<label>
+USUARIO - Dirección</label>
+</div>
+<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+<colgroup style="border: 1px solid black;">
+<col style="border: 1px solid black; width: 45px;"></col>
+<col></col>
+</colgroup>
+<tbody>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA01</td>
+<td>
+IdAddress</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA02</td>
+<td style="border: 1px solid black;">
+IdLocation</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA03</td>
+<td>
+GeoX</td>
+</tr>
+<tr>
+<td>
+&amp;AUA04</td>
+<td style="border: 1px solid black;">
+GeoY</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA05</td>
+<td>
+Campo 1</td>
+</tr>
+<tr>
+<td>
+&amp;AUA06</td>
+<td style="border: 1px solid black;">
+Campo 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA07</td>
+<td>
+Campo 3</td>
+</tr>
+<tr>
+<td>
+&amp;AUA08</td>
+<td style="border: 1px solid black;">
+Campo 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA09</td>
+<td>
+Campo 5</td>
+</tr>
+<tr>
+<td>
+&amp;AUA10</td>
+<td style="border: 1px solid black;">
+Campo 6</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA11</td>
+<td>
+Campo 7</td>
+</tr>
+<tr>
+<td>
+&amp;AUA12</td>
+<td style="border: 1px solid black;">
+Campo 8</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUA13</td>
+<td>
+Campo 9</td>
+</tr>
+<tr>
+<td>
+&amp;AUA14</td>
+<td style="border: 1px solid black;">
+Campo 10</td>
+</tr>
+</tbody>
+</table>
+</td>
+        <td style="vertical-align: top;">
+          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Localizaci&amp;oacute;n del usuario que genera la alarma">
+<label>
+USUARIO - Localizaci&oacute;n</label>
+</div>
+<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+<colgroup style="border: 1px solid black;">
+<col style="border: 1px solid black; width: 45px;"></col>
+<col></col>
+</colgroup>
+<tbody>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL01</td>
+<td>
+ID Nivel 1</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL02</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 1</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; vertical-align: top;">
+&amp;AUL03</td>
+<td>
+Código de área Nivel 1</td>
+</tr>
+<tr>
+<td>
+&amp;AUL04</td>
+<td style="border: 1px solid black;">
+ID Nivel 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL05</td>
+<td>
+Nombre Nivel 2</td>
+</tr>
+<tr>
+<td>
+&amp;AUL06</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 2</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL07</td>
+<td>
+ID Nivel 3</td>
+</tr>
+<tr>
+<td>
+&amp;AUL08</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 3</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL09</td>
+<td>
+Código de área Nivel 3</td>
+</tr>
+<tr>
+<td>
+&amp;AUL10</td>
+<td style="border: 1px solid black;">
+ID Nivel 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL11</td>
+<td>
+Nombre Nivel 4</td>
+</tr>
+<tr>
+<td>
+&amp;AUL12</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 4</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL13</td>
+<td>
+ID Nivel 5</td>
+</tr>
+<tr>
+<td>
+&amp;AUL14</td>
+<td style="border: 1px solid black;">
+Nombre Nivel 5</td>
+</tr>
+<tr>
+<td style="border: 1px solid black; vertical-align: top;">
+&amp;AUL15</td>
+<td>
+Código de área Nivel 5</td>
+</tr>
+<tr>
+<td>
+&amp;AUL16</td>
+<td style="border: 1px solid black;">
+ID Nivel 6</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL17</td>
+<td>
+Nombre Nivel 6</td>
+</tr>
+<tr>
+<td>
+&amp;AUL18</td>
+<td style="border: 1px solid black;">
+Código de área Nivel 7</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">
+&amp;AUL19</td>
+<td>
+IdLocation</td>
+</tr>
+</tbody>
+</table>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</div>    
      <div class="dijitDialogPaneActionBar">
        <input type="button" data-dojo-type="dijit.form.Button" id="ShowLabelClose" intermediateChanges="false" label="Cerrar" iconClass="dijitNoIcon"></input>
      </div>
