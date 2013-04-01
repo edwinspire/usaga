@@ -56,8 +56,10 @@ f8: t.idf8.get('value'),
 f9: t.idf9.get('value'),
 f10: t.idf10.get('value'),
 ts: t.ts,
-idlocation: t.idlocation
+idlocation: t.idlocation,
+geolocation: 'http://maps.google.es/maps?ll='+t.idgeox.get('value')+','+t.idgeoy.get('value')+'&z=10'
 };
+
 },
 load: function(id){
 var t = this;
@@ -79,15 +81,9 @@ if(numrows > 0){
 i = 0;
 t.idaddress = d.getNumber(i, 'idaddress');
 
-_geox = d.getString(i, "geox");
-t.idgeox.set('value',  _geox);
-
-_geoy = d.getString(i, "geoy");
-if(isNaN(_geoy) || _geoy < 1){
-t.idgeoy.set('value',  '0');
-}else{
-t.idgeoy.set('value',  _geoy);
-}
+//_geox = d.getString(i, "geox");
+t.idgeox.set('value',  d.getString(i, "geox"));
+t.idgeoy.set('value',  d.getString(i, "geoy"));
 
 t.idf1.set('value', d.getStringFromB64(i, 'field1'));
 t.idf2.set('value', d.getStringFromB64(i, 'field2'));

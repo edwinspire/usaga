@@ -142,6 +142,12 @@ this.AddressW.save();
 }
 } 
 
+
+dojo.connect(dojo.byId('accountwlocationaddress_map'), 'onclick', function(){
+//v = AA.AddressW.values();
+window.open(AA.AddressW.values().geolocation,'_blank');
+});
+
 AA.AddressW.save = function(){
 var t = this;
 var dat = t.values();
