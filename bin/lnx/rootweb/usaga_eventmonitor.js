@@ -39,6 +39,11 @@ var LastIdEvent = 0;
 			{field:"ideventtype", name: "ideventtype", width: '40px'},
 			{field:"eventtype", name: "eventtype"}
 		]);
+
+//myGridX.autoWidth = true;
+//	myGridX.autoHeight = true;
+myGridX.autoUpdate = true;
+
 myGridX.startup();
 
 }
@@ -82,6 +87,10 @@ ItemFileReadStore_1.clearOnClose = true;
 
 		myGridX.store = null;
 		myGridX.setStore(ItemFileReadStore_1);
+myGridX.resize();
+
+			
+
 
 },
 onError: function(e){

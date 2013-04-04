@@ -28,55 +28,45 @@ t.idmaccountedit.on('Click', function(){
 window.open("usaga_account.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_maintenance'), 'onclick', function(){
+t.idmaccountmante.on('Click', function(){
 window.open("usaga_maintenance.html");
 });
 
-
-
-dojo.connect(dojo.byId('usaga_menuitem_admins'), 'onclick', function(){
+t.idmadm.on('Click', function(){
 alert('En construccion');
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_groups'), 'onclick', function(){
+t.idmgroups.on('Click', function(){
 window.open("usaga_groups.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_formatNotif'), 'onclick', function(){
+t.idmformatnotify.on('Click', function(){
 window.open("usaga_FormatNotif.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_modelpanel'), 'onclick', function(){
+t.idmpanelmodel.on('Click', function(){
 window.open("usaga_panelmodel.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_eventTypes'), 'onclick', function(){
+t.idmeventtypes.on('Click', function(){
 window.open("usaga_eventtypes.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_keywords'), 'onclick', function(){
+t.idmkeywords.on('Click', function(){
 window.open("usaga_keywords.html");
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_usms'), 'onclick', function(){
+t.idmusms.on('Click', function(){
 window.open('usms.html','_blank');
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_aboutusaga'), 'onclick', function(){
+t.idmaboutusaga.on('Click', function(){
 alert('En construccion');
 });
 
-dojo.connect(dojo.byId('usaga_menuitem_tutouSAGA'), 'onclick', function(){
+t.idmtutousaga.on('Click', function(){
 alert('En construccion');
 });
-
-dojo.connect(dojo.byId('usaga_menuitem_tutouSMS'), 'onclick', function(){
-alert('En construccion');
-});
-
-
-
-
 
 }   
 
