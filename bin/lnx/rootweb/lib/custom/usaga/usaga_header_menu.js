@@ -25,11 +25,11 @@ window.open('usaga_eventmonitor.html','_self');
 });
 
 t.idmaccountedit.on('Click', function(){
-window.open("usaga_account.html");
+window.open("usaga_account.html",'_self');
 });
 
 t.idmaccountmante.on('Click', function(){
-window.open("usaga_maintenance.html");
+window.open("usaga_maintenance.html",'_self');
 });
 
 t.idmadm.on('Click', function(){
@@ -37,23 +37,23 @@ alert('En construccion');
 });
 
 t.idmgroups.on('Click', function(){
-window.open("usaga_groups.html");
+window.open("usaga_groups.html",'_self');
 });
 
 t.idmformatnotify.on('Click', function(){
-window.open("usaga_FormatNotif.html");
+window.open("usaga_FormatNotif.html",'_self');
 });
 
 t.idmpanelmodel.on('Click', function(){
-window.open("usaga_panelmodel.html");
+window.open("usaga_panelmodel.html",'_self');
 });
 
 t.idmeventtypes.on('Click', function(){
-window.open("usaga_eventtypes.html");
+window.open("usaga_eventtypes.html",'_self');
 });
 
 t.idmkeywords.on('Click', function(){
-window.open("usaga_keywords.html");
+window.open("usaga_keywords.html",'_self');
 });
 
 t.idmusms.on('Click', function(){
