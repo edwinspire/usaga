@@ -17,7 +17,7 @@ window.open("usaga_login.html");
 });
 
 t.idmlogout.on('Click', function(){
-window.open("usaga_logout.html", '_self');
+window.open("/", '_self');
 });
 
 t.idmeventmonitor.on('Click', function(){
