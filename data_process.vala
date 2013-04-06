@@ -66,11 +66,11 @@ while(true){
 this.GetParamCnx();
 //Thread.usleep(1000*1000);
 //ReceiveFromCallIn();
-Thread.usleep(1000*1000);
-ReceiveFromSMSIn();
-Thread.usleep(1000*1000);
+//Thread.usleep(1000*1000);
+//ReceiveFromSMSIn();
+//Thread.usleep(1000*1000);
 GenAutoTestReport();
-Thread.usleep(1000*1000);
+Thread.usleep(30*1000000);
 
 if(i==0){
 HearBeat();
@@ -140,31 +140,7 @@ GLib.print("Eventos generados: %s\n", filas["eventsgenerated"].Value);
 }
 */
 
-private void ReceiveFromSMSIn(){
-// Lee los mensajes recibidos desde la tabla smsin, verifica si pertenece a algun usuario del sistema de alarma, obtiene el tipo de alarma e ingresa el evento
-GLib.print("\n[uSAGA]: Procesando SMSs entrantes\n");
-// Lee las llamadas recibidas desde la tabla incomingcall, verifica si pertenece a algun usuario del sistema de alarma e ingresa el evento
-//int Retorno = -1;
-var  Conexion = Postgres.connect_db (this.ConnString());
 
-if(Conexion.get_status () == ConnectionStatus.OK){
-//GLib.print("Conectado\n");
-var Resultado = Conexion.exec("""SELECT * FROM usaga.fun_receiver_from_incomingsmss();""");
-
-    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
-//GLib.print("OpenSAGA: \n");
-foreach(var filas in this.Result_FieldName(ref Resultado)){
-//Retorno = int.parse(filas["calls"]);
-GLib.print("Mensajes procesados: %s\n", filas["outsmss"].Value);
-GLib.print("Eventos generados: %s\n", filas["outeventsgenerated"].Value);
-}
-
-} else{
-	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
-    }
-
-}
-}
 
 private void GenAutoTestReport(){
 // Genera un sms de reporte semanal a cada usuario del sistema de alarma.
