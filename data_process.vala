@@ -65,7 +65,7 @@ int i = 0;
 while(true){
 this.GetParamCnx();
 //Thread.usleep(1000*1000);
-ReceiveFromCallIn();
+//ReceiveFromCallIn();
 Thread.usleep(1000*1000);
 ReceiveFromSMSIn();
 Thread.usleep(1000*1000);
@@ -112,6 +112,7 @@ GLib.print("%s => %s\n", tu.key, tu.value);
 }
 }
 
+/*
 private void ReceiveFromCallIn(){
 GLib.print("\n[uSAGA]: Procesando llamadas entrantes\n");
 // Lee las llamadas recibidas desde la tabla incomingcall, verifica si pertenece a algun usuario del sistema de alarma e ingresa el evento
@@ -128,11 +129,7 @@ foreach(var filas in this.Result_FieldName(ref Resultado)){
 //Retorno = int.parse(filas["calls"]);
 GLib.print("Llamadas procesadas: %s\n", filas["calls"].Value);
 GLib.print("Eventos generados: %s\n", filas["eventsgenerated"].Value);
-/*
-foreach(var tu in filas.entries){
-GLib.print("%s => %s\n", tu.key, tu.value);
-}
-*/
+
 }
 
 } else{
@@ -141,6 +138,7 @@ GLib.print("%s => %s\n", tu.key, tu.value);
 
 }
 }
+*/
 
 private void ReceiveFromSMSIn(){
 // Lee los mensajes recibidos desde la tabla smsin, verifica si pertenece a algun usuario del sistema de alarma, obtiene el tipo de alarma e ingresa el evento
