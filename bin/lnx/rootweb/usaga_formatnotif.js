@@ -38,18 +38,7 @@ var NotifyMSG = dijit.byId('notify');
 
 //NotifyMSG.setText('Plantillas de notificaciones de alarma');
 
-        var myDialogShowLabels = dijit.byId('idshowLabels');
 
-        dojo.connect(dojo.byId('tags'), 'onclick', function(){
-            dijit.popup.open({
-                popup: myDialogShowLabels,
-                around: dojo.byId('tags')
-            });
-        });
-
-        dojo.connect(dojo.byId('ShowLabelClose'), 'onclick', function(){
-dijit.popup.close(myDialogShowLabels);
-});
 
 
         var myDialog = dijit.byId('idDialogNew');

@@ -24,70 +24,40 @@ require([
   "dijit/MenuItem",
   "dijit/Menu",
   "dijit/form/TextBox",
-"dijit/TooltipDialog",
-"dijit/Dialog",
-  "widgets/widgetspire/notify_messages",
-  "widgets/usaga/usaga_header_menu"
+  "dijit/TooltipDialog",
+  "dijit/Dialog",
+  "widgets/usaga/usaga_header_menu",
+  "dijit/layout/TabContainer",
+  "dijit/layout/ContentPane"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
 </style>
 <script type="text/javascript" src="usaga_formatnotif.js"></script>
 </head>
-<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" data-maq-appstates="{}" id="myapp">
-  <div style="width: 100%; height: 100%; overflow: hidden;">
-
- <div data-dojo-type="usaga.usaga_header_menu" style="vertical-align: top; background-color: #f1f1f1; background-image: -webkit-gradient(linear, left top, right top, to(#f8f8f8), color-stop(40%, #f1f1f1)); background-image: -o-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -ms-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -moz-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -webkit-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: linear-gradient(to right,#f1f1f1 40%, #f8f8f8);"></div>
-<span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
-<div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-   Notificaciones Predeterminadas</label>
-</div>
-<span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="getdata" tabIndex="-1" intermediateChanges="false" label="Cargar tabla" iconClass="dijitIconTable"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="new" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitEditorIcon dijitEditorIconNewPage"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="delete" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitEditorIcon dijitEditorIconDelete"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="tags" tabIndex="-1" intermediateChanges="false" label="Abreviaciones" iconClass="dijitIconBookmark" title="Muestra las abreviaciones permitidas para incluir datos en el mensaje"></input>
-</span><table data-dojo-type="gridx.Grid" id="gridxnotif" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'s',field:'s'},{width:'auto',name:'IdNotif',field:'idnotif'},{width:'auto',name:'Descripcion',field:'descripcion'},{width:'auto',name:'Formato',field:'formato'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileWriteStore_1"></table>
-</div>
- <div id="idDialogNew" data-dojo-type="dijit/TooltipDialog" style="display: none;">
-   <form style="width: 240px;">
-     <span style="margin-bottom: 5px; width: 100%; text-align: right;">
-<label style="margin-right: 3px;">
-       
-Descripci&oacute;n:</label>
-     <input type="text" data-dojo-type="dijit.form.TextBox" id="newdescrip" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-     </span>
-<span style="width: 100%; text-align: right;">
-<label style="margin-right: 20px;">
-       
-Mensaje:</label>
-     <input type="text" data-dojo-type="dijit.form.TextBox" id="newMsg" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-     </span>
-     <div class="dijitDialogPaneActionBar">
-       <button dojoType="dijit.form.Button" type="reset" id="newok">
-         OK</button>
-       <button dojoType="dijit.form.Button" type="reset" id="newcancel">
-         Cancel</button>
-     </div>
-   </form>
- </div>
- <div id="idDialogDelete" data-dojo-type="dijit/TooltipDialog" style="display: none; width: 150px;">
-     <span style="margin-bottom: 5px; width: 100%;">
-<label>
-Está seguro que desea eliminar los registros seleccionados?</label>
-     </span>
-     <div class="dijitDialogPaneActionBar">
-       <input type="button" data-dojo-type="dijit.form.Button" id="delok" intermediateChanges="false" label="Si" iconClass="dijitNoIcon"></input>
-       <input type="button" data-dojo-type="dijit.form.Button" id="delcancel" intermediateChanges="false" label="No" iconClass="dijitNoIcon"></input>
-     </div>
- </div>
- <div id="idshowLabels" data-dojo-type="dijit/TooltipDialog" style="width: 450px; height: auto; display: none;">
+<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
 <div style="width: 100%; height: 100%; overflow: hidden;">
-  <div class="dijitTitlePaneTitle" style="vertical-align: middle;">
+<div data-dojo-type="usaga.usaga_header_menu" style="vertical-align: top; background-color: #f1f1f1; background-image: -webkit-gradient(linear, left top, right top, to(#f8f8f8), color-stop(40%, #f1f1f1)); background-image: -o-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -ms-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -moz-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -webkit-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: linear-gradient(to right,#f1f1f1 40%, #f8f8f8);"></div>
+<span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+  <div class="dijitTitlePaneTitle">
+    <label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
+    
+   Notificaciones Predeterminadas</label>
+  </div>
+  <span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
+<div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
+ <div style="width: 100%; height: 100%; overflow: hidden;">
+   <span data-dojo-type="dijit.Toolbar">
+<input type="button" data-dojo-type="dijit.form.Button" id="getdata" tabIndex="-1" intermediateChanges="false" label="Cargar tabla" iconClass="dijitIconTable"></input>
+   <input type="button" data-dojo-type="dijit.form.Button" id="new" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitEditorIcon dijitEditorIconNewPage"></input>
+   <input type="button" data-dojo-type="dijit.form.Button" id="delete" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitEditorIcon dijitEditorIconDelete"></input>
+   </span>
+   <table data-dojo-type="gridx.Grid" id="gridxnotif" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'s',field:'s'},{width:'auto',name:'IdNotif',field:'idnotif'},{width:'auto',name:'Descripcion',field:'descripcion'},{width:'auto',name:'Formato',field:'formato'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileWriteStore_1"></table>
+ </div>
+</div>
+  <div data-dojo-type="dijit.layout.ContentPane" title="Abreviaciones" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
    <label>
      Abreviaciones (Etiquetas) permitidas</label>
- </div>
   <table style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto; text-align: left; vertical-align: top;" border="0">
     <colgroup>
       <col></col>
@@ -269,7 +239,7 @@ Campo 10</td>
 </table>
 </td>
         <td style="vertical-align: top;">
-          
+
           <div style="vertical-align: top;" class="dijitTitlePaneTitle">
 <label>
 ABONADO - Localización</label>
@@ -726,12 +696,40 @@ IdLocation</td>
       </tr>
     </tbody>
   </table>
-</div>    
+</div>
+  </span><div id="idDialogNew" data-dojo-type="dijit/TooltipDialog" style="display: none;">
+   <form style="width: 240px;">
+     <span style="margin-bottom: 5px; width: 100%; text-align: right;">
+<label style="margin-right: 3px;">
+       
+Descripci&oacute;n:</label>
+     <input type="text" data-dojo-type="dijit.form.TextBox" id="newdescrip" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+     </span>
+<span style="width: 100%; text-align: right;">
+<label style="margin-right: 20px;">
+       
+Mensaje:</label>
+     <input type="text" data-dojo-type="dijit.form.TextBox" id="newMsg" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+     </span>
      <div class="dijitDialogPaneActionBar">
-       <input type="button" data-dojo-type="dijit.form.Button" id="ShowLabelClose" intermediateChanges="false" label="Cerrar" iconClass="dijitNoIcon"></input>
+       <button dojoType="dijit.form.Button" type="reset" id="newok">
+         OK</button>
+       <button dojoType="dijit.form.Button" type="reset" id="newcancel">
+         Cancel</button>
      </div>
+   </form>
+ </div>
+ <div id="idDialogDelete" data-dojo-type="dijit/TooltipDialog" style="display: none; width: 150px;">
+     <span style="margin-bottom: 5px; width: 100%;">
+<label>
+Está seguro que desea eliminar los registros seleccionados?</label>
+     </span>
+     <div class="dijitDialogPaneActionBar">
+       <input type="button" data-dojo-type="dijit.form.Button" id="delok" intermediateChanges="false" label="Si" iconClass="dijitNoIcon"></input>
+       <input type="button" data-dojo-type="dijit.form.Button" id="delcancel" intermediateChanges="false" label="No" iconClass="dijitNoIcon"></input>
      </div>
- <div id="notify" data-dojo-type="widgetspire.notify_messages" style="display: block !important;"></div>
+ </div>
+</div>
 </body>
 </html>
 
