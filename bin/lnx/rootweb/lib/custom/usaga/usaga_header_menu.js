@@ -13,7 +13,7 @@ var t = this;
 
 
 t.idmlogin.on('Click', function(){
-window.open("usaga_login.html");
+window.open("usaga_login.html", '_self');
 });
 
 t.idmlogout.on('Click', function(){
