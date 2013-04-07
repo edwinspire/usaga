@@ -36,7 +36,7 @@ require([
 <script type="text/javascript" src="usaga_formatnotif.js"></script>
 </head>
 <body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
-<div style="width: 100%; height: 100%; overflow: hidden;">
+<div style="width: 100%; height: 100%; overflow: auto;">
 <div data-dojo-type="usaga.usaga_header_menu" style="vertical-align: top; background-color: #f1f1f1; background-image: -webkit-gradient(linear, left top, right top, to(#f8f8f8), color-stop(40%, #f1f1f1)); background-image: -o-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -ms-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -moz-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: -webkit-linear-gradient(to right,#f1f1f1 40%, #f8f8f8); background-image: linear-gradient(to right,#f1f1f1 40%, #f8f8f8);"></div>
 <span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
   <div class="dijitTitlePaneTitle">
@@ -56,647 +56,822 @@ require([
  </div>
 </div>
   <div data-dojo-type="dijit.layout.ContentPane" title="Abreviaciones" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
-   <label>
-     Abreviaciones (Etiquetas) permitidas</label>
-  <table style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto; text-align: left; vertical-align: top;" border="0">
-    <colgroup>
-      <col></col>
-      <col></col>
-      <col></col>
-    </colgroup>
-    <tbody>
-      <tr>
-        <td style="border: none; vertical-align: top;">
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
-           <label>
-             ABONADO - B&aacute;sico</label>
-         </div>
-          <table border="0" style="border:1px solid black;border-collapse:collapse;table-layout:fixed;width:100%;height:auto;">
-          <colgroup style="border: 1px solid black;">
-              <col style="border: 1px solid black; width: 45px;"></col>
-              <col></col>
-            </colgroup>
-            <tbody>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A01</td>
-                <td>
-                  IdAccount</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A02</td>
-                <td style="border: 1px solid black;">
-                  Partición</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A03</td>
-                <td>
-                  Habilitado</td>
-              </tr>
-              <tr>
-                <td>
-                  &amp;A04</td>
-                <td style="border: 1px solid black;">
-                  Número de abonado</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A05</td>
-                <td>
-                  Nombre de abonado</td>
-              </tr>
-              <tr>
-                <td>
-                  &amp;A06</td>
-                <td style="border: 1px solid black;">
-                  Tipo de abonado</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A07</td>
-                <td>
-                  Fecha de creación</td>
-              </tr>
-              <tr>
-                <td>
-                  &amp;A08</td>
-                <td style="border: 1px solid black;">
-                  IdGrupo</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid black;">
-                  &amp;A09</td>
-                <td>
-                  IdAddress</td>
-              </tr>
-              <tr>
-                <td>
-                  &amp;A10</td>
-                <td style="border: 1px solid black;">
-                  Nota</td>
-              </tr>
-            </tbody>
-          </table>
-          </td>
-        <td style="vertical-align: top;">
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
-<label>
-ABONADO - Dirección</label>
-</div>
-<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup style="border: 1px solid black;">
-<col style="border: 1px solid black; width: 45px;"></col>
-<col></col>
-</colgroup>
-<tbody>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA01</td>
-<td>
-IdAddress</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA02</td>
-<td style="border: 1px solid black;">
-IdLocation</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA03</td>
-<td>
-GeoX</td>
-</tr>
-<tr>
-<td>
-&amp;AA04</td>
-<td style="border: 1px solid black;">
-GeoY</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA05</td>
-<td>
-Campo 1</td>
-</tr>
-<tr>
-<td>
-&amp;AA06</td>
-<td style="border: 1px solid black;">
-Campo 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA07</td>
-<td>
-Campo 3</td>
-</tr>
-<tr>
-<td>
-&amp;AA08</td>
-<td style="border: 1px solid black;">
-Campo 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA09</td>
-<td>
-Campo 5</td>
-</tr>
-<tr>
-<td>
-&amp;AA10</td>
-<td style="border: 1px solid black;">
-Campo 6</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA11</td>
-<td>
-Campo 7</td>
-</tr>
-<tr>
-<td>
-&amp;AA12</td>
-<td style="border: 1px solid black;">
-Campo 8</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AA13</td>
-<td>
-Campo 9</td>
-</tr>
-<tr>
-<td>
-&amp;AA14</td>
-<td style="border: 1px solid black;">
-Campo 10</td>
-</tr>
-</tbody>
-</table>
-</td>
-        <td style="vertical-align: top;">
-
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle">
-<label>
-ABONADO - Localización</label>
-</div>
-<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup style="border: 1px solid black;">
-<col style="border: 1px solid black; width: 45px;"></col>
-<col></col>
-</colgroup>
-<tbody>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL01</td>
-<td>
-ID Nivel 1</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL02</td>
-<td style="border: 1px solid black;">
-Nombre Nivel 1</td>
-</tr>
-<tr>
-<td style="border: 1px solid black; vertical-align: top;">
-&amp;AL03</td>
-<td>
-Código de área Nivel 1</td>
-</tr>
-<tr>
-<td>
-&amp;AL04</td>
-<td style="border: 1px solid black;">
-ID Nivel 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL05</td>
-<td>
-Nombre Nivel 2</td>
-</tr>
-<tr>
-<td>
-&amp;AL06</td>
-<td style="border: 1px solid black;">
-Código de área Nivel 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL07</td>
-<td>
-ID Nivel 3</td>
-</tr>
-<tr>
-<td>
-&amp;AL08</td>
-<td style="border: 1px solid black;">
-Nombre Nivel 3</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL09</td>
-<td>
-Código de área Nivel 3</td>
-</tr>
-<tr>
-<td>
-&amp;AL10</td>
-<td style="border: 1px solid black;">
-ID Nivel 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL11</td>
-<td>
-Nombre Nivel 4</td>
-</tr>
-<tr>
-<td>
-&amp;AL12</td>
-<td style="border: 1px solid black;">
-Código de área Nivel 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL13</td>
-<td>
-ID Nivel 5</td>
-</tr>
-<tr>
-<td>
-&amp;AL14</td>
-<td style="border: 1px solid black;">
-Nombre Nivel 5</td>
-</tr>
-<tr>
-<td style="border: 1px solid black; vertical-align: top;">
-&amp;AL15</td>
-<td>
-Código de área Nivel 5</td>
-</tr>
-<tr>
-<td>
-&amp;AL16</td>
-<td style="border: 1px solid black;">
-ID Nivel 6</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL17</td>
-<td>
-Nombre Nivel 6</td>
-</tr>
-<tr>
-<td>
-&amp;AL18</td>
-<td style="border: 1px solid black;">
-Código de área Nivel 7</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AL19</td>
-<td>
-IdLocation</td>
-</tr>
-</tbody>
-</table>
-</td>
-      </tr>
-      <tr>
-        <td style="vertical-align: top;">
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Datos b&amp;aacute;sico del usuario que genera la alarma">
-<label>
-USUARIO - Básico</label>
-</div>
-<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup style="border: 1px solid black;">
-<col style="border: 1px solid black; width: 45px;"></col>
-<col></col>
-</colgroup>
-<tbody>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU01</td>
-<td>
-IdContact</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU02</td>
-<td style="border: 1px solid black;">
+ <span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; width: 100%; height: auto; min-height: 400px;" controllerWidget="dijit.layout.TabController">
+<div data-dojo-type="dijit.layout.ContentPane" title="Abonado" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
+     <table style="border-collapse:collapse;table-layout:fixed;width:100%;height:auto;" border="0">
+       <colgroup>
+         <col></col>
+         <col></col>
+         <col></col>
+       </colgroup>
+       <tbody>
+         <tr>
+           <td style="vertical-align: top;">
+             <div style="vertical-align: top;" class="dijitTitlePaneTitle">
+               <label>
+                 Datos b&aacute;sicos</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A01</td>
+                   <td>
+                     
+IdAccount</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A02</td>
+                   <td style="border: 1px solid black;">
+                     
+Partición</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A03</td>
+                   <td>
+                     
 Habilitado</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU03</td>
-<td>
-Título</td>
-</tr>
-<tr>
-<td>
-&amp;AU04</td>
-<td style="border: 1px solid black;">
-Nombre</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU05</td>
-<td>
-Apellido</td>
-</tr>
-<tr>
-<td>
-&amp;AU06</td>
-<td style="border: 1px solid black;">
-Género - Sexo</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU07</td>
-<td>
-Fecha Nacimiento</td>
-</tr>
-<tr>
-<td>
-&amp;AU08</td>
-<td style="border: 1px solid black;">
-Tipo de Identificación</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU09</td>
-<td>
-Identificación</td>
-</tr>
-<tr>
-<td>
-&amp;AU10</td>
-<td style="border: 1px solid black;">
-Web</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU11</td>
-<td>
-email 1</td>
-</tr>
-<tr>
-<td>
-&amp;AU12</td>
-<td style="border: 1px solid black;">
-email 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AU13</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;A04</td>
+                   <td style="border: 1px solid black;">
+                     
+Número de abonado</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A05</td>
+                   <td>
+                     
+Nombre de abonado</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;A06</td>
+                   <td style="border: 1px solid black;">
+                     
+Tipo de abonado</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A07</td>
+                   <td>
+                     
+Fecha de creación</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;A08</td>
+                   <td style="border: 1px solid black;">
+                     
+IdGrupo</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;A09</td>
+                   <td>
+                     
 IdAddress</td>
-</tr>
-<tr>
-<td>
-&amp;AU14</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;A10</td>
+                   <td style="border: 1px solid black;">
+                     
 Nota</td>
-</tr>
-</tbody>
-</table>
-</td>
-        <td style="vertical-align: top;">
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Direcci&amp;oacute;n del usuario que genera la alarma">
-<label>
-USUARIO - Dirección</label>
-</div>
-<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup style="border: 1px solid black;">
-<col style="border: 1px solid black; width: 45px;"></col>
-<col></col>
-</colgroup>
-<tbody>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA01</td>
-<td>
-IdAddress</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA02</td>
-<td style="border: 1px solid black;">
-IdLocation</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA03</td>
-<td>
-GeoX</td>
-</tr>
-<tr>
-<td>
-&amp;AUA04</td>
-<td style="border: 1px solid black;">
-GeoY</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA05</td>
-<td>
-Campo 1</td>
-</tr>
-<tr>
-<td>
-&amp;AUA06</td>
-<td style="border: 1px solid black;">
-Campo 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA07</td>
-<td>
-Campo 3</td>
-</tr>
-<tr>
-<td>
-&amp;AUA08</td>
-<td style="border: 1px solid black;">
-Campo 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA09</td>
-<td>
-Campo 5</td>
-</tr>
-<tr>
-<td>
-&amp;AUA10</td>
-<td style="border: 1px solid black;">
-Campo 6</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA11</td>
-<td>
-Campo 7</td>
-</tr>
-<tr>
-<td>
-&amp;AUA12</td>
-<td style="border: 1px solid black;">
-Campo 8</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUA13</td>
-<td>
-Campo 9</td>
-</tr>
-<tr>
-<td>
-&amp;AUA14</td>
-<td style="border: 1px solid black;">
-Campo 10</td>
-</tr>
-</tbody>
-</table>
-</td>
-        <td style="vertical-align: top;">
-          <div style="vertical-align: top;" class="dijitTitlePaneTitle" title="Localizaci&amp;oacute;n del usuario que genera la alarma">
-<label>
-USUARIO - Localizaci&oacute;n</label>
-</div>
-<table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-<colgroup style="border: 1px solid black;">
-<col style="border: 1px solid black; width: 45px;"></col>
-<col></col>
-</colgroup>
-<tbody>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL01</td>
-<td>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+           <td style="vertical-align: top;">
+             <div style="vertical-align: top;" class="dijitTitlePaneTitle">
+         <label>
+                 Direcci&oacute;n</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA01</td>
+                   <td>
+                     IdAddress</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA02</td>
+                   <td style="border: 1px solid black;">
+                     IdLocation</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA03</td>
+                   <td>
+                     GeoX</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA04</td>
+                   <td style="border: 1px solid black;">
+                     GeoY</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA05</td>
+                   <td>
+                     Campo 1</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA06</td>
+                   <td style="border: 1px solid black;">
+                     Campo 2</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA07</td>
+                   <td>
+                     Campo 3</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA08</td>
+                   <td style="border: 1px solid black;">
+                     Campo 4</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA09</td>
+                   <td>
+                     Campo 5</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA10</td>
+                   <td style="border: 1px solid black;">
+                     Campo 6</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA11</td>
+                   <td>
+                     Campo 7</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA12</td>
+                   <td style="border: 1px solid black;">
+                     Campo 8</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA13</td>
+                   <td>
+                     Campo 9</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     &amp;AA14</td>
+                   <td style="border: 1px solid black;">
+                     Campo 10</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AA15</td>
+                   <td>
+                     URL Geolocalización</td>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+           <td style="vertical-align: top;">
+             <div style="vertical-align: top;" class="dijitTitlePaneTitle">
+               <label>
+                 Localizaci&oacute;n</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL01</td>
+                   <td>
+                     
 ID Nivel 1</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL02</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL02</td>
+                   <td style="border: 1px solid black;">
+                     
 Nombre Nivel 1</td>
-</tr>
-<tr>
-<td style="border: 1px solid black; vertical-align: top;">
-&amp;AUL03</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black; vertical-align: top;">
+                     
+&amp;AL03</td>
+                   <td>
+                     
 Código de área Nivel 1</td>
-</tr>
-<tr>
-<td>
-&amp;AUL04</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL04</td>
+                   <td style="border: 1px solid black;">
+                     
 ID Nivel 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL05</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL05</td>
+                   <td>
+                     
 Nombre Nivel 2</td>
-</tr>
-<tr>
-<td>
-&amp;AUL06</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL06</td>
+                   <td style="border: 1px solid black;">
+                     
 Código de área Nivel 2</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL07</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL07</td>
+                   <td>
+                     
 ID Nivel 3</td>
-</tr>
-<tr>
-<td>
-&amp;AUL08</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL08</td>
+                   <td style="border: 1px solid black;">
+                     
 Nombre Nivel 3</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL09</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL09</td>
+                   <td>
+                     
 Código de área Nivel 3</td>
-</tr>
-<tr>
-<td>
-&amp;AUL10</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL10</td>
+                   <td style="border: 1px solid black;">
+                     
 ID Nivel 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL11</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL11</td>
+                   <td>
+                     
 Nombre Nivel 4</td>
-</tr>
-<tr>
-<td>
-&amp;AUL12</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL12</td>
+                   <td style="border: 1px solid black;">
+                     
 Código de área Nivel 4</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL13</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL13</td>
+                   <td>
+                     
 ID Nivel 5</td>
-</tr>
-<tr>
-<td>
-&amp;AUL14</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL14</td>
+                   <td style="border: 1px solid black;">
+                     
 Nombre Nivel 5</td>
-</tr>
-<tr>
-<td style="border: 1px solid black; vertical-align: top;">
-&amp;AUL15</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black; vertical-align: top;">
+                     
+&amp;AL15</td>
+                   <td>
+                     
 Código de área Nivel 5</td>
-</tr>
-<tr>
-<td>
-&amp;AUL16</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL16</td>
+                   <td style="border: 1px solid black;">
+                     
 ID Nivel 6</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL17</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL17</td>
+                   <td>
+                     
 Nombre Nivel 6</td>
-</tr>
-<tr>
-<td>
-&amp;AUL18</td>
-<td style="border: 1px solid black;">
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AL18</td>
+                   <td style="border: 1px solid black;">
+                     
 Código de área Nivel 7</td>
-</tr>
-<tr>
-<td style="border: 1px solid black;">
-&amp;AUL19</td>
-<td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AL19</td>
+                   <td>
+                     
 IdLocation</td>
-</tr>
-</tbody>
-</table>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <div data-dojo-type="dijit.layout.ContentPane" title="Usuario" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
+     <table style="border-collapse:collapse;table-layout:fixed;width:100%;height:auto;" border="0">
+       <colgroup>
+         <col></col>
+         <col></col>
+         <col></col>
+       </colgroup>
+       <tbody>
+         <tr>
+           <td style="vertical-align: top;">
+             <div title="Datos b&amp;aacute;sico del usuario que genera la alarma" style="vertical-align: top;" class="dijitTitlePaneTitle">
+               <label>
+                 Datos b&aacute;sicos</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU01</td>
+                   <td>
+                     
+IdContact</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU02</td>
+                   <td style="border: 1px solid black;">
+                     
+Habilitado</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU03</td>
+                   <td>
+                     
+Título</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU04</td>
+                   <td style="border: 1px solid black;">
+                     
+Nombre</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU05</td>
+                   <td>
+                     
+Apellido</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU06</td>
+                   <td style="border: 1px solid black;">
+                     
+Género - Sexo</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU07</td>
+                   <td>
+                     
+Fecha Nacimiento</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU08</td>
+                   <td style="border: 1px solid black;">
+                     
+Tipo de Identificación</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU09</td>
+                   <td>
+                     
+Identificación</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU10</td>
+                   <td style="border: 1px solid black;">
+                     
+Web</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU11</td>
+                   <td>
+                     
+email 1</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU12</td>
+                   <td style="border: 1px solid black;">
+                     
+email 2</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AU13</td>
+                   <td>
+                     
+IdAddress</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AU14</td>
+                   <td style="border: 1px solid black;">
+                     
+Nota</td>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+           <td style="vertical-align: top;">
+             <div title="Direcci&amp;oacute;n del usuario que genera la alarma" style="vertical-align: top;" class="dijitTitlePaneTitle">
+               <label>
+                 Direcci&oacute;n</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA01</td>
+                   <td>
+                     
+IdAddress</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA02</td>
+                   <td style="border: 1px solid black;">
+                     
+IdLocation</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA03</td>
+                   <td>
+                     
+GeoX</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA04</td>
+                   <td style="border: 1px solid black;">
+                     
+GeoY</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA05</td>
+                   <td>
+                     
+Campo 1</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA06</td>
+                   <td style="border: 1px solid black;">
+                     
+Campo 2</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA07</td>
+                   <td>
+                     
+Campo 3</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA08</td>
+                   <td style="border: 1px solid black;">
+                     
+Campo 4</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA09</td>
+                   <td>
+                     
+Campo 5</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA10</td>
+                   <td style="border: 1px solid black;">
+                     
+Campo 6</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA11</td>
+                   <td>
+                     
+Campo 7</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA12</td>
+                   <td style="border: 1px solid black;">
+                     
+Campo 8</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUA13</td>
+                   <td>
+                     
+Campo 9</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUA14</td>
+                   <td style="border: 1px solid black;">
+                     
+Campo 10</td>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     &amp;AUA15</td>
+                   <td>
+                     URL Geolocalización</td>
+                 </tr>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+           <td style="vertical-align: top;">
+             <div title="Localizaci&amp;oacute;n del usuario que genera la alarma" style="vertical-align: top;" class="dijitTitlePaneTitle">
+               <label>
+                 Localizaci&oacute;n</label>
+             </div>
+             <table border="0" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+               <colgroup style="border: 1px solid black;">
+                 <col style="border: 1px solid black; width: 45px;"></col>
+                 <col></col>
+               </colgroup>
+               <tbody>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL01</td>
+                   <td>
+                     
+ID Nivel 1</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL02</td>
+                   <td style="border: 1px solid black;">
+                     
+Nombre Nivel 1</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black; vertical-align: top;">
+                     
+&amp;AUL03</td>
+                   <td>
+                     
+Código de área Nivel 1</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL04</td>
+                   <td style="border: 1px solid black;">
+                     
+ID Nivel 2</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL05</td>
+                   <td>
+                     
+Nombre Nivel 2</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL06</td>
+                   <td style="border: 1px solid black;">
+                     
+Código de área Nivel 2</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL07</td>
+                   <td>
+                     
+ID Nivel 3</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL08</td>
+                   <td style="border: 1px solid black;">
+                     
+Nombre Nivel 3</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL09</td>
+                   <td>
+                     
+Código de área Nivel 3</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL10</td>
+                   <td style="border: 1px solid black;">
+                     
+ID Nivel 4</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL11</td>
+                   <td>
+                     
+Nombre Nivel 4</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL12</td>
+                   <td style="border: 1px solid black;">
+                     
+Código de área Nivel 4</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL13</td>
+                   <td>
+                     
+ID Nivel 5</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL14</td>
+                   <td style="border: 1px solid black;">
+                     
+Nombre Nivel 5</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black; vertical-align: top;">
+                     
+&amp;AUL15</td>
+                   <td>
+                     
+Código de área Nivel 5</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL16</td>
+                   <td style="border: 1px solid black;">
+                     
+ID Nivel 6</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL17</td>
+                   <td>
+                     
+Nombre Nivel 6</td>
+                 </tr>
+                 <tr>
+                   <td>
+                     
+&amp;AUL18</td>
+                   <td style="border: 1px solid black;">
+                     
+Código de área Nivel 7</td>
+                 </tr>
+                 <tr>
+                   <td style="border: 1px solid black;">
+                     
+&amp;AUL19</td>
+                   <td>
+                     
+IdLocation</td>
+                 </tr>
+               </tbody>
+             </table>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   </span></div>
   </span><div id="idDialogNew" data-dojo-type="dijit/TooltipDialog" style="display: none;">
    <form style="width: 240px;">
      <span style="margin-bottom: 5px; width: 100%; text-align: right;">
