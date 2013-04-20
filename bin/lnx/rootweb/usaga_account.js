@@ -1260,6 +1260,15 @@ GlobalObject.DisabledContentPanes(true);
 }
 }, 5000);
 
+
+
+
+setTimeout(function(){
+domStyle.set(GlobalObject.MasterDiv, "opacity", 1); // == 0.5
+}, 1000);
+
+
+
 //dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 
