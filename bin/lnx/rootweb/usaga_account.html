@@ -84,7 +84,7 @@ require([
 <div data-dojo-type="usms.waddress" id="usaga_account_address"></div>
 </div>
  </div>
-   <div data-dojo-type="dijit.layout.ContentPane" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false" id="ContentPaneTiempos">
+   <div data-dojo-type="dijit.layout.ContentPane" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="selected" closable="false" id="ContentPaneTiempos" style="display: none;">
 <div data-dojo-type="usaga.account_times" id="usaga_account_times"></div>
    </div>
    <div data-dojo-type="dijit.layout.ContentPane" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" id="ContentPaneContactos">
@@ -418,4 +418,5 @@ require([
    </form>
  </div>
  <div id="notify" data-dojo-type="widgetspire.notify_messages" style="display: block !important;"></div>
+<img id="idIMGLoading" src="images/loading.gif" style="position: absolute; z-index: 900; left: 0px; top: 0px;"></img>
 </body></html>

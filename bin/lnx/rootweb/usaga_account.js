@@ -1251,7 +1251,9 @@ ANP.Save(item);
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 //GlobalObject.DisabledContentPanes(true);
 GlobalObject.DisabledContentPanes(true);
+AC.dijit.Select.set('invalidMessage', 'Seleccione de la lista');
 
+// Desactiva los ContentPane para que esten disponibles inicamente cuando se haya seleccionado un abonado
 setInterval(function(){
 if(Account_Main_Data.idaccount()>0){
 GlobalObject.DisabledContentPanes(false);
@@ -1262,21 +1264,14 @@ GlobalObject.DisabledContentPanes(true);
 
 
 
-
+// El DIV contenedor principal tiene opacidad de 0% para que no se vean los widget antes de que se hayan renderisado correctamente. esto mejora el aspecto visual de la aplicacion.
 setTimeout(function(){
-domStyle.set(GlobalObject.MasterDiv, "opacity", 1); // == 0.5
+domStyle.set('idIMGLoading', "display", 'none'); 
+domStyle.set(GlobalObject.MasterDiv, "opacity", 1); 
 }, 1000);
 
 
 
-//dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
-//dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
-
-//GlobalObject.LoadFilteringSelectAccount().LoadListIdContactName();
-//GlobalObject.LoadListIdContactName();
-//ABE.dijit.Select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
-AC.dijit.Select.set('invalidMessage', 'Seleccione de la lista');
-//dijit.byId('usaga_account_address').idps.set('value', 'Es la direccion');
 
 
      });
