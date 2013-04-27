@@ -164,6 +164,7 @@ GlobalObject.IdContact = 0;
 FormContact.dijit.Form.reset();
 CAddress.AddressW.idaddress = 0;
 }
+
 //GeneralLoadAddressForm(CAddress.AddressW);
 CAddress.AddressW.load(CAddress.AddressW.idaddress);
 CP.LoadGrid();
