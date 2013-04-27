@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="utf-8"/>
 <title>uSMS - Contactos (Personas)</title>
@@ -14,6 +15,7 @@ require([
   "dijit/layout/ContentPane",
   "dijit/Toolbar",
   "dijit/form/Button",
+ "dijit/form/Form",
   "dojox/io/xhrScriptPlugin",
   "dojo/data/ItemFileReadStore",
   "gridx/Grid",
@@ -78,7 +80,7 @@ require([
      <input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.save" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
      <input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.del" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
    </span>
-     <form id="usms.contact.form">
+     <form data-dojo-type="dijit.form.Form" id="usms.contact.form">
        <div style="min-height: 150px;">
          <div style="width: auto; height: auto; display: inline-block;">
            <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usms.contact.enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
@@ -104,16 +106,16 @@ require([
            </div>
            <label>
              Nombre:</label>
-           <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.firstname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.firstname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
          </div>
-         <div style="width: auto; height: auto; display: block;">
+         <div style="width: auto; height: auto; display: inline-block;">
            <label>
              Apellido:</label>
-           <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
            <div>
              <label>
                Fecha Nacimiento:</label>
-             <input type="text" data-dojo-type="dijit.form.DateTextBox" id="usms.contact.birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo."></input>
+             <input type="text" data-dojo-type="dijit.form.DateTextBox" id="usms.contact.birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01" required=”true”></input>
            </div>
          </div>
          <div style="width: auto; height: auto; display: inline-block;">
@@ -149,7 +151,7 @@ require([
          <div style="width: auto; height: auto; display: inline-block;">
            <label>
              Tipo de identificación:</label>
-           <select data-dojo-type="dijit.form.Select" id="usms.contact.typeidentification" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
+           <select data-dojo-type="dijit.form.Select" id="usms.contact.typeidentification" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true" >
              <option value="0" selected="true">
                
                
@@ -187,7 +189,7 @@ require([
          <div style="width: auto; height: auto; display: inline-block;">
            <label>
              Identificación:</label>
-           <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.contact.identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
+           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
          </div>
          <div style="width: auto; height: auto; display: inline-block;">
            <label>
