@@ -40,7 +40,7 @@ var NotifyMSG = dijit.byId('notify');
 
 dojo.connect(dijit.byId('usms.contact.new'), 'onClick', function(e){
 GlobalObject.IdContact = 0;
-FormContact.dojo.Form.reset();
+FormContact.dijit.Form.reset();
 //TODO Limpiar el resto de datos
 });
 
@@ -116,10 +116,8 @@ GlobalObject.LoadGrid();
 
 var FormContact = {
 ts: '1990-001-01',
-dojo: {
-Form: dojo.byId('usms.contact.form')
-},
 dijit: {
+Form: dijit.byId('usms.contact.form'),
 Enable: dijit.byId('usms.contact.enable'),
 Firstname: dijit.byId('usms.contact.firstname'),
 Lastname: dijit.byId('usms.contact.lastname'),
@@ -163,7 +161,7 @@ CAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
 GlobalObject.IdContact = dataxml.getNumber(i, "idcontact");
 }else{
 GlobalObject.IdContact = 0;
-FormContact.dojo.Form.reset();
+FormContact.dijit.Form.reset();
 CAddress.AddressW.idaddress = 0;
 }
 //GeneralLoadAddressForm(CAddress.AddressW);
@@ -172,18 +170,20 @@ CP.LoadGrid();
 },
 onError: function(e){
 GlobalObject.IdContact = 0;
-FormContact.dojo.Form.reset();
+FormContact.dijit.Form.reset();
 NotifyMSG.setText(e);
 }
 });
 }else{
-FormContact.dojo.Form.reset();
+FormContact.dijit.reset();
 }
 },
 SaveForm: function(){
 
 var Objeto = this;
-
+Objeto.dijit.Form.validate();
+if(Objeto.dijit.Form.validate()){
+alert('OK validp');
   var xhrArgs = {
     url: "contacts_table_edit.usms",
  content: {idcontact: GlobalObject.IdContact, enable: FormContact.dijit.Enable.get('checked'), title: FormContact.dijit.Title.get('value'), firstname: FormContact.dijit.Firstname.get('value'), lastname: FormContact.dijit.Lastname.get('value'), birthday: dojo.date.locale.format(FormContact.dijit.Birthday.get('value'), {datePattern: "yyyy-MM-dd", selector: "date"}), gender: FormContact.dijit.Gender.get('value'), typeofid: FormContact.dijit.IdentificationType.get('value'), identification: FormContact.dijit.Identification.get('value'), web: FormContact.dijit.Web.get('value'), email1: FormContact.dijit.email1.get('value'), email2: FormContact.dijit.email2.get('value'), note: FormContact.dijit.Note.get('value'), ts: FormContact.ts},
@@ -213,6 +213,9 @@ NotifyMSG.setText(error);
   }
 
   var deferred = dojo.xhrPost(xhrArgs);
+}else{
+alert('No valida');
+}
 
 //return Objeto;
 }
