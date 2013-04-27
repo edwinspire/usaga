@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.9
 -- Dumped by pg_dump version 9.1.9
--- Started on 2013-04-21 15:07:50 ECT
+-- Started on 2013-04-27 06:57:40 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -485,17 +485,17 @@ inidaddress := null;
 END IF;
 
 CASE
-	WHEN EXISTS(SELECT idcontact FROM contacts WHERE identification = inidentification AND typeofid = intypeofid AND NOT idcontact = inidcontact) THEN
+	WHEN EXISTS(SELECT idcontact FROM contacts WHERE identification = inidentification AND typeofid = intypeofid AND NOT idcontact = inidcontact) AND inidcontact >= 0 THEN
 -- El numero de identification ya existe en otro contacto
 outreturn := abs(inidcontact);
 outpgmsg := 'El número de identificación '||inidentification::text||' tipo '||intypeofid::text||' ya existe en otro contacto, verifique los datos';
 
-	WHEN EXISTS(SELECT idcontact FROM contacts WHERE upper(trim(firstname)) = upper(trim(infirstname)) AND upper(trim(lastname)) = upper(trim(inlastname)) AND NOT idcontact = inidcontact) THEN
+	WHEN EXISTS(SELECT idcontact FROM contacts WHERE upper(trim(firstname)) = upper(trim(infirstname)) AND upper(trim(lastname)) = upper(trim(inlastname)) AND NOT idcontact = inidcontact) AND inidcontact >= 0 THEN
 -- El nombre ya existe en otra cuenta
 outreturn := abs(inidcontact);
 outpgmsg := 'El nombre '||infirstname::text||' '||inlastname::text||' ya existe, utilice otro nombre';
 
-	WHEN length(infirstname) < 1 OR length(inlastname) < 1 THEN
+	WHEN (length(infirstname) < 1 OR length(inlastname) < 1) AND inidcontact >= 0  THEN
 -- Nombre y apellido no pueden estar vacios
 outreturn := abs(inidcontact);
 outpgmsg := 'El campo nombre y apellido no pueden estar vacios.';
@@ -516,7 +516,7 @@ outpgmsg := 'idcontact '||outreturn::text||' creado.';
 DELETE FROM address WHERE idaddress = (SELECT idaddress FROM contacts WHERE idcontact = abs(inidcontact));
 -- Eliminamos el contacto
 DELETE FROM contacts WHERE idcontact = abs(inidcontact);
-outreturn := o;
+outreturn := 0;
 outpgmsg := 'idcontact '||inidcontact::text||' eliminado.';
 
 ELSE
@@ -1712,7 +1712,7 @@ END;$$;
 
 --
 -- TOC entry 307 (class 1255 OID 27039)
--- Dependencies: 884 5
+-- Dependencies: 5 884
 -- Name: fun_provider_edit_xml(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2040,7 +2040,7 @@ COMMENT ON COLUMN smsout.priority IS 'Prioridad de envio del sms. 5 es el valor 
 
 --
 -- TOC entry 276 (class 1255 OID 16715)
--- Dependencies: 723 5 884
+-- Dependencies: 884 723 5
 -- Name: fun_smsout_to_send(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2117,7 +2117,7 @@ COMMENT ON FUNCTION fun_smsout_to_send(inidport integer) IS 'Selecciona un sms d
 
 --
 -- TOC entry 252 (class 1255 OID 16799)
--- Dependencies: 5 884
+-- Dependencies: 884 5
 -- Name: fun_smsout_updatestatus(integer, integer, integer, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2505,7 +2505,7 @@ COMMENT ON FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time 
 
 --
 -- TOC entry 354 (class 1255 OID 27622)
--- Dependencies: 5 884
+-- Dependencies: 884 5
 -- Name: fun_view_location_level_xml(integer, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2581,7 +2581,7 @@ END;$$;
 
 --
 -- TOC entry 355 (class 1255 OID 27761)
--- Dependencies: 884 5
+-- Dependencies: 5 884
 -- Name: fun_view_locations_ids_from_idlocation_xml(numeric); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -3199,7 +3199,7 @@ END;$$;
 
 --
 -- TOC entry 320 (class 1255 OID 27062)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_account_notifications_applyselected(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3248,7 +3248,7 @@ END;$$;
 
 --
 -- TOC entry 309 (class 1255 OID 27064)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_account_notifications_applyselected_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3334,7 +3334,7 @@ END;$$;
 
 --
 -- TOC entry 327 (class 1255 OID 27075)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_account_notify_applied_to_selected_contacts(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3841,7 +3841,7 @@ END;$$;
 
 --
 -- TOC entry 311 (class 1255 OID 27066)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_events_lastid_xml(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3897,7 +3897,7 @@ COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion
 
 --
 -- TOC entry 342 (class 1255 OID 27355)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_eventtypes_edit(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4190,7 +4190,7 @@ END;$$;
 
 --
 -- TOC entry 345 (class 1255 OID 27358)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_groups_edit_xml(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4211,7 +4211,7 @@ END;$$;
 
 --
 -- TOC entry 348 (class 1255 OID 27360)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_groups_remove_selected(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4246,7 +4246,7 @@ END;$$;
 
 --
 -- TOC entry 347 (class 1255 OID 27361)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_groups_remove_selected_xml(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4267,7 +4267,7 @@ END;$$;
 
 --
 -- TOC entry 314 (class 1255 OID 27069)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_insert_internal_event(integer, text, integer, text, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4535,7 +4535,7 @@ END;$$;
 
 --
 -- TOC entry 313 (class 1255 OID 27067)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_account_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4692,7 +4692,7 @@ END;$$;
 
 --
 -- TOC entry 310 (class 1255 OID 27065)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_account_events_xml(integer, timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4760,7 +4760,7 @@ END;$$;
 
 --
 -- TOC entry 316 (class 1255 OID 27276)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_account_notif_phones(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4943,7 +4943,7 @@ END;$$;
 
 --
 -- TOC entry 288 (class 1255 OID 27459)
--- Dependencies: 9 884
+-- Dependencies: 884 9
 -- Name: fun_view_account_users_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4977,7 +4977,7 @@ END;$$;
 
 --
 -- TOC entry 343 (class 1255 OID 27350)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_eventtypes_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5011,7 +5011,7 @@ END;$$;
 
 --
 -- TOC entry 341 (class 1255 OID 27356)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_groups_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5045,7 +5045,7 @@ END;$$;
 
 --
 -- TOC entry 340 (class 1255 OID 27349)
--- Dependencies: 884 9
+-- Dependencies: 9 884
 -- Name: fun_view_idaccounts_names_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -8940,7 +8940,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-04-21 15:07:51 ECT
+-- Completed on 2013-04-27 06:57:43 ECT
 
 --
 -- PostgreSQL database dump complete
