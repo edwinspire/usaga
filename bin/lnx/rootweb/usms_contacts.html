@@ -43,7 +43,8 @@ require([
 "dojo/request",
 'dojo/store/Memory',
   "widgets/widgetspire/notify_messages",
-  "widgets/usms/usms_header"
+  "widgets/usms/usms_header",
+"widgets/usms/contacts_data"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -75,146 +76,7 @@ require([
      <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
       <div style="width: 100%; height: 100%;"><div style="width: 100%; height: 98%;"><span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
 <div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false">
-   <div style="width: 100%; height: 100%;">
-     <span data-dojo-type="dijit.Toolbar"><input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.new" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.save" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" id="usms.contact.del" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-   </span>
-     <form data-dojo-type="dijit.form.Form" id="usms.contact.form">
-       <div style="min-height: 150px;">
-         <div style="width: auto; height: auto; display: inline-block;">
-           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usms.contact.enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-           <label>
-             Habilitado</label>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <div style="width: auto; height: auto; display: inline-block;">
-             <label>
-               Título:</label>
-             <select data-dojo-type="dijit.form.ComboBox" id="usms.contact.title" value="Sr." intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-               <option value="Sr.">
-                 Sr.</option>
-               <option value="Sra.">
-                 Sra.</option>
-               <option value="Ing.">
-                 Ing.</option>
-               <option value="Dr.">
-                 Dr.</option>
-               <option value="Dra.">
-                 Dra.</option>
-             </select>
-           </div>
-           <label>
-             Nombre:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.firstname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             Apellido:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
-           <div>
-             <label>
-               Fecha Nacimiento:</label>
-             <input type="text" data-dojo-type="dijit.form.DateTextBox" id="usms.contact.birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01" required=”true”></input>
-           </div>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             Género:</label>
-           <select data-dojo-type="dijit.form.Select" id="usms.contact.gender" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
-             <option value="0" selected="true">
-               
-               
-              
-             
-             
-             
-            No Establecido</option>
-             <option value="1">
-               
-               
-              
-             
-             
-             
-            Hombre</option>
-             <option value="2">
-               
-               
-              
-             
-             
-             
-            Mujer</option>
-           </select>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             Tipo de identificación:</label>
-           <select data-dojo-type="dijit.form.Select" id="usms.contact.typeidentification" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true" >
-             <option value="0" selected="true">
-               
-               
-              
-             
-             
-             
-            No definido</option>
-             <option value="1">
-               
-               
-              
-             
-             
-             
-            Cédula de identidad</option>
-             <option value="2">
-               
-               
-              
-             
-             
-             
-            Pasaporte</option>
- <option value="3">
-               
-               
-              
-             
-             
-             
-            RUT</option>
-           </select>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             Identificación:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" required=”true”></input>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             web:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.web" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             email-1:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.email1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
-         </div>
-         <div style="width: auto; height: auto; display: inline-block;">
-           <label>
-             email-2:</label>
-           <input type="text" data-dojo-type="dijit.form.ValidationTextBox" id="usms.contact.email2" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
-         </div>
-         <div style="height: auto; display: inline-block; width: 100%;">
-           <label>
-             Nota:</label>
-           <br></br>
-           <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usms.contact.note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-         </div>
-       </div>
-     </form>
-   </div>
+  <div data-dojo-type="usms.contacts_data" ></div>
  </div>
  <div data-dojo-type="dijit.layout.ContentPane" title="Direccion" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" closable="false">
    <div style="width: 100%; height: 100%;">
