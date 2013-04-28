@@ -34,30 +34,30 @@ Apellido:</label>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Fecha de nacimiento:</label>
-<input type="text" data-dojo-type="dijit.form.DateTextBox" data-dojo-attach-point="Birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01"></input>
+<input type="text" data-dojo-type="dijit.form.DateTextBox" data-dojo-attach-point="Birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01"  required="true" ></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 G&eacute;nero:</label>
-<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="Gender" value="No definido" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-  <option value="No definido">
-    No definido</option>
-  <option value="Hombre">
-    Hombre</option>
-  <option value="Mujer">
-    Mujer</option>
+<select data-dojo-type="dijit.form.Select" data-dojo-attach-point="Gender" value="No definido" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+<option value="0" selected="true">        
+            No Establecido</option>
+             <option value="1">
+               Hombre</option>
+             <option value="2">
+            Mujer</option>
 </select>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Tipo de identificaci&oacute;n:</label>
-<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="IdentificationType" value="Pasaporte" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-  <option value="No definido">
-    No definido</option>
-  <option value="Pasaporte">
-    Pasaporte</option>
-  <option value="C&amp;amp;eacute;dula de identidad">
-    C&eacute;dula de identidad</option>
-  <option value="RUT">
-    RUT</option>
+<select data-dojo-type="dijit.form.Select" data-dojo-attach-point="IdentificationType" value="Pasaporte" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+  <option value="0" selected="true">
+            No definido</option>
+             <option value="1">
+            Cédula de identidad</option>
+             <option value="2">
+            Pasaporte</option>
+ <option value="3">
+            RUT</option>
 </select>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
@@ -83,4 +83,5 @@ Nota:</label>
 </div>
 </div>
 </div>
+ <div data-dojo-attach-point="DialogDelete" data-dojo-type="widgetspire.tooltipdialogconfirmation" style="display: none !important;"></div>
 </div>
