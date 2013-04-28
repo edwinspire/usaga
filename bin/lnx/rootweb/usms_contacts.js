@@ -42,12 +42,12 @@ var NotifyMSG = dijit.byId('notify');
 
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
-
+CP.LoadGrid();
 GlobalObject.IdContact = data.idcontact;
 CAddress.AddressW.idaddress = data.idaddress;
 
 CAddress.AddressW.load(CAddress.AddressW.idaddress);
-CP.LoadGrid();
+
 
 });
 
@@ -55,10 +55,19 @@ CDWidget.on('onnotify', function(e){
 NotifyMSG.setText(e.msg);
 });
 
-CDWidget.on('onsave', function(data){
+CDWidget.on('onsavecontact', function(data){
 GlobalObject.LoadGrid();
 GlobalObject.IdContact = data.idcontact;
 });
+
+CDWidget.on('ondeletecontact', function(data){
+GlobalObject.LoadGrid();
+GlobalObject.IdContact = data.idcontact;
+//alert('elimi '+data.idaddress);
+//CAddress.AddressW.idaddress = data.idaddress;
+//CAddress.AddressW.delete();
+});
+
 
 
 var GlobalObject = {
@@ -122,26 +131,6 @@ CDWidget.set("IdContact", GlobalObject.IdContact);
 		]);
 GlobalObject.dijit.Grid.startup();
 GlobalObject.LoadGrid();
-}
-
-
-var FormContact = {
-ts: '1990-001-01',
-dijit: {
-Form: dijit.byId('usms.contact.form'),
-Enable: dijit.byId('usms.contact.enable'),
-Firstname: dijit.byId('usms.contact.firstname'),
-Lastname: dijit.byId('usms.contact.lastname'),
-Title: dijit.byId('usms.contact.title'),
-Birthday: dijit.byId('usms.contact.birthday'),
-Gender: dijit.byId('usms.contact.gender'),
-IdentificationType: dijit.byId('usms.contact.typeidentification'),
-Identification: dijit.byId('usms.contact.identification'),
-Web: dijit.byId('usms.contact.web'),
-email1: dijit.byId('usms.contact.email1'),
-email2: dijit.byId('usms.contact.email2'),
-Note: dijit.byId('usms.contact.note')
-}
 }
 
 
@@ -333,43 +322,19 @@ AddressW : dijit.byId('idwaddresscontact'),
 LocationW : dijit.byId('idwlocationcontact')
 } 
 
+CAddress.AddressW.on('onnotify', function(e){
+NotifyMSG.setText(e.msg);
+});
+
+CAddress.AddressW.on('onsavedata', function(d){
+CDWidget.set("IdAddress", d.idaddress);
+});
+
 CAddress.AddressW.on('onloaddata', function(d){
 CAddress.LocationW.setLocation(d.idlocation)
 });
 
-CAddress.AddressW.save = function(){
-var t = this;
-var dat = t.values();
-dat.idcontact = GlobalObject.IdContact;
-            // Request the text file
-            request.post("fun_contact_address_edit_xml.usms", {
-            // Parse data from xml
-	data: dat,
-            handleAs: "xml"
-        }).then(
-                function(response){
-var d = new RXml.getFromXhr(response, 'row');
 
-numrows = d.length;
-
-if(d.length > 0){
-t.idaddress = d.getInt(0, 'outreturn');
-t.load(t.idaddress);
-NotifyMSG.setText(d.getStringFromB64(0, 'outpgmsg'));
-}else{
-t.reset();
-}
-
-                },
-                function(error){
-                    // Display the error returned
-t.reset();
-//t.emit('onloaddata', t.values());
-NotifyMSG.setText(error);
-                }
-            );
-
-}
 
 
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
@@ -435,6 +400,11 @@ PAddress.AddressW.save();
 
 jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
 
+
+var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
+dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
+CAddress.AddressW.delete();
+});
 
 var dialogdeletphone = dijit.byId('dialogconfirmdeletecontactphone');
 dialogdeletphone.setowner('usms.save.contact.deltelf', 'onclick').on('onok', function(){

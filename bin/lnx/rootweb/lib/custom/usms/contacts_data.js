@@ -3,7 +3,8 @@ define(['dojo/_base/declare',
 'dijit/_Templated',
 'dojo/text!./contacts_data.html',
 'dojo/request', 'jspire/request/Xml', 
-'jspire/form/DateTextBox'
+'jspire/form/DateTextBox',
+'widgets/widgetspire/tooltipdialogconfirmation'
 ],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox){
 
  return declare('usms.contacts_data',[ _Widget, _Templated], {
@@ -12,18 +13,20 @@ define(['dojo/_base/declare',
 _id: 0,
 _ts: "",
 _idaddress: 0,
+reset: function(){
+t = this;
+t._id = 0;
+t._ts = "1990-01-01";
+t._idaddress = 0;
+t.Formulario.reset();
+},
 postCreate: function(){
 var t = this;
 
 DTBox.addGetDateFunction(t.Birthday);
 
-t.DialogDelete.setowner(t.id_delete, 'onclick').on('onok', function(){
-/*
-if(GlobalObject.IdContact>0){
-GlobalObject.IdContact = GlobalObject.IdContact*-1;
-FormContact.SaveForm();
-}
-*/
+t.DialogDelete.setowner(t.id_delete.id, 'onclick').on('onok', function(){
+t._Delete();
 });
 
 t.id_new.on('Click', function(){
@@ -35,9 +38,7 @@ t.id_save.on('Click', function(){
 t._Save();
 });
 
-t.id_delete.on('Click', function(){
-//t.Formulario.reset();
-});
+
 
 
 },
@@ -47,6 +48,14 @@ this._Load();
 },
 _getIdContactAttr: function(){
 return this._id;
+},
+_setIdAddressAttr: function(id){
+this._idaddress = id;
+// Al setear el idaddress debemos guardar ese seteo
+this._Save();
+},
+_getIdAddressAttr: function(){
+return this._idaddress;
 },
 _Load: function(){
 var t = this;
@@ -119,7 +128,9 @@ web: t.Web.get('value'),
 email1: t.email1.get('value'), 
 email2: t.email2.get('value'), 
 note: t.Note.get('value'), 
-ts: t._ts}
+ts: t._ts,
+idaddress: t._idaddress
+}
 },
 
 _Save: function(){
@@ -145,7 +156,7 @@ t.emit('onnotify', {msg: xmld.getStringFromB64(0, 'outpgmsg')});
 }else{
 t._id = 0;
 }
-t.emit('onsave', {idcontact: t._id});
+t.emit('onsavecontact', {idcontact: t._id});
 t._Load();
 
                 },
@@ -159,6 +170,49 @@ t._Load();
 
 }else{
 t.emit('onnotify', {msg: 'Los datos no han sido completados correctamente'});
+}
+
+//return Objeto;
+},
+_Delete: function(){
+// Internamente postgres elimina automaticamente es idaddress
+var t = this;
+
+if(t._id > 0){
+            // Request the text file
+            request.post("contacts_table_edit.usms", {
+            // Parse data from xml
+	data: {idcontact: t._id*-1},
+            handleAs: "xml"
+        }).then(
+                function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+
+if(xmld.length > 0){
+if(0 == Math.abs(xmld.getInt(0, 'outreturn'))){
+// Fue borrado correctamente
+t.emit('ondeletecontact', {idcontact: t._id, idaddress: t._idaddress});
+t.reset();
+}
+t.emit('onnotify', {msg: xmld.getStringFromB64(0, 'outpgmsg')});
+}else{
+t.reset();
+}
+
+t._Load();
+
+                },
+                function(error){
+                    // Display the error returned
+t.emit('onnotify', {msg: error});
+t._id = 0;
+t._Load();
+                }
+            );
+
+}else{
+t.emit('onnotify', {msg: 'No ha seleccionado un contacto para eliminar'});
 }
 
 //return Objeto;
