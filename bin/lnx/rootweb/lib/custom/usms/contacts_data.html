@@ -1,17 +1,17 @@
 <div><span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
-<input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+<input data-dojo-attach-point="id_new" type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
+<input data-dojo-attach-point="id_save" type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
+<input data-dojo-attach-point="id_delete" type="button" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
 </span>
-<div data-dojo-type="dijit.form.Form" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
+<div  data-dojo-attach-point="Formulario" data-dojo-type="dijit.form.Form" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
 <div style="margin: 2px;"><span style="margin: 2px; display: inline-block;">
  <label style="margin: 2px;">
 Habilitado:</label>
- <input type="checkbox" data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="id_enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+ <input type="checkbox" data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="Enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
 </span><span>
 <label style="margin: 2px;">
 T&iacute;tulo:</label>
-<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="id_title" value="Sr." intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="Title" value="Sr." intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
   <option value="Sr.">
     Sr.</option>
   <option value="Sra.">
@@ -26,19 +26,19 @@ T&iacute;tulo:</label>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Nombre:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_firtsname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="FirstName" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Apellido:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_lastname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="LastName" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Fecha de nacimiento:</label>
-<input type="text" data-dojo-type="dijit.form.DateTextBox" data-dojo-attach-point="id_bithday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01"></input>
+<input type="text" data-dojo-type="dijit.form.DateTextBox" data-dojo-attach-point="Birthday" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="1990-01-01"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 G&eacute;nero:</label>
-<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="id_sex" value="No definido" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="Gender" value="No definido" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
   <option value="No definido">
     No definido</option>
   <option value="Hombre">
@@ -49,7 +49,7 @@ G&eacute;nero:</label>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Tipo de identificaci&oacute;n:</label>
-<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="id_idtype" value="Pasaporte" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+<select data-dojo-type="dijit.form.ComboBox" data-dojo-attach-point="IdentificationType" value="Pasaporte" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
   <option value="No definido">
     No definido</option>
   <option value="Pasaporte">
@@ -62,24 +62,24 @@ Tipo de identificaci&oacute;n:</label>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Identificaci&oacute;n:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="Identification" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 Web:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_web" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="Web" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 email-1:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_email1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="email1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span><span style="margin: 2px; display: inline-block;">
 <label style="margin: 2px;">
 email-2:</label>
-<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="id_email2" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
+<input type="text" data-dojo-type="dijit.form.ValidationTextBox" data-dojo-attach-point="email2" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" state="Incomplete"></input>
 </span>
 <div style="padding: 3px;">
 <label>
 Nota:</label>
-<textarea type="text" data-dojo-type="dijit.form.Textarea" data-dojo-attach-point="id_note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%; display: block;"></textarea>
+<textarea type="text" data-dojo-type="dijit.form.Textarea" data-dojo-attach-point="Note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%; display: block;"></textarea>
 </div>
 </div>
 </div>
