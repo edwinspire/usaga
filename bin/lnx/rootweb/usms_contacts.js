@@ -443,11 +443,12 @@ var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
 dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
 CAddress.AddressW.delete();
 });
-
+/*
 var dialogdeletphone = dijit.byId('dialogconfirmdeletecontactphone');
 dialogdeletphone.setowner('usms.save.contact.deltelf', 'onclick').on('onok', function(){
 CP.Delete();
 });
+*/
 
 var dialogdeletphoneaddress = dijit.byId('dialogconfirmdeletecontactaddressphone');
 dialogdeletphoneaddress.setowner('usms.save.contact.deladdresstelf', 'onclick').on('onok', function(){

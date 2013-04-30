@@ -3,8 +3,8 @@ define(['dojo/_base/declare',
 'dijit/_Templated',
 'dojo/text!./contact_phone_data.html',
 'dojo/request', 'jspire/request/Xml', 
-'widgets/widgetspire/tooltipdialogconfirmation',
-'jspire/form/FilteringSelect'
+'jspire/form/FilteringSelect',
+'widgets/widgetspire/tooltipdialogconfirmation'
 ],function(declare,_Widget,_Templated,templateString, request, RXml, jsFS){
 
  return declare('usms.contact_phone_data',[ _Widget, _Templated], {
@@ -28,16 +28,16 @@ var t = this;
 jsFS.addXmlLoader(t.Provider, "provider_listidname_xml.usms", "row", {}, "idprovider", "name");
 t.Provider.Load();
 
-t.DialogDelete.setowner(t.id_delete.id, 'onclick').on('onok', function(){
+t.DialogDelete.setowner(t.idDelete.id, 'onclick').on('onok', function(){
 t._Delete();
 });
 
-t.id_new.on('Click', function(){
-t._id = 0;
+t.idNew.on('Click', function(){
+t.reset();
 t._Load();
 });
 
-t.id_save.on('Click', function(){
+t.idSave.on('Click', function(){
 t._Save();
 });
 
@@ -50,7 +50,6 @@ this._Load();
 },
 _Load: function(){
 var t = this;
-alert(t._id);
 if(t._id > 0){
             // Request the text file
             request.get("getphonebyid_xml.usms", {
