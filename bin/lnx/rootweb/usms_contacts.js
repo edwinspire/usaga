@@ -73,6 +73,17 @@ var CPDWidget = dijit.byId('PhoneData');
 CPDWidget.on('onnotify', function(e){
 NotifyMSG.setText(e.msg);
 });
+CPDWidget.on('onloadphone', function(data){
+PAddress.AddressW.idaddress = data.idaddress;
+PAddress.AddressW.load(PAddress.AddressW.idaddress);
+});
+CPDWidget.on('onsavephone', function(data){
+GridContactPhone.Load(true);
+});
+
+CPDWidget.on('ondeletecontact', function(data){
+GridContactPhone.Load();
+});
 
 
 
@@ -143,8 +154,11 @@ GlobalObject.LoadGrid();
 
 
 var GridContactPhone = dijit.byId('usms.contact.phone.grid');
-GridContactPhone.Load = function(){
+GridContactPhone.Load = function(resetPhoneData){
+// Esto sirve para no resetear los datos de telefonos cuando se ha realizado una actualizacion de un telefono pero que los cambios se reflejen en la tabla
+if(!resetPhoneData){
 CPDWidget.reset();
+}
 var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
@@ -396,7 +410,7 @@ PAddress.LocationW.setLocation(d.idlocation)
 PAddress.AddressW.save = function(){
 var t = this;
 var dat = t.values();
-dat.idphone = CP.IdPhone;
+dat.idphone = CPDWidget.values().idphone;
             // Request the text file
             request.post("fun_phones_address_edit_xml.usms", {
             // Parse data from xml

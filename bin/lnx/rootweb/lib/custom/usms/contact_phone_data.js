@@ -71,7 +71,7 @@ t.TypePhone.set('value', d.getNumber(i, "typephone"));
 t.UbiPhone.set('value', d.getNumber(i, "ubiphone"));
 t.Provider.set('value', d.getString(i, "idprovider"));
 t.Note.set('value', d.getStringFromB64(i, "note"));
-t._ts = d.getStringFromB64(i, "ts");
+t._ts = d.getString(i, "ts");
 t._idaddress = d.getNumber(i, "idaddress");
 t._idcontact = d.getNumber(i, "idcontact");
 t._id = d.getNumber(i, "idphone");
