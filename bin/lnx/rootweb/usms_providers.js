@@ -78,7 +78,7 @@ alert(errorx);
 
 function LoadGrid(){
 
-var store = new dojox.data.XmlStore({url: "usms_viewprovidertable_xml", sendQuery: true, rootItem: 'row'});
+var store = new dojox.data.XmlStore({url: "viewprovidertable_xml.usms", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({onComplete: function(itemsrow, r){
 
