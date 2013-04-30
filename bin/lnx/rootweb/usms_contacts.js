@@ -63,9 +63,6 @@ GlobalObject.IdContact = data.idcontact;
 CDWidget.on('ondeletecontact', function(data){
 GlobalObject.LoadGrid();
 GlobalObject.IdContact = data.idcontact;
-//alert('elimi '+data.idaddress);
-//CAddress.AddressW.idaddress = data.idaddress;
-//CAddress.AddressW.delete();
 });
 
 
@@ -196,162 +193,10 @@ NotifyMSG.setText(e);
 });
 }
 
-/*
-// Contact Phones
-var CP = {
-ts: '1990-01-01',
-idaddress: '0',
-resetForm: function(){
-this.IdPhone = 0;
-this.dijit.Enable.reset();
-dojo.byId('usms.phones.formdata').reset();
-//dojo.byId('usms.phones.formlocalization').reset();
-},
-dijit: {
-Enable: dijit.byId('usms.phones.enable'),
-Phone: dijit.byId('usms.phones.phone'),
-Ext: dijit.byId('usms.phones.ext'),
-Type: dijit.byId('usms.phones.typephone'),
-Ubi: dijit.byId('usms.phones.ubiphone'),
-Provider: dijit.byId('usms.phones.provider'),
-Note: dijit.byId('usms.phones.note'),
-Country: dijit.byId('usms.phones.local.country'),
-State: dijit.byId('usms.phones.local.state'),
-City: dijit.byId('usms.phones.local.city'),
-Sector: dijit.byId('usms.phones.local.sector'),
-Subsector: dijit.byId('usms.phones.local.subsector'),
-Address: dijit.byId('usms.phones.address'),
-GeoX: dijit.byId('usms.phones.geox'),
-GeoY: dijit.byId('usms.phones.geoy')
-},
-IdPhone: 0,
-Gridx: dijit.byId('usms.contact.phone.grid'),
-GridxStore: ItemFileReadStore_contactphones,
-LoadGrid: function(){
-this.resetForm();
-var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
-var i = 0;
-while(i<numrows){
-myData.items[i] = {
-unique_id:i,
-idcontact: dataxml.getNumber(i, "idcontact"),
-idphone: dataxml.getNumber(i, "idphone"),
-enable: dataxml.getBool(i, "enable"),
-phone: dataxml.getStringFromB64(i, "phone"),
-};
-i++;
-}
-
-ItemFileReadStore_contactphones.clearOnClose = true;
-	ItemFileReadStore_contactphones.data = myData;
-	ItemFileReadStore_contactphones.close();
-
-		GridContactPhone.store = null;
-		GridContactPhone.setStore(ItemFileReadStore_contactphones);
-
-},
-onError: function(e){
-NotifyMSG.setText(e);
-}
-});
-},
-LoadPhone: function(){
-var store = new dojox.data.XmlStore({url: "usms_getphonebyid_xml", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idphone: CP.IdPhone}, onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-
-if(numrows>0){
-
-var i = 0;
-
-CP.dijit.Enable.set('checked', dataxml.getBool(i, "enable"));
-CP.dijit.Phone.set('value', dataxml.getStringFromB64(i, "phone"));
-CP.dijit.Ext.set('value', dataxml.getStringFromB64(i, "phone_ext"));
-CP.dijit.Ubi.set('value', dataxml.getNumber(i, "ubiphone"));
-CP.dijit.Provider.set('value', dataxml.getString(i, "idprovider"));
-CP.dijit.Type.set('value', dataxml.getString(i, "typephone"));
-CP.dijit.Note.set('value', dataxml.getStringFromB64(i, "note"));
-PAddress.AddressW.idaddress = dataxml.getNumber(i, "idaddress");
-}else{
-PAddress.AddressW.reset();
-CP.resetForm();
-}
-//GeneralLoadAddressForm(PAddress.AddressW);
-PAddress.AddressW.load(PAddress.AddressW.idaddress);
-
-},
-onError: function(e){
-NotifyMSG.setText(e);
-}
-});
-},
-Delete: function(){
-CP.IdPhone = CP.IdPhone*-1;
-CP.SaveForm();
-},
-SaveForm: function(){
-
-if(GlobalObject.IdContact > 0){
-
-var Objeto = this;
-
-  var xhrArgs = {
-    url: "usms_phonetable_xml",
- content: {idcontact:GlobalObject.IdContact, idphone: CP.IdPhone, enable: CP.dijit.Enable.get('checked'), phone: CP.dijit.Phone.get('value'), phone_ext: CP.dijit.Ext.get('value'), typephone: CP.dijit.Type.get('value'), ubiphone: CP.dijit.Ubi.get('value'), idprovider: CP.dijit.Provider.get('value'), note: CP.dijit.Note.get('value'), ts: CP.ts},
-    handleAs: "xml",
-    load: function(datass){
-
-var xmld = new RXml.getFromXhr(datass, 'row');
-
-GridContactPhone.Load();
-
-if(xmld.length > 0){
-
-NotifyMSG.setText(xmld.getStringFromB64(0, 'outpgmsg'));
-CP.IdPhone = xmld.getInt(0, 'outreturn');
-CP.LoadPhone();
-
-}
-
-    },
-
-    error: function(error)
-{
-GridContactPhone.Load();
-NotifyMSG.setText(error);
-    }
-  }
-
-  var deferred = dojo.xhrPost(xhrArgs);
-
-}
-
-return Objeto;
-}
-}
-*/
 
 	if (GridContactPhone) {
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridContactPhone, 'onRowClick', function(event){
-//NotifyMSG.setText(this.cell(event.rowId, 2, true).data());
-//CP.IdPhone = this.cell(event.rowId, 2, true).data();
 CPDWidget.Load(GlobalObject.IdContact, this.cell(event.rowId, 2, true).data());
 });
 		// Optionally change column structure on the grid
@@ -450,19 +295,11 @@ PAddress.AddressW.save();
 }
 });
 
-//jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
-
 
 var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
 dialogdeletaddress.setowner('usms.delete.contact.address', 'onclick').on('onok', function(){
 CAddress.AddressW.delete();
 });
-/*
-var dialogdeletphone = dijit.byId('dialogconfirmdeletecontactphone');
-dialogdeletphone.setowner('usms.save.contact.deltelf', 'onclick').on('onok', function(){
-CP.Delete();
-});
-*/
 
 var dialogdeletphoneaddress = dijit.byId('dialogconfirmdeletecontactaddressphone');
 dialogdeletphoneaddress.setowner('usms.save.contact.deladdresstelf', 'onclick').on('onok', function(){
@@ -472,29 +309,17 @@ PAddress.AddressW.delete();
 
 
 dojo.connect(dojo.byId('usms.save.contact.maptelf'), 'onclick', function(){
-//v = AA.AddressW.values();
 window.open(PAddress.AddressW.values().geourl,'_blank');
 });
 
 dojo.connect(dojo.byId('usms.map.contact.address'), 'onclick', function(){
-//v = AA.AddressW.values();
 window.open(CAddress.AddressW.values().geourl,'_blank');
 });
 
-/*
-dojo.connect(dojo.byId('usms.save.contact.maptelf'), 'onclick', function(){
-//v = AA.AddressW.values();
-window.open(PAddress.AddressW.values().geourl,'_blank');
-});
-*/
-
 
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
-//dijit.byId('account.location.geox').constraints = {pattern: '###.################'};
-//dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 CAddress.LocationW._setLabels(namesLabelsLocations);
 PAddress.LocationW._setLabels(namesLabelsLocations);
-//CP.dijit.Provider.Load();
 
 
      });
