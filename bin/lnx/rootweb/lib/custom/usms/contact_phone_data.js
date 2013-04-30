@@ -3,8 +3,9 @@ define(['dojo/_base/declare',
 'dijit/_Templated',
 'dojo/text!./contact_phone_data.html',
 'dojo/request', 'jspire/request/Xml', 
-'widgets/widgetspire/tooltipdialogconfirmation'
-],function(declare,_Widget,_Templated,templateString, request, RXml){
+'widgets/widgetspire/tooltipdialogconfirmation',
+'jspire/form/FilteringSelect'
+],function(declare,_Widget,_Templated,templateString, request, RXml, jsFS){
 
  return declare('usms.contact_phone_data',[ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -24,6 +25,9 @@ t.Formulario.reset();
 postCreate: function(){
 var t = this;
 
+jsFS.addXmlLoader(t.Provider, "provider_listidname_xml.usms", "row", {}, "idprovider", "name");
+t.Provider.Load();
+
 t.DialogDelete.setowner(t.id_delete.id, 'onclick').on('onok', function(){
 t._Delete();
 });
@@ -39,13 +43,14 @@ t._Save();
 
 },
 Load: function(idcontact_, idphone_){
+this.reset();
 this._idcontact = idcontact_;
 this._id = idphone_;
-this.reset();
 this._Load();
 },
 _Load: function(){
 var t = this;
+alert(t._id);
 if(t._id > 0){
             // Request the text file
             request.get("getphonebyid_xml.usms", {

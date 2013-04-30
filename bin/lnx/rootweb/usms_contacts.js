@@ -42,7 +42,7 @@ var NotifyMSG = dijit.byId('notify');
 
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
-CP.LoadGrid();
+GridContactPhone.Load();
 GlobalObject.IdContact = data.idcontact;
 CAddress.AddressW.idaddress = data.idaddress;
 
@@ -67,6 +67,13 @@ GlobalObject.IdContact = data.idcontact;
 //CAddress.AddressW.idaddress = data.idaddress;
 //CAddress.AddressW.delete();
 });
+
+
+var CPDWidget = dijit.byId('PhoneData');
+CPDWidget.on('onnotify', function(e){
+NotifyMSG.setText(e.msg);
+});
+
 
 
 
@@ -134,18 +141,48 @@ GlobalObject.LoadGrid();
 }
 
 
-dojo.connect(dijit.byId('usms.save.contact.newtelf'), 'onClick', function(e){
-//CP.IdPhone = 0;
-CP.resetForm();
-//TODO Limpiar el resto de datos
+
+var GridContactPhone = dijit.byId('usms.contact.phone.grid');
+GridContactPhone.Load = function(){
+CPDWidget.reset();
+var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
+
+var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
+
+var dataxml = new RXml.getFromXmlStore(store, itemsrow);
+
+numrows = itemsrow.length;
+
+var myData = {identifier: "unique_id", items: []};
+myData.identifier = "unique_id";
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i,
+idcontact: dataxml.getNumber(i, "idcontact"),
+idphone: dataxml.getNumber(i, "idphone"),
+enable: dataxml.getBool(i, "enable"),
+phone: dataxml.getStringFromB64(i, "phone"),
+};
+i++;
+}
+
+ItemFileReadStore_contactphones.clearOnClose = true;
+	ItemFileReadStore_contactphones.data = myData;
+	ItemFileReadStore_contactphones.close();
+
+		GridContactPhone.store = null;
+		GridContactPhone.setStore(ItemFileReadStore_contactphones);
+
+},
+onError: function(e){
+NotifyMSG.setText(e);
+}
 });
+}
 
-
-
-dojo.connect(dijit.byId('usms.save.contact.savetelf'), 'onClick', function(e){
-CP.SaveForm();
-});
-
+/*
 // Contact Phones
 var CP = {
 ts: '1990-01-01',
@@ -201,12 +238,12 @@ phone: dataxml.getStringFromB64(i, "phone"),
 i++;
 }
 
-CP.GridxStore.clearOnClose = true;
-	CP.GridxStore.data = myData;
-	CP.GridxStore.close();
+ItemFileReadStore_contactphones.clearOnClose = true;
+	ItemFileReadStore_contactphones.data = myData;
+	ItemFileReadStore_contactphones.close();
 
-		CP.Gridx.store = null;
-		CP.Gridx.setStore(CP.GridxStore);
+		GridContactPhone.store = null;
+		GridContactPhone.setStore(ItemFileReadStore_contactphones);
 
 },
 onError: function(e){
@@ -268,7 +305,7 @@ var Objeto = this;
 
 var xmld = new RXml.getFromXhr(datass, 'row');
 
-CP.LoadGrid();
+GridContactPhone.Load();
 
 if(xmld.length > 0){
 
@@ -282,7 +319,7 @@ CP.LoadPhone();
 
     error: function(error)
 {
-CP.LoadGrid();
+GridContactPhone.Load();
 NotifyMSG.setText(error);
     }
   }
@@ -294,22 +331,23 @@ NotifyMSG.setText(error);
 return Objeto;
 }
 }
+*/
 
-	if (CP.Gridx) {
+	if (GridContactPhone) {
 // Captura el evento cuando se hace click en una fila
-dojo.connect(CP.Gridx, 'onRowClick', function(event){
+dojo.connect(GridContactPhone, 'onRowClick', function(event){
 //NotifyMSG.setText(this.cell(event.rowId, 2, true).data());
-CP.IdPhone = this.cell(event.rowId, 2, true).data();
-CP.LoadPhone();
+//CP.IdPhone = this.cell(event.rowId, 2, true).data();
+CPDWidget.Load(GlobalObject.IdContact, this.cell(event.rowId, 2, true).data());
 });
 		// Optionally change column structure on the grid
-		CP.Gridx.setColumns([
+		GridContactPhone.setColumns([
 			{field:"idcontact", name: "idc", width: '0px'},
 			{field:"idphone", name: "idp", width: '0px'},
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"phone", name: "Teléfono"},
 		]);
-CP.Gridx.startup();
+GridContactPhone.startup();
 }
 
 
@@ -398,7 +436,7 @@ PAddress.AddressW.save();
 }
 });
 
-jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
+//jsFS.addXmlLoader(CP.dijit.Provider, "usms_provider_listidname_xml", "row", {}, "idprovider", "name");
 
 
 var dialogdeletaddress = dijit.byId('dialogconfirmdeletecontactaddress');
@@ -441,7 +479,7 @@ window.open(PAddress.AddressW.values().geourl,'_blank');
 //dijit.byId('account.location.geoy').constraints = {pattern: '###.################'};
 CAddress.LocationW._setLabels(namesLabelsLocations);
 PAddress.LocationW._setLabels(namesLabelsLocations);
-CP.dijit.Provider.Load();
+//CP.dijit.Provider.Load();
 
 
      });

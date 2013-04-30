@@ -15,7 +15,7 @@ require([
   "dijit/layout/ContentPane",
   "dijit/Toolbar",
   "dijit/form/Button",
- "dijit/form/Form",
+  "dijit/form/Form",
   "dojox/io/xhrScriptPlugin",
   "dojo/data/ItemFileReadStore",
   "gridx/Grid",
@@ -40,18 +40,20 @@ require([
   "widgets/usms/wlocation",
   "widgets/usms/waddress",
   "widgets/widgetspire/tooltipdialogconfirmation",
-"dojo/request",
-'dojo/store/Memory',
+  "dojo/request",
+  "dojo/store/Memory",
   "widgets/widgetspire/notify_messages",
   "widgets/usms/usms_header",
-"widgets/usms/contacts_data"
+  "widgets/usms/contacts_data",
+  "dijit/TooltipDialog",
+  "widgets/usms/contact_phone_data"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
 </style>
 <script type="text/javascript" src="usms_contacts.js"></script>
 </head>
-<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" data-maq-appstates="{}" id="myapp">
+<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
 
  <div style="width: 100%; height: 100%;">
 
@@ -102,82 +104,7 @@ require([
          <div style="width: 100%; height: 100%;">
            <span data-dojo-type="dijit.layout.TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;">
 <div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
-<span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.newtelf" title="Limpia todos los campos para agregar nuevo contacto" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitIconNewTask"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.savetelf" title="Guardar datos del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.deltelf" title="Eliminar contact actual" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-</span><div style="width: 100%; height: 100%;">
-    <form id="usms.phones.formdata" style="min-height: 150px; width: 100%; height: auto;">
-      <div style="display: inline-block;">
-        <label>
-          Habilitado:</label>
-        <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usms.phones.enable" name="usms_phones_enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-      </div>
-      <div style="display: inline-block;">
-        <label>
-          Teléfono:</label>
-        <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.phones.phone" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-      </div>
-      <div style="display: inline-block;">
-        <label>
-          Extensión:</label>
-        <input type="text" data-dojo-type="dijit.form.TextBox" id="usms.phones.ext" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-      </div>
-      <div style="display: inline-block;">
-        <label>
-          Tipo:</label>
-        <select data-dojo-type="dijit.form.Select" id="usms.phones.typephone" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
-          <option value="0" selected="true">
-            
-                       
-                     No especificado</option>
-          <option value="1">
-            
-                       
-                     Movil</option>
-          <option value="2">
-            
-                       
-                     Fijo</option>
-        </select>
-      </div>
-      <div>
-        <label>
-          Ubicación:</label>
-        <select data-dojo-type="dijit.form.Select" id="usms.phones.ubiphone" type="text" value="0" intermediateChanges="false" iconClass="dijitNoIcon" emptyLabel="&amp;#160;" scrollOnFocus="true" autoWidth="true">
-          <option value="0" selected="true">
-            
-                       
-                     Domicilio</option>
-          <option value="1">
-            
-                       
-                     Trabajo</option>
-          <option value="2">
-            
-                       
-                     Oficina</option>
-          <option value="2">
-            
-                       
-                     Movil</option>
-        </select>
-      </div>
-      <div style="display: inline-block;">
-        <label>
-          Proveedor:</label>
-        <select data-dojo-type="dijit.form.FilteringSelect" id="usms.phones.provider" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-          <option value="Item 1">
-            Item 1</option>
-        </select>
-      </div>
-      <div>
-        <label style="width: 100%; display: block;">
-          Nota:</label>
-        <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usms.phones.note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-      </div>
-    </form>
-  </div>
+ <div data-dojo-type="usms.contact_phone_data" id="PhoneData"></div>
 </div>
 <div data-dojo-type="dijit.layout.ContentPane" title="Direcci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
   <span data-dojo-type="dijit.Toolbar">
@@ -208,6 +135,7 @@ require([
  <div id="notify" data-dojo-type="widgetspire.notify_messages" style="display: block !important;"></div>
 </body>
 </html>
+
 
 
 
