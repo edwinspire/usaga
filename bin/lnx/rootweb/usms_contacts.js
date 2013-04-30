@@ -156,6 +156,9 @@ GridContactPhone.Load = function(resetPhoneData){
 if(!resetPhoneData){
 CPDWidget.reset();
 }
+
+CPDWidget._idcontact = GlobalObject.IdContact;
+
 var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
 
 var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
