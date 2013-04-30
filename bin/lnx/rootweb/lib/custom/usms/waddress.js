@@ -108,7 +108,7 @@ t.emit('onloaddata', t.values());
                     // Display the error returned
 t.reset();
 t.emit('onloaddata', t.values());
-console.log(error);
+t.emit('onnotify', {msg: error});
                 }
             );
 }else{
@@ -133,18 +133,17 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-console.log(d.getStringFromB64(0, 'outpgmsg'));
+t.emit('onnotify', {msg: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
-
 t.emit('onsavedata', t.values());
                 },
                 function(error){
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-console.log(error);
+t.emit('onnotify', {msg: error});
                 }
             );
 
@@ -166,7 +165,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-console.log(d.getStringFromB64(0, 'outpgmsg'));
+t.emit('onnotify', {msg: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
@@ -177,7 +176,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-console.log(error);
+t.emit('onnotify', {msg: error});
                 }
             );
 }else{
