@@ -143,6 +143,7 @@ this.AddressW.save();
 } 
 
 
+
 dojo.connect(dojo.byId('accountwlocationaddress_map'), 'onclick', function(){
 //v = AA.AddressW.values();
 window.open(AA.AddressW.values().geourl,'_blank');
