@@ -317,6 +317,7 @@ window.open(CAddress.AddressW.values().geourl,'_blank');
 });
 
 
+
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 CAddress.LocationW._setLabels(namesLabelsLocations);
 PAddress.LocationW._setLabels(namesLabelsLocations);
