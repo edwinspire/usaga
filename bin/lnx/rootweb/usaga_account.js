@@ -418,7 +418,7 @@ GxPTClear: function(){
 // Creamos esta funcion paralela para cargar la lista de proveedores en los select que van dentro de la grid, como la carga es asincrona fue necesario crear la estructura de la gridx una vez esten listos los datos para los selects.
 PTElements.dijit.GxPT.setColumnsNew = function(){
             // Request the text file
-   request.get('usms_provider_listidname_xml', {
+   request.get('provider_listidname_xml.usms', {
             // Parse data from xml
             handleAs: "xml"
         }).then(
