@@ -33,7 +33,9 @@ t._Delete();
 });
 
 t.idNew.on('Click', function(){
+var i = t._idcontact;
 t.reset();
+t._idcontact = i;
 t._Load();
 });
 
