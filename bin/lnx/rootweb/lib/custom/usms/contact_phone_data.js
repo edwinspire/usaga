@@ -33,10 +33,12 @@ t._Delete();
 });
 
 t.idNew.on('Click', function(){
-var i = t._idcontact;
+//alert('>> '+t._idcontact);
+var i = t._idcontact*1;
 t.reset();
-t._idcontact = i;
+//alert('> '+t._idcontact);
 t._Load();
+t._idcontact = i;
 });
 
 t.idSave.on('Click', function(){
