@@ -1,0 +1,1 @@
+{"name":"custom","longName":"Custom Widgets","version":"1.0","localPath":true,"categories":{"custom":{"name":"User Widgets","description":"User Widgets","widgetClass":"dijit"}},"widgets":[{"name":"providers_table","description":"Custom user widget providers_table","type":"usms.providers_table","category":"custom","iconLocal":true,"icon":"app/davinci/img/maqetta.png"}]}
