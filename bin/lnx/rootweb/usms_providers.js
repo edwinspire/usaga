@@ -7,10 +7,8 @@
 
 require(["dojo/ready",  
 "dojo/on",
-"dojox/xml/DomParser",
-'dojo/store/Memory',
-"dojo/Evented",
-"dojo/data/ItemFileReadStore",
+'dojo/request', 
+'jspire/request/Xml',
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -21,87 +19,67 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore"
-], function(ready, on, DomParser, Memory, Evented, ItemFileReadStore, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, RXml, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
 //alert('Edita '+ item.idnotiftempl);
-SaveData(item);
+gridxprovider._Save(item);
 });
 
-var GridCalls = dijit.byId('gridxprovider');
+var gridxprovider = dijit.byId('gridxprovider');
 
-	if (GridCalls) {
+	if (gridxprovider) {
 
 		// Optionally change column structure on the grid
-		GridCalls.setColumns([
+		gridxprovider.setColumns([
 			{field:"enable", name: "*", width: '20px', editable: 'true'},
 			{field:"idprovider", name: "id", width: '20px'},
 			{field:"cimi", name: "cimi", editable: 'true'},
 			{field:"name", name: "Proveedor", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
-GridCalls.startup();
+gridxprovider.startup();
 }
 
-
-function SaveData(item){
-
-  // The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
-  var xhrArgs = {
-    url: "providereditxml.usms",
-    content: item,
-    handleAs: "xml",
-    load: function(dataX){
-
-var xmld = new jspireTableXmlDoc(dataX, 'row');
-
-if(xmld.length > 0){
-
-alert(xmld.getStringB64(0, 'outpgmsg'));
+dijit.byId('getdata').on('Click', function(){
+gridxprovider._Load();
+});
 
 
-}
+	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
+//alert('Edita '+ item.idnotiftempl);
+gridxprovider._Save(item);
+});
 
-LoadGrid();
 
-    },
-    error: function(errorx){
-alert(errorx);
-    }
-  }
-  // Call the asynchronous xhrGet
-  var deferred = dojo.xhrPost(xhrArgs);
-}
+gridxprovider._Load= function(){
 
-function LoadGrid(){
-
-var store = new dojox.data.XmlStore({url: "viewprovidertable_xml.usms", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
+            // Request the text file
+            request.get("viewprovidertable_xml.usms", {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
 var myData = {identifier: "unique_id", items: []};
-
 var i = 0;
+numrows = d.length;
+if(numrows > 0){
 while(i<numrows){
 myData.items[i] = {
 unique_id:i,
-idprovider: dataxml.getNumber(i, "idprovider"),
-cimi: dataxml.getStringB64(i, "cimi"),
-enable: dataxml.getBool(i, "enable"),
-name: dataxml.getStringB64(i, "name"),
-note: dataxml.getStringB64(i, "note"),
-ts: dataxml.getString(i, "ts")
+idprovider: d.getNumber(i, "idprovider"),
+cimi: d.getStringFromB64(i, "cimi"),
+enable: d.getBool(i, "enable"),
+name: d.getStringFromB64(i, "name"),
+note: d.getStringFromB64(i, "note"),
+ts: d.getString(i, "ts")
 };
 i++;
 }
-
+}
 
 myData.items[i] = {
 unique_id:i,
@@ -117,30 +95,51 @@ ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
 	ItemFileWriteStore_1.close();
 
-		GridCalls.store = null;
-		GridCalls.setStore(ItemFileWriteStore_1);
+		gridxprovider.store = null;
+		gridxprovider.setStore(ItemFileWriteStore_1);
 
-},
-onError: function(e){
-alert(e);
+                },
+                function(error){
+                    // Display the error returned
+gridxprovider.emit('onnotify', {msg: error});
+                }
+            );
+
+
 }
-});
+
+gridxprovider._Save= function(item){
+
+            // Request the text file
+            request.post("providereditxml.usms", {
+            // Parse data from xml
+	data: item,
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+var myData = {identifier: "unique_id", items: []};
+var i = 0;
+numrows = d.length;
+if(numrows > 0){
+
+gridxprovider.emit('onnotify', {msg: d.getStringFromB64(0, "outpgmsg")});
+
+}
+
+gridxprovider._Load();
+                },
+                function(error){
+                    // Display the error returned
+gridxprovider.emit('onnotify', {msg: error});
+                }
+            );
+
 
 }
 
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-setTimeout(LoadGrid, 5000);
-
-
-
-
-
-
-
-
-
-
-
+setTimeout(gridxprovider._Load, 2000);
 
 
      });
