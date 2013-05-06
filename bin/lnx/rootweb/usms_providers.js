@@ -23,12 +23,13 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idnotiftempl);
-gridxprovider._Save(item);
-});
+var NotifyMSG = dijit.byId('notify');
 
 var gridxprovider = dijit.byId('gridxprovider');
+
+gridxprovider.on('onnotify', function(m){
+NotifyMSG.setText(m.msg);
+});
 
 	if (gridxprovider) {
 
@@ -97,6 +98,8 @@ ItemFileWriteStore_1.clearOnClose = true;
 
 		gridxprovider.store = null;
 		gridxprovider.setStore(ItemFileWriteStore_1);
+
+gridxprovider.emit('onnotify', {msg: 'Se han cargado los datos'});
 
                 },
                 function(error){
