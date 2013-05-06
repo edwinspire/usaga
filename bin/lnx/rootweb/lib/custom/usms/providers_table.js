@@ -15,22 +15,24 @@ define(['dojo/_base/declare',
        templateString:templateString,
 postCreate: function(){
 
+dojo.parser.parse(this.domNode);
+
 	dojo.connect(usms_providers_table_jsItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
 //alert('Edita '+ item.idnotiftempl);
 //this._SaveItem(item);
 });
+
 		this.gridxprovider.setColumns([
-			{field:"enable", name: "*", width: '20px', editable: 'true', height: '5px'},
+			{field:"enable", name: "*", width: '20px', editable: 'true'},
 			{field:"idprovider", name: "id", width: '20px'},
 			{field:"cimi", name: "cimi", editable: 'true', width: '20px'},
 			{field:"name", name: "Proveedor", editable: 'true', width: '200px'},
-			{field:"note", name: "Nota" , editable: 'true', width: '400px'}
+			{field:"note", name: "Nota" , editable: 'true'}
 		]);
 this.gridxprovider.startup();
 
-
-
 this._Load();
+
 
 },
 _Load: function(){
@@ -78,11 +80,10 @@ usms_providers_table_jsItemFileWriteStore_1.clearOnClose = true;
 		t.gridxprovider.store = null;
 		t.gridxprovider.setStore(usms_providers_table_jsItemFileWriteStore_1);
 
-this.gridxprovider.startup();
 
 //t.gridxprovider.autoWidth = true;
 //			t.gridxprovider.autoHeight = true;
-//			t.gridxprovider.update();
+	//		t.gridxprovider.resize();
 
 
 //t.emit('onloadcontact', {idcontact: t._id, idaddress: t._idaddress});
