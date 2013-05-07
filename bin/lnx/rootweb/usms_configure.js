@@ -3,11 +3,6 @@ require(["dojo/ready",
 "jspire/request/Xml"], function(ready, R, RXml){
      ready(function(){
 
-// Aqui llamamos a todas las funciones que requieran que dojo se haya cargado antes de funcionar.
-//sendFormPostgreSQLCnx();
-//loadFormPostgreSQLCnx();
-
-
 dojo.connect(dojo.byId('btn_pg_get'), 'onclick', function(){
 loadFormPostgreSQLCnx();
 } );
