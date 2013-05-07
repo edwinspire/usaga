@@ -12,12 +12,6 @@ require([
   "maqetta/AppStates",
   "dijit/Toolbar",
   "dijit/form/Button",
-  "dojo/data/ItemFileWriteStore",
-  "dojox/io/xhrScriptPlugin",
-  "gridx/Grid",
-  "gridx/core/model/cache/Async",
-  "dojox/data/CsvStore",
-  "dojo/data/ItemFileReadStore",
   "dijit/layout/TabContainer",
   "dijit/layout/ContentPane",
   "dijit/form/TextBox",
@@ -28,14 +22,8 @@ require([
   "dijit/PopupMenuBarItem",
   "dijit/Menu",
   "dijit/MenuItem",
-  "gridx/modules/Focus",
-  "gridx/modules/CellWidget",
-  "gridx/modules/Edit",
-  "gridx/modules/IndirectSelect",
-  "gridx/modules/RowHeader",
-  "gridx/modules/select/Row",
-  "gridx/modules/extendedSelect/Row",
-  "widgets/usms/usms_header"
+  "widgets/usms/usms_header",
+  "widgets/usms/postgres_form"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -58,69 +46,7 @@ require([
 <input type="button" data-dojo-type="dijit.form.Button" id="btn_pg_save" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitNoIcon"></input>
 <input type="button" data-dojo-type="dijit.form.Button" id="btn_pg_testconx" tabIndex="-1" intermediateChanges="false" label="Test" iconClass="dijitNoIcon"></input>
 </span>
-<form id="FormPostgreSQLCnx">
-<table border="0" style="border-collapse: collapse; table-layout: fixed;">
-     <colgroup>
-       <col style="width: 100px;"></col>
-       <col style="width: 200px;"></col>
-       <col style="width: 50px;"></col>
-       <col style="width: 200px;"></col>
-     </colgroup>
-     <tbody>
-       <tr>
-         <td style="padding: 5px;">
-           <label style="margin-right: 5px;">
-             Host:</label>
-         </td>
-         <td>
-          <input type="text" data-dojo-type="dijit.form.TextBox" id="tbx_pg_host" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="localhost" title="Host de PostgreSQL"></input>
-        </td>
-         <td>
-           <label style="margin-right: 5px;">
-             Puerto:</label>
-         </td>
-         <td>
-          <input type="text" data-dojo-type="dijit.form.NumberTextBox" id="tbx_pg_port" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="display: block;" value="0"></input>
-        </td>
-       </tr>
-       <tr>
-         <td style="padding: 5px;">
-           <label style="margin-right: 5px;">
-             Base de datos:</label>
-         </td>
-         <td>
-          <input type="text" data-dojo-type="dijit.form.TextBox" id="tbx_pg_db" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="database"></input>
-        </td>
-         <td>
-           <label style="margin-right: 5px;">
-             Usuario:</label>
-         </td>
-         <td>
-          <input type="text" data-dojo-type="dijit.form.TextBox" id="tbx_pg_user" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="user"></input>
-        </td>
-       </tr>
-       <tr>
-         <td>
-           <label style="margin-right: 5px;">
-             Password:</label>
-         </td>
-         <td>
-          <input type="password" data-dojo-type="dijit.form.TextBox" id="tbx_pg_pwd" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="password"></input>
-        </td>
-         <td>
-           <label style="margin-right: 5px;">
-             SSL:</label>
-         </td>
-         <td>
-          <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="cbx_pg_ssl" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-        </td>
-       </tr>
-     </tbody>
-   </table>
-   <label style="margin: 3px; display: block;">
-     Nota:</label>
-   <textarea type="text" data-dojo-type="dijit.form.Textarea" id="tba_pg_note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-</form>
+   <div data-dojo-type="usms.postgres_form" id="postgres_form_widget"></div>
  </div>
  <div data-dojo-type="dijit.layout.ContentPane" title="Puertos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
   <div style="width: 100%; height: 100%;"></div>
