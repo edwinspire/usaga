@@ -28,19 +28,7 @@ note: dijit.byId('tba_pg_note').get('value')};
         }).then(
                 function(response){
 var d = new RXml.getFromXhr(response, 'postgres');
-/*
-if(d.length > 0){
-   dijit.byId('tbx_pg_pwd').set('value', d.getStringFromB64(0, 'pwd'));
-   dijit.byId('tbx_pg_user').set('value', d.getStringFromB64(0, "user"));
-   dijit.byId('tbx_pg_host').set('value', d.getStringFromB64(0, "host"));  
-   dijit.byId('tbx_pg_port').set('value', d.getNumber(0, "port"));  
 
-   dijit.byId('cbx_pg_ssl').set('checked', d.getBool(0, "ssl"));
-
-   dijit.byId('tbx_pg_db').set('value', d.getStringFromB64(0, "db"));  
-   dijit.byId('tba_pg_note').set('value', d.getStringFromB64(0, "note"));
-}
-*/
 loadFormPostgreSQLCnx();
                 },
                 function(error){
