@@ -1264,10 +1264,9 @@ GlobalObject.DisabledContentPanes(true);
 }, 5000);
 
 
-
 // El DIV contenedor principal tiene opacidad de 0% para que no se vean los widget antes de que se hayan renderisado correctamente. esto mejora el aspecto visual de la aplicacion.
 setTimeout(function(){
-domStyle.set('idIMGLoading', "display", 'none'); 
+//domStyle.set('idIMGLoading', "display", 'none'); 
 domStyle.set(GlobalObject.MasterDiv, "opacity", 1); 
 }, 1000);
 
