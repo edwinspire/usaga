@@ -9,17 +9,10 @@ require(["dojo/ready",
 "dojo/on",
 'dojo/request', 
 'jspire/request/Xml',
-"dojo/data/ItemFileWriteStore",
-  "gridx/Grid",
-  "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
 	'gridx/modules/CellWidget',
-	'gridx/modules/Edit',
-  "dijit/form/NumberTextBox",
-"gridx/modules/VirtualVScroller",
-"dojox/grid/cells/dijit",
-"dojox/data/XmlStore"
-], function(ready, on, request, RXml, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+	'gridx/modules/Edit'
+], function(ready, on, request, RXml){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
