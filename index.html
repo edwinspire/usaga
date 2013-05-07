@@ -1,67 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="uSAGA : Micro Sistema Automático de Gestion de Alarmas" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>uSAGA by edwinspire</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>uSAGA</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">uSAGA</h1>
+        <p class="header">Micro Sistema Automático de Gestion de Alarmas</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/edwinspire/usaga">View on GitHub</a>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/edwinspire/usaga/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/edwinspire/usaga/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/edwinspire/usaga">View On GitHub</a></li>
+        </ul>
 
-          <h1 id="project_title">uSAGA</h1>
-          <h2 id="project_tagline">Micro Sistema Automático de Gestion de Alarmas</h2>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/edwinspire">edwinspire</a></p>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/edwinspire/usaga/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/edwinspire/usaga/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Bienvenidos a la página del proyecto uSAGA.</h3>
+      </header>
+      <section>
+        <h1>Bienvenidos a la página del proyecto uSAGA.</h1>
 
-<p>uSAGA es un proyecto OpenSource para administración de alarmas, muy adaptable.</p>
+<hr><h2>
+<em>uSAGA</em> es un proyecto OpenSource para administración de alarmas, muy adaptable.</h2>
 
 <p>Inicialmente orientado para manejar alarmas comunitarias con notificaciones via SMS, actualmente sigue en crecimiento y desarrollo.</p>
 
-<p>Está escrito en Vala por lo que se puede compilar facilmente para que corra en Linux y Windows. Usa PostgreSQL como base de datos, SQLite para guardar algunas configuraciones.</p>
+<p>Entre las principales caracteristicas están:</p>
+
+<ul>
+<li>- Interface web para funcionar facilmente en red</li>
+<li>- Utiliza modems GSM para el envío y recepción de mensajes de texto (SMS) y llamadas telefónicas.</li>
+<li>- Geoposicionamiento de clientes usando OpenStreetMap (OSM)</li>
+<li>- Cantidad ilimitada (depende de la capacidad del computador) de usuarios.</li>
+<li>- Permite grupos de usuarios</li>
+<li>- Una vez configurado puede funcionar de forma totalmente autónoma</li>
+<li>- Las notificaciones vía sms pueden contener datos de la persona que produjo la alarma, datos como: nombres, direcciones, teléfonos, geoposicionamiento, etc, pueden ser incluidos fácilmente.</li>
+</ul><p>Está escrito en Vala por lo que se puede compilar facilmente para que corra en Linux y Windows. Usa PostgreSQL como base de datos, SQLite para guardar algunas configuraciones.</p>
 
 <p>Para la configuración y administración del sistema usa una interface web, que ha sido implementada usando AJAX, Dojo y HTML5.</p>
 
 <p>El proyecto requiere de ayuda, ya sea económica, con ideas, aportes de codigo, depuración, lo que sea es bienvenido.</p>
 
-<p>uSAGA depende de las siguientes librerias:</p>
+<hr><p>uSAGA depende de las siguientes librerias:</p>
 
-<p><a href="https://github.com/edwinspire/">https://github.com/edwinspire/</a></p>
+<p><a href="https://github.com/edwinspire/libspire_usms">libspire_usms</a>: Librería Base de uSMS
+<a href="https://github.com/edwinspire/usms">uSMS</a>: uSMS - Micro Servidor de Mensajes de Texto
+<a href="https://github.com/edwinspire/libspire_pg">libspire_pg</a>: Librería para conexión con PostgreSQL
+<a href="https://github.com/edwinspire/libspire_uhttp">libspire_uhttp</a>: Librería para crear un micro servidor web para la interface gráfica.
+<a href="https://github.com/edwinspire/libspire_pdu">libspire_pdu</a>: Librería para codificar y decodificar mensajes de texto en formato PDU.
+<a href="https://github.com/edwinspire/libspire_gsm">libspire_gsm</a>: Librería para manejo de modems GSM.
+<a href="https://github.com/edwinspire/libspire_serial">libspire_serial</a>: Librería para comunicación con puertos seriales.</p>
 
-<h3>Soporte o Contacto</h3>
+<hr><h3>Soporte o Contacto</h3>
 
-<p>Puede reportar algun bug en el sistema a <a href="mailto:edwinspire@gmail.com">edwinspire@gmail.com</a> o de preferencia a <a href="https://github.com/edwinspire/opensaga/issues">https://github.com/edwinspire/opensaga/issues</a> para poder hacer un seguimiento y solucionarlo.</p>
+<p>Puede reportar algún bug en el sistema a:
+<a href="mailto:edwinspire@gmail.com">edwinspire@gmail.com</a>
+<a href="mailto:admin@edwinspire.com">admin@edwinspire.com</a>
+o de preferencia a <a href="https://github.com/edwinspire/opensaga/issues">https://github.com/edwinspire/opensaga/issues</a> para poder hacer un seguimiento y solucionarlo.
+Más información la puede encontrar en:
+<a href="http://www.edwinspire.com">Página oficial de EDWINSPIRE</a>
+<a href="http://www.usaga-software.edwinspire.com">Página oficial de uSAGA - Software</a>
+<a href="http://www.alarmascomunitarias.edwinspire.com">Página de Software para Alarmas Comunitarias</a></p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">uSAGA maintained by <a href="https://github.com/edwinspire">edwinspire</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-
-    
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
