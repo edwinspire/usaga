@@ -1,0 +1,51 @@
+<div>
+  <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="Formulario" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
+    <div style="width: 600px; height: 248px;">
+      <select data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="idcontact" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="width: 100%;">
+        <option value="Item 1">
+          Item 1</option>
+        <option value="Item 2">
+          Item 2</option>
+        <option value="Item 3">
+          Item 3</option>
+      </select>
+      <div style="margin: 3px; display: inline-block;">
+        <label style="margin-right: 3px;">
+          Habilitado:</label>
+        <input type="checkbox" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="enable" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+      </div>
+      <div style="margin: 3px; display: inline-block;">
+        <label style="margin-right: 3px;">
+        Num. Usuario:</label>
+        <input type="text" data-dojo-type="dijit/form/NumberSpinner" data-dojo-attach-point="numuser" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 40px;"></input>
+      </div>
+      <div style="margin: 3px; display: inline-block;">
+        <label style="margin-right: 3px;">
+          Designación:</label>
+        <select data-dojo-type="dijit/form/ComboBox" data-dojo-attach-point="appointment" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+        <option value="Item 1">
+            Item 1</option>
+          <option value="Item 2">
+            Item 2</option>
+          <option value="Item 3">
+            Item 3</option>
+        </select>
+        </div>
+      <div style="margin: 3px; display: inline-block;">
+        <label style="margin-right: 3px;">
+        Palabra clave:</label>
+        <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="keyword" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
+      </div>
+      <div style="margin: 3px; display: inline-block;">
+        <label style="margin-right: 3px;">
+        Password:</label>
+        <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="password" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$"></input>
+      </div>
+      <div>
+        <label>
+          Nota:</label>
+      </div>
+      <textarea type="text" data-dojo-type="dijit/form/Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+    </div>
+  </div>
+</div>
