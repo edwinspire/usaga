@@ -1,6 +1,6 @@
 {
-	"id": "_usaga_account_user_times",
-	"name": "_usaga_account_user_times",
+	"id": "_usaga_account_user_time_day",
+	"name": "_usaga_account_user_time_day",
 	"spec": "1.0",
 	"version": "1.0",
 	"require": [
@@ -12,19 +12,19 @@
 		{
 			"type": "javascript-module",
 			"format": "amd",
-			"src": "dijit/form/DateTextBox",
+			"src": "dijit/form/CheckBox",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/TimeTextBox",
 			"$library": "dojo"
 		},
 		{
 			"$library": "dojo",
 			"format": "amd",
 			"src": "_usaga_account_user_time_day/_usaga_account_user_time_day",
-			"type": "javascript-module"
-		},
-		{
-			"$library": "dojo",
-			"format": "amd",
-			"src": "_usaga_account_user_times/_usaga_account_user_times",
 			"type": "javascript-module"
 		}
 	],
