@@ -105,6 +105,8 @@ t.idlocation = d.getInt(i, 'idlocation');
 }else{
 t.reset();
 }
+
+alert(t.idlocation+' <<<<<');
 t.emit('onloaddata', t.values());
                 },
                 function(error){

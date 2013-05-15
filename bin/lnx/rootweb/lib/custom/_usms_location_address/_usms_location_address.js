@@ -11,7 +11,7 @@ postCreate: function(){
 var t = this;
 t.titleaddress.set('label', 'Dirección');
 t.titlelocation.set('label', 'Localización');
-t.on('onloaddata', function(l){
+t.address.on('onloaddata', function(l){
 t.location.set('location', l.idlocation);
 });
 

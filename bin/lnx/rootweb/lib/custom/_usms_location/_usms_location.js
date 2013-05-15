@@ -196,6 +196,7 @@ return rl;
 },
 // Este es el punto principal de entrada de idlocation
 _setLocationAttr: function(idlocation){
+alert('> '+idlocation);
 this.fsL1.Load();
 this.getidslocations(idlocation);
 },
