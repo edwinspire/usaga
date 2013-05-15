@@ -66,18 +66,18 @@ require([
    <span data-dojo-type="dijit/layout/TabContainer" id="id_tagcontainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;"><div data-dojo-type="dijit/layout/ContentPane" title="Principal" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
      <div data-dojo-type="_usaga_account_basic_data/_usaga_account_basic_data" id="id_account_basic_data" style="width: 100%;"></div>
    </div>
-   <div data-dojo-type="dijit/layout/ContentPane" title="Localizaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false" style="width: 100%; overflow: hidden;">
+   <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneLocaliz" title="Localizaci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false" style="width: 100%; overflow: hidden;">
      <div data-dojo-type="_common_basic_menubar/_common_basic_menubar" id="id_account_location_menubar"></div>
      <div data-dojo-type="_usms_location_address/_usms_location_address" id="id_account_location_widget" style="width: 100%;"></div>
    </div>
-   <div data-dojo-type="dijit/layout/ContentPane" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%; overflow: hidden;">
+   <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneTiempos" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%; overflow: hidden;">
      <div data-dojo-type="_common_basic_menubar/_common_basic_menubar" id="id_account_times_menubar"></div>
      <div data-dojo-type="_usaga_account_times/_usaga_account_times" id="id_account_times_widget" style="width: 100%;"></div>
    </div>
-   <div data-dojo-type="dijit/layout/ContentPane" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false" style="width: 100%; height: 100%;">
+   <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneContactos" title="Contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false" style="width: 100%; height: 100%;">
      <div style="width: 100%; height: 100%;">
        <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
-         <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width: 25%;">
+         <div data-dojo-type="dijit/layout/ContentPane"  extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width: 25%;">
            <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_account_contact_menubar"></div>
            <span data-dojo-type="dijit/Toolbar">
             <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_notifygridx_popup" tabIndex="-1" intermediateChanges="false" label="Notificaciones" iconClass="dijitEditorIcon dijitEditorIconSelectAll"></input>
@@ -107,7 +107,7 @@ require([
        </div>
      </div>
    </div>
-   <div data-dojo-type="dijit/layout/ContentPane" title="Usuarios" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%;">
+   <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneUsers" title="Usuarios" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%;">
      <div style="width: 100%; height: 100%;">
        <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
          <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 25%;" doLayout="false">
@@ -140,7 +140,7 @@ require([
        </div>
      </div>
    </div>
-   <div data-dojo-type="dijit/layout/ContentPane" title="Eventos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%;">
+   <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneEventos" title="Eventos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%;">
     <div style="width: 100%; height: 100%;">
      <div data-dojo-type="_common_titlebar/_common_titlebar"></div>
      <div>

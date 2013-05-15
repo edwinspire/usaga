@@ -98,18 +98,14 @@ t.note.set('value', d.getStringFromB64(0, "note"));
 t._idaddress = d.getNumber(0, "idaddress"); 
 
 }else{
-t._idaddress = 0;
-t.form_data.reset();
+t._resetall();
 }
 t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
-
-
-
-
                 },
                 function(error){
                     // Display the error returned
 console.log(error);
+t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
 t.emit('notify_message', {message: error}); 
                 }
             );

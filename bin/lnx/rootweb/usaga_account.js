@@ -31,6 +31,24 @@ var Account = dijit.byId('id_account_basic_data');
 Account.on('notify_message', function(n){
 NotifyArea.setText(n.message);
 });
+Account.on('onloadaccount', function(x){
+alert(x.idaccount);
+if(x.idaccount > 0){
+Account.DisabledContentPanes(false);
+}else{
+Account.DisabledContentPanes(true);
+}
+
+});
+
+Account.DisabledContentPanes= function(disabled){
+
+dijit.byId('ContentPaneTiempos').attr('disabled',  disabled);
+dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
+dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
+dijit.byId('ContentPaneUsers').attr('disabled',  disabled);
+dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
+}
 
 
 
@@ -50,11 +68,11 @@ NotifyArea.setText(n.message);
 
 
 
+//# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
 NotifyArea.setText('uSAGA - Abonados');
 //Se ajusta al tamaño de la pantalla actual
-
 BodyApp.adjustElements();
-
+Account.DisabledContentPanes(true);
 
 
      });
