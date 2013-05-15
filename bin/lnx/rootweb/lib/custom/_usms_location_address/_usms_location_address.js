@@ -11,7 +11,7 @@ postCreate: function(){
 var t = this;
 t.titleaddress.set('label', 'Dirección');
 t.titlelocation.set('label', 'Localización');
-t.location.setLocation(0);
+t.location.set('location', 0);
 }   
 });
 });
