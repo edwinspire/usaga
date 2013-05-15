@@ -38,6 +38,7 @@ NotifyArea.setText(n.message);
 Account.on('onloadaccount', function(x){
 if(x.idaccount > 0){
 Account.DisabledContentPanes(false);
+Location.set('idaddress', x.idaddress);
 }else{
 Account.DisabledContentPanes(true);
 }

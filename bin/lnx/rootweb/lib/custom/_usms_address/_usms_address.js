@@ -62,6 +62,9 @@ geourl: t.geourl
 };
 
 },
+_setIdaddressAttr: function(id){
+this.load(id);
+},
 load: function(id){
 var t = this;
 t.idaddress = id;

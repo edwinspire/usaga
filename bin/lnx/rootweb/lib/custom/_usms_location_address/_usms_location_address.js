@@ -11,7 +11,15 @@ postCreate: function(){
 var t = this;
 t.titleaddress.set('label', 'Dirección');
 t.titlelocation.set('label', 'Localización');
+t.on('onloaddata', function(l){
+t.location.set('location', l.idlocation);
+});
+
+
 t.location.set('location', 0);
+},
+_setIdaddressAttr: function(id){
+this.address.set('idaddress', id);
 }   
 });
 });
