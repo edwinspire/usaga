@@ -194,6 +194,7 @@ var rl = this.values();
 rl = ''+rl.idl1+rl.idl2+rl.idl3+rl.idl4+rl.idl5+rl.idl6;
 return rl;
 },
+// Este es el punto principal de entrada de idlocation
 setLocation: function(idlocation){
 this.fsL1.Load();
 this.getidslocations(idlocation);

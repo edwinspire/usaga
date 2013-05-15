@@ -6,6 +6,9 @@ define(['dojo/_base/declare',
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
-       templateString:templateString   
+       templateString:templateString,
+_setLabelAttr: function(label_){
+this.label.innerHTML = label_;
+}  
 });
 });

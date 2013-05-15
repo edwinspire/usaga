@@ -9,8 +9,12 @@ require(["dojo/ready",
 
 ], function(ready, domStyle, dojoWindow,dojoOn){
      ready(function(){
+
+ dijit.byId('id_account_titlebar').set('label', 'Abonados');
      
-var NotifyArea = dijit.byId('id_notify_area');     
+var NotifyArea = dijit.byId('id_notify_area');  
+var Location = dijit.byId('id_account_location_widget');   
+
 
 var BodyApp = dojo.byId('myapp');
 BodyApp.adjustElements = function(){

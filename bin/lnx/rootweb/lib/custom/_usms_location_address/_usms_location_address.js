@@ -6,6 +6,12 @@ define(['dojo/_base/declare',
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
-       templateString:templateString   
+       templateString:templateString,
+postCreate: function(){
+var t = this;
+t.titleaddress.set('label', 'Dirección');
+t.titlelocation.set('label', 'Localización');
+t.location.setLocation(0);
+}   
 });
 });
