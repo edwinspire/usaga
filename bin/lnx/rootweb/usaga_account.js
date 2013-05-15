@@ -31,6 +31,25 @@ BodyApp.adjustElements();
 NotifyArea.setText('Ha cambiado el tamaño de la ventana');
  })
 
+var Account = dijit.byId('id_account_basic_data');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 NotifyArea.setText('uSAGA - Abonados');
