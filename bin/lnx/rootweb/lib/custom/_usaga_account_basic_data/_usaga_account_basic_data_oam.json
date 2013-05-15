@@ -18,7 +18,7 @@
 		{
 			"type": "javascript-module",
 			"format": "amd",
-			"src": "dijit/form/CheckBox",
+			"src": "dijit/form/Select",
 			"$library": "dojo"
 		},
 		{

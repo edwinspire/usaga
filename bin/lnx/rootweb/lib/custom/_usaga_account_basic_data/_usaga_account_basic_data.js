@@ -20,6 +20,7 @@ t.idmenu.on('onnew', function(){
 t.form_data.reset();
 t.account_select.set('invalidMessage', 'El nombre de Abonado es permitido');
 t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
+t.emit('notify_message', {message: 'Crear nuevo abonado'}); 
 });
 
 t.idmenu.on('ondelete', function(){
@@ -101,6 +102,7 @@ t._idaddress = d.getNumber(0, "idaddress");
 t._resetall();
 }
 t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
+t.emit('notify_message', {message: t.account_select.get('displayedValue')+' cargado'}); 
                 },
                 function(error){
                     // Display the error returned
@@ -111,7 +113,7 @@ t.emit('notify_message', {message: error});
             );
 
 }else{
-t.form_data.reset();
+t._resetall();
 }
 
 
@@ -128,8 +130,8 @@ this._actionsave(datos);
 },
 
 _save: function(){
-
 var t = this;
+
 var datos = {};
 if(t.Id >= 0){
 datos.idaccount = t.Id;
