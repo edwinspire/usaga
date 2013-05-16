@@ -72,7 +72,7 @@ Account.DisabledContentPanes(true);
 
 Account.DisabledContentPanes= function(disabled){
 
-dijit.byId('ContentPaneTiempos').attr('disabled',  disabled);
+//dijit.byId('ContentPaneTiempos').attr('disabled',  disabled);
 dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
 dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
 dijit.byId('ContentPaneUsers').attr('disabled',  disabled);
