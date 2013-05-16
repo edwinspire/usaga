@@ -13,14 +13,38 @@ require(["dojo/ready",
  dijit.byId('id_account_titlebar').set('label', 'Abonados');
      
 var NotifyArea = dijit.byId('id_notify_area');  
-var Location = dijit.byId('id_account_location_widget');   
+
+var Account = dijit.byId('id_account_basic_data');
+
+var Location = dijit.byId('id_account_location_widget');
+var LocationMB = dijit.byId('id_account_location_menubar');  
+
+Location.on('notify_message', function(m){
+NotifyArea.setText(m.message);
+});
+
+
+LocationMB.on('onnew', function(){
+Location.set('idaddress', 0);
+});
+
+LocationMB.on('ondelete', function(){
+Location.address.delete();
+});
+
+LocationMB.on('onsave', function(){
+Location.save();
+});
+
+Location.on('onsave', function(l){
+Account.set('idaddress', l.idaddress);
+});
 
 
 var BodyApp = dojo.byId('myapp');
 BodyApp.adjustElements = function(){
 h = dojoWindow.getBox().h - domStyle.get('id_usaga_menu_header', 'height') - domStyle.get('id_account_titlebar', 'height');
 
-//alert(ViewPortWin.h-h_id_usaga_menu_header-h_id_account_titlebar+'px');
 domStyle.set('id_usaga_account', 'height', h+'px');
 console.log('window on resize to: '+h);
 dijit.byId('id_tagcontainer').resize();
@@ -31,7 +55,6 @@ BodyApp.adjustElements();
 //NotifyArea.setText('Ha cambiado el tamaño de la ventana');
  })
 
-var Account = dijit.byId('id_account_basic_data');
 Account.on('notify_message', function(n){
 NotifyArea.setText(n.message);
 });

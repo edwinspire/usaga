@@ -49,14 +49,16 @@ this.form_data.reset();
 this._idaddress = 0;
 this.Id = 0;
 },
-setIdAddress: function(id){
-// Seteamos el nuevo idaddress (si fue modificado) y enviamos los datos para guardarlos.
-this._idaddress = id;
-this._save();
-},
 _idaddress: 0,
-getIdAddress: function(){
-return _idaddress;
+_getIdaddressAttr: function(){
+return this._idaddress;
+},
+_setIdaddressAttr: function(id_){
+// Seteamos el nuevo idaddress (si fue modificado) y enviamos los datos para guardarlos.
+if(id_ != this._idaddress){
+this._idaddress = id_;
+this._save();
+}
 },
 idaccount: function(){
 return this.account_select.get('value');
@@ -157,16 +159,16 @@ var t = this;
             handleAs: "xml"
         }).then(
                 function(response){
+alert('llega');
 var d = new RXml.getFromXhr(response, 'row');
-
+alert(d.length);
 if(d.length > 0){
 
-//console.log(d.getStringFromB64(0, 'outpgmsg'));
+console.log(d.getStringFromB64(0, 'outpgmsg'));
 t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
 
 t.account_select.Load();
 var id = d.getInt(0, "outreturn");
-
 if(id>0){
 t.account_select.set('value', id);
 }else{

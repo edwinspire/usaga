@@ -62,8 +62,8 @@ geourl: t.geourl
 };
 
 },
-_setIdaddressAttr: function(id){
-this.load(id);
+_setIdaddressAttr: function(id_){
+this.load(id_);
 },
 load: function(id){
 var t = this;
@@ -106,14 +106,13 @@ t.idlocation = d.getInt(i, 'idlocation');
 t.reset();
 }
 
-alert(t.idlocation+' <<<<<');
 t.emit('onloaddata', t.values());
                 },
                 function(error){
                     // Display the error returned
 t.reset();
 t.emit('onloaddata', t.values());
-t.emit('onnotify', {msg: error});
+t.emit('notify_message', {notify_message: error});
                 }
             );
 }else{
@@ -132,13 +131,12 @@ var t = this;
         }).then(
                 function(response){
 var d = new RXml.getFromXhr(response, 'row');
-
 numrows = d.length;
 
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-t.emit('onnotify', {msg: d.getStringFromB64(0, 'outpgmsg')});
+t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
@@ -148,7 +146,7 @@ t.emit('onsavedata', t.values());
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-t.emit('onnotify', {msg: error});
+t.emit('notify_message', {message: error});
                 }
             );
 
@@ -170,7 +168,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-t.emit('onnotify', {msg: d.getStringFromB64(0, 'outpgmsg')});
+t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
@@ -181,7 +179,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-t.emit('onnotify', {msg: error});
+t.emit('notify_message', {message: error});
                 }
             );
 }else{

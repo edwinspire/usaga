@@ -15,11 +15,25 @@ t.address.on('onloaddata', function(l){
 t.location.set('location', l.idlocation);
 });
 
+t.address.on('onsavedata', function(e){
+t.emit('onsave', e);
+});
+
+t.address.on('notify_message', function(m){
+t.emit('notify_message', m)
+});
+t.location.on('notify_message', function(m){
+t.emit('notify_message', m)
+});
 
 t.location.set('location', 0);
 },
 _setIdaddressAttr: function(id){
 this.address.set('idaddress', id);
+},
+save: function(){
+this.address.idlocation = this.location.get('location');
+this.address.save();
 }   
 });
 });

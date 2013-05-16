@@ -196,7 +196,7 @@ return rl;
 },
 // Este es el punto principal de entrada de idlocation
 _setLocationAttr: function(idlocation){
-alert('> '+idlocation);
+
 this.fsL1.Load();
 this.getidslocations(idlocation);
 },
@@ -234,7 +234,7 @@ t.fsL1.Load();
                 function(error){
                     // Display the error returned
 t._to_set_location= {idl1: '0', idl2: '0', idl3: '0', idl4: '0', idl5: '0', idl6: '0'};
-//t.emit('onloaddata', t.values());
+t.emit('notify_message', {message: error});
 console.log(error);
                 }
             );
