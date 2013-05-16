@@ -542,24 +542,6 @@ Tabla.GetParamCnx();
     Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).data;
 return Retorno;
 }
-
-/*
-// Recibe los datos y los actualiza en la base de datos.
-private uHttp.Response ResponseAccountLocationSaveTable(Request request){
-
-uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
-    Retorno.Header.Status = StatusCode.OK;
-
-AccountLocationTable Tabla = new AccountLocationTable();
-Tabla.GetParamCnx();
-
-    Retorno.Data =  Tabla.fun_account_location_table_from_hashmap(request.Form).Xml().data;
-//print("ResponseAccountSaveTable >>> \n%s\n", Tabla.fun_account_table_from_hashmap(request.Form).Xml());
-
-return Retorno;
-}
-*/
 /*
 private uHttp.Response ResponseAccountGetLocation(Request request){
 
