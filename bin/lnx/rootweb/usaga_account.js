@@ -33,7 +33,9 @@ Location.address.delete();
 });
 
 LocationMB.on('onsave', function(){
+if(Account.Id > 0){
 Location.save();
+}
 });
 
 Location.on('onsave', function(l){
