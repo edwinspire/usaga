@@ -542,26 +542,7 @@ Tabla.GetParamCnx();
     Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).data;
 return Retorno;
 }
-/*
-private uHttp.Response ResponseAccountGetLocation(Request request){
 
-uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
-    Retorno.Header.Status = StatusCode.OK;
-
-int id = 0;
-if(request.Form.has_key("idaccount")){
-id = int.parse(request.Form["idaccount"]);
-}
-
-AccountLocationTable Tabla = new AccountLocationTable();
-Tabla.GetParamCnx();
-
-    Retorno.Data =  Tabla.LocationbyIdAccountXml(id).data;
-//print(Tabla.UserAndIdContact_Xml(id));
-return Retorno;
-}
-*/
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetEventsMonitor(Request request){
 
