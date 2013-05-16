@@ -159,9 +159,9 @@ var t = this;
             handleAs: "xml"
         }).then(
                 function(response){
-alert('llega');
+
 var d = new RXml.getFromXhr(response, 'row');
-alert(d.length);
+
 if(d.length > 0){
 
 console.log(d.getStringFromB64(0, 'outpgmsg'));
