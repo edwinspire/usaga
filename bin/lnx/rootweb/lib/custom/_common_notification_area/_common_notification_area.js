@@ -9,12 +9,14 @@ define(['dojo/_base/declare',
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+baseUrl: '/lib/custom/_common_notification_area/media/',
 postCreate: function(){
 
 },
 setText: function(t){
  var node = domConstruct.create("span");
-node.innerHTML = '<div data-dojo-attach-point="notify_" style="opacity:0.75; filter:alpha(opacity=75);  margin: 3px; border: 1px solid #FF8635; border-radius: 6px; -moz-border-radius: 6px; width: 206px; background-color: transparent; background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#f3b71f)); background-image: -o-linear-gradient(white, #f3b71f); background-image: -ms-linear-gradient(white, #f3b71f); background-image: -moz-linear-gradient(white, #f3b71f); background-image: -webkit-linear-gradient(white, #f3b71f); background-image: linear-gradient(white, #f3b71f); text-align: center; height: auto;">     <label style="color: #553204;">'+t+'</label>   </div>';
+img = this.baseUrl+'dialog-information-3.png';
+node.innerHTML = ' <div style="border: 1px solid #c9c9c9; border-radius: 3px; margin: 5px; -moz-box-shadow: 3px 4px 7px #000000; -webkit-box-shadow: 3px 4px 7px #000000; box-shadow: 3px 4px 7px #000000; width: 300px; background-color: white; opacity: 0.8;">  <div style="padding: 5px;">   <div style="margin: 5px; display: inline-block; clear: both; float: left;">    <img src="'+img+'" style="background-color: transparent;"></img>    <audio autoplay="true"> <source src="media/alert-1.ogg" type="audio/ogg"></source>    </audio>  </div>   <div style="padding: 5px;"><div>'+t+'</div>  </div> </div></div>';
 
   domConstruct.place(node, this.container);
 
@@ -22,8 +24,46 @@ setTimeout(function(){
 dojo.destroy(node);
 }, 15000);
 
-//   <div id="notify" style="border: 1px solid black; border-radius: 6px; -moz-border-radius: 6px;">fjffjfjjf</div>
-}   
+},
+_args: function(a){
+
+if(a.message === undefined || a.message.length < 1){
+a.message = '';
+}
+
+if(a.title === undefined || a.title.length < 1){
+a.title = '';
+}
+
+if(a.img === undefined || a.img.length < 5){
+a.img = this.baseUrl+'dialog-information-3.png';
+}
+
+if(a.snd === undefined || a.snd.length < 5){
+a.snd = this.baseUrl+'alert-1.ogg';
+}
+
+if(a.timeout === undefined || a.timeout < 2){
+a.timeout = 15;
+}
+return a;
+},
+notify: function(args_){
+
+var args = this._args(args_);
+
+ var node = domConstruct.create("span");
+
+node.innerHTML = ' <div style="border: 1px solid #c9c9c9; border-radius: 3px; margin: 5px; -moz-box-shadow: 3px 4px 7px #000000; -webkit-box-shadow: 3px 4px 7px #000000; box-shadow: 3px 4px 7px #000000; width: 300px; background-color: white; opacity: 0.8;"><div style="padding: 5px;"><table border="0" style="border-collapse:collapse;table-layout:inherit;width:100%;height:100%;"> <colgroup>   <col style="vertical-align: top; width: 5%;"></col>   <col style="width: auto;"></col> </colgroup> <tbody>   <tr>     <td>       <div style="margin: 5px; display: inline-block;">         <img src="'+args.img+'" style="background-color: transparent;"></img>         <audio autoplay="true">     <source src="'+args.snd+'" type="audio/ogg"></source>         </audio>       </div>     </td>     <td>       <div style="padding: 5px; width: 100%; height: 100%; display: inline-block;">         <div style="color: black; font-size: 1.5em; font-weight: bold;">'+args.title+'</div>         <div>'+args.message+'</div>       </div>     </td>   </tr> </tbody></table></div></div>';
+
+
+  domConstruct.place(node, this.container);
+
+setTimeout(function(){
+dojo.destroy(node);
+}, args.timeout*1000);
+
+} 
 
 
 

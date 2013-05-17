@@ -20,7 +20,7 @@ var Location = dijit.byId('id_account_location_widget');
 var LocationMB = dijit.byId('id_account_location_menubar');  
 
 Location.on('notify_message', function(m){
-NotifyArea.setText(m.message);
+NotifyArea.notify({message: m.message});
 });
 
 
@@ -54,11 +54,10 @@ dijit.byId('id_tagcontainer').resize();
          
 dojoOn(window, "resize", function() { 
 BodyApp.adjustElements();
-//NotifyArea.setText('Ha cambiado el tamaño de la ventana');
  })
 
 Account.on('notify_message', function(n){
-NotifyArea.setText(n.message);
+NotifyArea.notify({message: n.message});
 });
 Account.on('onloadaccount', function(x){
 if(x.idaccount > 0){
@@ -98,7 +97,7 @@ dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 
 
 //# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
-NotifyArea.setText('uSAGA - Abonados');
+NotifyArea.notify({message: 'uSAGA - Abonados'});
 //Se ajusta al tamaño de la pantalla actual
 BodyApp.adjustElements();
 Account.DisabledContentPanes(true);
