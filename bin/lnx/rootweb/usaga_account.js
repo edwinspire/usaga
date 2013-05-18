@@ -18,7 +18,8 @@ var NotifyArea = dijit.byId('id_notify_area');
 var Account = dijit.byId('id_account_basic_data');
 var Location = dijit.byId('id_account_location_widget');
 var LocationMB = dijit.byId('id_account_location_menubar');  
-var GridxA = dijit.byId('id_account_contact_gridx');  
+var GridxA = dijit.byId('id_account_contact_gridx');
+var ContactW = dijit.byId('id_account_contact_widgetx');    
 
 
 Location.on('notify_message', function(m){
@@ -85,13 +86,21 @@ dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 // ### SECCION CONTACTOS ###
 	if (GridxA) {
 // Captura el evento cuando se hace click en una fila
-dojo.connect(GridxA, 'onRowClick', function(event){
+dojo.connect(GridxA, 'onRowClick', function(evt){
+var t = GridxA;
+d = t.cell(event.rowId, 1, true).data();
+// Aqui buscamos los datos desde el store y no desde la celda.
+t.store.fetch({query: {unique_id: d}, onItem: function(item){
+ContactW.Load(t.store.getValue(item, 'idaccount'), t.store.getValue(item, 'idcontact'));
 //AC.ResetOnSelectContact();
-//var id = this.cell(event.rowId, 1, true).data();
 //AC.LoadFormContact(id);
+
+}
+});
+
 });
 		GridxA.setColumns([
-			{field:"idcontact", name: "idcontact", width: '0%'},
+			{field:"unique_id", name: "#", width: '20px'},
 			{field:"enable_as_contact", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
 			{field:"priority", name: "priority", width: '20px'},
 			{field:"name", name: "nombre", width: '150px'},
@@ -121,7 +130,7 @@ if(Account.Id > 0){
 var d = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
 
-var myData = {identifier: "idcontact", items: []};
+var myData = {identifier: "unique_id", items: []};
 
 
 if(numrows > 0){
@@ -129,7 +138,9 @@ if(numrows > 0){
 var i = 0;
 while(i<numrows){
 myData.items[i] = {
+unique_id: i+1,
 idcontact: d.getNumber(i, "idcontact"), 
+idaccount: d.getNumber(i, "idaccount"), 
 enable_as_contact: d.getBool(i, "enable_as_contact"),
 priority: d.getNumber(i, "prioritycontact"),    
 name: d.getStringFromB64(i, "lastname")+' '+d.getStringFromB64(i, "firstname"),
