@@ -89,7 +89,7 @@ S.VirtualUrl["fun_groups_remove_selected_xml.usaga"] = "/fun_groups_remove_selec
 S.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.usaga";
 S.VirtualUrl["fun_view_account_unregistered_contacts_xml.usaga"] = "/fun_view_account_unregistered_contacts_xml.usaga";
 S.VirtualUrl["usaga_account_map.usaga"] = "/usaga_account_map.usaga";
-
+S.VirtualUrl["fun_view_account_location_byid_xml.usaga"] = "/fun_view_account_location_byid_xml.usaga";
 
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
@@ -223,6 +223,9 @@ break;
 
 case "/usaga_account_map.usaga":
 response = response_usaga_account_map(request);
+break;
+case "/fun_view_account_location_byid_xml.usaga":
+response = response_fun_view_account_location_byid_xml(request);
 break;
 
 default:
@@ -703,6 +706,24 @@ idaccount = int.parse(request.Query["idaccount"]);
 var retornoHtml = uHttpServer.ReadFile(S.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
 
 Retorno.Data = retornoHtml.data;
+return Retorno;
+}
+
+private uHttp.Response response_fun_view_account_location_byid_xml(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+int id = 0;
+if(request.Query.has_key("idaccount")){
+id = int.parse(request.Query["idaccount"]);
+}
+
+AccountTable Tabla = new AccountTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_view_account_location_byid_xml(id).data;
 return Retorno;
 }
 
