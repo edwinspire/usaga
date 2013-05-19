@@ -425,7 +425,39 @@ GridxB.Clear();
 return GridxB;
 }
 
+GridxB.SaveItem = function(itemStore){
 
+var t = GridxB;
+
+   R.post('getaccountnotificationstable.usaga', {
+		data: {idnotifaccount: 0, idaccount:Account.Id, idphone: itemStore.idphone, priority: itemStore.priority, sms: itemStore.sms, call: itemStore.call, smstext: itemStore.smstext, note: itemStore.note },
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
+}
+
+t.Load(itemStore.idcontact);
+
+                },
+                function(error){
+                    // Display the error returned
+t.emit('notify_message', {message: error}); 
+t.Load(itemStore.idcontact);
+                }
+            );
+
+}
+
+
+	dojo.connect(ItemFileWriteStore_B, 'onSet', function(item, attribute, oldValue, newValue){
+GridxB.SaveItem(item);
+});
 
 		
 }
