@@ -20,9 +20,6 @@ postCreate: function(){
     // Get a DOM node reference for the root of our widget
 //var domNode = this.domNode;
 
-    // Run any parent postCreate processes - can be done at any point
-//    this.inherited(arguments);
-
 // Inserta un texto de fabrica
 this.innerHTML('<div style="width: 100px;"><label>Est&aacute; seguro que desea realizar esta acci&oacute;n?</label></div>');
  
@@ -57,7 +54,7 @@ o.open();
 });
 return o;
 },
-// El owner_ es el id del componente que va a utilizar el dialogo
+// El owner_ es el dijit del componente que va a utilizar el dialogo
 dijitOwner: function(dijit_, onevent){
 var o = this;
 // Solo funciona con dojo.byId, no funciona con dijit

@@ -22,6 +22,12 @@ require(["dojo/ready",
 ], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml){
      ready(function(){
 
+function HtmlDialogNotifications(msg, idform, idcall, idsms, idtext){
+return '<form id="'+idform+'" style="width: 250px;">   <label style="font-weight: bold;">'+msg+'</label>   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">     <colgroup>       <col></col>       <col></col>     </colgroup>     <tbody>       <tr>         <td style="width: 75px;">           Llamar:</td>         <td>           <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="'+idcall+'" intermediateChanges="false" iconClass="dijitNoIcon"></input></td>       </tr>       <tr>         <td>           Enviar SMS:</td>         <td>           <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="'+idsms+'" intermediateChanges="false" iconClass="dijitNoIcon"></input></td>       </tr>       <tr>         <td>           Texto SMS:</td>         <td>           <textarea type="text" data-dojo-type="dijit/form/Textarea" id="'+idtext+'" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea></td>       </tr>     </tbody>   </table>   </form>';
+}
+
+
+
  dijit.byId('id_account_titlebar').set('label', 'Abonados');
      
 var NotifyArea = dijit.byId('id_notify_area');  
@@ -121,32 +127,15 @@ ContactMB.on('ondelete', function(){
 ContactW.delete();
 });
 
-// Boton que muestra el dialogo
-var ButtonNotifyContactsFromGridxA = dijit.byId('id_account_contact_notifygridx_popup');
-ButtonNotifyContactsFromGridxA.closePopUp = function(){
-   dijit.popup.close(dijit.byId('id_contact_notifyall_dialogAll'));
-}
 
-// Abre el dialogo
-ButtonNotifyContactsFromGridxA.on('Click', function(){
-  dijit.popup.open({
-                popup: dijit.byId('id_contact_notifyall_from_gridx'),
-                around: ButtonNotifyContactsFromGridxA.domNode
-            });
-});
+var DialogContactNotifyContactsApplySelected = dijit.byId('id_contact_NotifyContactPhonesdialog');
+DialogContactNotifyContactsApplySelected.byes.set('label', 'Aplicar');
+DialogContactNotifyContactsApplySelected.bno.set('label', 'Cancelar');
+DialogContactNotifyContactsApplySelected.innerHTML(HtmlDialogNotifications('Los cambios se aplicarán a todos los números telefónicos de los contactos que haya seleccionado. Esta acción REEMPLAZARÁ los datos existentes', 'GridxAForm', 'GridxACall', 'GridxASMS', 'GridxAMsgText'));
 
-// Aplicar los cambios a los contactos seleccionados
-dijit.byId('id_contact_notifyall_from_gridx_ok').on('Click', function(){
-ButtonNotifyContactsFromGridxA.closePopUp();
+DialogContactNotifyContactsApplySelected.dijitOwner(dijit.byId('id_account_contact_notifygridx_popup'), 'Click').on('onok', function(){
 GridxA.ApplyNotifyToSelection();
 });
-
-// Cierra el dialogo sin hacer nada
-dijit.byId('id_contact_notifyall_dialogCancel').on('Click', function(){
-ButtonNotifyContactsFromGridxA.closePopUp();
-});
-
-
 
 
 	if (GridxA) {
@@ -155,7 +144,7 @@ GridxA.ApplyNotifyToSelection = function(){
 if(GridxA.selected.length>0){
 
    R.post('notifyeditselectedcontacts.usaga', {
-		data: {idaccount: Account.Id, idcontacts: GridxA.selected.toString(), call: dijit.byId('id_contact_contactnotif_call_all').get('checked'), sms: dijit.byId('id_contact_contactnotif_sms_all').get('checked'), msg: dijit.byId('id_contact_contactnotif_msg_all').get('value')},
+		data: {idaccount: Account.Id, idcontacts: GridxA.selected.toString(), call: dijit.byId('GridxACall').get('checked'), sms: dijit.byId('GridxASMS').get('checked'), msg: dijit.byId('GridxAMsgText').get('value')},
             handleAs: "xml"
         }).then(
                 function(response){
@@ -171,7 +160,7 @@ GridxA.Load();
                 },
                 function(error){
                     // Display the error returned
-t.emit('notify_message', {message: error}); 
+GridxA.emit('notify_message', {message: error}); 
                 }
             );
 
@@ -206,7 +195,6 @@ d = t.cell(event.rowId, 1, true).data();
 // Aqui buscamos los datos desde el store y no desde la celda.
 t.store.fetch({query: {unique_id: d}, onItem: function(item){
 ContactW.Load(t.store.getValue(item, 'idaccount'), t.store.getValue(item, 'idcontact'));
-//AC.ResetOnSelectContact();
 }
 });
 
@@ -289,7 +277,72 @@ return GridxA;
 
 
 // ### SECCION TELEFONOS DE CONTACTOS ###
+// Abre el dialogo
+var DialogContactNotifyPhoneApplySelected = dijit.byId('id_contact_NotifyContactdialog');
+DialogContactNotifyPhoneApplySelected.byes.set('label', 'Aplicar');
+DialogContactNotifyPhoneApplySelected.bno.set('label', 'Cancelar');
+DialogContactNotifyPhoneApplySelected.innerHTML(HtmlDialogNotifications('Los cambios se aplicarán a todos los numeros telefónicos que haya seleccionado. Esta acción REEMPLAZARÁ los datos existentes', 'GridxBForm', 'GridxBCall', 'GridxBSMS', 'GridxBMsgText'));
+
+DialogContactNotifyPhoneApplySelected.dijitOwner(dijit.byId('id_account_contact_phonenotify_notifycations_popup'), 'Click').on('onok', function(){
+
+});
+
+
+
+// Aplicar los cambios a los contactos seleccionados
+dijit.byId('id_contact_notifyall_from_gridx_ok').on('Click', function(){
+GridxA.ApplyNotifyToSelection();
+});
+
+
 	if (GridxB) {
+
+GridxB.ApplyNotifyToSelection = function(){
+if(GridxB.selected.length>0){
+
+   R.post('notifyeditselectedphones.usaga', {
+		data: {idaccount: Account.Id, idphones: GridxB.selected.toString(), call: dijit.byId('id_contact_notifytelf_call_all').get('checked'), sms: dijit.byId('id_contact_notifytelf_sms_all').get('checked'), msg: dijit.byId('id_contact_notifytelf_msg_all').get('value')},
+            handleAs: "xml"
+        }).then(
+                function(response){
+
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+GridxB.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
+}
+
+GridxB.Load();
+                },
+                function(error){
+                    // Display the error returned
+GridxB.emit('notify_message', {message: error}); 
+                }
+            );
+
+}else{
+NotifyArea.notify({message: 'No hay contactos seleccionados para aplicar los cambios'});
+}
+
+}
+
+dojo.connect(GridxB.select.row, 'onSelectionChange', function(selected){
+GridxB.selected = [];
+var numsel = selected.length;
+i = 0;
+while(i<numsel){
+// Aqui buscamos los datos desde el store y no desde la celda, agregamos el idphone al array
+GridxB.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+GridxB.selected[i] = GridxB.store.getValue(item, 'idphone');
+} 
+});
+i++;
+}
+});
+
+GridxB.on('notify_message', function(m){
+NotifyArea.notify({message: m.message});
+});
 
 GridxB.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
@@ -298,8 +351,8 @@ GridxB.setColumns([
 			{field:"phone", name: "Teléfono", width: '100px'},
 			{field:"idprovider", name: "idprovider"},
 	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
-			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"smstext", name: "smstext", width: '150px', editable: true},
 	                {field:"note", name: "Nota", editable: true}
 		]);

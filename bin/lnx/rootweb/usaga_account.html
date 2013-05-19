@@ -95,7 +95,6 @@ require([
              </div>
              <div data-dojo-type="dijit/layout/ContentPane" title="Tel&amp;eacute;fonos Notificaciones" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" doLayout="false">
                <div style="width: 100%; height: 100%;">
-                 <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_account_contact_phonenotify_titlebar"></div>
   <span data-dojo-type="dijit/Toolbar">
 <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_phonenotify_notifycations_popup" tabIndex="-1" intermediateChanges="false" label="Notificaciones" iconClass="dijitEditorIcon dijitEditorIconSelectAll"></input>
                  <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_phonenotify_eventtypes_popup" title="Selecciona los eventos para los cuales se enviar&amp;aacute;n notificaciones. " tabIndex="-1" intermediateChanges="false" label="En Eventos Determinados" iconClass="dijitNoIcon"></input>
@@ -167,88 +166,8 @@ require([
    <div data-dojo-type="_common_notification_area/_common_notification_area" id="id_notify_area"></div>
  </div>
 
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="id_contact_NotifyContactdialog"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="id_contact_NotifyContactPhonesdialog"></div>
 
- <div id="id_contact_notifyall_from_gridx" data-dojo-type="dijit/TooltipDialog" style="display: none;">
-   <form style="width: 250px;">
-   <label style="font-weight: bold;">
-     Estos cambios se aplicar&aacute;n a todos los teléfonos que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
-   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-     <colgroup>
-       <col></col>
-       <col></col>
-     </colgroup>
-     <tbody>
-       <tr>
-         <td style="width: 75px;">
-           Llamar:</td>
-         <td>
-           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-</td>
-       </tr>
-       <tr>
-         <td>
-           Enviar SMS:</td>
-         <td>
-           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-</td>
-       </tr>
-       <tr>
-         <td>
-           Texto SMS:</td>
-         <td>
-           &nbsp;<textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.notiftelf.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
-</td>
-       </tr>
-     </tbody>
-   </table>
-<div class="dijitDialogPaneActionBar">
-       <button dojoType="dijit.form.Button" type="reset" id="id_contact_notifyall_from_gridx_ok">
-         Aplicar</button>
-       <button dojoType="dijit.form.Button" type="reset" id="id_contact_notifyall_dialogCancel">
-         Cancel</button>
-     </div>
-   </form>
- </div>
- <div id="usaga.contactnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog" style="display: none;">
-   <form style="width: 250px;">
-   <label style="font-weight: bold;">
-     Estos cambios se aplicar&aacute;n a todos los teléfonos de todos los contactos que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
-   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
-     <colgroup>
-       <col></col>
-       <col></col>
-     </colgroup>
-     <tbody>
-       <tr>
-         <td style="width: 75px;">
-           Llamar:</td>
-         <td>
-           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="id_contact_contactnotif_call_all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-</td>
-       </tr>
-       <tr>
-         <td>
-           Enviar SMS:</td>
-         <td>
-           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="id_contact_contactnotif_sms_all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
-</td>
-       </tr>
-       <tr>
-         <td>
-           Texto SMS:</td>
-         <td>
-           <textarea type="text" data-dojo-type="dijit.form.Textarea" id="id_contact_contactnotif_msg_all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
-</td>
-       </tr>
-     </tbody>
-   </table>
-<div class="dijitDialogPaneActionBar">
-       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_ok">
-         Aplicar</button>
-       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_cancel">
-         Cancel</button>
-     </div>
-   </form>
- </div>
 </body>
 </html>
