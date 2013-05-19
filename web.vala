@@ -65,7 +65,11 @@ S.VirtualUrl["getaccountcontactsgrid.usaga"] = "/getaccountcontactsgrid.usaga";
 S.VirtualUrl["getaccountphonesnotifgrid.usaga"] = "/getaccountphonesnotifgrid.usaga";
 S.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
 S.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnotifeventtypegrid.usaga";
+
+//TODO: Eliminar esta pagina virtual, se la mantiene solo por compatibilidad con la version anterior.
 S.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
+
+S.VirtualUrl["fun_account_contacts_table.usaga"] = "/fun_account_contacts_table.usaga";
 S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
 S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
 S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
@@ -83,7 +87,7 @@ S.VirtualUrl["fun_view_groups_xml.usaga"] = "/fun_view_groups_xml.usaga";
 S.VirtualUrl["fun_groups_edit_xml_from_hashmap.usaga"] = "/fun_groups_edit_xml_from_hashmap.usaga";
 S.VirtualUrl["fun_groups_remove_selected_xml.usaga"] = "/fun_groups_remove_selected_xml.usaga";
 S.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.usaga";
-//S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+S.VirtualUrl["fun_view_account_unregistered_contacts_xml.usaga"] = "/fun_view_account_unregistered_contacts_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
 
@@ -125,11 +129,9 @@ break;
 case "/opensagaaddaccountuser":
 response = ResponseAccountUserAddTable(request);
 break;
-/*
-case "/getaccountlocation.usaga":
-response = ResponseAccountGetLocation(request);
+case "/fun_view_account_unregistered_contacts_xml.usaga":
+response = request_fun_view_account_unregistered_contacts_xml(request);
 break;
-*/
 /*
 case "/saveaccountlocation.usaga":
 response = ResponseAccountLocationSaveTable(request);
@@ -156,6 +158,9 @@ break;
 
 case "/getaccountphonesnotifeventtypegrid.usaga":
 response = ResponseAccountContactPhonesNotifEventTypeToGridx(request);
+break;
+case "/fun_account_contacts_table.usaga":
+response = ResponseAccountContactsTable(request);
 break;
 case "/getaccountcontactstable.usaga":
 response = ResponseAccountContactsTable(request);
@@ -453,7 +458,7 @@ uHttp.Response Retorno = new uHttp.Response();
 AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
 Retorno.Data = Tabla.fun_account_contacts_table_from_hasmap(request.Form).data;
-print(Tabla.fun_account_contacts_table_from_hasmap(request.Form));
+//print(Tabla.fun_account_contacts_table_from_hasmap(request.Form));
 return Retorno;
 }
 
@@ -675,6 +680,25 @@ Tabla.GetParamCnx();
 
 Retorno.Data = Tabla.fun_view_account_byid_xml(id).data;
 
+return Retorno;
+}
+
+private uHttp.Response request_fun_view_account_unregistered_contacts_xml(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+int idaccount = 0;
+if(request.Query.has_key("idaccount")){
+idaccount = int.parse(request.Query["idaccount"]);
+}
+
+AccountTable Tabla = new AccountTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_view_account_unregistered_contacts_xml(idaccount).data;
+//print(Tabla.UserAndIdContact_Xml(id));
 return Retorno;
 }
 
