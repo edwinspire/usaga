@@ -1065,6 +1065,8 @@ public string fun_account_notifications_applyselected_xml(int idaccount, string 
 
 string Retorno = "";
 
+if(arrayidphones.length > 0){
+
 string[] ValuesArray = {idaccount.to_string(), "{"+arrayidphones+"}", call.to_string(), sms.to_string(), msg, fieldtextasbase64.to_string()};
 //GLib.print("Llega hasta aqui 3 \n");
 var  Conexion = Postgres.connect_db (this.ConnString());
@@ -1085,6 +1087,18 @@ Retorno = filas["return"].Value;
     }
 
 }
+
+}else{
+
+if(fieldtextasbase64){
+Retorno = "<table><row>  <outreturn>0</outreturn>"+Base64.encode("No ha seleccionado ningún teléfono para aplicar los cambios.".data)+"<outpgmsg></outpgmsg></row></table>";
+}else{
+Retorno = "<table><row>  <outreturn>0</outreturn>No ha seleccionado ningún teléfono para aplicar los cambios.<outpgmsg></outpgmsg></row></table>";
+
+}
+
+}
+
 return Retorno;
 }
 

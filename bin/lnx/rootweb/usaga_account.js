@@ -156,7 +156,7 @@ GridxA.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')});
 }
 
 GridxA.Load();
-
+ContactW.Load(Account.Id, 0);
                 },
                 function(error){
                     // Display the error returned
@@ -210,6 +210,7 @@ GridxA.startup();
 }
 
 GridxA.Clear= function(){
+GridxA.selected = [];
 GridxA._setData({identifier: "unique_id", items: []});
 }
 
@@ -222,7 +223,7 @@ GridxA._setData = function(data){
 }
 
 GridxA.Load = function(){
-//this.ResetOnSelectContact();
+GridxA.selected = [];
 if(Account.Id > 0){
 
    R.get('getaccountcontactsgrid.usaga', {
@@ -281,27 +282,21 @@ return GridxA;
 var DialogContactNotifyPhoneApplySelected = dijit.byId('id_contact_NotifyContactdialog');
 DialogContactNotifyPhoneApplySelected.byes.set('label', 'Aplicar');
 DialogContactNotifyPhoneApplySelected.bno.set('label', 'Cancelar');
-DialogContactNotifyPhoneApplySelected.innerHTML(HtmlDialogNotifications('Los cambios se aplicarán a todos los numeros telefónicos que haya seleccionado. Esta acción REEMPLAZARÁ los datos existentes', 'GridxBForm', 'GridxBCall', 'GridxBSMS', 'GridxBMsgText'));
+DialogContactNotifyPhoneApplySelected.innerHTML(HtmlDialogNotifications('Los cambios se aplicarán a todos los números telefónicos que haya seleccionado. Esta acción REEMPLAZARÁ los datos existentes', 'GridxBForm', 'GridxBCall', 'GridxBSMS', 'GridxBMsgText'));
 
 DialogContactNotifyPhoneApplySelected.dijitOwner(dijit.byId('id_account_contact_phonenotify_notifycations_popup'), 'Click').on('onok', function(){
-
-});
-
-
-
-// Aplicar los cambios a los contactos seleccionados
-dijit.byId('id_contact_notifyall_from_gridx_ok').on('Click', function(){
-GridxA.ApplyNotifyToSelection();
+GridxB.ApplyNotifyToSelection();
 });
 
 
 	if (GridxB) {
 
 GridxB.ApplyNotifyToSelection = function(){
+
 if(GridxB.selected.length>0){
 
    R.post('notifyeditselectedphones.usaga', {
-		data: {idaccount: Account.Id, idphones: GridxB.selected.toString(), call: dijit.byId('id_contact_notifytelf_call_all').get('checked'), sms: dijit.byId('id_contact_notifytelf_sms_all').get('checked'), msg: dijit.byId('id_contact_notifytelf_msg_all').get('value')},
+		data: {idaccount: Account.Id, idphones: GridxB.selected.toString(), call: dijit.byId('GridxBCall').get('checked'), sms: dijit.byId('GridxBSMS').get('checked'), msg: dijit.byId('GridxBMsgText').get('value')},
             handleAs: "xml"
         }).then(
                 function(response){
@@ -321,7 +316,7 @@ GridxB.emit('notify_message', {message: error});
             );
 
 }else{
-NotifyArea.notify({message: 'No hay contactos seleccionados para aplicar los cambios'});
+NotifyArea.notify({message: 'No hay teléfonos seleccionados para aplicar los cambios'});
 }
 
 }
@@ -368,11 +363,12 @@ GridxB.setStore(ItemFileWriteStore_B);
 }
 
 GridxB.Clear= function(){
+GridxB.selected = [];
 GridxB._setData({identifier: "unique_id", items: []});
 }
 
 GridxB.Load = function(idcontact){
-//this.ResetOnSelectContact();
+GridxB.selected = [];
 if(Account.Id > 0 && idcontact > 0){
 
    R.get('getaccountphonesnotifgrid.usaga', {
