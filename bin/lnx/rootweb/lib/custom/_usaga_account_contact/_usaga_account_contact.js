@@ -18,6 +18,9 @@ jsFS.addXmlLoader(t.listcontactsnew, 'fun_view_account_unregistered_contacts_xml
 },
 _idaccount: 0,
 _idcontact: 0,
+_getIdcontactAttr: function(){
+return this._idcontact;
+},
 New: function(idaccount_){
 var t = this;
 t.reset();

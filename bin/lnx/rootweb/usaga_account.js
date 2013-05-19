@@ -307,7 +307,7 @@ if(d.length > 0){
 GridxB.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
 }
 
-GridxB.Load();
+GridxB.Load(ContactW.get('idcontact'));
                 },
                 function(error){
                     // Display the error returned
