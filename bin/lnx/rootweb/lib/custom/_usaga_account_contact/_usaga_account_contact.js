@@ -82,14 +82,14 @@ t.emit('onloadcontact', {idaccount: t._idaccount, idcontact: t._idcontact});
                 function(error){
                     // Display the error returned
 console.log(error);
-t.emit('onloadaccount', {idaccount: 0, idcontact: 0}); 
+t.emit('onloadcontact', {idaccount: 0, idcontact: 0}); 
 t.emit('notify_message', {message: error}); 
                 }
             );
 
 }else{
 t._empty();
-t.emit('onloadaccount', {idaccount: 0, idcontact: 0}); 
+t.emit('onloadcontact', {idaccount: 0, idcontact: 0}); 
 }
 
 
