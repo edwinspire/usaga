@@ -178,7 +178,7 @@ t.Load(t._idaccount, t._idcontact);
                 function(error){
                     // Display the error returned
 t.reset();
-t.emit('notify_message', {message: errorx}); 
+t.emit('notify_message', {message: error}); 
                 }
             );
 

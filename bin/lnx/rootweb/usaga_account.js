@@ -113,25 +113,81 @@ ContactMB.on('ondelete', function(){
 ContactW.delete();
 });
 
-dijit.byId('id_account_contact_notifygridx_popup').on('Click', function(){
+// Boton que muestra el dialogo
+var ButtonNotifyContactsFromGridxA = dijit.byId('id_account_contact_notifygridx_popup');
+ButtonNotifyContactsFromGridxA.closePopUp = function(){
+   dijit.popup.close(dijit.byId('id_contact_notifyall_dialogAll'));
+}
+
+// Abre el dialogo
+ButtonNotifyContactsFromGridxA.on('Click', function(){
   dijit.popup.open({
                 popup: dijit.byId('id_contact_notifyall_from_gridx'),
-                around: dojo.byId('id_account_contact_notifygridx_popup')
+                around: ButtonNotifyContactsFromGridxA.domNode
             });
 });
 
-
-dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_ok'), 'onclick', function(){
-   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
-AC.NotifyEditSelected();
+// Aplicar los cambios a los contactos seleccionados
+dijit.byId('id_contact_notifyall_from_gridx_ok').on('Click', function(){
+ButtonNotifyContactsFromGridxA.closePopUp();
+GridxA.ApplyNotifyToSelection();
 });
 
-dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', function(){
-   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
+// Cierra el dialogo sin hacer nada
+dijit.byId('id_contact_notifyall_dialogCancel').on('Click', function(){
+ButtonNotifyContactsFromGridxA.closePopUp();
 });
+
+
 
 
 	if (GridxA) {
+
+GridxA.ApplyNotifyToSelection = function(){
+if(GridxA.selected.length>0){
+
+   R.post('notifyeditselectedcontacts.usaga', {
+		data: {idaccount: Account.Id, idcontacts: GridxA.selected.toString(), call: dijit.byId('id_contact_contactnotif_call_all').get('checked'), sms: dijit.byId('id_contact_contactnotif_sms_all').get('checked'), msg: dijit.byId('id_contact_contactnotif_msg_all').get('value')},
+            handleAs: "xml"
+        }).then(
+                function(response){
+
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+GridxA.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
+}
+
+GridxA.Load();
+
+                },
+                function(error){
+                    // Display the error returned
+t.emit('notify_message', {message: error}); 
+                }
+            );
+
+
+
+}else{
+NotifyArea.notify({message: 'No hay contactos seleccionados para aplicar los cambios'});
+}
+
+}
+
+dojo.connect(GridxA.select.row, 'onSelectionChange', function(selected){
+GridxA.selected = [];
+var numsel = selected.length;
+i = 0;
+while(i<numsel){
+// Aqui buscamos los datos desde el store y no desde la celda, agregamos el idphone al array
+GridxA.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+GridxA.selected[i] = GridxA.store.getValue(item, 'idcontact');
+} 
+});
+i++;
+}
+});
 
 GridxA.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
