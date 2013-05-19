@@ -4,31 +4,62 @@ define(['dojo/_base/declare',
 'dojo/text!_usaga_account_contact/_usaga_account_contact.html',
 'dojo/request',
 'jspire/form/FilteringSelect',
-'jspire/request/Xml'
-],function(declare,_Widget,_Templated,templateString, R, jsFS, RXml){
+'jspire/request/Xml',
+'dojo/dom-style'
+],function(declare,_Widget,_Templated,templateString, R, jsFS, RXml, domStyle){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
 postCreate: function(){
 var t = this;
-t.listcontactsnew.readOnly = true;
-jsFS.addXmlLoader(t.listcontactsnew, 'getcontactslistidcontactname_xml.usms', 'row', {}, 'idcontact', 'name');
-t.listcontactsnew.Load();
+t.listcontactsnew.set('invalidMessage', 'Debe seleccionar un contacto de la lista');
+jsFS.addXmlLoader(t.listcontactsnew, 'fun_view_account_unregistered_contacts_xml.usaga', 'row', {}, 'idcontact', 'name');
 },
 _idaccount: 0,
-_idcontact: 0,      
+_idcontact: 0,
+New: function(idaccount_){
+var t = this;
+t.Formulario.reset();
+t._idaccount = idaccount_;
+t.listcontactsnew._Query.idaccount = t._idaccount;
+t._changeLabelToSelect(true);
+t.emit('notify_message', {message: 'Seleccione un contacto de la lista'}); 
+t.listcontactsnew.Load();
+},
+_empty: function(){
+var t = this;
+t._idaccount = 0;
+t.reset();
+},    
+reset: function(){
+var t = this;
+t.Formulario.reset();
+t._idcontact = 0;
+t.name.innerHTML = 'Ningún contacto seleccionado';
+t._changeLabelToSelect(false);
+},
+_changeLabelToSelect: function(change){
+var t = this;
+if(change){
+domStyle.set(t.listcontactsnew.domNode, "display", "block");
+domStyle.set(t.divname, "display", "none");
+}else{
+domStyle.set(t.listcontactsnew.domNode, "display", "none");
+domStyle.set(t.divname, "display", "block");
+}
+},  
 Load: function(idaccount_, idcontact_){
 
 var t = this;
 t._idaccount = idaccount_;
 t._idcontact = idcontact_;
+t._changeLabelToSelect(false);
 
 if(t._idaccount > 0 && t._idcontact > 0){
 
    R.get('getaccountcontact.usaga', {
 		query: {idaccount: t._idaccount, idcontact: t._idcontact},
-            // Parse data from xml
             handleAs: "xml"
         }).then(
                 function(response){
@@ -43,28 +74,27 @@ t.appointment.set('value', d.getStringFromB64(0, "appointment"));
 t.note.set('value', d.getStringFromB64(0, "note"));
 
 }else{
-//t._resetall();
+t.reset();
 }
-//t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
-//t.emit('notify_message', {message: t.account_select.get('displayedValue')+' cargado'}); 
+t.emit('onloadcontact', {idaccount: t._idaccount, idcontact: t._idcontact}); 
                 },
                 function(error){
                     // Display the error returned
 console.log(error);
-t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
+t.emit('onloadaccount', {idaccount: 0, idcontact: 0}); 
 t.emit('notify_message', {message: error}); 
                 }
             );
 
 }else{
-t._resetall();
+t._empty();
 }
 
 
 
 },
 
-_delete: function(){
+delete: function(){
 idccountdelete = this.Id;
 if(idccountdelete > 0){
 var datos = {};
@@ -72,22 +102,44 @@ datos.idaccount = this.Id*-1;
 this._actionsave(datos);
 }
 },
-
-_save: function(){
+_dataContact: function(){
 var t = this;
-
 var datos = {};
-if(t.Id >= 0){
-datos.idaccount = t.Id;
-datos.idaddress = t._idaddress;  
-datos.idgroup = t.idgroup.get('value');
-datos.partition = t.partition.get('value');
+datos.valid = false;
+datos.idcontact = t._idcontact;
+datos.idaccount = t._idaccount;
+datos.priority = t.priority.get('value');
+datos.appointment = t.appointment.get('value');
 datos.enable = t.enable.get('checked'); 
-datos.account = t.account.get('value'); 
-datos.name = t.account_select.get('displayedValue'); 
-datos.type = t.idtype.get('value');
 datos.note = t.note.get('value');
-t._actionsave(datos);
+
+// Esto se ejecuta cuando se va insertar un nuevo usuario
+if(t._idcontact == 0){
+if(t.listcontactsnew.state == 'Error' || t.listcontactsnew.state == 'Incomplete'){
+t.emit('notify_message', {message: 'Debe seleccionar un contacto de la lista para poderlo agregar. Si no hay elementos en la lista significa que todos los posibles contactos ya han sido agregados.'}); 
+}else{
+datos.idcontact = t.listcontactsnew.get('value'); 
+} 
+}
+
+// Verificamos que los datos sean correctos
+if(datos.idaccount > 0 && datos.idcontact > 0){
+datos.valid = true;
+}else{
+datos.valid = false;
+t.emit('notify_message', {message: 'Los datos ingresados no son correctos. Imposible guardarlos.'}); 
+}
+return datos;
+},
+
+
+save: function(){
+
+var t = this;
+var datos = t._dataContact();
+
+if(datos.valid){
+//t._actionsave(datos);
 }
 
 },
@@ -95,7 +147,7 @@ t._actionsave(datos);
 _actionsave: function(_data){
 var t = this;
 
-   R.post('saveaccount.usaga', {
+   R.post('fun_account_contacts_table.usaga', {
 		data: _data,
             // Parse data from xml
             handleAs: "xml"

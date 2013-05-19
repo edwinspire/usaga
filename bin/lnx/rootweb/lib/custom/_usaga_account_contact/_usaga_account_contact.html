@@ -5,9 +5,7 @@
   <label style="font-size: 1.5em; font-weight: bold;" data-dojo-attach-point="name">
     Ningún contacto seleccionado</label>
 </div>
-      <select data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="listcontactsnew" value="0" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="true" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="width: 100%; display: none;">
-        <option value="0">
-          Ninguno Seleccionado</option>
+      <select data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="listcontactsnew" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" required="required" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200" style="width: 100%; display: none;">
       </select>
       <div style="margin: 3px; display: inline-block;">
         <label style="margin-right: 3px;">
@@ -41,7 +39,7 @@
         <label>
           Nota:</label>
       </div>
-      <textarea type="text" data-dojo-type="dijit/form/Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+      <textarea type="text"  data-dojo-attach-point="note" data-dojo-type="dijit/form/Textarea" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
     </div>
   </div>
 </div>

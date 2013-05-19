@@ -19,13 +19,13 @@ var Account = dijit.byId('id_account_basic_data');
 var Location = dijit.byId('id_account_location_widget');
 var LocationMB = dijit.byId('id_account_location_menubar');  
 var GridxA = dijit.byId('id_account_contact_gridx');
-var ContactW = dijit.byId('id_account_contact_widgetx');    
+var ContactW = dijit.byId('id_account_contact_widgetx'); 
+var ContactMB = dijit.byId('id_account_contact_phonenotify_menubar'); 
 
 
 Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });
-
 
 LocationMB.on('onnew', function(){
 Location.set('idaddress', 0);
@@ -67,6 +67,7 @@ if(x.idaccount > 0){
 Account.DisabledContentPanes(false);
 Location.set('idaddress', x.idaddress);
 GridxA.Load();
+ContactW.Load(x.idaccount, 0);
 }else{
 Account.DisabledContentPanes(true);
 }
@@ -84,6 +85,24 @@ dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 
 
 // ### SECCION CONTACTOS ###
+ContactW.on('notify_message', function(m){
+NotifyArea.notify({message: m.message});
+});
+
+ContactMB.on('onnew', function(){
+ContactW.New(Account.Id);
+});
+
+ContactMB.on('onsave', function(){
+ContactW.save();
+});
+
+ContactMB.on('onok', function(){
+
+
+});
+
+
 	if (GridxA) {
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridxA, 'onRowClick', function(evt){
