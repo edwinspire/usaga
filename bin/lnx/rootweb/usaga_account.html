@@ -72,6 +72,10 @@ require([
      <div data-dojo-type="_common_basic_menubar/_common_basic_menubar" id="id_account_location_menubar"></div>
      <div data-dojo-type="_usms_location_address/_usms_location_address" id="id_account_location_widget" style="width: 100%;"></div>
    </div>
+  <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneMapa" title="Mapa" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%; overflow: hidden;">
+<object id="id_locationmap" data="usaga_account_map.usaga?idaccount=0" style="background-color: #b5d0d0; width: 100%; height: 100%; overflow: hidden;">
+   </object>
+</div>
    <div data-dojo-type="dijit/layout/ContentPane" id="ContentPaneTiempos" title="Tiempos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false" style="width: 100%; height: 100%; overflow: hidden;">
      <div data-dojo-type="_common_basic_menubar/_common_basic_menubar" id="id_account_times_menubar"></div>
      <div data-dojo-type="_usaga_account_times/_usaga_account_times" id="id_account_times_widget" style="width: 100%;"></div>

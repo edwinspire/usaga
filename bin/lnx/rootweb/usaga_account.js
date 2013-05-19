@@ -47,9 +47,9 @@ NotifyArea.notify({message: m.message});
 
 var ButtonMap = LocationMB.addButton('Mapa', 'dijitNoIcon', true, false);
 ButtonMap.on('Click', function(){
+NotifyArea.notify({message: 'Para ver el mapa es necesario que tenga conexión a internet.'});
 window.open(Location.address.values().geourl,'_blank');
 });
-
 
 LocationMB.on('onnew', function(){
 Location.set('idaddress', 0);
@@ -96,12 +96,15 @@ ContactW.Load(x.idaccount, 0);
 Account.DisabledContentPanes(true);
 }
 
+dojo.byId('id_locationmap').setAttribute('data', 'usaga_account_map.usaga?idaccount='+x.idaccount);
+
 });
 
 Account.DisabledContentPanes= function(disabled){
 
 dijit.byId('ContentPaneTiempos').attr('disabled',  true);
 dijit.byId('ContentPaneLocaliz').attr('disabled',  disabled);
+dijit.byId('ContentPaneMapa').attr('disabled',  disabled);
 dijit.byId('ContentPaneContactos').attr('disabled',  disabled);
 dijit.byId('ContentPaneUsers').attr('disabled',  disabled);
 dijit.byId('ContentPaneEventos').attr('disabled',  disabled);

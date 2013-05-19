@@ -1241,6 +1241,34 @@ return Retorno;
 }
 
 
+public string fun_view_account_location_byid_xml(int idaccount, bool fieldtextasbase64 = true){
+
+string Retorno = "";
+
+string[] ValuesArray = {idaccount.to_string(), fieldtextasbase64.to_string()};
+//GLib.print("Llega hasta aqui 3 \n");
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion,  "SELECT * FROM usaga.fun_view_account_location_byid_xml($1::integer, $2::boolean) AS return;",  ValuesArray);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+//GLib.print("Llega hasta aqui 4 \n");
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+//Retorno = int.parse(filas["fun_smsout_insert"]);
+Retorno = filas["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}
+return Retorno;
+}
+
+
 public string fun_account_notifications_table_xml(int idnotifaccount, int idaccount, int idphone, int priority, bool call, bool sms, string smstext, string note, string ts, bool fieldtextasbase64 = true){
 
 string Retorno = "";
