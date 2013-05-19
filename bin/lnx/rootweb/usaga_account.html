@@ -80,7 +80,7 @@ require([
      <div style="width: 100%; height: 100%;">
        <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
          <div data-dojo-type="dijit/layout/ContentPane"  extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="left" splitter="true" maxSize="Infinity" style="width: 25%;">
-           <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_account_contact_titlebar"></div>
+           <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_account_contact_titlebar_grid"></div>
            <span data-dojo-type="dijit/Toolbar">
             <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_notifygridx_popup" tabIndex="-1" intermediateChanges="false" label="Notificaciones" iconClass="dijitEditorIcon dijitEditorIconSelectAll"></input>
            </span><span data-dojo-type="dojo/data/ItemFileWriteStore" jsId="id_account_contact_store" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
@@ -99,8 +99,8 @@ require([
   <span data-dojo-type="dijit/Toolbar">
 <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_phonenotify_notifycations_popup" tabIndex="-1" intermediateChanges="false" label="Notificaciones" iconClass="dijitEditorIcon dijitEditorIconSelectAll"></input>
                  <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_phonenotify_eventtypes_popup" title="Selecciona los eventos para los cuales se enviar&amp;aacute;n notificaciones. " tabIndex="-1" intermediateChanges="false" label="En Eventos Determinados" iconClass="dijitNoIcon"></input>
-                 </span><span data-dojo-type="dojo/data/ItemFileReadStore" id="ItemFileReadStore_2" jsId="ItemFileReadStore_2" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-                 <table data-dojo-type="gridx/Grid" id="id_account_contact_phonenotify_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 75%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileReadStore_2"></table>
+                 </span><span data-dojo-type="dojo/data/ItemFileWriteStore" jsId="ItemFileWriteStore_B" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
+                 <table data-dojo-type="gridx/Grid" id="id_account_contact_phonenotify_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 75%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_B"></table>
                </div>
              </div>
              </span>

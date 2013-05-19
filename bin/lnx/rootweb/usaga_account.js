@@ -30,6 +30,9 @@ var LocationMB = dijit.byId('id_account_location_menubar');
 var GridxA = dijit.byId('id_account_contact_gridx');
 var ContactW = dijit.byId('id_account_contact_widgetx'); 
 var ContactMB = dijit.byId('id_account_contact_phonenotify_menubar'); 
+dijit.byId('id_account_contact_titlebar_grid').set('label', 'Contactos a Notificar');
+var GridxB = dijit.byId('id_account_contact_phonenotify_gridx');
+
 
 Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
@@ -95,6 +98,10 @@ dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 // ### SECCION CONTACTOS ###
 ContactW.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
+});
+
+ContactW.on('onloadcontact', function(e){
+GridxB.Load(e.idcontact);
 });
 
 ContactW.on('onsave', function(){
@@ -167,8 +174,6 @@ t.emit('notify_message', {message: error});
                 }
             );
 
-
-
 }else{
 NotifyArea.notify({message: 'No hay contactos seleccionados para aplicar los cambios'});
 }
@@ -216,11 +221,15 @@ GridxA.startup();
 }
 
 GridxA.Clear= function(){
+GridxA._setData({identifier: "unique_id", items: []});
+}
+
+GridxA._setData = function(data){
 	id_account_contact_store.clearOnClose = true;
-	id_account_contact_store.data = {identifier: "unique_id", items: []};
+	id_account_contact_store.data = data;
 	id_account_contact_store.close();
-GridxA.store = null;
-GridxA.setStore(id_account_contact_store);
+		GridxA.store = null;
+		GridxA.setStore(id_account_contact_store);
 }
 
 GridxA.Load = function(){
@@ -258,13 +267,7 @@ i++;
 
 
 }
-
-	id_account_contact_store.clearOnClose = true;
-	id_account_contact_store.data = myData;
-	id_account_contact_store.close();
-
-		GridxA.store = null;
-		GridxA.setStore(id_account_contact_store);
+GridxA._setData(myData);
 
                 },
                 function(error){
@@ -276,13 +279,106 @@ t.emit('notify_message', {message: error});
 
 
 }else{
-this.Clear();
+GridxA.Clear();
 }
 
 
-return this;
-},
+return GridxA;
+}
 
+
+// ### SECCION TELEFONOS DE CONTACTOS ###
+	if (GridxB) {
+
+GridxB.setColumns([
+			{field:"unique_id", name: "#", width: '20px'},
+//			{field:"idnotifaccount", name: "id", width: '0px'},
+			{field:"idphone", name: "idp", width: '0px'},
+			{field:"phone", name: "Teléfono", width: '100px'},
+			{field:"idprovider", name: "idprovider"},
+	                {field:"priority", name: "Prioridad", width: '30px', editable: true},
+			{field:"call", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"sms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"smstext", name: "smstext", width: '150px', editable: true},
+	                {field:"note", name: "Nota", editable: true}
+		]);
+
+GridxB.startup();
+
+GridxB._setData = function(data){
+	ItemFileWriteStore_B.clearOnClose = true;
+	ItemFileWriteStore_B.data = data;
+	ItemFileWriteStore_B.close();
+GridxB.store = null;
+GridxB.setStore(ItemFileWriteStore_B);
+}
+
+GridxB.Clear= function(){
+GridxB._setData({identifier: "unique_id", items: []});
+}
+
+GridxB.Load = function(idcontact){
+//this.ResetOnSelectContact();
+if(Account.Id > 0 && idcontact > 0){
+
+   R.get('getaccountphonesnotifgrid.usaga', {
+		query: {idaccount: Account.Id, idcontact: idcontact},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+numrows = d.length;
+
+var myData = {identifier: "unique_id", items: []};
+
+
+if(numrows > 0){
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i+1,
+idcontact: idcontact,
+idnotifaccount: d.getNumber(i, "idnotifaccount"),
+idphone: d.getNumber(i, "idphone"),
+idprovider: d.getNumber(i, "idprovider"),
+phone: d.getStringFromB64(i, "phone"),
+idaccount: d.getNumber(i, "idaccount"),
+priority: d.getNumber(i, "priority"),    
+call: d.getBool(i, "call"),
+sms: d.getBool(i, "sms"),
+smstext: d.getStringFromB64(i, "smstext"),
+note: d.getStringFromB64(i, "note")
+};
+
+i++;
+}
+
+}
+GridxB._setData(myData);
+
+                },
+                function(error){
+                    // Display the error returned
+console.log(error);
+GridxB.emit('notify_message', {message: error}); 
+                }
+            );
+
+
+}else{
+GridxB.Clear();
+}
+
+
+return GridxB;
+}
+
+
+
+		
+}
 
 
 
