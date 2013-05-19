@@ -89,6 +89,7 @@ t.emit('notify_message', {message: error});
 
 }else{
 t._empty();
+t.emit('onloadaccount', {idaccount: 0, idcontact: 0}); 
 }
 
 

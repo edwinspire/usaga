@@ -108,6 +108,7 @@ NotifyArea.notify({message: m.message});
 });
 
 ContactW.on('onloadcontact', function(e){
+alert(e.idcontact+' ffff');
 GridxB.Load(e.idcontact);
 });
 
