@@ -45,6 +45,12 @@ Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });
 
+var ButtonMap = LocationMB.addButton('Mapa', 'dijitNoIcon', true, false);
+ButtonMap.on('Click', function(){
+window.open(Location.address.values().geourl,'_blank');
+});
+
+
 LocationMB.on('onnew', function(){
 Location.set('idaddress', 0);
 });
