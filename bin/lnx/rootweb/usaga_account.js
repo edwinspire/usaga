@@ -16,6 +16,7 @@ require(["dojo/ready",
 	"gridx/modules/select/Row",
 	"gridx/modules/IndirectSelect",
 	"gridx/modules/extendedSelect/Row",
+	"gridx/modules/VirtualVScroller",
 "dijit/form/CheckBox",
 "dijit/popup"
 ], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml){
