@@ -52,7 +52,8 @@ require([
   "_usaga_account_user/_usaga_account_user",
   "_usaga_account_user_times/_usaga_account_user_times",
   "_usaga_account_user_time_day/_usaga_account_user_time_day",
-  "dijit/form/DateTextBox"
+  "dijit/form/DateTextBox",
+  "dijit/TooltipDialog"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";
@@ -83,7 +84,7 @@ require([
            <span data-dojo-type="dijit/Toolbar">
             <input type="button" data-dojo-type="dijit/form/Button" id="id_account_contact_notifygridx_popup" tabIndex="-1" intermediateChanges="false" label="Notificaciones" iconClass="dijitEditorIcon dijitEditorIconSelectAll"></input>
            </span><span data-dojo-type="dojo/data/ItemFileWriteStore" jsId="id_account_contact_store" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
-           <table data-dojo-type="gridx/Grid" id="id_account_contact_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:id_account_contact_store"></table>
+           <table data-dojo-type="gridx/Grid" id="id_account_contact_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],  modules:['gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:id_account_contact_store"></table>
          </div>
          <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" region="center" splitter="false" maxSize="Infinity">
            <div style="width: 100%; height: 100%;">
@@ -164,6 +165,90 @@ require([
    </span>
 </div>
    <div data-dojo-type="_common_notification_area/_common_notification_area" id="id_notify_area"></div>
+ </div>
+
+
+ <div id="id_contact_notifyall_from_gridx" data-dojo-type="dijit/TooltipDialog" style="display: none;">
+   <form style="width: 250px;">
+   <label style="font-weight: bold;">
+     Estos cambios se aplicar&aacute;n a todos los teléfonos que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
+   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+     <colgroup>
+       <col></col>
+       <col></col>
+     </colgroup>
+     <tbody>
+       <tr>
+         <td style="width: 75px;">
+           Llamar:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Enviar SMS:</td>
+         <td>
+           &nbsp;<input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.notiftelf.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Texto SMS:</td>
+         <td>
+           &nbsp;<textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.notiftelf.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
+</td>
+       </tr>
+     </tbody>
+   </table>
+<div class="dijitDialogPaneActionBar">
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_ok">
+         Aplicar</button>
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.telfnotif.dialogMessageAll_cancel">
+         Cancel</button>
+     </div>
+   </form>
+ </div>
+ <div id="usaga.contactnotif.dialogMessageAll" data-dojo-type="dijit/TooltipDialog" style="display: none;">
+   <form style="width: 250px;">
+   <label style="font-weight: bold;">
+     Estos cambios se aplicar&aacute;n a todos los teléfonos de todos los contactos que haya seleccionado y reemplazar&aacute; los datos actuales.</label>
+   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">
+     <colgroup>
+       <col></col>
+       <col></col>
+     </colgroup>
+     <tbody>
+       <tr>
+         <td style="width: 75px;">
+           Llamar:</td>
+         <td>
+           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.call.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Enviar SMS:</td>
+         <td>
+           <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="usaga.contactnotif.sms.all" intermediateChanges="false" iconClass="dijitNoIcon"></input>
+</td>
+       </tr>
+       <tr>
+         <td>
+           Texto SMS:</td>
+         <td>
+           <textarea type="text" data-dojo-type="dijit.form.Textarea" id="usaga.contactnotif.msg.all" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea>
+</td>
+       </tr>
+     </tbody>
+   </table>
+<div class="dijitDialogPaneActionBar">
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_ok">
+         Aplicar</button>
+       <button dojoType="dijit.form.Button" type="reset" id="usaga.contactnotif.dialogMessageAll_cancel">
+         Cancel</button>
+     </div>
+   </form>
  </div>
 </body>
 </html>

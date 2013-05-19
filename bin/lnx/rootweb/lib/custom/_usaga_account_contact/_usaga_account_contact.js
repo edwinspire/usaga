@@ -20,10 +20,11 @@ _idaccount: 0,
 _idcontact: 0,
 New: function(idaccount_){
 var t = this;
-t.Formulario.reset();
+t.reset();
 t._idaccount = idaccount_;
 t.listcontactsnew._Query.idaccount = t._idaccount;
 t._changeLabelToSelect(true);
+t.listcontactsnew.set('value', '0');
 t.emit('notify_message', {message: 'Seleccione un contacto de la lista'}); 
 t.listcontactsnew.Load();
 },
@@ -95,12 +96,13 @@ t._empty();
 },
 
 delete: function(){
-idccountdelete = this.Id;
-if(idccountdelete > 0){
-var datos = {};
-datos.idaccount = this.Id*-1; 
-this._actionsave(datos);
+var t = this;
+if(t._idaccount > 0 && t._idcontact > 0){
+t._actionsave({idaccount: t._idaccount, idcontact: t._idcontact*-1});
+}else{
+t.emit('notify_message', {message: 'No ha seleccionado un registro para ser eliminado.'}); 
 }
+
 },
 _dataContact: function(){
 var t = this;
@@ -139,7 +141,7 @@ var t = this;
 var datos = t._dataContact();
 
 if(datos.valid){
-//t._actionsave(datos);
+t._actionsave(datos);
 }
 
 },
@@ -158,28 +160,24 @@ var d = new RXml.getFromXhr(response, 'row');
 
 if(d.length > 0){
 
-console.log(d.getStringFromB64(0, 'outpgmsg'));
 t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
 
-t.account_select.Load();
 var id = d.getInt(0, "outreturn");
 if(id>0){
-t.account_select.set('value', id);
+t._idcontact = id;
 }else{
-t._resetall();
-}
-t._LoadAccountSelected();
+t.reset();
 }
 
+}
 
-
+t.emit('onsave', {idaccount: t._idaccount, idcontact: t._idcontact}); 
+t.Load(t._idaccount, t._idcontact);
 
                 },
                 function(error){
                     // Display the error returned
-t._resetall();
-t._LoadAccountSelected();
-//console.log(errorx);
+t.reset();
 t.emit('notify_message', {message: errorx}); 
                 }
             );

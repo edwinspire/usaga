@@ -8,7 +8,16 @@ require(["dojo/ready",
 "dojo/on",
 "jspire/Gridx",
 'dojo/request',
-'jspire/request/Xml'
+'jspire/request/Xml',
+	'gridx/modules/Focus',
+	'gridx/modules/CellWidget',
+	'gridx/modules/Edit',
+	"gridx/modules/RowHeader",
+	"gridx/modules/select/Row",
+	"gridx/modules/IndirectSelect",
+	"gridx/modules/extendedSelect/Row",
+"dijit/form/CheckBox",
+"dijit/popup"
 ], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml){
      ready(function(){
 
@@ -21,7 +30,6 @@ var LocationMB = dijit.byId('id_account_location_menubar');
 var GridxA = dijit.byId('id_account_contact_gridx');
 var ContactW = dijit.byId('id_account_contact_widgetx'); 
 var ContactMB = dijit.byId('id_account_contact_phonenotify_menubar'); 
-
 
 Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
@@ -89,6 +97,10 @@ ContactW.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });
 
+ContactW.on('onsave', function(){
+GridxA.Load();
+});
+
 ContactMB.on('onnew', function(){
 ContactW.New(Account.Id);
 });
@@ -97,13 +109,34 @@ ContactMB.on('onsave', function(){
 ContactW.save();
 });
 
-ContactMB.on('onok', function(){
+ContactMB.on('ondelete', function(){
+ContactW.delete();
+});
+
+dijit.byId('id_account_contact_notifygridx_popup').on('Click', function(){
+  dijit.popup.open({
+                popup: dijit.byId('id_contact_notifyall_from_gridx'),
+                around: dojo.byId('id_account_contact_notifygridx_popup')
+            });
+});
 
 
+dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_ok'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
+AC.NotifyEditSelected();
+});
+
+dojo.connect(dojo.byId('usaga.telfnotif.dialogMessageAll_cancel'), 'onclick', function(){
+   dijit.popup.close(dijit.byId('usaga.telfnotif.dialogMessageAll'));
 });
 
 
 	if (GridxA) {
+
+GridxA.on('notify_message', function(m){
+NotifyArea.notify({message: m.message});
+});
+
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridxA, 'onRowClick', function(evt){
 var t = GridxA;
@@ -112,15 +145,13 @@ d = t.cell(event.rowId, 1, true).data();
 t.store.fetch({query: {unique_id: d}, onItem: function(item){
 ContactW.Load(t.store.getValue(item, 'idaccount'), t.store.getValue(item, 'idcontact'));
 //AC.ResetOnSelectContact();
-//AC.LoadFormContact(id);
-
 }
 });
 
 });
 		GridxA.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable_as_contact", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
+			{field:"enable_as_contact", name: "*", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
 			{field:"priority", name: "priority", width: '20px'},
 			{field:"name", name: "nombre", width: '150px'},
 			{field:"appointment", name: "Designacion"}
@@ -179,14 +210,11 @@ i++;
 		GridxA.store = null;
 		GridxA.setStore(id_account_contact_store);
 
-//t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
-//t.emit('notify_message', {message: t.account_select.get('displayedValue')+' cargado'}); 
                 },
                 function(error){
                     // Display the error returned
 console.log(error);
-//t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
-//t.emit('notify_message', {message: error}); 
+t.emit('notify_message', {message: error}); 
                 }
             );
 
