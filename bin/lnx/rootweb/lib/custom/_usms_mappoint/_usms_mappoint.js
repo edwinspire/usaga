@@ -32,7 +32,7 @@ t._imgVisible = !t._imgVisible;
 },500);
 },
 setTooltip: function(title, labeltitle, content){
-var html = ' <div class="claro">  <label style="font-weight: bold;">'+title+'</label>  <div>   <div style="margin: 2px;">    <label style="float: left; clear: both; font-weight: bold; margin-right: 5px;">'+labeltitle+'</label>    <div style="margin: 3px;">'+content+'</div>  </div> </div></div>'
+var html = ' <div style="font-size: 0.8em;">  <label style="font-weight: bold;">'+title+'</label>  <div>   <div style="margin: 2px;">    <label style="float: left; clear: both; font-weight: bold; margin-right: 5px;">'+labeltitle+'</label>    <div style="margin: 3px;">'+content+'</div>  </div> </div></div>'
 
     new Tooltip({
         connectId: [this.image_point],
