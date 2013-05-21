@@ -56,6 +56,7 @@ domStyle.set(t.divname, "display", "block");
 Load: function(idaccount_, idcontact_){
 
 var t = this;
+//t.reset();
 t._idaccount = idaccount_;
 t._idcontact = idcontact_;
 t._changeLabelToSelect(false);

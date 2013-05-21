@@ -56,6 +56,7 @@ domStyle.set(t.divname, "display", "block");
 Load: function(idaccount_, idcontact_){
 
 var t = this;
+//t.reset();
 t._idaccount = idaccount_;
 t._idcontact = idcontact_;
 t._changeLabelToSelect(false);
@@ -115,8 +116,10 @@ var datos = {};
 datos.valid = false;
 datos.idcontact = t._idcontact;
 datos.idaccount = t._idaccount;
-datos.priority = t.priority.get('value');
+datos.numuser = t.numuser.get('value');
 datos.appointment = t.appointment.get('value');
+datos.pwd = t.pwd.get('value');
+datos.keyword = t.keyword.get('value');
 datos.enable = t.enable.get('checked'); 
 datos.note = t.note.get('value');
 
