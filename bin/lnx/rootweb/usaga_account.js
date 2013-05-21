@@ -40,6 +40,7 @@ var ContactMB = dijit.byId('id_account_contact_phonenotify_menubar');
 dijit.byId('id_account_contact_titlebar_grid').set('label', 'Contactos a Notificar');
 var GridxB = dijit.byId('id_account_contact_phonenotify_gridx');
 dijit.byId('id_account_user_gridx_titlebar').set('label', 'Usuarios');
+var GridxC = dijit.byId('id_account_user_gridx');
 
 
 Location.on('notify_message', function(m){
@@ -119,6 +120,7 @@ NotifyArea.notify({message: m.message});
 
 ContactW.on('onloadcontact', function(e){
 GridxB.Load(e.idcontact);
+GridxC.Load(e.idcontact);
 });
 
 ContactW.on('onsave', function(){
@@ -473,8 +475,87 @@ GridxB.SaveItem(item);
 }
 
 
+//# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
+	if (GridxC) {
+/*
+// Captura el evento cuando se hace click en una fila
+dojo.connect(GridxC, 'onRowClick', function(event){
+LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
+});
+*/
+		// Optionally change column structure on the grid
+		GridxC.setColumns([
+//			{field:"idcontact", name: "idcontact", width: '0px'},
+			{field:"unique_id", name: "#", width: '20px'},
+			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true, disabled: true},
+			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
+			{field:"name", name: "nombre"},
+			{field:"appointment", name: "Designacion", width: '100px', editable: true}
+		]);
+GridxC.startup();
+}
+
+GridxC.Clear = function(){
+GridxC._setData({identifier: "unique_id", items: []});
+}
+
+GridxC._setData = function(data){
+	// Set new data on data store (the store has jsId set, so there's
+	// a global variable we can reference)
+	var store = ItemFileWriteStore_3;
+	store.clearOnClose = true;
+	store.data = data;
+	store.close();
+
+		// Tell our grid to reset itself
+		GridxC.store = null;
+		GridxC.setStore(store);
+}
+
+GridxC.Load = function(){
+var G = GridxC;
+if(Account.Id > 0){
+
+R.get('fun_view_account_users_xml.usaga', {
+   handleAs: "xml",
+query:  {idaccount: Account.Id}
+}).then(function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+var myData = {identifier: "unique_id", items: []};
+
+if(xmld.length > 0){
+
+var i = 0;
+var rowscount = xmld.length;
+while(i<rowscount){
+
+myData.items[i] = {
+unique_id:i+1,
+idcontact: xmld.getNumber(i, 'idcontact'), 
+enable_as_user: xmld.getBool(i, 'enable_as_user'),
+numuser: xmld.getNumber(i, 'numuser'),
+name: xmld.getStringFromB64(i, 'lastname')+' '+xmld.getStringFromB64(i, 'firstname'),
+appointment: xmld.getStringFromB64(i, 'appointment'),
+};
+
+i++;
+}
+
+}
+
+GridxC._setData(myData);
 
 
+}, function(error){
+NotifyMSG.setText(error);
+});
+
+}else{
+ GridxC.Clear();
+}
+
+}
 
 
 
