@@ -574,7 +574,8 @@ NotifyArea.notify({message: m.message});
 
 
 
-UserMB.on('onsave', function(){
+
+UserW.on('onsave', function(){
 GridxC.Load();
 });
 
