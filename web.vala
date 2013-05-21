@@ -90,7 +90,7 @@ S.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.us
 S.VirtualUrl["fun_view_account_unregistered_contacts_xml.usaga"] = "/fun_view_account_unregistered_contacts_xml.usaga";
 S.VirtualUrl["usaga_account_map.usaga"] = "/usaga_account_map.usaga";
 S.VirtualUrl["fun_view_account_location_byid_xml.usaga"] = "/fun_view_account_location_byid_xml.usaga";
-
+S.VirtualUrl["fun_view_account_unregistered_users_xml.usaga"] = "/fun_view_account_unregistered_users_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
 
@@ -134,6 +134,9 @@ response = ResponseAccountUserAddTable(request);
 break;
 case "/fun_view_account_unregistered_contacts_xml.usaga":
 response = request_fun_view_account_unregistered_contacts_xml(request);
+break;
+case "/fun_view_account_unregistered_users_xml.usaga":
+response = request_fun_view_account_users_contacts_xml(request);
 break;
 /*
 case "/saveaccountlocation.usaga":
