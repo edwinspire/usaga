@@ -39,6 +39,7 @@ var ContactW = dijit.byId('id_account_contact_widgetx');
 var ContactMB = dijit.byId('id_account_contact_phonenotify_menubar'); 
 dijit.byId('id_account_contact_titlebar_grid').set('label', 'Contactos a Notificar');
 var GridxB = dijit.byId('id_account_contact_phonenotify_gridx');
+dijit.byId('id_account_user_gridx_titlebar').set('label', 'Usuarios');
 
 
 Location.on('notify_message', function(m){
