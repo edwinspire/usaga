@@ -487,10 +487,10 @@ LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 		GridxC.setColumns([
 //			{field:"idcontact", name: "idcontact", width: '0px'},
 			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable_as_user", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true, disabled: true},
-			{field:"numuser", name: "#", width: '20px', editable: true, editor: "dijit.form.NumberTextBox"},
+			{field:"enable_as_user", name: "*", width: '20px', editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
+			{field:"numuser", name: "NU", width: '20px', editor: "dijit.form.NumberTextBox"},
 			{field:"name", name: "nombre"},
-			{field:"appointment", name: "Designacion", width: '100px', editable: true}
+			{field:"appointment", name: "Designacion", width: '100px'}
 		]);
 GridxC.startup();
 }
