@@ -136,7 +136,7 @@ case "/fun_view_account_unregistered_contacts_xml.usaga":
 response = request_fun_view_account_unregistered_contacts_xml(request);
 break;
 case "/fun_view_account_unregistered_users_xml.usaga":
-response = request_fun_view_account_users_contacts_xml(request);
+response = request_fun_view_account_unregistered_users_xml(request);
 break;
 /*
 case "/saveaccountlocation.usaga":
