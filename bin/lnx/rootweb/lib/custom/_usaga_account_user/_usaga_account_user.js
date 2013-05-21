@@ -14,7 +14,7 @@ define(['dojo/_base/declare',
 postCreate: function(){
 var t = this;
 t.usersListnew.set('invalidMessage', 'Debe seleccionar un contacto de la lista');
-jsFS.addXmlLoader(t.usersListnew, 'fun_view_account_unregistered_contacts_xml.usaga', 'row', {}, 'idcontact', 'name');
+jsFS.addXmlLoader(t.usersListnew, 'fun_view_account_unregistered_users_xml.usaga', 'row', {}, 'idcontact', 'name');
 },
 _idaccount: 0,
 _idcontact: 0,
@@ -40,7 +40,7 @@ reset: function(){
 var t = this;
 t.Formulario.reset();
 t._idcontact = 0;
-t.name.innerHTML = 'Ningún contacto seleccionado';
+t.name.innerHTML = 'Ningún usuario seleccionado';
 t._changeLabelToSelect(false);
 },
 _changeLabelToSelect: function(change){
@@ -62,7 +62,7 @@ t._changeLabelToSelect(false);
 
 if(t._idaccount > 0 && t._idcontact > 0){
 
-   R.get('getaccountcontact.usaga', {
+   R.get('fun_view_account_user_byidaccountidcontact_xml.usaga', {
 		query: {idaccount: t._idaccount, idcontact: t._idcontact},
             handleAs: "xml"
         }).then(
@@ -73,26 +73,27 @@ if(numrows > 0){
 t._idcontact = d.getNumber(0, "idcontact");
 t.name.innerHTML = d.getStringFromB64(0, "lastname")+' '+d.getStringFromB64(0, "firstname");
 t.enable.set('checked', d.getBool(0, "enable")); 
-t.priority.set('value', d.getNumber(0, "prioritycontact")); 
-t.appointment.set('value', d.getStringFromB64(0, "appointment")); 
-t.note.set('value', d.getStringFromB64(0, "note"));
+t.numuser.set('value', d.getNumber(0, "numuser")); 
+t.keyword.set('value', d.getStringFromB64(0, "keyword")); 
+t.pwd.set('value', d.getStringFromB64(0, "pwd")); 
+t.note.set('value', d.getStringFromB64(0, "note_user"));
 
 }else{
 t.reset();
 }
-t.emit('onloadcontact', {idaccount: t._idaccount, idcontact: t._idcontact}); 
+t.emit('onloaduser', {idaccount: t._idaccount, idcontact: t._idcontact}); 
                 },
                 function(error){
                     // Display the error returned
 console.log(error);
-t.emit('onloadcontact', {idaccount: 0, idcontact: 0}); 
+t.emit('onloaduser', {idaccount: 0, idcontact: 0}); 
 t.emit('notify_message', {message: error}); 
                 }
             );
 
 }else{
 t._empty();
-t.emit('onloadcontact', {idaccount: 0, idcontact: 0}); 
+t.emit('onloaduser', {idaccount: 0, idcontact: 0}); 
 }
 
 
@@ -153,7 +154,7 @@ t._actionsave(datos);
 _actionsave: function(_data){
 var t = this;
 
-   R.post('fun_account_contacts_table.usaga', {
+   R.post('fun_account_users_table_xml_from_hashmap.usaga', {
 		data: _data,
             // Parse data from xml
             handleAs: "xml"

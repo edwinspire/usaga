@@ -478,13 +478,19 @@ GridxB.SaveItem(item);
 }
 
 
-//# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
+//# SECCION USUARIOS #//
 	if (GridxC) {
 
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridxC, 'onRowClick', function(event){
-alert('Cick');
-//LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
+var t = GridxC;
+d = t.cell(event.rowId, 1, true).data();
+
+// Aqui buscamos los datos desde el store y no desde la celda.
+t.store.fetch({query: {unique_id: d}, onItem: function(item){
+UserW.Load(t.store.getValue(item, 'idaccount'), t.store.getValue(item, 'idcontact'));
+}
+});
 });
 
 		// Optionally change column structure on the grid
@@ -536,6 +542,7 @@ while(i<rowscount){
 
 myData.items[i] = {
 unique_id:i+1,
+idaccount: xmld.getNumber(i, "idaccount"), 
 idcontact: xmld.getNumber(i, 'idcontact'), 
 enable_as_user: xmld.getBool(i, 'enable_as_user'),
 numuser: xmld.getNumber(i, 'numuser'),
@@ -561,20 +568,27 @@ NotifyMSG.setText(error);
 
 }
 
+UserW.on('notify_message', function(m){
+NotifyArea.notify({message: m.message});
+});
+
+
+
+UserMB.on('onsave', function(){
+GridxC.Load();
+});
+
 UserMB.on('onnew', function(){
 UserW.New(Account.Id);
 });
 
-UserMB.on('ondelete', function(){
-//Location.address.delete();
-});
-
 UserMB.on('onsave', function(){
-//if(Account.Id > 0){
-//Location.save();
-//}
+UserW.save();
 });
 
+UserMB.on('ondelete', function(){
+UserW.delete();
+});
 
 
 
