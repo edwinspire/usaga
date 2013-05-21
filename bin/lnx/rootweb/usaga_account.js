@@ -41,7 +41,7 @@ dijit.byId('id_account_contact_titlebar_grid').set('label', 'Contactos a Notific
 var GridxB = dijit.byId('id_account_contact_phonenotify_gridx');
 dijit.byId('id_account_user_gridx_titlebar').set('label', 'Usuarios');
 var GridxC = dijit.byId('id_account_user_gridx');
-var UserW = dijit.byId('id_account_user_gridx'); 
+var UserW = dijit.byId('id_account_user_widget'); 
 var UserMB = dijit.byId('id_account_user_menubar'); 
 
 

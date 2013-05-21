@@ -1,8 +1,12 @@
 define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
-'dojo/text!_usaga_account_user/_usaga_account_user.html'
-],function(declare,_Widget,_Templated,templateString){
+'dojo/text!_usaga_account_user/_usaga_account_user.html',
+'dojo/request',
+'jspire/form/FilteringSelect',
+'jspire/request/Xml',
+'dojo/dom-style'
+],function(declare,_Widget,_Templated,templateString, R, jsFS, RXml, domStyle){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
