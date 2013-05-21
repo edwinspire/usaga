@@ -6,13 +6,19 @@ require(["dojo/ready", "dojox/geo/openlayers/Map", 'dojo/request', 'jspire/reque
   ready(function(){
 
 var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
-
     var map = new Map("map");
     // This is New York location
     var GeoPosition = {
       longitude : -78.3983,
       latitude : -0.2074 
     };
+
+
+var SliderZoom = dijit.byId('id_zoom');
+SliderZoom.on('Change', function(v){
+map.getOLMap().zoomTo(Math.round(v));
+});
+
 
 if(IdAccount > 0){
    R.get('fun_view_account_location_byid_xml.usaga', {
@@ -37,8 +43,8 @@ mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle 
       longitude : GeoPosition.longitude,
       latitude : GeoPosition.latitude,
       widget : mapPointMaster,
-      width : 15,
-      height : 15
+      width : 20,
+      height : 20
     };
     feature = new WidgetFeature(descr);
 
@@ -46,17 +52,15 @@ mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle 
     layer.addFeature(feature);
     map.addLayer(layer);
 
-
-
-
-
     map.fitTo({
       position : [ GeoPosition.longitude, GeoPosition.latitude ],
-      extent : 0
+      extent : 0.01
     });
 
-//map.getOLMap().zoomTo(100); 
-//alert(GeoPosition.longitude+' >>> '+ GeoPosition.latitude);
+  SliderZoom.maximum = map.getOLMap().getNumZoomLevels()-1;
+SliderZoom.set('value', map.getOLMap().getZoom());
+map.getOLMap().zoomTo(Math.round(SliderZoom.get('value')));
+
                 },
                 function(error){
                     // Display the error returned
