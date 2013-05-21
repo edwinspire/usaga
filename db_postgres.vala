@@ -1617,6 +1617,33 @@ return RetornoX;
 }
 
 
+public string fun_view_account_unregistered_users_xml(int idaccount, bool fieldtextasbase64 = true){
+
+string RetornoX = "";
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+string[] valuesin = {idaccount.to_string(), fieldtextasbase64.to_string()};
+
+var Resultado = this.exec_params_minimal (ref Conexion, "SELECT * FROM usaga.fun_view_account_unregistered_users_xml($1::integer, $2::boolean) AS return;", valuesin);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var reg in this.Result_FieldName(ref Resultado)){
+RetornoX = reg["return"].Value;
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+}else{
+	        stderr.printf ("Conexion failed: %s", Conexion.get_error_message ());
+}
+return RetornoX;
+}
 
 
 }
