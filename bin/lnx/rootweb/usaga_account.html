@@ -119,7 +119,7 @@ require([
            <div style="width: 100%; height: 100%;">
              <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_account_user_gridx_titlebar"></div>
        <span data-dojo-type="dojo/data/ItemFileWriteStore" id="ItemFileWriteStore_3" jsId="ItemFileWriteStore_3" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;},{&quot;unique_id&quot;:2,&quot;id&quot;:&quot;2&quot;,&quot;label&quot;:&quot;Label 2&quot;}]}"></span>
-             <table data-dojo-type="gridx/Grid" id="id_account_user_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 75%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:ItemFileWriteStore_3"></table>
+             <table data-dojo-type="gridx/Grid" id="id_account_user_gridx" style="min-width: 1em; min-height: 1em; width: 100%; height: 75%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/VirtualVScroller', 'gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileWriteStore_3"></table>
            </div>
          </div>
          <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
