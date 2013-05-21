@@ -477,12 +477,13 @@ GridxB.SaveItem(item);
 
 //# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
 	if (GridxC) {
-/*
+
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridxC, 'onRowClick', function(event){
-LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
+alert('Cick');
+//LoadFormAccountUser(this.cell(event.rowId, 1, true).data());
 });
-*/
+
 		// Optionally change column structure on the grid
 		GridxC.setColumns([
 //			{field:"idcontact", name: "idcontact", width: '0px'},
