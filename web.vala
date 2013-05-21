@@ -746,6 +746,25 @@ Tabla.GetParamCnx();
 return Retorno;
 }
 
+private uHttp.Response request_fun_view_account_unregistered_users_xml(Request request){
+
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
+
+int idaccount = 0;
+if(request.Query.has_key("idaccount")){
+idaccount = int.parse(request.Query["idaccount"]);
+}
+
+AccountTable Tabla = new AccountTable();
+Tabla.GetParamCnx();
+
+    Retorno.Data =  Tabla.fun_view_account_unregistered_users_xml(idaccount).data;
+//print(Tabla.UserAndIdContact_Xml(id));
+return Retorno;
+}
+
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response request_fun_view_account_user_byidaccountidcontact_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
