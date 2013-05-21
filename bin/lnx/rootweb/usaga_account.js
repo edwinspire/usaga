@@ -41,13 +41,15 @@ dijit.byId('id_account_contact_titlebar_grid').set('label', 'Contactos a Notific
 var GridxB = dijit.byId('id_account_contact_phonenotify_gridx');
 dijit.byId('id_account_user_gridx_titlebar').set('label', 'Usuarios');
 var GridxC = dijit.byId('id_account_user_gridx');
+var UserW = dijit.byId('id_account_user_gridx'); 
+var UserMB = dijit.byId('id_account_user_menubar'); 
 
 
 Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });
 
-var ButtonMap = LocationMB.addButton('Mapa', 'dijitNoIcon', true, false);
+var ButtonMap = LocationMB.addButton('OpenStreeMap', 'dijitNoIcon', true, false);
 ButtonMap.on('Click', function(){
 NotifyArea.notify({message: 'Para ver el mapa es necesario que tenga conexión a internet.'});
 window.open(Location.address.values().geourl,'_blank');
@@ -94,6 +96,7 @@ Account.DisabledContentPanes(false);
 Location.set('idaddress', x.idaddress);
 GridxA.Load();
 ContactW.Load(x.idaccount, 0);
+UserW.Load(x.idaccount, 0);
 }else{
 Account.DisabledContentPanes(true);
 }
@@ -558,7 +561,19 @@ NotifyMSG.setText(error);
 
 }
 
+UserMB.on('onnew', function(){
+UserW.New(Account.Id);
+});
 
+UserMB.on('ondelete', function(){
+//Location.address.delete();
+});
+
+UserMB.on('onsave', function(){
+//if(Account.Id > 0){
+//Location.save();
+//}
+});
 
 
 
