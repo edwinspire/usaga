@@ -43,6 +43,7 @@ dijit.byId('id_account_user_gridx_titlebar').set('label', 'Usuarios');
 var GridxC = dijit.byId('id_account_user_gridx');
 var UserW = dijit.byId('id_account_user_widget'); 
 var UserMB = dijit.byId('id_account_user_menubar'); 
+var GridxD = dijit.byId('id_account_ctrl_alarma_gridx');
 
 
 Location.on('notify_message', function(m){
@@ -572,9 +573,6 @@ UserW.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });
 
-
-
-
 UserW.on('onsave', function(){
 GridxC.Load();
 });
@@ -592,10 +590,71 @@ UserW.delete();
 });
 
 
+//# SECCION CTRL ALARMA #//
+GridxD.Clear = function(){
+GridxC._setData({identifier: "unique_id", items: []});
+}
+
+GridxD._setData = function(data){
+	var store = ItemFileWriteStore_4;
+	store.clearOnClose = true;
+	store.data = data;
+	store.close();
+
+		// Tell our grid to reset itself
+		GridxD.store = null;
+		GridxD.setStore(store);
+}
+
+GridxD.setColumnsNew = function(){
+            // Request the text file
+   R.get('provider_listidname_xml.usms', {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+var Items = [];
+numfields = d.length;
+var i = 0;
+while(i<numfields){
+Items[i] =    {value: d.getStringFromB64(i, 'name'), id: d.getString(i, 'idprovider')};
+i++;
+}
+
+fieldStore = new Memory({data: Items});
+
+		GridxD.setColumns([
+			{field:"idcontact", name: "idcontact", width: '0px'},
+			{field:"idphone", name: "idphone", width: '0px'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"type", name: "type", width: '20px'},
+			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
+					editor: 'dijit.form.Select',
+					editorArgs: {
+						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
+			{field:"phone", name: "Teléfono", width: '150px'},
+//			{field:"address", name: "Dirección", width: '150px'},
+			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+
+			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+		editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true,
+			},
+			{field:"note", name: "Nota", width: '100px', editable: true}
+		]);
+GridxD.startup();
 
 
+                },
+                function(error){
+NotifyMSG.notify({message: error});
+                }
+            );
 
+}
 
+GridxD.setColumnsNew();
 
 
 
@@ -605,6 +664,7 @@ NotifyArea.notify({message: 'uSAGA - Abonados'});
 //Se ajusta al tamaño de la pantalla actual
 BodyApp.adjustElements();
 Account.DisabledContentPanes(true);
+
 
 
      });
