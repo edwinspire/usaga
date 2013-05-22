@@ -18,8 +18,9 @@ require(["dojo/ready",
 	"gridx/modules/extendedSelect/Row",
 	"gridx/modules/VirtualVScroller",
 "dijit/form/CheckBox",
-"dijit/popup"
-], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml){
+"dijit/popup",
+'dojo/store/Memory'
+], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml, Memory){
      ready(function(){
 
 function HtmlDialogNotifications(msg, idform, idcall, idsms, idtext){
@@ -607,6 +608,7 @@ GridxD._setData = function(data){
 }
 
 GridxD.setColumnsNew = function(){
+
             // Request the text file
    R.get('provider_listidname_xml.usms', {
             // Parse data from xml
@@ -615,9 +617,9 @@ GridxD.setColumnsNew = function(){
                 function(response){
 var d = new RXml.getFromXhr(response, 'row');
 var Items = [];
-numfields = d.length;
+numrows = d.length;
 var i = 0;
-while(i<numfields){
+while(i<numrows){
 Items[i] =    {value: d.getStringFromB64(i, 'name'), id: d.getString(i, 'idprovider')};
 i++;
 }
@@ -625,8 +627,8 @@ i++;
 fieldStore = new Memory({data: Items});
 
 		GridxD.setColumns([
-			{field:"idcontact", name: "idcontact", width: '0px'},
-			{field:"idphone", name: "idphone", width: '0px'},
+		//	{field:"idcontact", name: "idcontact", width: '0px'},
+		//	{field:"idphone", name: "idphone", width: '0px'},
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"type", name: "type", width: '20px'},
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
@@ -634,7 +636,6 @@ fieldStore = new Memory({data: Items});
 					editorArgs: {
 						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
 			{field:"phone", name: "Teléfono", width: '150px'},
-//			{field:"address", name: "Dirección", width: '150px'},
 			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
 			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 
