@@ -18,8 +18,7 @@ require(["dojo/ready",
 	"gridx/modules/extendedSelect/Row",
 	"gridx/modules/VirtualVScroller",
 "dijit/form/CheckBox",
-"dijit/popup",
-'dojo/store/Memory'
+"dijit/popup"
 ], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml, Memory){
      ready(function(){
 
@@ -499,8 +498,8 @@ UserW.Load(t.store.getValue(item, 'idaccount'), t.store.getValue(item, 'idcontac
 		GridxC.setColumns([
 //			{field:"idcontact", name: "idcontact", width: '0px'},
 			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable_as_user", name: "*", width: '20px', editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
-			{field:"numuser", name: "NU", width: '20px', editor: "dijit.form.NumberTextBox"},
+			{field:"enable_as_user", name: "*", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBooleanDisabled, alwaysEditing: true},
+			{field:"numuser", name: "NU", width: '20px', editor: "dijit/form/NumberTextBox"},
 			{field:"name", name: "nombre"},
 			{field:"appointment", name: "Designacion", width: '100px'}
 		]);
@@ -561,7 +560,7 @@ GridxC._setData(myData);
 
 
 }, function(error){
-NotifyMSG.setText(error);
+NotifyMSG.notify({message: error});
 });
 
 }else{
@@ -572,6 +571,10 @@ NotifyMSG.setText(error);
 
 UserW.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
+});
+
+UserW.on('onloaduser', function(e){
+GridxD.Load(e.idaccount, e.idcontact);
 });
 
 UserW.on('onsave', function(){
@@ -626,26 +629,28 @@ i++;
 
 fieldStore = new Memory({data: Items});
 
+
 		GridxD.setColumns([
-		//	{field:"idcontact", name: "idcontact", width: '0px'},
-		//	{field:"idphone", name: "idphone", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"unique_id", name: "#", width: '20px'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"type", name: "type", width: '20px'},
+/*
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
-					editor: 'dijit.form.Select',
+					editor: 'dijit/form/Select',
 					editorArgs: {
 						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
+*/
 			{field:"phone", name: "Teléfono", width: '150px'},
-			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit/form/CheckBox", 
 			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 
-			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit.form.CheckBox", 
+			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit/form/CheckBox", 
 		editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true,
 			},
 			{field:"note", name: "Nota", width: '100px', editable: true}
 		]);
 GridxD.startup();
-
+GridxD.Clear();
 
                 },
                 function(error){
@@ -655,7 +660,89 @@ NotifyMSG.notify({message: error});
 
 }
 
+// Setea las columnas de la tabla
 GridxD.setColumnsNew();
+
+	dojo.connect(ItemFileWriteStore_4, 'onSet', function(item, attribute, oldValue, newValue){
+GridxD.SaveItem(item);
+});
+
+GridxD.SaveItem = function(item){
+
+if(item.idaccount > 0 && item.idcontact > 0 && GridxD){
+
+R.post('fun_account_phones_trigger_alarm_table_from_hashmap.usaga', {
+   handleAs: "xml",
+data: {idaccount: item.idaccount, idphone: item.idphone, enable: item.enable, fromsms: item.fromsms, fromcall: item.fromcall, note: item.note}
+}).then(function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+
+NotifyMSG.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+
+var idcontactuser = xmld.getNumber(0, 'outreturn');
+GridxD.Load(Account.Id, idcontactuser);
+
+
+}, function(error){
+NotifyMSG.notify({message: error});
+});
+
+}else{
+GridxD,Clear();
+}
+
+}
+
+GridxD.Load = function(idaccount_, idcontact_){
+var G = GridxD;
+if(idaccount_ > 0 && idcontact_ > 0){
+
+R.get('getaccountphonestriggerview.usaga', {
+   handleAs: "xml",
+query:  {idaccount: idaccount_, idcontact: idcontact_}
+}).then(function(response){
+
+var dataxml = new RXml.getFromXhr(response, 'row');
+var myData = {identifier: "unique_id", items: []};
+
+if(dataxml.length > 0){
+
+var i = 0;
+var rowscount = dataxml.length;
+while(i<rowscount){
+
+myData.items[i] = {
+unique_id:i+1,
+idaccount: dataxml.getNumber(i, "idaccount"),
+idcontact: dataxml.getNumber(i, "idcontact"),  
+idphone: dataxml.getNumber(i, "idphone"), 
+enable: dataxml.getBool(i, "trigger_alarm"),
+idprovider: dataxml.getNumber(i, "idprovider"),
+type: dataxml.getNumber(i, "type"),
+phone: dataxml.getStringFromB64(i, "phone"),
+fromsms: dataxml.getBool(i, "fromsms"),    
+fromcall: dataxml.getBool(i, "fromcall"),    
+note: dataxml.getStringFromB64(i, "note")
+};
+
+i++;
+}
+
+}
+
+GridxD._setData(myData);
+
+
+}, function(error){
+NotifyMSG.notify({message: error});
+});
+
+}else{
+ GridxD.Clear();
+}
+
+}
 
 
 
