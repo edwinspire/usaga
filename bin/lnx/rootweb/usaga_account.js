@@ -749,6 +749,24 @@ NotifyMSG.notify({message: error});
 //# SECCION EVENTOS #//
 jsDateTextBox.addGetDateFunction(dijit.byId('id_account_event_ini'));
 jsDateTextBox.addGetDateFunction(dijit.byId('id_account_event_fin'));
+
+GridxE._setData = function(data){
+	var store = ItemFileWriteStore_5;
+	store.clearOnClose = true;
+	store.data = data;
+	store.close();
+
+		// Tell our grid to reset itself
+		GridxE.store = null;
+		GridxE.setStore(store);
+}
+
+GridxE.Clear = function(){
+GridxE._setData({identifier: "unique_id", items: []});
+}
+
+
+
 	if (GridxE) {
 
 
@@ -771,21 +789,6 @@ jsDateTextBox.addGetDateFunction(dijit.byId('id_account_event_fin'));
 		]);
 GridxE.startup();
  GridxE.Clear();
-}
-
-GridxE.Clear = function(){
-GridxE._setData({identifier: "unique_id", items: []});
-}
-
-GridxE._setData = function(data){
-	var store = ItemFileWriteStore_5;
-	store.clearOnClose = true;
-	store.data = data;
-	store.close();
-
-		// Tell our grid to reset itself
-		GridxE.store = null;
-		GridxE.setStore(store);
 }
 
 
