@@ -46,6 +46,8 @@ var UserW = dijit.byId('id_account_user_widget');
 var UserMB = dijit.byId('id_account_user_menubar'); 
 var GridxD = dijit.byId('id_account_ctrl_alarma_gridx');
 var GridxE = dijit.byId('id_account_event_gridx');
+dijit.byId('id_account_event_titlebar').set('label', 'Eventos');
+
 
 
 Location.on('notify_message', function(m){
