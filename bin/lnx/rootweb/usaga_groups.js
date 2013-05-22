@@ -60,7 +60,7 @@ LoadGrid();
 
 //--
         var myDialogDelete = dijit.byId('iddialogdelete');
-myDialogDelete.dijitOwner(dijit.byId('delete'), 'onclick').on('onok', function(){
+myDialogDelete.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
 
 if(ObjectTable.IdToDelete.length > 0){
 Delete();
