@@ -19,7 +19,8 @@ require([
   "dijit/PopupMenuBarItem",
   "dijit/Menu",
   "dijit/MenuItem",
-  "_usaga_menu_header/_usaga_menu_header"
+  "_usaga_menu_header/_usaga_menu_header",
+  "_common_notification_area/_common_notification_area"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/dojox/form/resources/Rating.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
@@ -36,4 +37,5 @@ require([
 </div>
 <table data-dojo-type="gridx/Grid" id="usaga.event.monitor" style="min-width: 1em; min-height: 1em; width: 99%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller'], store:ItemFileReadStore_1"></table>
 </div>
+   <div data-dojo-type="_common_notification_area/_common_notification_area" id="id_notify_area"></div>
  </body></html>
