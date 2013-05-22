@@ -9,6 +9,7 @@ require(["dojo/ready",
 "jspire/Gridx",
 'dojo/request',
 'jspire/request/Xml',
+"jspire/form/DateTextBox",
 	'gridx/modules/Focus',
 	'gridx/modules/CellWidget',
 	'gridx/modules/Edit',
@@ -19,7 +20,7 @@ require(["dojo/ready",
 	"gridx/modules/VirtualVScroller",
 "dijit/form/CheckBox",
 "dijit/popup"
-], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml, Memory){
+], function(ready, domStyle, dojoWindow,dojoOn, jsGridx, R, RXml, jsDateTextBox){
      ready(function(){
 
 function HtmlDialogNotifications(msg, idform, idcall, idsms, idtext){
@@ -44,6 +45,7 @@ var GridxC = dijit.byId('id_account_user_gridx');
 var UserW = dijit.byId('id_account_user_widget'); 
 var UserMB = dijit.byId('id_account_user_menubar'); 
 var GridxD = dijit.byId('id_account_ctrl_alarma_gridx');
+var GridxE = dijit.byId('id_account_event_gridx');
 
 
 Location.on('notify_message', function(m){
@@ -596,7 +598,7 @@ UserW.delete();
 
 //# SECCION CTRL ALARMA #//
 GridxD.Clear = function(){
-GridxC._setData({identifier: "unique_id", items: []});
+GridxD._setData({identifier: "unique_id", items: []});
 }
 
 GridxD._setData = function(data){
@@ -631,9 +633,9 @@ fieldStore = new Memory({data: Items});
 
 
 		GridxD.setColumns([
-			{field:"unique_id", name: "#", width: '20px'},
+//			{field:"unique_id", name: "#", width: '20px'},
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"type", name: "type", width: '20px'},
+//			{field:"type", name: "type", width: '20px'},
 /*
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
 					editor: 'dijit/form/Select',
@@ -743,6 +745,108 @@ NotifyMSG.notify({message: error});
 }
 
 }
+
+//# SECCION EVENTOS #//
+jsDateTextBox.addGetDateFunction(dijit.byId('id_account_event_ini'));
+jsDateTextBox.addGetDateFunction(dijit.byId('id_account_event_fin'));
+	if (GridxE) {
+
+
+		// Optionally change column structure on the grid
+		GridxE.setColumns([
+
+			{field:"id", name: "id", width: '20px'},
+			{field:"dateload", name: "dateload", width: '80px'},
+			{field:"idaccount", name: "idaccount", width: '75px'},
+			{field:"partition", name: "partition", width: '60px'},
+			{field:"enable", name: "enable", width: '60px'},
+			{field:"account", name: "account", width: '100px'},
+			{field:"name", name: "name", width: '100px'},
+			{field:"code", name: "code"},
+			{field:"zu", name: "zu"},
+			{field:"priority", name: "priority"},
+			{field:"description", name: "description"},
+			{field:"ideventtype", name: "ideventtype"},
+			{field:"eventtype", name: "eventtype"}
+		]);
+GridxE.startup();
+ GridxE.Clear();
+}
+
+GridxE.Clear = function(){
+GridxE._setData({identifier: "unique_id", items: []});
+}
+
+GridxE._setData = function(data){
+	var store = ItemFileWriteStore_5;
+	store.clearOnClose = true;
+	store.data = data;
+	store.close();
+
+		// Tell our grid to reset itself
+		GridxE.store = null;
+		GridxE.setStore(store);
+}
+
+
+GridxE.Load = function(){
+var G = GridxE;
+if(Account.Id > 0){
+
+R.get('geteventsaccount.usaga', {
+   handleAs: "xml",
+query:  {idaccount: Account.Id, fstar: dijit.byId('id_account_event_ini')._getDate(), fend: dijit.byId('id_account_event_fin')._getDate()}
+}).then(function(response){
+
+var dataxml = new RXml.getFromXhr(response, 'row');
+var myData = {identifier: "unique_id", items: []};
+
+if(dataxml.length > 0){
+
+var i = 0;
+var rowscount = dataxml.length;
+while(i<rowscount){
+
+myData.items[i] = {
+unique_id:i,
+id: dataxml.getNumber(i, "idevent"), 
+dateload: dataxml.getDate(i, "dateload"),
+idaccount: dataxml.getNumber(i, "idaccount"),
+partition: dataxml.getNumber(i, "partition"),
+enable: dataxml.getBool(i, "enable"),
+account: dataxml.getStringFromB64(i, "account"),
+name: dataxml.getStringFromB64(i, "name"),
+code: dataxml.getStringFromB64(i, "code"),
+zu: dataxml.getNumber(i, "zu"),
+priority: dataxml.getNumber(i, "priority"),
+description: dataxml.getStringFromB64(i, "description"),
+ideventtype: dataxml.getNumber(i, "ideventtype"),
+eventtype: dataxml.getStringFromB64(i, "eventtype")
+};
+
+i++;
+}
+
+}
+
+GridxE._setData(myData);
+
+
+}, function(error){
+NotifyMSG.notify({message: error});
+});
+
+}else{
+ GridxE.Clear();
+}
+
+}
+
+dojo.connect(dojo.byId('id_account_event_show'), 'onclick', function(){
+GridxE.Load();
+});
+
+
 
 
 
