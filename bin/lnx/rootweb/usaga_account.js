@@ -479,7 +479,7 @@ t.Load(itemStore.idcontact);
 GridxB.SaveItem(item);
 });
 
-		
+
 }
 
 
@@ -613,7 +613,7 @@ GridxD._setData = function(data){
 		GridxD.store = null;
 		GridxD.setStore(store);
 }
-
+/*
 GridxD.setColumnsNew = function(){
 
             // Request the text file
@@ -622,6 +622,7 @@ GridxD.setColumnsNew = function(){
             handleAs: "xml"
         }).then(
                 function(response){
+//alert('sdjjasdhkas');
 var d = new RXml.getFromXhr(response, 'row');
 var Items = [];
 numrows = d.length;
@@ -631,19 +632,25 @@ Items[i] =    {value: d.getStringFromB64(i, 'name'), id: d.getString(i, 'idprovi
 i++;
 }
 
-fieldStore = new Memory({data: Items});
+  var store = new Memory({
+    data: [
+      { id: "1", value: "Foo" },
+      { id: "13", value: "Bar" }
+    ]
+  });
+
+  var os = new ObjectStore({ objectStore: store });
 
 
 		GridxD.setColumns([
 //			{field:"unique_id", name: "#", width: '20px'},
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-//			{field:"type", name: "type", width: '20px'},
-/*
+//			{field:"type", name: "type", width: '20px'}
+
 			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
-					editor: 'dijit/form/Select',
-					editorArgs: {
-						props: 'store: fieldStore, labelAttr: "value", disabled: "true"'}},
-*/
+					editor: "_usms_mappoint/_usms_mappoint"
+},
+
 			{field:"phone", name: "Teléfono", width: '150px'},
 			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit/form/CheckBox", 
 			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
@@ -663,9 +670,29 @@ NotifyMSG.notify({message: error});
             );
 
 }
+*/
 
 // Setea las columnas de la tabla
-GridxD.setColumnsNew();
+		GridxD.setColumns([
+//			{field:"unique_id", name: "#", width: '20px'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+//			{field:"type", name: "type", width: '20px'}
+/*
+			{field:"idprovider", name: "provider", editable: true, alwaysEditing: true,
+					editor: "_usms_mappoint/_usms_mappoint"
+},
+*/
+			{field:"phone", name: "Teléfono", width: '150px'},
+			{field:"fromsms", name: "sms", width: '20px', editable: true, editor: "dijit/form/CheckBox", 
+			editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+
+			{field:"fromcall", name: "call", width: '20px', editable: true, editor: "dijit/form/CheckBox", 
+		editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true,
+			},
+			{field:"note", name: "Nota", width: '100px', editable: true}
+		]);
+GridxD.startup();
+GridxD.Clear();
 
 	dojo.connect(ItemFileWriteStore_4, 'onSet', function(item, attribute, oldValue, newValue){
 GridxD.SaveItem(item);
