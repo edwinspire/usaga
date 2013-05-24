@@ -157,6 +157,7 @@ var xmld = new RXml.getFromXhr(response, 'row');
 if(xmld.length > 0){
 NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
 }
+dijit.byId('id_port_form').reset();
 GridxTable.Load();
 }, function(error){
 NotifyArea.notify({message: error});
@@ -165,24 +166,31 @@ NotifyArea.notify({message: error});
 }
 
 
-        var myDialog = dijit.byId('idDialogNew');
+        var myDialogNew = dijit.byId('idDialogNew');
+myDialogNew.byes.set('label', 'Guardar');
+myDialogNew.bno.set('label', 'Cancelar');
+myDialogNew.innerHTML(' <div data-dojo-type="dijit/form/Form" id="id_port_form" style="min-width: 1em; min-height: 1em; width: 300px; height: auto;">  <div style="margin: 3px; display: inline-block;">   <label style="margin-right: 3px;">   Habilitado:</label>   <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="id_port_enable" intermediateChanges="false" iconClass="dijitNoIcon"></input> </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">    Puerto:</label>    <input type="text" data-dojo-type="dijit/form/TextBox" id="id_port_port" required="true" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>  </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">DataBits:</label>    <input type="text" data-dojo-type="dijit/form/NumberSpinner" id="id_port_databits" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." required="true" value="8" maxLength="1" style="width: 41.109375px;"></input>  </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">  BaudRate:</label>    <input type="text" data-dojo-type="dijit/form/NumberSpinner" id="id_port_baudrate" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" maxLength="1" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 99.109375px;" required="true" value="0"></input>  </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">      Parity:</label>    <div data-dojo-type="_usms_parity/_usms_parity" style="display: inline-block;"></div>    </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">StopBits:</label>    <div data-dojo-type="_usms_stopbits/_usms_stopbits" id="id_port_stopbits" ></div>  </div>  <div style="margin: 3px; display: inline-block;">    <label style="margin-right: 3px;">  Handshake:</label>    <div data-dojo-type="_usms_handshake/_usms_handshake" id="id_port_handshake" ></div>  </div>  <div>   <label>   Nota:</label>   <textarea type="text" data-dojo-type="dijit/form/Textarea" id="id_port_note" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; display: block; width: 95%;"></textarea> </div></div>');
 
-        dojo.connect(dojo.byId('new'), 'onclick', function(){
-            dijit.popup.open({
-                popup: myDialog,
-                around: dojo.byId('new')
-            });
-        });
-//--
-        dojo.connect(dojo.byId('newcancel'), 'onclick', function(){
-dijit.popup.close(myDialog);
+
+myDialogNew.dijitOwner(dijit.byId('new'), 'Click').on('onok', function(){
+
+if(dijit.byId('id_port_form').validate()){
+GridxTable.SaveItem({idport: 0, baudrate: dijit.byId('id_port_baudrate').get('value'), databits: dijit.byId('id_port_databits').get('value'), enable: dijit.byId('id_port_enable').get('checked'), handshake: dijit.byId('id_port_handshake').get('value'), note: dijit.byId('id_port_note').get('value'), port: dijit.byId('id_port_port').get('value'), stopbits: dijit.byId('id_port_stopbits').get('value')});
+
+}else{
+NotifyArea.notify({message: 'Los datos no han sido completados correctamente'});
+}
+
 });
-//--
+
+/*
         dojo.connect(dojo.byId('newok'), 'onclick', function(){
 dijit.popup.close(myDialog);
 GridxTable.SaveItem({idgroup: 0, enable: dijit.byId('idenable').get('checked'), name: dijit.byId('idname').get('value'), note: dijit.byId('idnote').get('value'), ts: '1990-01-01'});
 dojo.byId('idformnew').reset();
 });
+
+*/
 //--
         dojo.connect(dojo.byId('getdata'), 'onclick', function(){
 GridxTable.Load();

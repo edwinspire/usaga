@@ -55,54 +55,9 @@ require([
 <input type="button" data-dojo-type="dijit.form.Button" id="delete" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitEditorIcon dijitEditorIconDelete"></input>
 </span><table data-dojo-type="gridx/Grid" id="gridxt" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'s',field:'s'},{width:'auto',name:'IdNotif',field:'idnotif'},{width:'auto',name:'Descripcion',field:'descripcion'},{width:'auto',name:'Formato',field:'formato'}], modules:['gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/VirtualVScroller', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileWriteStore_1"></table>
 </div>
- <div id="idDialogNew" data-dojo-type="dijit/TooltipDialog" style="width: 240px; display: none;">
-<form id="idformnew">
-  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">
-    <colgroup>
-      <col></col>
-      <col></col>
-    </colgroup>
-    <tbody>
-      <tr>
-        <td>
-          <label style="margin-right: 3px;">
-            Habilitado:</label>
-        </td>
-        <td>
-          <input type="checkbox" data-dojo-type="dijit.form.CheckBox" id="idenable" intermediateChanges="false" iconClass="dijitNoIcon" checked="true"></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label style="margin-right: 3px;">
-            Nombre:</label>
-        </td>
-        <td>
-          <input type="text" data-dojo-type="dijit.form.TextBox" id="idname" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false"></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label style="margin-right: 20px;">
-            Nota:</label>
-        </td>
-        <td>
-          &nbsp;</td>
-      </tr>
-    </tbody>
-  </table>
-  <textarea type="text" data-dojo-type="dijit.form.Textarea" id="idnote" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
-</form>
-<div class="dijitDialogPaneActionBar">
-  <button dojoType="dijit.form.Button" type="reset" id="newok">
-    
-         OK</button>
-  <button dojoType="dijit.form.Button" type="reset" id="newcancel">
-    
-         Cancel</button>
-</div>
-</div>
  <div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" id="iddialogdelete" style="height: auto; width: auto; display: none !important;"></div>
+ <div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" id="idDialogNew" style="height: auto; width: auto; display: none !important;"></div>
+
    <div data-dojo-type="_common_notification_area/_common_notification_area" id="id_notify_area"></div>
 </body>
 </html>
