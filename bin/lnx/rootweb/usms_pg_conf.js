@@ -6,14 +6,16 @@ require(["dojo/ready",
  dijit.byId('id_titlebar').set('label', 'Acceso a base de datos PostgreSQL');
 
 dojo.connect(dojo.byId('btn_pg_get'), 'onclick', function(){
-loadFormPostgreSQLCnx();
+Load();
 } );
 
 dojo.connect(dojo.byId('btn_pg_save'), 'onclick', function(){
-sendFormPostgreSQLCnx();
+Save();
 } );
 
-function sendFormPostgreSQLCnx(){
+
+
+function Save(){
 
 var data_ = {host: dijit.byId('host').get('value'), 
 port: dijit.byId('port').get('value'), 
@@ -23,30 +25,28 @@ db: dijit.byId('db').get('value'),
 ssl: dijit.byId('ssl').get('checked'),  
 note: dijit.byId('note').get('value')};
 
-   R.post('postpostgresconf', {
-	data: data_,
-            // Parse data from xml
-            handleAs: "xml"
-        }).then(
-                function(response){
-var d = new RXml.getFromXhr(response, 'postgres');
+R.post('savepostgresql.usms', {
+   handleAs: "xml",
+data: data_
+}).then(function(response){
 
-loadFormPostgreSQLCnx();
-                },
-                function(error){
-                    // Display the error returned
-console.log(errorx);
-loadFormPostgreSQLCnx();
-                }
-            );
+var xmld = new RXml.getFromXhr(response, 'row');
+
+if(xmld.length > 0){
+//NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+}
+Load();
+}, function(error){
+//NotifyArea.notify({message: error});
+});
 
 }
 
 
 // Carga el formulario de PostgreSQL
-function loadFormPostgreSQLCnx(){
+function Load(){
 
-   R.get('getpostgresconf', {
+   R.get('getpostgresql.usms', {
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -63,12 +63,14 @@ if(d.length > 0){
 
    dijit.byId('db').set('value', d.getStringFromB64(0, "db"));  
    dijit.byId('note').set('value', d.getStringFromB64(0, "note"));
+}else{
+//NotifyArea.notify({message: error});
 }
 
                 },
                 function(error){
                     // Display the error returned
-console.log(errorx);
+//NotifyArea.notify({message: error});
                 }
             );
 
@@ -77,37 +79,6 @@ console.log(errorx);
 
      });
 });
-
-// Envia el formulario de PostgreSQL
-function sendFormPostgreSQLCnx(){
-  var formpg = dojo.byId("FormPostgreSQLCnx");
-//postpostgresconf//
-  dojo.connect(formpg, "onsubmit", function(event){
-    // Stop the submit event since we want to control form submission.
-    dojo.stopEvent(event);
-
-    // The parameters to pass to xhrPost, the form, how to handle it, and the callbacks.
-    // Note that there isn't a url passed.  xhrPost will extract the url to call from the form's
-    //'action' attribute.  You could also leave off the action attribute and set the url of the xhrPost object
-    // either should work.
-    var xhrArgs = {
-      form: formpg,
-      handleAs: "text",
-      load: function(data){
-alert("Enviado");
-///        dojo.byId("response").innerHTML = "Form posted.";
-      },
-      error: function(error){
-        // We'll 404 in the demo, but that's okay.  We don't have a 'postIt' service on the
-        // docs server.
-alert(error);
-   //     dojo.byId("response").innerHTML = "Form posted.";
-      }
-    }
-    // Call the asynchronous xhrPost
-    var deferred = dojo.xhrPost(xhrArgs);
-  });
-}
 
 
 
