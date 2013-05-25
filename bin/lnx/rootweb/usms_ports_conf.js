@@ -33,7 +33,7 @@ require(["dojo/ready",
 ], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx, wParity){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-
+dijit.byId('id_titlebar').set('label', 'Puertos');
 var NotifyArea = dijit.byId('id_notify_area');  
 
 

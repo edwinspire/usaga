@@ -31,6 +31,7 @@ require([
   "_usms_menu_header/_usms_menu_header",
   "_common_notification_area/_common_notification_area",
   "dijit/form/Select",
+  "_common_titlebar/_common_titlebar",
   "_usms_parity/_usms_parity",
 "_usms_stopbits/_usms_stopbits",
 "_usms_handshake/_usms_handshake"
@@ -45,10 +46,7 @@ require([
  <div data-dojo-type="_usms_menu_header/_usms_menu_header"></div>
 
 <span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileWriteStore_1" jsId="ItemFileWriteStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
-<div class="dijitTitlePaneTitle">
-<label style="position: relative; top: 2px; bottom: 2px; display: inline-block; left: 2px;">
-   Puertos</label>
-</div>
+   <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_titlebar"></div>
 <span data-dojo-type="dijit.Toolbar">
 <input type="button" data-dojo-type="dijit.form.Button" id="getdata" tabIndex="-1" intermediateChanges="false" label="Cargar tabla" iconClass="dijitIconTable"></input>
 <input type="button" data-dojo-type="dijit.form.Button" id="new" tabIndex="-1" intermediateChanges="false" label="Nuevo" iconClass="dijitEditorIcon dijitEditorIconNewPage"></input>
