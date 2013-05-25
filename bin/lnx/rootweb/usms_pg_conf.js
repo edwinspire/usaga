@@ -14,6 +14,11 @@ dojo.connect(dojo.byId('btn_pg_save'), 'onclick', function(){
 Save();
 } );
 
+dojo.connect(dojo.byId('btn_pg_testcnx'), 'onclick', function(){
+Load();
+Test();
+} );
+
 
 
 function Save(){
@@ -76,6 +81,32 @@ NotifyArea.notify({message: error});
             );
 
 }
+
+function Test(){
+
+   R.get('test_conexion_pg.usms', {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+NotifyArea.notify({message: d.getStringFromB64(0, 'message')});
+}else{
+NotifyArea.notify({message: 'Los datos no se cargaron correctamente'});
+}
+
+
+                },
+                function(error){
+                    // Display the error returned
+NotifyArea.notify({message: error});
+                }
+            );
+
+}
+
 
 
      });
