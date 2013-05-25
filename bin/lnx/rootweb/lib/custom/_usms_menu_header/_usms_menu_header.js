@@ -11,14 +11,26 @@ postCreate: function(){
 
 var t = this;
 
-t.menu_config.on('Click', function(){
-window.open("usms_configure.html", '_self');
+t.menu_system_loging.on('Click', function(){
+window.open("usms.html", '_self');
 });
 
-t.menu_ports.on('Click', function(){
+t.menu_system_logout.on('Click', function(){
+window.open("usms.html", '_self');
+});
+
+t.menu_system_status.on('Click', function(){
+window.open("usms_status.html", '_self');
+});
+
+t.menu_config_postgresql.on('Click', function(){
+window.open("usms_pg_conf.html", '_self');
+});
+
+t.menu_config_ports.on('Click', function(){
 window.open("usms_ports_conf.html", '_self');
 });
-
+/*
 t.menu_system_status.on('Click', function(){
 window.open("usms_status.html", '_self');
 });
@@ -66,7 +78,7 @@ window.open("usms_smsout.html", '_self');
 t.menu_about.on('Click', function(){
 window.open("usms_acercade.html", '_self');
 });
-
+*/
 
 
 
