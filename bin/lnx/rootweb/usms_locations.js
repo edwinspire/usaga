@@ -109,7 +109,7 @@ this.connect_onDelete = function(){
 // Elimina los registros seleccionados
 var t = this;
         var dialogdel = dijit.byId(t.iddialogdel);
-dialogdel.setowner(t.idownerdel, 'onclick').on('onok', function(){
+dialogdel.dijitOwner(t.idownerdel, 'onclick').on('onok', function(){
 t.delete();
 });
 },
@@ -157,7 +157,7 @@ alert(error);
 //Construimos el objeto con todas las funciones necesarias
 
 
-var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'L1dialogdel', 'delL1');
+var L1 = new ObjectBase(1, 'GridL1', StoreL1, dijit.byId('L1dialogdel'), dijit.byId('delL1'));
 L1.title = nameLevel.L1;
 L1.label = dojo.byId('labL1');
 L1.connect_all();
@@ -207,7 +207,7 @@ alert(error);
 
 
         var dL1dialognew = dijit.byId('L1dialognew');
-dL1dialognew.setowner('newL1', 'onclick').innerHTML('<form id="L1form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>       <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL1dialognew.dijitOwner('newL1', 'onclick').innerHTML('<form id="L1form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>       <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 
 L1.save({name: dijit.byId('L1name').get('value'), code: dijit.byId('L1code').get('value')});
 
@@ -233,7 +233,7 @@ L1.Grid.startup();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'L2dialogdel', 'delL2');
+var L2 = new ObjectBase(2, 'GridL2', StoreL2, dijit.byId('L2dialogdel'), dijit.byId('delL2'));
 L2.title = nameLevel.L2;
 L2.label = dojo.byId('labL2');
 L2.connect_all();
@@ -287,7 +287,7 @@ t.setDataGrid(myData);
 
 
         var dL2dialognew = dijit.byId('L2dialognew');
-dL2dialognew.setowner('newL2', 'onclick').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL2dialognew.dijitOwner('newL2', 'onclick').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L1.id > 0){
 L2.save({idfk: L1.id, name: dijit.byId('L2name').get('value'), code: dijit.byId('L2code').get('value')});
 }else{
@@ -312,7 +312,7 @@ L2.Grid.startup();
 ///////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'L3dialogdel', 'delL3');
+var L3 = new ObjectBase(3, 'GridL3', StoreL3, dijit.byId('L3dialogdel'), dijit.byId('delL3'));
 L3.title = nameLevel.L3;
 L3.label = dojo.byId('labL3');
 L3.connect_all();
@@ -366,7 +366,7 @@ t.setDataGrid(myData);
 
 
         var dL3dialognew = dijit.byId('L3dialognew');
-dL3dialognew.setowner('newL3', 'onclick').innerHTML('<form id="L3form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL3dialognew.dijitOwner('newL3', 'onclick').innerHTML('<form id="L3form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L2.id > 0){
 L3.save({idfk: L2.id, name: dijit.byId('L3name').get('value'), code: dijit.byId('L3code').get('value')});
 }else{
@@ -389,7 +389,7 @@ L3.Grid.startup();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L4 = new ObjectBase(4, 'GridL4', StoreL4, 'L4dialogdel', 'delL4');
+var L4 = new ObjectBase(4, 'GridL4', StoreL4, dijit.byId('L4dialogdel'), dijit.byId('delL4'));
 L4.title = nameLevel.L4;
 L4.label = dojo.byId('labL4');
 L4.connect_all();
@@ -442,7 +442,7 @@ t.setDataGrid(myData);
 }
 
         var dL4dialognew = dijit.byId('L4dialognew');
-dL4dialognew.setowner('newL4', 'onclick').innerHTML('<form id="L4form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL4dialognew.dijitOwner('newL4', 'onclick').innerHTML('<form id="L4form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L3.id > 0){
 L4.save({idfk: L3.id, name: dijit.byId('L4name').get('value'), code: dijit.byId('L4code').get('value')});
 }else{
@@ -466,7 +466,7 @@ L4.Grid.startup();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L5 = new ObjectBase(5, 'GridL5', StoreL5, 'L5dialogdel', 'delL5');
+var L5 = new ObjectBase(5, 'GridL5', StoreL5, dijit.byId('L5dialogdel'), dijit.byId('delL5'));
 L5.title = nameLevel.L5;
 L5.label = dojo.byId('labL5');
 L5.connect_all();
@@ -519,7 +519,7 @@ t.setDataGrid(myData);
 }
 
         var dL5dialognew = dijit.byId('L5dialognew');
-dL5dialognew.setowner('newL5', 'onclick').innerHTML('<form id="L5form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL5dialognew.dijitOwner('newL5', 'onclick').innerHTML('<form id="L5form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L4.id > 0){
 L5.save({idfk: L4.id, name: dijit.byId('L5name').get('value'), code: dijit.byId('L5code').get('value')});
 }else{
@@ -545,7 +545,7 @@ L5.Grid.startup();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L6 = new ObjectBase(6, 'GridL6', StoreL6, 'L6dialogdel', 'delL6');
+var L6 = new ObjectBase(6, 'GridL6', StoreL6, dijit.byId('L6dialogdel'), dijit.byId('delL6'));
 L6.title = nameLevel.L6;
 L6.label = dojo.byId('labL6');
 L6.connect_all();
@@ -596,7 +596,7 @@ t.setDataGrid(myData);
 }
 
         var dL6dialognew = dijit.byId('L6dialognew');
-dL6dialognew.setowner('newL6', 'onclick').innerHTML('<form id="L6form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
+dL6dialognew.dijitOwner('newL6', 'onclick').innerHTML('<form id="L6form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
 if(L5.id > 0){
 L6.save({idfk: L5.id, name: dijit.byId('L6name').get('value'), code: dijit.byId('L6code').get('value')});
 }else{
