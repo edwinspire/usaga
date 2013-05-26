@@ -36,8 +36,9 @@ L6: 'Nivel 6: '
          // logic that requires that Dojo is fully initialized should go here
 //dojo.parser.parse('myapp');
 // Objeto base con funciones comunes
-var ObjectBase = function(l, g, s, wt){
+var ObjectBase = function(l, g, s, wt, wm){
 this.wTitle = dijit.byId(wt);
+this.wMenu = dijit.byId(wm),
 this.id= 0,
 this.level = l,
 this.to_delete= [],
@@ -67,6 +68,16 @@ this.connect_all = function(){
 this.connect_onSelectionToDelete();
 this.connect_onSet();
 this.connect_onRowClick();
+this.connect_Menu();
+},
+this.connect_Menu = function(){
+this.wMenu.on('onClickDelete', function(){
+alert('Borrar');
+});
+
+this.wMenu.on('onClickSave', function(){
+alert('Cear');
+});
 },
 this.connect_onSet = function(){
 var t = this;
@@ -153,9 +164,8 @@ alert(error);
 
 
 //Construimos el objeto con todas las funciones necesarias
-var menuL1 = dijit.byId('id_menu_L1');
 
-var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'labL1');
+var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'labL1', 'id_menu_L1');
 if(L1.Grid){
 		L1.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
@@ -229,7 +239,7 @@ L1.onLoad();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias 2
-var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'labL2');
+var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'labL2', 'id_menu_L2');
 if(L2.Grid){
 		L2.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
@@ -308,7 +318,7 @@ dojo.byId('L2form').reset();
 ///////////////////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias 3
-var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'labL3');
+var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'labL3', 'id_menu_L3');
 if(L3.Grid){
 		L3.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '15px'},
@@ -385,7 +395,7 @@ dojo.byId('L3form').reset();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L4 = new ObjectBase(4, 'GridL4', StoreL4, 'labL4');
+var L4 = new ObjectBase(4, 'GridL4', StoreL4, 'labL4', 'id_menu_L4');
 if(L4.Grid){
 		L4.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '15px'},
@@ -463,7 +473,7 @@ dojo.byId('L4form').reset();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L5 = new ObjectBase(5, 'GridL5', StoreL5, 'labL5');
+var L5 = new ObjectBase(5, 'GridL5', StoreL5, 'labL5', 'id_menu_L5');
 if(L5.Grid){
 		L5.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '15px'},
@@ -544,7 +554,7 @@ dojo.byId('L5form').reset();
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
-var L6 = new ObjectBase(6, 'GridL6', StoreL6, 'labL6');
+var L6 = new ObjectBase(6, 'GridL6', StoreL6, 'labL6', 'id_menu_L6');
 if(L6.Grid){
 		L6.Grid.setColumns([
 			{field:"unique_id", name: "#", width: '15px'},
