@@ -307,7 +307,7 @@ dojo.byId('L2form').reset();
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-//Construimos el objeto con todas las funciones necesarias
+//Construimos el objeto con todas las funciones necesarias 3
 var L3 = new ObjectBase(3, 'GridL3', StoreL3, 'labL3');
 if(L3.Grid){
 		L3.Grid.setColumns([
