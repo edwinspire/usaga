@@ -79,7 +79,7 @@ t.delete();
 
 t.wMenu.on('onclicksave', function(e){
 var item = e;
-item.idfk = this.fk;
+item.idfk = t.fk;
 t.save(item);
 });
 },
