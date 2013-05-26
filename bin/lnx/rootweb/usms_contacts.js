@@ -96,18 +96,24 @@ Grid: dijit.byId("usms.contacts.gridx")
 var GridListContact = dijit.byId("usms.contacts.gridx");
 
 	if (GridListContact) {
-// Captura el evento cuando se hace click en una fila
-dojo.connect(GridListContact, 'onRowClick', function(event){
-GlobalObject.IdContact = this.cell(event.rowId, 1, true).data();
-CDWidget.set("IdContact", GlobalObject.IdContact);
-});
+
 		// Optionally change column structure on the grid
 		GridListContact.setColumns([
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"unique_id", name: "#", width: '25px'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"name", name: "Nombre"},
 		]);
 GridListContact.startup();
 }
+
+// Captura el evento cuando se hace click en una fila
+dojo.connect(GridListContact, 'onRowClick', function(event){
+var t = GridListContact;
+var d = this.cell(event.rowId, 1, true).data();
+t.store.fetch({query: {unique_id: d}, onItem: function(item){
+CDWidget.set("idcontact", t.store.getValue(item, 'idcontact'));
+}});
+});
 
 GridListContact.Load = function(){
 var t = GridListContact;
