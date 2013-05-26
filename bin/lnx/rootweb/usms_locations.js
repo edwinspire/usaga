@@ -224,21 +224,6 @@ NotifyArea.notify({message: error});
 
 }
 
-/*
-        var dL1dialognew = dijit.byId('L1dialognew');
-dL1dialognew.dijitOwner(dijit.byId('newL1'), 'Click').innerHTML('<form id="L1form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>       <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L1code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-
-L1.save({name: dijit.byId('L1name').get('value'), code: dijit.byId('L1code').get('value')});
-
-dojo.byId('L1form').reset();
-});
-
-// Carga los datos al hacer click
-dijit.byId('loadL1').on('Click', function(){
-L1.onLoad();
-});
-*/
-
 
 
 
@@ -305,20 +290,7 @@ t.setDataGrid(myData);
 }
 }
 
-/*
-        var dL2dialognew = dijit.byId('L2dialognew');
-dL2dialognew.dijitOwner(dijit.byId('newL2'), 'Click').innerHTML('<form id="L2form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Estado / Provincia"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L2code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(L1.id > 0){
-L2.save({idfk: L1.id, name: dijit.byId('L2name').get('value'), code: dijit.byId('L2code').get('value')});
-}else{
-alert('No hay un nivel superior seleccionado');
-}
-dojo.byId('L2form').reset();
-});
 
-
-
-*/
 
 
 
@@ -385,21 +357,6 @@ t.setDataGrid(myData);
 }
 }
 
-/*
-        var dL3dialognew = dijit.byId('L3dialognew');
-dL3dialognew.dijitOwner(dijit.byId('newL3'), 'Click').innerHTML('<form id="L3form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L3code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(L2.id > 0){
-L3.save({idfk: L2.id, name: dijit.byId('L3name').get('value'), code: dijit.byId('L3code').get('value')});
-}else{
-alert('No hay un nivel superior seleccionado');
-}
-
-dojo.byId('L3form').reset();
-});
-
-*/
-
-
 ////////////////////////////////////////////////////////////////////////
 
 //Construimos el objeto con todas las funciones necesarias
@@ -464,18 +421,7 @@ t.setDataGrid(myData);
 }
 }
 
-/*
-        var dL4dialognew = dijit.byId('L4dialognew');
-dL4dialognew.dijitOwner(dijit.byId('newL4'), 'Click').innerHTML('<form id="L4form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L4code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(L3.id > 0){
-L4.save({idfk: L3.id, name: dijit.byId('L4name').get('value'), code: dijit.byId('L4code').get('value')});
-}else{
-alert('No hay un nivel superior seleccionado');
-}
 
-dojo.byId('L4form').reset();
-});
-      */ 
 
 
 
@@ -543,21 +489,6 @@ t.setDataGrid(myData);
 }
 
 
-/*
-        var dL5dialognew = dijit.byId('L5dialognew');
-dL5dialognew.dijitOwner(dijit.byId('newL5'), 'Click').innerHTML('<form id="L5form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Ciudad"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L5code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(L4.id > 0){
-L5.save({idfk: L4.id, name: dijit.byId('L5name').get('value'), code: dijit.byId('L5code').get('value')});
-}else{
-alert('No hay un nivel superior seleccionado');
-}
-
-dojo.byId('L5form').reset();
-});
-       
-
-
-*/
 
 
 
@@ -621,26 +552,7 @@ NotifyArea.notify({message: error});
 t.setDataGrid(myData);
 }
 }
-/*
-        var dL6dialognew = dijit.byId('L6dialognew');
-dL6dialognew.dijitOwner(dijit.byId('newL6'), 'Click').innerHTML('<form id="L6form">  <table border="0" style="border-collapse: collapse; table-layout: auto; width: 100%; height: 100%;">    <colgroup>      <col></col>      <col></col>    </colgroup>    <tbody>      <tr>        <td>          <label style="margin-right: 3px;">            Nombre:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6name" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="nombre"></input>       </td>      </tr>      <tr>        <td>          <label style="margin-right: 3px;">            Código:</label>        </td>        <td>         <input type="text" data-dojo-type="dijit.form.TextBox" id="L6code" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Código de área"></input>       </td>      </tr>    </tbody>  </table></form>').on('onok', function(){
-if(L5.id > 0){
-L6.save({idfk: L5.id, name: dijit.byId('L6name').get('value'), code: dijit.byId('L6code').get('value')});
-}else{
-alert('No hay un nivel superior seleccionado');
-}
 
-dojo.byId('L6form').reset();
-});
-       
-
-
-
-
-
-
-
-*/
 
 setTimeout(L1.onLoad, 5000)
 
