@@ -51,12 +51,12 @@ t.menu_sms_out.on('Click', function(){
 window.open("usms_smsout.html", '_self');
 });
 
-/*
+
 t.menu_contacts_edit.on('Click', function(){
 window.open("usms_contacts.html", '_self');
 });
 
-
+/*
 
 t.menu_locations.on('Click', function(){
 window.open("usms_locations.html", '_self');
