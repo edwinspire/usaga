@@ -105,18 +105,6 @@ i++;
 }
 }
 
-/*
-myData.items[i] = {
-unique_id:i+1,
-idprovider: 0,
-cimi: '',
-enable: true,
-name: '',
-note: '',
-ts: '1990-01-01'
-};
-*/
-
 ItemFileReadStore_1.clearOnClose = true;
 	ItemFileReadStore_1.data = myData;
 	ItemFileReadStore_1.close();
@@ -137,53 +125,6 @@ GridCalls.emit('onnotify', {msg: error});
 }
 
 
-function LoadGrid(){
-
-var store = new dojox.data.XmlStore({url: "viewprovidertable_xml.usms", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {datestart: getdate('datestart'), dateend: getdate('dateend')}, onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-
-var i = 0;
-while(i<numrows){
-myData.items[i] = {
-unique_id:i,
-idincall: dataxml.getNumber(i, "idincall"),
-datecall: dataxml.getString(i, "datecall"),
-idport: dataxml.getNumber(i, "idport"),
-idphone: dataxml.getNumber(i, "idphone"),
-idmodem: dataxml.getNumber(i, "idmodem"),
-callaction: dataxml.getNumber(i, "callaction"),
-phone: dataxml.getStringB64(i, "phone"),
-flag1: dataxml.getNumber(i, "flag1"),
-flag2: dataxml.getNumber(i, "flag2"),
-flag3: dataxml.getNumber(i, "flag3"),
-flag4: dataxml.getNumber(i, "flag4"),
-flag5: dataxml.getNumber(i, "flag5"),
-note: dataxml.getStringB64(i, "note"),
-};
-i++;
-}
-
-ItemFileReadStore_1.clearOnClose = true;
-	ItemFileReadStore_1.data = myData;
-	ItemFileReadStore_1.close();
-
-		GridCalls.store = null;
-		GridCalls.setStore(ItemFileReadStore_1);
-
-},
-onError: function(e){
-alert(e);
-}
-});
-
-}
 
      });
 });
