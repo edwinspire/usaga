@@ -39,15 +39,16 @@ t.menu_config_providers.on('Click', function(){
 window.open("usms_providers.html", '_self');
 });
 
+t.menu_call_in.on('Click', function(){
+window.open("usms_incomingcalls.html", '_self');
+});
 
 /*
 t.menu_contacts_edit.on('Click', function(){
 window.open("usms_contacts.html", '_self');
 });
 
-t.menu_call_in.on('Click', function(){
-window.open("usms_incomingcalls.html", '_self');
-});
+
 
 t.menu_locations.on('Click', function(){
 window.open("usms_locations.html", '_self');
