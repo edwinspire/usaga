@@ -30,11 +30,11 @@ window.open("usms_pg_conf.html", '_self');
 t.menu_config_ports.on('Click', function(){
 window.open("usms_ports_conf.html", '_self');
 });
-/*
-t.menu_system_status.on('Click', function(){
-window.open("usms_status.html", '_self');
-});
 
+t.menu_config_location.on('Click', function(){
+window.open("usms_locations.html", '_self');
+});
+/*
 t.menu_contacts_edit.on('Click', function(){
 window.open("usms_contacts.html", '_self');
 });
