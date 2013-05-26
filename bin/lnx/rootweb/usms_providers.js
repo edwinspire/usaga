@@ -26,6 +26,21 @@ require(["dojo/ready",
 var NotifyMSG = dijit.byId('notify');
 
 var gridxprovider = dijit.byId('gridxprovider');
+gridxprovider.selected = [];
+
+dijit.byId('id_dialog_delete').dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
+gridxprovider.delete();
+});
+
+var dNew = dijit.byId('id_dialog_new');
+dNew.byes.set('label', 'Aplicar');
+dNew.bno.set('label', 'Cancelar');
+dNew.innerHTML('jjjjjjjjjjjjjjjjjjjj');
+
+
+dNew.dijitOwner(dijit.byId('new'), 'Click').on('onok', function(){
+//gridxprovider.ApplyNotifyToSelection();
+});
 
 gridxprovider.on('onnotify', function(m){
 NotifyMSG.notify({message: m.msg});
@@ -35,8 +50,8 @@ NotifyMSG.notify({message: m.msg});
 
 		// Optionally change column structure on the grid
 		gridxprovider.setColumns([
+			{field:"unique_id", name: "#", width: '20px'},
 			{field:"enable", name: "*", width: '20px', editable: 'true'},
-			{field:"idprovider", name: "id", width: '20px'},
 			{field:"cimi", name: "cimi", editable: 'true'},
 			{field:"name", name: "Proveedor", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
@@ -44,8 +59,50 @@ NotifyMSG.notify({message: m.msg});
 gridxprovider.startup();
 }
 
+gridxprovider.delete = function(){
+if(gridxprovider.selected.length>0){
+
+   request.post('provider_delete.usms', {
+		data: {idproviders: gridxprovider.selected.toString()},
+            handleAs: "xml"
+        }).then(
+                function(response){
+
+var d = new RXml.getFromXhr(response, 'row');
+
+if(d.length > 0){
+gridxprovider.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
+}
+
+gridxprovider._Load();
+                },
+                function(error){
+                    // Display the error returned
+gridxprovider.emit('notify_message', {message: error}); 
+                }
+            );
+
+}else{
+NotifyArea.notify({message: 'No hay teléfonos seleccionados para aplicar los cambios'});
+}
+}
+
 dijit.byId('getdata').on('Click', function(){
 gridxprovider._Load();
+});
+
+dojo.connect(gridxprovider.select.row, 'onSelectionChange', function(selected){
+gridxprovider.selected = [];
+var numsel = selected.length;
+i = 0;
+while(i<numsel){
+// Aqui buscamos los datos desde el store y no desde la celda, agregamos el idphone al array
+gridxprovider.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+gridxprovider.selected[i] = gridxprovider.store.getValue(item, 'idprovider');
+} 
+});
+i++;
+}
 });
 
 
@@ -55,7 +112,7 @@ gridxprovider._Save(item);
 
 
 gridxprovider._Load= function(){
-
+gridxprovider.selected = [];
             // Request the text file
             request.get("viewprovidertable_xml.usms", {
             // Parse data from xml
@@ -69,7 +126,7 @@ numrows = d.length;
 if(numrows > 0){
 while(i<numrows){
 myData.items[i] = {
-unique_id:i,
+unique_id:i+1,
 idprovider: d.getNumber(i, "idprovider"),
 cimi: d.getStringFromB64(i, "cimi"),
 enable: d.getBool(i, "enable"),
@@ -81,8 +138,9 @@ i++;
 }
 }
 
+/*
 myData.items[i] = {
-unique_id:i,
+unique_id:i+1,
 idprovider: 0,
 cimi: '',
 enable: true,
@@ -90,6 +148,7 @@ name: '',
 note: '',
 ts: '1990-01-01'
 };
+*/
 
 ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
@@ -98,7 +157,7 @@ ItemFileWriteStore_1.clearOnClose = true;
 		gridxprovider.store = null;
 		gridxprovider.setStore(ItemFileWriteStore_1);
 
-gridxprovider.emit('onnotify', {msg: 'Se han cargado los datos'});
+//gridxprovider.emit('onnotify', {msg: 'Se han cargado los datos'});
 
                 },
                 function(error){
