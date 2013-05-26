@@ -28,7 +28,7 @@ var NotifyMSG = dijit.byId('notify');
 var gridxprovider = dijit.byId('gridxprovider');
 
 gridxprovider.on('onnotify', function(m){
-NotifyMSG.setText(m.msg);
+NotifyMSG.notify({message: m.msg});
 });
 
 	if (gridxprovider) {
@@ -50,7 +50,6 @@ gridxprovider._Load();
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-//alert('Edita '+ item.idnotiftempl);
 gridxprovider._Save(item);
 });
 
