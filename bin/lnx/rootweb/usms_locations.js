@@ -71,12 +71,13 @@ this.connect_onRowClick();
 this.connect_Menu();
 },
 this.connect_Menu = function(){
-this.wMenu.on('onClickDelete', function(){
-alert('Borrar');
+var t = this;
+t.wMenu.on('onclickdelete', function(e){
+t.delete();
 });
 
-this.wMenu.on('onClickSave', function(){
-alert('Cear');
+t.wMenu.on('onclicksave', function(e){
+t.save(e);
 });
 },
 this.connect_onSet = function(){
