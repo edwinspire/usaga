@@ -91,62 +91,75 @@ GridStore: usms_contacts_ItemFileReadStore,
 dijit: {
 Grid: dijit.byId("usms.contacts.gridx")
 },
-
-LoadGrid: function(){
-
-var store = new dojox.data.XmlStore({url: "usms_getcontactslistidcontactname_xml", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
-var i = 0;
-while(i<numrows){
-myData.items[i] = {
-unique_id:i,
-idcontact: dataxml.getNumber(i, "idcontact"),
-enable: dataxml.getBool(i, "enable"),
-name: dataxml.getStringFromB64(i, "name"),
-};
-i++;
 }
 
-GlobalObject.GridStore.clearOnClose = true;
-	GlobalObject.GridStore.data = myData;
-	GlobalObject.GridStore.close();
+var GridListContact = dijit.byId("usms.contacts.gridx");
 
-		GlobalObject.dijit.Grid.store = null;
-		GlobalObject.dijit.Grid.setStore(GlobalObject.GridStore);
-
-},
-onError: function(e){
-NotifyMSG.setText(e);
-}
-});
-}
-}
-
-
-	if (GlobalObject.dijit.Grid) {
+	if (GridListContact) {
 // Captura el evento cuando se hace click en una fila
-dojo.connect(GlobalObject.dijit.Grid, 'onRowClick', function(event){
+dojo.connect(GridListContact, 'onRowClick', function(event){
 GlobalObject.IdContact = this.cell(event.rowId, 1, true).data();
 CDWidget.set("IdContact", GlobalObject.IdContact);
 });
 		// Optionally change column structure on the grid
-		GlobalObject.dijit.Grid.setColumns([
-			{field:"idcontact", name: "id", width: '0px'},
+		GridListContact.setColumns([
 			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"name", name: "Nombre"},
 		]);
-GlobalObject.dijit.Grid.startup();
-GlobalObject.LoadGrid();
+GridListContact.startup();
 }
+
+GridListContact.Load = function(){
+var t = GridListContact;
+   request.get('getcontactslistidcontactname_xml.usms', {
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+numrows = d.length;
+
+var myData = {identifier: "unique_id", items: []};
+
+if(numrows > 0){
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id: i+1,
+idcontact: d.getNumber(i, "idcontact"),
+enable: d.getBool(i, "enable"),
+name: d.getStringFromB64(i, "name")
+};
+
+i++;
+}
+
+}
+
+t._setData(myData);
+
+                },
+                function(error){
+                    // Display the error returned
+console.log(error);
+t.emit('notify_message', {message: error}); 
+                }
+            );
+return t;
+}
+
+GridListContact._setData = function(data){
+usms_contacts_ItemFileReadStore.clearOnClose = true;
+	usms_contacts_ItemFileReadStore.data = data;
+	usms_contacts_ItemFileReadStore.close();
+		GridListContact.store = null;
+		GridListContact.setStore(usms_contacts_ItemFileReadStore);
+}
+
+GridListContact.Clear= function(){
+GridListContact._setData({identifier: "unique_id", items: []});
+}
+
 
 
 
@@ -212,7 +225,7 @@ CPDWidget.Load(GlobalObject.IdContact, this.cell(event.rowId, 2, true).data());
 GridContactPhone.startup();
 }
 
-
+/*
 
 ///////////////////////////
 ///// CONTACT ADDRESS /////
@@ -324,7 +337,8 @@ window.open(CAddress.AddressW.values().geourl,'_blank');
 ////////////////// FUNCIONES CARGAN AL INICIO //////////////////////////
 CAddress.LocationW._setLabels(namesLabelsLocations);
 PAddress.LocationW._setLabels(namesLabelsLocations);
-
+*/
+setTimeout(GridListContact.Load, 2000);
 
      });
 });
