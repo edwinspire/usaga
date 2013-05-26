@@ -40,6 +40,7 @@ var ObjectBase = function(l, g, s, wt, wm){
 this.wTitle = dijit.byId(wt);
 this.wMenu = dijit.byId(wm),
 this.id= 0,
+this.fk = 0,
 this.level = l,
 this.to_delete= [],
 this.Grid = dijit.byId(g),
@@ -77,7 +78,9 @@ t.delete();
 });
 
 t.wMenu.on('onclicksave', function(e){
-t.save(e);
+var item = e;
+item.idfk = this.fk;
+t.save(item);
 });
 },
 this.connect_onSet = function(){
@@ -256,6 +259,7 @@ L3.onLoad();
 }
 L2.onLoad = function(){
 var t = L2;
+t.fk = L1.id;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
@@ -265,7 +269,7 @@ var myData = {identifier: "unique_id", items: []};
 if(L1.id > 0){
             // Request the text file
             request.get("fun_view_location_level_xml.usms", {
-	query: {idfk: L1.id, level: t.level},
+	query: {idfk: t.fk, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -335,6 +339,7 @@ L4.onLoad();
 }
 L3.onLoad = function(){
 var t = L3;
+t.fk = L2.id;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
@@ -344,7 +349,7 @@ var myData = {identifier: "unique_id", items: []};
 if(L2.id > 0){
             // Request the text file
             request.get("fun_view_location_level_xml.usms", {
-	query: {idfk: L2.id, level: t.level},
+	query: {idfk: t.fk, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -413,6 +418,7 @@ L5.onLoad();
 }
 L4.onLoad = function(){
 var t = L4;
+t.fk = L3.id;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
@@ -422,7 +428,7 @@ var myData = {identifier: "unique_id", items: []};
 if(L3.id > 0){
             // Request the text file
             request.get("fun_view_location_level_xml.usms", {
-	query: {idfk: L3.id, level: t.level},
+	query: {idfk: t.fk, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -490,6 +496,7 @@ L6.onLoad();
 }
 L5.onLoad = function(){
 var t = L5;
+t.fk = L4.id;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
@@ -499,7 +506,7 @@ var myData = {identifier: "unique_id", items: []};
 if(L4.id > 0){
             // Request the text file
             request.get("fun_view_location_level_xml.usms", {
-	query: {idfk: L4.id, level: t.level},
+	query: {idfk: t.fk, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -570,6 +577,7 @@ L6.onRowClick = function(){
 }
 L6.onLoad = function(){
 var t = L6;
+t.fk = L5.id;
 t.id = 0;
 t.to_delete = [];
 t.setHeaderLabel('---');
@@ -578,7 +586,7 @@ var myData = {identifier: "unique_id", items: []};
 if(L5.id > 0){
             // Request the text file
             request.get("fun_view_location_level_xml.usms", {
-	query: {idfk: L5.id, level: t.level},
+	query: {idfk: t.fk, level: t.level},
             // Parse data from xml
             handleAs: "xml"
         }).then(
