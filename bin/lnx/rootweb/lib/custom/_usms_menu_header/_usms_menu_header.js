@@ -34,6 +34,12 @@ window.open("usms_ports_conf.html", '_self');
 t.menu_config_location.on('Click', function(){
 window.open("usms_locations.html", '_self');
 });
+
+t.menu_config_providers.on('Click', function(){
+window.open("usms_providers.html", '_self');
+});
+
+
 /*
 t.menu_contacts_edit.on('Click', function(){
 window.open("usms_contacts.html", '_self');

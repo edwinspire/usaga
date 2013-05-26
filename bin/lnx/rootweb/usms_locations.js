@@ -31,6 +31,7 @@ L5: 'Nivel 5: ',
 L6: 'Nivel 6: '
 }
 
+ dijit.byId('id_titlebar').set('label', 'Localización');
 var NotifyArea = dijit.byId('id_notify_area');  
 
 //menuL1._addButtonLoad();
