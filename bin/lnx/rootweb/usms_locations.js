@@ -31,6 +31,8 @@ L5: 'Nivel 5: ',
 L6: 'Nivel 6: '
 }
 
+var NotifyArea = dijit.byId('id_notify_area');  
+
 //menuL1._addButtonLoad();
 
          // logic that requires that Dojo is fully initialized should go here
@@ -63,7 +65,7 @@ var myData = {identifier: "unique_id", items: []};
 this.setDataGrid(myData);
 },
 this.onLoad = function(){
-alert('No implementado');
+NotifyArea.notify({message: 'onLoad: Función no implementada'});
 },
 this.connect_all = function(){
 this.connect_onSelectionToDelete();
@@ -108,7 +110,7 @@ i++;
 });
 },
 this.onRowClick = function(){
-alert('onRowClick no implementado');
+NotifyArea.notify({message: 'onRowClick: Función no implementada'});
 },
 this.connect_onRowClick = function(){
 var t = this;
@@ -134,12 +136,12 @@ data: d,
 var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
 t.onLoad();
 }, function(error){
 t.onLoad();
-alert(error);
+NotifyArea.notify({message: error});
 });
 
 },
@@ -153,12 +155,12 @@ data: {ids: t.to_delete.toString(), level: t.level},
 var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
-alert(xmld.getStringFromB64(0, 'outpgmsg'));
+NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
 t.onLoad();
 }, function(error){
 t.onLoad();
-alert(error);
+NotifyArea.notify({message: error});
 });
 
 }
@@ -216,7 +218,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 
@@ -295,7 +297,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 }else{
@@ -375,7 +377,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 }else{
@@ -454,7 +456,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 }else{
@@ -532,7 +534,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 }else{
@@ -612,7 +614,7 @@ t.setDataGrid(myData);
                 },
                 function(error){
                     // Display the error returned
-alert(error);
+NotifyArea.notify({message: error});
                 }
             );
 }else{
