@@ -153,8 +153,6 @@ alert(error);
 
 
 //Construimos el objeto con todas las funciones necesarias
-
-
 var menuL1 = dijit.byId('id_menu_L1');
 
 var L1 = new ObjectBase(1, 'GridL1', StoreL1, 'labL1');
@@ -230,7 +228,7 @@ L1.onLoad();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Construimos el objeto con todas las funciones necesarias
+//Construimos el objeto con todas las funciones necesarias 2
 var L2 = new ObjectBase(2, 'GridL2', StoreL2, 'labL2');
 if(L2.Grid){
 		L2.Grid.setColumns([
