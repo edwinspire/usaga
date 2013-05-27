@@ -69,7 +69,6 @@ require([
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
-
 </style>
 <script type="text/javascript" src="usms_contacts.js"></script>
 </head>
@@ -80,55 +79,41 @@ require([
  <div data-dojo-type="_usms_menu_header/_usms_menu_header"></div>
 <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_titlebar_master"></div>
 <div style="width: 100%; height: 90%;">
-   <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
-     <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" doLayout="false" style="width:147px;">
+   <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+     <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" doLayout="false" style="width:147px;">
       <div style="width: 100%; height: 100%;">
-       <div style="width: 100%; height: 90%;"><span data-dojo-type="dojo.data.ItemFileWriteStore" id="ItemFileReadStore_2" jsId="usms_contacts_ItemFileReadStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+       <div style="width: 100%; height: 90%;"><span data-dojo-type="dojo/data/ItemFileWriteStore" id="ItemFileReadStore_2" jsId="usms_contacts_ItemFileReadStore" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
 <div data-dojo-type="_common_titlebar/_common_titlebar" id="id_titlebar_gridx_contacts"></div>
 <table data-dojo-type="gridx.Grid" id="usms.contacts.gridx" title="Lista de todos los contactos registrados" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'enable',field:'enable'},{width:'auto',name:'title',field:'title'},{width:'auto',name:'name',field:'name'},{width:'auto',name:'note',field:'note'}], modules:['gridx/modules/Edit', 'gridx/modules/CellWidget'], store:usms_contacts_ItemFileReadStore"></table>
 </div>
      </div>
     </div>
-     <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
-      <div style="width: 100%; height: 100%;"><div style="width: 100%; height: 98%;"><span data-dojo-type="dijit.layout.TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
-<div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false">
- <div data-dojo-type="_usms_contact_data/_usms_contact_data" id="ContactData"></div>
-</div>
- <div data-dojo-type="dijit.layout.ContentPane" title="Direccion" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" closable="false">
-   <div style="width: 100%; height: 100%;">
-     <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.address" title="Guarda la direccion del contacto" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" id="usms.delete.contact.address" title="Elimina la dirección del contact" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-     <input type="button" data-dojo-type="dijit.form.Button" id="usms.map.contact.address" tabIndex="-1" intermediateChanges="false" label="Mapa" iconClass="dijitNoIcon"></input>
-     </span>
-     <div data-dojo-type="_usms_location_address/_usms_location_address" id="idwlocationcontact"></div>
-   </div>
+     <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
+      <div style="width: 100%; height: 100%;"><div style="width: 100%; height: 98%;"><span data-dojo-type="dijit/layout/TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" controllerWidget="dijit.layout.TabController">
+<div data-dojo-type="dijit/layout/ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false">
+   <div data-dojo-type="_usms_contact_data/_usms_contact_data" id="ContactData"></div>
  </div>
- <div data-dojo-type="dijit.layout.ContentPane" title="Tel&amp;eacute;fonos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false">
+ <div data-dojo-type="dijit/layout/ContentPane" title="Direccion" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" closable="false">
+            <div style="width: 100%; height: 100%"><div data-dojo-type="_usms_location_address/_usms_location_address" id="idwlocationcontact"></div></div>
+</div>
+ <div data-dojo-type="dijit/layout/ContentPane" title="Tel&amp;eacute;fonos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false">
    <div style="width: 100%; height: 100%;">
-     <div data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
-       <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 178px;">
+     <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+       <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 178px;">
          <div style="width: 100%; height: 100%;">
            <span data-dojo-type="dojo.data.ItemFileReadStore" id="ItemFileReadStore_3" jsId="ItemFileReadStore_contactphones" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
            <table data-dojo-type="gridx.Grid" id="usms.contact.phone.grid" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'}], modules:['gridx/modules/Edit', 'gridx/modules/CellWidget'],store:ItemFileReadStore_contactphones"></table>
          </div>
        </div>
-       <div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
+       <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
          <div style="width: 100%; height: 100%;">
-           <span data-dojo-type="dijit.layout.TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;">
-<div data-dojo-type="dijit.layout.ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
- <div data-dojo-type="_usms_contact_phone_data/_usms_contact_phone_data" id="PhoneData"></div>
-</div>
-           <div data-dojo-type="dijit.layout.ContentPane" title="Direcci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
-             <span data-dojo-type="dijit.Toolbar">
-<input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.saveaddresstelf" title="Guardar" tabIndex="-1" intermediateChanges="false" label="Guardar" iconClass="dijitIconSave"></input>
-             <input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.deladdresstelf" title="Eliminar" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
-             <input type="button" data-dojo-type="dijit.form.Button" id="usms.save.contact.maptelf" title="Mostrar en Google-Maps" tabIndex="-1" intermediateChanges="false" label="Mapa"></input>
-             </span>
-             <div style="width: 100%; height: 100%;">
-               <div data-dojo-type="_usms_location_address/_usms_location_address" id="idwlocationtelf"></div>
-             </div>
+           <span data-dojo-type="dijit/layout/TabContainer" tabStrip="false" persist="false" controllerWidget="dijit.layout.TabController" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;">
+<div data-dojo-type="dijit/layout/ContentPane" title="Datos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
+             <div data-dojo-type="_usms_contact_phone_data/_usms_contact_phone_data" id="PhoneData"></div>
            </div>
+           <div data-dojo-type="dijit/layout/ContentPane" title="Direcci&amp;oacute;n" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
+            <div data-dojo-type="_usms_location_address/_usms_location_address" id="idwlocationtelf" style="width: 100%; height: 100%;"></div>
+          </div>
            </span>
          </div>
        </div>
@@ -147,6 +132,7 @@ require([
  <div id="notify" data-dojo-type="_common_notification_area/_common_notification_area" style="display: block !important;"></div>
 </body>
 </html>
+
 
 
 

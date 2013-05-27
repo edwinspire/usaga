@@ -8,6 +8,7 @@ define(['dojo/_base/declare',
        widgetsInTemplate:true,
        templateString:templateString,
 postCreate: function(){
+
 var t = this;
 t.titleaddress.set('label', 'Dirección');
 t.titlelocation.set('label', 'Localización');
@@ -27,6 +28,8 @@ t.emit('notify_message', m)
 });
 
 t.location.set('location', 0);
+t.tab.startup();
+//t.tab.layout();
 },
 _setIdaddressAttr: function(id){
 this.address.set('idaddress', id);
@@ -34,6 +37,13 @@ this.address.set('idaddress', id);
 save: function(){
 this.address.idlocation = this.location.get('location');
 this.address.save();
-}   
+},
+delete: function(){
+this.address.delete();
+}
+
+
+
+   
 });
 });

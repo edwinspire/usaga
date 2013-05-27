@@ -31,9 +31,9 @@ using edwinspire.uHttp;
 
 namespace edwinspire.uSAGA{
 
-public class uSagaServer:GLib.Object{
+public class uSagaServer:uSMSServer{
 
-private uHttpServer S = new uHttpServer ();
+//private uSMSServer S = new uSMSServer ();
 
 //private ArrayList<Device> Dispositivos = new ArrayList<Device>();
 //private  HashSet<string> PuertosUnicos = new HashSet<string>();
@@ -48,62 +48,64 @@ print("Contact: edwinspire@gmail.com\n");
 //S.Port = 8081;
 
 //S.Index = "usaga.html";
-S.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
-S.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
-S.VirtualUrl["fun_view_idaccounts_names_xml.usaga"] = "/fun_view_idaccounts_names_xml.usaga"; 
-S.VirtualUrl["fun_view_account_users_xml.usaga"] = "/fun_view_account_users_xml.usaga";
+this.VirtualUrl["getaccount.usaga"] = "/getaccount.usaga";
+this.VirtualUrl["saveaccount.usaga"] = "/saveaccount.usaga";
+this.VirtualUrl["fun_view_idaccounts_names_xml.usaga"] = "/fun_view_idaccounts_names_xml.usaga"; 
+this.VirtualUrl["fun_view_account_users_xml.usaga"] = "/fun_view_account_users_xml.usaga";
 //S.VirtualUrl["usmsgetcontactsvaluesselectbox"] = "/usmsgetcontactsvaluesselectbox";  
-S.VirtualUrl["fun_view_account_user_byidaccountidcontact_xml.usaga"] = "/fun_view_account_user_byidaccountidcontact_xml.usaga";
-S.VirtualUrl["fun_account_users_table_xml_from_hashmap.usaga"] = "/fun_account_users_table_xml_from_hashmap.usaga";
-S.VirtualUrl["usaga_geteventsmonitor.usaga"] = "/usaga_geteventsmonitor.usaga";       
+this.VirtualUrl["fun_view_account_user_byidaccountidcontact_xml.usaga"] = "/fun_view_account_user_byidaccountidcontact_xml.usaga";
+this.VirtualUrl["fun_account_users_table_xml_from_hashmap.usaga"] = "/fun_account_users_table_xml_from_hashmap.usaga";
+this.VirtualUrl["usaga_geteventsmonitor.usaga"] = "/usaga_geteventsmonitor.usaga";       
 //S.VirtualUrl["opensagaaddaccountuser"] = "/opensagaaddaccountuser";
 //S.VirtualUrl["getaccountlocation.usaga"] = "/getaccountlocation.usaga";
 //S.VirtualUrl["saveaccountlocation.usaga"] = "/saveaccountlocation.usaga";
-S.VirtualUrl["getaccountphonestriggerview.usaga"] = "/getaccountphonestriggerview.usaga";
-S.VirtualUrl["fun_account_phones_trigger_alarm_table_from_hashmap.usaga"] = "/fun_account_phones_trigger_alarm_table_from_hashmap.usaga";
-S.VirtualUrl["getaccountcontactsgrid.usaga"] = "/getaccountcontactsgrid.usaga";
-S.VirtualUrl["getaccountphonesnotifgrid.usaga"] = "/getaccountphonesnotifgrid.usaga";
-S.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
-S.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnotifeventtypegrid.usaga";
+this.VirtualUrl["getaccountphonestriggerview.usaga"] = "/getaccountphonestriggerview.usaga";
+this.VirtualUrl["fun_account_phones_trigger_alarm_table_from_hashmap.usaga"] = "/fun_account_phones_trigger_alarm_table_from_hashmap.usaga";
+this.VirtualUrl["getaccountcontactsgrid.usaga"] = "/getaccountcontactsgrid.usaga";
+this.VirtualUrl["getaccountphonesnotifgrid.usaga"] = "/getaccountphonesnotifgrid.usaga";
+this.VirtualUrl["getaccountcontact.usaga"] = "/getaccountcontact.usaga";
+this.VirtualUrl["getaccountphonesnotifeventtypegrid.usaga"] = "/getaccountphonesnotifeventtypegrid.usaga";
 
 //TODO: Eliminar esta pagina virtual, se la mantiene solo por compatibilidad con la version anterior.
-S.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
+this.VirtualUrl["getaccountcontactstable.usaga"] = "/getaccountcontactstable.usaga";
 
-S.VirtualUrl["fun_account_contacts_table.usaga"] = "/fun_account_contacts_table.usaga";
-S.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
-S.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
-S.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
+this.VirtualUrl["fun_account_contacts_table.usaga"] = "/fun_account_contacts_table.usaga";
+this.VirtualUrl["getaccountnotificationstable.usaga"] = "/getaccountnotificationstable.usaga";
+this.VirtualUrl["getviewnotificationtemplates.usaga"] = "/getviewnotificationtemplates.usaga";
+this.VirtualUrl["notificationtemplatesedit.usaga"] = "/notificationtemplatesedit.usaga";
 
-S.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usaga";
-S.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
-S.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
+this.VirtualUrl["notifyeditselectedphones.usaga"] = "/notifyeditselectedphones.usaga";
+this.VirtualUrl["geteventsaccount.usaga"] = "/geteventsaccount.usaga";
+this.VirtualUrl["lastidevent.usaga"] = "/lastidevent.usaga";
 
-S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
-S.VirtualUrl["fun_account_address_edit_xml.usaga"] = "/fun_account_address_edit_xml.usaga";
-S.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
+this.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
+this.VirtualUrl["fun_account_address_edit_xml.usaga"] = "/fun_account_address_edit_xml.usaga";
+this.VirtualUrl["fun_view_eventtypes_xml.usaga"] = "/fun_view_eventtypes_xml.usaga";
 
-S.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga";
-S.VirtualUrl["fun_view_groups_xml.usaga"] = "/fun_view_groups_xml.usaga";
-S.VirtualUrl["fun_groups_edit_xml_from_hashmap.usaga"] = "/fun_groups_edit_xml_from_hashmap.usaga";
-S.VirtualUrl["fun_groups_remove_selected_xml.usaga"] = "/fun_groups_remove_selected_xml.usaga";
-S.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.usaga";
-S.VirtualUrl["fun_view_account_unregistered_contacts_xml.usaga"] = "/fun_view_account_unregistered_contacts_xml.usaga";
-S.VirtualUrl["usaga_account_map.usaga"] = "/usaga_account_map.usaga";
-S.VirtualUrl["fun_view_account_location_byid_xml.usaga"] = "/fun_view_account_location_byid_xml.usaga";
-S.VirtualUrl["fun_view_account_unregistered_users_xml.usaga"] = "/fun_view_account_unregistered_users_xml.usaga";
+this.VirtualUrl["fun_eventtypes_edit_xml.usaga"] = "/fun_eventtypes_edit_xml.usaga";
+this.VirtualUrl["fun_view_groups_xml.usaga"] = "/fun_view_groups_xml.usaga";
+this.VirtualUrl["fun_groups_edit_xml_from_hashmap.usaga"] = "/fun_groups_edit_xml_from_hashmap.usaga";
+this.VirtualUrl["fun_groups_remove_selected_xml.usaga"] = "/fun_groups_remove_selected_xml.usaga";
+this.VirtualUrl["fun_view_idgroup_name_xml.usaga"] = "/fun_view_idgroup_name_xml.usaga";
+this.VirtualUrl["fun_view_account_unregistered_contacts_xml.usaga"] = "/fun_view_account_unregistered_contacts_xml.usaga";
+this.VirtualUrl["usaga_account_map.usaga"] = "/usaga_account_map.usaga";
+this.VirtualUrl["fun_view_account_location_byid_xml.usaga"] = "/fun_view_account_location_byid_xml.usaga";
+this.VirtualUrl["fun_view_account_unregistered_users_xml.usaga"] = "/fun_view_account_unregistered_users_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
 
-foreach(var u in uSMSServer.VirtualUrls().entries){
+/*
+foreach(var u in S.VirtualUrls().entries){
 S.VirtualUrl[u.key] = u.value;
 }
+*/
  
-S.RequestVirtualUrl.connect(RequestVirtualPageHandler);
+//S.RequestVirtualUrl.connect(RequestVirtualPageHandler);
 
 }
 
 
-public void RequestVirtualPageHandler(uHttpServer server, Request request, DataOutputStream dos){
+public new void RequestVirtualPageHandler(uHttpServer server, Request request, DataOutputStream dos){
 
     uHttp.Response response = new uHttp.Response();
 //print("request.Path =>>>> %s\n", request.Path);
@@ -232,7 +234,7 @@ response = response_fun_view_account_location_byid_xml(request);
 break;
 
 default:
-response = uSMSServer.ResponseToVirtualRequest(request);
+response = this.ResponseToVirtualRequest(request);
 break;
 }
 
@@ -706,7 +708,7 @@ if(request.Query.has_key("idaccount")){
 idaccount = int.parse(request.Query["idaccount"]); 
 }
 
-var retornoHtml = uHttpServer.ReadFile(S.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
+var retornoHtml = uHttpServer.ReadFile(this.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
 
 Retorno.Data = retornoHtml.data;
 return Retorno;
@@ -791,7 +793,7 @@ return Retorno;
 }
 
 // Inicia y corre el servidor asincronicamente
-public void Run(){
+public void RunuSAGA(){
 
 uSagaProcessData Pro = new uSagaProcessData();
 
@@ -802,7 +804,7 @@ catch(ThreadError e){
 print(e.message);
 }
 
-    S.run();
+    this.Run();
 }
 
 

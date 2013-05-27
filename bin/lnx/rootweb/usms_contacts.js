@@ -38,11 +38,31 @@ var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4:
 var GridListContact = dijit.byId("usms.contacts.gridx");
 var NotifyMSG = dijit.byId('notify');
 
+var CLocation = dijit.byId('idwlocationcontact');
+CLocation.on('notify_message', function(e){
+CNotifyMSG.notify({message: e});
+});
+CLocation.on('onsave', function(e){
+if(e.idaddress != CDWidget.get('idaddress')){
+CDWidget.set('idaddress', e.idaddress);
+}
+});
+
+var CPLocation = dijit.byId('idwlocationtelf');
+CPLocation.on('notify_message', function(e){
+CNotifyMSG.notify({message: e});
+});
+CPLocation.on('onsave', function(e){
+if(e.idaddress != CPDWidget.get('idaddress')){
+CPDWidget.set('idaddress', e.idaddress);
+}
+});
 
 
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
 GridContactPhone.Load();
+CLocation.set('idaddress', data.idaddress);
 //CAddress.AddressW.idaddress = data.idaddress;
 //CAddress.AddressW.load(CAddress.AddressW.idaddress);
 
@@ -64,9 +84,10 @@ GridListContact.Load();
 
 var CPDWidget = dijit.byId('PhoneData');
 CPDWidget.on('onnotify', function(e){
-NotifyMSG.notify({message: e.msg});
+CNotifyMSG.notify({message: e.msg});
 });
 CPDWidget.on('onloadphone', function(data){
+CPLocation.set('idaddress', data.idaddress);
 //PAddress.AddressW.idaddress = data.idaddress;
 //PAddress.AddressW.load(PAddress.AddressW.idaddress);
 });
@@ -356,6 +377,9 @@ window.open(CAddress.AddressW.values().geourl,'_blank');
 CAddress.LocationW._setLabels(namesLabelsLocations);
 PAddress.LocationW._setLabels(namesLabelsLocations);
 */
+
+//dojo.forEach(myapp.getChildren(), function (child) { child.resize(); });
+
 setTimeout(GridListContact.Load, 2000);
 
      });

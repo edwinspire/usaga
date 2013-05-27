@@ -21,6 +21,14 @@ t._ts = "1990-01-01";
 t._idaddress = 0;
 t.Formulario.reset();
 },
+_setIdaddressAttr: function(id){
+var t = this;
+t._idaddress;
+t._Save();
+},
+_getIdaddressAttr: function(){
+return this._idaddress;
+},
 postCreate: function(){
 var t = this;
 

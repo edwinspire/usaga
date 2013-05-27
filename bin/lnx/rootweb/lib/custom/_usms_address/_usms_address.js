@@ -167,12 +167,12 @@ numrows = d.length;
 
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
-t.load(t.idaddress);
 t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
 
+t.load(t.idaddress);
 //t.emit('onloaddata', t.values());
                 },
                 function(error){
