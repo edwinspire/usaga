@@ -4,8 +4,9 @@ define(['dojo/_base/declare',
 'dojo/text!_usms_contact_data/_usms_contact_data.html',
 'dojo/request', 'jspire/request/Xml', 
 'jspire/form/DateTextBox',
-'_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation'
-],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox){
+'jspire/form/FilteringSelect',
+'dojo/dom-style'
+],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox, jsFS, domStyle){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -24,6 +25,26 @@ postCreate: function(){
 var t = this;
 
 DTBox.addGetDateFunction(t.Birthday);
+jsFS.addXmlLoader(t.id_contact_search, "getcontactslistidcontactname_xml.usms", "row", {}, "idcontact", "name");
+
+var bBuscar = t.menubar.addButton('Buscar', '');
+bBuscar.on('Click', function(){
+t._onSearch(true);
+t._id = 0;
+t._Load();
+t.id_contact_search.reset();
+t.id_contact_search.Load();
+});
+
+t.id_contact_search.on('Change', function(){
+id = t.id_contact_search.get('value');
+if(id>0){
+t._onSearch(false);
+t.set('idcontact', id);
+}
+
+});
+
 
 t.menubar.on('ondelete', function(){
 t._Delete();
@@ -42,6 +63,14 @@ t._Save();
 
 
 
+},
+_onSearch: function(show){
+var t = this;
+if(show){
+domStyle.set(t.id_contact_search.domNode, "display", "block");
+}else{
+domStyle.set(t.id_contact_search.domNode, "display", "none");
+}
 },
 _setIdcontactAttr: function(id){
 this._id = id;
