@@ -1,6 +1,6 @@
 <div>
-<div data-dojo-type="_common_basic_menubar/_common_basic_menubar" id="id_menubar"></div>
-<div data-dojo-type="dijit.form.Form" data-dojo-attach-point="Formulario" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
+<div data-dojo-type="_common_basic_menubar/_common_basic_menubar" data-dojo-attach-point="menubar"></div>
+<div data-dojo-type="dijit/form/Form" data-dojo-attach-point="Formulario" style="min-width: 1em; min-height: 1em; width: 100%; height: auto;">
   <div style="margin: 2px;">
     <span style="margin: 5px;"><label data-dojo-attach-point="label_12" style="margin: 2px;">
       Habilitado:</label>
@@ -37,13 +37,9 @@
     </select>
     </span><span style="margin: 2px;"><label style="margin: 2px;">
 Proveedor:</label>
-<select data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="Provider" value="Item 1" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
-  <option value="Item 1">
-    Item 1</option>
-  <option value="Item 2">
-    Item 2</option>
-  <option value="Item 3">
-    Item 3</option>
+<select data-dojo-type="dijit/form/FilteringSelect" data-dojo-attach-point="Provider" value="0" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" pageSize="Infinity" searchDelay="200">
+  <option value="0">
+    Ninguno</option>
 </select>
 </span>
     <div style="padding: 3px;">

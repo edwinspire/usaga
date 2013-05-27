@@ -44,7 +44,6 @@ var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
 GridContactPhone.Load();
 //CAddress.AddressW.idaddress = data.idaddress;
-
 //CAddress.AddressW.load(CAddress.AddressW.idaddress);
 
 
@@ -166,66 +165,83 @@ GridListContact._setData({identifier: "unique_id", items: []});
 
 
 var GridContactPhone = dijit.byId('usms.contact.phone.grid');
-GridContactPhone.Load = function(resetPhoneData){
-// Esto sirve para no resetear los datos de telefonos cuando se ha realizado una actualizacion de un telefono pero que los cambios se reflejen en la tabla
-if(!resetPhoneData){
-CPDWidget.reset();
-}
-
-CPDWidget._idcontact = GlobalObject.IdContact;
-
-var store = new dojox.data.XmlStore({url: "usms_simplifiedviewofphonesbyidcontact_xml", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {idcontact: GlobalObject.IdContact}, onComplete: function(itemsrow, r){
-
-var dataxml = new RXml.getFromXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
-var myData = {identifier: "unique_id", items: []};
-myData.identifier = "unique_id";
-
-var i = 0;
-while(i<numrows){
-myData.items[i] = {
-unique_id:i,
-idcontact: dataxml.getNumber(i, "idcontact"),
-idphone: dataxml.getNumber(i, "idphone"),
-enable: dataxml.getBool(i, "enable"),
-phone: dataxml.getStringFromB64(i, "phone"),
-};
-i++;
-}
-
-ItemFileReadStore_contactphones.clearOnClose = true;
-	ItemFileReadStore_contactphones.data = myData;
-	ItemFileReadStore_contactphones.close();
-
-		GridContactPhone.store = null;
-		GridContactPhone.setStore(ItemFileReadStore_contactphones);
-
-},
-onError: function(e){
-NotifyMSG.notify({message: e});
-}
-});
-}
-
 
 	if (GridContactPhone) {
 // Captura el evento cuando se hace click en una fila
 dojo.connect(GridContactPhone, 'onRowClick', function(event){
-CPDWidget.Load(GlobalObject.IdContact, this.cell(event.rowId, 2, true).data());
+var t = GridContactPhone;
+var d = this.cell(event.rowId, 1, true).data();
+t.store.fetch({query: {unique_id: d}, onItem: function(item){
+CPDWidget.Load(CDWidget.get("idcontact"), t.store.getValue(item, 'idphone'));
+}});
+
+
 });
 		// Optionally change column structure on the grid
 		GridContactPhone.setColumns([
-			{field:"idcontact", name: "idc", width: '0px'},
-			{field:"idphone", name: "idp", width: '0px'},
-			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			//{field:"idcontact", name: "idc", width: '0px'},
+			{field:"unique_id", name: "#", width: '25px'},
+			{field:"enable", name: "*", width: '20px', editable: true, editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"phone", name: "Teléfono"},
 		]);
 GridContactPhone.startup();
 }
+
+GridContactPhone._setData = function(data){
+ItemFileReadStore_contactphones.clearOnClose = true;
+	ItemFileReadStore_contactphones.data = data;
+	ItemFileReadStore_contactphones.close();
+		GridContactPhone.store = null;
+		GridContactPhone.setStore(ItemFileReadStore_contactphones);
+}
+
+GridContactPhone.Clear= function(){
+GridContactPhone._setData({identifier: "unique_id", items: []});
+}
+
+
+GridContactPhone.Load = function(){
+var t = GridContactPhone;
+   request.get('simplifiedviewofphonesbyidcontact_xml.usms', {
+	query: {idcontact: CDWidget.get("idcontact")},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+numrows = d.length;
+
+var myData = {identifier: "unique_id", items: []};
+
+if(numrows > 0){
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id: i+1,
+idcontact: d.getNumber(i, "idcontact"),
+idphone: d.getNumber(i, "idphone"),
+enable: d.getBool(i, "enable"),
+phone: d.getStringFromB64(i, "phone")
+};
+
+i++;
+}
+
+}
+
+t._setData(myData);
+
+                },
+                function(error){
+                    // Display the error returned
+console.log(error);
+t.emit('notify_message', {message: error}); 
+                }
+            );
+return t;
+}
+
+
+
 
 /*
 
@@ -253,7 +269,7 @@ CAddress.LocationW.setLocation(d.idlocation)
 
 
 dojo.connect(dojo.byId('usms.save.contact.address'), 'onclick', function(){
-if(GlobalObject.IdContact){
+if(CDWidget.get("idcontact")){
 CAddress.AddressW.idlocation = CAddress.LocationW.getLocation();
 CAddress.AddressW.save();
 }
@@ -307,7 +323,7 @@ NotifyMSG.notify({message: error);
 
 
 dojo.connect(dojo.byId('usms.save.contact.saveaddresstelf'), 'onclick', function(){
-if(GlobalObject.IdContact){
+if(CDWidget.get("idcontact")){
 PAddress.AddressW.idlocation = PAddress.LocationW.getLocation();
 PAddress.AddressW.save();
 }
