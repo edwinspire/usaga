@@ -35,7 +35,7 @@ var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4:
 /////////////////
 ///// BASIC /////
 // Account basic elements
-
+var GridListContact = dijit.byId("usms.contacts.gridx");
 var NotifyMSG = dijit.byId('notify');
 
 
@@ -43,36 +43,33 @@ var NotifyMSG = dijit.byId('notify');
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
 GridContactPhone.Load();
-GlobalObject.IdContact = data.idcontact;
-CAddress.AddressW.idaddress = data.idaddress;
+//CAddress.AddressW.idaddress = data.idaddress;
 
-CAddress.AddressW.load(CAddress.AddressW.idaddress);
+//CAddress.AddressW.load(CAddress.AddressW.idaddress);
 
 
 });
 
 CDWidget.on('onnotify', function(e){
-NotifyMSG.setText(e.msg);
+NotifyMSG.notify({message: e.msg});
 });
 
 CDWidget.on('onsavecontact', function(data){
-GlobalObject.LoadGrid();
-GlobalObject.IdContact = data.idcontact;
+GridListContact.Load();
 });
 
 CDWidget.on('ondeletecontact', function(data){
-GlobalObject.LoadGrid();
-GlobalObject.IdContact = data.idcontact;
+GridListContact.Load();
 });
 
 
 var CPDWidget = dijit.byId('PhoneData');
 CPDWidget.on('onnotify', function(e){
-NotifyMSG.setText(e.msg);
+NotifyMSG.notify({message: e.msg});
 });
 CPDWidget.on('onloadphone', function(data){
-PAddress.AddressW.idaddress = data.idaddress;
-PAddress.AddressW.load(PAddress.AddressW.idaddress);
+//PAddress.AddressW.idaddress = data.idaddress;
+//PAddress.AddressW.load(PAddress.AddressW.idaddress);
 });
 CPDWidget.on('onsavephone', function(data){
 GridContactPhone.Load(true);
@@ -93,7 +90,6 @@ Grid: dijit.byId("usms.contacts.gridx")
 },
 }
 
-var GridListContact = dijit.byId("usms.contacts.gridx");
 
 	if (GridListContact) {
 
@@ -210,7 +206,7 @@ ItemFileReadStore_contactphones.clearOnClose = true;
 
 },
 onError: function(e){
-NotifyMSG.setText(e);
+NotifyMSG.notify({message: e});
 }
 });
 }
@@ -242,7 +238,7 @@ LocationW : dijit.byId('idwlocationcontact')
 } 
 
 CAddress.AddressW.on('onnotify', function(e){
-NotifyMSG.setText(e.msg);
+NotifyMSG.notify({message: e.msg);
 });
 
 CAddress.AddressW.on('onsavedata', function(d){
@@ -292,7 +288,7 @@ numrows = d.length;
 if(d.length > 0){
 t.idaddress = d.getInt(0, 'outreturn');
 t.load(t.idaddress);
-NotifyMSG.setText(d.getStringFromB64(0, 'outpgmsg'));
+NotifyMSG.notify({message: d.getStringFromB64(0, 'outpgmsg')});
 }else{
 t.reset();
 }
@@ -302,7 +298,7 @@ t.reset();
                     // Display the error returned
 t.reset();
 //t.emit('onloaddata', t.values());
-NotifyMSG.setText(error);
+NotifyMSG.notify({message: error);
                 }
             );
 
