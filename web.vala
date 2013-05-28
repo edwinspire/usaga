@@ -106,137 +106,168 @@ public override bool connection_handler_virtual_usms(Request request, DataOutput
 switch(request.Path){
 case  "/getaccount.usaga":
 response = ResponseGetAccount(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case  "/saveaccount.usaga":
 response = ResponseAccountSaveTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_view_idaccounts_names_xml.usaga":
 response = ResponseAccountsNamesToSelectBox(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_view_account_users_xml.usaga":
 response = request_fun_view_account_users_xml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_view_account_user_byidaccountidcontact_xml.usaga":
 response = request_fun_view_account_user_byidaccountidcontact_xml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_account_users_table_xml_from_hashmap.usaga":
 response = fun_account_users_table_xml_from_hashmap(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/usaga_geteventsmonitor.usaga":
 response = ResponseGetEventsMonitor(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/opensagaaddaccountuser":
 response = ResponseAccountUserAddTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_view_account_unregistered_contacts_xml.usaga":
 response = request_fun_view_account_unregistered_contacts_xml(request);
-break;
+    this.serve_response( response, dos ); break;
 case "/fun_view_account_unregistered_users_xml.usaga":
 response = request_fun_view_account_unregistered_users_xml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 /*
 case "/saveaccountlocation.usaga":
 response = ResponseAccountLocationSaveTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 */
 case "/getaccountphonestriggerview.usaga":
 response = ResponseGetAccountPhonesTrigger(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_account_phones_trigger_alarm_table_from_hashmap.usaga":
 response = request_fun_account_phones_trigger_alarm_table_from_hashmap(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/getaccountcontactsgrid.usaga":
 response = ResponseAccountContactsToGridx(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/getaccountcontact.usaga":
 response = ResponseGetAccountContact(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/getaccountphonesnotifgrid.usaga":
 response = ResponseAccountContactPhonesNotifToGridx(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/getaccountphonesnotifeventtypegrid.usaga":
 response = ResponseAccountContactPhonesNotifEventTypeToGridx(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/fun_account_contacts_table.usaga":
 response = ResponseAccountContactsTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/getaccountcontactstable.usaga":
 response = ResponseAccountContactsTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/getaccountnotificationstable.usaga":
 response = ResponseAccountNotificationsTable(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/getviewnotificationtemplates.usaga":
 response = ResponseViewNotificationTemplates(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/notificationtemplatesedit.usaga":
 response = ResponseNotificationTemplatesEdit(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/notifyeditselectedphones.usaga":
 response = ResponseAccountNotificationApplySelected(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/geteventsaccount.usaga":
 response = ResponseAccountEvents(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/lastidevent.usaga":
 response = ResponseEventsLastIdXml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 case "/notifyeditselectedcontacts.usaga":
 response = ResponseAccountNotificationAppliedToSelectedContacts(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_account_address_edit_xml.usaga":
 response = response_fun_account_address_edit_xml_from_hashmap(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_view_eventtypes_xml.usaga":
 response = ResponseViewEventTypesXml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_eventtypes_edit_xml.usaga":
 response = ResponseEventTypesEditXml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_view_groups_xml.usaga":
 response = response_fun_view_groups_xml(request);
-break;
+    this.serve_response( response, dos );
+ break;
 
 case "/fun_groups_edit_xml_from_hashmap.usaga":
 response = response_fun_groups_edit_xml_from_hashmap(request);
+    this.serve_response( response, dos ); 
 break;
 
 case "/fun_groups_remove_selected_xml.usaga":
 response = response_fun_groups_remove_selected_xml(request);
+    this.serve_response( response, dos ); 
 break;
 
 case "/fun_view_idgroup_name_xml.usaga":
 response = response_fun_view_idgroup_name_xml(request);
+    this.serve_response( response, dos ); 
 break;
 
 case "/usaga_account_map.usaga":
 response = response_usaga_account_map(request);
+    this.serve_response( response, dos ); 
 break;
 case "/fun_view_account_location_byid_xml.usaga":
 response = response_fun_view_account_location_byid_xml(request);
+    this.serve_response( response, dos ); 
 break;
 
 default:
       response.Header.Status = StatusCode.NOT_FOUND;
  response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
   response.Header.ContentType = "text/html";
-
 this.serve_response( response, dos );
-break;
+ break;
 }
-
-    this.serve_response( response, dos );
 
 return false;
 }
