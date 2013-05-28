@@ -112,7 +112,7 @@ t.emit('onloaddata', t.values());
                     // Display the error returned
 t.reset();
 t.emit('onloaddata', t.values());
-t.emit('notify_message', {notify_message: error});
+t.emit('notify_message', {message: error});
                 }
             );
 }else{

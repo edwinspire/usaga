@@ -168,7 +168,7 @@ _Save: function(){
 var t = this;
 
 if(t.Formulario.validate()){
-
+alert(t.values());
             // Request the text file
             request.post("contacts_table_edit.usms", {
             // Parse data from xml

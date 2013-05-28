@@ -39,8 +39,8 @@ var GridListContact = dijit.byId("usms.contacts.gridx");
 var NotifyMSG = dijit.byId('notify');
 
 var CLocation = dijit.byId('idwlocationcontact');
-CLocation.on('notify_message', function(e){
-NotifyMSG.notify({message: e});
+CLocation.on('onnotify', function(e){
+NotifyMSG.notify({message: e.message});
 });
 CLocation.on('onsave', function(e){
 if(e.idaddress != CDWidget.get('idaddress')){
@@ -49,8 +49,8 @@ CDWidget.set('idaddress', e.idaddress);
 });
 
 var CPLocation = dijit.byId('idwlocationtelf');
-CPLocation.on('notify_message', function(e){
-NotifyMSG.notify({message: e});
+CPLocation.on('onnotify', function(e){
+NotifyMSG.notify({message: e.message});
 });
 CPLocation.on('onsave', function(e){
 if(e.idaddress != CPDWidget.get('idaddress')){

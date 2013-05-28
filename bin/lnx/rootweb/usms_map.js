@@ -19,26 +19,25 @@ SliderZoom.on('Change', function(v){
 map.getOLMap().zoomTo(Math.round(v));
 });
 
-alert(IdAddress);
-
 if(IdAddress > 0){
    R.get('fun_view_address_byid_xml.usms', {
-		query: {IdAddress: IdAddress},
+		query: {idaddress: IdAddress},
             // Parse data from xml
             handleAs: "xml"
         }).then(
                 function(response){
 var d = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
-
+alert(numrows);
 if(numrows > 0){
 GeoPosition.latitude = d.getFloat(0, "geox");
 GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
+if(GeoPosition.latitude > 0 || GeoPosition.longitude > 0){
 ////////////////////////////////////}
 var mapPointMaster = new MapPoint();
-mapPointMaster.setTooltip('Abonado '+IdAddress, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
+mapPointMaster.setTooltip(IdAddress+' Coord: '+GeoPosition.latitude+' '+GeoPosition.longitude);
 
     var descr = {
       longitude : GeoPosition.longitude,
@@ -61,6 +60,11 @@ mapPointMaster.setTooltip('Abonado '+IdAddress, 'Dirección:', 'Calle A y Calle 
   SliderZoom.maximum = map.getOLMap().getNumZoomLevels()-1;
 SliderZoom.set('value', map.getOLMap().getZoom());
 map.getOLMap().zoomTo(Math.round(SliderZoom.get('value')));
+
+}else{
+map.getOLMap().zoomTo(0);
+}
+
 
                 },
                 function(error){

@@ -35,10 +35,10 @@ t.emit('onsave', e);
 });
 
 t.address.on('notify_message', function(m){
-t.emit('notify_message', m)
+t.emit('onnotify', m)
 });
 t.location.on('notify_message', function(m){
-t.emit('notify_message', m)
+t.emit('onnotify', m)
 });
 
 t.location.set('location', 0);
