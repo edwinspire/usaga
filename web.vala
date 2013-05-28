@@ -37,7 +37,7 @@ public class uSagaServer:uSMSServer{
 
 //private ArrayList<Device> Dispositivos = new ArrayList<Device>();
 //private  HashSet<string> PuertosUnicos = new HashSet<string>();
-
+/*
 public uSagaServer(){
 
 print("Start uSAGA Version: 0.02\n");
@@ -93,19 +93,13 @@ this.VirtualUrl["fun_view_account_location_byid_xml.usaga"] = "/fun_view_account
 this.VirtualUrl["fun_view_account_unregistered_users_xml.usaga"] = "/fun_view_account_unregistered_users_xml.usaga";
 //S.VirtualUrl["notifyeditselectedcontacts.usaga"] = "/notifyeditselectedcontacts.usaga";
 
-
-/*
-foreach(var u in S.VirtualUrls().entries){
-S.VirtualUrl[u.key] = u.value;
-}
-*/
  
 //S.RequestVirtualUrl.connect(RequestVirtualPageHandler);
 
 }
+*/
 
-
-public new void RequestVirtualPageHandler(uHttpServer server, Request request, DataOutputStream dos){
+public override bool connection_handler_virtual_usms(Request request, DataOutputStream dos){
 
     uHttp.Response response = new uHttp.Response();
 //print("request.Path =>>>> %s\n", request.Path);
@@ -234,12 +228,17 @@ response = response_fun_view_account_location_byid_xml(request);
 break;
 
 default:
-response = this.ResponseToVirtualRequest(request);
+      response.Header.Status = StatusCode.NOT_FOUND;
+ response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
+  response.Header.ContentType = "text/html";
+
+this.serve_response( response, dos );
 break;
 }
 
-    server.serve_response( response, dos );
+    this.serve_response( response, dos );
 
+return false;
 }
 
 private uHttp.Response response_fun_view_idgroup_name_xml(Request request){
@@ -793,7 +792,7 @@ return Retorno;
 }
 
 // Inicia y corre el servidor asincronicamente
-public void RunuSAGA(){
+public void runuSAGA(){
 
 uSagaProcessData Pro = new uSagaProcessData();
 
@@ -804,7 +803,7 @@ catch(ThreadError e){
 print(e.message);
 }
 
-    this.Run();
+    this.runuSMS();
 }
 
 

@@ -37,7 +37,7 @@ t._LoadAccountSelected();
 });
 
 jsFS.addXmlLoader(t.account_select, 'fun_view_idaccounts_names_xml.usaga', 'row', {}, 'idaccount', 'name');
-jsFS.addXmlLoader(t.idgroup, 'fun_view_idgroup_name_xml.usaga', 'row', {}, 'idgroup', 'name');
+jsFS.addXmlLoader(t.idgroup, 'fun_view_groups_xml.usaga', 'row', {}, 'idgroup', 'name');
 
 t.account_select.Load();
 t.idgroup.Load();

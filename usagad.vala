@@ -36,7 +36,7 @@ public class RunuSaga: GLib.Object {
 
 uSagaServer oSAGAServer = new uSagaServer();
 //smsServer.ResetAndLoadDevices();
-oSAGAServer.RunuSAGA();
+oSAGAServer.runuSAGA();
 
 print("El servidor muere...");
 		return 0;
