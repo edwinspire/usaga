@@ -19,6 +19,7 @@ SliderZoom.on('Change', function(v){
 map.getOLMap().zoomTo(Math.round(v));
 });
 
+alert(IdAddress);
 
 if(IdAddress > 0){
    R.get('fun_view_address_byid_xml.usms', {

@@ -40,7 +40,7 @@ var NotifyMSG = dijit.byId('notify');
 
 var CLocation = dijit.byId('idwlocationcontact');
 CLocation.on('notify_message', function(e){
-CNotifyMSG.notify({message: e});
+NotifyMSG.notify({message: e});
 });
 CLocation.on('onsave', function(e){
 if(e.idaddress != CDWidget.get('idaddress')){
@@ -50,7 +50,7 @@ CDWidget.set('idaddress', e.idaddress);
 
 var CPLocation = dijit.byId('idwlocationtelf');
 CPLocation.on('notify_message', function(e){
-CNotifyMSG.notify({message: e});
+NotifyMSG.notify({message: e});
 });
 CPLocation.on('onsave', function(e){
 if(e.idaddress != CPDWidget.get('idaddress')){
@@ -84,7 +84,7 @@ GridListContact.Load();
 
 var CPDWidget = dijit.byId('PhoneData');
 CPDWidget.on('onnotify', function(e){
-CNotifyMSG.notify({message: e.msg});
+NotifyMSG.notify({message: e.msg});
 });
 CPDWidget.on('onloadphone', function(data){
 CPLocation.set('idaddress', data.idaddress);
