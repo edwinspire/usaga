@@ -28,13 +28,13 @@ if(IdAddress > 0){
                 function(response){
 var d = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
-alert(numrows);
+
 if(numrows > 0){
 GeoPosition.latitude = d.getFloat(0, "geox");
 GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
-if(GeoPosition.latitude > 0 || GeoPosition.longitude > 0){
+if(Math.abs(GeoPosition.latitude) > 0 || Math.abs(GeoPosition.longitude) > 0){
 ////////////////////////////////////}
 var mapPointMaster = new MapPoint();
 mapPointMaster.setTooltip(IdAddress+' Coord: '+GeoPosition.latitude+' '+GeoPosition.longitude);

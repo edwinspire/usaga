@@ -5,8 +5,9 @@ define(['dojo/_base/declare',
 'dojo/request', 'jspire/request/Xml', 
 'jspire/form/DateTextBox',
 'jspire/form/FilteringSelect',
-'dojo/dom-style'
-],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox, jsFS, domStyle){
+'dojo/dom-style',
+"dojo/json"
+],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox, jsFS, domStyle, JSON){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -168,7 +169,6 @@ _Save: function(){
 var t = this;
 
 if(t.Formulario.validate()){
-alert(t.values());
             // Request the text file
             request.post("contacts_table_edit.usms", {
             // Parse data from xml

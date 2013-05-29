@@ -47,7 +47,10 @@ t.tab.startup();
 },
 _setIdaddressAttr: function(id){
 this.address.set('idaddress', id);
+
 this.map.setAttribute('data', 'usms_map.usms?idaddress='+id);
+this.tab.resize();
+this.tab.layout();
 },
 save: function(){
 this.address.idlocation = this.location.get('location');
