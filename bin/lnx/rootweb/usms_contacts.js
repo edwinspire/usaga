@@ -63,10 +63,6 @@ var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
 GridContactPhone.Load();
 CLocation.set('idaddress', data.idaddress);
-//CAddress.AddressW.idaddress = data.idaddress;
-//CAddress.AddressW.load(CAddress.AddressW.idaddress);
-
-
 });
 
 CDWidget.on('onnotify', function(e){
@@ -88,8 +84,6 @@ NotifyMSG.notify({message: e.msg});
 });
 CPDWidget.on('onloadphone', function(data){
 CPLocation.set('idaddress', data.idaddress);
-//PAddress.AddressW.idaddress = data.idaddress;
-//PAddress.AddressW.load(PAddress.AddressW.idaddress);
 });
 CPDWidget.on('onsavephone', function(data){
 GridContactPhone.Load(true);
@@ -99,16 +93,6 @@ CPDWidget.on('ondeletecontact', function(data){
 GridContactPhone.Load();
 });
 
-
-
-
-var GlobalObject = {
-IdContact: 0,
-GridStore: usms_contacts_ItemFileReadStore,
-dijit: {
-Grid: dijit.byId("usms.contacts.gridx")
-},
-}
 
 
 	if (GridListContact) {

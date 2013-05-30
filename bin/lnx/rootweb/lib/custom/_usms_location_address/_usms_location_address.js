@@ -43,11 +43,11 @@ t.emit('onnotify', m)
 
 t.location.set('location', 0);
 t.tab.startup();
-//t.tab.layout();
+t.tab.resize();
+t.tab.layout();
 },
 _setIdaddressAttr: function(id){
 this.address.set('idaddress', id);
-
 this.map.setAttribute('data', 'usms_map.usms?idaddress='+id);
 this.tab.resize();
 this.tab.layout();
