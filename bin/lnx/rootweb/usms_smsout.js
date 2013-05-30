@@ -24,13 +24,13 @@ require(["dojo/ready",
          // logic that requires that Dojo is fully initialized should go here
 
 dojo.connect(dojo.byId('send'), 'onclick', function(){
-LoadGrid();
+myGridX.Load();
 });
 
+jsDTb.addGetDateFunction(dijit.byId('fstart'));
+jsDTb.addGetDateFunction(dijit.byId('fend'));
 
-var ObjectTable = {
-RowSeleted: 0 
-} 
+
 
 
 	var myGridX = dijit.byId("idgridxtable");
@@ -68,6 +68,7 @@ RowSeleted: 0
 			{field:"retryonfail", name: "retryonfail"},
 			{field:"maxtimelive", name: "maxtimelive"},
 			{field:"note", name: "note", width: "10%"}
+
 		]);
 
 myGridX.startup();
@@ -75,80 +76,72 @@ myGridX.startup();
 
 }
 
-
-function LoadGrid(){
-
-var store = new dojox.data.XmlStore({url: "usms_smsoutviewtablefilter", sendQuery: true, rootItem: 'row'});
-
-var request = store.fetch({query: {fstart: getdate('fstart'), fend: getdate('fend'), nrows: dijit.byId('nrows').get('value')}, onComplete: function(itemsrow, r){
-
-var dataxml = new jspireTableXmlStore(store, itemsrow);
-
-numrows = itemsrow.length;
-
+myGridX.Load= function(){
+            // Request the text file
+            request.get("view_smsout_datefilter.usms", {
+	query: {fstart: dijit.byId('fstart')._getDate(), fend: dijit.byId('fend')._getDate(), nrows: dijit.byId('nrows').get('value')},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
 var myData = {identifier: "unique_id", items: []};
-
 var i = 0;
+numrows = d.length;
+if(numrows > 0){
 while(i<numrows){
-
 myData.items[i] = {
-unique_id:i, 
-idsmsout: dataxml.getNumber(i, "idsmsout"), 
-dateload: dataxml.getString(i, "dateload"),
-idprovider: dataxml.getNumber(i, "idprovider"),
-idsmstype: dataxml.getNumber(i, "idsmstype"),
-idphone: dataxml.getNumber(i, "idphone"),
-phone: dataxml.getStringB64(i, "phone"),
-datetosend: dataxml.getString(i, "datetosend"),
-message: dataxml.getStringB64(i, "message"),
-dateprocess: dataxml.getString(i, "dateprocess"),
-process: dataxml.getNumber(i, "process"),
-priority: dataxml.getNumber(i, "priority"),
-attempts: dataxml.getNumber(i, "attempts"),
-idprovidersent: dataxml.getNumber(i, "idprovidersent"),
-slices: dataxml.getNumber(i, "slices"),
-slicessent: dataxml.getNumber(i, "slicessent"),
-messageclass: dataxml.getNumber(i, "messageclass"),
-report: dataxml.getBool(i, "report"),
-maxslices: dataxml.getNumber(i, "maxslices"),
-enablemessageclass: dataxml.getBool(i, "enablemessageclass"),
-idport: dataxml.getNumber(i, "idport"),
-flag1: dataxml.getNumber(i, "flag1"),
-flag2: dataxml.getNumber(i, "flag2"),
-flag3: dataxml.getNumber(i, "flag3"),
-flag4: dataxml.getNumber(i, "flag4"),
-flag5: dataxml.getNumber(i, "flag5"),
-retryonfail: dataxml.getNumber(i, "retryonfail"),
-maxtimelive: dataxml.getNumber(i, "maxtimelive"),
-note: dataxml.getStringB64(i, "note")
+unique_id:i+1,
+idsmsout: d.getNumber(i, "idsmsout"), 
+dateload: d.getString(i, "dateload"),
+idprovider: d.getNumber(i, "idprovider"),
+idsmstype: d.getNumber(i, "idsmstype"),
+idphone: d.getNumber(i, "idphone"),
+phone: d.getStringB64(i, "phone"),
+datetosend: d.getString(i, "datetosend"),
+message: d.getStringB64(i, "message"),
+dateprocess: d.getString(i, "dateprocess"),
+process: d.getNumber(i, "process"),
+priority: d.getNumber(i, "priority"),
+attempts: d.getNumber(i, "attempts"),
+idprovidersent: d.getNumber(i, "idprovidersent"),
+slices: d.getNumber(i, "slices"),
+slicessent: d.getNumber(i, "slicessent"),
+messageclass: d.getNumber(i, "messageclass"),
+report: d.getBool(i, "report"),
+maxslices: d.getNumber(i, "maxslices"),
+enablemessageclass: d.getBool(i, "enablemessageclass"),
+idport: d.getNumber(i, "idport"),
+flag1: d.getNumber(i, "flag1"),
+flag2: d.getNumber(i, "flag2"),
+flag3: d.getNumber(i, "flag3"),
+flag4: d.getNumber(i, "flag4"),
+flag5: d.getNumber(i, "flag5"),
+retryonfail: d.getNumber(i, "retryonfail"),
+maxtimelive: d.getNumber(i, "maxtimelive"),
+note: d.getStringB64(i, "note")
 };
 i++;
 }
-
-	// Set new data on data store (the store has jsId set, so there's
-	// a global variable we can reference)
+}
 	ItemFileReadStore_1.clearOnClose = true;
 	ItemFileReadStore_1.data = myData;
 	ItemFileReadStore_1.close();
 
 		myGridX.store = null;
 		myGridX.setStore(ItemFileReadStore_1);
-},
-onError: function(e){
-alert(e);
+
+//myGridX.emit('onnotify', {msg: 'Se han cargado los datos'});
+
+                },
+                function(error){
+                    // Display the error returned
+myGridX.emit('onnotify', {msg: error});
+                }
+            );
+
+
 }
-});
 
-}
-
-// Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-//setTimeout(LoadGrid, 5000);
-
-
-
-function getdate(iddijit){
-return dojo.date.locale.format(dijit.byId(iddijit).get('value'), {datePattern: "yyyy-MM-dd", selector: "date"});
-}
 
 
 
