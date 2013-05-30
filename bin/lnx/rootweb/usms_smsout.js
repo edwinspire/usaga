@@ -96,9 +96,9 @@ dateload: d.getString(i, "dateload"),
 idprovider: d.getNumber(i, "idprovider"),
 idsmstype: d.getNumber(i, "idsmstype"),
 idphone: d.getNumber(i, "idphone"),
-phone: d.getStringB64(i, "phone"),
+phone: d.getStringFromB64(i, "phone"),
 datetosend: d.getString(i, "datetosend"),
-message: d.getStringB64(i, "message"),
+message: d.getStringFromB64(i, "message"),
 dateprocess: d.getString(i, "dateprocess"),
 process: d.getNumber(i, "process"),
 priority: d.getNumber(i, "priority"),
@@ -118,7 +118,7 @@ flag4: d.getNumber(i, "flag4"),
 flag5: d.getNumber(i, "flag5"),
 retryonfail: d.getNumber(i, "retryonfail"),
 maxtimelive: d.getNumber(i, "maxtimelive"),
-note: d.getStringB64(i, "note")
+note: d.getStringFromB64(i, "note")
 };
 i++;
 }
