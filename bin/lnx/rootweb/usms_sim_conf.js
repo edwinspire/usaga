@@ -18,7 +18,6 @@ require(["dojo/ready",
 "dojo/request",
 "jspire/request/Xml",
 "jspire/Gridx",
-"_usms_parity/_usms_parity",
 "dojox/grid/cells/dijit",
 "gridx/modules/RowHeader",
 "gridx/modules/select/Row",
@@ -27,15 +26,12 @@ require(["dojo/ready",
 "dijit/TooltipDialog",
 "dijit/popup",
 "dijit/form/CheckBox",
-"dijit/form/Select",
-"_usms_stopbits/_usms_stopbits",
-"_usms_handshake/_usms_handshake"
-], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx, wParity){
+"dijit/form/Select"
+], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 dijit.byId('id_titlebar').set('label', 'Puertos');
 var NotifyArea = dijit.byId('id_notify_area');  
-
 
 var GridxTable = dijit.byId('gridxt');
 GridxTable.IdToDelete = [];
