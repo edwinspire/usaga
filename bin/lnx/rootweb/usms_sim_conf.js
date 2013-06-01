@@ -104,7 +104,7 @@ NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
 GridxTable.IdToDelete = [];
 
             // Request the text file
-            request.get("gettableserialport.usms", {
+            request.get("fun_view_sim_xml.usms", {
             // Parse data from xml
             handleAs: "xml"
         }).then(
