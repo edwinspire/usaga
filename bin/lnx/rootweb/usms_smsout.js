@@ -18,8 +18,9 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
+  "_usms_smsout_process/_usms_smsout_process",
 "dojox/grid/cells/dijit"
-], function(ready, on, request, RXml, jsDTb, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, RXml, jsDTb, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, wJProcess){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -30,9 +31,6 @@ myGridX.Load();
 jsDTb.addGetDateFunction(dijit.byId('fstart'));
 jsDTb.addGetDateFunction(dijit.byId('fend'));
 
-
-
-
 	var myGridX = dijit.byId("idgridxtable");
 	if (myGridX) {
 
@@ -40,26 +38,26 @@ jsDTb.addGetDateFunction(dijit.byId('fend'));
 		// Optionally change column structure on the grid
 		myGridX.setColumns([
 
-			{field:"idsmsout", name: "id"},
-			{field:"dateload", name: "dateload", width: "5%"},
-			{field:"idprovider", name: "idprovider"},
-			{field:"idsmstype", name: "idsmstype"},
-			{field:"idphone", name: "idphone"},
-			{field:"phone", name: "phone"},
-			{field:"datetosend", name: "datetosend", width: "5%"},
-			{field:"message", name: "message", width: "15%"},
-			{field:"dateprocess", name: "dateprocess", width: "5%"},
-			{field:"process", name: "process"},
-			{field:"priority", name: "priority"},
-			{field:"attempts", name: "attempts"},
-			{field:"idprovidersent", name: "idprovidersent"},
-			{field:"slices", name: "slices"},
-			{field:"slicessent", name: "slicessent"},
-			{field:"messageclass", name: "messageclass"},
-			{field:"report", name: "report"},
-			{field:"maxslices", name: "maxslices"},
-			{field:"enablemessageclass", name: "enablemessageclass"},
-			{field:"idport", name: "idport"},
+			{field:"idsmsout", name: "id", width:"30px"},
+			{field:"dateload", name: "dateload", width:"80px"},
+			{field:"idprovider", name: "idprovider", width:"20px"},
+			{field:"idsmstype", name: "idsmstype", width:"20px"},
+			{field:"idphone", name: "idphone", width:"50px"},
+			{field:"phone", name: "phone", width:"80px"},
+			{field:"datetosend", name: "datetosend", width:"150px"},
+			{field:"message", name: "message", width: "200px"},
+			{field:"dateprocess", name: "dateprocess", width:"80px"},
+			{field:"process", name: "process", width:"80px", editor: "_usms_smsout_process/_usms_smsout_process", editable: true, alwaysEditing: true},
+			{field:"priority", name: "priority", width:"30px"},
+			{field:"attempts", name: "attempts", width:"30px"},
+			{field:"idprovidersent", name: "idprovidersent", width:"30px"},
+			{field:"slices", name: "slices", width:"30px"},
+			{field:"slicessent", name: "slicessent", width:"30px"},
+			{field:"messageclass", name: "messageclass", width:"30px"},
+			{field:"report", name: "report", width:"30px"},
+			{field:"maxslices", name: "maxslices", width:"30px"},
+			{field:"enablemessageclass", name: "enablemessageclass", width:"30px"},
+			{field:"idport", name: "idport", width:"30px"},
 			{field:"flag1", name: "flag1"},
 			{field:"flag2", name: "flag2"},
 			{field:"flag3", name: "flag3"},
