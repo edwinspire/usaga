@@ -80,6 +80,36 @@ Retorno = filas["fun_eventtype_default"].as_int();
 //return Retorno;
 }
 
+public int fun_get_idowner_usaga(){
+
+int Retorno = -1;
+
+string[] valuessms = {};
+
+var  Conexion = Postgres.connect_db (this.ConnString());
+
+if(Conexion.get_status () == ConnectionStatus.OK){
+
+var Resultado = this.exec_params_minimal (ref Conexion, """SELECT usaga.fun_get_idowner_usaga() as retorno;""",  valuessms);
+
+    if (Resultado.get_status () == ExecStatus.TUPLES_OK) {
+
+foreach(var filas in this.Result_FieldName(ref Resultado)){
+Retorno = filas["retorno"].as_int();
+//GLib.print("%s = %s\n", valuessms[0], valuessms[1]);
+}
+
+} else{
+	        stderr.printf ("FETCH ALL failed: %s", Conexion.get_error_message ());
+    }
+
+
+}
+
+
+return Retorno;
+}
+
 public void Run(){
 this.GetParamCnx();
 this.fun_eventtype_default();

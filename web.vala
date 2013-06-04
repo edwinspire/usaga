@@ -826,6 +826,8 @@ return Retorno;
 public void runuSAGA(){
 
 uSagaProcessData Pro = new uSagaProcessData();
+Pro.GetParamCnx();
+print("uSAGA Software - idowner: %i\n", Pro.fun_get_idowner_usaga());
 
 try{
 Thread.create<void>(Pro.Run, false);
