@@ -1,6 +1,6 @@
 # Ignores
 *~
-*.sh
+#*.sh
 *.bat
 *.log
 bin/lnx/proyects
