@@ -50,6 +50,7 @@ dijit.byId('id_account_event_titlebar').set('label', 'Eventos');
 
 
 
+
 Location.on('notify_message', function(m){
 NotifyArea.notify({message: m.message});
 });

@@ -28,6 +28,7 @@ t.save();
 
 t.address.on('onloaddata', function(l){
 t.location.set('location', l.idlocation);
+t.resize();
 });
 
 t.address.on('onsavedata', function(e){
@@ -47,8 +48,11 @@ t.tab.resize();
 t.tab.layout();
 },
 _setIdaddressAttr: function(id){
+//this.resize();
 this.address.set('idaddress', id);
 this.map.setAttribute('data', 'usms_map.usms?idaddress='+id);
+},
+resize: function(){
 this.tab.resize();
 this.tab.layout();
 },
