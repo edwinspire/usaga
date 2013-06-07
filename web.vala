@@ -481,7 +481,7 @@ uHttp.Response Retorno = new uHttp.Response();
 
 AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
-Retorno.Data = Tabla.fun_view_account_contacts_address_xml(request["idaccount"]).data;
+Retorno.Data = Tabla.fun_view_account_contacts_address_xml(int.parse(request.Form["idaccount"])).data;
 return Retorno;
 }
 
