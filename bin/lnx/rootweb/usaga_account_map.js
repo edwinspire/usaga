@@ -16,7 +16,7 @@ var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
 
 
 map.addPoint = function(_latitude, _longitude, _tooltiptext, _image){
-if(_latitude<=0 && _longitude <= 0){
+if(Math.abs(_latitude)>0 && Math.abs(_longitude)>0){
 var mapPointMaster = new MapPoint();
 mapPointMaster.set('image', _image);
 mapPointMaster.setTooltip(_tooltiptext);

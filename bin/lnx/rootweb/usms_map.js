@@ -15,7 +15,7 @@ var IdAddress = dojo.byId('map').getAttribute('data-usms-idaddress');
 
 
 map.addPoint = function(_latitude, _longitude, _tooltiptext){
-if(_latitude<=0 && _longitude <= 0){
+if(Math.abs(_latitude)>0 && Math.abs(_longitude)>0){
 var mapPointMaster = new MapPoint();
 mapPointMaster.setTooltip(_tooltiptext);
 
