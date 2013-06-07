@@ -14,6 +14,24 @@ var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
     };
 
 
+map.addPoint = function(_latitude, _longitude, _tooltiptext){
+var mapPointMaster = new MapPoint();
+mapPointMaster.setTooltip(_tooltiptext);
+
+    var descr = {
+      longitude : _longitude,
+      latitude : _latitude,
+      widget : mapPointMaster,
+      width : 20,
+      height : 20
+    };
+    feature = new WidgetFeature(descr);
+
+    layer = new Layer();
+    layer.addFeature(feature);
+    this.addLayer(layer);
+}
+
 var SliderZoom = dijit.byId('id_zoom');
 SliderZoom.on('Change', function(v){
 map.getOLMap().zoomTo(Math.round(v));
@@ -35,6 +53,8 @@ GeoPosition.latitude = d.getFloat(0, "geox");
 GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
+map.addPoint(GeoPosition.latitude, GeoPosition.longitude, 'Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
+/*
 ////////////////////////////////////}
 var mapPointMaster = new MapPoint();
 mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
@@ -51,6 +71,7 @@ mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle 
     layer = new Layer();
     layer.addFeature(feature);
     map.addLayer(layer);
+*/
 
     map.fitTo({
       position : [ GeoPosition.longitude, GeoPosition.latitude ],

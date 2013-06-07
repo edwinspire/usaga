@@ -14,6 +14,26 @@ var IdAddress = dojo.byId('map').getAttribute('data-usms-idaddress');
     };
 
 
+map.addPoint = function(_latitude, _longitude, _tooltiptext){
+var mapPointMaster = new MapPoint();
+mapPointMaster.setTooltip(_tooltiptext);
+
+    var descr = {
+      longitude : _longitude,
+      latitude : _latitude,
+      widget : mapPointMaster,
+      width : 20,
+      height : 20
+    };
+    feature = new WidgetFeature(descr);
+
+    layer = new Layer();
+    layer.addFeature(feature);
+    this.addLayer(layer);
+}
+
+
+
 var SliderZoom = dijit.byId('id_zoom');
 SliderZoom.on('Change', function(v){
 map.getOLMap().zoomTo(Math.round(v));
@@ -35,7 +55,10 @@ GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
 if(Math.abs(GeoPosition.latitude) > 0 || Math.abs(GeoPosition.longitude) > 0){
-////////////////////////////////////}
+////////////////////////////////////
+map.addPoint(GeoPosition.latitude, GeoPosition.longitude, IdAddress+' Coord: '+GeoPosition.latitude+' '+GeoPosition.longitude);
+
+/*
 var mapPointMaster = new MapPoint();
 mapPointMaster.setTooltip(IdAddress+' Coord: '+GeoPosition.latitude+' '+GeoPosition.longitude);
 
@@ -51,7 +74,7 @@ mapPointMaster.setTooltip(IdAddress+' Coord: '+GeoPosition.latitude+' '+GeoPosit
     layer = new Layer();
     layer.addFeature(feature);
     map.addLayer(layer);
-
+*/
     map.fitTo({
       position : [ GeoPosition.longitude, GeoPosition.latitude ],
       extent : 0.01
@@ -84,7 +107,6 @@ map.getOLMap().zoomTo(Math.round(v));
     });
 map.getOLMap().zoomTo(0);
 }
-
 
 
 
