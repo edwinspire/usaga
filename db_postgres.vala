@@ -679,10 +679,6 @@ this.TimeStamp = "";
 
 public class AccountContactsTable:PostgreSQLConnection{
 
-
-
-
-
 public string fun_account_contacts_table_from_hasmap(HashMap<string, string> Data, bool fieldtextasbase64 = true){
 
 int idaccount = 0;

@@ -469,7 +469,16 @@ Tabla.GetParamCnx();
 return Retorno;
 }
 
+private uHttp.Response response_fun_view_account_contacts_address_xml(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header.ContentType = "text/xml";
+    Retorno.Header.Status = StatusCode.OK;
 
+AccountContactsTable Tabla = new AccountContactsTable();
+Tabla.GetParamCnx();
+Retorno.Data = Tabla.fun_view_account_contacts_address_xml(request["idaccount"]).data;
+return Retorno;
+}
 
 private uHttp.Response ResponseViewNotificationTemplates(Request request){
 uHttp.Response Retorno = new uHttp.Response();
