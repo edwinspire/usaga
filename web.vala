@@ -483,7 +483,7 @@ AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
 int id = 0;
 
-if(request.Form.has_key("idaccount")){
+if(request.Query.has_key("idaccount")){
 id = int.parse(request.Query["idaccount"]);
 }
 
