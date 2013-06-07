@@ -16,6 +16,7 @@ var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
 
 
 map.addPoint = function(_latitude, _longitude, _tooltiptext, _image){
+//alert(_tooltiptext);
 if(Math.abs(_latitude)>0 && Math.abs(_longitude)>0){
 var mapPointMaster = new MapPoint();
 mapPointMaster.set('image', _image);
@@ -77,9 +78,10 @@ map.getOLMap().zoomTo(Math.round(SliderZoom.get('value')));
         }).then(
                 function(response){
 var dc = new RXml.getFromXhr(response, 'row');
-numrows = d.length;
+numrows = dc.length;
+//alert(numrows);
 i = 0;
-while(i<numrows){
+while(numrows>i){
 map.addPoint(dc.getFloat(i, "geox"), dc.getFloat(i, "geoy"), dc.getStringFromB64(i ,'title')+' '+dc.getStringFromB64(i ,'lastname')+' '+dc.getStringFromB64(i ,'firstname'), 'im-user.png');
 i++;
 }
