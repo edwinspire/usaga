@@ -5,7 +5,8 @@ require(["dojo/ready", "dojox/geo/openlayers/Map", 'dojo/request', 'jspire/reque
 
   ready(function(){
 
-var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
+//var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
+var IdAccount = 1;
     var map = new Map("map");
     // This is New York location
     var GeoPosition = {
@@ -74,7 +75,6 @@ map.getOLMap().zoomTo(Math.round(SliderZoom.get('value')));
                 function(response){
 var dc = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
-alert(numrows);
 i = 0;
 while(i<numrows){
 map.addPoint(dc.getFloat(i, "geox"), dc.getFloat(i, "geoy"), dc.getStringFromB64(i ,'lastname'));

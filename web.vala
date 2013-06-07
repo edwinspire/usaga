@@ -484,7 +484,7 @@ Tabla.GetParamCnx();
 int id = 0;
 
 if(request.Form.has_key("idaccount")){
-id = int.parse(request.Form["idaccount"]);
+id = int.parse(request.Query["idaccount"]);
 }
 
 Retorno.Data = Tabla.fun_view_account_contacts_address_xml(id).data;
