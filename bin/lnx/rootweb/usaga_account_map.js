@@ -54,24 +54,6 @@ GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
 map.addPoint(GeoPosition.latitude, GeoPosition.longitude, 'Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
-/*
-////////////////////////////////////}
-var mapPointMaster = new MapPoint();
-mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
-
-    var descr = {
-      longitude : GeoPosition.longitude,
-      latitude : GeoPosition.latitude,
-      widget : mapPointMaster,
-      width : 20,
-      height : 20
-    };
-    feature = new WidgetFeature(descr);
-
-    layer = new Layer();
-    layer.addFeature(feature);
-    map.addLayer(layer);
-*/
 
     map.fitTo({
       position : [ GeoPosition.longitude, GeoPosition.latitude ],
@@ -81,6 +63,37 @@ mapPointMaster.setTooltip('Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle 
   SliderZoom.maximum = map.getOLMap().getNumZoomLevels()-1;
 SliderZoom.set('value', map.getOLMap().getZoom());
 map.getOLMap().zoomTo(Math.round(SliderZoom.get('value')));
+
+//////////////////////////////////////////////////////////
+// Obtenemos las coordenadas de los contactos de la cuenta
+   R.get('fun_view_account_contacts_address_xml.usaga', {
+		query: {idaccount: IdAccount},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var dc = new RXml.getFromXhr(response, 'row');
+numrows = d.length;
+
+i = 0;
+while(i<numrows){
+map.addPoint(dc.getFloat(i, "geox"), dc.getFloat(i, "geoy"), dc.getStringFromB64(i ,'lastname'));
+i++;
+}
+
+
+                },
+                function(error){
+                    // Display the error returned
+console.log(error);
+//t.emit('notify_message', {message: error}); 
+                }
+            );
+
+
+
+
+
 
                 },
                 function(error){
