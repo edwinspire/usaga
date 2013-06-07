@@ -261,6 +261,11 @@ response = response_fun_view_account_location_byid_xml(request);
     this.serve_response( response, dos ); 
 break;
 
+case "/fun_view_account_contacts_address_xml.usaga":
+response = response_fun_view_account_contacts_address_xml(request);
+    this.serve_response( response, dos ); 
+break;
+
 default:
       response.Header.Status = StatusCode.NOT_FOUND;
  response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
