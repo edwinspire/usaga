@@ -32,6 +32,16 @@ t._imgVisible = !t._imgVisible;
 },500);
 },
 setTooltip: function(title, labeltitle, content){
+
+if(!labeltitle){
+labeltitle = '';
+}
+
+if(!content){
+content = '';
+}
+
+
 var html = ' <div style="font-size: 0.8em;">  <label style="font-weight: bold;">'+title+'</label>  <div>   <div style="margin: 2px;">    <label style="float: left; clear: both; font-weight: bold; margin-right: 5px;">'+labeltitle+'</label>    <div style="margin: 3px;">'+content+'</div>  </div> </div></div>'
 
     new Tooltip({

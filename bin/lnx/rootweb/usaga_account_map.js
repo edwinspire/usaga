@@ -5,8 +5,8 @@ require(["dojo/ready", "dojox/geo/openlayers/Map", 'dojo/request', 'jspire/reque
 
   ready(function(){
 
-//var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
-var IdAccount = 1;
+var IdAccount = dojo.byId('map').getAttribute('data-usaga-idaccount');
+//var IdAccount = 1;
     var map = new Map("map");
     // This is New York location
     var GeoPosition = {
@@ -15,8 +15,10 @@ var IdAccount = 1;
     };
 
 
-map.addPoint = function(_latitude, _longitude, _tooltiptext){
+map.addPoint = function(_latitude, _longitude, _tooltiptext, _image){
+if(_latitude<=0 && _longitude <= 0){
 var mapPointMaster = new MapPoint();
+mapPointMaster.set('image', _image);
 mapPointMaster.setTooltip(_tooltiptext);
 
     var descr = {
@@ -31,6 +33,7 @@ mapPointMaster.setTooltip(_tooltiptext);
     layer = new Layer();
     layer.addFeature(feature);
     this.addLayer(layer);
+}
 }
 
 var SliderZoom = dijit.byId('id_zoom');
@@ -54,7 +57,7 @@ GeoPosition.latitude = d.getFloat(0, "geox");
 GeoPosition.longitude = d.getFloat(0, "geoy");
 }
 
-map.addPoint(GeoPosition.latitude, GeoPosition.longitude, 'Abonado '+IdAccount, 'Dirección:', 'Calle A y Calle B, casa verde esquinera');
+map.addPoint(GeoPosition.latitude, GeoPosition.longitude, 'Abonado', 'media-record-6.png');
 
     map.fitTo({
       position : [ GeoPosition.longitude, GeoPosition.latitude ],
@@ -77,7 +80,7 @@ var dc = new RXml.getFromXhr(response, 'row');
 numrows = d.length;
 i = 0;
 while(i<numrows){
-map.addPoint(dc.getFloat(i, "geox"), dc.getFloat(i, "geoy"), dc.getStringFromB64(i ,'lastname'));
+map.addPoint(dc.getFloat(i, "geox"), dc.getFloat(i, "geoy"), dc.getStringFromB64(i ,'title')+' '+dc.getStringFromB64(i ,'lastname')+' '+dc.getStringFromB64(i ,'firstname'), 'im-user.png');
 i++;
 }
 
