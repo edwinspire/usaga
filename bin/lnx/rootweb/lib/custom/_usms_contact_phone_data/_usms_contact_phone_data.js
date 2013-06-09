@@ -16,7 +16,7 @@ _idaddress: 0,
 reset: function(){
 t = this;
 t._id = 0;
-t._idcontact = 0;
+//t._idcontact = 0;
 t._ts = "1990-01-01";
 t._idaddress = 0;
 t.Formulario.reset();
@@ -96,13 +96,13 @@ t.emit('onloadphone', {idcontact: t._idcontact, idphone: t._id, idaddress: t._id
                 function(error){
                     // Display the error returned
 t.reset();
-t.emit('onloadphone',  {idcontact: 0, idaddress: 0, idphone: 0});
+t.emit('onloadphone',  {idcontact: t._idcontact, idaddress: 0, idphone: 0});
 t.emit('onnotify', {msg: error});
                 }
             );
 }else{
 t.reset();
-t.emit('onloadphone',  {idcontact: 0, idaddress: 0, idphone: 0});
+t.emit('onloadphone',  {idcontact: t._idcontact, idaddress: 0, idphone: 0});
 }
 
 },

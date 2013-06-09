@@ -61,8 +61,9 @@ CPDWidget.set('idaddress', e.idaddress);
 
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
-GridContactPhone.Load();
 CLocation.set('idaddress', data.idaddress);
+GridContactPhone.Load();
+CPDWidget.Load(data.idcontact, 0);
 });
 
 CDWidget.on('onnotify', function(e){
