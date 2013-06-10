@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.9
 -- Dumped by pg_dump version 9.1.9
--- Started on 2013-06-10 01:18:21 ECT
+-- Started on 2013-06-10 01:21:44 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -13,8 +13,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 2843 (class 1262 OID 16384)
--- Dependencies: 2842
+-- TOC entry 2834 (class 1262 OID 16384)
+-- Dependencies: 2833
 -- Name: usms; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -30,7 +30,7 @@ CREATE SCHEMA usaga;
 
 
 --
--- TOC entry 2846 (class 0 OID 0)
+-- TOC entry 2837 (class 0 OID 0)
 -- Dependencies: 9
 -- Name: SCHEMA usaga; Type: COMMENT; Schema: -; Owner: -
 --
@@ -47,7 +47,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2847 (class 0 OID 0)
+-- TOC entry 2838 (class 0 OID 0)
 -- Dependencies: 250
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -58,8 +58,8 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 377 (class 1255 OID 27903)
--- Dependencies: 5 936
+-- TOC entry 371 (class 1255 OID 27903)
+-- Dependencies: 5 927
 -- Name: address_tbiu_geourl(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -79,8 +79,8 @@ END;$$;
 
 
 --
--- TOC entry 2848 (class 0 OID 0)
--- Dependencies: 377
+-- TOC entry 2839 (class 0 OID 0)
+-- Dependencies: 371
 -- Name: FUNCTION address_tbiu_geourl(); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -88,8 +88,8 @@ COMMENT ON FUNCTION address_tbiu_geourl() IS 'Trigger before insert update, escr
 
 
 --
--- TOC entry 291 (class 1255 OID 26815)
--- Dependencies: 5 936
+-- TOC entry 286 (class 1255 OID 26815)
+-- Dependencies: 927 5
 -- Name: ctrl_ts(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -105,8 +105,8 @@ $$;
 
 
 --
--- TOC entry 368 (class 1255 OID 27764)
--- Dependencies: 5 936
+-- TOC entry 362 (class 1255 OID 27764)
+-- Dependencies: 927 5
 -- Name: fun_address_edit(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -156,8 +156,8 @@ END;$$;
 
 
 --
--- TOC entry 2849 (class 0 OID 0)
--- Dependencies: 368
+-- TOC entry 2840 (class 0 OID 0)
+-- Dependencies: 362
 -- Name: FUNCTION fun_address_edit(inidaddress integer, inidlocation integer, ingeox double precision, ingeoy double precision, f1 text, f2 text, f3 text, f4 text, f5 text, f6 text, f7 text, f8 text, f9 text, f10 text, ints timestamp without time zone, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -165,8 +165,8 @@ COMMENT ON FUNCTION fun_address_edit(inidaddress integer, inidlocation integer, 
 
 
 --
--- TOC entry 369 (class 1255 OID 27765)
--- Dependencies: 5 936
+-- TOC entry 363 (class 1255 OID 27765)
+-- Dependencies: 927 5
 -- Name: fun_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -182,8 +182,8 @@ END;$$;
 
 
 --
--- TOC entry 328 (class 1255 OID 27778)
--- Dependencies: 5 936
+-- TOC entry 322 (class 1255 OID 27778)
+-- Dependencies: 5 927
 -- Name: fun_address_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -274,8 +274,8 @@ END;$$;
 
 
 --
--- TOC entry 372 (class 1255 OID 27855)
--- Dependencies: 5 936
+-- TOC entry 366 (class 1255 OID 27855)
+-- Dependencies: 927 5
 -- Name: fun_cimi_table(integer, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -308,8 +308,8 @@ END;$$;
 
 
 --
--- TOC entry 327 (class 1255 OID 27776)
--- Dependencies: 936 5
+-- TOC entry 321 (class 1255 OID 27776)
+-- Dependencies: 927 5
 -- Name: fun_contact_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -351,8 +351,8 @@ END;$$;
 
 
 --
--- TOC entry 340 (class 1255 OID 27777)
--- Dependencies: 5 936
+-- TOC entry 334 (class 1255 OID 27777)
+-- Dependencies: 5 927
 -- Name: fun_contact_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -445,8 +445,8 @@ END;$$;
 
 
 --
--- TOC entry 302 (class 1255 OID 26962)
--- Dependencies: 936 5
+-- TOC entry 296 (class 1255 OID 26962)
+-- Dependencies: 927 5
 -- Name: fun_contact_search_by_name(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -468,8 +468,8 @@ END;$$;
 
 
 --
--- TOC entry 2850 (class 0 OID 0)
--- Dependencies: 302
+-- TOC entry 2841 (class 0 OID 0)
+-- Dependencies: 296
 -- Name: FUNCTION fun_contact_search_by_name(infirstname text, inlastname text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -478,8 +478,8 @@ Si no lo encuentra devuelve 0.';
 
 
 --
--- TOC entry 378 (class 1255 OID 27267)
--- Dependencies: 936 5
+-- TOC entry 372 (class 1255 OID 27267)
+-- Dependencies: 5 927
 -- Name: fun_contacts_edit(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -545,8 +545,8 @@ END;$$;
 
 
 --
--- TOC entry 338 (class 1255 OID 27268)
--- Dependencies: 936 5
+-- TOC entry 332 (class 1255 OID 27268)
+-- Dependencies: 927 5
 -- Name: fun_contacts_edit_xml(integer, boolean, text, text, text, integer, date, integer, text, text, text, text, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -569,7 +569,7 @@ END;$$;
 
 --
 -- TOC entry 270 (class 1255 OID 16818)
--- Dependencies: 936 5
+-- Dependencies: 927 5
 -- Name: fun_correntportproviders_get_idprovider(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -591,7 +591,7 @@ END;$$;
 
 
 --
--- TOC entry 2851 (class 0 OID 0)
+-- TOC entry 2842 (class 0 OID 0)
 -- Dependencies: 270
 -- Name: FUNCTION fun_correntportproviders_get_idprovider(inidport integer); Type: COMMENT; Schema: public; Owner: -
 --
@@ -600,8 +600,8 @@ COMMENT ON FUNCTION fun_correntportproviders_get_idprovider(inidport integer) IS
 
 
 --
--- TOC entry 279 (class 1255 OID 16714)
--- Dependencies: 936 5
+-- TOC entry 276 (class 1255 OID 16714)
+-- Dependencies: 5 927
 -- Name: fun_currentportsproviders_insertupdate(integer, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -644,8 +644,8 @@ END;$$;
 
 
 --
--- TOC entry 2852 (class 0 OID 0)
--- Dependencies: 279
+-- TOC entry 2843 (class 0 OID 0)
+-- Dependencies: 276
 -- Name: FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inport text, incimi text, inimei text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -653,8 +653,8 @@ COMMENT ON FUNCTION fun_currentportsproviders_insertupdate(inidport integer, inp
 
 
 --
--- TOC entry 382 (class 1255 OID 27983)
--- Dependencies: 5 936
+-- TOC entry 376 (class 1255 OID 27983)
+-- Dependencies: 927 5
 -- Name: fun_get_idsim(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -677,8 +677,8 @@ END;$$;
 
 
 --
--- TOC entry 2853 (class 0 OID 0)
--- Dependencies: 382
+-- TOC entry 2844 (class 0 OID 0)
+-- Dependencies: 376
 -- Name: FUNCTION fun_get_idsim(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -686,8 +686,8 @@ COMMENT ON FUNCTION fun_get_idsim(inphone text) IS 'Obtiene el idsim segun el n√
 
 
 --
--- TOC entry 281 (class 1255 OID 25899)
--- Dependencies: 936 5
+-- TOC entry 278 (class 1255 OID 25899)
+-- Dependencies: 5 927
 -- Name: fun_idphone_from_phone(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -713,8 +713,8 @@ END;$$;
 
 
 --
--- TOC entry 2854 (class 0 OID 0)
--- Dependencies: 281
+-- TOC entry 2845 (class 0 OID 0)
+-- Dependencies: 278
 -- Name: FUNCTION fun_idphone_from_phone(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -723,7 +723,7 @@ COMMENT ON FUNCTION fun_idphone_from_phone(inphone text) IS 'Obtenemos el idphon
 
 --
 -- TOC entry 264 (class 1255 OID 16846)
--- Dependencies: 936 5
+-- Dependencies: 927 5
 -- Name: fun_incomingcalls_insert(timestamp without time zone, integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -755,7 +755,7 @@ END;$$;
 
 
 --
--- TOC entry 2855 (class 0 OID 0)
+-- TOC entry 2846 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: FUNCTION fun_incomingcalls_insert(indatecall timestamp without time zone, inidport integer, incalaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
@@ -765,7 +765,7 @@ COMMENT ON FUNCTION fun_incomingcalls_insert(indatecall timestamp without time z
 
 --
 -- TOC entry 271 (class 1255 OID 16847)
--- Dependencies: 5 936
+-- Dependencies: 5 927
 -- Name: fun_incomingcalls_insert_online(integer, integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -777,7 +777,7 @@ END;$$;
 
 
 --
--- TOC entry 2856 (class 0 OID 0)
+-- TOC entry 2847 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: FUNCTION fun_incomingcalls_insert_online(inidport integer, incallaction integer, inphone text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
@@ -786,8 +786,8 @@ COMMENT ON FUNCTION fun_incomingcalls_insert_online(inidport integer, incallacti
 
 
 --
--- TOC entry 330 (class 1255 OID 27779)
--- Dependencies: 936 5
+-- TOC entry 324 (class 1255 OID 27779)
+-- Dependencies: 5 927
 -- Name: fun_location_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -896,8 +896,8 @@ END;$$;
 
 
 --
--- TOC entry 363 (class 1255 OID 27603)
--- Dependencies: 936 5
+-- TOC entry 357 (class 1255 OID 27603)
+-- Dependencies: 927 5
 -- Name: fun_location_level1_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -954,8 +954,8 @@ END;$$;
 
 
 --
--- TOC entry 333 (class 1255 OID 27607)
--- Dependencies: 5 936
+-- TOC entry 327 (class 1255 OID 27607)
+-- Dependencies: 5 927
 -- Name: fun_location_level2_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1008,8 +1008,8 @@ END;$$;
 
 
 --
--- TOC entry 334 (class 1255 OID 27608)
--- Dependencies: 5 936
+-- TOC entry 328 (class 1255 OID 27608)
+-- Dependencies: 5 927
 -- Name: fun_location_level3_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1062,8 +1062,8 @@ END;$$;
 
 
 --
--- TOC entry 346 (class 1255 OID 27609)
--- Dependencies: 5 936
+-- TOC entry 340 (class 1255 OID 27609)
+-- Dependencies: 5 927
 -- Name: fun_location_level4_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1116,8 +1116,8 @@ END;$$;
 
 
 --
--- TOC entry 347 (class 1255 OID 27610)
--- Dependencies: 936 5
+-- TOC entry 341 (class 1255 OID 27610)
+-- Dependencies: 5 927
 -- Name: fun_location_level5_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1170,8 +1170,8 @@ END;$$;
 
 
 --
--- TOC entry 348 (class 1255 OID 27611)
--- Dependencies: 5 936
+-- TOC entry 342 (class 1255 OID 27611)
+-- Dependencies: 5 927
 -- Name: fun_location_level6_edit_xml(integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1224,8 +1224,8 @@ END;$$;
 
 
 --
--- TOC entry 364 (class 1255 OID 27617)
--- Dependencies: 5 936
+-- TOC entry 358 (class 1255 OID 27617)
+-- Dependencies: 927 5
 -- Name: fun_location_level_edit_xml(integer, integer, integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1260,8 +1260,8 @@ END;$$;
 
 
 --
--- TOC entry 359 (class 1255 OID 27615)
--- Dependencies: 936 5
+-- TOC entry 353 (class 1255 OID 27615)
+-- Dependencies: 927 5
 -- Name: fun_location_level_remove_selected_xml(integer, integer[], boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1325,7 +1325,7 @@ END;$$;
 
 --
 -- TOC entry 273 (class 1255 OID 17669)
--- Dependencies: 5 936
+-- Dependencies: 5 927
 -- Name: fun_modem_insert(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1346,7 +1346,7 @@ END;$$;
 
 
 --
--- TOC entry 2857 (class 0 OID 0)
+-- TOC entry 2848 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel text, inrevision text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
@@ -1355,8 +1355,8 @@ COMMENT ON FUNCTION fun_modem_insert(inimei text, inmanufacturer text, inmodel t
 
 
 --
--- TOC entry 386 (class 1255 OID 28091)
--- Dependencies: 936 5
+-- TOC entry 380 (class 1255 OID 28091)
+-- Dependencies: 5 927
 -- Name: fun_outgoing_log_insert(integer, integer, integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1385,8 +1385,8 @@ END;$$;
 
 
 --
--- TOC entry 360 (class 1255 OID 28135)
--- Dependencies: 5 936
+-- TOC entry 354 (class 1255 OID 28135)
+-- Dependencies: 5 927
 -- Name: fun_outgoing_new(integer, integer, integer, integer, text, text, timestamp without time zone, integer, boolean, boolean, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1419,8 +1419,8 @@ END;$$;
 
 
 --
--- TOC entry 391 (class 1255 OID 28136)
--- Dependencies: 936 5
+-- TOC entry 382 (class 1255 OID 28136)
+-- Dependencies: 927 5
 -- Name: fun_outgoing_new_now(integer, integer, integer, integer, text, text, integer, boolean, boolean, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1435,8 +1435,8 @@ END;$$;
 
 
 --
--- TOC entry 331 (class 1255 OID 28113)
--- Dependencies: 936 5
+-- TOC entry 325 (class 1255 OID 28113)
+-- Dependencies: 5 927
 -- Name: fun_outgoing_tosend(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1485,8 +1485,8 @@ END;$$;
 
 
 --
--- TOC entry 280 (class 1255 OID 25896)
--- Dependencies: 5 936
+-- TOC entry 277 (class 1255 OID 25896)
+-- Dependencies: 927 5
 -- Name: fun_phone_from_idphone(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1512,8 +1512,8 @@ END;$$;
 
 
 --
--- TOC entry 2858 (class 0 OID 0)
--- Dependencies: 280
+-- TOC entry 2849 (class 0 OID 0)
+-- Dependencies: 277
 -- Name: FUNCTION fun_phone_from_idphone(inidphone integer); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -1521,8 +1521,8 @@ COMMENT ON FUNCTION fun_phone_from_idphone(inidphone integer) IS 'Obtiene el num
 
 
 --
--- TOC entry 339 (class 1255 OID 27783)
--- Dependencies: 5 936
+-- TOC entry 333 (class 1255 OID 27783)
+-- Dependencies: 5 927
 -- Name: fun_phone_getdata_string(integer, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1600,8 +1600,8 @@ END;$$;
 
 
 --
--- TOC entry 282 (class 1255 OID 25900)
--- Dependencies: 5 936
+-- TOC entry 279 (class 1255 OID 25900)
+-- Dependencies: 5 927
 -- Name: fun_phone_idphone_check(integer, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1638,8 +1638,8 @@ END;$$;
 
 
 --
--- TOC entry 305 (class 1255 OID 26980)
--- Dependencies: 5 936
+-- TOC entry 299 (class 1255 OID 26980)
+-- Dependencies: 927 5
 -- Name: fun_phone_search_by_number(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1661,8 +1661,8 @@ END;$$;
 
 
 --
--- TOC entry 2859 (class 0 OID 0)
--- Dependencies: 305
+-- TOC entry 2850 (class 0 OID 0)
+-- Dependencies: 299
 -- Name: FUNCTION fun_phone_search_by_number(inphone text); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -1670,8 +1670,8 @@ COMMENT ON FUNCTION fun_phone_search_by_number(inphone text) IS 'Busca el id seg
 
 
 --
--- TOC entry 326 (class 1255 OID 27768)
--- Dependencies: 5 936
+-- TOC entry 320 (class 1255 OID 27768)
+-- Dependencies: 927 5
 -- Name: fun_phones_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1709,8 +1709,8 @@ END;$$;
 
 
 --
--- TOC entry 354 (class 1255 OID 27274)
--- Dependencies: 5 936
+-- TOC entry 348 (class 1255 OID 27274)
+-- Dependencies: 5 927
 -- Name: fun_phones_table(integer, integer, boolean, text, integer, integer, text, integer, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1781,8 +1781,8 @@ END;$$;
 
 
 --
--- TOC entry 341 (class 1255 OID 27275)
--- Dependencies: 936 5
+-- TOC entry 335 (class 1255 OID 27275)
+-- Dependencies: 5 927
 -- Name: fun_phones_table_xml(integer, integer, boolean, text, integer, integer, text, integer, integer, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1804,8 +1804,8 @@ END;$$;
 
 
 --
--- TOC entry 374 (class 1255 OID 27883)
--- Dependencies: 936 5
+-- TOC entry 368 (class 1255 OID 27883)
+-- Dependencies: 5 927
 -- Name: fun_portmodem_update(integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1830,8 +1830,8 @@ END;$$;
 
 
 --
--- TOC entry 317 (class 1255 OID 27040)
--- Dependencies: 5 936
+-- TOC entry 311 (class 1255 OID 27040)
+-- Dependencies: 5 927
 -- Name: fun_provider_edit(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1883,8 +1883,8 @@ END;$$;
 
 
 --
--- TOC entry 316 (class 1255 OID 27039)
--- Dependencies: 5 936
+-- TOC entry 310 (class 1255 OID 27039)
+-- Dependencies: 927 5
 -- Name: fun_provider_edit_xml(integer, boolean, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1905,8 +1905,8 @@ END;$$;
 
 
 --
--- TOC entry 307 (class 1255 OID 26982)
--- Dependencies: 936 5
+-- TOC entry 301 (class 1255 OID 26982)
+-- Dependencies: 927 5
 -- Name: fun_providers_idname_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1938,8 +1938,8 @@ END;$$;
 
 
 --
--- TOC entry 2860 (class 0 OID 0)
--- Dependencies: 307
+-- TOC entry 2851 (class 0 OID 0)
+-- Dependencies: 301
 -- Name: FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -1947,8 +1947,8 @@ COMMENT ON FUNCTION fun_providers_idname_xml(fieldtextasbase64 boolean) IS 'Devu
 
 
 --
--- TOC entry 385 (class 1255 OID 28033)
--- Dependencies: 5 936
+-- TOC entry 379 (class 1255 OID 28033)
+-- Dependencies: 927 5
 -- Name: fun_sim_table_edit(integer, integer, boolean, text, boolean, integer, integer, integer, boolean, integer, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2001,8 +2001,8 @@ END;$$;
 
 
 --
--- TOC entry 384 (class 1255 OID 28036)
--- Dependencies: 936 5
+-- TOC entry 378 (class 1255 OID 28036)
+-- Dependencies: 5 927
 -- Name: fun_sim_table_edit_xml(integer, integer, boolean, text, boolean, integer, integer, integer, boolean, integer, integer, text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2025,7 +2025,7 @@ END;$$;
 
 --
 -- TOC entry 269 (class 1255 OID 16828)
--- Dependencies: 936 5
+-- Dependencies: 5 927
 -- Name: fun_smsin_insert(integer, integer, timestamp without time zone, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2056,7 +2056,7 @@ END;$$;
 
 
 --
--- TOC entry 2861 (class 0 OID 0)
+-- TOC entry 2852 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: FUNCTION fun_smsin_insert(inidport integer, instatus integer, indatesms timestamp without time zone, inphone text, inmsj text, innote text); Type: COMMENT; Schema: public; Owner: -
 --
@@ -2065,8 +2065,8 @@ COMMENT ON FUNCTION fun_smsin_insert(inidport integer, instatus integer, indates
 
 
 --
--- TOC entry 343 (class 1255 OID 27273)
--- Dependencies: 936 5
+-- TOC entry 337 (class 1255 OID 27273)
+-- Dependencies: 5 927
 -- Name: fun_view_address_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2110,8 +2110,8 @@ END;$$;
 
 
 --
--- TOC entry 304 (class 1255 OID 26959)
--- Dependencies: 5 936
+-- TOC entry 298 (class 1255 OID 26959)
+-- Dependencies: 5 927
 -- Name: fun_view_contacts_byidcontact_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2144,8 +2144,8 @@ END;$$;
 
 
 --
--- TOC entry 2862 (class 0 OID 0)
--- Dependencies: 304
+-- TOC entry 2853 (class 0 OID 0)
+-- Dependencies: 298
 -- Name: FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -2153,8 +2153,8 @@ COMMENT ON FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, field
 
 
 --
--- TOC entry 299 (class 1255 OID 26958)
--- Dependencies: 5 936
+-- TOC entry 293 (class 1255 OID 26958)
+-- Dependencies: 927 5
 -- Name: fun_view_contacts_to_list_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2187,8 +2187,8 @@ END;$$;
 
 
 --
--- TOC entry 2863 (class 0 OID 0)
--- Dependencies: 299
+-- TOC entry 2854 (class 0 OID 0)
+-- Dependencies: 293
 -- Name: FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -2196,8 +2196,8 @@ COMMENT ON FUNCTION fun_view_contacts_to_list_xml(fieldtextasbase64 boolean) IS 
 
 
 --
--- TOC entry 306 (class 1255 OID 26983)
--- Dependencies: 936 5
+-- TOC entry 300 (class 1255 OID 26983)
+-- Dependencies: 927 5
 -- Name: fun_view_incomingcalls_xml(timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2230,8 +2230,8 @@ END;$$;
 
 
 --
--- TOC entry 2864 (class 0 OID 0)
--- Dependencies: 306
+-- TOC entry 2855 (class 0 OID 0)
+-- Dependencies: 300
 -- Name: FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time zone, dateend timestamp without time zone, fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -2239,8 +2239,8 @@ COMMENT ON FUNCTION fun_view_incomingcalls_xml(datestart timestamp without time 
 
 
 --
--- TOC entry 365 (class 1255 OID 27622)
--- Dependencies: 5 936
+-- TOC entry 359 (class 1255 OID 27622)
+-- Dependencies: 5 927
 -- Name: fun_view_location_level_xml(integer, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2315,8 +2315,8 @@ END;$$;
 
 
 --
--- TOC entry 366 (class 1255 OID 27761)
--- Dependencies: 936 5
+-- TOC entry 360 (class 1255 OID 27761)
+-- Dependencies: 927 5
 -- Name: fun_view_locations_ids_from_idlocation_xml(numeric); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2339,8 +2339,8 @@ END;$$;
 
 
 --
--- TOC entry 392 (class 1255 OID 28129)
--- Dependencies: 5 936
+-- TOC entry 383 (class 1255 OID 28129)
+-- Dependencies: 927 5
 -- Name: fun_view_outgoing_view_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2374,7 +2374,7 @@ END;$$;
 
 --
 -- TOC entry 265 (class 1255 OID 26960)
--- Dependencies: 936 5
+-- Dependencies: 5 927
 -- Name: fun_view_phones_byid_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2407,8 +2407,8 @@ END;$$;
 
 
 --
--- TOC entry 303 (class 1255 OID 26976)
--- Dependencies: 5 936
+-- TOC entry 297 (class 1255 OID 26976)
+-- Dependencies: 5 927
 -- Name: fun_view_phones_byidcontact_simplified_xml(integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2441,8 +2441,8 @@ END;$$;
 
 
 --
--- TOC entry 311 (class 1255 OID 27021)
--- Dependencies: 5 936
+-- TOC entry 305 (class 1255 OID 27021)
+-- Dependencies: 927 5
 -- Name: fun_view_provider_table_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2474,8 +2474,8 @@ END;$$;
 
 
 --
--- TOC entry 2865 (class 0 OID 0)
--- Dependencies: 311
+-- TOC entry 2856 (class 0 OID 0)
+-- Dependencies: 305
 -- Name: FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean); Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -2483,8 +2483,8 @@ COMMENT ON FUNCTION fun_view_provider_table_xml(fieldtextasbase64 boolean) IS 'D
 
 
 --
--- TOC entry 383 (class 1255 OID 27996)
--- Dependencies: 936 5
+-- TOC entry 377 (class 1255 OID 27996)
+-- Dependencies: 927 5
 -- Name: fun_view_sim_xml(boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2518,8 +2518,8 @@ END;$$;
 
 
 --
--- TOC entry 313 (class 1255 OID 27038)
--- Dependencies: 936 5
+-- TOC entry 307 (class 1255 OID 27038)
+-- Dependencies: 5 927
 -- Name: fun_view_smsin_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2552,8 +2552,8 @@ END;$$;
 
 
 --
--- TOC entry 375 (class 1255 OID 27885)
--- Dependencies: 5 936
+-- TOC entry 369 (class 1255 OID 27885)
+-- Dependencies: 927 5
 -- Name: incomingcalls_triggered_after_changing(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2579,627 +2579,19 @@ END;$$;
 
 
 --
--- TOC entry 2866 (class 0 OID 0)
--- Dependencies: 375
+-- TOC entry 2857 (class 0 OID 0)
+-- Dependencies: 369
 -- Name: FUNCTION incomingcalls_triggered_after_changing(); Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON FUNCTION incomingcalls_triggered_after_changing() IS 'Esta funcion debe dispararse DESPUES de haberse ejecutado una accion.';
 
 
---
--- TOC entry 387 (class 1255 OID 28090)
--- Dependencies: 936 5
--- Name: xxxfun_outgoing_new(integer, integer, integer, integer, text, text, timestamp without time zone, integer, boolean, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_outgoing_new(inidprovider integer, inidsim integer, inidsmstype integer, inidphone integer, inphone text, inmsg text, indatetosend timestamp without time zone, inpriority integer, inreport boolean, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$DECLARE
-
-Retorno integer default 0;
-
-BEGIN
-
-IF NOT EXISTS(SELECT * FROM provider WHERE idprovider = inidprovider) THEN
-inidprovider := null;
-END IF;
-
-IF NOT EXISTS(SELECT * FROM sim WHERE idsim = inidsim) THEN
-inidsim := null;
-END IF;
-
-IF EXISTS(SELECT * FROM phones WHERE idphone = inidphone) THEN
-inphone := '';
-ELSE
-inidphone := null;
-END IF;
-
-INSERT INTO outgoing (idprovider, idsim, idsmstype, idphone, message, datetosend, priority, report, enablemessageclass, messageclass, status, note) VALUES (inidprovider, inidsim, inidsmstype, inidphone, inmsg, indatetosend, inpriority, inreport, inenablemsgclass, inmsgclass, 0, innote) RETURNING idsmsout INTO Retorno;
-
-RETURN Retorno;
-END;$$;
-
-
---
--- TOC entry 2867 (class 0 OID 0)
--- Dependencies: 387
--- Name: FUNCTION xxxfun_outgoing_new(inidprovider integer, inidsim integer, inidsmstype integer, inidphone integer, inphone text, inmsg text, indatetosend timestamp without time zone, inpriority integer, inreport boolean, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_outgoing_new(inidprovider integer, inidsim integer, inidsmstype integer, inidphone integer, inphone text, inmsg text, indatetosend timestamp without time zone, inpriority integer, inreport boolean, inenablemsgclass boolean, inmsgclass integer, innote text) IS 'Crea un nuevo mensaje para ser enviado.
-Devuelve el idsmsout del nuevo mensaje.';
-
-
---
--- TOC entry 388 (class 1255 OID 28092)
--- Dependencies: 936 5
--- Name: xxxfun_outgoing_new_now(integer, integer, integer, integer, text, text, integer, boolean, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_outgoing_new_now(inidprovider integer, inidsim integer, inidsmstype integer, inidphone integer, inphone text, inmsg text, inpriority integer, inreport boolean, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$DECLARE
-
-BEGIN
-
-RETURN fun_outgoing_new(inidprovider, inidsim, inidsmstype, inidphone, inphone, inmsg, 'now()', inpriority, inreport, inenablemsgclass, inmsgclass, innote);
-END;$$;
-
-
---
--- TOC entry 285 (class 1255 OID 16800)
--- Dependencies: 936 5
--- Name: xxxfun_smsout_insert(integer, integer, integer, integer, text, timestamp without time zone, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$DECLARE
-retorno INTEGER DEFAULT 0; 
-internalPhone TEXT DEFAULT '';
-internalidPhone INTEGER DEFAULT 0;
-
-BEGIN
-
-SELECT outidphone, outphone INTO internalidPhone, internalPhone FROM fun_phone_idphone_check(inidphone, inphone);
-
-IF char_length(internalPhone) < 1 AND internalidPhone < 1 THEN
--- No hay valores validos, no es posible insertar
-retorno := -1;
-
-ELSE
-
--- Tratamos de obtener el idprovider si no se lo ha proveido
-IF inidprovider < 1 THEN
-SELECT idprovider INTO inidprovider FROM phones WHERE idphone = internalidPhone;
--- Pone el idprovider a 0, lo que hace que el sistema intente con cada proveedor hasta lograr enviar el sms.
-IF inidprovider IS NULL THEN inidprovider := 0;  END IF;
-END IF;
-
-INSERT INTO smsout (idprovider, idsmstype, priority, idphone, phone, datetosend, message, note) VALUES (inidprovider, inidsmstype, inpriority, internalidPhone, internalPhone, indatetosend, inmessage, innote) RETURNING idsmsout INTO retorno;
-
--- Verificamos que el numero no exista en la lista negra, si existe seteamos process como destino no permitodo
-IF EXISTS(SELECT idbl FROM blacklist WHERE idprovider = inidprovider AND idphone = internalidPhone) THEN
-UPDATE smsout SET dateprocess = now(), process = 4 WHERE idsmsout = retorno;
-END IF;
-
--- TODO 
--- Si es necesario implementar uso de lista blanca
-
-END IF;
-
-
-RETURN retorno;
-END;$$;
-
-
---
--- TOC entry 2868 (class 0 OID 0)
--- Dependencies: 285
--- Name: FUNCTION xxxfun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsout_insert(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, indatetosend timestamp without time zone, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) IS 'Ingresa un sms en la tabla smsout haciendo chequeos previos.
-Devuelve:
--1 Si no se ha ingresado inphone e idphone <1';
-
-
---
--- TOC entry 277 (class 1255 OID 17668)
--- Dependencies: 936 5
--- Name: xxxfun_smsout_insert_sendnow(integer, integer, integer, integer, text, text, boolean, integer, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$DECLARE
-retorno INTEGER DEFAULT -1; 
-
-BEGIN
-retorno := fun_smsout_insert(inidprovider, inidsmstype, inidphone, inpriority, inphone, 'now()', inmessage, inenablemsgclass, inmsgclass, innote);
-RETURN retorno;
-END;$$;
-
-
---
--- TOC entry 2869 (class 0 OID 0)
--- Dependencies: 277
--- Name: FUNCTION xxxfun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsout_insert_sendnow(inidprovider integer, inidsmstype integer, inidphone integer, inpriority integer, inphone text, inmessage text, inenablemsgclass boolean, inmsgclass integer, innote text) IS 'Ingresa un sms en la tabla smsout haciendo chequeos previos.';
-
-
---
--- TOC entry 275 (class 1255 OID 17665)
--- Dependencies: 936 5
--- Name: xxxfun_smsout_preparenewsmsautoprovider(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsout_preparenewsmsautoprovider() RETURNS boolean
-    LANGUAGE plpgsql
-    AS $$DECLARE
-
-CursorNewSMSAutoprovider CURSOR FOR SELECT * FROM public.smsout WHERE datetosend<=now() AND idprovider = 0 AND process = 0;
-SMSOUTROWDATA   public.smsout%ROWTYPE;
-FirstCurrentIdPort INTEGER DEFAULT 0; 
-
-BEGIN
-
-SELECT idport INTO FirstCurrentIdPort FROM  currentportsproviders ORDER BY idport LIMIT 1;
-
--- Obtenemos todos los smsout que tienen autoproveedor y debes ser ya enviados, los marcamos como autoprovider y con el primer puerto registrado actualmente
-    OPEN CursorNewSMSAutoprovider;
-    loop    
-
-        FETCH CursorNewSMSAutoprovider INTO SMSOUTROWDATA;
-        EXIT WHEN NOT FOUND;
-UPDATE smsout SET process = 5, idport = FirstCurrentIdPort, dateprocess = now()  WHERE idsmsout = SMSOUTROWDATA.idsmsout;
-    end loop;
-    CLOSE CursorNewSMSAutoprovider;
-
-RETURN TRUE;
-END;$$;
-
-
---
--- TOC entry 2870 (class 0 OID 0)
--- Dependencies: 275
--- Name: FUNCTION xxxfun_smsout_preparenewsmsautoprovider(); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsout_preparenewsmsautoprovider() IS 'Prepara para enviar los smsout nuevos que han sido marcados como autoproveedor';
-
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- TOC entry 173 (class 1259 OID 16579)
--- Dependencies: 2362 2363 2364 2365 2366 2367 2368 2369 2370 2371 2372 2373 2374 2375 2376 2377 2378 2379 2380 2381 2382 2383 2384 2385 2386 2387 2388 2389 1869 1869 5
--- Name: xxxsmsout; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE xxxsmsout (
-    idsmsout bigint NOT NULL,
-    dateload timestamp without time zone DEFAULT now() NOT NULL,
-    idprovider integer DEFAULT 0 NOT NULL,
-    idsmstype integer DEFAULT 0 NOT NULL,
-    idphone integer DEFAULT 0 NOT NULL,
-    phone text DEFAULT ''::text NOT NULL,
-    datetosend timestamp without time zone DEFAULT now() NOT NULL,
-    dateprocess timestamp without time zone DEFAULT now() NOT NULL,
-    process integer DEFAULT 0 NOT NULL,
-    note text COLLATE pg_catalog."es_EC.utf8" DEFAULT ''::text NOT NULL,
-    priority integer DEFAULT 5,
-    attempts integer DEFAULT 0,
-    idprovidersent integer DEFAULT 0,
-    slices integer DEFAULT 0,
-    slicessent integer DEFAULT 0,
-    messageclass integer DEFAULT 1 NOT NULL,
-    report boolean DEFAULT false,
-    maxslices integer DEFAULT 1 NOT NULL,
-    enablemessageclass boolean DEFAULT false NOT NULL,
-    idport integer DEFAULT 0 NOT NULL,
-    flag1 integer DEFAULT 0 NOT NULL,
-    flag2 integer DEFAULT 0 NOT NULL,
-    flag3 integer DEFAULT 0 NOT NULL,
-    flag4 integer DEFAULT 0 NOT NULL,
-    flag5 integer DEFAULT 0 NOT NULL,
-    retryonfail integer DEFAULT 5 NOT NULL,
-    maxtimelive integer DEFAULT 2 NOT NULL,
-    ts timestamp without time zone DEFAULT now() NOT NULL,
-    message text COLLATE pg_catalog."es_EC.utf8" DEFAULT ''::text NOT NULL,
-    idsmsoutf integer
-);
-
-
---
--- TOC entry 2871 (class 0 OID 0)
--- Dependencies: 173
--- Name: TABLE xxxsmsout; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE xxxsmsout IS 'Tabla de mensajes salientes';
-
-
---
--- TOC entry 2872 (class 0 OID 0)
--- Dependencies: 173
--- Name: COLUMN xxxsmsout.idsmstype; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsout.idsmstype IS 'Estado del envio del sms';
-
-
---
--- TOC entry 2873 (class 0 OID 0)
--- Dependencies: 173
--- Name: COLUMN xxxsmsout.idphone; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsout.idphone IS 'Se es identificado el numero con un idphone se escribe este campo';
-
-
---
--- TOC entry 2874 (class 0 OID 0)
--- Dependencies: 173
--- Name: COLUMN xxxsmsout.phone; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsout.phone IS 'Numero telefonico';
-
-
---
--- TOC entry 2875 (class 0 OID 0)
--- Dependencies: 173
--- Name: COLUMN xxxsmsout.datetosend; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsout.datetosend IS 'Fecha programada de envio';
-
-
---
--- TOC entry 2876 (class 0 OID 0)
--- Dependencies: 173
--- Name: COLUMN xxxsmsout.priority; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsout.priority IS 'Prioridad de envio del sms. 5 es el valor de fabrica. 0 es la maxima prioridad.';
-
-
---
--- TOC entry 283 (class 1255 OID 16715)
--- Dependencies: 5 936 750
--- Name: xxxfun_smsout_to_send(integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsout_to_send(inidport integer DEFAULT 0) RETURNS xxxsmsout
-    LANGUAGE plpgsql
-    AS $$DECLARE
-
-Retorno smsout%ROWTYPE;
-idlockedsmsout INTEGER DEFAULT 0;
-inidprovider INTEGER DEFAULT 0;
-internalPhone TEXT DEFAULT '';
-internalidPhone INTEGER DEFAULT 0;
-
-SMSOutOpciones smsoutoptions%ROWTYPE;
-
-BEGIN
-
--- Marcamos como expirados los sms que han sobrepasado su tiempo de vida
---PERFORM fun_smsout_update_expired();
-
--- Preparamos los smsout marcados como autoproveedor
-PERFORM fun_smsout_preparenewsmsautoprovider();
-
--- Selecionamos los datos desde smsoutoptions
-SELECT * INTO SMSOutOpciones FROM fun_smsoutoptions_current();
-
---LISTEN mymessage;
---PERFORM pg_notify('mymessage', inidport::text);
-
--- Seleccionamos el inidprovider para el inidport pasado como parametro, si existe devolvera un valor > 0
-SELECT idprovider INTO inidprovider FROM currentportsproviders WHERE idport = inidport;
-
--- SECCION selecciona un sms para enviar segun el Proveedor que corresponde a este puerto y setea los valores de smsoutoptions registradas en este momento
-IF inidprovider > 0 THEN
-UPDATE smsout SET maxtimelive = SMSOutOpciones.maxtimelive, retryonfail = SMSOutOpciones.retryonfail, report = SMSOutOpciones.report, dateprocess = now(), maxslices = SMSOutOpciones.maxslices, process=1, idport = inidport WHERE idsmsout = (SELECT idsmsout FROM smsout WHERE datetosend <= now() AND ((idprovider = inidprovider AND process IN(0, 10) ) OR (idprovider = 0 AND process = 5 AND idport = inidport) ) ORDER BY datetosend, priority LIMIT 1) RETURNING idsmsout INTO idlockedsmsout;
-
-IF idlockedsmsout > 0 THEN
--- Verificamos idphone y phone
-SELECT idphone, phone INTO internalidPhone, internalPhone FROM smsout WHERE idsmsout = idlockedsmsout;
-
-SELECT outidphone, outphone INTO internalidPhone, internalPhone FROM fun_phone_idphone_check(internalidPhone, internalPhone);
--- TODO: chequear adicionalmente que solo haya numeros, + como caracteres
-IF char_length(internalPhone) > 0 THEN
-UPDATE smsout SET idphone=internalidPhone, phone = internalPhone WHERE idsmsout = idlockedsmsout RETURNING idsmsout INTO idlockedsmsout;
-
-ELSE
--- El phone es invalido
-UPDATE smsout SET idphone=internalidPhone, phone = internalPhone, process = 11 WHERE idsmsout = idlockedsmsout;
-idlockedsmsout := 0;
-END IF;
-
-END IF;
-
-
-END IF;
-
-
--- Obtenemos el ultimo registro para enviar con este proveedor
-SELECT * INTO Retorno FROM smsout WHERE idsmsout = idlockedsmsout;
-
-RETURN Retorno;
-END;$$;
-
-
---
--- TOC entry 2877 (class 0 OID 0)
--- Dependencies: 283
--- Name: FUNCTION xxxfun_smsout_to_send(inidport integer); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsout_to_send(inidport integer) IS 'Selecciona un sms de smsout para enviarlo.
--- process: 0 nada, 1 blockeado, 2 enviado, 3 falla, 4 destino no permitido, 5 autoprovider, 6 enviado incompleto, 7 expirado tiempo de vida, 8 falla todos los intentos por enviar por todos los puertos, 9 fallan todos los intentos de envio, 10 Espera por reintento de envio, 11 Phone no valido';
-
-
---
--- TOC entry 390 (class 1255 OID 16799)
--- Dependencies: 936 5
--- Name: xxxfun_smsout_updatestatus(integer, integer, integer, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$DECLARE
-Retorno integer DEFAULT -1;
---inidprovidernext integer DEFAULT 0;
-inidprovider integer DEFAULT 0;
-InternalAttempts INTEGER DEFAULT 0;
-InternalIdPort INTEGER DEFAULT 0;
-
-BEGIN
-
-InternalIdPort := inidport;
--- Obtenemos el idprovider para el idport actual
-inidprovider := fun_correntportproviders_get_idprovider(InternalIdPort);
-
-IF EXISTS(SELECT idprovider FROM smsout WHERE idsmsout = inidsmsout AND idprovider = 0) THEN
--- SECCION SMS es con auto proveedor
-
-IF inprocess = 3 THEN
--- El envio ha fallado 
--- Buscamos el siguiente proveedor habilitado desde la tabla currentportsproviders
-SELECT idport INTO  InternalIdPort FROM currentportsproviders WHERE idport > (SELECT idport FROM smsout WHERE idsmsout = inidsmsout) ORDER BY idport;
-
-IF InternalIdPort IS NULL OR InternalIdPort < 1 THEN
--- No hay mas puertos para intentar
-InternalIdPort := inidport;
-inprocess := 8;
-inidprovider := 0;
-InternalAttempts :=1;
-ELSE
--- Se intentara con el siguiente puerto encontrado
-inprocess := 5;
-inidprovider := 0;
-END IF;
-
-END IF;
-
--- Actualizamos este sms que autoproveedor
--- UPDATE smsout SET slices = inslices, slicessent = inslicessent, dateprocess = now(), attempts = InternalAttempts, process = inprocess, idprovidersent = inidprovider, idport = inidport WHERE idsmsout = inidsmsout RETURNING idsmsout INTO Retorno;
-
-
-ELSE
--- SECCION SMS no es con autoproveedor
-
-InternalAttempts :=1;
-
-IF inprocess = 3 THEN
-
--- Actualiza el mensaje verificando si ya exede el numero de intentos y si 
-IF EXISTS(SELECT idprovider FROM smsout WHERE retryonfail > (attempts+1) AND idsmsout = inidsmsout) THEN
--- En espera para volver a intentar el envio
-inprocess := 10;
-ELSE
--- Se Exede ya el numero de intentos
-inprocess := 9;
-END IF;
-
-END IF;
-
-END IF;
-
-
-UPDATE smsout SET slices = inslices, slicessent = inslicessent, dateprocess = now(), attempts = attempts+InternalAttempts, process = inprocess, idprovidersent = inidprovider, idport = inidport WHERE idsmsout = inidsmsout RETURNING idsmsout INTO Retorno;
-
-RETURN Retorno;
-END;$$;
-
-
---
--- TOC entry 2878 (class 0 OID 0)
--- Dependencies: 390
--- Name: FUNCTION xxxfun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsout_updatestatus(inidsmsout integer, inprocess integer, inidport integer, inslices integer, inslicessent integer, innote text) IS 'Actualiza el estado de envio del sms.';
-
-
---
--- TOC entry 180 (class 1259 OID 16745)
--- Dependencies: 2402 2403 2404 2405 2406 5
--- Name: xxxsmsoutoptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE xxxsmsoutoptions (
-    idsmsoutopt bigint NOT NULL,
-    enable boolean,
-    name text,
-    report boolean DEFAULT false NOT NULL,
-    retryonfail integer DEFAULT 3 NOT NULL,
-    maxslices integer DEFAULT 1,
-    maxtimelive integer DEFAULT 5 NOT NULL,
-    ts timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
---
--- TOC entry 2879 (class 0 OID 0)
--- Dependencies: 180
--- Name: TABLE xxxsmsoutoptions; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE xxxsmsoutoptions IS 'Opciones globales adicionales para envio de mensajes de texto.';
-
-
---
--- TOC entry 2880 (class 0 OID 0)
--- Dependencies: 180
--- Name: COLUMN xxxsmsoutoptions.enable; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsoutoptions.enable IS 'usms toma el ultimo registro habilitado para su funcionamiento ignorando los anteriores';
-
-
---
--- TOC entry 2881 (class 0 OID 0)
--- Dependencies: 180
--- Name: COLUMN xxxsmsoutoptions.name; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsoutoptions.name IS 'Nombre opcional';
-
-
---
--- TOC entry 2882 (class 0 OID 0)
--- Dependencies: 180
--- Name: COLUMN xxxsmsoutoptions.report; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsoutoptions.report IS 'Solicita reporte de recibido para cada sms';
-
-
---
--- TOC entry 2883 (class 0 OID 0)
--- Dependencies: 180
--- Name: COLUMN xxxsmsoutoptions.retryonfail; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsoutoptions.retryonfail IS '0 = No intenta reenviar el sms en caso de falla.
-> 0 Numero de reintentos en caso de falla.';
-
-
---
--- TOC entry 2884 (class 0 OID 0)
--- Dependencies: 180
--- Name: COLUMN xxxsmsoutoptions.maxslices; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN xxxsmsoutoptions.maxslices IS 'Numero maximo de sms que se enviara cuando el texto del mensaje es largo.
-De fabrica envia un solo mensaje de 160 caracteres.
-Si 0 o 1 de fabrica.';
-
-
---
--- TOC entry 274 (class 1255 OID 17663)
--- Dependencies: 916 5 936
--- Name: xxxfun_smsoutoptions_current(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_smsoutoptions_current() RETURNS xxxsmsoutoptions
-    LANGUAGE plpgsql
-    AS $$DECLARE
-Retorno smsoutoptions%ROWTYPE;
-
-BEGIN
-
--- Si no existe un registro habilitado, creamos uno con valores de fabrica
-IF NOT EXISTS(SELECT idsmsoutopt FROM smsoutoptions WHERE enable=true) THEN
-INSERT INTO smsoutoptions (name, enable) VALUES ('Automatic', true);
-END IF;
-
--- Selecionamos el ultimo registro habilitado desde smsoutoptions
-SELECT * INTO Retorno FROM smsoutoptions WHERE enable = true ORDER BY idsmsoutopt DESC LIMIT 1;
-
-IF Retorno.retryonfail =0 OR Retorno.retryonfail IS NULL THEN
-Retorno.retryonfail := 1;
-UPDATE smsoutoptions SET retryonfail = Retorno.retryonfail WHERE idsmsoutopt = Retorno.idsmsoutopt;
-END IF;
-
-IF Retorno.report IS NULL THEN
-Retorno.report := false;
-UPDATE smsoutoptions SET report = Retorno.report WHERE idsmsoutopt = Retorno.idsmsoutopt;
-END IF;
-
-IF Retorno.maxslices=0 OR Retorno.maxslices IS NULL THEN
-Retorno.maxslices := 1;
-UPDATE smsoutoptions SET maxslices = Retorno.maxslices WHERE idsmsoutopt = Retorno.idsmsoutopt;
-END IF;
-
-IF Retorno.maxtimelive<5 OR Retorno.maxtimelive IS NULL THEN
-Retorno.maxtimelive := 5; -- Maximo 5 minutos de vida despues de l ultima modificacion del proceso
-UPDATE smsoutoptions SET maxtimelive = Retorno.maxtimelive WHERE idsmsoutopt = Retorno.idsmsoutopt;
-END IF;
-
-
-RETURN Retorno;
-
-END;$$;
-
-
---
--- TOC entry 2885 (class 0 OID 0)
--- Dependencies: 274
--- Name: FUNCTION xxxfun_smsoutoptions_current(); Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON FUNCTION xxxfun_smsoutoptions_current() IS 'Obtiene los valores de smsoutoptions actualmente usadas.';
-
-
---
--- TOC entry 292 (class 1255 OID 27026)
--- Dependencies: 5 936
--- Name: xxxfun_view_smsout_table_filter_xml(timestamp without time zone, timestamp without time zone, integer, boolean); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION xxxfun_view_smsout_table_filter_xml(datestart timestamp without time zone, dateend timestamp without time zone, maxrows integer, fieldtextasbase64 boolean) RETURNS text
-    LANGUAGE plpgsql
-    AS $$DECLARE
-
-Retorno TEXT DEFAULT '';
-CursorResult refcursor;
-
-BEGIN
-
-IF fieldtextasbase64 THEN
-
-OPEN CursorResult FOR SELECT idsmsout, dateload, idprovider, idsmstype, idphone, encode(phone::bytea, 'base64') AS phone, datetosend, encode(message::bytea, 'base64') AS message, dateprocess, process, priority, attempts, idprovidersent, slices, slicessent, messageclass, report, maxslices, enablemessageclass, idport, flag1, flag2, flag3, flag4, flag5, retryonfail, maxtimelive, encode(note::bytea, 'base64') AS note, ts FROM smsout WHERE datetosend BETWEEN datestart AND dateend ORDER BY datetosend DESC LIMIT maxrows;
-SELECT * FROM cursor_to_xml(CursorResult, maxrows+1, false, false, '') INTO Retorno;
-CLOSE CursorResult;
-
-ELSE
-
-OPEN CursorResult FOR SELECT * FROM smsout WHERE datetosend BETWEEN datestart AND dateend ORDER BY datetosend DESC LIMIT maxrows;
-SELECT * FROM cursor_to_xml(CursorResult, maxrows+1, false, false, '') INTO Retorno;
-CLOSE CursorResult;
-
-END IF;
-
-RETURN '<table>'||Retorno||'</table>';
-
-END;$$;
-
-
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 376 (class 1255 OID 27891)
--- Dependencies: 9 936
+-- TOC entry 370 (class 1255 OID 27891)
+-- Dependencies: 9 927
 -- Name: event_trigger_after_changing(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3218,8 +2610,8 @@ END;$$;
 
 
 --
--- TOC entry 2886 (class 0 OID 0)
--- Dependencies: 376
+-- TOC entry 2858 (class 0 OID 0)
+-- Dependencies: 370
 -- Name: FUNCTION event_trigger_after_changing(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -3228,7 +2620,7 @@ COMMENT ON FUNCTION event_trigger_after_changing() IS 'Dispara funciones despues
 
 --
 -- TOC entry 266 (class 1255 OID 27005)
--- Dependencies: 936 9
+-- Dependencies: 927 9
 -- Name: fun_account_contacts_byid(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3260,8 +2652,8 @@ END;$$;
 
 
 --
--- TOC entry 298 (class 1255 OID 26932)
--- Dependencies: 9 936
+-- TOC entry 292 (class 1255 OID 26932)
+-- Dependencies: 927 9
 -- Name: fun_account_contacts_table(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3317,8 +2709,8 @@ $$;
 
 
 --
--- TOC entry 2887 (class 0 OID 0)
--- Dependencies: 298
+-- TOC entry 2859 (class 0 OID 0)
+-- Dependencies: 292
 -- Name: FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact integer, inpriority integer, inenable boolean, inappointment text, innote text, fieldtextasbase64 boolean, OUT outreturn integer, OUT outpgmsg text); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -3326,8 +2718,8 @@ COMMENT ON FUNCTION fun_account_contacts_table(inidaccount integer, inidcontact 
 
 
 --
--- TOC entry 300 (class 1255 OID 26948)
--- Dependencies: 9 936
+-- TOC entry 294 (class 1255 OID 26948)
+-- Dependencies: 9 927
 -- Name: fun_account_contacts_table_xml(integer, integer, integer, boolean, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3347,8 +2739,8 @@ END;$$;
 
 
 --
--- TOC entry 389 (class 1255 OID 27893)
--- Dependencies: 936 9
+-- TOC entry 381 (class 1255 OID 27893)
+-- Dependencies: 927 9
 -- Name: fun_account_event_notifications_sms(bigint); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3421,8 +2813,8 @@ END;$$;
 
 
 --
--- TOC entry 344 (class 1255 OID 27784)
--- Dependencies: 9 936
+-- TOC entry 338 (class 1255 OID 27784)
+-- Dependencies: 927 9
 -- Name: fun_account_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3500,8 +2892,8 @@ END;$$;
 
 
 --
--- TOC entry 314 (class 1255 OID 26854)
--- Dependencies: 9 936
+-- TOC entry 308 (class 1255 OID 26854)
+-- Dependencies: 9 927
 -- Name: fun_account_location_table(integer, real, real, text, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3545,8 +2937,8 @@ END;$$;
 
 
 --
--- TOC entry 329 (class 1255 OID 27062)
--- Dependencies: 936 9
+-- TOC entry 323 (class 1255 OID 27062)
+-- Dependencies: 9 927
 -- Name: fun_account_notifications_applyselected(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3594,8 +2986,8 @@ END;$$;
 
 
 --
--- TOC entry 318 (class 1255 OID 27064)
--- Dependencies: 9 936
+-- TOC entry 312 (class 1255 OID 27064)
+-- Dependencies: 927 9
 -- Name: fun_account_notifications_applyselected_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3616,8 +3008,8 @@ END;$$;
 
 
 --
--- TOC entry 284 (class 1255 OID 26946)
--- Dependencies: 936 9
+-- TOC entry 280 (class 1255 OID 26946)
+-- Dependencies: 927 9
 -- Name: fun_account_notifications_table(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3658,8 +3050,8 @@ END;$$;
 
 
 --
--- TOC entry 301 (class 1255 OID 26944)
--- Dependencies: 9 936
+-- TOC entry 295 (class 1255 OID 26944)
+-- Dependencies: 9 927
 -- Name: fun_account_notifications_table_xml(integer, integer, integer, integer, boolean, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3680,8 +3072,8 @@ END;$$;
 
 
 --
--- TOC entry 337 (class 1255 OID 27075)
--- Dependencies: 936 9
+-- TOC entry 331 (class 1255 OID 27075)
+-- Dependencies: 927 9
 -- Name: fun_account_notify_applied_to_selected_contacts(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3739,8 +3131,8 @@ END;$$;
 
 
 --
--- TOC entry 324 (class 1255 OID 27076)
--- Dependencies: 936 9
+-- TOC entry 318 (class 1255 OID 27076)
+-- Dependencies: 9 927
 -- Name: fun_account_notify_applied_to_selected_contacts_xml(integer, integer[], boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3761,8 +3153,8 @@ END;$$;
 
 
 --
--- TOC entry 294 (class 1255 OID 26870)
--- Dependencies: 9 936
+-- TOC entry 288 (class 1255 OID 26870)
+-- Dependencies: 927 9
 -- Name: fun_account_phones_trigger_alarm_isuser(integer, integer); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3791,8 +3183,8 @@ END;$$;
 
 
 --
--- TOC entry 2888 (class 0 OID 0)
--- Dependencies: 294
+-- TOC entry 2860 (class 0 OID 0)
+-- Dependencies: 288
 -- Name: FUNCTION fun_account_phones_trigger_alarm_isuser(inidaccount integer, inidphone integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -3801,8 +3193,8 @@ Devuelve true si es usuario y false si no lo es.';
 
 
 --
--- TOC entry 361 (class 1255 OID 27460)
--- Dependencies: 9 936
+-- TOC entry 355 (class 1255 OID 27460)
+-- Dependencies: 9 927
 -- Name: fun_account_phones_trigger_alarm_table_xml(integer, integer, boolean, boolean, boolean, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3860,7 +3252,7 @@ END;$$;
 
 --
 -- TOC entry 262 (class 1255 OID 17933)
--- Dependencies: 936 9
+-- Dependencies: 927 9
 -- Name: fun_account_search_name(text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3882,7 +3274,7 @@ END;$$;
 
 
 --
--- TOC entry 2889 (class 0 OID 0)
+-- TOC entry 2861 (class 0 OID 0)
 -- Dependencies: 262
 -- Name: FUNCTION fun_account_search_name(innameaccount text); Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -3892,7 +3284,7 @@ COMMENT ON FUNCTION fun_account_search_name(innameaccount text) IS 'Devuelve el 
 
 --
 -- TOC entry 263 (class 1255 OID 17934)
--- Dependencies: 936 9
+-- Dependencies: 927 9
 -- Name: fun_account_search_number(text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -3914,7 +3306,7 @@ END;$$;
 
 
 --
--- TOC entry 2890 (class 0 OID 0)
+-- TOC entry 2862 (class 0 OID 0)
 -- Dependencies: 263
 -- Name: FUNCTION fun_account_search_number(innumberaccount text); Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -3923,8 +3315,8 @@ COMMENT ON FUNCTION fun_account_search_number(innumberaccount text) IS 'Busca el
 
 
 --
--- TOC entry 379 (class 1255 OID 27960)
--- Dependencies: 9 936
+-- TOC entry 373 (class 1255 OID 27960)
+-- Dependencies: 927 9
 -- Name: fun_account_table_xml(integer, boolean, text, text, integer, integer, integer, integer, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4022,8 +3414,8 @@ END;$$;
 
 
 --
--- TOC entry 293 (class 1255 OID 27456)
--- Dependencies: 9 936
+-- TOC entry 287 (class 1255 OID 27456)
+-- Dependencies: 927 9
 -- Name: fun_account_users_table_xml(integer, integer, text, boolean, integer, text, text, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4086,8 +3478,8 @@ $$;
 
 
 --
--- TOC entry 287 (class 1255 OID 25922)
--- Dependencies: 936 9
+-- TOC entry 282 (class 1255 OID 25922)
+-- Dependencies: 927 9
 -- Name: fun_auto_process_events(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4101,8 +3493,8 @@ END;$$;
 
 
 --
--- TOC entry 2891 (class 0 OID 0)
--- Dependencies: 287
+-- TOC entry 2863 (class 0 OID 0)
+-- Dependencies: 282
 -- Name: FUNCTION fun_auto_process_events(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -4111,8 +3503,8 @@ Envia notificaciones basados en los eventos y configuraciones del sistema';
 
 
 --
--- TOC entry 336 (class 1255 OID 27786)
--- Dependencies: 936 9
+-- TOC entry 330 (class 1255 OID 27786)
+-- Dependencies: 927 9
 -- Name: fun_events_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4187,8 +3579,8 @@ END;$$;
 
 
 --
--- TOC entry 320 (class 1255 OID 27066)
--- Dependencies: 9 936
+-- TOC entry 314 (class 1255 OID 27066)
+-- Dependencies: 927 9
 -- Name: fun_events_lastid_xml(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4209,7 +3601,7 @@ END;$$;
 
 --
 -- TOC entry 267 (class 1255 OID 17544)
--- Dependencies: 936 9
+-- Dependencies: 9 927
 -- Name: fun_eventtype_default(integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4234,7 +3626,7 @@ END;$$;
 
 
 --
--- TOC entry 2892 (class 0 OID 0)
+-- TOC entry 2864 (class 0 OID 0)
 -- Dependencies: 267
 -- Name: FUNCTION fun_eventtype_default(inid integer, inname text); Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -4243,8 +3635,8 @@ COMMENT ON FUNCTION fun_eventtype_default(inid integer, inname text) IS 'Funcion
 
 
 --
--- TOC entry 352 (class 1255 OID 27355)
--- Dependencies: 936 9
+-- TOC entry 346 (class 1255 OID 27355)
+-- Dependencies: 927 9
 -- Name: fun_eventtypes_edit(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4279,7 +3671,7 @@ $$;
 
 --
 -- TOC entry 268 (class 1255 OID 27354)
--- Dependencies: 9 936
+-- Dependencies: 927 9
 -- Name: fun_eventtypes_edit_xml(integer, integer, text, boolean, boolean, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4299,8 +3691,8 @@ END;$$;
 
 
 --
--- TOC entry 335 (class 1255 OID 27785)
--- Dependencies: 936 9
+-- TOC entry 329 (class 1255 OID 27785)
+-- Dependencies: 927 9
 -- Name: fun_eventtypes_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4369,8 +3761,8 @@ END;$$;
 
 
 --
--- TOC entry 290 (class 1255 OID 26416)
--- Dependencies: 9 936
+-- TOC entry 285 (class 1255 OID 26416)
+-- Dependencies: 9 927
 -- Name: fun_generate_test_report(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4384,8 +3776,8 @@ END;$$;
 
 
 --
--- TOC entry 2893 (class 0 OID 0)
--- Dependencies: 290
+-- TOC entry 2865 (class 0 OID 0)
+-- Dependencies: 285
 -- Name: FUNCTION fun_generate_test_report(OUT outeventsgenerated integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -4393,8 +3785,8 @@ COMMENT ON FUNCTION fun_generate_test_report(OUT outeventsgenerated integer) IS 
 
 
 --
--- TOC entry 349 (class 1255 OID 28032)
--- Dependencies: 9 936
+-- TOC entry 343 (class 1255 OID 28032)
+-- Dependencies: 9 927
 -- Name: fun_get_idowner_usaga(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4417,8 +3809,8 @@ END;$$;
 
 
 --
--- TOC entry 288 (class 1255 OID 26131)
--- Dependencies: 9 936
+-- TOC entry 283 (class 1255 OID 26131)
+-- Dependencies: 927 9
 -- Name: fun_get_priority_from_ideventtype(integer); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4437,8 +3829,8 @@ END;$$;
 
 
 --
--- TOC entry 2894 (class 0 OID 0)
--- Dependencies: 288
+-- TOC entry 2866 (class 0 OID 0)
+-- Dependencies: 283
 -- Name: FUNCTION fun_get_priority_from_ideventtype(inideventtype integer); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -4446,8 +3838,8 @@ COMMENT ON FUNCTION fun_get_priority_from_ideventtype(inideventtype integer) IS 
 
 
 --
--- TOC entry 371 (class 1255 OID 27787)
--- Dependencies: 936 9
+-- TOC entry 365 (class 1255 OID 27787)
+-- Dependencies: 9 927
 -- Name: fun_group_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4508,8 +3900,8 @@ END;$$;
 
 
 --
--- TOC entry 356 (class 1255 OID 27357)
--- Dependencies: 9 936
+-- TOC entry 350 (class 1255 OID 27357)
+-- Dependencies: 9 927
 -- Name: fun_groups_edit(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4560,8 +3952,8 @@ END;$$;
 
 
 --
--- TOC entry 355 (class 1255 OID 27358)
--- Dependencies: 9 936
+-- TOC entry 349 (class 1255 OID 27358)
+-- Dependencies: 927 9
 -- Name: fun_groups_edit_xml(integer, boolean, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4581,8 +3973,8 @@ END;$$;
 
 
 --
--- TOC entry 358 (class 1255 OID 27360)
--- Dependencies: 9 936
+-- TOC entry 352 (class 1255 OID 27360)
+-- Dependencies: 9 927
 -- Name: fun_groups_remove_selected(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4616,8 +4008,8 @@ END;$$;
 
 
 --
--- TOC entry 357 (class 1255 OID 27361)
--- Dependencies: 936 9
+-- TOC entry 351 (class 1255 OID 27361)
+-- Dependencies: 927 9
 -- Name: fun_groups_remove_selected_xml(integer[], boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4637,8 +4029,8 @@ END;$$;
 
 
 --
--- TOC entry 322 (class 1255 OID 27069)
--- Dependencies: 9 936
+-- TOC entry 316 (class 1255 OID 27069)
+-- Dependencies: 927 9
 -- Name: fun_insert_internal_event(integer, text, integer, text, integer, integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4653,8 +4045,8 @@ END;$$;
 
 
 --
--- TOC entry 362 (class 1255 OID 27466)
--- Dependencies: 9 936
+-- TOC entry 356 (class 1255 OID 27466)
+-- Dependencies: 927 9
 -- Name: fun_insert_system_log(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4671,8 +4063,8 @@ END;$$;
 
 
 --
--- TOC entry 373 (class 1255 OID 27788)
--- Dependencies: 936 9
+-- TOC entry 367 (class 1255 OID 27788)
+-- Dependencies: 927 9
 -- Name: fun_notification_gen_message(integer, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4747,8 +4139,8 @@ END;$$;
 
 
 --
--- TOC entry 315 (class 1255 OID 27016)
--- Dependencies: 936 9
+-- TOC entry 309 (class 1255 OID 27016)
+-- Dependencies: 9 927
 -- Name: fun_notification_templates_edit(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4785,8 +4177,8 @@ END;$$;
 
 
 --
--- TOC entry 310 (class 1255 OID 27019)
--- Dependencies: 9 936
+-- TOC entry 304 (class 1255 OID 27019)
+-- Dependencies: 927 9
 -- Name: fun_notification_templates_edit_xml(integer, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4807,8 +4199,8 @@ $$;
 
 
 --
--- TOC entry 345 (class 1255 OID 27889)
--- Dependencies: 936 9
+-- TOC entry 339 (class 1255 OID 27889)
+-- Dependencies: 927 9
 -- Name: fun_receiver_from_incomingcall(bigint); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4887,8 +4279,8 @@ END;$$;
 
 
 --
--- TOC entry 289 (class 1255 OID 26415)
--- Dependencies: 9 936
+-- TOC entry 284 (class 1255 OID 26415)
+-- Dependencies: 9 927
 -- Name: fun_receiver_from_incomingsmss(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4905,8 +4297,8 @@ END;$$;
 
 
 --
--- TOC entry 321 (class 1255 OID 27067)
--- Dependencies: 936 9
+-- TOC entry 315 (class 1255 OID 27067)
+-- Dependencies: 9 927
 -- Name: fun_view_account_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4939,8 +4331,8 @@ END;$$;
 
 
 --
--- TOC entry 296 (class 1255 OID 26920)
--- Dependencies: 9 936
+-- TOC entry 290 (class 1255 OID 26920)
+-- Dependencies: 9 927
 -- Name: fun_view_account_contact_notif_eventtypes(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -4998,8 +4390,8 @@ $$;
 
 
 --
--- TOC entry 2895 (class 0 OID 0)
--- Dependencies: 296
+-- TOC entry 2867 (class 0 OID 0)
+-- Dependencies: 290
 -- Name: FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount integer, inidphone integer, fieldtextasbase64 boolean, OUT idnotifaccount integer, OUT ideventtype integer, OUT enable boolean, OUT label text, OUT ts timestamp without time zone); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -5007,8 +4399,8 @@ COMMENT ON FUNCTION fun_view_account_contact_notif_eventtypes(inidaccount intege
 
 
 --
--- TOC entry 276 (class 1255 OID 26939)
--- Dependencies: 936 9
+-- TOC entry 274 (class 1255 OID 26939)
+-- Dependencies: 927 9
 -- Name: fun_view_account_contact_notif_eventtypes_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5028,8 +4420,8 @@ END;$$;
 
 
 --
--- TOC entry 393 (class 1255 OID 28147)
--- Dependencies: 9 936
+-- TOC entry 384 (class 1255 OID 28147)
+-- Dependencies: 927 9
 -- Name: fun_view_account_contacts_address_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5081,8 +4473,8 @@ END;$$;
 
 
 --
--- TOC entry 312 (class 1255 OID 26994)
--- Dependencies: 9 936
+-- TOC entry 306 (class 1255 OID 26994)
+-- Dependencies: 9 927
 -- Name: fun_view_account_contacts_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5115,8 +4507,8 @@ END;$$;
 
 
 --
--- TOC entry 319 (class 1255 OID 27065)
--- Dependencies: 936 9
+-- TOC entry 313 (class 1255 OID 27065)
+-- Dependencies: 927 9
 -- Name: fun_view_account_events_xml(integer, timestamp without time zone, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5149,8 +4541,8 @@ END;$$;
 
 
 --
--- TOC entry 323 (class 1255 OID 27068)
--- Dependencies: 936 9
+-- TOC entry 317 (class 1255 OID 27068)
+-- Dependencies: 927 9
 -- Name: fun_view_account_location_byid_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5183,8 +4575,8 @@ END;$$;
 
 
 --
--- TOC entry 325 (class 1255 OID 27276)
--- Dependencies: 936 9
+-- TOC entry 319 (class 1255 OID 27276)
+-- Dependencies: 927 9
 -- Name: fun_view_account_notif_phones(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5239,8 +4631,8 @@ $$;
 
 
 --
--- TOC entry 278 (class 1255 OID 26938)
--- Dependencies: 9 936
+-- TOC entry 275 (class 1255 OID 26938)
+-- Dependencies: 927 9
 -- Name: fun_view_account_notif_phones_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5260,8 +4652,8 @@ END;$$;
 
 
 --
--- TOC entry 380 (class 1255 OID 27963)
--- Dependencies: 936 9
+-- TOC entry 374 (class 1255 OID 27963)
+-- Dependencies: 927 9
 -- Name: fun_view_account_unregistered_contacts_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5294,8 +4686,8 @@ END;$$;
 
 
 --
--- TOC entry 381 (class 1255 OID 27964)
--- Dependencies: 9 936
+-- TOC entry 375 (class 1255 OID 27964)
+-- Dependencies: 927 9
 -- Name: fun_view_account_unregistered_users_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5328,8 +4720,8 @@ END;$$;
 
 
 --
--- TOC entry 295 (class 1255 OID 27458)
--- Dependencies: 936 9
+-- TOC entry 289 (class 1255 OID 27458)
+-- Dependencies: 9 927
 -- Name: fun_view_account_user_byidaccountidcontact_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5362,8 +4754,8 @@ END;$$;
 
 
 --
--- TOC entry 332 (class 1255 OID 27278)
--- Dependencies: 9 936
+-- TOC entry 326 (class 1255 OID 27278)
+-- Dependencies: 927 9
 -- Name: fun_view_account_users_trigger_phones_contacts(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5413,8 +4805,8 @@ $$;
 
 
 --
--- TOC entry 342 (class 1255 OID 27279)
--- Dependencies: 9 936
+-- TOC entry 336 (class 1255 OID 27279)
+-- Dependencies: 927 9
 -- Name: fun_view_account_users_trigger_phones_contacts_xml(integer, integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5434,8 +4826,8 @@ END;$$;
 
 
 --
--- TOC entry 297 (class 1255 OID 27459)
--- Dependencies: 9 936
+-- TOC entry 291 (class 1255 OID 27459)
+-- Dependencies: 927 9
 -- Name: fun_view_account_users_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5468,8 +4860,8 @@ END;$$;
 
 
 --
--- TOC entry 353 (class 1255 OID 27350)
--- Dependencies: 936 9
+-- TOC entry 347 (class 1255 OID 27350)
+-- Dependencies: 9 927
 -- Name: fun_view_eventtypes_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5502,8 +4894,8 @@ END;$$;
 
 
 --
--- TOC entry 351 (class 1255 OID 27356)
--- Dependencies: 936 9
+-- TOC entry 345 (class 1255 OID 27356)
+-- Dependencies: 927 9
 -- Name: fun_view_groups_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5536,8 +4928,8 @@ END;$$;
 
 
 --
--- TOC entry 350 (class 1255 OID 27349)
--- Dependencies: 936 9
+-- TOC entry 344 (class 1255 OID 27349)
+-- Dependencies: 9 927
 -- Name: fun_view_idaccounts_names_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5571,7 +4963,7 @@ END;$$;
 
 --
 -- TOC entry 272 (class 1255 OID 27455)
--- Dependencies: 936 9
+-- Dependencies: 9 927
 -- Name: fun_view_idgroup_name_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5604,8 +4996,8 @@ END;$$;
 
 
 --
--- TOC entry 309 (class 1255 OID 26986)
--- Dependencies: 936 9
+-- TOC entry 303 (class 1255 OID 26986)
+-- Dependencies: 927 9
 -- Name: fun_view_last_events_xml(integer, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5638,8 +5030,8 @@ END;$$;
 
 
 --
--- TOC entry 2896 (class 0 OID 0)
--- Dependencies: 309
+-- TOC entry 2868 (class 0 OID 0)
+-- Dependencies: 303
 -- Name: FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boolean); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -5647,8 +5039,8 @@ COMMENT ON FUNCTION fun_view_last_events_xml(rows integer, fieldtextasbase64 boo
 
 
 --
--- TOC entry 308 (class 1255 OID 26984)
--- Dependencies: 936 9
+-- TOC entry 302 (class 1255 OID 26984)
+-- Dependencies: 927 9
 -- Name: fun_view_notification_templates_xml(boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5681,8 +5073,8 @@ END;$$;
 
 
 --
--- TOC entry 286 (class 1255 OID 26417)
--- Dependencies: 936 9
+-- TOC entry 281 (class 1255 OID 26417)
+-- Dependencies: 9 927
 -- Name: hearbeat(); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5697,8 +5089,8 @@ END;$$;
 
 
 --
--- TOC entry 2897 (class 0 OID 0)
--- Dependencies: 286
+-- TOC entry 2869 (class 0 OID 0)
+-- Dependencies: 281
 -- Name: FUNCTION hearbeat(); Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -5706,8 +5098,8 @@ COMMENT ON FUNCTION hearbeat() IS 'Genera un evento de funcionmiento de la recep
 
 
 --
--- TOC entry 370 (class 1255 OID 27766)
--- Dependencies: 9 936
+-- TOC entry 364 (class 1255 OID 27766)
+-- Dependencies: 9 927
 -- Name: xxxfun_account_address_edit_xml(integer, integer, double precision, double precision, text, text, text, text, text, text, text, text, text, text, timestamp without time zone, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5742,8 +5134,8 @@ END;$$;
 
 
 --
--- TOC entry 367 (class 1255 OID 27733)
--- Dependencies: 936 9
+-- TOC entry 361 (class 1255 OID 27733)
+-- Dependencies: 9 927
 -- Name: xxxxfun_account_table_xml(integer, boolean, text, text, integer, integer, integer, text, boolean); Type: FUNCTION; Schema: usaga; Owner: -
 --
 
@@ -5842,9 +5234,13 @@ END;$$;
 
 SET search_path = public, pg_catalog;
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
 --
 -- TOC entry 224 (class 1259 OID 27136)
--- Dependencies: 2583 2585 2586 2587 2588 2589 1867 1867 5 1867 1867 1867 1867 1867 1867 1867 1867 1867
+-- Dependencies: 2574 2576 2577 2578 2579 2580 1858 1858 1858 1858 1858 1858 1858 1858 1858 1858 1858 5
 -- Name: address; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5870,7 +5266,7 @@ CREATE TABLE address (
 
 
 --
--- TOC entry 2898 (class 0 OID 0)
+-- TOC entry 2870 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: TABLE address; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5879,7 +5275,7 @@ COMMENT ON TABLE address IS 'Tabla de Direcciones, contiene todas las direccione
 
 
 --
--- TOC entry 2899 (class 0 OID 0)
+-- TOC entry 2871 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: COLUMN address.xxxidlocation; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5888,7 +5284,7 @@ COMMENT ON COLUMN address.xxxidlocation IS 'Representa el id formado por pais, c
 
 
 --
--- TOC entry 2900 (class 0 OID 0)
+-- TOC entry 2872 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: COLUMN address.field1; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5897,7 +5293,7 @@ COMMENT ON COLUMN address.field1 IS 'Calle principal';
 
 
 --
--- TOC entry 2901 (class 0 OID 0)
+-- TOC entry 2873 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: COLUMN address.field2; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5906,7 +5302,7 @@ COMMENT ON COLUMN address.field2 IS 'Calle secundaria';
 
 
 --
--- TOC entry 2902 (class 0 OID 0)
+-- TOC entry 2874 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: COLUMN address.field3; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5916,7 +5312,7 @@ COMMENT ON COLUMN address.field3 IS 'Otros detalles';
 
 --
 -- TOC entry 177 (class 1259 OID 16622)
--- Dependencies: 2395 2396 2397 5 1869
+-- Dependencies: 2386 2387 2388 1860 5
 -- Name: blacklist; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5930,7 +5326,7 @@ CREATE TABLE blacklist (
 
 
 --
--- TOC entry 2903 (class 0 OID 0)
+-- TOC entry 2875 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: TABLE blacklist; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5953,7 +5349,7 @@ CREATE SEQUENCE blacklist_idbl_seq
 
 
 --
--- TOC entry 2904 (class 0 OID 0)
+-- TOC entry 2876 (class 0 OID 0)
 -- Dependencies: 176
 -- Name: blacklist_idbl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -5963,7 +5359,7 @@ ALTER SEQUENCE blacklist_idbl_seq OWNED BY blacklist.idbl;
 
 --
 -- TOC entry 238 (class 1259 OID 27869)
--- Dependencies: 2629 5
+-- Dependencies: 2620 5
 -- Name: cimi; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5974,7 +5370,7 @@ CREATE TABLE cimi (
 
 
 --
--- TOC entry 2905 (class 0 OID 0)
+-- TOC entry 2877 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: TABLE cimi; Type: COMMENT; Schema: public; Owner: -
 --
@@ -5985,7 +5381,7 @@ El unico campo que se puede asignar manualmente es el idprovider.';
 
 --
 -- TOC entry 165 (class 1259 OID 16387)
--- Dependencies: 2315 2316 2317 2318 2319 2320 2321 2322 2323 2324 2325 2326 2327 5
+-- Dependencies: 2306 2307 2308 2309 2310 2311 2312 2313 2314 2315 2316 2317 2318 5
 -- Name: contacts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6009,7 +5405,7 @@ CREATE TABLE contacts (
 
 
 --
--- TOC entry 2906 (class 0 OID 0)
+-- TOC entry 2878 (class 0 OID 0)
 -- Dependencies: 165
 -- Name: TABLE contacts; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6019,7 +5415,7 @@ COMMENT ON TABLE contacts IS 'Datos basicos de contactos';
 
 --
 -- TOC entry 164 (class 1259 OID 16385)
--- Dependencies: 5 165
+-- Dependencies: 165 5
 -- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6032,7 +5428,7 @@ CREATE SEQUENCE contacts_id_seq
 
 
 --
--- TOC entry 2907 (class 0 OID 0)
+-- TOC entry 2879 (class 0 OID 0)
 -- Dependencies: 164
 -- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6042,7 +5438,7 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.idcontact;
 
 --
 -- TOC entry 178 (class 1259 OID 16696)
--- Dependencies: 2398 2399 2400 5
+-- Dependencies: 2389 2390 2391 5
 -- Name: currentportsproviders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6058,7 +5454,7 @@ CREATE TABLE currentportsproviders (
 
 
 --
--- TOC entry 2908 (class 0 OID 0)
+-- TOC entry 2880 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: TABLE currentportsproviders; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6067,7 +5463,7 @@ COMMENT ON TABLE currentportsproviders IS 'Tabla de relacion entre puertos y pro
 
 
 --
--- TOC entry 2909 (class 0 OID 0)
+-- TOC entry 2881 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.idport; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6076,7 +5472,7 @@ COMMENT ON COLUMN currentportsproviders.idport IS 'IdPort, dato proveniente de l
 
 
 --
--- TOC entry 2910 (class 0 OID 0)
+-- TOC entry 2882 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.port; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6085,7 +5481,7 @@ COMMENT ON COLUMN currentportsproviders.port IS 'Dato proveniente de la tabla se
 
 
 --
--- TOC entry 2911 (class 0 OID 0)
+-- TOC entry 2883 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.cimi; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6094,7 +5490,7 @@ COMMENT ON COLUMN currentportsproviders.cimi IS 'Dato proveniente del modem';
 
 
 --
--- TOC entry 2912 (class 0 OID 0)
+-- TOC entry 2884 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.imei; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6103,7 +5499,7 @@ COMMENT ON COLUMN currentportsproviders.imei IS 'Dato proveniente del modem';
 
 
 --
--- TOC entry 2913 (class 0 OID 0)
+-- TOC entry 2885 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.idprovider; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6112,7 +5508,7 @@ COMMENT ON COLUMN currentportsproviders.idprovider IS 'Dato proveniente de la ta
 
 
 --
--- TOC entry 2914 (class 0 OID 0)
+-- TOC entry 2886 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: COLUMN currentportsproviders.lastupdate; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6122,7 +5518,7 @@ COMMENT ON COLUMN currentportsproviders.lastupdate IS 'Fecha de la ultima actual
 
 --
 -- TOC entry 182 (class 1259 OID 16833)
--- Dependencies: 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 5
+-- Dependencies: 2399 2400 2401 2402 2403 2404 2405 2406 2407 2408 2409 5
 -- Name: incomingcalls; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6145,7 +5541,7 @@ CREATE TABLE incomingcalls (
 
 
 --
--- TOC entry 2915 (class 0 OID 0)
+-- TOC entry 2887 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: TABLE incomingcalls; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6154,7 +5550,7 @@ COMMENT ON TABLE incomingcalls IS 'Registro de llamadas entrantes';
 
 
 --
--- TOC entry 2916 (class 0 OID 0)
+-- TOC entry 2888 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: COLUMN incomingcalls.datecall; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6163,7 +5559,7 @@ COMMENT ON COLUMN incomingcalls.datecall IS 'Fecha de recepcion de la llamada.';
 
 
 --
--- TOC entry 2917 (class 0 OID 0)
+-- TOC entry 2889 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: COLUMN incomingcalls.idport; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6172,7 +5568,7 @@ COMMENT ON COLUMN incomingcalls.idport IS 'Idport por el cual se recibio la llam
 
 
 --
--- TOC entry 2918 (class 0 OID 0)
+-- TOC entry 2890 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: COLUMN incomingcalls.callaction; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6195,7 +5591,7 @@ CREATE SEQUENCE incomingcalls_idincall_seq
 
 
 --
--- TOC entry 2919 (class 0 OID 0)
+-- TOC entry 2891 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: incomingcalls_idincall_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6218,7 +5614,7 @@ CREATE SEQUENCE loc_level1_seq
 
 
 --
--- TOC entry 2920 (class 0 OID 0)
+-- TOC entry 2892 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: loc_level1_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6228,7 +5624,7 @@ ALTER SEQUENCE loc_level1_seq OWNED BY address.idaddress;
 
 --
 -- TOC entry 206 (class 1259 OID 26134)
--- Dependencies: 2553 2554 2555 2556 5
+-- Dependencies: 2544 2545 2546 2547 5
 -- Name: location_level1; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6241,7 +5637,7 @@ CREATE TABLE location_level1 (
 
 
 --
--- TOC entry 2921 (class 0 OID 0)
+-- TOC entry 2893 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: TABLE location_level1; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6265,7 +5661,7 @@ CREATE SEQUENCE loc_level5_seq
 
 
 --
--- TOC entry 2922 (class 0 OID 0)
+-- TOC entry 2894 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: loc_level5_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6275,7 +5671,7 @@ ALTER SEQUENCE loc_level5_seq OWNED BY location_level1.idl1;
 
 --
 -- TOC entry 214 (class 1259 OID 26237)
--- Dependencies: 2569 2570 2571 5 1867 1867
+-- Dependencies: 2560 2561 2562 1858 5 1858
 -- Name: location_level5; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6290,7 +5686,7 @@ CREATE TABLE location_level5 (
 
 --
 -- TOC entry 213 (class 1259 OID 26235)
--- Dependencies: 5 214
+-- Dependencies: 214 5
 -- Name: loc_level2_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6303,7 +5699,7 @@ CREATE SEQUENCE loc_level2_seq
 
 
 --
--- TOC entry 2923 (class 0 OID 0)
+-- TOC entry 2895 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: loc_level2_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6313,7 +5709,7 @@ ALTER SEQUENCE loc_level2_seq OWNED BY location_level5.idl5;
 
 --
 -- TOC entry 208 (class 1259 OID 26156)
--- Dependencies: 2557 2558 2559 2560 5
+-- Dependencies: 2548 2549 2550 2551 5
 -- Name: location_level2; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6327,7 +5723,7 @@ CREATE TABLE location_level2 (
 
 
 --
--- TOC entry 2924 (class 0 OID 0)
+-- TOC entry 2896 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: TABLE location_level2; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6337,7 +5733,7 @@ COMMENT ON TABLE location_level2 IS 'Estados o provincias';
 
 --
 -- TOC entry 207 (class 1259 OID 26154)
--- Dependencies: 208 5
+-- Dependencies: 5 208
 -- Name: loc_level6_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6350,7 +5746,7 @@ CREATE SEQUENCE loc_level6_seq
 
 
 --
--- TOC entry 2925 (class 0 OID 0)
+-- TOC entry 2897 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: loc_level6_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6360,7 +5756,7 @@ ALTER SEQUENCE loc_level6_seq OWNED BY location_level2.idl2;
 
 --
 -- TOC entry 216 (class 1259 OID 26257)
--- Dependencies: 2572 2573 2574 5 1867 1869
+-- Dependencies: 2563 2564 2565 5 1860 1858
 -- Name: location_level6; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6375,7 +5771,7 @@ CREATE TABLE location_level6 (
 
 --
 -- TOC entry 215 (class 1259 OID 26255)
--- Dependencies: 5 216
+-- Dependencies: 216 5
 -- Name: loc_level3_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6388,7 +5784,7 @@ CREATE SEQUENCE loc_level3_seq
 
 
 --
--- TOC entry 2926 (class 0 OID 0)
+-- TOC entry 2898 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: loc_level3_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6398,7 +5794,7 @@ ALTER SEQUENCE loc_level3_seq OWNED BY location_level6.idl6;
 
 --
 -- TOC entry 210 (class 1259 OID 26177)
--- Dependencies: 2561 2562 2563 1869 5
+-- Dependencies: 2552 2553 2554 1860 5
 -- Name: location_level4; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6413,7 +5809,7 @@ CREATE TABLE location_level4 (
 
 --
 -- TOC entry 209 (class 1259 OID 26175)
--- Dependencies: 5 210
+-- Dependencies: 210 5
 -- Name: loc_level4_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6426,7 +5822,7 @@ CREATE SEQUENCE loc_level4_seq
 
 
 --
--- TOC entry 2927 (class 0 OID 0)
+-- TOC entry 2899 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: loc_level4_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6436,7 +5832,7 @@ ALTER SEQUENCE loc_level4_seq OWNED BY location_level4.idl4;
 
 --
 -- TOC entry 232 (class 1259 OID 27498)
--- Dependencies: 2614 2615 2616 2617 5
+-- Dependencies: 2605 2606 2607 2608 5
 -- Name: location_level3; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6450,7 +5846,7 @@ CREATE TABLE location_level3 (
 
 
 --
--- TOC entry 2928 (class 0 OID 0)
+-- TOC entry 2900 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: TABLE location_level3; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6460,7 +5856,7 @@ COMMENT ON TABLE location_level3 IS 'Estados o provincias';
 
 --
 -- TOC entry 200 (class 1259 OID 17582)
--- Dependencies: 2500 2501 2502 2503 2504 1869 5 1869 1869
+-- Dependencies: 2491 2492 2493 2494 2495 1860 5 1860 1860
 -- Name: modem; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6476,7 +5872,7 @@ CREATE TABLE modem (
 
 
 --
--- TOC entry 2929 (class 0 OID 0)
+-- TOC entry 2901 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: TABLE modem; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6499,7 +5895,7 @@ CREATE SEQUENCE modem_idmodem_seq
 
 
 --
--- TOC entry 2930 (class 0 OID 0)
+-- TOC entry 2902 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: modem_idmodem_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6509,7 +5905,7 @@ ALTER SEQUENCE modem_idmodem_seq OWNED BY modem.idmodem;
 
 --
 -- TOC entry 243 (class 1259 OID 28039)
--- Dependencies: 2634 2635 2636 2637 2638 2639 2640 2641 2642 2643 2644 2645 1869 1869 5
+-- Dependencies: 2625 2626 2627 2628 2629 2630 2631 2632 2633 2634 2635 2636 1860 5 1860
 -- Name: outgoing; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6535,7 +5931,7 @@ CREATE TABLE outgoing (
 
 
 --
--- TOC entry 2931 (class 0 OID 0)
+-- TOC entry 2903 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: TABLE outgoing; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6544,7 +5940,7 @@ COMMENT ON TABLE outgoing IS 'Bandeja de salida de mensajes de texto.';
 
 
 --
--- TOC entry 2932 (class 0 OID 0)
+-- TOC entry 2904 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.dateload; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6553,7 +5949,7 @@ COMMENT ON COLUMN outgoing.dateload IS 'Fecha en la que el sms fue almacenado en
 
 
 --
--- TOC entry 2933 (class 0 OID 0)
+-- TOC entry 2905 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.idprovider; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6562,7 +5958,7 @@ COMMENT ON COLUMN outgoing.idprovider IS 'Normalmente 0 a menos que se fuerce al
 
 
 --
--- TOC entry 2934 (class 0 OID 0)
+-- TOC entry 2906 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.idsim; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6571,7 +5967,7 @@ COMMENT ON COLUMN outgoing.idsim IS 'Normalmente 0 a menos que se fuerce al sist
 
 
 --
--- TOC entry 2935 (class 0 OID 0)
+-- TOC entry 2907 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.idphone; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6581,7 +5977,7 @@ Si es nulo se tomar√° el campo phone para el envio del sms';
 
 
 --
--- TOC entry 2936 (class 0 OID 0)
+-- TOC entry 2908 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.phone; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6590,7 +5986,7 @@ COMMENT ON COLUMN outgoing.phone IS 'Campo tomado para el envio del sms en caso 
 
 
 --
--- TOC entry 2937 (class 0 OID 0)
+-- TOC entry 2909 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.datetosend; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6599,7 +5995,7 @@ COMMENT ON COLUMN outgoing.datetosend IS 'Fecha programada para el envio del sms
 
 
 --
--- TOC entry 2938 (class 0 OID 0)
+-- TOC entry 2910 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.priority; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6611,7 +6007,7 @@ Default 5.
 
 
 --
--- TOC entry 2939 (class 0 OID 0)
+-- TOC entry 2911 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: COLUMN outgoing.report; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6634,7 +6030,7 @@ CREATE SEQUENCE outgoing_idsmsout_seq
 
 
 --
--- TOC entry 2940 (class 0 OID 0)
+-- TOC entry 2912 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: outgoing_idsmsout_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6644,7 +6040,7 @@ ALTER SEQUENCE outgoing_idsmsout_seq OWNED BY outgoing.idsmsout;
 
 --
 -- TOC entry 245 (class 1259 OID 28065)
--- Dependencies: 2647 5
+-- Dependencies: 2638 5
 -- Name: outgoing_log; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6660,7 +6056,7 @@ CREATE TABLE outgoing_log (
 
 
 --
--- TOC entry 2941 (class 0 OID 0)
+-- TOC entry 2913 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: TABLE outgoing_log; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6669,7 +6065,7 @@ COMMENT ON TABLE outgoing_log IS 'Bitacora de envio de sms.';
 
 
 --
--- TOC entry 2942 (class 0 OID 0)
+-- TOC entry 2914 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: COLUMN outgoing_log.status; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6678,7 +6074,7 @@ COMMENT ON COLUMN outgoing_log.status IS 'Estado del mensaje';
 
 
 --
--- TOC entry 2943 (class 0 OID 0)
+-- TOC entry 2915 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: COLUMN outgoing_log.parts; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6687,7 +6083,7 @@ COMMENT ON COLUMN outgoing_log.parts IS 'Total de partes del mensaje';
 
 
 --
--- TOC entry 2944 (class 0 OID 0)
+-- TOC entry 2916 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: COLUMN outgoing_log.part; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6710,7 +6106,7 @@ CREATE SEQUENCE outgoing_log_idoutgoinglog_seq
 
 
 --
--- TOC entry 2945 (class 0 OID 0)
+-- TOC entry 2917 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: outgoing_log_idoutgoinglog_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6720,7 +6116,7 @@ ALTER SEQUENCE outgoing_log_idoutgoinglog_seq OWNED BY outgoing_log.idoutgoinglo
 
 --
 -- TOC entry 241 (class 1259 OID 28019)
--- Dependencies: 2631 2632 1867 1867 5 1867
+-- Dependencies: 2622 2623 5 1858 1858 1858
 -- Name: owners; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6734,7 +6130,7 @@ CREATE TABLE owners (
 
 
 --
--- TOC entry 2946 (class 0 OID 0)
+-- TOC entry 2918 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: TABLE owners; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6759,7 +6155,7 @@ CREATE SEQUENCE owners_idowner_seq
 
 
 --
--- TOC entry 2947 (class 0 OID 0)
+-- TOC entry 2919 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: owners_idowner_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6769,7 +6165,7 @@ ALTER SEQUENCE owners_idowner_seq OWNED BY owners.idowner;
 
 --
 -- TOC entry 167 (class 1259 OID 16423)
--- Dependencies: 2329 2330 2331 2332 2333 2334 2335 2336 2337 2338 5
+-- Dependencies: 2320 2321 2322 2323 2324 2325 2326 2327 2328 2329 5
 -- Name: phones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6790,7 +6186,7 @@ CREATE TABLE phones (
 
 
 --
--- TOC entry 2948 (class 0 OID 0)
+-- TOC entry 2920 (class 0 OID 0)
 -- Dependencies: 167
 -- Name: TABLE phones; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6799,7 +6195,7 @@ COMMENT ON TABLE phones IS 'Numeros telefonicos de contactos.';
 
 
 --
--- TOC entry 2949 (class 0 OID 0)
+-- TOC entry 2921 (class 0 OID 0)
 -- Dependencies: 167
 -- Name: COLUMN phones.typephone; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6811,7 +6207,7 @@ COMMENT ON COLUMN phones.typephone IS '0: No especificado
 
 --
 -- TOC entry 166 (class 1259 OID 16421)
--- Dependencies: 167 5
+-- Dependencies: 5 167
 -- Name: phones_idphone_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6824,7 +6220,7 @@ CREATE SEQUENCE phones_idphone_seq
 
 
 --
--- TOC entry 2950 (class 0 OID 0)
+-- TOC entry 2922 (class 0 OID 0)
 -- Dependencies: 166
 -- Name: phones_idphone_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6834,7 +6230,7 @@ ALTER SEQUENCE phones_idphone_seq OWNED BY phones.idphone;
 
 --
 -- TOC entry 169 (class 1259 OID 16452)
--- Dependencies: 2340 2341 2342 2343 2344 5
+-- Dependencies: 2331 2332 2333 2334 2335 5
 -- Name: provider; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6849,7 +6245,7 @@ CREATE TABLE provider (
 
 
 --
--- TOC entry 2951 (class 0 OID 0)
+-- TOC entry 2923 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: TABLE provider; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6858,7 +6254,7 @@ COMMENT ON TABLE provider IS 'Proveedores de telefonia';
 
 
 --
--- TOC entry 2952 (class 0 OID 0)
+-- TOC entry 2924 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: COLUMN provider.cimi; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6867,7 +6263,7 @@ COMMENT ON COLUMN provider.cimi IS 'Obtiene desde el modem con el comando AT+CIM
 
 
 --
--- TOC entry 2953 (class 0 OID 0)
+-- TOC entry 2925 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: COLUMN provider.name; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6877,7 +6273,7 @@ COMMENT ON COLUMN provider.name IS 'Nombre del proveedor';
 
 --
 -- TOC entry 168 (class 1259 OID 16450)
--- Dependencies: 5 169
+-- Dependencies: 169 5
 -- Name: provider_idprovider_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6890,7 +6286,7 @@ CREATE SEQUENCE provider_idprovider_seq
 
 
 --
--- TOC entry 2954 (class 0 OID 0)
+-- TOC entry 2926 (class 0 OID 0)
 -- Dependencies: 168
 -- Name: provider_idprovider_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -6900,7 +6296,7 @@ ALTER SEQUENCE provider_idprovider_seq OWNED BY provider.idprovider;
 
 --
 -- TOC entry 237 (class 1259 OID 27815)
--- Dependencies: 2619 2620 2621 2622 2623 2624 2625 2626 2627 2628 1867 5
+-- Dependencies: 2610 2611 2612 2613 2614 2615 2616 2617 2618 2619 5 1858
 -- Name: sim; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6925,7 +6321,7 @@ CREATE TABLE sim (
 
 
 --
--- TOC entry 2955 (class 0 OID 0)
+-- TOC entry 2927 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: TABLE sim; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6935,7 +6331,7 @@ En los campos de esta tabla tenemos datos que ingresar, el proveedor al que pert
 
 
 --
--- TOC entry 2956 (class 0 OID 0)
+-- TOC entry 2928 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.enable; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6944,7 +6340,7 @@ COMMENT ON COLUMN sim.enable IS 'Habilitado el uso de esta SIM';
 
 
 --
--- TOC entry 2957 (class 0 OID 0)
+-- TOC entry 2929 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.phone; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6953,7 +6349,7 @@ COMMENT ON COLUMN sim.phone IS 'Numero telefonico de esta sim, este campo no es 
 
 
 --
--- TOC entry 2958 (class 0 OID 0)
+-- TOC entry 2930 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.smsout_request_reports; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6962,7 +6358,7 @@ COMMENT ON COLUMN sim.smsout_request_reports IS 'Solicitar siempre reporte de en
 
 
 --
--- TOC entry 2959 (class 0 OID 0)
+-- TOC entry 2931 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.smsout_retryonfail; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6971,7 +6367,7 @@ COMMENT ON COLUMN sim.smsout_retryonfail IS 'Numero maximo de intentos al enviar
 
 
 --
--- TOC entry 2960 (class 0 OID 0)
+-- TOC entry 2932 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.smsout_max_length; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6980,7 +6376,7 @@ COMMENT ON COLUMN sim.smsout_max_length IS 'Longitud maxima de mensajes en que u
 
 
 --
--- TOC entry 2961 (class 0 OID 0)
+-- TOC entry 2933 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.smsout_max_lifetime; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6990,7 +6386,7 @@ Tiempo en minutos.';
 
 
 --
--- TOC entry 2962 (class 0 OID 0)
+-- TOC entry 2934 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.smsout_enabled_other_providers; Type: COMMENT; Schema: public; Owner: -
 --
@@ -6999,7 +6395,7 @@ COMMENT ON COLUMN sim.smsout_enabled_other_providers IS 'Habilita el uso de esta
 
 
 --
--- TOC entry 2963 (class 0 OID 0)
+-- TOC entry 2935 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: COLUMN sim.on_incommingcall; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7013,7 +6409,7 @@ COMMENT ON COLUMN sim.on_incommingcall IS 'Accion a tomar en caso de recibir una
 
 --
 -- TOC entry 236 (class 1259 OID 27813)
--- Dependencies: 5 237
+-- Dependencies: 237 5
 -- Name: sim_idsim_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7026,7 +6422,7 @@ CREATE SEQUENCE sim_idsim_seq
 
 
 --
--- TOC entry 2964 (class 0 OID 0)
+-- TOC entry 2936 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: sim_idsim_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7036,7 +6432,7 @@ ALTER SEQUENCE sim_idsim_seq OWNED BY sim.idsim;
 
 --
 -- TOC entry 171 (class 1259 OID 16522)
--- Dependencies: 2346 2347 2348 2349 2350 2351 2352 2353 2354 2355 2356 2357 2358 2359 2360 5 1869 1869
+-- Dependencies: 2337 2338 2339 2340 2341 2342 2343 2344 2345 2346 2347 2348 2349 2350 2351 1860 1860 5
 -- Name: smsin; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7061,7 +6457,7 @@ CREATE TABLE smsin (
 
 
 --
--- TOC entry 2965 (class 0 OID 0)
+-- TOC entry 2937 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: TABLE smsin; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7071,7 +6467,7 @@ COMMENT ON TABLE smsin IS 'Tabla de sms entrantes';
 
 --
 -- TOC entry 228 (class 1259 OID 27197)
--- Dependencies: 2603 2604 2605 2606 2607 2608 2609 2610 2611 2612 2613 5
+-- Dependencies: 2594 2595 2596 2597 2598 2599 2600 2601 2602 2603 2604 5
 -- Name: xxxsmsin_consumer; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7092,7 +6488,7 @@ CREATE TABLE xxxsmsin_consumer (
 
 
 --
--- TOC entry 2966 (class 0 OID 0)
+-- TOC entry 2938 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: TABLE xxxsmsin_consumer; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7101,7 +6497,7 @@ COMMENT ON TABLE xxxsmsin_consumer IS 'Tabla con los flags (aplicaciones que con
 
 
 --
--- TOC entry 2967 (class 0 OID 0)
+-- TOC entry 2939 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: COLUMN xxxsmsin_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7124,7 +6520,7 @@ CREATE SEQUENCE smsin_consumer_idsmsinf_seq
 
 
 --
--- TOC entry 2968 (class 0 OID 0)
+-- TOC entry 2940 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: smsin_consumer_idsmsinf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7134,7 +6530,7 @@ ALTER SEQUENCE smsin_consumer_idsmsinf_seq OWNED BY xxxsmsin_consumer.idsmsinf;
 
 --
 -- TOC entry 170 (class 1259 OID 16520)
--- Dependencies: 5 171
+-- Dependencies: 171 5
 -- Name: smsin_idsmsin_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7147,7 +6543,7 @@ CREATE SEQUENCE smsin_idsmsin_seq
 
 
 --
--- TOC entry 2969 (class 0 OID 0)
+-- TOC entry 2941 (class 0 OID 0)
 -- Dependencies: 170
 -- Name: smsin_idsmsin_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7157,7 +6553,7 @@ ALTER SEQUENCE smsin_idsmsin_seq OWNED BY smsin.idsmsin;
 
 --
 -- TOC entry 226 (class 1259 OID 27173)
--- Dependencies: 2590 2592 2593 2594 2595 2596 2597 2598 2599 2600 2601 5
+-- Dependencies: 2581 2583 2584 2585 2586 2587 2588 2589 2590 2591 2592 5
 -- Name: xxxsmsout_consumer; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7178,7 +6574,7 @@ CREATE TABLE xxxsmsout_consumer (
 
 
 --
--- TOC entry 2970 (class 0 OID 0)
+-- TOC entry 2942 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: TABLE xxxsmsout_consumer; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7187,7 +6583,7 @@ COMMENT ON TABLE xxxsmsout_consumer IS 'Tabla con los flags (aplicaciones que co
 
 
 --
--- TOC entry 2971 (class 0 OID 0)
+-- TOC entry 2943 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: COLUMN xxxsmsout_consumer.dateprocessf1; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7210,7 +6606,7 @@ CREATE SEQUENCE smsout_consumer_idsmsoutf_seq
 
 
 --
--- TOC entry 2972 (class 0 OID 0)
+-- TOC entry 2944 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: smsout_consumer_idsmsoutf_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7219,8 +6615,102 @@ ALTER SEQUENCE smsout_consumer_idsmsoutf_seq OWNED BY xxxsmsout_consumer.idsmsou
 
 
 --
+-- TOC entry 173 (class 1259 OID 16579)
+-- Dependencies: 2353 2354 2355 2356 2357 2358 2359 2360 2361 2362 2363 2364 2365 2366 2367 2368 2369 2370 2371 2372 2373 2374 2375 2376 2377 2378 2379 2380 5 1860 1860
+-- Name: xxxsmsout; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE xxxsmsout (
+    idsmsout bigint NOT NULL,
+    dateload timestamp without time zone DEFAULT now() NOT NULL,
+    idprovider integer DEFAULT 0 NOT NULL,
+    idsmstype integer DEFAULT 0 NOT NULL,
+    idphone integer DEFAULT 0 NOT NULL,
+    phone text DEFAULT ''::text NOT NULL,
+    datetosend timestamp without time zone DEFAULT now() NOT NULL,
+    dateprocess timestamp without time zone DEFAULT now() NOT NULL,
+    process integer DEFAULT 0 NOT NULL,
+    note text COLLATE pg_catalog."es_EC.utf8" DEFAULT ''::text NOT NULL,
+    priority integer DEFAULT 5,
+    attempts integer DEFAULT 0,
+    idprovidersent integer DEFAULT 0,
+    slices integer DEFAULT 0,
+    slicessent integer DEFAULT 0,
+    messageclass integer DEFAULT 1 NOT NULL,
+    report boolean DEFAULT false,
+    maxslices integer DEFAULT 1 NOT NULL,
+    enablemessageclass boolean DEFAULT false NOT NULL,
+    idport integer DEFAULT 0 NOT NULL,
+    flag1 integer DEFAULT 0 NOT NULL,
+    flag2 integer DEFAULT 0 NOT NULL,
+    flag3 integer DEFAULT 0 NOT NULL,
+    flag4 integer DEFAULT 0 NOT NULL,
+    flag5 integer DEFAULT 0 NOT NULL,
+    retryonfail integer DEFAULT 5 NOT NULL,
+    maxtimelive integer DEFAULT 2 NOT NULL,
+    ts timestamp without time zone DEFAULT now() NOT NULL,
+    message text COLLATE pg_catalog."es_EC.utf8" DEFAULT ''::text NOT NULL,
+    idsmsoutf integer
+);
+
+
+--
+-- TOC entry 2945 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: TABLE xxxsmsout; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE xxxsmsout IS 'Tabla de mensajes salientes';
+
+
+--
+-- TOC entry 2946 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN xxxsmsout.idsmstype; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsout.idsmstype IS 'Estado del envio del sms';
+
+
+--
+-- TOC entry 2947 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN xxxsmsout.idphone; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsout.idphone IS 'Se es identificado el numero con un idphone se escribe este campo';
+
+
+--
+-- TOC entry 2948 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN xxxsmsout.phone; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsout.phone IS 'Numero telefonico';
+
+
+--
+-- TOC entry 2949 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN xxxsmsout.datetosend; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsout.datetosend IS 'Fecha programada de envio';
+
+
+--
+-- TOC entry 2950 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: COLUMN xxxsmsout.priority; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsout.priority IS 'Prioridad de envio del sms. 5 es el valor de fabrica. 0 es la maxima prioridad.';
+
+
+--
 -- TOC entry 172 (class 1259 OID 16577)
--- Dependencies: 5 173
+-- Dependencies: 173 5
 -- Name: smsout_idsmsout_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7233,12 +6723,87 @@ CREATE SEQUENCE smsout_idsmsout_seq
 
 
 --
--- TOC entry 2973 (class 0 OID 0)
+-- TOC entry 2951 (class 0 OID 0)
 -- Dependencies: 172
 -- Name: smsout_idsmsout_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smsout_idsmsout_seq OWNED BY xxxsmsout.idsmsout;
+
+
+--
+-- TOC entry 180 (class 1259 OID 16745)
+-- Dependencies: 2393 2394 2395 2396 2397 5
+-- Name: xxxsmsoutoptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE xxxsmsoutoptions (
+    idsmsoutopt bigint NOT NULL,
+    enable boolean,
+    name text,
+    report boolean DEFAULT false NOT NULL,
+    retryonfail integer DEFAULT 3 NOT NULL,
+    maxslices integer DEFAULT 1,
+    maxtimelive integer DEFAULT 5 NOT NULL,
+    ts timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- TOC entry 2952 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: TABLE xxxsmsoutoptions; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE xxxsmsoutoptions IS 'Opciones globales adicionales para envio de mensajes de texto.';
+
+
+--
+-- TOC entry 2953 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN xxxsmsoutoptions.enable; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsoutoptions.enable IS 'usms toma el ultimo registro habilitado para su funcionamiento ignorando los anteriores';
+
+
+--
+-- TOC entry 2954 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN xxxsmsoutoptions.name; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsoutoptions.name IS 'Nombre opcional';
+
+
+--
+-- TOC entry 2955 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN xxxsmsoutoptions.report; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsoutoptions.report IS 'Solicita reporte de recibido para cada sms';
+
+
+--
+-- TOC entry 2956 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN xxxsmsoutoptions.retryonfail; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsoutoptions.retryonfail IS '0 = No intenta reenviar el sms en caso de falla.
+> 0 Numero de reintentos en caso de falla.';
+
+
+--
+-- TOC entry 2957 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: COLUMN xxxsmsoutoptions.maxslices; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN xxxsmsoutoptions.maxslices IS 'Numero maximo de sms que se enviara cuando el texto del mensaje es largo.
+De fabrica envia un solo mensaje de 160 caracteres.
+Si 0 o 1 de fabrica.';
 
 
 --
@@ -7256,7 +6821,7 @@ CREATE SEQUENCE smsoutoptions_idsmsoutopt_seq
 
 
 --
--- TOC entry 2974 (class 0 OID 0)
+-- TOC entry 2958 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: smsoutoptions_idsmsoutopt_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7266,7 +6831,7 @@ ALTER SEQUENCE smsoutoptions_idsmsoutopt_seq OWNED BY xxxsmsoutoptions.idsmsouto
 
 --
 -- TOC entry 231 (class 1259 OID 27461)
--- Dependencies: 2305 5
+-- Dependencies: 2296 5
 -- Name: view_callin; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7276,7 +6841,7 @@ CREATE VIEW view_callin AS
 
 --
 -- TOC entry 249 (class 1259 OID 28142)
--- Dependencies: 2313 1867 5 1867 1867 1867 1867 1867 1867 1867 1867 1867
+-- Dependencies: 2304 1858 1858 1858 1858 5 1858 1858 1858 1858 1858 1858
 -- Name: view_contacts_address; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7285,7 +6850,7 @@ CREATE VIEW view_contacts_address AS
 
 
 --
--- TOC entry 2975 (class 0 OID 0)
+-- TOC entry 2959 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: VIEW view_contacts_address; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7295,7 +6860,7 @@ COMMENT ON VIEW view_contacts_address IS 'Vista de contactos con sus direcciones
 
 --
 -- TOC entry 229 (class 1259 OID 27244)
--- Dependencies: 2303 5
+-- Dependencies: 2294 5
 -- Name: view_contacts_phones; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7305,7 +6870,7 @@ CREATE VIEW view_contacts_phones AS
 
 --
 -- TOC entry 233 (class 1259 OID 27738)
--- Dependencies: 2306 5 1867 1869 1867 1867 1869
+-- Dependencies: 2297 1858 1860 5 1858 1860 1858
 -- Name: view_locations; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7315,7 +6880,7 @@ CREATE VIEW view_locations AS
 
 --
 -- TOC entry 234 (class 1259 OID 27747)
--- Dependencies: 2307 1869 1867 1867 1869 5 1867
+-- Dependencies: 2298 1860 1858 1858 1860 1858 5
 -- Name: view_locations_full; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7325,7 +6890,7 @@ CREATE VIEW view_locations_full AS
 
 --
 -- TOC entry 235 (class 1259 OID 27756)
--- Dependencies: 2308 5
+-- Dependencies: 2299 5
 -- Name: view_location_idlocation; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7335,7 +6900,7 @@ CREATE VIEW view_location_idlocation AS
 
 --
 -- TOC entry 248 (class 1259 OID 28137)
--- Dependencies: 2312 1869 1869 5
+-- Dependencies: 2303 1860 1860 5
 -- Name: view_outgoing_idphone; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7345,7 +6910,7 @@ CREATE VIEW view_outgoing_idphone AS
 
 --
 -- TOC entry 175 (class 1259 OID 16599)
--- Dependencies: 2391 2392 2393 1869 5
+-- Dependencies: 2382 2383 2384 5 1860
 -- Name: whitelist; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7359,7 +6924,7 @@ CREATE TABLE whitelist (
 
 
 --
--- TOC entry 2976 (class 0 OID 0)
+-- TOC entry 2960 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: TABLE whitelist; Type: COMMENT; Schema: public; Owner: -
 --
@@ -7382,7 +6947,7 @@ CREATE SEQUENCE whitelist_idwl_seq
 
 
 --
--- TOC entry 2977 (class 0 OID 0)
+-- TOC entry 2961 (class 0 OID 0)
 -- Dependencies: 174
 -- Name: whitelist_idwl_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -7392,7 +6957,7 @@ ALTER SEQUENCE whitelist_idwl_seq OWNED BY whitelist.idwl;
 
 --
 -- TOC entry 222 (class 1259 OID 27102)
--- Dependencies: 2302 5 1867 1869 1869
+-- Dependencies: 2293 1858 1860 5 1860
 -- Name: xxxview_locations; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7402,7 +6967,7 @@ CREATE VIEW xxxview_locations AS
 
 --
 -- TOC entry 246 (class 1259 OID 28108)
--- Dependencies: 2310 1869 1869 5
+-- Dependencies: 2301 1860 1860 5
 -- Name: xxxview_outgoing_idphone; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7412,7 +6977,7 @@ CREATE VIEW xxxview_outgoing_idphone AS
 
 --
 -- TOC entry 247 (class 1259 OID 28124)
--- Dependencies: 2311 5 1869 1869
+-- Dependencies: 2302 1860 1860 5
 -- Name: xxxxview_outgoing_idphone; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7424,7 +6989,7 @@ SET search_path = usaga, pg_catalog;
 
 --
 -- TOC entry 184 (class 1259 OID 16976)
--- Dependencies: 2420 2421 2422 2423 2424 2425 2426 2427 9 1869
+-- Dependencies: 2411 2412 2413 2414 2415 2416 2417 2418 9 1860
 -- Name: account; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7444,7 +7009,7 @@ CREATE TABLE account (
 
 
 --
--- TOC entry 2978 (class 0 OID 0)
+-- TOC entry 2962 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: TABLE account; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7453,7 +7018,7 @@ COMMENT ON TABLE account IS 'Cuenta de usuario';
 
 
 --
--- TOC entry 2979 (class 0 OID 0)
+-- TOC entry 2963 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: COLUMN account.account; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7463,7 +7028,7 @@ COMMENT ON COLUMN account.account IS 'Numero de cuenta en 4 digitos';
 
 --
 -- TOC entry 202 (class 1259 OID 17772)
--- Dependencies: 2527 2528 2529 2530 2531 2532 2533 1867 9
+-- Dependencies: 2518 2519 2520 2521 2522 2523 2524 9 1858
 -- Name: account_contacts; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7479,7 +7044,7 @@ CREATE TABLE account_contacts (
 
 
 --
--- TOC entry 2980 (class 0 OID 0)
+-- TOC entry 2964 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: TABLE account_contacts; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7488,7 +7053,7 @@ COMMENT ON TABLE account_contacts IS 'Usuarios del sistema, tiene acceso al sist
 
 
 --
--- TOC entry 2981 (class 0 OID 0)
+-- TOC entry 2965 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: COLUMN account_contacts.prioritycontact; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7511,7 +7076,7 @@ CREATE SEQUENCE account_idaccount_seq
 
 
 --
--- TOC entry 2982 (class 0 OID 0)
+-- TOC entry 2966 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: account_idaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7521,7 +7086,7 @@ ALTER SEQUENCE account_idaccount_seq OWNED BY account.idaccount;
 
 --
 -- TOC entry 185 (class 1259 OID 17049)
--- Dependencies: 2428 2429 2430 2431 2432 2433 2434 2435 2436 9
+-- Dependencies: 2419 2420 2421 2422 2423 2424 2425 2426 2427 9
 -- Name: account_installationdata; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7539,7 +7104,7 @@ CREATE TABLE account_installationdata (
 
 
 --
--- TOC entry 2983 (class 0 OID 0)
+-- TOC entry 2967 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: TABLE account_installationdata; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7548,7 +7113,7 @@ COMMENT ON TABLE account_installationdata IS 'Datos basico acerca de la instalac
 
 
 --
--- TOC entry 2984 (class 0 OID 0)
+-- TOC entry 2968 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: COLUMN account_installationdata.idaccount; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7557,7 +7122,7 @@ COMMENT ON COLUMN account_installationdata.idaccount IS 'idaccount a la que pert
 
 
 --
--- TOC entry 2985 (class 0 OID 0)
+-- TOC entry 2969 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: COLUMN account_installationdata.installercode; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7567,7 +7132,7 @@ COMMENT ON COLUMN account_installationdata.installercode IS 'Codigo de instalado
 
 --
 -- TOC entry 189 (class 1259 OID 17143)
--- Dependencies: 2444 2445 2446 2447 2448 2449 2450 9 1869
+-- Dependencies: 2435 2436 2437 2438 2439 2440 2441 9 1860
 -- Name: xxxaccount_location; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7584,7 +7149,7 @@ CREATE TABLE xxxaccount_location (
 
 
 --
--- TOC entry 2986 (class 0 OID 0)
+-- TOC entry 2970 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: TABLE xxxaccount_location; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7593,7 +7158,7 @@ COMMENT ON TABLE xxxaccount_location IS 'Localizacion de la cuenta';
 
 
 --
--- TOC entry 2987 (class 0 OID 0)
+-- TOC entry 2971 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: COLUMN xxxaccount_location.geox; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7602,7 +7167,7 @@ COMMENT ON COLUMN xxxaccount_location.geox IS 'Ubicacion georeferenciada';
 
 
 --
--- TOC entry 2988 (class 0 OID 0)
+-- TOC entry 2972 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: COLUMN xxxaccount_location.address; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7625,7 +7190,7 @@ CREATE SEQUENCE account_location_idlocation_seq
 
 
 --
--- TOC entry 2989 (class 0 OID 0)
+-- TOC entry 2973 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: account_location_idlocation_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7635,7 +7200,7 @@ ALTER SEQUENCE account_location_idlocation_seq OWNED BY xxxaccount_location.idlo
 
 --
 -- TOC entry 191 (class 1259 OID 17176)
--- Dependencies: 2452 2453 2454 2455 2456 2457 2458 2459 9 1869 1869
+-- Dependencies: 2443 2444 2445 2446 2447 2448 2449 2450 1860 9 1860
 -- Name: account_notifications; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7653,7 +7218,7 @@ CREATE TABLE account_notifications (
 
 
 --
--- TOC entry 2990 (class 0 OID 0)
+-- TOC entry 2974 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: TABLE account_notifications; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7663,7 +7228,7 @@ COMMENT ON TABLE account_notifications IS 'Contactos a donde se enviara las noti
 
 --
 -- TOC entry 193 (class 1259 OID 17261)
--- Dependencies: 2461 2462 2463 9
+-- Dependencies: 2452 2453 2454 9
 -- Name: account_notifications_eventtype; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7676,7 +7241,7 @@ CREATE TABLE account_notifications_eventtype (
 
 
 --
--- TOC entry 2991 (class 0 OID 0)
+-- TOC entry 2975 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: TABLE account_notifications_eventtype; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7700,7 +7265,7 @@ CREATE SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq
 
 
 --
--- TOC entry 2992 (class 0 OID 0)
+-- TOC entry 2976 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: account_notifications_eventtype_idnotifphoneeventtype_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7710,7 +7275,7 @@ ALTER SEQUENCE account_notifications_eventtype_idnotifphoneeventtype_seq OWNED B
 
 --
 -- TOC entry 220 (class 1259 OID 26445)
--- Dependencies: 2580 2581 2582 9
+-- Dependencies: 2571 2572 2573 9
 -- Name: account_notifications_group; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7723,7 +7288,7 @@ CREATE TABLE account_notifications_group (
 
 
 --
--- TOC entry 2993 (class 0 OID 0)
+-- TOC entry 2977 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: TABLE account_notifications_group; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7746,7 +7311,7 @@ CREATE SEQUENCE account_notifications_idnotifaccount_seq
 
 
 --
--- TOC entry 2994 (class 0 OID 0)
+-- TOC entry 2978 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: account_notifications_idnotifaccount_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7756,7 +7321,7 @@ ALTER SEQUENCE account_notifications_idnotifaccount_seq OWNED BY account_notific
 
 --
 -- TOC entry 204 (class 1259 OID 18107)
--- Dependencies: 2546 2547 2548 2549 2550 2551 2552 1869 9
+-- Dependencies: 2537 2538 2539 2540 2541 2542 2543 9 1860
 -- Name: account_phones_trigger_alarm; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7773,7 +7338,7 @@ CREATE TABLE account_phones_trigger_alarm (
 
 --
 -- TOC entry 203 (class 1259 OID 18087)
--- Dependencies: 2540 2541 2542 2543 2544 9 1869 1869 202 1867
+-- Dependencies: 2531 2532 2533 2534 2535 1860 1858 202 9 1860
 -- Name: account_users; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7788,7 +7353,7 @@ INHERITS (account_contacts);
 
 
 --
--- TOC entry 2995 (class 0 OID 0)
+-- TOC entry 2979 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: COLUMN account_users.numuser; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7798,7 +7363,7 @@ COMMENT ON COLUMN account_users.numuser IS 'Numero de usuario';
 
 --
 -- TOC entry 195 (class 1259 OID 17289)
--- Dependencies: 2464 2465 2466 2467 2468 2469 2470 2471 2473 2474 2475 2476 2477 2478 2479 2480 2481 2482 2483 2484 1869 9
+-- Dependencies: 2455 2456 2457 2458 2459 2460 2461 2462 2464 2465 2466 2467 2468 2469 2470 2471 2472 2473 2474 2475 9 1860
 -- Name: events; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7829,7 +7394,7 @@ CREATE TABLE events (
 
 
 --
--- TOC entry 2996 (class 0 OID 0)
+-- TOC entry 2980 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: TABLE events; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7839,7 +7404,7 @@ TODO: Ver la posibilidad de crear llave unica usando todos los campos';
 
 
 --
--- TOC entry 2997 (class 0 OID 0)
+-- TOC entry 2981 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: COLUMN events.dateload; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7849,7 +7414,7 @@ COMMENT ON COLUMN events.dateload IS 'Fecha de ingreso del evento';
 
 --
 -- TOC entry 201 (class 1259 OID 17714)
--- Dependencies: 2524 1869 9 195
+-- Dependencies: 2515 1860 195 9
 -- Name: events_generated_by_calls; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7860,7 +7425,7 @@ INHERITS (events);
 
 
 --
--- TOC entry 2998 (class 0 OID 0)
+-- TOC entry 2982 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: TABLE events_generated_by_calls; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7871,7 +7436,7 @@ No permite eventos con misma hora, mismo idphone, etc, no permite eventos repeti
 
 --
 -- TOC entry 194 (class 1259 OID 17287)
--- Dependencies: 195 9
+-- Dependencies: 9 195
 -- Name: events_idevent_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
@@ -7884,7 +7449,7 @@ CREATE SEQUENCE events_idevent_seq
 
 
 --
--- TOC entry 2999 (class 0 OID 0)
+-- TOC entry 2983 (class 0 OID 0)
 -- Dependencies: 194
 -- Name: events_idevent_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7894,7 +7459,7 @@ ALTER SEQUENCE events_idevent_seq OWNED BY events.idevent;
 
 --
 -- TOC entry 196 (class 1259 OID 17352)
--- Dependencies: 2485 2486 2487 2488 2489 2490 2491 2492 9
+-- Dependencies: 2476 2477 2478 2479 2480 2481 2482 2483 9
 -- Name: eventtypes; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7911,7 +7476,7 @@ CREATE TABLE eventtypes (
 
 
 --
--- TOC entry 3000 (class 0 OID 0)
+-- TOC entry 2984 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: TABLE eventtypes; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7920,7 +7485,7 @@ COMMENT ON TABLE eventtypes IS 'Tipos de eventos. Enumeracion interna desde Open
 
 
 --
--- TOC entry 3001 (class 0 OID 0)
+-- TOC entry 2985 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: COLUMN eventtypes.name; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -7930,7 +7495,7 @@ COMMENT ON COLUMN eventtypes.name IS 'Nombre del evento';
 
 --
 -- TOC entry 219 (class 1259 OID 26381)
--- Dependencies: 2576 2577 2578 2579 9 1869 1869
+-- Dependencies: 2567 2568 2569 2570 1860 9 1860
 -- Name: groups; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7945,7 +7510,7 @@ CREATE TABLE groups (
 
 --
 -- TOC entry 218 (class 1259 OID 26379)
--- Dependencies: 219 9
+-- Dependencies: 9 219
 -- Name: groups_idgroup_seq; Type: SEQUENCE; Schema: usaga; Owner: -
 --
 
@@ -7958,7 +7523,7 @@ CREATE SEQUENCE groups_idgroup_seq
 
 
 --
--- TOC entry 3002 (class 0 OID 0)
+-- TOC entry 2986 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: groups_idgroup_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -7968,7 +7533,7 @@ ALTER SEQUENCE groups_idgroup_seq OWNED BY groups.idgroup;
 
 --
 -- TOC entry 198 (class 1259 OID 17389)
--- Dependencies: 2494 2495 2496 2497 2498 9 1869
+-- Dependencies: 2485 2486 2487 2488 2489 1860 9
 -- Name: keywords; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -7983,7 +7548,7 @@ CREATE TABLE keywords (
 
 
 --
--- TOC entry 3003 (class 0 OID 0)
+-- TOC entry 2987 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: TABLE keywords; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -8006,7 +7571,7 @@ CREATE SEQUENCE keywords_idkeyword_seq
 
 
 --
--- TOC entry 3004 (class 0 OID 0)
+-- TOC entry 2988 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: keywords_idkeyword_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -8016,7 +7581,7 @@ ALTER SEQUENCE keywords_idkeyword_seq OWNED BY keywords.idkeyword;
 
 --
 -- TOC entry 212 (class 1259 OID 26202)
--- Dependencies: 2566 2567 2568 1867 9 1867
+-- Dependencies: 2557 2558 2559 9 1858 1858
 -- Name: notification_templates; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -8029,7 +7594,7 @@ CREATE TABLE notification_templates (
 
 
 --
--- TOC entry 3005 (class 0 OID 0)
+-- TOC entry 2989 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: TABLE notification_templates; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -8077,7 +7642,7 @@ CREATE SEQUENCE notification_templates_idnotiftempl_seq
 
 
 --
--- TOC entry 3006 (class 0 OID 0)
+-- TOC entry 2990 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: notification_templates_idnotiftempl_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -8087,7 +7652,7 @@ ALTER SEQUENCE notification_templates_idnotiftempl_seq OWNED BY notification_tem
 
 --
 -- TOC entry 187 (class 1259 OID 17108)
--- Dependencies: 2438 2439 2440 2441 2442 9
+-- Dependencies: 2429 2430 2431 2432 2433 9
 -- Name: panelmodel; Type: TABLE; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -8102,7 +7667,7 @@ CREATE TABLE panelmodel (
 
 
 --
--- TOC entry 3007 (class 0 OID 0)
+-- TOC entry 2991 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: TABLE panelmodel; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -8125,7 +7690,7 @@ CREATE SEQUENCE panelmodel_idpanelmodel_seq
 
 
 --
--- TOC entry 3008 (class 0 OID 0)
+-- TOC entry 2992 (class 0 OID 0)
 -- Dependencies: 186
 -- Name: panelmodel_idpanelmodel_seq; Type: SEQUENCE OWNED BY; Schema: usaga; Owner: -
 --
@@ -8135,7 +7700,7 @@ ALTER SEQUENCE panelmodel_idpanelmodel_seq OWNED BY panelmodel.idpanelmodel;
 
 --
 -- TOC entry 221 (class 1259 OID 26909)
--- Dependencies: 2301 1867 9
+-- Dependencies: 2292 9 1858
 -- Name: view_account_contacts; Type: VIEW; Schema: usaga; Owner: -
 --
 
@@ -8145,7 +7710,7 @@ CREATE VIEW view_account_contacts AS
 
 --
 -- TOC entry 230 (class 1259 OID 27249)
--- Dependencies: 2304 9
+-- Dependencies: 2295 9
 -- Name: view_account_phones_trigger_alarm; Type: VIEW; Schema: usaga; Owner: -
 --
 
@@ -8154,7 +7719,7 @@ CREATE VIEW view_account_phones_trigger_alarm AS
 
 
 --
--- TOC entry 3009 (class 0 OID 0)
+-- TOC entry 2993 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: VIEW view_account_phones_trigger_alarm; Type: COMMENT; Schema: usaga; Owner: -
 --
@@ -8164,7 +7729,7 @@ COMMENT ON VIEW view_account_phones_trigger_alarm IS 'TODO: Cambiar la vista usa
 
 --
 -- TOC entry 239 (class 1259 OID 27969)
--- Dependencies: 2309 1869 9 1869
+-- Dependencies: 2300 1860 9 1860
 -- Name: view_account_users; Type: VIEW; Schema: usaga; Owner: -
 --
 
@@ -8174,7 +7739,7 @@ CREATE VIEW view_account_users AS
 
 --
 -- TOC entry 217 (class 1259 OID 26345)
--- Dependencies: 2300 9
+-- Dependencies: 2291 9
 -- Name: view_events; Type: VIEW; Schema: usaga; Owner: -
 --
 
@@ -8185,7 +7750,7 @@ CREATE VIEW view_events AS
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2584 (class 2604 OID 27139)
+-- TOC entry 2575 (class 2604 OID 27139)
 -- Dependencies: 223 224 224
 -- Name: idaddress; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8194,7 +7759,7 @@ ALTER TABLE ONLY address ALTER COLUMN idaddress SET DEFAULT nextval('loc_level1_
 
 
 --
--- TOC entry 2394 (class 2604 OID 16625)
+-- TOC entry 2385 (class 2604 OID 16625)
 -- Dependencies: 176 177 177
 -- Name: idbl; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8203,7 +7768,7 @@ ALTER TABLE ONLY blacklist ALTER COLUMN idbl SET DEFAULT nextval('blacklist_idbl
 
 
 --
--- TOC entry 2314 (class 2604 OID 16390)
+-- TOC entry 2305 (class 2604 OID 16390)
 -- Dependencies: 164 165 165
 -- Name: idcontact; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8212,8 +7777,8 @@ ALTER TABLE ONLY contacts ALTER COLUMN idcontact SET DEFAULT nextval('contacts_i
 
 
 --
--- TOC entry 2407 (class 2604 OID 16836)
--- Dependencies: 181 182 182
+-- TOC entry 2398 (class 2604 OID 16836)
+-- Dependencies: 182 181 182
 -- Name: idincall; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8221,8 +7786,8 @@ ALTER TABLE ONLY incomingcalls ALTER COLUMN idincall SET DEFAULT nextval('incomi
 
 
 --
--- TOC entry 2564 (class 2604 OID 27590)
--- Dependencies: 209 210 210
+-- TOC entry 2555 (class 2604 OID 27590)
+-- Dependencies: 210 209 210
 -- Name: idl4; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8230,7 +7795,7 @@ ALTER TABLE ONLY location_level4 ALTER COLUMN idl4 SET DEFAULT nextval('loc_leve
 
 
 --
--- TOC entry 2499 (class 2604 OID 17585)
+-- TOC entry 2490 (class 2604 OID 17585)
 -- Dependencies: 200 199 200
 -- Name: idmodem; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8239,7 +7804,7 @@ ALTER TABLE ONLY modem ALTER COLUMN idmodem SET DEFAULT nextval('modem_idmodem_s
 
 
 --
--- TOC entry 2633 (class 2604 OID 28042)
+-- TOC entry 2624 (class 2604 OID 28042)
 -- Dependencies: 243 242 243
 -- Name: idsmsout; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8248,7 +7813,7 @@ ALTER TABLE ONLY outgoing ALTER COLUMN idsmsout SET DEFAULT nextval('outgoing_id
 
 
 --
--- TOC entry 2646 (class 2604 OID 28068)
+-- TOC entry 2637 (class 2604 OID 28068)
 -- Dependencies: 245 244 245
 -- Name: idoutgoinglog; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8257,8 +7822,8 @@ ALTER TABLE ONLY outgoing_log ALTER COLUMN idoutgoinglog SET DEFAULT nextval('ou
 
 
 --
--- TOC entry 2630 (class 2604 OID 28022)
--- Dependencies: 240 241 241
+-- TOC entry 2621 (class 2604 OID 28022)
+-- Dependencies: 241 240 241
 -- Name: idowner; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8266,8 +7831,8 @@ ALTER TABLE ONLY owners ALTER COLUMN idowner SET DEFAULT nextval('owners_idowner
 
 
 --
--- TOC entry 2328 (class 2604 OID 16426)
--- Dependencies: 167 166 167
+-- TOC entry 2319 (class 2604 OID 16426)
+-- Dependencies: 166 167 167
 -- Name: idphone; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8275,8 +7840,8 @@ ALTER TABLE ONLY phones ALTER COLUMN idphone SET DEFAULT nextval('phones_idphone
 
 
 --
--- TOC entry 2339 (class 2604 OID 16455)
--- Dependencies: 168 169 169
+-- TOC entry 2330 (class 2604 OID 16455)
+-- Dependencies: 169 168 169
 -- Name: idprovider; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8284,8 +7849,8 @@ ALTER TABLE ONLY provider ALTER COLUMN idprovider SET DEFAULT nextval('provider_
 
 
 --
--- TOC entry 2618 (class 2604 OID 27818)
--- Dependencies: 236 237 237
+-- TOC entry 2609 (class 2604 OID 27818)
+-- Dependencies: 237 236 237
 -- Name: idsim; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8293,8 +7858,8 @@ ALTER TABLE ONLY sim ALTER COLUMN idsim SET DEFAULT nextval('sim_idsim_seq'::reg
 
 
 --
--- TOC entry 2345 (class 2604 OID 16525)
--- Dependencies: 171 170 171
+-- TOC entry 2336 (class 2604 OID 16525)
+-- Dependencies: 170 171 171
 -- Name: idsmsin; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8302,8 +7867,8 @@ ALTER TABLE ONLY smsin ALTER COLUMN idsmsin SET DEFAULT nextval('smsin_idsmsin_s
 
 
 --
--- TOC entry 2390 (class 2604 OID 16602)
--- Dependencies: 174 175 175
+-- TOC entry 2381 (class 2604 OID 16602)
+-- Dependencies: 175 174 175
 -- Name: idwl; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8311,8 +7876,8 @@ ALTER TABLE ONLY whitelist ALTER COLUMN idwl SET DEFAULT nextval('whitelist_idwl
 
 
 --
--- TOC entry 2602 (class 2604 OID 27200)
--- Dependencies: 227 228 228
+-- TOC entry 2593 (class 2604 OID 27200)
+-- Dependencies: 228 227 228
 -- Name: idsmsinf; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8320,8 +7885,8 @@ ALTER TABLE ONLY xxxsmsin_consumer ALTER COLUMN idsmsinf SET DEFAULT nextval('sm
 
 
 --
--- TOC entry 2361 (class 2604 OID 16582)
--- Dependencies: 173 172 173
+-- TOC entry 2352 (class 2604 OID 16582)
+-- Dependencies: 172 173 173
 -- Name: idsmsout; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8329,8 +7894,8 @@ ALTER TABLE ONLY xxxsmsout ALTER COLUMN idsmsout SET DEFAULT nextval('smsout_ids
 
 
 --
--- TOC entry 2591 (class 2604 OID 27176)
--- Dependencies: 225 226 226
+-- TOC entry 2582 (class 2604 OID 27176)
+-- Dependencies: 226 225 226
 -- Name: idsmsoutf; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8338,7 +7903,7 @@ ALTER TABLE ONLY xxxsmsout_consumer ALTER COLUMN idsmsoutf SET DEFAULT nextval('
 
 
 --
--- TOC entry 2401 (class 2604 OID 16748)
+-- TOC entry 2392 (class 2604 OID 16748)
 -- Dependencies: 180 179 180
 -- Name: idsmsoutopt; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -8349,8 +7914,8 @@ ALTER TABLE ONLY xxxsmsoutoptions ALTER COLUMN idsmsoutopt SET DEFAULT nextval('
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2419 (class 2604 OID 16979)
--- Dependencies: 183 184 184
+-- TOC entry 2410 (class 2604 OID 16979)
+-- Dependencies: 184 183 184
 -- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -8358,8 +7923,8 @@ ALTER TABLE ONLY account ALTER COLUMN idaccount SET DEFAULT nextval('account_ida
 
 
 --
--- TOC entry 2451 (class 2604 OID 17179)
--- Dependencies: 190 191 191
+-- TOC entry 2442 (class 2604 OID 17179)
+-- Dependencies: 191 190 191
 -- Name: idnotifaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -8367,7 +7932,7 @@ ALTER TABLE ONLY account_notifications ALTER COLUMN idnotifaccount SET DEFAULT n
 
 
 --
--- TOC entry 2460 (class 2604 OID 17264)
+-- TOC entry 2451 (class 2604 OID 17264)
 -- Dependencies: 192 193 193
 -- Name: idnotifphoneeventtype; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8376,7 +7941,7 @@ ALTER TABLE ONLY account_notifications_eventtype ALTER COLUMN idnotifphoneeventt
 
 
 --
--- TOC entry 2534 (class 2604 OID 18090)
+-- TOC entry 2525 (class 2604 OID 18090)
 -- Dependencies: 203 203
 -- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8385,7 +7950,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN idaccount SET DEFAULT 0;
 
 
 --
--- TOC entry 2535 (class 2604 OID 18091)
+-- TOC entry 2526 (class 2604 OID 18091)
 -- Dependencies: 203 203
 -- Name: idcontact; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8394,7 +7959,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN idcontact SET DEFAULT 0;
 
 
 --
--- TOC entry 2536 (class 2604 OID 18092)
+-- TOC entry 2527 (class 2604 OID 18092)
 -- Dependencies: 203 203
 -- Name: prioritycontact; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8403,7 +7968,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN prioritycontact SET DEFAULT 5;
 
 
 --
--- TOC entry 2537 (class 2604 OID 18093)
+-- TOC entry 2528 (class 2604 OID 18093)
 -- Dependencies: 203 203
 -- Name: enable; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8412,7 +7977,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN enable SET DEFAULT true;
 
 
 --
--- TOC entry 2538 (class 2604 OID 18094)
+-- TOC entry 2529 (class 2604 OID 18094)
 -- Dependencies: 203 203
 -- Name: appointment; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8421,7 +7986,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN appointment SET DEFAULT ''::text;
 
 
 --
--- TOC entry 2539 (class 2604 OID 18095)
+-- TOC entry 2530 (class 2604 OID 18095)
 -- Dependencies: 203 203
 -- Name: note; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8430,7 +7995,7 @@ ALTER TABLE ONLY account_users ALTER COLUMN note SET DEFAULT ''::text;
 
 
 --
--- TOC entry 2545 (class 2604 OID 26457)
+-- TOC entry 2536 (class 2604 OID 26457)
 -- Dependencies: 203 203
 -- Name: ts; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8439,8 +8004,8 @@ ALTER TABLE ONLY account_users ALTER COLUMN ts SET DEFAULT now();
 
 
 --
--- TOC entry 2472 (class 2604 OID 17292)
--- Dependencies: 194 195 195
+-- TOC entry 2463 (class 2604 OID 17292)
+-- Dependencies: 195 194 195
 -- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -8448,8 +8013,8 @@ ALTER TABLE ONLY events ALTER COLUMN idevent SET DEFAULT nextval('events_idevent
 
 
 --
--- TOC entry 2516 (class 2604 OID 17717)
--- Dependencies: 201 194 201
+-- TOC entry 2507 (class 2604 OID 17717)
+-- Dependencies: 201 201 194
 -- Name: idevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -8457,7 +8022,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN idevent SET DEFAULT next
 
 
 --
--- TOC entry 2517 (class 2604 OID 17718)
+-- TOC entry 2508 (class 2604 OID 17718)
 -- Dependencies: 201 201
 -- Name: dateload; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8466,7 +8031,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateload SET DEFAULT now
 
 
 --
--- TOC entry 2518 (class 2604 OID 17719)
+-- TOC entry 2509 (class 2604 OID 17719)
 -- Dependencies: 201 201
 -- Name: idaccount; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8475,7 +8040,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN idaccount SET DEFAULT 0;
 
 
 --
--- TOC entry 2519 (class 2604 OID 17720)
+-- TOC entry 2510 (class 2604 OID 17720)
 -- Dependencies: 201 201
 -- Name: code; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8484,7 +8049,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN code SET DEFAULT '0000':
 
 
 --
--- TOC entry 2520 (class 2604 OID 17721)
+-- TOC entry 2511 (class 2604 OID 17721)
 -- Dependencies: 201 201
 -- Name: zu; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8493,7 +8058,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN zu SET DEFAULT 0;
 
 
 --
--- TOC entry 2521 (class 2604 OID 17722)
+-- TOC entry 2512 (class 2604 OID 17722)
 -- Dependencies: 201 201
 -- Name: priority; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8502,7 +8067,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN priority SET DEFAULT 5;
 
 
 --
--- TOC entry 2522 (class 2604 OID 17723)
+-- TOC entry 2513 (class 2604 OID 17723)
 -- Dependencies: 201 201
 -- Name: description; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8511,7 +8076,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN description SET DEFAULT 
 
 
 --
--- TOC entry 2523 (class 2604 OID 17724)
+-- TOC entry 2514 (class 2604 OID 17724)
 -- Dependencies: 201 201
 -- Name: ideventtype; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8520,7 +8085,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN ideventtype SET DEFAULT 
 
 
 --
--- TOC entry 2525 (class 2604 OID 18022)
+-- TOC entry 2516 (class 2604 OID 18022)
 -- Dependencies: 201 201
 -- Name: datetimeevent; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8529,7 +8094,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN datetimeevent SET DEFAUL
 
 
 --
--- TOC entry 2505 (class 2604 OID 25925)
+-- TOC entry 2496 (class 2604 OID 25925)
 -- Dependencies: 201 201
 -- Name: process1; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8538,7 +8103,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process1 SET DEFAULT 0;
 
 
 --
--- TOC entry 2506 (class 2604 OID 25942)
+-- TOC entry 2497 (class 2604 OID 25942)
 -- Dependencies: 201 201
 -- Name: process2; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8547,7 +8112,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process2 SET DEFAULT 0;
 
 
 --
--- TOC entry 2507 (class 2604 OID 25959)
+-- TOC entry 2498 (class 2604 OID 25959)
 -- Dependencies: 201 201
 -- Name: process3; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8556,7 +8121,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process3 SET DEFAULT 0;
 
 
 --
--- TOC entry 2508 (class 2604 OID 25976)
+-- TOC entry 2499 (class 2604 OID 25976)
 -- Dependencies: 201 201
 -- Name: process4; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8565,7 +8130,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process4 SET DEFAULT 0;
 
 
 --
--- TOC entry 2509 (class 2604 OID 25993)
+-- TOC entry 2500 (class 2604 OID 25993)
 -- Dependencies: 201 201
 -- Name: process5; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8574,7 +8139,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN process5 SET DEFAULT 0;
 
 
 --
--- TOC entry 2510 (class 2604 OID 26010)
+-- TOC entry 2501 (class 2604 OID 26010)
 -- Dependencies: 201 201
 -- Name: note; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8583,7 +8148,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN note SET DEFAULT ' '::te
 
 
 --
--- TOC entry 2511 (class 2604 OID 26033)
+-- TOC entry 2502 (class 2604 OID 26033)
 -- Dependencies: 201 201
 -- Name: dateprocess1; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8592,7 +8157,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess1 SET DEFAULT
 
 
 --
--- TOC entry 2512 (class 2604 OID 26050)
+-- TOC entry 2503 (class 2604 OID 26050)
 -- Dependencies: 201 201
 -- Name: dateprocess2; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8601,7 +8166,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess2 SET DEFAULT
 
 
 --
--- TOC entry 2513 (class 2604 OID 26067)
+-- TOC entry 2504 (class 2604 OID 26067)
 -- Dependencies: 201 201
 -- Name: dateprocess3; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8610,7 +8175,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess3 SET DEFAULT
 
 
 --
--- TOC entry 2514 (class 2604 OID 26084)
+-- TOC entry 2505 (class 2604 OID 26084)
 -- Dependencies: 201 201
 -- Name: dateprocess4; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8619,7 +8184,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess4 SET DEFAULT
 
 
 --
--- TOC entry 2515 (class 2604 OID 26101)
+-- TOC entry 2506 (class 2604 OID 26101)
 -- Dependencies: 201 201
 -- Name: dateprocess5; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8628,7 +8193,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN dateprocess5 SET DEFAULT
 
 
 --
--- TOC entry 2526 (class 2604 OID 26572)
+-- TOC entry 2517 (class 2604 OID 26572)
 -- Dependencies: 201 201
 -- Name: ts; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8637,7 +8202,7 @@ ALTER TABLE ONLY events_generated_by_calls ALTER COLUMN ts SET DEFAULT now();
 
 
 --
--- TOC entry 2575 (class 2604 OID 26384)
+-- TOC entry 2566 (class 2604 OID 26384)
 -- Dependencies: 219 218 219
 -- Name: idgroup; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8646,7 +8211,7 @@ ALTER TABLE ONLY groups ALTER COLUMN idgroup SET DEFAULT nextval('groups_idgroup
 
 
 --
--- TOC entry 2493 (class 2604 OID 17392)
+-- TOC entry 2484 (class 2604 OID 17392)
 -- Dependencies: 198 197 198
 -- Name: idkeyword; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8655,8 +8220,8 @@ ALTER TABLE ONLY keywords ALTER COLUMN idkeyword SET DEFAULT nextval('keywords_i
 
 
 --
--- TOC entry 2565 (class 2604 OID 26205)
--- Dependencies: 212 211 212
+-- TOC entry 2556 (class 2604 OID 26205)
+-- Dependencies: 211 212 212
 -- Name: idnotiftempl; Type: DEFAULT; Schema: usaga; Owner: -
 --
 
@@ -8664,7 +8229,7 @@ ALTER TABLE ONLY notification_templates ALTER COLUMN idnotiftempl SET DEFAULT ne
 
 
 --
--- TOC entry 2437 (class 2604 OID 17111)
+-- TOC entry 2428 (class 2604 OID 17111)
 -- Dependencies: 186 187 187
 -- Name: idpanelmodel; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8673,7 +8238,7 @@ ALTER TABLE ONLY panelmodel ALTER COLUMN idpanelmodel SET DEFAULT nextval('panel
 
 
 --
--- TOC entry 2443 (class 2604 OID 17146)
+-- TOC entry 2434 (class 2604 OID 17146)
 -- Dependencies: 189 188 189
 -- Name: idlocation; Type: DEFAULT; Schema: usaga; Owner: -
 --
@@ -8684,8 +8249,8 @@ ALTER TABLE ONLY xxxaccount_location ALTER COLUMN idlocation SET DEFAULT nextval
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2653 (class 2606 OID 16428)
--- Dependencies: 167 167 2839
+-- TOC entry 2644 (class 2606 OID 16428)
+-- Dependencies: 167 167 2830
 -- Name: id; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8694,8 +8259,8 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2649 (class 2606 OID 16400)
--- Dependencies: 165 165 2839
+-- TOC entry 2640 (class 2606 OID 16400)
+-- Dependencies: 165 165 2830
 -- Name: idcontact; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8704,8 +8269,8 @@ ALTER TABLE ONLY contacts
 
 
 --
--- TOC entry 2759 (class 2606 OID 27877)
--- Dependencies: 238 238 2839
+-- TOC entry 2750 (class 2606 OID 27877)
+-- Dependencies: 238 238 2830
 -- Name: pk_cimi; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8714,8 +8279,8 @@ ALTER TABLE ONLY cimi
 
 
 --
--- TOC entry 2743 (class 2606 OID 27152)
--- Dependencies: 224 224 2839
+-- TOC entry 2734 (class 2606 OID 27152)
+-- Dependencies: 224 224 2830
 -- Name: pk_idaddress; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8724,8 +8289,8 @@ ALTER TABLE ONLY address
 
 
 --
--- TOC entry 2665 (class 2606 OID 16632)
--- Dependencies: 177 177 2839
+-- TOC entry 2656 (class 2606 OID 16632)
+-- Dependencies: 177 177 2830
 -- Name: pk_idbl; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8734,8 +8299,8 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2667 (class 2606 OID 16704)
--- Dependencies: 178 178 2839
+-- TOC entry 2658 (class 2606 OID 16704)
+-- Dependencies: 178 178 2830
 -- Name: pk_idcpp; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8744,8 +8309,8 @@ ALTER TABLE ONLY currentportsproviders
 
 
 --
--- TOC entry 2671 (class 2606 OID 16845)
--- Dependencies: 182 182 2839
+-- TOC entry 2662 (class 2606 OID 16845)
+-- Dependencies: 182 182 2830
 -- Name: pk_idincall; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8754,8 +8319,8 @@ ALTER TABLE ONLY incomingcalls
 
 
 --
--- TOC entry 2715 (class 2606 OID 27512)
--- Dependencies: 206 206 2839
+-- TOC entry 2706 (class 2606 OID 27512)
+-- Dependencies: 206 206 2830
 -- Name: pk_idl1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8764,8 +8329,8 @@ ALTER TABLE ONLY location_level1
 
 
 --
--- TOC entry 2719 (class 2606 OID 27497)
--- Dependencies: 208 208 2839
+-- TOC entry 2710 (class 2606 OID 27497)
+-- Dependencies: 208 208 2830
 -- Name: pk_idl2; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8774,8 +8339,8 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2753 (class 2606 OID 27509)
--- Dependencies: 232 232 2839
+-- TOC entry 2744 (class 2606 OID 27509)
+-- Dependencies: 232 232 2830
 -- Name: pk_idl3; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8784,8 +8349,8 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2723 (class 2606 OID 27495)
--- Dependencies: 210 210 2839
+-- TOC entry 2714 (class 2606 OID 27495)
+-- Dependencies: 210 210 2830
 -- Name: pk_idl4; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8794,8 +8359,8 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2729 (class 2606 OID 27493)
--- Dependencies: 214 214 2839
+-- TOC entry 2720 (class 2606 OID 27493)
+-- Dependencies: 214 214 2830
 -- Name: pk_idl5; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8804,8 +8369,8 @@ ALTER TABLE ONLY location_level5
 
 
 --
--- TOC entry 2733 (class 2606 OID 27491)
--- Dependencies: 216 216 2839
+-- TOC entry 2724 (class 2606 OID 27491)
+-- Dependencies: 216 216 2830
 -- Name: pk_idl6; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8814,8 +8379,8 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2701 (class 2606 OID 17587)
--- Dependencies: 200 200 2839
+-- TOC entry 2692 (class 2606 OID 17587)
+-- Dependencies: 200 200 2830
 -- Name: pk_idmodem; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8824,8 +8389,8 @@ ALTER TABLE ONLY modem
 
 
 --
--- TOC entry 2767 (class 2606 OID 28071)
--- Dependencies: 245 245 2839
+-- TOC entry 2758 (class 2606 OID 28071)
+-- Dependencies: 245 245 2830
 -- Name: pk_idoutgoinglog; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8834,8 +8399,8 @@ ALTER TABLE ONLY outgoing_log
 
 
 --
--- TOC entry 2761 (class 2606 OID 28029)
--- Dependencies: 241 241 2839
+-- TOC entry 2752 (class 2606 OID 28029)
+-- Dependencies: 241 241 2830
 -- Name: pk_idowner; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8844,8 +8409,8 @@ ALTER TABLE ONLY owners
 
 
 --
--- TOC entry 2657 (class 2606 OID 16464)
--- Dependencies: 169 169 2839
+-- TOC entry 2648 (class 2606 OID 16464)
+-- Dependencies: 169 169 2830
 -- Name: pk_idprovider; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8854,8 +8419,8 @@ ALTER TABLE ONLY provider
 
 
 --
--- TOC entry 2757 (class 2606 OID 27829)
--- Dependencies: 237 237 2839
+-- TOC entry 2748 (class 2606 OID 27829)
+-- Dependencies: 237 237 2830
 -- Name: pk_idsim_sim; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8864,8 +8429,8 @@ ALTER TABLE ONLY sim
 
 
 --
--- TOC entry 2659 (class 2606 OID 16528)
--- Dependencies: 171 171 2839
+-- TOC entry 2650 (class 2606 OID 16528)
+-- Dependencies: 171 171 2830
 -- Name: pk_idsmsin; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8874,8 +8439,8 @@ ALTER TABLE ONLY smsin
 
 
 --
--- TOC entry 2749 (class 2606 OID 27213)
--- Dependencies: 228 228 2839
+-- TOC entry 2740 (class 2606 OID 27213)
+-- Dependencies: 228 228 2830
 -- Name: pk_idsmsinf; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8884,8 +8449,8 @@ ALTER TABLE ONLY xxxsmsin_consumer
 
 
 --
--- TOC entry 2745 (class 2606 OID 27189)
--- Dependencies: 226 226 2839
+-- TOC entry 2736 (class 2606 OID 27189)
+-- Dependencies: 226 226 2830
 -- Name: pk_idsmsoutf; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8894,8 +8459,8 @@ ALTER TABLE ONLY xxxsmsout_consumer
 
 
 --
--- TOC entry 2669 (class 2606 OID 16756)
--- Dependencies: 180 180 2839
+-- TOC entry 2660 (class 2606 OID 16756)
+-- Dependencies: 180 180 2830
 -- Name: pk_idsmsoutopt; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8904,8 +8469,8 @@ ALTER TABLE ONLY xxxsmsoutoptions
 
 
 --
--- TOC entry 2663 (class 2606 OID 16609)
--- Dependencies: 175 175 2839
+-- TOC entry 2654 (class 2606 OID 16609)
+-- Dependencies: 175 175 2830
 -- Name: pk_idwl; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8914,8 +8479,8 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2765 (class 2606 OID 28061)
--- Dependencies: 243 243 2839
+-- TOC entry 2756 (class 2606 OID 28061)
+-- Dependencies: 243 243 2830
 -- Name: pk_outgoing; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8924,8 +8489,8 @@ ALTER TABLE ONLY outgoing
 
 
 --
--- TOC entry 2661 (class 2606 OID 16596)
--- Dependencies: 173 173 2839
+-- TOC entry 2652 (class 2606 OID 16596)
+-- Dependencies: 173 173 2830
 -- Name: pk_smsout; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8934,8 +8499,8 @@ ALTER TABLE ONLY xxxsmsout
 
 
 --
--- TOC entry 2651 (class 2606 OID 27911)
--- Dependencies: 165 165 165 2839
+-- TOC entry 2642 (class 2606 OID 27911)
+-- Dependencies: 165 165 165 2830
 -- Name: uni_contact_typeofid_identification; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8944,8 +8509,8 @@ ALTER TABLE ONLY contacts
 
 
 --
--- TOC entry 2751 (class 2606 OID 27805)
--- Dependencies: 228 228 2839
+-- TOC entry 2742 (class 2606 OID 27805)
+-- Dependencies: 228 228 2830
 -- Name: uni_idsmsin_smsin_c; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8954,8 +8519,8 @@ ALTER TABLE ONLY xxxsmsin_consumer
 
 
 --
--- TOC entry 2747 (class 2606 OID 27812)
--- Dependencies: 226 226 2839
+-- TOC entry 2738 (class 2606 OID 27812)
+-- Dependencies: 226 226 2830
 -- Name: uni_idsmsout_smsout_c; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8964,8 +8529,8 @@ ALTER TABLE ONLY xxxsmsout_consumer
 
 
 --
--- TOC entry 2703 (class 2606 OID 17624)
--- Dependencies: 200 200 2839
+-- TOC entry 2694 (class 2606 OID 17624)
+-- Dependencies: 200 200 2830
 -- Name: uni_imei_modem; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8974,8 +8539,8 @@ ALTER TABLE ONLY modem
 
 
 --
--- TOC entry 2717 (class 2606 OID 27514)
--- Dependencies: 206 206 2839
+-- TOC entry 2708 (class 2606 OID 27514)
+-- Dependencies: 206 206 2830
 -- Name: uni_name_loc_l1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8984,8 +8549,8 @@ ALTER TABLE ONLY location_level1
 
 
 --
--- TOC entry 2721 (class 2606 OID 27525)
--- Dependencies: 208 208 208 2839
+-- TOC entry 2712 (class 2606 OID 27525)
+-- Dependencies: 208 208 208 2830
 -- Name: uni_name_loc_l2; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8994,8 +8559,8 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2755 (class 2606 OID 27532)
--- Dependencies: 232 232 232 2839
+-- TOC entry 2746 (class 2606 OID 27532)
+-- Dependencies: 232 232 232 2830
 -- Name: uni_name_loc_l3; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9004,8 +8569,8 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2725 (class 2606 OID 27548)
--- Dependencies: 210 210 210 2839
+-- TOC entry 2716 (class 2606 OID 27548)
+-- Dependencies: 210 210 210 2830
 -- Name: uni_name_loc_l4; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9014,8 +8579,8 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2735 (class 2606 OID 27570)
--- Dependencies: 216 216 216 2839
+-- TOC entry 2726 (class 2606 OID 27570)
+-- Dependencies: 216 216 216 2830
 -- Name: uni_name_loc_l6; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9024,8 +8589,8 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2763 (class 2606 OID 28031)
--- Dependencies: 241 241 2839
+-- TOC entry 2754 (class 2606 OID 28031)
+-- Dependencies: 241 241 2830
 -- Name: uni_name_owners; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9034,8 +8599,8 @@ ALTER TABLE ONLY owners
 
 
 --
--- TOC entry 2731 (class 2606 OID 27563)
--- Dependencies: 214 214 214 2839
+-- TOC entry 2722 (class 2606 OID 27563)
+-- Dependencies: 214 214 214 2830
 -- Name: uni_nme_loc_l5; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9044,8 +8609,8 @@ ALTER TABLE ONLY location_level5
 
 
 --
--- TOC entry 2655 (class 2606 OID 27923)
--- Dependencies: 167 167 167 2839
+-- TOC entry 2646 (class 2606 OID 27923)
+-- Dependencies: 167 167 167 2830
 -- Name: uni_phones_phone_phoneext; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -9056,8 +8621,8 @@ ALTER TABLE ONLY phones
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2707 (class 2606 OID 18076)
--- Dependencies: 202 202 202 2839
+-- TOC entry 2698 (class 2606 OID 18076)
+-- Dependencies: 202 202 202 2830
 -- Name: pk_account_contacts; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9066,8 +8631,8 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2741 (class 2606 OID 26454)
--- Dependencies: 220 220 220 2839
+-- TOC entry 2732 (class 2606 OID 26454)
+-- Dependencies: 220 220 220 2830
 -- Name: pk_account_notif_group; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9076,8 +8641,8 @@ ALTER TABLE ONLY account_notifications_group
 
 
 --
--- TOC entry 2713 (class 2606 OID 18120)
--- Dependencies: 204 204 204 2839
+-- TOC entry 2704 (class 2606 OID 18120)
+-- Dependencies: 204 204 204 2830
 -- Name: pk_account_triggers_phones; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9086,8 +8651,8 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2709 (class 2606 OID 26886)
--- Dependencies: 203 203 203 2839
+-- TOC entry 2700 (class 2606 OID 26886)
+-- Dependencies: 203 203 203 2830
 -- Name: pk_account_users; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9096,8 +8661,8 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2673 (class 2606 OID 16987)
--- Dependencies: 184 184 2839
+-- TOC entry 2664 (class 2606 OID 16987)
+-- Dependencies: 184 184 2830
 -- Name: pk_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9106,8 +8671,8 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2695 (class 2606 OID 17295)
--- Dependencies: 195 195 2839
+-- TOC entry 2686 (class 2606 OID 17295)
+-- Dependencies: 195 195 2830
 -- Name: pk_idevent; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9116,8 +8681,8 @@ ALTER TABLE ONLY events
 
 
 --
--- TOC entry 2705 (class 2606 OID 17730)
--- Dependencies: 201 201 2839
+-- TOC entry 2696 (class 2606 OID 17730)
+-- Dependencies: 201 201 2830
 -- Name: pk_idevent_from_call; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9126,8 +8691,8 @@ ALTER TABLE ONLY events_generated_by_calls
 
 
 --
--- TOC entry 2697 (class 2606 OID 17362)
--- Dependencies: 196 196 2839
+-- TOC entry 2688 (class 2606 OID 17362)
+-- Dependencies: 196 196 2830
 -- Name: pk_ideventtype; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9136,8 +8701,8 @@ ALTER TABLE ONLY eventtypes
 
 
 --
--- TOC entry 2737 (class 2606 OID 26392)
--- Dependencies: 219 219 2839
+-- TOC entry 2728 (class 2606 OID 26392)
+-- Dependencies: 219 219 2830
 -- Name: pk_idgroup; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9146,8 +8711,8 @@ ALTER TABLE ONLY groups
 
 
 --
--- TOC entry 2679 (class 2606 OID 17061)
--- Dependencies: 185 185 2839
+-- TOC entry 2670 (class 2606 OID 17061)
+-- Dependencies: 185 185 2830
 -- Name: pk_idinstallationdata; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9156,8 +8721,8 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2699 (class 2606 OID 17399)
--- Dependencies: 198 198 2839
+-- TOC entry 2690 (class 2606 OID 17399)
+-- Dependencies: 198 198 2830
 -- Name: pk_idkeyword; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9166,8 +8731,8 @@ ALTER TABLE ONLY keywords
 
 
 --
--- TOC entry 2685 (class 2606 OID 17156)
--- Dependencies: 189 189 2839
+-- TOC entry 2676 (class 2606 OID 17156)
+-- Dependencies: 189 189 2830
 -- Name: pk_idlocation; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9176,8 +8741,8 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2689 (class 2606 OID 17182)
--- Dependencies: 191 191 2839
+-- TOC entry 2680 (class 2606 OID 17182)
+-- Dependencies: 191 191 2830
 -- Name: pk_idnotifaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9186,8 +8751,8 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2693 (class 2606 OID 17266)
--- Dependencies: 193 193 2839
+-- TOC entry 2684 (class 2606 OID 17266)
+-- Dependencies: 193 193 2830
 -- Name: pk_idnotifphoneeventtype; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9196,8 +8761,8 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 
 --
--- TOC entry 2727 (class 2606 OID 26212)
--- Dependencies: 212 212 2839
+-- TOC entry 2718 (class 2606 OID 26212)
+-- Dependencies: 212 212 2830
 -- Name: pk_idnotiftempl; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9206,8 +8771,8 @@ ALTER TABLE ONLY notification_templates
 
 
 --
--- TOC entry 2683 (class 2606 OID 17119)
--- Dependencies: 187 187 2839
+-- TOC entry 2674 (class 2606 OID 17119)
+-- Dependencies: 187 187 2830
 -- Name: pk_idpanelmodel; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9216,8 +8781,8 @@ ALTER TABLE ONLY panelmodel
 
 
 --
--- TOC entry 2691 (class 2606 OID 17988)
--- Dependencies: 191 191 191 2839
+-- TOC entry 2682 (class 2606 OID 17988)
+-- Dependencies: 191 191 191 2830
 -- Name: uni_acc_notyf_idacc_idphone; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9226,8 +8791,8 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2675 (class 2606 OID 26363)
--- Dependencies: 184 184 2839
+-- TOC entry 2666 (class 2606 OID 26363)
+-- Dependencies: 184 184 2830
 -- Name: uni_account_account; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9236,8 +8801,8 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2677 (class 2606 OID 17949)
--- Dependencies: 184 184 2839
+-- TOC entry 2668 (class 2606 OID 17949)
+-- Dependencies: 184 184 2830
 -- Name: uni_account_name; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9246,8 +8811,8 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2711 (class 2606 OID 27959)
--- Dependencies: 203 203 2839
+-- TOC entry 2702 (class 2606 OID 27959)
+-- Dependencies: 203 203 2830
 -- Name: uni_account_user_idcontact; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9256,8 +8821,8 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2681 (class 2606 OID 17073)
--- Dependencies: 185 185 2839
+-- TOC entry 2672 (class 2606 OID 17073)
+-- Dependencies: 185 185 2830
 -- Name: uni_idaccount; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9266,8 +8831,8 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2687 (class 2606 OID 17173)
--- Dependencies: 189 189 2839
+-- TOC entry 2678 (class 2606 OID 17173)
+-- Dependencies: 189 189 2830
 -- Name: uni_idaccount_alocation; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9276,8 +8841,8 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2739 (class 2606 OID 26394)
--- Dependencies: 219 219 2839
+-- TOC entry 2730 (class 2606 OID 26394)
+-- Dependencies: 219 219 2830
 -- Name: uni_name_groups; Type: CONSTRAINT; Schema: usaga; Owner: -; Tablespace: 
 --
 
@@ -9288,8 +8853,8 @@ ALTER TABLE ONLY groups
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2835 (class 2620 OID 27904)
--- Dependencies: 377 224 2839
+-- TOC entry 2826 (class 2620 OID 27904)
+-- Dependencies: 371 224 2830
 -- Name: address_geourl_onchanging; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9297,8 +8862,8 @@ CREATE TRIGGER address_geourl_onchanging BEFORE INSERT OR UPDATE ON address FOR 
 
 
 --
--- TOC entry 2810 (class 2620 OID 27886)
--- Dependencies: 182 375 2839
+-- TOC entry 2801 (class 2620 OID 27886)
+-- Dependencies: 182 369 2830
 -- Name: incomingcalls_tac; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9306,8 +8871,8 @@ CREATE TRIGGER incomingcalls_tac AFTER INSERT OR DELETE OR UPDATE ON incomingcal
 
 
 --
--- TOC entry 2834 (class 2620 OID 27154)
--- Dependencies: 224 291 2839
+-- TOC entry 2825 (class 2620 OID 27154)
+-- Dependencies: 224 286 2830
 -- Name: ts_address; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9315,8 +8880,8 @@ CREATE TRIGGER ts_address AFTER UPDATE ON address FOR EACH ROW EXECUTE PROCEDURE
 
 
 --
--- TOC entry 2807 (class 2620 OID 26828)
--- Dependencies: 291 177 2839
+-- TOC entry 2798 (class 2620 OID 26828)
+-- Dependencies: 177 286 2830
 -- Name: ts_blacklist; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9324,8 +8889,8 @@ CREATE TRIGGER ts_blacklist BEFORE UPDATE ON blacklist FOR EACH ROW EXECUTE PROC
 
 
 --
--- TOC entry 2801 (class 2620 OID 26829)
--- Dependencies: 291 165 2839
+-- TOC entry 2792 (class 2620 OID 26829)
+-- Dependencies: 286 165 2830
 -- Name: ts_contacts; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9333,8 +8898,8 @@ CREATE TRIGGER ts_contacts BEFORE UPDATE ON contacts FOR EACH ROW EXECUTE PROCED
 
 
 --
--- TOC entry 2809 (class 2620 OID 26830)
--- Dependencies: 182 291 2839
+-- TOC entry 2800 (class 2620 OID 26830)
+-- Dependencies: 182 286 2830
 -- Name: ts_incomingcalls; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9342,8 +8907,8 @@ CREATE TRIGGER ts_incomingcalls BEFORE UPDATE ON incomingcalls FOR EACH ROW EXEC
 
 
 --
--- TOC entry 2826 (class 2620 OID 26824)
--- Dependencies: 291 206 2839
+-- TOC entry 2817 (class 2620 OID 26824)
+-- Dependencies: 206 286 2830
 -- Name: ts_loc_level1; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9351,8 +8916,8 @@ CREATE TRIGGER ts_loc_level1 BEFORE UPDATE ON location_level1 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2827 (class 2620 OID 26827)
--- Dependencies: 291 208 2839
+-- TOC entry 2818 (class 2620 OID 26827)
+-- Dependencies: 286 208 2830
 -- Name: ts_loc_level2; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9360,8 +8925,8 @@ CREATE TRIGGER ts_loc_level2 BEFORE UPDATE ON location_level2 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2836 (class 2620 OID 27510)
--- Dependencies: 291 232 2839
+-- TOC entry 2827 (class 2620 OID 27510)
+-- Dependencies: 232 286 2830
 -- Name: ts_loc_level3; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9369,8 +8934,8 @@ CREATE TRIGGER ts_loc_level3 BEFORE UPDATE ON location_level3 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2828 (class 2620 OID 26822)
--- Dependencies: 291 210 2839
+-- TOC entry 2819 (class 2620 OID 26822)
+-- Dependencies: 210 286 2830
 -- Name: ts_loc_level4; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9378,8 +8943,8 @@ CREATE TRIGGER ts_loc_level4 BEFORE UPDATE ON location_level4 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2830 (class 2620 OID 26825)
--- Dependencies: 291 214 2839
+-- TOC entry 2821 (class 2620 OID 26825)
+-- Dependencies: 214 286 2830
 -- Name: ts_loc_level5; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9387,8 +8952,8 @@ CREATE TRIGGER ts_loc_level5 BEFORE UPDATE ON location_level5 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2831 (class 2620 OID 26826)
--- Dependencies: 291 216 2839
+-- TOC entry 2822 (class 2620 OID 26826)
+-- Dependencies: 286 216 2830
 -- Name: ts_loc_level6; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9396,8 +8961,8 @@ CREATE TRIGGER ts_loc_level6 BEFORE UPDATE ON location_level6 FOR EACH ROW EXECU
 
 
 --
--- TOC entry 2821 (class 2620 OID 26831)
--- Dependencies: 200 291 2839
+-- TOC entry 2812 (class 2620 OID 26831)
+-- Dependencies: 286 200 2830
 -- Name: ts_modem; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9405,8 +8970,8 @@ CREATE TRIGGER ts_modem BEFORE UPDATE ON modem FOR EACH ROW EXECUTE PROCEDURE ct
 
 
 --
--- TOC entry 2837 (class 2620 OID 28062)
--- Dependencies: 243 291 2839
+-- TOC entry 2828 (class 2620 OID 28062)
+-- Dependencies: 243 286 2830
 -- Name: ts_outgoing; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9414,8 +8979,8 @@ CREATE TRIGGER ts_outgoing BEFORE UPDATE ON outgoing FOR EACH ROW EXECUTE PROCED
 
 
 --
--- TOC entry 2802 (class 2620 OID 26832)
--- Dependencies: 167 291 2839
+-- TOC entry 2793 (class 2620 OID 26832)
+-- Dependencies: 286 167 2830
 -- Name: ts_phones; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9423,8 +8988,8 @@ CREATE TRIGGER ts_phones BEFORE UPDATE ON phones FOR EACH ROW EXECUTE PROCEDURE 
 
 
 --
--- TOC entry 2803 (class 2620 OID 26833)
--- Dependencies: 169 291 2839
+-- TOC entry 2794 (class 2620 OID 26833)
+-- Dependencies: 169 286 2830
 -- Name: ts_provider; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9432,8 +8997,8 @@ CREATE TRIGGER ts_provider BEFORE UPDATE ON provider FOR EACH ROW EXECUTE PROCED
 
 
 --
--- TOC entry 2804 (class 2620 OID 26834)
--- Dependencies: 291 171 2839
+-- TOC entry 2795 (class 2620 OID 26834)
+-- Dependencies: 171 286 2830
 -- Name: ts_smsin; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9441,8 +9006,8 @@ CREATE TRIGGER ts_smsin BEFORE UPDATE ON smsin FOR EACH ROW EXECUTE PROCEDURE ct
 
 
 --
--- TOC entry 2805 (class 2620 OID 26835)
--- Dependencies: 291 173 2839
+-- TOC entry 2796 (class 2620 OID 26835)
+-- Dependencies: 173 286 2830
 -- Name: ts_smsout; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9450,8 +9015,8 @@ CREATE TRIGGER ts_smsout BEFORE UPDATE ON xxxsmsout FOR EACH ROW EXECUTE PROCEDU
 
 
 --
--- TOC entry 2808 (class 2620 OID 26836)
--- Dependencies: 180 291 2839
+-- TOC entry 2799 (class 2620 OID 26836)
+-- Dependencies: 180 286 2830
 -- Name: ts_smsoutoptions; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9459,8 +9024,8 @@ CREATE TRIGGER ts_smsoutoptions BEFORE UPDATE ON xxxsmsoutoptions FOR EACH ROW E
 
 
 --
--- TOC entry 2806 (class 2620 OID 26837)
--- Dependencies: 175 291 2839
+-- TOC entry 2797 (class 2620 OID 26837)
+-- Dependencies: 286 175 2830
 -- Name: ts_whitelist; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -9470,8 +9035,8 @@ CREATE TRIGGER ts_whitelist BEFORE UPDATE ON whitelist FOR EACH ROW EXECUTE PROC
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2822 (class 2620 OID 27894)
--- Dependencies: 201 376 2839
+-- TOC entry 2813 (class 2620 OID 27894)
+-- Dependencies: 201 370 2830
 -- Name: events_by_calls_tai; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9479,8 +9044,8 @@ CREATE TRIGGER events_by_calls_tai AFTER INSERT ON events_generated_by_calls FOR
 
 
 --
--- TOC entry 3010 (class 0 OID 0)
--- Dependencies: 2822
+-- TOC entry 2994 (class 0 OID 0)
+-- Dependencies: 2813
 -- Name: TRIGGER events_by_calls_tai ON events_generated_by_calls; Type: COMMENT; Schema: usaga; Owner: -
 --
 
@@ -9488,8 +9053,8 @@ COMMENT ON TRIGGER events_by_calls_tai ON events_generated_by_calls IS 'Trigger 
 
 
 --
--- TOC entry 2818 (class 2620 OID 27892)
--- Dependencies: 195 376 2839
+-- TOC entry 2809 (class 2620 OID 27892)
+-- Dependencies: 195 370 2830
 -- Name: events_tac; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9497,8 +9062,8 @@ CREATE TRIGGER events_tac AFTER INSERT ON events FOR EACH ROW EXECUTE PROCEDURE 
 
 
 --
--- TOC entry 2811 (class 2620 OID 26838)
--- Dependencies: 184 291 2839
+-- TOC entry 2802 (class 2620 OID 26838)
+-- Dependencies: 286 184 2830
 -- Name: ts_account; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9506,8 +9071,8 @@ CREATE TRIGGER ts_account BEFORE UPDATE ON account FOR EACH ROW EXECUTE PROCEDUR
 
 
 --
--- TOC entry 2823 (class 2620 OID 26839)
--- Dependencies: 202 291 2839
+-- TOC entry 2814 (class 2620 OID 26839)
+-- Dependencies: 286 202 2830
 -- Name: ts_account_contacts; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9515,8 +9080,8 @@ CREATE TRIGGER ts_account_contacts BEFORE UPDATE ON account_contacts FOR EACH RO
 
 
 --
--- TOC entry 2812 (class 2620 OID 26840)
--- Dependencies: 291 185 2839
+-- TOC entry 2803 (class 2620 OID 26840)
+-- Dependencies: 185 286 2830
 -- Name: ts_account_installationdata; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9524,8 +9089,8 @@ CREATE TRIGGER ts_account_installationdata BEFORE UPDATE ON account_installation
 
 
 --
--- TOC entry 2814 (class 2620 OID 26841)
--- Dependencies: 291 189 2839
+-- TOC entry 2805 (class 2620 OID 26841)
+-- Dependencies: 189 286 2830
 -- Name: ts_account_location; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9533,8 +9098,8 @@ CREATE TRIGGER ts_account_location BEFORE UPDATE ON xxxaccount_location FOR EACH
 
 
 --
--- TOC entry 2815 (class 2620 OID 26842)
--- Dependencies: 191 291 2839
+-- TOC entry 2806 (class 2620 OID 26842)
+-- Dependencies: 286 191 2830
 -- Name: ts_account_notifications; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9542,8 +9107,8 @@ CREATE TRIGGER ts_account_notifications BEFORE UPDATE ON account_notifications F
 
 
 --
--- TOC entry 2816 (class 2620 OID 26843)
--- Dependencies: 193 291 2839
+-- TOC entry 2807 (class 2620 OID 26843)
+-- Dependencies: 193 286 2830
 -- Name: ts_account_notifications_eventtype; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9551,8 +9116,8 @@ CREATE TRIGGER ts_account_notifications_eventtype BEFORE UPDATE ON account_notif
 
 
 --
--- TOC entry 2833 (class 2620 OID 26844)
--- Dependencies: 220 291 2839
+-- TOC entry 2824 (class 2620 OID 26844)
+-- Dependencies: 286 220 2830
 -- Name: ts_account_notifications_group; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9560,8 +9125,8 @@ CREATE TRIGGER ts_account_notifications_group BEFORE UPDATE ON account_notificat
 
 
 --
--- TOC entry 2825 (class 2620 OID 26845)
--- Dependencies: 291 204 2839
+-- TOC entry 2816 (class 2620 OID 26845)
+-- Dependencies: 204 286 2830
 -- Name: ts_account_phones_trigger_alarm; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9569,8 +9134,8 @@ CREATE TRIGGER ts_account_phones_trigger_alarm BEFORE UPDATE ON account_phones_t
 
 
 --
--- TOC entry 2824 (class 2620 OID 26846)
--- Dependencies: 291 203 2839
+-- TOC entry 2815 (class 2620 OID 26846)
+-- Dependencies: 203 286 2830
 -- Name: ts_account_users; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9578,8 +9143,8 @@ CREATE TRIGGER ts_account_users BEFORE UPDATE ON account_users FOR EACH ROW EXEC
 
 
 --
--- TOC entry 2817 (class 2620 OID 26847)
--- Dependencies: 291 195 2839
+-- TOC entry 2808 (class 2620 OID 26847)
+-- Dependencies: 286 195 2830
 -- Name: ts_events; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9587,8 +9152,8 @@ CREATE TRIGGER ts_events BEFORE UPDATE ON events FOR EACH ROW EXECUTE PROCEDURE 
 
 
 --
--- TOC entry 2819 (class 2620 OID 26848)
--- Dependencies: 196 291 2839
+-- TOC entry 2810 (class 2620 OID 26848)
+-- Dependencies: 286 196 2830
 -- Name: ts_eventtypes; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9596,8 +9161,8 @@ CREATE TRIGGER ts_eventtypes BEFORE UPDATE ON eventtypes FOR EACH ROW EXECUTE PR
 
 
 --
--- TOC entry 2832 (class 2620 OID 26849)
--- Dependencies: 219 291 2839
+-- TOC entry 2823 (class 2620 OID 26849)
+-- Dependencies: 219 286 2830
 -- Name: ts_groups; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9605,8 +9170,8 @@ CREATE TRIGGER ts_groups BEFORE UPDATE ON groups FOR EACH ROW EXECUTE PROCEDURE 
 
 
 --
--- TOC entry 2820 (class 2620 OID 26850)
--- Dependencies: 198 291 2839
+-- TOC entry 2811 (class 2620 OID 26850)
+-- Dependencies: 198 286 2830
 -- Name: ts_keywords; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9614,8 +9179,8 @@ CREATE TRIGGER ts_keywords BEFORE UPDATE ON keywords FOR EACH ROW EXECUTE PROCED
 
 
 --
--- TOC entry 2829 (class 2620 OID 26851)
--- Dependencies: 212 291 2839
+-- TOC entry 2820 (class 2620 OID 26851)
+-- Dependencies: 212 286 2830
 -- Name: ts_notification_templates; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9623,8 +9188,8 @@ CREATE TRIGGER ts_notification_templates BEFORE UPDATE ON notification_templates
 
 
 --
--- TOC entry 2813 (class 2620 OID 26852)
--- Dependencies: 187 291 2839
+-- TOC entry 2804 (class 2620 OID 26852)
+-- Dependencies: 187 286 2830
 -- Name: ts_panelmodel; Type: TRIGGER; Schema: usaga; Owner: -
 --
 
@@ -9634,8 +9199,8 @@ CREATE TRIGGER ts_panelmodel BEFORE UPDATE ON panelmodel FOR EACH ROW EXECUTE PR
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2768 (class 2606 OID 27905)
--- Dependencies: 165 224 2742 2839
+-- TOC entry 2759 (class 2606 OID 27905)
+-- Dependencies: 2733 224 165 2830
 -- Name: fk_idaddress_contacts; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9644,8 +9209,8 @@ ALTER TABLE ONLY contacts
 
 
 --
--- TOC entry 2769 (class 2606 OID 27912)
--- Dependencies: 2742 167 224 2839
+-- TOC entry 2760 (class 2606 OID 27912)
+-- Dependencies: 167 224 2733 2830
 -- Name: fk_idaddress_phones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9654,8 +9219,8 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2770 (class 2606 OID 27917)
--- Dependencies: 2648 167 165 2839
+-- TOC entry 2761 (class 2606 OID 27917)
+-- Dependencies: 167 165 2639 2830
 -- Name: fk_idcontact; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9664,8 +9229,8 @@ ALTER TABLE ONLY phones
 
 
 --
--- TOC entry 2789 (class 2606 OID 27578)
--- Dependencies: 2714 208 206 2839
+-- TOC entry 2780 (class 2606 OID 27578)
+-- Dependencies: 208 206 2705 2830
 -- Name: fk_idl1_loc_l2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9674,8 +9239,8 @@ ALTER TABLE ONLY location_level2
 
 
 --
--- TOC entry 2795 (class 2606 OID 27585)
--- Dependencies: 208 232 2718 2839
+-- TOC entry 2786 (class 2606 OID 27585)
+-- Dependencies: 208 2709 232 2830
 -- Name: fk_idl2_loc_l3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9684,8 +9249,8 @@ ALTER TABLE ONLY location_level3
 
 
 --
--- TOC entry 2790 (class 2606 OID 27542)
--- Dependencies: 2752 210 232 2839
+-- TOC entry 2781 (class 2606 OID 27542)
+-- Dependencies: 2743 232 210 2830
 -- Name: fk_idl3_loc_l4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9694,8 +9259,8 @@ ALTER TABLE ONLY location_level4
 
 
 --
--- TOC entry 2791 (class 2606 OID 27592)
--- Dependencies: 214 210 2722 2839
+-- TOC entry 2782 (class 2606 OID 27592)
+-- Dependencies: 214 210 2713 2830
 -- Name: fk_idl4_loc_l5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9704,8 +9269,8 @@ ALTER TABLE ONLY location_level5
 
 
 --
--- TOC entry 2792 (class 2606 OID 27598)
--- Dependencies: 2728 216 214 2839
+-- TOC entry 2783 (class 2606 OID 27598)
+-- Dependencies: 2719 216 214 2830
 -- Name: fk_idl5_l6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9714,8 +9279,8 @@ ALTER TABLE ONLY location_level6
 
 
 --
--- TOC entry 2796 (class 2606 OID 28182)
--- Dependencies: 2700 200 237 2839
+-- TOC entry 2787 (class 2606 OID 28182)
+-- Dependencies: 237 200 2691 2830
 -- Name: fk_idmodem_sim; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9724,8 +9289,8 @@ ALTER TABLE ONLY sim
 
 
 --
--- TOC entry 2773 (class 2606 OID 26709)
--- Dependencies: 2652 167 177 2839
+-- TOC entry 2764 (class 2606 OID 26709)
+-- Dependencies: 167 2643 177 2830
 -- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9734,8 +9299,8 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2771 (class 2606 OID 26805)
--- Dependencies: 2652 175 167 2839
+-- TOC entry 2762 (class 2606 OID 26805)
+-- Dependencies: 167 175 2643 2830
 -- Name: fk_idphone; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9744,8 +9309,8 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2799 (class 2606 OID 28130)
--- Dependencies: 167 2652 243 2839
+-- TOC entry 2790 (class 2606 OID 28130)
+-- Dependencies: 2643 167 243 2830
 -- Name: fk_idphone_outgoing; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9754,8 +9319,8 @@ ALTER TABLE ONLY outgoing
 
 
 --
--- TOC entry 2774 (class 2606 OID 26714)
--- Dependencies: 177 2656 169 2839
+-- TOC entry 2765 (class 2606 OID 26714)
+-- Dependencies: 177 169 2647 2830
 -- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9764,8 +9329,8 @@ ALTER TABLE ONLY blacklist
 
 
 --
--- TOC entry 2772 (class 2606 OID 26810)
--- Dependencies: 175 169 2656 2839
+-- TOC entry 2763 (class 2606 OID 26810)
+-- Dependencies: 169 175 2647 2830
 -- Name: fk_idprovider; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9774,8 +9339,8 @@ ALTER TABLE ONLY whitelist
 
 
 --
--- TOC entry 2798 (class 2606 OID 27878)
--- Dependencies: 169 238 2656 2839
+-- TOC entry 2789 (class 2606 OID 27878)
+-- Dependencies: 238 2647 169 2830
 -- Name: fk_idprovider_cimi; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9784,8 +9349,8 @@ ALTER TABLE ONLY cimi
 
 
 --
--- TOC entry 2797 (class 2606 OID 28187)
--- Dependencies: 237 169 2656 2839
+-- TOC entry 2788 (class 2606 OID 28187)
+-- Dependencies: 169 237 2647 2830
 -- Name: fk_idprovider_sim; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9794,8 +9359,8 @@ ALTER TABLE ONLY sim
 
 
 --
--- TOC entry 2794 (class 2606 OID 28007)
--- Dependencies: 171 228 2658 2839
+-- TOC entry 2785 (class 2606 OID 28007)
+-- Dependencies: 228 2649 171 2830
 -- Name: fk_idsmsin_smsin_c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9804,8 +9369,8 @@ ALTER TABLE ONLY xxxsmsin_consumer
 
 
 --
--- TOC entry 2800 (class 2606 OID 28077)
--- Dependencies: 245 243 2764 2839
+-- TOC entry 2791 (class 2606 OID 28077)
+-- Dependencies: 2755 245 243 2830
 -- Name: fk_idsmsout_log; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9814,8 +9379,8 @@ ALTER TABLE ONLY outgoing_log
 
 
 --
--- TOC entry 2793 (class 2606 OID 28012)
--- Dependencies: 2660 226 173 2839
+-- TOC entry 2784 (class 2606 OID 28012)
+-- Dependencies: 173 2651 226 2830
 -- Name: fk_idsmsout_smsout_c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9826,8 +9391,8 @@ ALTER TABLE ONLY xxxsmsout_consumer
 SET search_path = usaga, pg_catalog;
 
 --
--- TOC entry 2787 (class 2606 OID 26561)
--- Dependencies: 204 2672 184 2839
+-- TOC entry 2778 (class 2606 OID 26561)
+-- Dependencies: 204 2663 184 2830
 -- Name: fk_accnt_trigg_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9836,8 +9401,8 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2788 (class 2606 OID 26566)
--- Dependencies: 2652 204 167 2839
+-- TOC entry 2779 (class 2606 OID 26566)
+-- Dependencies: 204 167 2643 2830
 -- Name: fk_accnt_trigg_idphone; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9846,8 +9411,8 @@ ALTER TABLE ONLY account_phones_trigger_alarm
 
 
 --
--- TOC entry 2785 (class 2606 OID 27948)
--- Dependencies: 184 2672 203 2839
+-- TOC entry 2776 (class 2606 OID 27948)
+-- Dependencies: 203 2663 184 2830
 -- Name: fk_account_users_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9856,8 +9421,8 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2786 (class 2606 OID 27953)
--- Dependencies: 2648 203 165 2839
+-- TOC entry 2777 (class 2606 OID 27953)
+-- Dependencies: 165 2639 203 2830
 -- Name: fk_account_users_idcontact; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9866,8 +9431,8 @@ ALTER TABLE ONLY account_users
 
 
 --
--- TOC entry 2777 (class 2606 OID 26491)
--- Dependencies: 185 2672 184 2839
+-- TOC entry 2768 (class 2606 OID 26491)
+-- Dependencies: 185 2663 184 2830
 -- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9876,8 +9441,8 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2779 (class 2606 OID 27280)
--- Dependencies: 2672 184 189 2839
+-- TOC entry 2770 (class 2606 OID 27280)
+-- Dependencies: 189 2663 184 2830
 -- Name: fk_idaccount; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9886,8 +9451,8 @@ ALTER TABLE ONLY xxxaccount_location
 
 
 --
--- TOC entry 2783 (class 2606 OID 26921)
--- Dependencies: 2672 202 184 2839
+-- TOC entry 2774 (class 2606 OID 26921)
+-- Dependencies: 202 2663 184 2830
 -- Name: fk_idaccount_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9896,8 +9461,8 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2780 (class 2606 OID 26871)
--- Dependencies: 2672 184 191 2839
+-- TOC entry 2771 (class 2606 OID 26871)
+-- Dependencies: 184 191 2663 2830
 -- Name: fk_idaccount_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9906,8 +9471,8 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2776 (class 2606 OID 27718)
--- Dependencies: 224 184 2742 2839
+-- TOC entry 2767 (class 2606 OID 27718)
+-- Dependencies: 184 2733 224 2830
 -- Name: fk_idaddress_account; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9916,8 +9481,8 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2784 (class 2606 OID 26926)
--- Dependencies: 202 165 2648 2839
+-- TOC entry 2775 (class 2606 OID 26926)
+-- Dependencies: 202 165 2639 2830
 -- Name: fk_idcontact_contacts; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9926,8 +9491,8 @@ ALTER TABLE ONLY account_contacts
 
 
 --
--- TOC entry 2775 (class 2606 OID 27713)
--- Dependencies: 219 184 2736 2839
+-- TOC entry 2766 (class 2606 OID 27713)
+-- Dependencies: 184 219 2727 2830
 -- Name: fk_idgroup_account; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9936,8 +9501,8 @@ ALTER TABLE ONLY account
 
 
 --
--- TOC entry 2782 (class 2606 OID 26540)
--- Dependencies: 193 2688 191 2839
+-- TOC entry 2773 (class 2606 OID 26540)
+-- Dependencies: 2679 193 191 2830
 -- Name: fk_idnotifaccount_eetype; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9946,8 +9511,8 @@ ALTER TABLE ONLY account_notifications_eventtype
 
 
 --
--- TOC entry 2778 (class 2606 OID 26496)
--- Dependencies: 185 2682 187 2839
+-- TOC entry 2769 (class 2606 OID 26496)
+-- Dependencies: 2673 185 187 2830
 -- Name: fk_idpanelmodel; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9956,8 +9521,8 @@ ALTER TABLE ONLY account_installationdata
 
 
 --
--- TOC entry 2781 (class 2606 OID 26876)
--- Dependencies: 191 2652 167 2839
+-- TOC entry 2772 (class 2606 OID 26876)
+-- Dependencies: 2643 191 167 2830
 -- Name: fk_idphone_notif; Type: FK CONSTRAINT; Schema: usaga; Owner: -
 --
 
@@ -9966,7 +9531,7 @@ ALTER TABLE ONLY account_notifications
 
 
 --
--- TOC entry 2845 (class 0 OID 0)
+-- TOC entry 2836 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: public; Type: ACL; Schema: -; Owner: -
 --
@@ -9977,7 +9542,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-06-10 01:18:24 ECT
+-- Completed on 2013-06-10 01:21:46 ECT
 
 --
 -- PostgreSQL database dump complete
