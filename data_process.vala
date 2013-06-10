@@ -26,7 +26,7 @@ using GLib;
 using Gee;
 using edwinspire.uSMS;
 using edwinspire.pgSQL;
-using Xml;
+//using Xml;
 using edwinspire.uHttp;
 using edwinspire.uSMS;
 using Postgres;

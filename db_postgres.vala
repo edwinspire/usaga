@@ -1481,7 +1481,7 @@ Retorno = filas["return"].Value;
 return Retorno;
 }
 
-
+/*
 public SQLFunReturn fun_account_users_add_from_hashmap(HashMap<string, string> Data){
 
 int inidaccount = 0;
@@ -1525,6 +1525,7 @@ Retorno.Msg = filas["outpgmsg"].Value;
 //GLib.print("Llega hasta aqui 5 \n");
 return Retorno;
 }
+*/
 
 //usaga.fun_account_users_table(IN inidaccount integer, IN inidcontact integer, IN inappointment text, IN inenable boolean, IN innumuser integer, IN inkeyword text, IN inpwd text, IN innote text, OUT outreturn integer, OUT outmsg text)
  public string fun_account_users_table_xml(int inidaccount, int inidcontact, string inappointment, bool inenable, int innumuser, string inkeyword, string inpwd, string  innote = "", bool fieldtextasbase64 = true){

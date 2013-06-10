@@ -132,10 +132,10 @@ case "/usaga_geteventsmonitor.usaga":
 response = ResponseGetEventsMonitor(request);
     this.serve_response( response, dos );
  break;
-case "/opensagaaddaccountuser":
+/*case "/opensagaaddaccountuser":
 response = ResponseAccountUserAddTable(request);
     this.serve_response( response, dos );
- break;
+ break;*/
 case "/fun_view_account_unregistered_contacts_xml.usaga":
 response = request_fun_view_account_unregistered_contacts_xml(request);
     this.serve_response( response, dos ); break;
@@ -647,7 +647,7 @@ return Retorno;
 
 
 
-
+/*
 private uHttp.Response ResponseAccountUserAddTable(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
@@ -662,6 +662,7 @@ Tabla.GetParamCnx();
 
 return Retorno;
 }
+*/
 
 
 private uHttp.Response fun_account_users_table_xml_from_hashmap(Request request){
