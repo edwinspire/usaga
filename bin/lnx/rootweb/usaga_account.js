@@ -85,7 +85,7 @@ BodyApp.adjustElements = function(){
 h = dojoWindow.getBox().h - domStyle.get('id_usaga_menu_header', 'height') - domStyle.get('id_account_titlebar', 'height');
 
 domStyle.set('id_usaga_account', 'height', h+'px');
-console.log('window on resize to: '+h);
+//console.log('window on resize to: '+h);
 dijit.byId('id_tagcontainer').resize();
 }
          
