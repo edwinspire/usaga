@@ -103,6 +103,7 @@ t._idaddress = d.getNumber(0, "idaddress");
 }else{
 t._resetall();
 }
+console.log('IdACcount '+t.Id+' loaded');
 t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
 t.emit('notify_message', {message: t.account_select.get('displayedValue')+' cargado'}); 
                 },
@@ -119,6 +120,8 @@ t._resetall();
 }
 
 
+}else{
+console.log('_LoadAccountSelected: '+t.account_select.state);
 }
 },
 
@@ -133,7 +136,7 @@ this._actionsave(datos);
 
 _save: function(){
 var t = this;
-
+console.log('function _save _usaga_account_basic_data: ID '+t.Id);
 var datos = {};
 if(t.Id >= 0){
 datos.idaccount = t.Id;
