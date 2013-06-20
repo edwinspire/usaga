@@ -30,13 +30,24 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'}
+//var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'}
+
+dijit.byId('id_titlebar_gridx_contacts').set('label', 'Contáctos');
 
 /////////////////
 ///// BASIC /////
 // Account basic elements
 var GridListContact = dijit.byId("usms.contacts.gridx");
 var NotifyMSG = dijit.byId('notify');
+
+var myTimeoutSearch; 
+
+var TextBoxSearchContact = dijit.byId('TBSearchContact');
+TextBoxSearchContact.on('Change', function(){
+clearTimeout(myTimeoutSearch);
+myTimeoutSearch=setTimeout(function(){GridListContact.Load()},1500);
+});
+
 
 var CLocation = dijit.byId('idwlocationcontact');
 CLocation.on('onnotify', function(e){
@@ -96,6 +107,8 @@ GridContactPhone.Load();
 
 
 
+
+
 	if (GridListContact) {
 
 		// Optionally change column structure on the grid
@@ -118,8 +131,9 @@ CDWidget.set("idcontact", t.store.getValue(item, 'idcontact'));
 
 GridListContact.Load = function(){
 var t = GridListContact;
-   request.get('getcontactslistidcontactname_xml.usms', {
+   request.get('fun_view_contacts_to_list_search_xml.usms', {
             // Parse data from xml
+	query: {text: TextBoxSearchContact.get('value')},
             handleAs: "xml"
         }).then(
                 function(response){
