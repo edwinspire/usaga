@@ -130,19 +130,19 @@ t._idaddress = 0;
 t.Formulario.reset();
 }
 
-t.emit('onloadcontact', {idcontact: t._id, idaddress: t._idaddress});
+t.emit('onloadcontact', {idcontact: t._id, idaddress: t._idaddress, name: t.LastName.get('value')+' '+t.FirstName.get('value')});
 
                 },
                 function(error){
                     // Display the error returned
 t.Formulario.reset();
-t.emit('onloadcontact',  {idcontact: 0, idaddress: 0});
+t.emit('onloadcontact',  {idcontact: 0, idaddress: 0, name: ''});
 t.emit('onnotify', {msg: error});
                 }
             );
 }else{
 t.Formulario.reset();
-t.emit('onloadcontact',  {idcontact: 0, idaddress: 0});
+t.emit('onloadcontact',  {idcontact: 0, idaddress: 0, name: ''});
 }
 
 },

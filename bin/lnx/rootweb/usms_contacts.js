@@ -45,7 +45,7 @@ var myTimeoutSearch;
 var TextBoxSearchContact = dijit.byId('TBSearchContact');
 TextBoxSearchContact.on('Change', function(){
 clearTimeout(myTimeoutSearch);
-myTimeoutSearch=setTimeout(function(){GridListContact.Load()},1500);
+myTimeoutSearch=setTimeout(function(){GridListContact.Load()},1000);
 });
 
 
@@ -69,12 +69,18 @@ CPDWidget.set('idaddress', e.idaddress);
 }
 });
 
+var ContentCDW = dijit.byId('ContentPaneContactData');
 
 var CDWidget = dijit.byId('ContactData');
 CDWidget.on('onloadcontact', function(data){
 CLocation.set('idaddress', data.idaddress);
 GridContactPhone.Load();
 CPDWidget.Load(data.idcontact, 0);
+if(data.name.length>0){
+ContentCDW.set('title', '[ '+data.name+' ]');
+}else{
+ContentCDW.set('title', 'Datos: [---]');
+}
 });
 
 CDWidget.on('onnotify', function(e){
