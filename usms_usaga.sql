@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.9
 -- Dumped by pg_dump version 9.1.9
--- Started on 2013-06-20 10:53:08 ECT
+-- Started on 2013-06-20 11:04:53 ECT
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -2253,7 +2253,7 @@ COMMENT ON FUNCTION fun_view_contacts_byidcontact_xml(inidcontact integer, field
 
 
 --
--- TOC entry 318 (class 1255 OID 28196)
+-- TOC entry 316 (class 1255 OID 28196)
 -- Dependencies: 883 5
 -- Name: fun_view_contacts_to_list_search_xml(text, boolean); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -2269,13 +2269,13 @@ BEGIN
 
 IF fieldtextasbase64 THEN
 
-OPEN CursorResult FOR SELECT idcontact, enable, encode((lastname ||' '||firstname)::bytea, 'base64') AS name FROM contacts WHERE contacts.lastname ILIKE insearch::text||'%' OR contacts.firstname ILIKE insearch::text||'%';
+OPEN CursorResult FOR SELECT idcontact, enable, encode((lastname ||' '||firstname)::bytea, 'base64') AS name FROM contacts WHERE contacts.lastname ILIKE '%'||insearch::text||'%' OR contacts.firstname ILIKE '%'||insearch::text||'%';
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
 ELSE
 
-OPEN CursorResult FOR SELECT idcontact, enable, (lastname ||' '||firstname) AS name FROM contacts WHERE contacts.lastname ILIKE insearch::text||'%' OR contacts.firstname ILIKE insearch::text||'%';
+OPEN CursorResult FOR SELECT idcontact, enable, (lastname ||' '||firstname) AS name FROM contacts WHERE contacts.lastname ILIKE '%'||insearch::text||'%' OR contacts.firstname ILIKE '%'||insearch::text||'%';
 SELECT * FROM cursor_to_xml(CursorResult, 1000, false, false, '') INTO Retorno;
 CLOSE CursorResult;
 
@@ -3640,7 +3640,7 @@ Envia notificaciones basados en los eventos y configuraciones del sistema';
 
 
 --
--- TOC entry 317 (class 1255 OID 27786)
+-- TOC entry 318 (class 1255 OID 27786)
 -- Dependencies: 883 9
 -- Name: fun_events_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -3828,7 +3828,7 @@ END;$$;
 
 
 --
--- TOC entry 316 (class 1255 OID 27785)
+-- TOC entry 317 (class 1255 OID 27785)
 -- Dependencies: 9 883
 -- Name: fun_eventtypes_getdata_string(integer, text, text); Type: FUNCTION; Schema: usaga; Owner: -
 --
@@ -8923,7 +8923,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-06-20 10:53:11 ECT
+-- Completed on 2013-06-20 11:04:55 ECT
 
 --
 -- PostgreSQL database dump complete

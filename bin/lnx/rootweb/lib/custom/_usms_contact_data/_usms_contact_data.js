@@ -4,7 +4,7 @@ define(['dojo/_base/declare',
 'dojo/text!_usms_contact_data/_usms_contact_data.html',
 'dojo/request', 'jspire/request/Xml', 
 'jspire/form/DateTextBox',
-'jspire/form/FilteringSelect',
+//'jspire/form/FilteringSelect',
 'dojo/dom-style',
 "dojo/json"
 ],function(declare,_Widget,_Templated,templateString, request, RXml, DTBox, jsFS, domStyle, JSON){
@@ -26,17 +26,20 @@ postCreate: function(){
 var t = this;
 
 DTBox.addGetDateFunction(t.Birthday);
-jsFS.addXmlLoader(t.id_contact_search, "getcontactslistidcontactname_xml.usms", "row", {}, "idcontact", "name");
+//jsFS.addXmlLoader(t.id_contact_search, "getcontactslistidcontactname_xml.usms", "row", {}, "idcontact", "name");
 
+/*
 var bBuscar = t.menubar.addButton('Buscar', '');
 bBuscar.on('Click', function(){
-t._onSearch(true);
+//t._onSearch(true);
 t._id = 0;
 t._Load();
-t.id_contact_search.reset();
-t.id_contact_search.Load();
+//t.id_contact_search.reset();
+//t.id_contact_search.Load();
 });
+*/
 
+/*
 t.id_contact_search.on('Change', function(){
 id = t.id_contact_search.get('value');
 if(id>0){
@@ -45,6 +48,7 @@ t.set('idcontact', id);
 }
 
 });
+*/
 
 
 t.menubar.on('ondelete', function(){
@@ -64,7 +68,7 @@ t._Save();
 
 
 
-},
+},/*
 _onSearch: function(show){
 var t = this;
 if(show){
@@ -72,7 +76,7 @@ domStyle.set(t.id_contact_search.domNode, "display", "block");
 }else{
 domStyle.set(t.id_contact_search.domNode, "display", "none");
 }
-},
+}, */
 _setIdcontactAttr: function(id){
 this._id = id;
 this._Load();
