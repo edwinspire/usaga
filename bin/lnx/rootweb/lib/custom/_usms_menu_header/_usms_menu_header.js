@@ -1,8 +1,9 @@
 define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
-'dojo/text!_usms_menu_header/_usms_menu_header.html'
-],function(declare,_Widget,_Templated,templateString){
+'dojo/text!_usms_menu_header/_usms_menu_header.html',
+'_common_notification_area/_common_notification_area'
+],function(declare,_Widget,_Templated,templateString, NoAr){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,

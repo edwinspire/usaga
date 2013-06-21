@@ -23,55 +23,89 @@ require(["dojo/ready",
 ], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
-dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
-var NotifyArea = dijit.byId('id_notify_area');  
+//dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
+//var NotifyArea = dijit.byId('id_notify_area');  
 
-var GridxTable = dijit.byId('gridxt');
-GridxTable.IdToDelete = [];
+        var DialogFreeAddPhone = dijit.byId('idDialogFreeAddPhone');
+DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span style="margin: 3px; display: inline-block;"><label style="margin-right: 10px;">Tel&eacute;fono:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" regExp="[\+|0-9]+" id="idSMSFreeFieldPhone" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Phone" title="Ingrese el n&amp;uacute;mero telef&amp;oacute;nico"></input></span><span style="margin: 3px; display: inline-block;"> <label>   Proveedor:</label> <div data-dojo-type="_usms_provider_select/_usms_provider_select" id="idSMSFreeFieldProvider" title="Proveedor de telefon&amp;iacute;a" style="display: inline;"></div></span><span style="margin: 3px; display: inline-block;"><label style="margin-right: 30px;">  SIM:</label><div data-dojo-type="_usms_sim_select/_usms_sim_select" id="idSMSFreeFieldSIM" title="CHIP - SIM GSM para usar en el env&amp;iacute;o" style="display: inline;"></div></span></div>');
 
-	if (GridxTable) {
+
+DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok', function(){
+IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: "0", idsim: '0'});
+});
+
+        var DialogFreeSend = dijit.byId('idDialogFreeSend');
+DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', function(){
+IFWS1.fetch({query:{} , onItem: function(item){
+///alert(IFWS1.getValue(item, 'unique_id'));
+
+var smsD = {phone: IFWS1.getValue(item, 'unique_id'), idprovider: IFWS1.getValue(item, 'idprovider'), idsim: IFWS1.getValue(item, 'idsim')}
+
+request.post('fun_sim_table_edit_xml.usms', {
+   handleAs: "xml",
+data: smsD
+}).then(function(response){
+
+var xmld = new RXml.getFromXhr(response, 'row');
+//alert(xmld.getStringFromB64(0, 'message'));
+if(xmld.length > 0){
+NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+}
+GridxPhonesF.Load();
+}, function(error){
+MH.notification.notify({message: error});
+});
+
+
+
+}});
+
+});
+
+
+var GridxPhonesF = dijit.byId('GridxPhonesFree');
+GridxPhonesF.RowSelection = [];
+
+
+
+	if (GridxPhonesF) {
 
 		// Optionally change column structure on the grid
-		GridxTable.setColumns([
-
-			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable", name: "*", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"ts", name: "ts", editable: false},
-			{field:"idprovider", name: "idprovider", width: '20%', editable: false},
-			{field:"phone", name: "phone", editable: true},
-			{field:"smsout_request_reports", name: "Report", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"smsout_retryonfail", name: "RetryOnFail", editable: true},
-			{field:"smsout_max_length", name: "MaxLengthSMS", editable: true},
-			{field:"smsout_max_lifetime", name: "MaxLifeTime", editable: true},
-			{field:"smsout_enabled_other_providers", name: "OtherProviders", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"idmodem", name: "idmodem", editable: false},
-			{field:"on_incommingcall", name: "on_incommingcall", editable: false},
-			{field:"note", name: "note", editable: true, width: '25%'}
+		GridxPhonesF.setColumns([
+			{field:"unique_id", name: "Teléfono"},
+			{field:"idprovider", name: "Proveedor"},			
+			{field:"idsim", name: "SIM"}
 		]);
-GridxTable.startup();
+GridxPhonesF.startup();
 }
 
-GridxTable.Clear= function(){
-GridxTable.selected = [];
-GridxTable._setData({identifier: "unique_id", items: []});
+
+GridxPhonesF.Clear= function(){
+GridxPhonesF.selected = [];
+GridxPhonesF._setData({identifier: "unique_id", items: []});
 }
 
-GridxTable._setData = function(data){
-	ItemFileWriteStore_1.clearOnClose = true;
-	ItemFileWriteStore_1.data = data;
-	ItemFileWriteStore_1.close();
-		GridxTable.store = null;
-		GridxTable.setStore(ItemFileWriteStore_1);
+
+
+GridxPhonesF._setData = function(data){
+	IFWS1.clearOnClose = true;
+	IFWS1.data = data;
+	IFWS1.close();
+		GridxPhonesF.store = null;
+		GridxPhonesF.setStore(IFWS1);
 }
 
-GridxTable.Delete = function(){
 
-var num = GridxTable.IdToDelete.length;
+
+/*
+GridxPhonesF.Delete = function(){
+
+var num = GridxPhonesF.RowSelection.length;
 if(num > 0){
 
 request.post('tableserialport_delete.usms', {
    handleAs: "xml",
-data: {idports: GridxTable.IdToDelete.toString()}
+data: {idports: GridxPhonesF.RowSelection.toString()}
 }).then(function(response){
 
 var xmld = new RXml.getFromXhr(response, 'row');
@@ -79,7 +113,7 @@ var xmld = new RXml.getFromXhr(response, 'row');
 if(xmld.length > 0){
 NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
 }
-GridxTable.Load();
+GridxPhonesF.Load();
 }, function(error){
 NotifyArea.notify({message: error});
 });
@@ -92,9 +126,9 @@ NotifyArea.notify({message: 'No hay registros seleccionados'});
 
 
 
-GridxTable.Load = function(){
+GridxPhonesF.Load = function(){
 //NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
-GridxTable.IdToDelete = [];
+GridxPhonesF.RowSelection = [];
 
             // Request the text file
             request.get("fun_view_sim_xml.usms", {
@@ -129,20 +163,20 @@ ts: d.getString(i, "ts"),
 i++;
 }
 
-GridxTable._setData(myData);
+GridxPhonesF._setData(myData);
 
                 },
                 function(error){
                     // Display the error returned
 NotifyArea.notify({message: error});
-GridxTable.Clear();
+GridxPhonesF.Clear();
                 }
             );
 
 }
 
 // Guarda los datos
-GridxTable.SaveItem = function(item){
+GridxPhonesF.SaveItem = function(item){
 
 request.post('fun_sim_table_edit_xml.usms', {
    handleAs: "xml",
@@ -154,7 +188,7 @@ var xmld = new RXml.getFromXhr(response, 'row');
 if(xmld.length > 0){
 NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
-GridxTable.Load();
+GridxPhonesF.Load();
 }, function(error){
 NotifyArea.notify({message: error});
 });
@@ -171,23 +205,23 @@ myDialogNew.dijitOwner(dijit.byId('new'), 'Click');
 
 //--
         dojo.connect(dojo.byId('getdata'), 'onclick', function(){
-GridxTable.Load();
+GridxPhonesF.Load();
 });
 
 //--
-        var myDialogDelete = dijit.byId('iddialogdelete');
-myDialogDelete.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
+        var DialogFreeAddPhone = dijit.byId('iddialogdelete');
+DialogFreeAddPhone.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
 
-if(GridxTable.IdToDelete.length > 0){
-GridxTable.Delete();
+if(GridxPhonesF.RowSelection.length > 0){
+GridxPhonesF.Delete();
 }else{
 NotifyArea.notify({message: 'No hay registros seleccionados'});
 }
 });
 
 
-	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
-GridxTable.SaveItem(item);
+	dojo.connect(IFWS1, 'onSet', function(item, attribute, oldValue, newValue){
+GridxPhonesF.SaveItem(item);
 });
 
 
@@ -195,13 +229,13 @@ GridxTable.SaveItem(item);
 
 
 // Capturamos el evento onSelectionChange de la gridx 
-dojo.connect(GridxTable.select.row, 'onSelectionChange', function(selected){
-GridxTable.IdToDelete = [];
+dojo.connect(GridxPhonesF.select.row, 'onSelectionChange', function(selected){
+GridxPhonesF.RowSelection = [];
 numsel = selected.length;
 var i = 0;
 while(i<numsel){
-GridxTable.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-GridxTable.IdToDelete[i] = GridxTable.store.getValue(item, 'idport');
+GridxPhonesF.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+GridxPhonesF.RowSelection[i] = GridxPhonesF.store.getValue(item, 'idport');
 } 
 });
 i++;
@@ -209,7 +243,7 @@ i++;
 });
 
 
-
+*/
 
 
      });
