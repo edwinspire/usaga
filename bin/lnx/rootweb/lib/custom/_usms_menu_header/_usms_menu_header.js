@@ -60,6 +60,9 @@ window.open("usms_sim_conf.html", '_self');
 });
 
 
+t.menu_sms_send.on('Click', function(){
+window.open("usms_sendsms.html", '_self');
+});
 
 /*
 t.menu_providers.on('Click', function(){
@@ -76,9 +79,7 @@ window.open("usms_blacklist.html", '_self');
 
 
 
-t.menu_sms_send.on('Click', function(){
-window.open("usms_send.html", '_self');
-});
+
 
 t.menu_sms_sendm.on('Click', function(){
 window.open("usms_sendm.html", '_self');

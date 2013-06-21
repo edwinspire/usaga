@@ -32,6 +32,7 @@ require(["dojo/ready",
 
 //var namesLabelsLocations = {L1: 'Nivel 1: ', L2: 'Nivel 2:', L3: 'Nivel 3:', L4: 'Nivel 4:', L5: 'Nivel 5:', L6: 'Nivel 6:'}
 
+dijit.byId('id_titlebar_master').set('label', 'Edición de Contáctos - Teléfono');
 dijit.byId('id_titlebar_gridx_contacts').set('label', 'Contáctos');
 
 /////////////////

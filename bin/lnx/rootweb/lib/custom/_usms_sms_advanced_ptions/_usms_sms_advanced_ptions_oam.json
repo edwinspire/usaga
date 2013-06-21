@@ -1,0 +1,43 @@
+{
+	"id": "_usms_sms_advanced_ptions",
+	"name": "_usms_sms_advanced_ptions",
+	"spec": "1.0",
+	"version": "1.0",
+	"require": [
+		{
+			"type": "javascript",
+			"src": "dojo/dojo.js",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/TitlePane",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/NumberSpinner",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/CheckBox",
+			"$library": "dojo"
+		},
+		{
+			"$library": "dojo",
+			"format": "amd",
+			"src": "_usms_sms_advanced_ptions/_usms_sms_advanced_ptions",
+			"type": "javascript-module"
+		}
+	],
+	"library": {
+		"dojo": {
+			"src": "../../dojo/dojo/dojo.js"
+		}
+	},
+	"content": "<div></div>"
+}
