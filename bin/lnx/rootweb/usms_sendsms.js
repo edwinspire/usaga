@@ -25,6 +25,9 @@ require(["dojo/ready",
          // logic that requires that Dojo is fully initialized should go here
 //dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
 //var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');
+var FormSMSFree = dijit.byId('idFormSMSFree');
+//MH.notification.notify({message: 'Iniciamos'});
 
         var DialogFreeAddPhone = dijit.byId('idDialogFreeAddPhone');
 DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span style="margin: 3px; display: inline-block;"><label style="margin-right: 10px;">Tel&eacute;fono:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" regExp="[\+|0-9]+" id="idSMSFreeFieldPhone" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Phone" title="Ingrese el n&amp;uacute;mero telef&amp;oacute;nico"></input></span><span style="margin: 3px; display: inline-block;"> <label>   Proveedor:</label> <div data-dojo-type="_usms_provider_select/_usms_provider_select" id="idSMSFreeFieldProvider" title="Proveedor de telefon&amp;iacute;a" style="display: inline;"></div></span><span style="margin: 3px; display: inline-block;"><label style="margin-right: 30px;">  SIM:</label><div data-dojo-type="_usms_sim_select/_usms_sim_select" id="idSMSFreeFieldSIM" title="CHIP - SIM GSM para usar en el env&amp;iacute;o" style="display: inline;"></div></span></div>');
@@ -39,9 +42,12 @@ DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', funct
 IFWS1.fetch({query:{} , onItem: function(item){
 ///alert(IFWS1.getValue(item, 'unique_id'));
 
-var smsD = {phone: IFWS1.getValue(item, 'unique_id'), idprovider: IFWS1.getValue(item, 'idprovider'), idsim: IFWS1.getValue(item, 'idsim')}
+var smsD = FormSMSFree.get('values');
+smsD.phone = IFWS1.getValue(item, 'unique_id');
+smsD.idprovider = IFWS1.getValue(item, 'idprovider');
+smsD.idsim = IFWS1.getValue(item, 'idsim');
 
-request.post('fun_sim_table_edit_xml.usms', {
+request.post('/fun_outgoing_new_xml.usms', {
    handleAs: "xml",
 data: smsD
 }).then(function(response){
@@ -49,9 +55,9 @@ data: smsD
 var xmld = new RXml.getFromXhr(response, 'row');
 //alert(xmld.getStringFromB64(0, 'message'));
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'msg')});
 }
-GridxPhonesF.Load();
+//GridxPhonesF.Load();
 }, function(error){
 MH.notification.notify({message: error});
 });
