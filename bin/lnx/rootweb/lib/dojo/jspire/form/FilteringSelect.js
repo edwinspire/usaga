@@ -21,7 +21,7 @@ filteringselect.Load = function(){
             handleAs: "xml"
         }).then(
                 function(response){
-var d = new RXml.getFromXhr(response, 'row');
+var d = new RXml.getFromXhr(response, filteringselect._RootItem);
 numrows = d.length;
 var Items = [];
 
