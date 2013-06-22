@@ -16,7 +16,7 @@ validate: function(){
 var t = this;
 var v = false;
 
-if(t.Formulario.validate() && t.Provider.validate()){
+if(t.Formulario.validate() && t.Provider.validate() && t.SIM.validate()){
 v = true;
 }
 return v;
@@ -24,7 +24,7 @@ return v;
 _getValuesAttr: function(){
 var t = this;
 t.validate();
-return {idprovider: t.Provider.get('value')}
+return {idprovider: t.Provider.get('value'), idsim: t.SIM.get('value')}
 }
 
 
