@@ -15,8 +15,6 @@ postCreate: function(){
 validate: function(){
 var t = this;
 var v = false;
-console.log(t.Formulario.validate());
-console.log(t.Provider.validate());
 
 if(t.Formulario.validate() && t.Provider.validate()){
 v = true;
@@ -25,7 +23,7 @@ return v;
 },
 _getValuesAttr: function(){
 var t = this;
-//t.validate();
+t.validate();
 return {idprovider: t.Provider.get('value')}
 }
 

@@ -34,7 +34,7 @@ DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span st
 
 
 DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok', function(){
-IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: "0", idsim: '0'});
+IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
 });
 
         var DialogFreeSend = dijit.byId('idDialogFreeSend');
