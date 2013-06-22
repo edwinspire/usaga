@@ -13,12 +13,26 @@ postCreate: function(){
 var t = this;
 
 DTBox.addGetDateFunction(t.date);
+var d = new Date();
+t.date.set('value', d);
+t.time.set('value', d);
+},
+validate: function(){
+var v = false;
+var t = this;
 
+if(t.Formulario.validate() && t.advanced.validate()){
+v = true;
+}
+
+return v;
 },
 _getValuesAttr: function(){
 var t = this;
-datetime = t.date._getDate()+''+t.time.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
-return {date: datetime, message: t.message.get('value')}
+var dat = t.advanced.get('values');
+dat.date = t.date._getDate()+''+t.time.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
+dat.message = t.message.get('value');
+return dat;
 }
 
 

@@ -39,6 +39,10 @@ IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprov
 
         var DialogFreeSend = dijit.byId('idDialogFreeSend');
 DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', function(){
+
+
+
+if(FormSMSFree.validate()){
 IFWS1.fetch({query:{} , onItem: function(item){
 ///alert(IFWS1.getValue(item, 'unique_id'));
 
@@ -65,6 +69,10 @@ MH.notification.notify({message: error});
 
 
 }});
+
+}else{
+MH.notification.notify({message: 'Revise que los datos del mensaje sean correctos antes de intentar nuevamente'});
+}
 
 });
 
