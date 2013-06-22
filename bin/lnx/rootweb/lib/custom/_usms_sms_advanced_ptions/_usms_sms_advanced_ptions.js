@@ -24,7 +24,7 @@ return v;
 _getValuesAttr: function(){
 var t = this;
 t.validate();
-return {idprovider: t.Provider.get('value'), idsim: t.SIM.get('value'), msgclass: idsim: t.MsgClass.get('value')}
+return {idprovider: t.Provider.get('value'), idsim: t.SIM.get('value'), msgclass: t.MsgClass.get('value')}
 }
 
 
