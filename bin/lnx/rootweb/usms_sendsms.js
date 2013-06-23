@@ -47,7 +47,7 @@ dijit.byId('idSMSFreeFieldSIM').reset();
 
 
 var DialogFreeSendReset = dijit.byId('idDialogFreeSendReset');
-DialogFreeSendReset.innerHTML('<div style="height: auto; width: 250px;">Esta acción borrará todos los remitentes que haya ingresado y los datos del mensaje. Desea hacerlo?</div>');
+DialogFreeSendReset.innerHTML('<div style="height: auto; width: 200px;">Esta acción borrará todos los remitentes que haya ingresado y los datos del mensaje. Desea hacerlo?</div>');
 DialogFreeSendReset.dijitOwner(dijit.byId('idFreeSMSReset'), 'Click').on('onok', function(){
 FormSMSFree.reset();
 GridxPhonesF.Clear();
@@ -55,7 +55,7 @@ GridxPhonesF.Clear();
 
 
         var DialogFreeSend = dijit.byId('idDialogFreeSend');
-DialogFreeSend.innerHTML('Está seguro de querer enviar los mensajes de texto a los remitentes ingresados?');
+DialogFreeSend.innerHTML('<div style="height: auto; width: 200px;">Está seguro de querer enviar los mensajes de texto a los remitentes ingresados?</div>');
 DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', function(){
 
 
@@ -112,7 +112,7 @@ i++;
 });
 
 var DialogFreeRemovePhone = dijit.byId('idDialogFreeRemovePhone');
-DialogFreeRemovePhone.innerHTML('<div style="height: auto; width: 250px;">Desea eliminar los remitentes seleccionados?</div>');
+DialogFreeRemovePhone.innerHTML('<div style="height: auto; width: 150px;">Desea eliminar los remitentes seleccionados?</div>');
 DialogFreeRemovePhone.dijitOwner(dijit.byId('idFreeRemoveSender'), 'Click').on('onok', function(){
 GridxPhonesF.Delete();
 });
@@ -123,7 +123,7 @@ GridxPhonesF.Delete();
 		// Optionally change column structure on the grid
 		GridxPhonesF.setColumns([
 			{field:"unique_id", name: "Teléfono"},
-			{field:"idprovider", name: "Proveedor"},			
+			{field:"idprovider", name: "Proveedor", editor: "_usms_provider_select/_usms_provider_select", editable: true, alwaysEditing: true},			
 			{field:"idsim", name: "SIM"}
 		]);
 GridxPhonesF.startup();

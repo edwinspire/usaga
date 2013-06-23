@@ -11,6 +11,14 @@ define(['dojo/_base/declare',
 postCreate: function(){
 
 var t = this;
+
+t.message.on('Change', function(){
+//alert(this.get('value'));
+l = this.get('value').length;
+t.Chars.innerHTML = l;
+t.LengMsg.innerHTML = Math.ceil(l/160);
+});
+
 DTBox.addGetDateFunction(t.date);
 t.reset();
 

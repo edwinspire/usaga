@@ -16,8 +16,22 @@
                <span style="width: 50px; display: block;"><label>
                    Mensaje:</label>
                  </span>
-                 <textarea type="text" data-dojo-type="dijit/form/Textarea" data-dojo-attach-point="message" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
+                 <textarea type="text" data-dojo-type="dijit/form/Textarea" data-dojo-attach-point="message" intermediateChanges="true" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false" style="height: auto; width: 100%;"></textarea>
                </div>
+ <div style="margin: 5px;">
+  <div>
+   <label style="margin-right: 5px; font-weight: bold;">
+   Caracteres:</label>
+   <label data-dojo-attach-point="Chars">
+     0</label>
+ </div>
+  <div>
+   <label style="margin-right: 5px; font-weight: bold;">
+   Mensajes Aproximados:</label>
+   <label data-dojo-attach-point="LengMsg">
+     0</label>
+ </div>
+</div>
                <div data-dojo-type="_usms_sms_advanced_ptions/_usms_sms_advanced_ptions" data-dojo-attach-point="advanced"></div>
              </div>
            </div>

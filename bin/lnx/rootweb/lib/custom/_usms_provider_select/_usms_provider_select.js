@@ -11,6 +11,10 @@ define(['dojo/_base/declare',
        templateString:templateString,
 postCreate: function(){
 var t = this;
+t.Provider.on('Change', function(){
+t.emit('Change', {});
+});
+
 jsFS.addXmlLoader(t.Provider, "provider_listidname_xml.usms", "row", {}, "idprovider", "name");
 t.Provider.Load();
 },
@@ -22,11 +26,10 @@ return this.Provider.get('value');
 },
 reset: function(){
 this.Provider.reset();
+},
+_setValueAttr: function(v){
+this.Provider.set('value', String(v));
 }
-
-
-
-
 
 
    
