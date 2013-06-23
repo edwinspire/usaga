@@ -37,7 +37,6 @@ DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span st
 
 DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok', function(){
 
-
 //IFWS1.clearOnClose = true;
 IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
 IFWS1.save();
@@ -96,6 +95,25 @@ MH.notification.notify({message: 'Revise que los datos del mensaje sean correcto
 var GridxPhonesF = dijit.byId('GridxPhonesFree');
 GridxPhonesF.RowSelection = [];
 
+// Capturamos el evento onSelectionChange de la gridx 
+dojo.connect(GridxPhonesF.select.row, 'onSelectionChange', function(selected){
+GridxPhonesF.RowSelection = [];
+numsel = selected.length;
+var i = 0;
+while(i<numsel){
+GridxPhonesF.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+GridxPhonesF.RowSelection[i] = GridxPhonesF.store.getValue(item, 'unique_id');
+} 
+});
+i++;
+}
+});
+
+var DialogFreeRemovePhone = dijit.byId('idDialogFreeRemovePhone');
+DialogFreeRemovePhone.innerHTML('<div style="height: auto; width: 250px;">Desea eliminar los remitentes seleccionados?</div>');
+DialogFreeRemovePhone.dijitOwner(dijit.byId('idFreeRemoveSender'), 'Click').on('onok', function(){
+GridxPhonesF.Delete();
+});
 
 
 	if (GridxPhonesF) {
@@ -127,34 +145,27 @@ GridxPhonesF._setData = function(data){
 
 
 
-/*
 GridxPhonesF.Delete = function(){
 
 var num = GridxPhonesF.RowSelection.length;
-if(num > 0){
 
-request.post('tableserialport_delete.usms', {
-   handleAs: "xml",
-data: {idports: GridxPhonesF.RowSelection.toString()}
-}).then(function(response){
-
-var xmld = new RXml.getFromXhr(response, 'row');
-//alert(xmld.getStringFromB64(0, 'message'));
-if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
-}
-GridxPhonesF.Load();
-}, function(error){
-NotifyArea.notify({message: error});
+if(num>0){
+i = 0;
+while(i < num){
+GridxPhonesF.store.fetch({query: {unique_id: GridxPhonesF.RowSelection[i]}, onItem: function(item){
+IFWS1.deleteItem(item);
+IFWS1.save();
+} 
 });
 
+i++;
+}
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay remitentes seleccionados'});
+}
 }
 
-}
-
-
+/*
 
 GridxPhonesF.Load = function(){
 //NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
@@ -258,19 +269,7 @@ GridxPhonesF.SaveItem(item);
 
 
 
-// Capturamos el evento onSelectionChange de la gridx 
-dojo.connect(GridxPhonesF.select.row, 'onSelectionChange', function(selected){
-GridxPhonesF.RowSelection = [];
-numsel = selected.length;
-var i = 0;
-while(i<numsel){
-GridxPhonesF.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-GridxPhonesF.RowSelection[i] = GridxPhonesF.store.getValue(item, 'idport');
-} 
-});
-i++;
-}
-});
+
 
 
 */
