@@ -27,19 +27,35 @@ require(["dojo/ready",
 //var NotifyArea = dijit.byId('id_notify_area');  
 var MH = dijit.byId('idMH');
 var FormSMSFree = dijit.byId('idFormSMSFree');
-//MH.notification.notify({message: 'Iniciamos'});
+FormSMSFree.advanced.Provider.Provider.set('disabled', true);
+FormSMSFree.advanced.SIM.SIM.set('disabled', true);
+
 
         var DialogFreeAddPhone = dijit.byId('idDialogFreeAddPhone');
 DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span style="margin: 3px; display: inline-block;"><label style="margin-right: 10px;">Tel&eacute;fono:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" regExp="[\+|0-9]+" id="idSMSFreeFieldPhone" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" placeHolder="Phone" title="Ingrese el n&amp;uacute;mero telef&amp;oacute;nico"></input></span><span style="margin: 3px; display: inline-block;"> <label>   Proveedor:</label> <div data-dojo-type="_usms_provider_select/_usms_provider_select" id="idSMSFreeFieldProvider" title="Proveedor de telefon&amp;iacute;a" style="display: inline;"></div></span><span style="margin: 3px; display: inline-block;"><label style="margin-right: 30px;">  SIM:</label><div data-dojo-type="_usms_sim_select/_usms_sim_select" id="idSMSFreeFieldSIM" title="CHIP - SIM GSM para usar en el env&amp;iacute;o" style="display: inline;"></div></span></div>');
 
 
 DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok', function(){
+
+
+//IFWS1.clearOnClose = true;
 IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
+IFWS1.save();
+
 });
 
-        var DialogFreeSend = dijit.byId('idDialogFreeSend');
-DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', function(){
 
+var DialogFreeSendReset = dijit.byId('idDialogFreeSendReset');
+DialogFreeSendReset.innerHTML('<div style="height: auto; width: 250px;">Esta acción borrará todos los remitentes que haya ingresado y los datos del mensaje. Desea hacerlo?</div>');
+DialogFreeSendReset.dijitOwner(dijit.byId('idFreeSMSReset'), 'Click').on('onok', function(){
+FormSMSFree.reset();
+GridxPhonesF.Clear();
+});
+
+
+        var DialogFreeSend = dijit.byId('idDialogFreeSend');
+DialogFreeSend.innerHTML('Está seguro de querer enviar los mensajes de texto a los remitentes ingresados?');
+DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', function(){
 
 
 if(FormSMSFree.validate()){
@@ -57,7 +73,7 @@ data: smsD
 }).then(function(response){
 
 var xmld = new RXml.getFromXhr(response, 'row');
-//alert(xmld.getStringFromB64(0, 'message'));
+
 if(xmld.length > 0){
 MH.notification.notify({message: xmld.getStringFromB64(0, 'msg')});
 }

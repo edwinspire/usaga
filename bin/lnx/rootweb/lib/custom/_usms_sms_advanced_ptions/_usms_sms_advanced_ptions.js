@@ -34,6 +34,14 @@ _getValuesAttr: function(){
 var t = this;
 t.validate();
 return {idprovider: t.Provider.get('value'), idsim: t.SIM.get('value'), msgclass: t.MsgClass.get('value'), smstype: t.SMSType.get('value'), priority: t.Priority.get('value'), report: t.Report.get('checked'), enablemsgclass: t.EnableMsgClass.get('checked')}
+},
+reset: function(){
+var t = this;
+t.Formulario.reset();
+t.Provider.reset();
+t.SIM.reset();
+t.MsgClass.reset();
+t.SMSType.reset();
 }
 
 

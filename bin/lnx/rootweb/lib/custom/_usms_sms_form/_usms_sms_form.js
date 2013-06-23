@@ -11,11 +11,9 @@ define(['dojo/_base/declare',
 postCreate: function(){
 
 var t = this;
-
 DTBox.addGetDateFunction(t.date);
-var d = new Date();
-t.date.set('value', d);
-t.time.set('value', d);
+t.reset();
+
 },
 validate: function(){
 var v = false;
@@ -35,7 +33,12 @@ dat.message = t.message.get('value');
 return dat;
 },
 reset: function(){
-this.Formulario.reset();
+var t = this;
+t.Formulario.reset();
+t.advanced.reset();
+var d = new Date();
+t.date.set('value', d);
+t.time.set('value', d);
 }
 
 
