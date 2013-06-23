@@ -20,7 +20,11 @@ _getValueAttr: function(){
 r = this.handshake.get('value');
 //console.log(r);
 return r;
+},
+reset: function(){
+this.handshake.reset();
 }
+
 
 
    

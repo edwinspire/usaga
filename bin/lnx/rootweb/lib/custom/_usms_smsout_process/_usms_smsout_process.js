@@ -20,7 +20,11 @@ _getValueAttr: function(){
 r = this.process.get('value');
 //console.log(r);
 return r;
+},
+reset: function(){
+this.process.reset();
 }
+
 
    
 });

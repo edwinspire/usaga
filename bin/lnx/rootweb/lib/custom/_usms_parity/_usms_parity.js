@@ -20,7 +20,11 @@ _getValueAttr: function(){
 r = this.parity.get('value');
 //console.log(r);
 return r;
+},
+reset: function(){
+this.parity.reset();
 }
+
 
    
 });

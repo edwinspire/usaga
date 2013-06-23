@@ -19,6 +19,9 @@ return this.MClass.validate();
 },
 _getValueAttr: function(){
 return this.MClass.get('value');
+},
+reset: function(){
+this.MClass.reset();
 }
 
 

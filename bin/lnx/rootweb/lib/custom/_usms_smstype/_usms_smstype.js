@@ -19,7 +19,11 @@ return this.Type.validate();
 },
 _getValueAttr: function(){
 return this.Type.get('value');
+},
+reset: function(){
+this.Type.reset();
 }
+
 
 
 

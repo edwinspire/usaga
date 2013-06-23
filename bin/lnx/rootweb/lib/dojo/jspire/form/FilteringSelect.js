@@ -11,6 +11,9 @@ filteringselect._TagId = id;
 filteringselect._TagName = name;
 filteringselect._ValueEverPresent = vep;
 
+filteringselect.postLoad = function(){
+filteringselect.reset();
+}
 
 // Carga Asincronamente los datos y setea el FilteringSelect
 filteringselect.Load = function(){
@@ -37,6 +40,7 @@ Items[i] =    {name: filteringselect._ValueEverPresent.name, id: filteringselect
 filteringselect.store = null;
 filteringselect.store = new M({data: Items});
 filteringselect.startup();
+filteringselect.postLoad();
 filteringselect.emit('onloaddata', {});
                 },
                 function(error){

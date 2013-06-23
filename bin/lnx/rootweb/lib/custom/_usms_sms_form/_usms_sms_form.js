@@ -33,7 +33,11 @@ var dat = t.advanced.get('values');
 dat.date = t.date._getDate()+''+t.time.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
 dat.message = t.message.get('value');
 return dat;
+},
+reset: function(){
+this.Formulario.reset();
 }
+
 
 
 

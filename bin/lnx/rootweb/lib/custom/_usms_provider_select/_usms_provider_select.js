@@ -19,7 +19,11 @@ return this.Provider.validate();
 },
 _getValueAttr: function(){
 return this.Provider.get('value');
+},
+reset: function(){
+this.Provider.reset();
 }
+
 
 
 

@@ -19,7 +19,11 @@ return this.SIM.validate();
 },
 _getValueAttr: function(){
 return this.SIM.get('value');
+},
+reset: function(){
+this.SIM.reset();
 }
+
 
 
 

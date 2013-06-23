@@ -20,6 +20,15 @@ _getValueAttr: function(){
 r = this.stopbits.get('value');
 //console.log(r);
 return r;
-}   
+},
+reset: function(){
+this.stopbits.reset();
+}
+
+
+
+
+
+   
 });
 });
