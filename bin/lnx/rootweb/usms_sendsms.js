@@ -40,7 +40,9 @@ DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok',
 //IFWS1.clearOnClose = true;
 IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
 IFWS1.save();
-
+dijit.byId('idSMSFreeFieldPhone').set('value', '');
+dijit.byId('idSMSFreeFieldProvider').reset();
+dijit.byId('idSMSFreeFieldSIM').reset();
 });
 
 
