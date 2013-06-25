@@ -18,7 +18,6 @@ require(["dojo/ready",
 	'gridx/modules/Edit',
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
-  "_usms_smsout_process/_usms_smsout_process",
 "dojox/grid/cells/dijit"
 ], function(ready, on, request, RXml, jsDTb, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, wJProcess){
      ready(function(){
