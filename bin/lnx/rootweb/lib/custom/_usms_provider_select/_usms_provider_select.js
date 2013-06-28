@@ -29,6 +29,9 @@ this.Provider.reset();
 },
 _setValueAttr: function(v){
 this.Provider.set('value', String(v));
+},
+displayedValue: function(){
+return this.Provider.get('displayedValue');
 }
 
 

@@ -36,9 +36,8 @@ DialogFreeAddPhone.innerHTML(' <div style="height: auto; width: 250px;"><span st
 
 
 DialogFreeAddPhone.dijitOwner(dijit.byId('idFreeAddSender'), 'Click').on('onok', function(){
-
 //IFWS1.clearOnClose = true;
-IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
+IFWS1.newItem({unique_id: dijit.byId('idSMSFreeFieldPhone').get('value'), idprovider: dijit.byId('idSMSFreeFieldProvider').get('value'), provider: dijit.byId('idSMSFreeFieldProvider').displayedValue(), sim: dijit.byId('idSMSFreeFieldSIM').displayedValue(), idsim: dijit.byId('idSMSFreeFieldSIM').get('value')});
 IFWS1.save();
 dijit.byId('idSMSFreeFieldPhone').set('value', '');
 dijit.byId('idSMSFreeFieldProvider').reset();
@@ -123,8 +122,8 @@ GridxPhonesF.Delete();
 		// Optionally change column structure on the grid
 		GridxPhonesF.setColumns([
 			{field:"unique_id", name: "Teléfono"},
-			{field:"idprovider", name: "Proveedor", editor: "_usms_provider_select/_usms_provider_select", editable: true, alwaysEditing: true},			
-			{field:"idsim", name: "SIM"}
+			{field:"provider", name: "Proveedor"},			
+			{field:"sim", name: "SIM"}
 		]);
 GridxPhonesF.startup();
 }
@@ -166,6 +165,27 @@ i++;
 MH.notification.notify({message: 'No hay remitentes seleccionados'});
 }
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+var GridxListContact = dijit.byId('idGridxListContact');	
+
+
+if (GridxListContact) {
+
+		// Optionally change column structure on the grid
+		GridxListContact.setColumns([
+			{field:"unique_id", name: "#"},
+			{field:"name", name: "Nombre"},			
+			{field:"phone", name: "Teléfono"},			
+			{field:"proveedor", name: "Proveedor"}
+		]);
+GridxListContact.startup();
+}
+
+
+
+
+
 
 /*
 

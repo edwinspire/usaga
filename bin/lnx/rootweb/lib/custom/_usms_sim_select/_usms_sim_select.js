@@ -22,6 +22,9 @@ return this.SIM.get('value');
 },
 reset: function(){
 this.SIM.reset();
+},
+displayedValue: function(){
+return this.SIM.get('displayedValue');
 }
 
 
