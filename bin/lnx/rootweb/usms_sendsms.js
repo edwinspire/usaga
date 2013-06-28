@@ -176,15 +176,87 @@ if (GridxListContact) {
 		GridxListContact.setColumns([
 			{field:"unique_id", name: "#"},
 			{field:"name", name: "Nombre"},			
-			{field:"phone", name: "Teléfono"},			
-			{field:"proveedor", name: "Proveedor"}
+			{field:"phone", name: "Teléfono"}
 		]);
 GridxListContact.startup();
 }
 
 
+GridxListContact.Clear= function(){
+GridxListContact.selected = [];
+GridxListContact._setData({identifier: "unique_id", items: []});
+}
 
 
+
+GridxListContact._setData = function(data){
+	IFWS2.clearOnClose = true;
+	IFWS2.data = data;
+	IFWS2.close();
+		GridxListContact.store = null;
+		GridxListContact.setStore(IFWS2);
+}
+
+
+
+GridxListContact.Delete = function(){
+
+var num = GridxListContact.RowSelection.length;
+
+if(num>0){
+i = 0;
+while(i < num){
+GridxListContact.store.fetch({query: {unique_id: GridxListContact.RowSelection[i]}, onItem: function(item){
+IFWS2.deleteItem(item);
+IFWS2.save();
+} 
+});
+
+i++;
+}
+}else{
+MH.notification.notify({message: 'No hay remitentes seleccionados'});
+}
+}
+
+GridxListContact.Load = function(){
+//NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
+GridxListContact.RowSelection = [];
+
+            // Request the text file
+            request.post("fun_view_contacts_phones_with_search_xml.usms", {
+		data: {},
+            // Parse data from xml
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+
+numrows = d.length;
+
+var myData = {identifier: "unique_id", items: []};
+
+var i = 0;
+while(i<numrows){
+myData.items[i] = {
+unique_id:i+1,
+name: d.getStringFromB64(i, "name"),
+phone: d.getStringFromB64(i, "phone")
+};
+i++;
+}
+
+GridxListContact._setData(myData);
+
+                },
+                function(error){
+                    // Display the error returned
+//NotifyArea.notify({message: error});
+GridxListContact.Clear();
+                }
+            );
+
+}
 
 
 /*
@@ -295,6 +367,9 @@ GridxPhonesF.SaveItem(item);
 
 
 */
+
+GridxListContact.Load();
+
 
 
      });
