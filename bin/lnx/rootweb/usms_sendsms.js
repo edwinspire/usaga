@@ -1,6 +1,7 @@
 require(["dojo/ready",  
 "dojo/on",
 "dojo/data/ItemFileWriteStore",
+'jspire/usms/GridxSMSInBuilder',
   "gridx/Grid",
   "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
@@ -20,7 +21,7 @@ require(["dojo/ready",
 "dijit/popup",
 "dijit/form/CheckBox",
 "dijit/form/Select"
-], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
+], function(ready, on, ItemFileWriteStore, SMSInBuilder, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 //dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
@@ -169,6 +170,10 @@ MH.notification.notify({message: 'No hay remitentes seleccionados'});
 ////////////////////////////////////////////////////////////////////////////////////////
 var GridxListContact = dijit.byId('idGridxListContact');	
 
+var TBoxSearchContactPhone = dijit.byId('idTBoxSearchContactPhone');
+TBoxSearchContactPhone.on('search', function(e){
+GridxListContact.Load();
+});
 
 if (GridxListContact) {
 
@@ -225,7 +230,7 @@ GridxListContact.RowSelection = [];
 
             // Request the text file
             request.post("fun_view_contacts_phones_with_search_xml.usms", {
-		data: {},
+		data: {contact_phone_search: TBoxSearchContactPhone.get('value')},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -368,6 +373,112 @@ GridxPhonesF.SaveItem(item);
 
 */
 
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+var GridxSMSIn = SMSInBuilder.Build(dijit.byId("idGridxSMSIn"), IFWS5);
+
+var FromToSelect = dijit.byId('idFromToSelect');
+FromToSelect.on('onget', function(e){
+GridxSMSIn.Load(e.From, e.To, e.Rows);
+});
+
+/*
+	var GridxSMSIn = dijit.byId("idGridxSMSIn");
+
+//setInterval(GridxSMSIn.Load(), '3000');
+
+	if (GridxSMSIn) {
+
+
+		// Optionally change column structure on the grid
+		GridxSMSIn.setColumns([
+
+			{field:"idsmsin", name: "id"},
+			{field:"dateload", name: "dateload", width: "5%"},
+			{field:"idprovider", name: "idprovider"},
+			{field:"idphone", name: "idphone"},
+			{field:"phone", name: "phone"},
+			{field:"datesms", name: "datesms", width: "5%"},
+			{field:"message", name: "message", width: "15%"},
+			{field:"idport", name: "idport"},
+			{field:"status", name: "status"},
+			{field:"flag1", name: "flag1"},
+			{field:"flag2", name: "flag2"},
+			{field:"flag3", name: "flag3"},
+			{field:"flag4", name: "flag4"},
+			{field:"flag5", name: "flag5"},
+			{field:"note", name: "note", width: "10%"}
+		]);
+
+GridxSMSIn.startup();
+}
+
+GridxSMSIn.AutoLoad = function(){
+setInterval(GridxSMSIn.Load, '3000');
+}
+
+GridxSMSIn.Load= function(){
+//alert('ok');
+            // Request the text file
+            request.get("view_smsin_datefilter.usms", {
+	query: {nrows: 50},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'row');
+var myData = {identifier: "unique_id", items: []};
+var i = 0;
+numrows = d.length;
+if(numrows > 0){
+while(i<numrows){
+myData.items[i] = {
+unique_id:i+1,
+idsmsin: d.getNumber(i, "idsmsin"), 
+dateload: d.getString(i, "dateload"),
+idprovider: d.getNumber(i, "idprovider"),
+idphone: d.getNumber(i, "idphone"),
+phone: d.getStringFromB64(i, "phone"),
+datesms: d.getString(i, "datesms"),
+message: d.getStringFromB64(i, "message"),
+idport: d.getNumber(i, "idport"),
+status: d.getNumber(i, "status"),
+flag1: d.getNumber(i, "flag1"),
+flag2: d.getNumber(i, "flag2"),
+flag3: d.getNumber(i, "flag3"),
+flag4: d.getNumber(i, "flag4"),
+flag5: d.getNumber(i, "flag5"),
+note: d.getStringFromB64(i, "note")
+};
+i++;
+}
+}
+	IFWS5.clearOnClose = true;
+	IFWS5.data = myData;
+	IFWS5.close();
+
+		GridxSMSIn.store = null;
+		GridxSMSIn.setStore(IFWS5);
+
+//GridxSMSIn.emit('onnotify', {msg: 'Se han cargado los datos'});
+
+                },
+                function(error){
+                    // Display the error returned
+GridxSMSIn.emit('onnotify', {msg: error});
+                }
+            );
+
+
+}
+
+
+
+
+
+
+GridxSMSIn.AutoLoad();
+*/
 GridxListContact.Load();
 
 

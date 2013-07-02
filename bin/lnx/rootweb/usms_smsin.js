@@ -9,7 +9,7 @@ require(["dojo/ready",
 "dojo/on",
 'dojo/request', 
 'jspire/request/Xml',
-'jspire/form/DateTextBox',
+'jspire/usms/GridxSMSInBuilder',
 "dojo/data/ItemFileReadStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -19,19 +19,22 @@ require(["dojo/ready",
   "dijit/form/NumberTextBox",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit"
-], function(ready, on, request, RXml, jsDTb, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, RXml, SMSInBuilder, ItemFileReadStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-dojo.connect(dojo.byId('send'), 'onclick', function(){
-myGridX.Load();
+var myGridX = SMSInBuilder.Build(dijit.byId("idgridxtable"), ItemFileReadStore_1);
+
+var FromToSelect = dijit.byId('idFromToSelect');
+FromToSelect.on('onget', function(e){
+myGridX.Load(e.From, e.To, e.Rows);
 });
 
-jsDTb.addGetDateFunction(dijit.byId('fstart'));
-jsDTb.addGetDateFunction(dijit.byId('fend'));
+//jsDTb.addGetDateFunction(dijit.byId('fstart'));
+//jsDTb.addGetDateFunction(dijit.byId('fend'));
 
 
-
+/*
 
 	var myGridX = dijit.byId("idgridxtable");
 	if (myGridX) {
@@ -58,14 +61,12 @@ jsDTb.addGetDateFunction(dijit.byId('fend'));
 		]);
 
 myGridX.startup();
-
-
 }
 
 myGridX.Load= function(){
             // Request the text file
             request.get("view_smsin_datefilter.usms", {
-	query: {fstart: dijit.byId('fstart')._getDate(), fend: dijit.byId('fend')._getDate(), nrows: dijit.byId('nrows').get('value')},
+	query: {fstart: FromToSelect.get('from'), fend: FromToSelect.get('to'), nrows: FromToSelect.get('rows')},
             handleAs: "xml"
         }).then(
                 function(response){
@@ -115,8 +116,8 @@ myGridX.emit('onnotify', {msg: error});
 
 }
 
-
-
+*/
+/*
 function LoadGrid(){
 
 var store = new dojox.data.XmlStore({url: "view_smsin_datefilter.usms", sendQuery: true, rootItem: 'row'});
@@ -168,7 +169,7 @@ alert(e);
 });
 
 }
-
+*/
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
 //setTimeout(LoadGrid, 5000);
 

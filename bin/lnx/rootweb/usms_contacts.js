@@ -41,14 +41,17 @@ dijit.byId('id_titlebar_gridx_contacts').set('label', 'Contáctos');
 var GridListContact = dijit.byId("usms.contacts.gridx");
 var NotifyMSG = dijit.byId('notify');
 
-var myTimeoutSearch; 
+var TBSearchContact = dijit.byId('idTBSearchContact');
+TBSearchContact.on('search', function(e){
+GridListContact.Load();
+});
 
-var TextBoxSearchContact = dijit.byId('TBSearchContact');
+/*
 TextBoxSearchContact.on('Change', function(){
 clearTimeout(myTimeoutSearch);
 myTimeoutSearch=setTimeout(function(){GridListContact.Load()},1000);
 });
-
+*/
 
 var CLocation = dijit.byId('idwlocationcontact');
 CLocation.on('onnotify', function(e){
@@ -140,7 +143,7 @@ GridListContact.Load = function(){
 var t = GridListContact;
    request.get('fun_view_contacts_to_list_search_xml.usms', {
             // Parse data from xml
-	query: {text: TextBoxSearchContact.get('value')},
+	query: {text: TBSearchContact.get('value')},
             handleAs: "xml"
         }).then(
                 function(response){

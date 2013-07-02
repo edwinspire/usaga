@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_common_from_to_date",
+			"description": "_common_from_to_date",
+			"type": "_common_from_to_date/_common_from_to_date",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png",
+			"properties": {
+				"style": "margin: 3px; width: 100%; height: auto;"
+			}
+		}
+	],
+	"name": "_common_from_to_date",
+	"longName": "_common_from_to_date"
+}
