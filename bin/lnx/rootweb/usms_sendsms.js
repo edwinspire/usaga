@@ -2,6 +2,7 @@ require(["dojo/ready",
 "dojo/on",
 "dojo/data/ItemFileWriteStore",
 'jspire/usms/GridxSMSInBuilder',
+'jspire/usms/GridxSMSOutBuilder',
   "gridx/Grid",
   "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
@@ -21,7 +22,7 @@ require(["dojo/ready",
 "dijit/popup",
 "dijit/form/CheckBox",
 "dijit/form/Select"
-], function(ready, on, ItemFileWriteStore, SMSInBuilder, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
+], function(ready, on, ItemFileWriteStore, GridxSMSInBuilder, GridxSMSOutBuilder, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 //dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
@@ -376,7 +377,7 @@ GridxPhonesF.SaveItem(item);
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-var GridxSMSIn = SMSInBuilder.Build(dijit.byId("idGridxSMSIn"), IFWS5);
+var GridxSMSIn = GridxSMSInBuilder.Build(dijit.byId("idGridxSMSIn"), IFWSSMSIn);
 
 var FromToSelect = dijit.byId('idFromToSMSIn');
 FromToSelect.on('onget', function(e){
@@ -384,7 +385,7 @@ GridxSMSIn.Load(e.From, e.To, e.Rows);
 });
 
 
-var GridxSMSOut = SMSOutBuilder.Build(dijit.byId("idGridxSMSOut"), ItemFileReadStore_1);
+var GridxSMSOut = GridxSMSOutBuilder.Build(dijit.byId("idGridxSMSOut"), IFWS5);
 
 var FromToSMSOut = dijit.byId('idFromToSMSOut');
 FromToSMSOut.on('onget', function(e){

@@ -37,7 +37,7 @@ g.startup();
 
 g.Load= function(from, to, rows){
             // Request the text file
-            request.get("view_smsin_datefilter.usms", {
+            request.get("view_sms_outgoing_datefilter.usms", {
 	query: {fstart: from, fend: to, nrows: rows},
             handleAs: "xml"
         }).then(
