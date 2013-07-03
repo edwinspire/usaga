@@ -378,9 +378,17 @@ GridxPhonesF.SaveItem(item);
 
 var GridxSMSIn = SMSInBuilder.Build(dijit.byId("idGridxSMSIn"), IFWS5);
 
-var FromToSelect = dijit.byId('idFromToSelect');
+var FromToSelect = dijit.byId('idFromToSMSIn');
 FromToSelect.on('onget', function(e){
 GridxSMSIn.Load(e.From, e.To, e.Rows);
+});
+
+
+var GridxSMSOut = SMSOutBuilder.Build(dijit.byId("idGridxSMSOut"), ItemFileReadStore_1);
+
+var FromToSMSOut = dijit.byId('idFromToSMSOut');
+FromToSMSOut.on('onget', function(e){
+GridxSMSOut.Load(e.From, e.To, e.Rows);
 });
 
 /*
