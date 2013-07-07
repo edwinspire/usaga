@@ -64,7 +64,6 @@ DialogFreeSend.dijitOwner(dijit.byId('idFreeSendSMS'), 'Click').on('onok', funct
 
 if(FormSMSFree.validate()){
 IFWS1.fetch({query:{} , onItem: function(item){
-///alert(IFWS1.getValue(item, 'unique_id'));
 
 var smsD = FormSMSFree.get('values');
 smsD.phone = IFWS1.getValue(item, 'unique_id');
@@ -101,9 +100,6 @@ MH.notification.notify({message: error});
 
    var GridxPhonesF = jsGridx.addItemSelection('GridxPhonesFree');
 //var GridxPhonesF = dijit.byId('GridxPhonesFree');
-
-
-
 
 var DialogFreeRemovePhone = dijit.byId('idDialogFreeRemovePhone');
 DialogFreeRemovePhone.innerHTML('<div style="height: auto; width: 150px;">Desea eliminar los remitentes seleccionados?</div>');
@@ -171,17 +167,14 @@ GridxListContact.RowSelected = [];
 dojo.connect(GridxListContact.select.row, 'onSelectionChange', function(selected){	
 GridxListContact.RowSelected = [];
 numsel = selected.length;
-//console.log('-> '+selected.toString());
 var i = 0;
 while(i<numsel){
 GridxListContact.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
 GridxListContact.RowSelected[i] = {idphone: GridxListContact.store.getValue(item, 'idphone'), name: GridxListContact.store.getValue(item, 'name'), phone: GridxListContact.store.getValue(item, 'phone')}
-//GridxListContact.RowSelected[i] = GridxListContact.store.getValue(item, 'idphone');
 } 
 });
 i++;
 }
-//console.log(GridxListContact.RowSelected.toString());
 });
 
 
@@ -244,8 +237,6 @@ items.push(r);
 }
 });
 
-//console.log(items);
-
 
 var itemsEnd = dojo.map(items, function(item, index){
 item.unique_id = index+1;
@@ -294,7 +285,7 @@ GridxListContact._setData(myData);
                 },
                 function(error){
                     // Display the error returned
-//NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 GridxListContact.Clear();
                 }
             );
