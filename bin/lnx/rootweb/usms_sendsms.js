@@ -1,6 +1,7 @@
 require(["dojo/ready",  
 "dojo/on",
 "dojo/data/ItemFileWriteStore",
+"dojo/store/Memory",
 'jspire/usms/GridxSMSInBuilder',
 'jspire/usms/GridxSMSOutBuilder',
   "gridx/Grid",
@@ -22,10 +23,14 @@ require(["dojo/ready",
 "dijit/popup",
 "dijit/form/CheckBox",
 "dijit/form/Select"
-], function(ready, on, ItemFileWriteStore, GridxSMSInBuilder, GridxSMSOutBuilder, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
+], function(ready, on, ItemFileWriteStore, Memory, GridxSMSInBuilder, GridxSMSOutBuilder, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
-         // logic that requires that Dojo is fully initialized should go here
+
 //dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
+dijit.byId('idtitlebar').set('label', 'Envio de mensajes de texto');
+dijit.byId('titleBarRemitente').set('label', 'Lista de teléfonos');
+dijit.byId('idTitleBarMsgToFree').set('label', 'Mensaje');
+dijit.byId('idBarTitleFormContact').set('label', 'Mensaje');
 //var NotifyArea = dijit.byId('id_notify_area');  
 var AccordionSendToContacts = dijit.byId('idAccordionSendToContacts');
 
@@ -159,7 +164,13 @@ MH.notification.notify({message: 'No hay remitentes seleccionados'});
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-  // var GridxListContact = jsGridx.addItemSelection('idGridxListContact');
+var DialogDeletAllContactPhones = dijit.byId('idDialogDeletAllContactPhones');
+DialogDeletAllContactPhones.innerHTML('<div style="height: auto; width: 200px;">Esta acción borrará todos los registros de la lista. Desea hacerlo?</div>');
+DialogDeletAllContactPhones.dijitOwner(dijit.byId('idBtnDeleteContactAll'), 'Click').on('onok', function(){
+GridxListToSend._setData([]);
+GridxListContact.Load();
+});
+
 
 var GridxListContact = dijit.byId('idGridxListContact');
 GridxListContact.RowSelected = [];
@@ -245,6 +256,9 @@ item.unique_id = index+1;
 
 myData.items = itemsEnd;
 
+
+
+
 GridxListToSend._setData(myData);
 }else{
 MH.notification.notify({message: 'No hay registros seleccionados'});
@@ -316,7 +330,7 @@ MH.notification.notify({message: 'Revise que los datos del mensaje sean correcto
 });
 
 dijit.byId('idDialogContactSendReset').innerHTML('<div style="height: auto; width: 200px;">Desea realmente eliminar los contactos seleccionados?</div>').dijitOwner(dijit.byId('idResetListContacts'), 'Click').on('onok', function(){
-GridxListToSend._setData({identifier: "unique_id", items: []});
+GridxListToSend._setData([]);
 GridxListContact.Load();
 });
 
@@ -325,7 +339,7 @@ dijit.byId('idDialogDeletContactToSend').innerHTML('<div style="height: auto; wi
 
 var items_ = [];
 var i = 1;
-IFWS_4.fetch({query:{} , onItem: function(item){
+IFWS_4.fetch({sort: [{attribute: "name", descending: false}], query:{} , onItem: function(item){
 
 if(!dojo.some(GridxListToSend.RowSelected, function(reg){ return reg == IFWS_4.getValue(item, 'unique_id'); })){
 item.unique_id = i;
@@ -335,7 +349,7 @@ i++;
 
 }});
 
-GridxListToSend._setData({identifier: "unique_id", items: items_});
+GridxListToSend._setData(items_);
 GridxListContact.Load();
 });
 
@@ -361,15 +375,24 @@ dojo.connect(GridxListToSend.select.row, 'onSelectionChange', function(selected)
 GridxListToSend.RowSelected = selected;
 });
 
-GridxListToSend._setData = function(data){
+GridxListToSend._setData = function(_items_){
+
+   var store = new Memory({ data: _items_});
+	var items_ = [];
+store.query(null, {
+        sort:[{ attribute: "name", descending: false }, { attribute: "phone", descending: false}]
+    }).forEach(function(r, i){
+r.unique_id = i+1;
+items_.push(r);
+});
+
 	IFWS_4.clearOnClose = true;
-	IFWS_4.data = data;
+	IFWS_4.data = {identifier: "unique_id", items: items_};
 	IFWS_4.close();
 		GridxListToSend.store = null;
 		GridxListToSend.setStore(IFWS_4);
 
 AccordionSendToContacts.selectChild('idContentPaneSMSToSendContact', true);
-GridxListContact.ItemSelected = [];
 GridxListContact.Load();
 }
 
