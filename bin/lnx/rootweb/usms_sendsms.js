@@ -27,6 +27,8 @@ require(["dojo/ready",
          // logic that requires that Dojo is fully initialized should go here
 //dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
 //var NotifyArea = dijit.byId('id_notify_area');  
+var AccordionSendToContacts = dijit.byId('idAccordionSendToContacts');
+
 var MH = dijit.byId('idMH');
 var FormSMSFree = dijit.byId('idFormSMSFree');
 FormSMSFree.advanced.Provider.Provider.set('disabled', true);
@@ -69,9 +71,20 @@ smsD.phone = IFWS1.getValue(item, 'unique_id');
 smsD.idprovider = IFWS1.getValue(item, 'idprovider');
 smsD.idsim = IFWS1.getValue(item, 'idsim');
 
+PostSendSMS(smsD);
+
+}});
+
+}else{
+MH.notification.notify({message: 'Revise que los datos del mensaje sean correctos antes de intentar nuevamente'});
+}
+
+});
+
+var PostSendSMS = function(sms_){
 request.post('/fun_outgoing_new_xml.usms', {
    handleAs: "xml",
-data: smsD
+data: sms_
 }).then(function(response){
 
 var xmld = new RXml.getFromXhr(response, 'row');
@@ -83,34 +96,14 @@ MH.notification.notify({message: xmld.getStringFromB64(0, 'msg')});
 }, function(error){
 MH.notification.notify({message: error});
 });
-
-
-
-}});
-
-}else{
-MH.notification.notify({message: 'Revise que los datos del mensaje sean correctos antes de intentar nuevamente'});
 }
 
-});
+
+   var GridxPhonesF = jsGridx.addItemSelection('GridxPhonesFree');
+//var GridxPhonesF = dijit.byId('GridxPhonesFree');
 
 
-var GridxPhonesF = dijit.byId('GridxPhonesFree');
-GridxPhonesF.RowSelection = [];
 
-// Capturamos el evento onSelectionChange de la gridx 
-dojo.connect(GridxPhonesF.select.row, 'onSelectionChange', function(selected){
-GridxPhonesF.RowSelection = [];
-numsel = selected.length;
-var i = 0;
-while(i<numsel){
-GridxPhonesF.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
-GridxPhonesF.RowSelection[i] = GridxPhonesF.store.getValue(item, 'unique_id');
-} 
-});
-i++;
-}
-});
 
 var DialogFreeRemovePhone = dijit.byId('idDialogFreeRemovePhone');
 DialogFreeRemovePhone.innerHTML('<div style="height: auto; width: 150px;">Desea eliminar los remitentes seleccionados?</div>');
@@ -150,26 +143,48 @@ GridxPhonesF._setData = function(data){
 
 GridxPhonesF.Delete = function(){
 
-var num = GridxPhonesF.RowSelection.length;
+var num = GridxPhonesF.ItemSelected.length;
 
 if(num>0){
 i = 0;
 while(i < num){
-GridxPhonesF.store.fetch({query: {unique_id: GridxPhonesF.RowSelection[i]}, onItem: function(item){
-IFWS1.deleteItem(item);
+IFWS1.deleteItem(GridxPhonesF.ItemSelected[i]);
 IFWS1.save();
-} 
-});
-
 i++;
 }
+		GridxPhonesF.store = null;
+		GridxPhonesF.setStore(IFWS1);
+
 }else{
 MH.notification.notify({message: 'No hay remitentes seleccionados'});
 }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
-var GridxListContact = dijit.byId('idGridxListContact');	
+////////////////////////////////////////////////////////////////////////////////////////
+
+  // var GridxListContact = jsGridx.addItemSelection('idGridxListContact');
+
+var GridxListContact = dijit.byId('idGridxListContact');
+GridxListContact.RowSelected = [];
+
+dojo.connect(GridxListContact.select.row, 'onSelectionChange', function(selected){	
+GridxListContact.RowSelected = [];
+numsel = selected.length;
+//console.log('-> '+selected.toString());
+var i = 0;
+while(i<numsel){
+GridxListContact.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
+GridxListContact.RowSelected[i] = {idphone: GridxListContact.store.getValue(item, 'idphone'), name: GridxListContact.store.getValue(item, 'name'), phone: GridxListContact.store.getValue(item, 'phone')}
+//GridxListContact.RowSelected[i] = GridxListContact.store.getValue(item, 'idphone');
+} 
+});
+i++;
+}
+//console.log(GridxListContact.RowSelected.toString());
+});
+
+
 
 var TBoxSearchContactPhone = dijit.byId('idTBoxSearchContactPhone');
 TBoxSearchContactPhone.on('search', function(e){
@@ -180,7 +195,7 @@ if (GridxListContact) {
 
 		// Optionally change column structure on the grid
 		GridxListContact.setColumns([
-			{field:"unique_id", name: "#"},
+			{field:"unique_id", name: "#", width: '30px'},
 			{field:"name", name: "Nombre"},			
 			{field:"phone", name: "Teléfono"}
 		]);
@@ -189,7 +204,7 @@ GridxListContact.startup();
 
 
 GridxListContact.Clear= function(){
-GridxListContact.selected = [];
+GridxListContact.ItemSelected = [];
 GridxListContact._setData({identifier: "unique_id", items: []});
 }
 
@@ -204,34 +219,55 @@ GridxListContact._setData = function(data){
 }
 
 
+dijit.byId('idBtnAddContactPhone').on('Click', function(){
+if(GridxListContact.RowSelected.length>0){
+var myData = {identifier: "unique_id", items: []};
 
-GridxListContact.Delete = function(){
+var items = [];
+// En este bloque tomamos los datos ya existentes en la lista de envio y formamos un nuevo array
+IFWS_4.fetch({query:{} , onItem: function(item){
+idphone = IFWS_4.getValue(item, 'idphone');
+// Verificamos que el idphone exista
+if(idphone){
+items.push({idphone: idphone, name: IFWS_4.getValue(item, 'name'), phone: IFWS_4.getValue(item, 'phone')});
+}
+}
 
-var num = GridxListContact.RowSelection.length;
-
-if(num>0){
-i = 0;
-while(i < num){
-GridxListContact.store.fetch({query: {unique_id: GridxListContact.RowSelection[i]}, onItem: function(item){
-IFWS2.deleteItem(item);
-IFWS2.save();
-} 
 });
 
-i++;
+
+// Ahora agregamos a la lista de datos los nuevos seleccionados.
+GridxListContact.RowSelected.forEach(function(r){
+// Agregamos el registro r si aun no existe en items
+if(!dojo.some(items, function(item){ return item == r; })){
+items.push(r);
 }
+});
+
+//console.log(items);
+
+
+var itemsEnd = dojo.map(items, function(item, index){
+item.unique_id = index+1;
+    return item;
+});
+
+myData.items = itemsEnd;
+
+GridxListToSend._setData(myData);
 }else{
-MH.notification.notify({message: 'No hay remitentes seleccionados'});
-}
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 
+});
+
+
 GridxListContact.Load = function(){
-//NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
-GridxListContact.RowSelection = [];
+GridxListContact.RowSelected = [];
 
             // Request the text file
             request.post("fun_view_contacts_phones_with_search_xml.usms", {
-		data: {contact_phone_search: TBoxSearchContactPhone.get('value')},
+		data: {contact_phone_search: TBoxSearchContactPhone.get('value'), exclude_idphones: GridxListToSend.idphones().toString()},
             // Parse data from xml
             handleAs: "xml"
         }).then(
@@ -247,6 +283,7 @@ while(i<numrows){
 myData.items[i] = {
 unique_id:i+1,
 name: d.getStringFromB64(i, "name"),
+idphone: d.getNumber(i, "idphone"),
 phone: d.getStringFromB64(i, "phone")
 };
 i++;
@@ -264,7 +301,99 @@ GridxListContact.Clear();
 
 }
 
+var SMSFormContact = dijit.byId('idSMSFormContact');
+//SMSFormContact.advanced.Provider.Provider.set('disabled', true);
+//SMSFormContact.advanced.SIM.SIM.set('disabled', true);
 
+
+dijit.byId('idDialogContactSend').innerHTML('<div style="height: auto; width: 200px;">Desea enviar el mensaje de texto a los contactos listados?</div>').dijitOwner(dijit.byId('idBtnSendSMSContact'), 'Click').on('onok', function(){
+
+if(SMSFormContact.validate()){
+IFWS_4.fetch({query:{} , onItem: function(item){
+
+var s = SMSFormContact.get('values');
+s.idphone = IFWS_4.getValue(item, 'idphone');
+
+PostSendSMS(s);
+
+}});
+
+}else{
+MH.notification.notify({message: 'Revise que los datos del mensaje sean correctos antes de intentar nuevamente'});
+}
+
+});
+
+dijit.byId('idDialogContactSendReset').innerHTML('<div style="height: auto; width: 200px;">Desea realmente eliminar los contactos seleccionados?</div>').dijitOwner(dijit.byId('idResetListContacts'), 'Click').on('onok', function(){
+GridxListToSend._setData({identifier: "unique_id", items: []});
+GridxListContact.Load();
+});
+
+// Elimina los telefonos de contactos seleccionados de la lista de envio
+dijit.byId('idDialogDeletContactToSend').innerHTML('<div style="height: auto; width: 200px;">Está seguro de eliminar los contactos seleccionados?</div>').dijitOwner(dijit.byId('idBtnDeleteContact'), 'Click').on('onok', function(){
+
+var items_ = [];
+var i = 1;
+IFWS_4.fetch({query:{} , onItem: function(item){
+
+if(!dojo.some(GridxListToSend.RowSelected, function(reg){ return reg == IFWS_4.getValue(item, 'unique_id'); })){
+item.unique_id = i;
+items_.push(item);
+i++;
+}
+
+}});
+
+GridxListToSend._setData({identifier: "unique_id", items: items_});
+GridxListContact.Load();
+});
+
+
+
+
+   var GridxListToSend = dijit.byId('idGridxListToSend');
+
+if (GridxListToSend) {
+
+		// Optionally change column structure on the grid
+		GridxListToSend.setColumns([
+			{field:"unique_id", name: "#", width: '30px'},
+			{field:"name", name: "Nombre"},			
+			{field:"phone", name: "Teléfono"}
+		]);
+GridxListToSend.startup();
+}
+
+GridxListToSend.RowSelected = [];
+
+dojo.connect(GridxListToSend.select.row, 'onSelectionChange', function(selected){	
+GridxListToSend.RowSelected = selected;
+});
+
+GridxListToSend._setData = function(data){
+	IFWS_4.clearOnClose = true;
+	IFWS_4.data = data;
+	IFWS_4.close();
+		GridxListToSend.store = null;
+		GridxListToSend.setStore(IFWS_4);
+
+AccordionSendToContacts.selectChild('idContentPaneSMSToSendContact', true);
+GridxListContact.ItemSelected = [];
+GridxListContact.Load();
+}
+
+GridxListToSend.idphones = function(){
+var idphonesList = [];
+IFWS_4.fetch({query:{} , onItem: function(item){
+idphone = IFWS_4.getValue(item, 'idphone');
+if(idphone){
+idphonesList.push(idphone);
+}
+}
+
+});
+return idphonesList;
+}
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
