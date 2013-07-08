@@ -27,11 +27,10 @@ function HtmlDialogNotifications(msg, idform, idcall, idsms, idtext){
 return '<form id="'+idform+'" style="width: 250px;">   <label style="font-weight: bold;">'+msg+'</label>   <table border="0" style="border-collapse: collapse; table-layout: fixed; width: 100%; height: auto;">     <colgroup>       <col></col>       <col></col>     </colgroup>     <tbody>       <tr>         <td style="width: 75px;">           Llamar:</td>         <td>           <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="'+idcall+'" intermediateChanges="false" iconClass="dijitNoIcon"></input></td>       </tr>       <tr>         <td>           Enviar SMS:</td>         <td>           <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="'+idsms+'" intermediateChanges="false" iconClass="dijitNoIcon"></input></td>       </tr>       <tr>         <td>           Texto SMS:</td>         <td>           <textarea type="text" data-dojo-type="dijit/form/Textarea" id="'+idtext+'" intermediateChanges="false" rows="3" trim="false" uppercase="false" lowercase="false" propercase="false"></textarea></td>       </tr>     </tbody>   </table>   </form>';
 }
 
-
+var MH = dijit.byId('id_usaga_menu_header');
 
  dijit.byId('id_account_titlebar').set('label', 'Abonados');
      
-var NotifyArea = dijit.byId('id_notify_area');  
 var Account = dijit.byId('id_account_basic_data');
 var Location = dijit.byId('id_account_location_widget');
 var LocationMB = dijit.byId('id_account_location_menubar');  
@@ -52,12 +51,12 @@ dijit.byId('id_account_event_titlebar').set('label', 'Eventos');
 
 
 Location.on('notify_message', function(m){
-NotifyArea.notify({message: m.message});
+MH.notification.notify({message: m.message});
 });
 
 var ButtonMap = LocationMB.addButton('OpenStreeMap', 'dijitNoIcon', true, false);
 ButtonMap.on('Click', function(){
-NotifyArea.notify({message: 'Para ver el mapa es necesario que tenga conexión a internet.'});
+MH.notification.notify({message: 'Para ver el mapa es necesario que tenga conexión a internet.'});
 window.open(Location.address.values().geourl,'_blank');
 });
 
@@ -82,7 +81,7 @@ Account.set('idaddress', l.idaddress);
 
 var BodyApp = dojo.byId('myapp');
 BodyApp.adjustElements = function(){
-h = dojoWindow.getBox().h - domStyle.get('id_usaga_menu_header', 'height') - domStyle.get('id_account_titlebar', 'height');
+h = dojoWindow.getBox().h - domStyle.get(MH.domNode, 'height') - domStyle.get('id_account_titlebar', 'height');
 
 domStyle.set('id_usaga_account', 'height', h+'px');
 //console.log('window on resize to: '+h);
@@ -94,7 +93,7 @@ BodyApp.adjustElements();
  })
 
 Account.on('notify_message', function(n){
-NotifyArea.notify({message: n.message});
+MH.notification.notify({message: n.message});
 });
 Account.on('onloadaccount', function(x){
 if(x.idaccount > 0){
@@ -124,7 +123,7 @@ dijit.byId('ContentPaneEventos').attr('disabled',  disabled);
 
 // ### SECCION CONTACTOS ###
 ContactW.on('notify_message', function(m){
-NotifyArea.notify({message: m.message});
+MH.notification.notify({message: m.message});
 });
 
 ContactW.on('onloadcontact', function(e){
@@ -186,7 +185,7 @@ GridxA.emit('notify_message', {message: error});
             );
 
 }else{
-NotifyArea.notify({message: 'No hay contactos seleccionados para aplicar los cambios'});
+GridxA.emit('notify_message', {message: 'No hay contactos seleccionados para aplicar los cambios'});
 }
 
 }
@@ -206,7 +205,7 @@ i++;
 });
 
 GridxA.on('notify_message', function(m){
-NotifyArea.notify({message: m.message});
+MH.notification.notify({message: m.message});
 });
 
 // Captura el evento cuando se hace click en una fila
@@ -337,7 +336,7 @@ GridxB.emit('notify_message', {message: error});
             );
 
 }else{
-NotifyArea.notify({message: 'No hay teléfonos seleccionados para aplicar los cambios'});
+MH.notification.notify({message: 'No hay teléfonos seleccionados para aplicar los cambios'});
 }
 
 }
@@ -357,7 +356,7 @@ i++;
 });
 
 GridxB.on('notify_message', function(m){
-NotifyArea.notify({message: m.message});
+MH.notification.notify({message: m.message});
 });
 
 GridxB.setColumns([
@@ -575,7 +574,7 @@ NotifyMSG.notify({message: error});
 }
 
 UserW.on('notify_message', function(m){
-NotifyArea.notify({message: m.message});
+MH.notification.notify({message: m.message});
 });
 
 UserW.on('onloaduser', function(e){
@@ -885,7 +884,7 @@ GridxE.Load();
 
 
 //# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
-NotifyArea.notify({message: 'uSAGA - Abonados'});
+MH.notification.notify({message: 'uSAGA - Abonados'});
 //Se ajusta al tamaño de la pantalla actual
 BodyApp.adjustElements();
 Account.DisabledContentPanes(true);
