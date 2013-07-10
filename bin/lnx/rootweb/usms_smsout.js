@@ -27,6 +27,13 @@ dijit.byId('idTitleBar').set('label', 'Mensajes salientes');
 
 var myGridX = SMSOutBuilder.Build(dijit.byId("idgridxtable"), ItemFileReadStore_1);
 
+var MH = dijit.byId('idMH');
+
+myGridX.on('onnotify', function(m){
+MH.notification.notify({message: m.msg});
+});
+
+
 var FromToSelect = dijit.byId('idToFrom');
 FromToSelect.on('onget', function(e){
 myGridX.Load(e.From, e.To, e.Rows);
