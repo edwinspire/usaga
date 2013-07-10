@@ -23,7 +23,13 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
+var MH = dijit.byId('idMH');
 var myGridX = SMSInBuilder.Build(dijit.byId("idgridxtable"), ItemFileReadStore_1);
+
+myGridX.on('onnotify', function(m){
+MH.notification.notify({message: m.msg});
+});
+
 
 var FromToSelect = dijit.byId('idFromToSelect');
 FromToSelect.on('onget', function(e){

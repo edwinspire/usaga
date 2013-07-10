@@ -24,7 +24,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
-var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');  
 
 var GridxTable = dijit.byId('gridxt');
 GridxTable.IdToDelete = [];
@@ -77,15 +77,15 @@ data: {idports: GridxTable.IdToDelete.toString()}
 var xmld = new RXml.getFromXhr(response, 'row');
 //alert(xmld.getStringFromB64(0, 'message'));
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'message')});
 }
 GridxTable.Load();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 
 }
@@ -93,7 +93,7 @@ NotifyArea.notify({message: 'No hay registros seleccionados'});
 
 
 GridxTable.Load = function(){
-//NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
+//MH.notification.notify({message: 'Cargando datos. Por favor espere...'});
 GridxTable.IdToDelete = [];
 
             // Request the text file
@@ -134,7 +134,7 @@ GridxTable._setData(myData);
                 },
                 function(error){
                     // Display the error returned
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 GridxTable.Clear();
                 }
             );
@@ -152,11 +152,11 @@ data: item
 var xmld = new RXml.getFromXhr(response, 'row');
 //alert(xmld.getStringFromB64(0, 'message'));
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
 GridxTable.Load();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }
@@ -181,7 +181,7 @@ myDialogDelete.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
 if(GridxTable.IdToDelete.length > 0){
 GridxTable.Delete();
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 });
 
