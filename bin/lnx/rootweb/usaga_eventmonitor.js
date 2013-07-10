@@ -17,7 +17,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var MH = dijit,byId('idMH');
+var MH = dijit.byId('idMH');
 var LastIdEvent = 0;
 
 	var myGridX = dijit.byId("usaga.event.monitor");
