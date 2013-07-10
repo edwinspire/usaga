@@ -39,23 +39,16 @@ dijit.byId('id_titlebar_gridx_contacts').set('label', 'Contáctos');
 ///// BASIC /////
 // Account basic elements
 var GridListContact = dijit.byId("usms.contacts.gridx");
-var NotifyMSG = dijit.byId('notify');
+var MH = dijit.byId('idMH');
 
 var TBSearchContact = dijit.byId('idTBSearchContact');
 TBSearchContact.on('search', function(e){
 GridListContact.Load();
 });
 
-/*
-TextBoxSearchContact.on('Change', function(){
-clearTimeout(myTimeoutSearch);
-myTimeoutSearch=setTimeout(function(){GridListContact.Load()},1000);
-});
-*/
-
 var CLocation = dijit.byId('idwlocationcontact');
 CLocation.on('onnotify', function(e){
-NotifyMSG.notify({message: e.message});
+MH.notification.notify({message: e.message});
 });
 CLocation.on('onsave', function(e){
 if(e.idaddress != CDWidget.get('idaddress')){
@@ -65,7 +58,7 @@ CDWidget.set('idaddress', e.idaddress);
 
 var CPLocation = dijit.byId('idwlocationtelf');
 CPLocation.on('onnotify', function(e){
-NotifyMSG.notify({message: e.message});
+MH.notification.notify({message: e.message});
 });
 CPLocation.on('onsave', function(e){
 if(e.idaddress != CPDWidget.get('idaddress')){
@@ -88,7 +81,7 @@ ContentCDW.set('title', 'Datos: [---]');
 });
 
 CDWidget.on('onnotify', function(e){
-NotifyMSG.notify({message: e.msg});
+MH.notification.notify({message: e.msg});
 });
 
 CDWidget.on('onsavecontact', function(data){
@@ -102,7 +95,7 @@ GridListContact.Load();
 
 var CPDWidget = dijit.byId('PhoneData');
 CPDWidget.on('onnotify', function(e){
-NotifyMSG.notify({message: e.msg});
+MH.notification.notify({message: e.msg});
 });
 CPDWidget.on('onloadphone', function(data){
 CPLocation.set('idaddress', data.idaddress);
