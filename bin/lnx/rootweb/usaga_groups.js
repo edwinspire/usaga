@@ -29,7 +29,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');  
 
 var ObjectTable = {
 IdToDelete: [] 
@@ -65,7 +65,7 @@ myDialogDelete.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
 if(ObjectTable.IdToDelete.length > 0){
 Delete();
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 });
 
@@ -112,11 +112,11 @@ data: {idgroups: ObjectTable.IdToDelete.toString()}
 var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
 LoadGrid();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }
@@ -132,11 +132,11 @@ data: {idgroup: item.idgroup,  enable: item.enable, name: item.name, note: item.
 var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'outpgmsg')});
 }
 LoadGrid();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }
@@ -180,7 +180,7 @@ ItemFileWriteStore_1.clearOnClose = true;
                 },
                 function(error){
                     // Display the error returned
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
                 }
             );
 }
