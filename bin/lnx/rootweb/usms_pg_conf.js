@@ -3,7 +3,7 @@ require(["dojo/ready",
 "jspire/request/Xml"], function(ready, R, RXml){
      ready(function(){
 
-var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');  
  dijit.byId('id_titlebar').set('label', 'Acceso a base de datos PostgreSQL');
 
 dojo.connect(dojo.byId('btn_pg_get'), 'onclick', function(){
@@ -39,11 +39,11 @@ data: data_
 var xmld = new RXml.getFromXhr(response, 'row');
 
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'message')});
 }
 Load();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }
@@ -70,13 +70,13 @@ if(d.length > 0){
    dijit.byId('db').set('value', d.getStringFromB64(0, "db"));  
    dijit.byId('note').set('value', d.getStringFromB64(0, "note"));
 }else{
-NotifyArea.notify({message: 'Los datos no se cargaron correctamente'});
+MH.notification.notify({message: 'Los datos no se cargaron correctamente'});
 }
 
                 },
                 function(error){
                     // Display the error returned
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
                 }
             );
 
@@ -92,16 +92,16 @@ function Test(){
 var d = new RXml.getFromXhr(response, 'row');
 
 if(d.length > 0){
-NotifyArea.notify({message: d.getStringFromB64(0, 'message')});
+MH.notification.notify({message: d.getStringFromB64(0, 'message')});
 }else{
-NotifyArea.notify({message: 'Los datos no se cargaron correctamente'});
+MH.notification.notify({message: 'Los datos no se cargaron correctamente'});
 }
 
 
                 },
                 function(error){
                     // Display the error returned
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
                 }
             );
 
