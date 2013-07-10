@@ -28,6 +28,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
+var MH = dijit.byId("idMH");
 /////////////////
 ///// BASIC /////
 // Account basic elements
@@ -36,18 +37,16 @@ jsDTb.addGetDateFunction(dijit.byId('dateend'));
 
 var GridCalls = dijit.byId('gridxcallin');
 
+GridCalls.on('onnotify', function(m){
+MH.notification.notify({message: m.message});
+});
+
 dojo.connect(dijit.byId('buttonsend'), 'onClick', function(e){
 GridCalls.Load();
 });
 
 	if (GridCalls) {
-/*
-// Captura el evento cuando se hace click en una fila
-dojo.connect(GridCalls, 'onRowClick', function(event){
-//alert(this.cell(event.rowId, 2, true).data());
-CP.IdPhone = this.cell(event.rowId, 2, true).data();
-});
-*/
+
 		// Optionally change column structure on the grid
 		GridCalls.setColumns([
 			{field:"idincall", name: "id", width: '20px'},
