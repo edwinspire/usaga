@@ -23,7 +23,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var NotifyMSG = dijit.byId('notify');
+var MH = dijit.byId('idMH');
 
 var gridxprovider = dijit.byId('gridxprovider');
 gridxprovider.selected = [];
@@ -43,7 +43,7 @@ dNew.dijitOwner(dijit.byId('new'), 'Click').on('onok', function(){
 });
 
 gridxprovider.on('onnotify', function(m){
-NotifyMSG.notify({message: m.msg});
+MH.notification.notify({message: m.msg});
 });
 
 	if (gridxprovider) {
@@ -83,7 +83,7 @@ gridxprovider.emit('notify_message', {message: error});
             );
 
 }else{
-NotifyArea.notify({message: 'No hay teléfonos seleccionados para aplicar los cambios'});
+gridxprovider.emit('notify_message', {message: 'No hay teléfonos seleccionados para aplicar los cambios'}); 
 }
 }
 
