@@ -17,8 +17,8 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
+var MH = dijit,byId('idMH');
 var LastIdEvent = 0;
-var NotifyArea = dijit.byId('id_notify_area');  
 
 	var myGridX = dijit.byId("usaga.event.monitor");
 	if (myGridX) {
@@ -90,11 +90,11 @@ ItemFileReadStore_1.clearOnClose = true;
 		myGridX.setStore(ItemFileReadStore_1);
 myGridX.resize();
 
-NotifyArea.notify({message: 'Nuevos eventos encontrados'});
+MH.notification.notify({message: 'Nuevos eventos encontrados'});
 
 },
 onError: function(e){
-NotifyArea.notify({message: e});
+MH.notification.notify({message: e});
 }
 });
 
@@ -122,7 +122,7 @@ LoadMonitorEvents();
 
 },
 onError: function(e){
-NotifyArea.notify({message: e});
+MH.notification.notify({message: e});
 }
 });
 
