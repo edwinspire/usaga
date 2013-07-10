@@ -34,7 +34,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 dijit.byId('id_titlebar').set('label', 'Puertos');
-var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');  
 
 
 var GridxTable = dijit.byId('gridxt');
@@ -84,15 +84,15 @@ data: {idports: GridxTable.IdToDelete.toString()}
 var xmld = new RXml.getFromXhr(response, 'row');
 //alert(xmld.getStringFromB64(0, 'message'));
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'message')});
 }
 GridxTable.Load();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 
 }
@@ -100,7 +100,7 @@ NotifyArea.notify({message: 'No hay registros seleccionados'});
 
 
 GridxTable.Load = function(){
-NotifyArea.notify({message: 'Cargando datos. Por favor espere...'});
+MH.notification.notify({message: 'Cargando datos. Por favor espere...'});
 GridxTable.IdToDelete = [];
 
             // Request the text file
@@ -137,7 +137,7 @@ GridxTable._setData(myData);
                 },
                 function(error){
                     // Display the error returned
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 GridxTable.Clear();
                 }
             );
@@ -155,12 +155,12 @@ data: item
 var xmld = new RXml.getFromXhr(response, 'row');
 //alert(xmld.getStringFromB64(0, 'message'));
 if(xmld.length > 0){
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'message')});
+MH.notification.notify({message: xmld.getStringFromB64(0, 'message')});
 }
 dijit.byId('id_port_form').reset();
 GridxTable.Load();
 }, function(error){
-NotifyArea.notify({message: error});
+MH.notification.notify({message: error});
 });
 
 }
@@ -178,7 +178,7 @@ if(dijit.byId('id_port_form').validate()){
 GridxTable.SaveItem({idport: 0, baudrate: dijit.byId('id_port_baudrate').get('value'), databits: dijit.byId('id_port_databits').get('value'), enable: dijit.byId('id_port_enable').get('checked'), handshake: dijit.byId('id_port_handshake').get('value'), note: dijit.byId('id_port_note').get('value'), port: dijit.byId('id_port_port').get('value'), stopbits: dijit.byId('id_port_stopbits').get('value')});
 
 }else{
-NotifyArea.notify({message: 'Los datos no han sido completados correctamente'});
+MH.notification.notify({message: 'Los datos no han sido completados correctamente'});
 }
 
 });
@@ -195,7 +195,7 @@ myDialogDelete.dijitOwner(dijit.byId('delete'), 'Click').on('onok', function(){
 if(GridxTable.IdToDelete.length > 0){
 GridxTable.Delete();
 }else{
-NotifyArea.notify({message: 'No hay registros seleccionados'});
+MH.notification.notify({message: 'No hay registros seleccionados'});
 }
 });
 
