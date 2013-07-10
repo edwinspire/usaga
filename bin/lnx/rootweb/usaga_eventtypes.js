@@ -25,7 +25,7 @@ require(["dojo/ready",
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
-var NotifyArea = dijit.byId('id_notify_area');  
+var MH = dijit.byId('idMH');  
 
 dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
 SaveData(item);
@@ -61,7 +61,7 @@ var xmld = new RXml.getFromXhr(dataX, 'row');
 
 if(xmld.length > 0){
 
-NotifyArea.notify({message: xmld.getStringFromB64(0, 'outpgmsg')}); 
+MH.notification.notify({message: xmld.getStringFromB64(0, 'outpgmsg')}); 
 
 
 }
@@ -70,7 +70,7 @@ LoadGrid();
 
     },
     error: function(errorx){
-NotifyArea.notify({message: errorx}); 
+MH.notification.notify({message: errorx}); 
     }
   }
   // Call the asynchronous xhrGet
@@ -110,7 +110,7 @@ ItemFileWriteStore_1.clearOnClose = true;
 		GridxTable.setStore(ItemFileWriteStore_1);
 },
 onError: function(e){
-NotifyArea.notify({message: e}); 
+MH.notification.notify({message: e}); 
 }
 });
 
