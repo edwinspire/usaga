@@ -127,7 +127,6 @@ MH.notification.notify({message: e});
 });
 
 }
-
 		
 window.setInterval(CheckLastIdEvent, 4000);
 

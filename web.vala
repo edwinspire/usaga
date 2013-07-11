@@ -267,9 +267,9 @@ response = response_fun_view_account_contacts_address_xml(request);
 break;
 
 default:
-      response.Header.Status = StatusCode.NOT_FOUND;
+      response.Status = StatusCode.NOT_FOUND;
  response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
-  response.Header.ContentType = "text/html";
+  response.Header["Content-Type"] = "text/html";
 this.serve_response( response, dos );
  break;
 }
@@ -279,8 +279,8 @@ return false;
 
 private uHttp.Response response_fun_view_idgroup_name_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 GroupsTable Tabla = new GroupsTable();
 Tabla.GetParamCnx();
@@ -291,8 +291,8 @@ return Retorno;
 
 private uHttp.Response response_fun_groups_remove_selected_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 GroupsTable Tabla = new GroupsTable();
 Tabla.GetParamCnx();
@@ -309,8 +309,8 @@ return Retorno;
 
 private uHttp.Response response_fun_groups_edit_xml_from_hashmap(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 GroupsTable Tabla = new GroupsTable();
 Tabla.GetParamCnx();
@@ -320,8 +320,8 @@ return Retorno;
 
 private uHttp.Response response_fun_view_groups_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 GroupsTable Tabla = new GroupsTable();
 Tabla.GetParamCnx();
@@ -332,8 +332,8 @@ return Retorno;
 private static uHttp.Response ResponseEventTypesEditXml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 EventTypesTable Tabla = new EventTypesTable();
 Tabla.GetParamCnx();
@@ -346,8 +346,8 @@ return Retorno;
 private static uHttp.Response ResponseViewEventTypesXml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 EventTypesTable Tabla = new EventTypesTable();
 Tabla.GetParamCnx();
@@ -361,8 +361,8 @@ return Retorno;
 private static uHttp.Response response_fun_account_address_edit_xml_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
@@ -375,8 +375,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountNotificationsTable Tabla = new AccountNotificationsTable();
 Tabla.GetParamCnx();
@@ -386,8 +386,8 @@ return Retorno;
 
 private uHttp.Response ResponseEventsLastIdXml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 EventTable Tabla = new EventTable();
 Tabla.GetParamCnx();
@@ -398,8 +398,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountEvents(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 EventTable Tabla = new EventTable();
 Tabla.GetParamCnx();
@@ -428,8 +428,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountNotificationApplySelected(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountNotificationsTable Tabla = new AccountNotificationsTable();
 Tabla.GetParamCnx();
@@ -441,8 +441,8 @@ return Retorno;
 private uHttp.Response ResponseNotificationTemplatesEdit(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int id = 0;
 string message = "";
@@ -476,8 +476,8 @@ return Retorno;
 
 private uHttp.Response response_fun_view_account_contacts_address_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
@@ -493,8 +493,8 @@ return Retorno;
 
 private uHttp.Response ResponseViewNotificationTemplates(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 NotificationTemplates Tabla = new NotificationTemplates();
 Tabla.GetParamCnx();
@@ -504,8 +504,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountNotificationsTable(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountNotificationsTable Tabla = new AccountNotificationsTable();
 Tabla.GetParamCnx();
@@ -516,8 +516,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountContactsTable(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountContactsTable Tabla = new AccountContactsTable();
 Tabla.GetParamCnx();
@@ -528,8 +528,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountContactPhonesNotifEventTypeToGridx(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 int idaccount = 0;
 int idphone = 0;
 if(request.Query.has_key("idaccount") && request.Query.has_key("idphone")){
@@ -545,8 +545,8 @@ return Retorno;
 
 private uHttp.Response ResponseAccountContactPhonesNotifToGridx(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 int idcontact = 0;
 int idaccount = 0;
 if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")){
@@ -564,8 +564,8 @@ return Retorno;
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetAccountContact(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 int idcontact = 0;
 int idaccount = 0;
 if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")){
@@ -581,8 +581,8 @@ return Retorno;
 private uHttp.Response ResponseAccountContactsToGridx(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int id = 0;
 if(request.Query.has_key("idaccount")){
@@ -602,8 +602,8 @@ return Retorno;
 private uHttp.Response request_fun_account_phones_trigger_alarm_table_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 Tabla.GetParamCnx();
@@ -616,8 +616,8 @@ return Retorno;
 private uHttp.Response ResponseGetEventsMonitor(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 EventTable Tabla = new EventTable();
 Tabla.GetParamCnx();
@@ -632,8 +632,8 @@ return Retorno;
 private uHttp.Response ResponseAccountSaveTable(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
@@ -651,8 +651,8 @@ return Retorno;
 private uHttp.Response ResponseAccountUserAddTable(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/plain";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/plain";
+    Retorno.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
@@ -668,8 +668,8 @@ return Retorno;
 private uHttp.Response fun_account_users_table_xml_from_hashmap(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
@@ -683,8 +683,8 @@ return Retorno;
 private uHttp.Response ResponseGetAccountPhonesTrigger(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 Tabla.GetParamCnx();
@@ -697,8 +697,8 @@ return Retorno;
 private uHttp.Response ResponseAccountsNamesToSelectBox(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 AccountTable Tabla = new AccountTable();
 Tabla.GetParamCnx();
@@ -712,8 +712,8 @@ return Retorno;
 private uHttp.Response request_fun_view_account_users_xml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int id = 0;
 if(request.Query.has_key("idaccount")){
@@ -731,8 +731,8 @@ return Retorno;
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response ResponseGetAccount(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 //print("ResponseGetAccount\n");
 int id = 0;
 
@@ -750,8 +750,8 @@ return Retorno;
 
 private uHttp.Response response_usaga_account_map(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/html";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/html";
+    Retorno.Status = StatusCode.OK;
 
 int idaccount = 0;
 
@@ -768,8 +768,8 @@ return Retorno;
 private uHttp.Response response_fun_view_account_location_byid_xml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int id = 0;
 if(request.Query.has_key("idaccount")){
@@ -786,8 +786,8 @@ return Retorno;
 private uHttp.Response request_fun_view_account_unregistered_contacts_xml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int idaccount = 0;
 if(request.Query.has_key("idaccount")){
@@ -805,8 +805,8 @@ return Retorno;
 private uHttp.Response request_fun_view_account_unregistered_users_xml(Request request){
 
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 
 int idaccount = 0;
 if(request.Query.has_key("idaccount")){
@@ -824,8 +824,8 @@ return Retorno;
 // Recibe los datos y los actualiza en la base de datos.
 private uHttp.Response request_fun_view_account_user_byidaccountidcontact_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
-  Retorno.Header.ContentType = "text/xml";
-    Retorno.Header.Status = StatusCode.OK;
+  Retorno.Header["Content-Type"] = "text/xml";
+    Retorno.Status = StatusCode.OK;
 //print("ResponseGetAccount\n");
 int idcontact = 0;
 int idaccount = 0;
