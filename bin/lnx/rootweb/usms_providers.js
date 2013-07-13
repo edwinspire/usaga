@@ -64,28 +64,28 @@ gridxprovider.startup();
 gridxprovider.delete = function(){
 if(gridxprovider.selected.length>0){
 
-   request.post('provider_delete.usms', {
+   request.post('fun_provider_delete_selection_xml.usms', {
 		data: {idproviders: gridxprovider.selected.toString()},
             handleAs: "xml"
         }).then(
                 function(response){
 
 var d = new RXml.getFromXhr(response, 'row');
-
+//console.log(d.length);
 if(d.length > 0){
-gridxprovider.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
+gridxprovider.emit('onnotify', {msg: d.getStringFromB64(0, 'outpgmsg')}); 
 }
 
 gridxprovider._Load();
                 },
                 function(error){
                     // Display the error returned
-gridxprovider.emit('notify_message', {message: error}); 
+gridxprovider.emit('onnotify', {msg: error}); 
                 }
             );
 
 }else{
-gridxprovider.emit('notify_message', {message: 'No hay teléfonos seleccionados para aplicar los cambios'}); 
+gridxprovider.emit('onnotify', {msg: 'No hay teléfonos seleccionados para aplicar los cambios'}); 
 }
 }
 

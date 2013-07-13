@@ -32,11 +32,11 @@ t.emit('onno', {});
 t.close();
     });
 
-
+/*
 t.on('KeyPress', function(k){
 console.log(k);
 });
-
+*/
 
 
 },
