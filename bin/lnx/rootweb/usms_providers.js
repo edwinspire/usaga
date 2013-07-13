@@ -51,8 +51,8 @@ MH.notification.notify({message: m.msg});
 		// Optionally change column structure on the grid
 		gridxprovider.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable", name: "*", width: '20px', editable: 'true'},
-			{field:"cimi", name: "cimi", editable: 'true'},
+			{field:"enable", name: "*", width: '25px', editable: 'true'},
+			//{field:"cimi", name: "cimi", editable: 'true'},
 			{field:"name", name: "Proveedor", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
 		]);
@@ -128,7 +128,7 @@ while(i<numrows){
 myData.items[i] = {
 unique_id:i+1,
 idprovider: d.getNumber(i, "idprovider"),
-cimi: d.getStringFromB64(i, "cimi"),
+//cimi: d.getStringFromB64(i, "cimi"),
 enable: d.getBool(i, "enable"),
 name: d.getStringFromB64(i, "name"),
 note: d.getStringFromB64(i, "note"),
@@ -200,7 +200,7 @@ gridxprovider.emit('onnotify', {msg: error});
 }
 
 // Se hace este timeout porque la pagina demora en crearse y al cargar no muestra nada.
-setTimeout(gridxprovider._Load, 2000);
+//setTimeout(gridxprovider._Load, 2000);
 
 
      });
