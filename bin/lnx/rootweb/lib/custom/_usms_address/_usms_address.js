@@ -8,7 +8,7 @@ define(['dojo/_base/declare',
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
-geourl: 'http://edwinspire.com',
+//geourl: 'http://edwinspire.com',
 reset: function(){
 this.resetForm();
 this.idaddress = 0;
@@ -57,8 +57,8 @@ f8: t.idf8.get('value'),
 f9: t.idf9.get('value'),
 f10: t.idf10.get('value'),
 ts: t.ts,
-idlocation: t.idlocation,
-geourl: t.geourl
+idlocation: t.idlocation
+//geourl: t.geourl
 };
 
 },
@@ -99,7 +99,7 @@ t.idf7.set('value', d.getStringFromB64(i, 'field7'));
 t.idf8.set('value', d.getStringFromB64(i, 'field8'));
 t.idf9.set('value', d.getStringFromB64(i, 'field9'));
 t.idf10.set('value', d.getStringFromB64(i, 'field10'));
-t.geourl = d.getStringFromB64(i, 'geourl');
+//t.geourl = d.getStringFromB64(i, 'geourl');
 t.ts = d.getString(i, 'ts');
 t.idlocation = d.getInt(i, 'idlocation');
 }else{

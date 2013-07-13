@@ -54,11 +54,13 @@ Location.on('notify_message', function(m){
 MH.notification.notify({message: m.message});
 });
 
+/*
 var ButtonMap = LocationMB.addButton('OpenStreeMap', 'dijitNoIcon', true, false);
 ButtonMap.on('Click', function(){
 MH.notification.notify({message: 'Para ver el mapa es necesario que tenga conexión a internet.'});
 window.open(Location.address.values().geourl,'_blank');
 });
+*/
 
 LocationMB.on('onnew', function(){
 Location.set('idaddress', 0);
