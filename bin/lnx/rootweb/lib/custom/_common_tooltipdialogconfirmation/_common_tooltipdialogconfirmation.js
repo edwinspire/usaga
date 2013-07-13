@@ -19,18 +19,25 @@ return this;
 postCreate: function(){
     // Get a DOM node reference for the root of our widget
 //var domNode = this.domNode;
-
+var t = this;
 // Inserta un texto de fabrica
-this.innerHTML('<div style="width: 100px;"><label>Est&aacute; seguro que desea realizar esta acci&oacute;n?</label></div>');
+t.innerHTML('<div style="width: 100px;"><label>Est&aacute; seguro que desea realizar esta acci&oacute;n?</label></div>');
  
-    this.connect(this.byes, "onClick", function(e) {
-this.emit('onok', {});
-this.close();
+    t.connect(t.byes, "onClick", function(e) {
+t.emit('onok', {});
+t.close();
     });
-    this.connect(this.bno, "onClick", function(e) {
-this.emit('onno', {});
-this.close();
+    t.connect(t.bno, "onClick", function(e) {
+t.emit('onno', {});
+t.close();
     });
+
+
+t.on('KeyPress', function(k){
+console.log(k);
+});
+
+
 
 },
 close: function(){

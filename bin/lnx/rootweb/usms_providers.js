@@ -9,6 +9,7 @@ require(["dojo/ready",
 "dojo/on",
 'dojo/request', 
 'jspire/request/Xml',
+'jspire/Gridx',
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
   "gridx/core/model/cache/Async",
@@ -19,7 +20,7 @@ require(["dojo/ready",
 "gridx/modules/VirtualVScroller",
 "dojox/grid/cells/dijit",
 "dojox/data/XmlStore"
-], function(ready, on, request, RXml, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
+], function(ready, on, request, RXml, jsGridx, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 
@@ -35,11 +36,12 @@ gridxprovider.delete();
 var dNew = dijit.byId('id_dialog_new');
 dNew.byes.set('label', 'Aplicar');
 dNew.bno.set('label', 'Cancelar');
-dNew.innerHTML('jjjjjjjjjjjjjjjjjjjj');
+dNew.innerHTML('  <form id="NewForm" style="width: 300px;">   <label style="margin-right: 3px;">     Habilitado:</label>   <input id="NewEnable" type="checkbox" data-dojo-type="dijit/form/CheckBox"></input>   <label style="margin-left: 3px; margin-right: 8px;">     Nombre:</label>   <input id="NewName" type="text" data-dojo-type="dijit/form/TextBox"></input> </form>');
 
 
 dNew.dijitOwner(dijit.byId('new'), 'Click').on('onok', function(){
-//gridxprovider.ApplyNotifyToSelection();
+gridxprovider._Save({idprovider: 0, enable: dijit.byId('NewEnable').get('checked'), name: dijit.byId('NewName').get('value'), note: ''});
+dojo.byId('NewForm').reset();
 });
 
 gridxprovider.on('onnotify', function(m){
@@ -51,7 +53,7 @@ MH.notification.notify({message: m.msg});
 		// Optionally change column structure on the grid
 		gridxprovider.setColumns([
 			{field:"unique_id", name: "#", width: '20px'},
-			{field:"enable", name: "*", width: '25px', editable: 'true'},
+			{field:"enable", name: "enable", width: '40px', editable: true, editor: "dijit.form.CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			//{field:"cimi", name: "cimi", editable: 'true'},
 			{field:"name", name: "Proveedor", editable: 'true'},
 			{field:"note", name: "Nota" , editable: 'true'}
@@ -124,31 +126,28 @@ var myData = {identifier: "unique_id", items: []};
 var i = 0;
 numrows = d.length;
 if(numrows > 0){
+
 while(i<numrows){
-myData.items[i] = {
+var idp = d.getNumber(i, "idprovider");
+//console.log(idp);
+if(idp > 0){
+
+myData.items.push({
 unique_id:i+1,
-idprovider: d.getNumber(i, "idprovider"),
+idprovider: idp,
 //cimi: d.getStringFromB64(i, "cimi"),
 enable: d.getBool(i, "enable"),
 name: d.getStringFromB64(i, "name"),
 note: d.getStringFromB64(i, "note"),
 ts: d.getString(i, "ts")
-};
+});
+}
 i++;
 }
+
 }
 
-/*
-myData.items[i] = {
-unique_id:i+1,
-idprovider: 0,
-cimi: '',
-enable: true,
-name: '',
-note: '',
-ts: '1990-01-01'
-};
-*/
+
 
 ItemFileWriteStore_1.clearOnClose = true;
 	ItemFileWriteStore_1.data = myData;
@@ -193,6 +192,7 @@ gridxprovider._Load();
                 function(error){
                     // Display the error returned
 gridxprovider.emit('onnotify', {msg: error});
+gridxprovider._Load();
                 }
             );
 
