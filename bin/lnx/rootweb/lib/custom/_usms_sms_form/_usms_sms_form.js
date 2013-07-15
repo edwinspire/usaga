@@ -22,6 +22,13 @@ t.LengMsg.innerHTML = Math.ceil(l/160);
 DTBox.addGetDateFunction(t.date);
 t.reset();
 
+setInterval(function(){
+if(t._dateInThePast()){
+t.resetDateTime();
+}
+}, 30000);
+
+
 },
 validate: function(){
 var v = false;
@@ -33,11 +40,27 @@ v = true;
 
 return v;
 },
+_dateInThePast: function(){
+var t = this;
+is = false;
+now = new Date();
+sel = new Date(t.get('datetime'));
+if(now > sel){
+is = true;
+}
+return is;
+},
+_getDatetimeAttr: function(){
+return this.date.toISOString()+'T'+this.time.value.toLocaleTimeString();
+},
 _getValuesAttr: function(){
 var t = this;
+if(t._dateInThePast()){
+t.resetDateTime();
+}
 var dat = t.advanced.get('values');
 //dat.date = t.date._getDate()+''+t.time.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
-dat.date = t.date._getDate()+'T'+t.time.value.toLocaleTimeString();
+dat.date = t.get('datetime');
 dat.message = t.message.get('value');
 return dat;
 },
@@ -45,6 +68,9 @@ reset: function(){
 var t = this;
 t.Formulario.reset();
 t.advanced.reset();
+t.resetDateTime();
+},
+resetDateTime: function(){
 var d = new Date();
 t.date.set('value', d);
 t.time.set('value', d);
