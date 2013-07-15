@@ -71,6 +71,7 @@ t.advanced.reset();
 t.resetDateTime();
 },
 resetDateTime: function(){
+var t = this;
 var d = new Date();
 t.date.set('value', d);
 t.time.set('value', d);
