@@ -13,6 +13,7 @@ filteringselect._ValueEverPresent = vep;
 
 filteringselect.postLoad = function(){
 filteringselect.reset();
+console.log('FilteringSelect reset postLoad');
 }
 
 // Carga Asincronamente los datos y setea el FilteringSelect

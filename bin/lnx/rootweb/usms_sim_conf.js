@@ -2,6 +2,7 @@ require(["dojo/ready",
 "dojo/on",
 "dojo/data/ItemFileWriteStore",
   "gridx/Grid",
+"_usms_provider_select/_usms_provider_select",
   "gridx/core/model/cache/Async",
 	'gridx/modules/Focus',
 	'gridx/modules/CellWidget',
@@ -18,9 +19,8 @@ require(["dojo/ready",
 "gridx/modules/extendedSelect/Row",
 "dijit/TooltipDialog",
 "dijit/popup",
-"dijit/form/CheckBox",
-"dijit/form/Select"
-], function(ready, on, ItemFileWriteStore, Grid, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
+"dijit/form/CheckBox"
+], function(ready, on, ItemFileWriteStore, Grid, uSMSProviders, Async, Focus, CellWidget, Edit, NumberTextBox, VirtualVScroller, request, RXml, jsGridx){
      ready(function(){
          // logic that requires that Dojo is fully initialized should go here
 dijit.byId('id_titlebar').set('label', 'CHIP SIM GSM');
@@ -36,16 +36,19 @@ GridxTable.IdToDelete = [];
 
 			{field:"unique_id", name: "#", width: '20px'},
 			{field:"enable", name: "*", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
+			{field:"enable_sendsms", name: "SMS", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 	//		{field:"ts", name: "ts", editable: false},
-			{field:"idprovider", name: "idprovider", width: '20%', editable: false},
+			{field:"idprovider", name: "Proveedor",  editable: true, editor: "_usms_provider_select/_usms_provider_select", alwaysEditing: true},
 			{field:"phone", name: "phone", editable: true},
 			{field:"smsout_request_reports", name: "Report", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 			{field:"smsout_retryonfail", name: "RetryOnFail", editable: true},
 			{field:"smsout_max_length", name: "MaxLengthSMS", editable: true},
 	//		{field:"smsout_max_lifetime", name: "MaxLifeTime", editable: true},
 			{field:"smsout_enabled_other_providers", name: "OtherProviders", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
-			{field:"idmodem", name: "idmodem", editable: false},
-			{field:"on_incommingcall", name: "on_incommingcall", editable: false},
+		//	{field:"idmodem", name: "idmodem", editable: false},
+			{field:"on_incommingcall", name: "on_incommingcall", editable: true, editor: "_usms_onincomingcall_select/_usms_onincomingcall_select", alwaysEditing: true},
+			{field:"dtmf_tone", name: "DTMF", editable: true},
+			{field:"dtmf_tone_time", name: "DTMF Time", editable: true},
 			{field:"note", name: "note", editable: true, width: '25%'}
 		]);
 GridxTable.startup();
@@ -119,10 +122,11 @@ phone: d.getStringFromB64(i, "phone"),
 smsout_request_reports: d.getBool(i, "smsout_request_reports"),
 smsout_retryonfail: d.getNumber(i, "smsout_retryonfail"),
 smsout_max_length: d.getNumber(i, "smsout_max_length"),
-//smsout_max_lifetime: d.getNumber(i, "smsout_max_lifetime"),
 smsout_enabled_other_providers: d.getBool(i, "smsout_enabled_other_providers"),
 idmodem: d.getString(i, "idmodem"),
 on_incommingcall: d.getNumber(i, "on_incommingcall"),
+dtmf_tone: d.getNumber(i, 'dtmf_tone'),
+dtmf_tone_time: d.getNumber(i, 'dtmf_tone_time'),
 note: d.getStringFromB64(i, "note"),
 ts: d.getString(i, "ts"),
 };
@@ -187,6 +191,7 @@ MH.notification.notify({message: 'No hay registros seleccionados'});
 
 
 	dojo.connect(ItemFileWriteStore_1, 'onSet', function(item, attribute, oldValue, newValue){
+//console.log('sadkjshjdhakdhka');
 GridxTable.SaveItem(item);
 });
 
