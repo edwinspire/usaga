@@ -47,7 +47,7 @@ GridxTable.IdToDelete = [];
 			{field:"smsout_enabled_other_providers", name: "OtherProviders", width: '20px', editor: "dijit/form/CheckBox", editorArgs: jsGridx.EditorArgsToCellBoolean, alwaysEditing: true},
 		//	{field:"idmodem", name: "idmodem", editable: false},
 			{field:"on_incommingcall", name: "on_incommingcall", editable: true, editor: "_usms_onincomingcall_select/_usms_onincomingcall_select", alwaysEditing: true},
-			{field:"dtmf_tone", name: "DTMF", editable: true},
+			{field:"dtmf_tone", editor: "_usms_dtmf_select/_usms_dtmf_select", alwaysEditing: true, name: "DTMF", editable: true},
 			{field:"dtmf_tone_time", name: "DTMF Time", editable: true},
 			{field:"note", name: "note", editable: true, width: '25%'}
 		]);
@@ -118,6 +118,7 @@ unique_id:i+1,
 idsim: d.getNumber(i, "idsim"),
 idprovider: d.getNumber(i, "idprovider"),
 enable: d.getBool(i, "enable"),
+enable_sendsms: d.getBool(i, "enable_sendsms"),
 phone: d.getStringFromB64(i, "phone"),
 smsout_request_reports: d.getBool(i, "smsout_request_reports"),
 smsout_retryonfail: d.getNumber(i, "smsout_retryonfail"),

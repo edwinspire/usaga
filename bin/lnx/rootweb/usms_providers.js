@@ -36,12 +36,12 @@ gridxprovider.delete();
 var dNew = dijit.byId('id_dialog_new');
 dNew.byes.set('label', 'Aplicar');
 dNew.bno.set('label', 'Cancelar');
-dNew.innerHTML('  <form id="NewForm" style="width: 300px;">   <label style="margin-right: 3px;">     Habilitado:</label>   <input id="NewEnable" type="checkbox" data-dojo-type="dijit/form/CheckBox"></input>   <label style="margin-left: 3px; margin-right: 8px;">     Nombre:</label>   <input id="NewName" type="text" data-dojo-type="dijit/form/TextBox"></input> </form>');
+dNew.innerHTML('  <div style="width: 300px;">   <label style="margin-right: 3px;">     Habilitado:</label>   <input id="NewEnable" type="checkbox" data-dojo-type="dijit/form/CheckBox"></input>   <label style="margin-left: 3px; margin-right: 8px;">     Nombre:</label>   <input id="NewName" type="text" data-dojo-type="dijit/form/TextBox"></input> </div>');
 
 
 dNew.dijitOwner(dijit.byId('new'), 'Click').on('onok', function(){
 gridxprovider._Save({idprovider: 0, enable: dijit.byId('NewEnable').get('checked'), name: dijit.byId('NewName').get('value'), note: ''});
-dojo.byId('NewForm').reset();
+dijit.byId('NewName').reset();
 });
 
 gridxprovider.on('onnotify', function(m){
