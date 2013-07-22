@@ -2,12 +2,15 @@ define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
 'dojo/text!_usms_menu_header/_usms_menu_header.html',
-'_common_notification_area/_common_notification_area'
-],function(declare,_Widget,_Templated,templateString, NoAr){
+'_common_notification_area/_common_notification_area',
+'dojo/request',
+"jspire/request/Xml"
+],function(declare,_Widget,_Templated,templateString, NoAr, R, RXml){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+_lastidnotify: 0,
 postCreate: function(){
 
 var t = this;
@@ -93,9 +96,38 @@ window.open("usms_acercade.html", '_self');
 });
 */
 
+setTimeout(t._get_notify(), 5000);
 
+},
+_get_notify:function(){
+var t = this;
+   R.post('notification_system.usms', {
+            // Parse data from xml
+		data: {lastidnotify: t._lastidnotify},
+            handleAs: "xml"
+        }).then(
+                function(response){
+var d = new RXml.getFromXhr(response, 'notification');
 
-}   
+ dojo.forEach(d, function(item, i){
+ix = d.getNumber(i, 'id');
+console.log(ix);
+if(ix > t._lastidnotify){
+t.notification.notify({message: d.getStringFromB64(i, 'body')});
+t._lastidnotify = ix;
+}
+});
+
+setTimeout(t._get_notify(), 2000);
+
+                },
+                function(error){
+                    // Display the error returned
+t.notification.notify({message: error});
+setTimeout(t._get_notify(), 2000);
+                }
+            );
+}
 
 
 
