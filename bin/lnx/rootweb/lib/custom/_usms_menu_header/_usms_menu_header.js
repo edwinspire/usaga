@@ -2,17 +2,34 @@ define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
 'dojo/text!_usms_menu_header/_usms_menu_header.html',
-'_common_notification_area/_common_notification_area',
 'dojo/request',
-"jspire/request/Xml"
-],function(declare,_Widget,_Templated,templateString, NoAr, R, RXml){
+"jspire/request/Xml",
+//'_usms_menu_header/_usms_menu_header_worker_notifications',
+'_common_notification_area/_common_notification_area'
+],function(declare,_Widget,_Templated,templateString, R, RXml){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
 _lastidnotify: 0,
 postCreate: function(){
-
+/*
+if(typeof(Worker)!=="undefined")
+{
+  if(typeof(w)=="undefined")
+    {
+    w=new Worker('/lib/custom/_usms_menu_header/_usms_menu_header_worker_notifications.js');
+    }
+  w.onmessage = function (event) {
+//    document.getElementById("result").innerHTML=event.data;
+console.log('>>>>>>< '+event.data);
+  };
+}
+else
+{
+document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+}
+*/
 var t = this;
 
 t.menu_system_loging.on('Click', function(){
@@ -96,7 +113,25 @@ window.open("usms_acercade.html", '_self');
 });
 */
 
-setTimeout(t._get_notify(), 5000);
+if(typeof(EventSource)!=="undefined")
+  {
+  var source=new EventSource("notification_lastid.usms");
+  source.onmessage=function(event)
+    {
+console.log(Number(event.data));
+t._get_notify();
+    };
+  }
+else
+  {
+console.log("Sorry, your browser does not support server-sent events...");
+  }
+
+
+
+
+
+//setTimeout(t._get_notify(), 5000);
 
 },
 _get_notify:function(){
@@ -107,24 +142,24 @@ var t = this;
             handleAs: "xml"
         }).then(
                 function(response){
-var d = new RXml.getFromXhr(response, 'notification');
-
+var d = new RXml.getFromXhr(response, 'row');
+console.log('<<<<<>>>> ');
  dojo.forEach(d, function(item, i){
 ix = d.getNumber(i, 'id');
-console.log(ix);
+console.log('>>> '+ix);
 if(ix > t._lastidnotify){
 t.notification.notify({message: d.getStringFromB64(i, 'body')});
 t._lastidnotify = ix;
 }
 });
 
-setTimeout(t._get_notify(), 2000);
+//setTimeout(t._get_notify(), 10000);
 
                 },
                 function(error){
                     // Display the error returned
 t.notification.notify({message: error});
-setTimeout(t._get_notify(), 2000);
+//setTimeout(t._get_notify(), 10000);
                 }
             );
 }

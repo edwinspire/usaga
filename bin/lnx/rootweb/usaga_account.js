@@ -881,10 +881,6 @@ GridxE.Load();
 });
 
 
-
-
-
-
 //# FUNCIONES QUE SE EJECUTAN CUANDO SE HA CARGADO LA PAGINA #//
 MH.notification.notify({message: 'uSAGA - Abonados'});
 //Se ajusta al tamaño de la pantalla actual

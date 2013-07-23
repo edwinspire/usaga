@@ -266,6 +266,11 @@ response = response_fun_view_account_contacts_address_xml(request);
     this.serve_response( response, dos ); 
 break;
 
+case "/notifications.usaga":
+response = response_usaga_notifications(request);
+    this.serve_response( response, dos ); 
+break;
+
 default:
       response.Status = StatusCode.NOT_FOUND;
  response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
@@ -276,6 +281,22 @@ this.serve_response( response, dos );
 
 return false;
 }
+
+
+private uHttp.Response response_usaga_notifications(Request request){
+uHttp.Response Retorno = new uHttp.Response();
+  Retorno.Header["Content-Type"] = "text/event-stream";
+  Retorno.Header["Cache-Control"] = "no-cache";
+    Retorno.Status = StatusCode.OK;
+
+var d = new DateTime.now_local();
+
+
+Retorno.Data = ("data: server time "+d.to_string()+"\n\n").data;
+print(("data: server time "+d.to_string())+"\n\n");
+return Retorno;
+}
+
 
 private uHttp.Response response_fun_view_idgroup_name_xml(Request request){
 uHttp.Response Retorno = new uHttp.Response();
