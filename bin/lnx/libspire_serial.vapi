@@ -18,6 +18,7 @@ namespace edwinspire {
 		[CCode (cheader_filename = "libspire_serial.h")]
 		[Description (blurb = "Clase para manejar Modems", nick = "Modem")]
 		public class Modem : edwinspire.Ports.SerialPort {
+			public edwinspire.Ports.LastCallReceived LastCall;
 			public Modem ();
 			public bool AT ();
 			[Description (blurb = "Acepta una llamada entrante", nick = "ATA")]
@@ -111,6 +112,13 @@ namespace edwinspire {
 			public int BytesToRead { get; }
 			public bool IsOpen { get; }
 			public signal void Status (edwinspire.Ports.DataStatus Status);
+		}
+		[CCode (cheader_filename = "libspire_serial.h")]
+		public struct LastCallReceived {
+			public string Number;
+			public GLib.DateTime Date;
+			public bool Read;
+			public LastCallReceived ();
 		}
 		[CCode (cheader_filename = "libspire_serial.h")]
 		public enum CME {

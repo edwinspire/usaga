@@ -64,6 +64,9 @@ typedef struct _edwinspirePortsResponsePrivate edwinspirePortsResponsePrivate;
 
 #define EDWINSPIRE_PORTS_TYPE_CMS (edwinspire_ports_cms_get_type ())
 
+#define EDWINSPIRE_PORTS_TYPE_LAST_CALL_RECEIVED (edwinspire_ports_last_call_received_get_type ())
+typedef struct _edwinspirePortsLastCallReceived edwinspirePortsLastCallReceived;
+
 #define EDWINSPIRE_PORTS_TYPE_MODEM (edwinspire_ports_modem_get_type ())
 #define EDWINSPIRE_PORTS_MODEM(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), EDWINSPIRE_PORTS_TYPE_MODEM, edwinspirePortsModem))
 #define EDWINSPIRE_PORTS_MODEM_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), EDWINSPIRE_PORTS_TYPE_MODEM, edwinspirePortsModemClass))
@@ -229,9 +232,16 @@ struct _edwinspirePortsResponseClass {
 	GObjectClass parent_class;
 };
 
+struct _edwinspirePortsLastCallReceived {
+	gchar* Number;
+	GDateTime* Date;
+	gboolean Read;
+};
+
 struct _edwinspirePortsModem {
 	edwinspirePortsSerialPort parent_instance;
 	edwinspirePortsModemPrivate * priv;
+	edwinspirePortsLastCallReceived LastCall;
 };
 
 struct _edwinspirePortsModemClass {
@@ -296,6 +306,12 @@ edwinspirePortsResponse* edwinspire_ports_response_construct_with_args (GType ob
 edwinspirePortsResponse* edwinspire_ports_response_new (void);
 edwinspirePortsResponse* edwinspire_ports_response_construct (GType object_type);
 gchar* edwinspire_ports_response_ToString (edwinspirePortsResponse* self);
+GType edwinspire_ports_last_call_received_get_type (void) G_GNUC_CONST;
+edwinspirePortsLastCallReceived* edwinspire_ports_last_call_received_dup (const edwinspirePortsLastCallReceived* self);
+void edwinspire_ports_last_call_received_free (edwinspirePortsLastCallReceived* self);
+void edwinspire_ports_last_call_received_copy (const edwinspirePortsLastCallReceived* self, edwinspirePortsLastCallReceived* dest);
+void edwinspire_ports_last_call_received_destroy (edwinspirePortsLastCallReceived* self);
+void edwinspire_ports_last_call_received_init (edwinspirePortsLastCallReceived *self);
 GType edwinspire_ports_modem_get_type (void) G_GNUC_CONST;
 edwinspirePortsModem* edwinspire_ports_modem_new (void);
 edwinspirePortsModem* edwinspire_ports_modem_construct (GType object_type);

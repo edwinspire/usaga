@@ -194,6 +194,21 @@ ManufacturerSpecific = 512,
 None = 1000
 }
 
+public struct LastCallReceived{
+
+public string Number;
+public DateTime Date;
+public bool Read;
+
+public LastCallReceived(){
+this.Number = "";
+this.Date = new DateTime.now_local ();
+this.Read = false;
+}
+
+}
+
+
 [Description(nick = "Modem", blurb = "Clase para manejar Modems")]
 public class Modem : SerialPort{
 
@@ -215,6 +230,8 @@ private string[] expregERROR_CMEE = {
 private string[] expregCLIP = {
 "\\+CLIP: \"(?<CLIP>[0-9|+]+)\""
 };
+
+public LastCallReceived LastCall = LastCallReceived();
 
 //--Señales--//
 [Description(nick = "CallID", blurb = "Señal emitida cuando se detecta el CallId de una llamada entrante")]
@@ -411,6 +428,9 @@ MatchInfo match;
 if(RegExp.match(linea, RegexMatchFlags.ANCHORED, out match)){
 
 string NumberPhone = match.fetch_named("CLIP");
+this.LastCall.Number = NumberPhone;
+this.LastCall.Date = new DateTime.now_local();
+this.LastCall.Read = false;
 		CallID(NumberPhone);
 		identificado = true;
 break;
