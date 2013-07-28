@@ -46,11 +46,15 @@ is = false;
 now = new Date();
 sel = new Date(t.get('datetime'));
 if(now > sel){
+console.log('La fecha de envio no puede estar en el pasado, se la setea a la fecha y hora actual');
 is = true;
 }
 return is;
 },
 _getDatetimeAttr: function(){
+return this.date.toISOString()+' '+this.time.value.toTimeString();
+},
+_getLocaldatetimeAttr: function(){
 return this.date.toISOString()+'T'+this.time.value.toLocaleTimeString();
 },
 _getValuesAttr: function(){
@@ -60,7 +64,7 @@ t.resetDateTime();
 }
 var dat = t.advanced.get('values');
 //dat.date = t.date._getDate()+''+t.time.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
-dat.date = t.get('datetime');
+dat.date = t.get('localdatetime');
 dat.message = t.message.get('value');
 return dat;
 },
