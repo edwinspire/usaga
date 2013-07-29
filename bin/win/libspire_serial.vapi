@@ -18,6 +18,7 @@ namespace edwinspire {
 		[CCode (cheader_filename = "libspire_serial.h")]
 		[Description (blurb = "Clase para manejar Modems", nick = "Modem")]
 		public class Modem : edwinspire.Ports.SerialPort {
+			public edwinspire.Ports.LastCallReceived LastCall;
 			public Modem ();
 			public bool AT ();
 			[Description (blurb = "Acepta una llamada entrante", nick = "ATA")]
@@ -113,6 +114,13 @@ namespace edwinspire {
 			public signal void Status (edwinspire.Ports.DataStatus Status);
 		}
 		[CCode (cheader_filename = "libspire_serial.h")]
+		public struct LastCallReceived {
+			public string Number;
+			public GLib.DateTime Date;
+			public bool Read;
+			public LastCallReceived ();
+		}
+		[CCode (cheader_filename = "libspire_serial.h")]
 		public enum CME {
 			PhoneFailure,
 			NoConnectionToPhone,
@@ -195,7 +203,7 @@ namespace edwinspire {
 			[Description (blurb = "DTMF 6", nick = "6")]
 			Six,
 			[Description (blurb = "DTMF 7", nick = "7")]
-			Sever,
+			Seven,
 			[Description (blurb = "DTMF 8", nick = "8")]
 			Eigth,
 			[Description (blurb = "DTMF 9", nick = "9")]
@@ -203,7 +211,15 @@ namespace edwinspire {
 			[Description (blurb = "DTMF *", nick = "*")]
 			Asterisc,
 			[Description (blurb = "DTMF #", nick = "#")]
-			Sharp
+			Sharp,
+			[Description (blurb = "DTMF A", nick = "A")]
+			A,
+			[Description (blurb = "DTMF B", nick = "B")]
+			B,
+			[Description (blurb = "DTMF C", nick = "C")]
+			C,
+			[Description (blurb = "DTMF D", nick = "D")]
+			D
 		}
 		[CCode (cheader_filename = "libspire_serial.h")]
 		[Description (blurb = "Estado del modem", nick = "Data Status")]
