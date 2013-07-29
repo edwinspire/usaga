@@ -46,7 +46,7 @@ namespace Ports{
 [Description(nick = "6", blurb = "DTMF 6")]
 		Six,
 [Description(nick = "7", blurb = "DTMF 7")]
-		Sever,
+		Seven,
 [Description(nick = "8", blurb = "DTMF 8")]
 		Eigth,
 [Description(nick = "9", blurb = "DTMF 9")]
@@ -54,7 +54,15 @@ namespace Ports{
 [Description(nick = "*", blurb = "DTMF *")]
 		Asterisc,
 [Description(nick = "#", blurb = "DTMF #")]
-Sharp
+Sharp,
+[Description(nick = "A", blurb = "DTMF A")]
+A,
+[Description(nick = "B", blurb = "DTMF B")]
+B,
+[Description(nick = "C", blurb = "DTMF C")]
+C,
+[Description(nick = "D", blurb = "DTMF D")]
+D
 	}
 
 
