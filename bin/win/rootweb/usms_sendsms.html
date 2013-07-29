@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Envio de mensajes</title>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'},{'name':'_usaga_account_user_times','location':'../../custom/_usaga_account_user_times'},{'name':'_usms_contact_phone_data','location':'../../custom/_usms_contact_phone_data'},{'name':'_usms_provider_select','location':'../../custom/_usms_provider_select'},{'name':'_usms_location_address','location':'../../custom/_usms_location_address'},{'name':'_common_basic_menubar','location':'../../custom/_common_basic_menubar'},{'name':'_usaga_account_contact','location':'../../custom/_usaga_account_contact'},{'name':'_usaga_menu_header','location':'../../custom/_usaga_menu_header'},{'name':'_usms_sms_form','location':'../../custom/_usms_sms_form'},{'name':'_usms_menu_header','location':'../../custom/_usms_menu_header'},{'name':'_usms_smstype','location':'../../custom/_usms_smstype'},{'name':'_usaga_account_times','location':'../../custom/_usaga_account_times'},{'name':'_usms_handshake','location':'../../custom/_usms_handshake'},{'name':'_usms_address','location':'../../custom/_usms_address'},{'name':'_usaga_account_user_time_day','location':'../../custom/_usaga_account_user_time_day'},{'name':'_common_notification_area','location':'../../custom/_common_notification_area'},{'name':'_common_tooltipdialogconfirmation','location':'../../custom/_common_tooltipdialogconfirmation'},{'name':'_usms_contact_data','location':'../../custom/_usms_contact_data'},{'name':'_usms_parity','location':'../../custom/_usms_parity'},{'name':'_common_from_to_date','location':'../../custom/_common_from_to_date'},{'name':'_usms_location','location':'../../custom/_usms_location'},{'name':'_common_titlebar','location':'../../custom/_common_titlebar'},{'name':'_usms_mappoint','location':'../../custom/_usms_mappoint'},{'name':'_usms_sim_select','location':'../../custom/_usms_sim_select'},{'name':'_usms_locations_toolbar_edit','location':'../../custom/_usms_locations_toolbar_edit'},{'name':'_usaga_account_basic_data','location':'../../custom/_usaga_account_basic_data'},{'name':'_usaga_account_user','location':'../../custom/_usaga_account_user'},{'name':'_usms_smsout_status','location':'../../custom/_usms_smsout_status'},{'name':'_common_textbox_search','location':'../../custom/_common_textbox_search'},{'name':'_usms_msgclass_select','location':'../../custom/_usms_msgclass_select'},{'name':'_usms_stopbits','location':'../../custom/_usms_stopbits'},{'name':'_usms_sms_advanced_ptions','location':'../../custom/_usms_sms_advanced_ptions'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/MenuBar",
+  "dijit/PopupMenuBarItem",
+  "dijit/Menu",
+  "dijit/MenuItem",
+  "dijit/MenuSeparator",
+  "_usms_menu_header/_usms_menu_header",
+  "dijit/layout/TabContainer",
+  "dijit/layout/ContentPane",
+  "_common_titlebar/_common_titlebar",
+  "dijit/Toolbar",
+  "dijit/form/Button",
+  "dijit/layout/BorderContainer",
+  "dijit/form/DateTextBox",
+  "dijit/form/Textarea",
+  "dijit/form/TimeTextBox",
+  "dijit/form/Form",
+  "dijit/TitlePane",
+  "dojox/io/xhrScriptPlugin",
+  "dojo/data/ItemFileWriteStore",
+  "gridx/Grid",
+  "gridx/core/model/cache/Async",
+  "dojox/data/CsvStore",
+  "dijit/form/CheckBox",
+  "dijit/form/NumberTextBox",
+  "dijit/form/NumberSpinner",
+  "dijit/form/Select",
+  "_usms_msgclass_select/_usms_msgclass_select",
+  "_usms_provider_select/_usms_provider_select",
+  "_usms_sim_select/_usms_sim_select",
+  "dijit/form/FilteringSelect",
+  "_usms_smstype/_usms_smstype",
+  "_usms_sms_advanced_ptions/_usms_sms_advanced_ptions",
+  "_usms_sms_form/_usms_sms_form",
+  "_usms_sim_select/_usms_sim_select",
+  "dijit/form/TextBox",
+  "_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation",
+  "dijit/Dialog",
+  "dijit/TooltipDialog",
+  "dijit/form/ValidationTextBox",
+  "_common_notification_area/_common_notification_area",
+  "dojo/data/ItemFileReadStore",
+  "dijit/layout/AccordionContainer",
+  "_common_textbox_search/_common_textbox_search",
+  "_common_from_to_date/_common_from_to_date"
+]);
+</script>
+<style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
+</style>
+<script type="text/javascript" src="usms_sendsms.js"></script>
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" class="claro" data-maq-ws="collapse" data-maq-appstates="{'states':[]}" id="myapp">
+ <div style="width: 100%; height: 100%;">
+  <div data-dojo-type="_usms_menu_header/_usms_menu_header" id="idMH"></div>
+  <div data-dojo-type="_common_titlebar/_common_titlebar" id="idtitlebar"></div>
+  <span data-dojo-type="dijit/layout/TabContainer" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" controllerWidget="dijit.layout.TabController">
+   <div data-dojo-type="dijit/layout/ContentPane" title="Marcado Libre" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
+    <div style="width: 100%; height: 100%; margin-right: 2px;">
+      <span data-dojo-type="dijit/Toolbar">
+<input type="button" data-dojo-type="dijit/form/Button" id="idFreeSendSMS" title="Env&amp;iacute;a el mensaje de texto al (los) remitente(s)" tabIndex="-1" intermediateChanges="false" label="Enviar" iconClass="dijitIconMail"></input>
+<input type="button" data-dojo-type="dijit/form/Button" id="idFreeSMSReset" title="Borrar todos los remitentes y datos del mensaje" tabIndex="-1" intermediateChanges="false" label="Reset" iconClass="dijitEditorIcon dijitEditorIconRemoveFormat"></input>
+</span>
+      <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 90%;">
+        <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 45%;">
+          <div style="display: inline-block; vertical-align: top; width: 100%; height: 100%;">
+            <div data-dojo-type="_common_titlebar/_common_titlebar" id="titleBarRemitente" style="padding: 1px;"></div><span data-dojo-type="dijit/Toolbar">
+<input type="button" data-dojo-type="dijit/form/Button" id="idFreeAddSender" tabIndex="-1" intermediateChanges="false" label="Agregar" iconClass="dijitIconNewTask"></input>
+<input type="button" data-dojo-type="dijit/form/Button" id="idFreeRemoveSender" tabIndex="-1" intermediateChanges="false" label="Eliminar" iconClass="dijitIconDelete"></input>
+</span><span data-dojo-type="dojo/data/ItemFileWriteStore" id="IFWS1" jsId="IFWS1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+            <table data-dojo-type="gridx/Grid" id="GridxPhonesFree" style="min-width: 1em; min-height: 1em; width: 100%; height: 80%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'#',field:'#'},{width:'auto',name:'Teléfono',field:'teléfono'},{width:'auto',name:'Proveedor',field:'proveedor'},{width:'auto',name:'SIM',field:'sim'}], modules:['gridx/modules/VirtualVScroller', 'gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:IFWS1"></table>
+          </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
+          <div style="display: inline-block; vertical-align: top; width: 100%; height: 100%;">
+            <div data-dojo-type="_common_titlebar/_common_titlebar" id="idTitleBarMsgToFree" style="padding: 2px;"></div>
+            <div data-dojo-type="_usms_sms_form/_usms_sms_form" id="idFormSMSFree" style="display: inline-block; vertical-align: top; width: 100%; margin-top: 3px; height: 90%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-dojo-type="dijit/layout/ContentPane" title="Por contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" selected="true" closable="false">
+    <div style="width: 100%; height: 95%;">
+      <span data-dojo-type="dijit/Toolbar">
+<input type="button" data-dojo-type="dijit/form/Button" id="idBtnSendSMSContact" tabIndex="-1" intermediateChanges="false" label="Enviar" iconClass="dijitIconMail"></input>
+      <input type="button" data-dojo-type="dijit/form/Button" id="idResetListContacts" tabIndex="-1" intermediateChanges="false" label="Reset" iconClass="dijitEditorIcon dijitEditorIconRemoveFormat"></input>
+      </span>
+      <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+        <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 50%;">
+          <div style="width: 100%; height: 100%;">
+            <span id="idAccordionSendToContacts" data-dojo-type="dijit/layout/AccordionContainer" duration="200" persist="false" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;"><div data-dojo-type="dijit/layout/ContentPane" title="Lista de contactos" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" data-dojo-props='iconClass:"dijitIconUsers"'>
+              <div style="width: 100%; height: 100%;">
+                <span data-dojo-type="dijit/Toolbar">
+                  <input type="button" data-dojo-type="dijit/form/Button" id="idBtnAddContactPhone" tabIndex="-1" intermediateChanges="false" label="Agregar a lista de envio" iconClass="dijitIconNewTask"></input>
+                </span>
+                <div data-dojo-type="_common_textbox_search/_common_textbox_search" id="idTBoxSearchContactPhone"></div>
+                <div style="width: 100%; height: 85%;">
+                  <span data-dojo-type="dojo/data/ItemFileReadStore" id="IFWS2" jsId="IFWS2" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+                  <table data-dojo-type="gridx/Grid" id="idGridxListContact" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/VirtualVScroller', 'gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:IFWS2"></table>
+                </div>
+              </div>
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane" id="idContentPaneSMSToSendContact" title="Lista para enviar" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" selected="true" closable="false" data-dojo-props='iconClass:"dijitIconTable"'>
+              <div style="width: 100%; height: 100%;">
+                <span data-dojo-type="dijit/Toolbar">
+                  <input type="button" data-dojo-type="dijit/form/Button" id="idBtnDeleteContact" tabIndex="-1" intermediateChanges="false" label="Eliminar selección" iconClass="dijitIconDelete"></input>
+                <input type="button" data-dojo-type="dijit/form/Button" id="idBtnDeleteContactAll" tabIndex="-1" intermediateChanges="false" label="Eliminar todos" iconClass="dijitEditorIcon dijitEditorIconRemoveFormat"></input>
+                </span><span data-dojo-type="dojo/data/ItemFileWriteStore" id="IFWS_4" jsId="IFWS_4" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+                <table data-dojo-type="gridx/Grid" id="idGridxListToSend" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/VirtualVScroller', 'gridx/modules/Focus', 'gridx/modules/Edit', 'gridx/modules/CellWidget',  'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:IFWS_4"></table>
+              </div>
+            </div>
+            </span>
+          </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity">
+          <div style="width: 100%; height: 100%;">
+            <div data-dojo-type="_common_titlebar/_common_titlebar" id="idBarTitleFormContact" style="padding: 1px;"></div>
+            <div data-dojo-type="_usms_sms_form/_usms_sms_form" id="idSMSFormContact" style="display: inline-block; vertical-align: top; width: 100%; height: auto; margin-top: 3px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-dojo-type="dijit/layout/ContentPane" title="Últimos enviados" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" doLayout="true" closable="false">
+    <div style="width: 100%; height: 100%;">
+      <span data-dojo-type="dojo/data/ItemFileReadStore" id="IFWS5" jsId="IFWS5" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+      <div data-dojo-type="_common_from_to_date/_common_from_to_date" id="idFromToSMSOut" style="margin: 3px; width: 100%; height: auto;"></div>
+      <table data-dojo-type="gridx/Grid" id="idGridxSMSOut" title="Ultimos mensajes enviados de los números listados" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:IFWS5"></table>
+    </div>
+  </div>
+  <div data-dojo-type="dijit/layout/ContentPane" title="Últimos recibidos">
+    <div style="width: 100%; height: 100%;">
+      <div data-dojo-type="_common_from_to_date/_common_from_to_date" id="idFromToSMSIn" style="margin: 3px; width: 100%; height: auto;"></div>
+   <span data-dojo-type="dojo/data/ItemFileReadStore" id="IFWSSMSIn" jsId="IFWSSMSIn" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[{&quot;unique_id&quot;:1,&quot;id&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Label 1&quot;}]}"></span>
+      <table data-dojo-type="gridx/Grid" id="idGridxSMSIn" style="min-width: 1em; min-height: 1em; width: 100%; height: 90%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}],store:IFWSSMSIn"></table>
+    </div>
+  </div>
+  </span></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogFreeAddPhone"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogFreeSend"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogFreeSendReset"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogFreeRemovePhone"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogContactSend"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogContactSendReset"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogContactRemovePhone"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogDeletAllContactPhones"></div>
+<div data-dojo-type="_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation" style="display: none;" id="idDialogDeletContactToSend"></div>
+</body>
+</html>
+
+

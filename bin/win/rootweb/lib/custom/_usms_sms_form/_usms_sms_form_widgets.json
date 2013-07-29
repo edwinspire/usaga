@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_usms_sms_form",
+			"description": "_usms_sms_form",
+			"type": "_usms_sms_form/_usms_sms_form",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png",
+			"properties": {
+				"style": "display: inline-block; vertical-align: top; width: 100%; height: 100%;"
+			}
+		}
+	],
+	"name": "_usms_sms_form",
+	"longName": "_usms_sms_form"
+}

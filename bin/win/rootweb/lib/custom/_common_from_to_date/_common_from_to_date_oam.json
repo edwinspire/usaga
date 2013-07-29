@@ -1,0 +1,49 @@
+{
+	"id": "_common_from_to_date",
+	"name": "_common_from_to_date",
+	"spec": "1.0",
+	"version": "1.0",
+	"require": [
+		{
+			"type": "javascript",
+			"src": "dojo/dojo.js",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/DateTextBox",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/TimeTextBox",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/NumberSpinner",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/form/Button",
+			"$library": "dojo"
+		},
+		{
+			"$library": "dojo",
+			"format": "amd",
+			"src": "_common_from_to_date/_common_from_to_date",
+			"type": "javascript-module"
+		}
+	],
+	"library": {
+		"dojo": {
+			"src": "../../dojo/dojo/dojo.js"
+		}
+	},
+	"content": "<div></div>"
+}

@@ -1,0 +1,24 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_usms_sms_advanced_ptions",
+			"description": "_usms_sms_advanced_ptions",
+			"type": "_usms_sms_advanced_ptions/_usms_sms_advanced_ptions",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png"
+		}
+	],
+	"name": "_usms_sms_advanced_ptions",
+	"longName": "_usms_sms_advanced_ptions"
+}

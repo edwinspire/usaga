@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>SMS - Bandeja de salida</title>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'},{'name':'_usaga_account_user_times','location':'../../custom/_usaga_account_user_times'},{'name':'_usms_contact_phone_data','location':'../../custom/_usms_contact_phone_data'},{'name':'_usms_provider_select','location':'../../custom/_usms_provider_select'},{'name':'_usms_location_address','location':'../../custom/_usms_location_address'},{'name':'_common_basic_menubar','location':'../../custom/_common_basic_menubar'},{'name':'_usaga_account_contact','location':'../../custom/_usaga_account_contact'},{'name':'_usaga_menu_header','location':'../../custom/_usaga_menu_header'},{'name':'_usms_sms_form','location':'../../custom/_usms_sms_form'},{'name':'_usms_menu_header','location':'../../custom/_usms_menu_header'},{'name':'_usms_smstype','location':'../../custom/_usms_smstype'},{'name':'_usaga_account_times','location':'../../custom/_usaga_account_times'},{'name':'_usms_handshake','location':'../../custom/_usms_handshake'},{'name':'_usms_address','location':'../../custom/_usms_address'},{'name':'_usaga_account_user_time_day','location':'../../custom/_usaga_account_user_time_day'},{'name':'_common_notification_area','location':'../../custom/_common_notification_area'},{'name':'_common_tooltipdialogconfirmation','location':'../../custom/_common_tooltipdialogconfirmation'},{'name':'_usms_contact_data','location':'../../custom/_usms_contact_data'},{'name':'_usms_parity','location':'../../custom/_usms_parity'},{'name':'_common_from_to_date','location':'../../custom/_common_from_to_date'},{'name':'_usms_location','location':'../../custom/_usms_location'},{'name':'_common_titlebar','location':'../../custom/_common_titlebar'},{'name':'_usms_mappoint','location':'../../custom/_usms_mappoint'},{'name':'_usms_sim_select','location':'../../custom/_usms_sim_select'},{'name':'_usms_locations_toolbar_edit','location':'../../custom/_usms_locations_toolbar_edit'},{'name':'_usaga_account_basic_data','location':'../../custom/_usaga_account_basic_data'},{'name':'_usaga_account_user','location':'../../custom/_usaga_account_user'},{'name':'_usms_smsout_status','location':'../../custom/_usms_smsout_status'},{'name':'_common_textbox_search','location':'../../custom/_common_textbox_search'},{'name':'_usms_msgclass_select','location':'../../custom/_usms_msgclass_select'},{'name':'_usms_stopbits','location':'../../custom/_usms_stopbits'},{'name':'_usms_sms_advanced_ptions','location':'../../custom/_usms_sms_advanced_ptions'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/TitlePane",
+  "dojox/io/xhrScriptPlugin",
+  "dojo/data/ItemFileReadStore",
+  "gridx/Grid",
+  "gridx/core/model/cache/Async",
+  "dojox/data/CsvStore",
+  "dijit/form/Form",
+  "dijit/form/DateTextBox",
+  "dijit/form/NumberTextBox",
+  "dijit/form/Button",
+  "dijit/layout/ContentPane",
+  "dijit/MenuBar",
+  "dijit/PopupMenuBarItem",
+  "dijit/MenuItem",
+  "dijit/Menu",
+  "gridx/modules/RowHeader",
+  "gridx/modules/select/Row",
+  "gridx/modules/IndirectSelect",
+  "gridx/modules/extendedSelect/Row",
+  "_common_notification_area/_common_notification_area",
+  "_usms_menu_header/_usms_menu_header",
+  "dijit/MenuSeparator",
+  "dijit/form/Select",
+  "_common_titlebar/_common_titlebar",
+  "dijit/form/TimeTextBox",
+  "dijit/form/NumberSpinner",
+  "_common_from_to_date/_common_from_to_date"
+]);
+</script>
+<style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
+</style>
+<script type="text/javascript" src="usms_smsout.js"></script>
+</head>
+<body class="claro" data-maq-flow-layout="true" data-maq-ws="collapse" data-maq-comptype="desktop" id="myapp" data-maq-appstates="{}">
+ <div id="idcontentAll" style="height: 100%; width: 100%; overflow: hidden;">
+<div data-dojo-type="_usms_menu_header/_usms_menu_header" id="idMH"></div>
+   <div data-dojo-type="_common_titlebar/_common_titlebar" id="idTitleBar"></div>
+   <div data-dojo-type="_common_from_to_date/_common_from_to_date" id="idToFrom" style="margin: 3px; width: 100%; height: auto;"></div>
+   <div style="width: 100%; display: inline-block; height: 90%;"><span data-dojo-type="dojo/data/ItemFileReadStore" id="ItemFileReadStore_1" jsId="ItemFileReadStore_1" data="{&quot;identifier&quot;:&quot;unique_id&quot;,&quot;items&quot;:[]}"></span>
+<table data-dojo-type="gridx/Grid" id="idgridxtable" style="min-width: 1em; min-height: 1em; width: 100%; height: 100%;" data-dojo-props="cacheClass: 'gridx/core/model/cache/Async',structure:[{width:'auto',name:'ID',field:'id'},{width:'auto',name:'Label',field:'label'}], modules:['gridx/modules/Focus', 'gridx/modules/VirtualVScroller', 'gridx/modules/Edit', 'gridx/modules/CellWidget', 'gridx/modules/RowHeader', 'gridx/modules/select/Row', 'gridx/modules/extendedSelect/Row', 'gridx/modules/IndirectSelect'], store:ItemFileReadStore_1"></table>
+</div>
+</div>
+ </body>
+</html>
+
+
