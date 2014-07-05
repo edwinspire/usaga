@@ -1,17 +1,11 @@
 # Ignores
+Doxyfile
 *.c~
 *.vala~
-\.sh
-\.bat
-\.c~
-bin/\.vala~
-bin/\.sh
-bin/\.bat
-bin/\.c~
-\.DS_Store
-\.classpath
-\.project
-\.settings
-\.metadata/
-Servers/
-target/
+*.sh
+*.bat
+*.sh~
+*.bat~
+*.md~
+bin/lnx/proyects
+bin/win/proyects

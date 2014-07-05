@@ -38,8 +38,20 @@ extern int IO_Blocking(int fd, int Modo);
 extern int Clean_Buffer(int fd);
 extern int Setup_Buffer(int fd,  ulong InQueue, ulong OutQueue);
 extern int Set_Time(int fd, uint Time);
+/**
+ * Namespace edwinspire covers the entire software developed by Edwin De La Cruz
+ *
+ * \author Edwin De La Cruz
+ */
 namespace edwinspire {
+
+/**
+ * Namespace Ports covers everything related to communications with serial ports
+ *
+ */
 	namespace Ports {
+	
+	
 		[Description(nick = "HandShaking", blurb = "Especifica el protocolo de control utilizado para establecer la comunicacion con el puerto serie")]
 		public enum HandShaking {
 			[Description(nick = "NONE", blurb = "No se utiliza ningun control para el protocol de enlace")]
@@ -132,8 +144,14 @@ namespace edwinspire {
 			public Configure() {
 			}
 		}
+		
+/**
+ * The SerialPort class contains methods for communications with devices via serial port.
+ *
+ */		
 		public class SerialPort:Configure {
 			public signal void Status(DataStatus Status);
+//			
 			private int Gestor = -1;
 			private bool Bloqueante = false;
 			// Variables para uso interno
@@ -374,14 +392,7 @@ namespace edwinspire {
 					while(!(this.BytesToRead>0) && intentos<5) {
 						PausaEntreBytes();
 						PausaEntreBytes();
-						/*
-if((TemporizadorInternoReadChar.elapsed()*1000)>TimeOut){
-//warning("Exedio %s ms para leer\n", TimeOut.to_string());
-	Retorno = false;
-break;
-}
-*/
-						intentos++;
+					intentos++;
 					}
 				} else {
 					Retorno = true;
@@ -393,16 +404,10 @@ break;
 				try {
 					// an output file in the current working directory
 					var file = File.new_for_path ("modem.log");
-					/*
-        // delete if file already exists
-        if (file.query_exists ()) {
-            file.delete ();
-        }
-*/
+
 					// creating a file and a DataOutputStream to the file
 					/*
             Use BufferedOutputStream to increase write speed:
-            var dos = new DataOutputStream (new BufferedOutputStream.sized (file.create (FileCreateFlags.REPLACE_DESTINATION), 65536));
         */
 					var dos = new DataOutputStream (file.append_to (FileCreateFlags.NONE));
 					// writing a short string to the stream
@@ -486,64 +491,7 @@ break;
 			public static string Strip(string String) {
 				return String.strip();
 			}
-			/*
-public string? ReadLine(double timeout_ms_for_line = 0){
-//print("ReadLine\n");
-//TemporizadorInternoReadLine.reset();
-//this.DiscardBuffer();
-bool AnyCharValid = false;
-LineaModem.truncate(0);
-LineaModemCR.truncate(0);
-if(this.IsEnableAndOpen()){
-//Timer Temporizador = new Timer();
-TemporizadorInternoReadLine.start();
-if(timeout_ms_for_line<1){
-timeout_ms_for_line = this.BaudRateTouseg()+1000;
-}
-//timeout_ms_for_line = timeout_ms_for_line+thi
-char C = 0;
-bool EncontradoFinDeLinea = false;
-//var maxtimewaitforendline = (ulong)this.BaudRateTouseg();
-while(!EncontradoFinDeLinea){
-//print("Leyendo puerto loop %s => %s\n", (TemporizadorInternoReadLine.elapsed()).to_string(), timeout_ms_for_line.to_string());
-	if((TemporizadorInternoReadLine.elapsed()*1000)>timeout_ms_for_line){
-	//TODO// Generar exepcion de timeout esperando fin de linea
-	Thread.usleep(5000);
-//		warning("<TimeOut Fin de linea> %s mseg a Baudrate: %s\n", timeout_ms_for_line.to_string(), this.BaudRate.to_string());
-		EncontradoFinDeLinea = true;
-break;
-}
-if("\r\n" in LineaModemCR.str){
-EncontradoFinDeLinea = true;
-}else{
-C = ReadChar();
-//print("%c", C);
-if(C == 10 || C == 13){
-LineaModemCR.append_c(C);
-}else if(C > 0){
-AnyCharValid = true;
-LineaModem.append_c(C);
-LineaModemCR.truncate();
-}
-}
-}
-}
-TemporizadorInternoReadLine.stop();
-//stdout.printf ("%s\n", LineaModem.str);
-string ? Retorno = null;
-if(AnyCharValid){
-Retorno = LineaModem.str.strip();
-}
-if(LogModem){
-var Cadena = new StringBuilder();
-//Cadena.truncate(0);
-Cadena.append_printf("<< %s\n", Retorno);
-LogCommandAT(Cadena.str);
-}
-//print("%s\n", Retorno);
-return Retorno;
-}
-*/
+			
 			public bool Close() {
 				bool Retorno = false;
 				if(IsOpen) {

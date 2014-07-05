@@ -1,0 +1,10 @@
+<map id="ATS4_Set" name="ATS4_Set">
+<area shape="rect" id="node3" href="$classedwinspire_1_1_ports_1_1_modem.html#a92612ec64b1ea35910823424f2d16049" title="ResponseFormattingCharacter_Set" alt="" coords="136,44,363,73"/>
+<area shape="rect" id="node5" href="$classedwinspire_1_1_ports_1_1_modem.html#a0dcb64853bb66381778c839c084a684a" title="ATS_Set" alt="" coords="411,44,485,73"/>
+<area shape="rect" id="node7" href="$classedwinspire_1_1_ports_1_1_modem.html#a8556df8675e2894fa7afdb9dae873233" title="Envia un comando AT del cual se espera obtener como respuesta un OK o ERROR " alt="" coords="533,44,685,73"/>
+<area shape="rect" id="node9" href="$namespaceedwinspire_1_1_ports.html#ae3a4888c33e46ef2cb9c21475b39747d" title="edwinspire::Ports:\l:DiscardBuffer" alt="" coords="735,5,860,51"/>
+<area shape="rect" id="node13" href="$classedwinspire_1_1_ports_1_1_modem.html#af029f00adf01cac411d73901909df0e9" title="Receive" alt="" coords="763,75,832,104"/>
+<area shape="rect" id="node11" href="$libspire__serial_8vala.html#a740e10aea09874bdeb3c4641aeceb891" title="Clean_Buffer" alt="" coords="924,13,1023,43"/>
+<area shape="rect" id="node15" href="$classedwinspire_1_1_ports_1_1_modem.html#a3a7adf7062dcf2a1dc1ab31a3a1b4363" title="CallID" alt="" coords="944,71,1003,100"/>
+<area shape="rect" id="node17" href="$namespaceedwinspire_1_1_ports.html#afc37e1ee0b1084b5c5fccf2fab440b4f" title="edwinspire::Ports:\l:Response" alt="" coords="911,123,1036,170"/>
+</map>

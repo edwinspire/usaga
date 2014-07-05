@@ -1,0 +1,8 @@
+<map id="ATZ" name="ATZ">
+<area shape="rect" id="node3" href="$classedwinspire_1_1_ports_1_1_modem.html#a8556df8675e2894fa7afdb9dae873233" title="Envia un comando AT del cual se espera obtener como respuesta un OK o ERROR " alt="" coords="101,44,253,73"/>
+<area shape="rect" id="node5" href="$namespaceedwinspire_1_1_ports.html#ae3a4888c33e46ef2cb9c21475b39747d" title="edwinspire::Ports:\l:DiscardBuffer" alt="" coords="303,5,428,51"/>
+<area shape="rect" id="node9" href="$classedwinspire_1_1_ports_1_1_modem.html#af029f00adf01cac411d73901909df0e9" title="Receive" alt="" coords="331,75,400,104"/>
+<area shape="rect" id="node7" href="$libspire__serial_8vala.html#a740e10aea09874bdeb3c4641aeceb891" title="Clean_Buffer" alt="" coords="492,13,591,43"/>
+<area shape="rect" id="node11" href="$classedwinspire_1_1_ports_1_1_modem.html#a3a7adf7062dcf2a1dc1ab31a3a1b4363" title="CallID" alt="" coords="512,71,571,100"/>
+<area shape="rect" id="node13" href="$namespaceedwinspire_1_1_ports.html#afc37e1ee0b1084b5c5fccf2fab440b4f" title="edwinspire::Ports:\l:Response" alt="" coords="479,123,604,170"/>
+</map>

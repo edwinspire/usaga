@@ -1,0 +1,16 @@
+<map id="ATS_Set" name="ATS_Set">
+<area shape="rect" id="node3" href="$classedwinspire_1_1_ports_1_1_modem.html#a1849055f60a2952c00925fc9ed63af09" title="AutomaticAnswerControl_Set" alt="" coords="160,5,355,35"/>
+<area shape="rect" id="node7" href="$classedwinspire_1_1_ports_1_1_modem.html#adfb768bf7329f83b0a05a466ad2b093d" title="EscapeSequenseCharacter_Set" alt="" coords="153,59,361,88"/>
+<area shape="rect" id="node11" href="$classedwinspire_1_1_ports_1_1_modem.html#a77c1f7f2f59109965fa1a68dea716d92" title="CommandLineTerminationCharacter_Set" alt="" coords="128,112,387,141"/>
+<area shape="rect" id="node15" href="$classedwinspire_1_1_ports_1_1_modem.html#a92612ec64b1ea35910823424f2d16049" title="ResponseFormattingCharacter_Set" alt="" coords="144,165,371,195"/>
+<area shape="rect" id="node19" href="$classedwinspire_1_1_ports_1_1_modem.html#adddd0ba0328f8e87fd7ecdfa648126c1" title="CommandLineEditingCharacter_Set" alt="" coords="143,219,372,248"/>
+<area shape="rect" id="node23" href="$classedwinspire_1_1_ports_1_1_modem.html#a7d530020b45b32365f7efc9a425adc5c" title="ATS7_Set" alt="" coords="216,276,299,305"/>
+<area shape="rect" id="node27" href="$classedwinspire_1_1_ports_1_1_modem.html#ac204bc4be9ca2efac16047f5f8b0ce97" title="ATS10_Set" alt="" coords="213,341,301,371"/>
+<area shape="rect" id="node5" href="$classedwinspire_1_1_ports_1_1_modem.html#abecdea8422eebb704638d2a8794a8940" title="ATS0_Set" alt="" coords="485,5,568,35"/>
+<area shape="rect" id="node9" href="$classedwinspire_1_1_ports_1_1_modem.html#a91595208ec68ba0bf84aa3b2ddbff8ae" title="ATS2_Set" alt="" coords="485,59,568,88"/>
+<area shape="rect" id="node13" href="$classedwinspire_1_1_ports_1_1_modem.html#ae6cdfd2101756e3ea7d29022e97e9e4c" title="ATS3_Set" alt="" coords="485,112,568,141"/>
+<area shape="rect" id="node17" href="$classedwinspire_1_1_ports_1_1_modem.html#a6d2551cca4bd08c244f8b1092260a0f8" title="ATS4_Set" alt="" coords="485,165,568,195"/>
+<area shape="rect" id="node21" href="$classedwinspire_1_1_ports_1_1_modem.html#a160aec849db6d17c2b685b1641e95853" title="ATS5_Set" alt="" coords="485,219,568,248"/>
+<area shape="rect" id="node25" href="$classedwinspire_1_1_ports_1_1_modem.html#abc702e61859d7337d9e27049ec63a471" title="CompletionConnectionTime\lOut_Set" alt="" coords="436,271,617,318"/>
+<area shape="rect" id="node29" href="$classedwinspire_1_1_ports_1_1_modem.html#a5936bc6b960a13a16342ed0ec5c2beca" title="AutomaticDisconnectDelay\lControl_Set" alt="" coords="436,341,617,387"/>
+</map>

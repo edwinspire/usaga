@@ -1,0 +1,938 @@
+\hypertarget{namespaceedwinspire_1_1_ports}{\section{edwinspire\-:\-:Ports Namespace Reference}
+\label{namespaceedwinspire_1_1_ports}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classedwinspire_1_1_ports_1_1_modem}{Modem}
+\item 
+class \hyperlink{classedwinspire_1_1_ports_1_1_configure}{Configure}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{D\-T\-M\-F} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ab9f6920de535f04ccfe34d670fa2c8a8}{Zero}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ad4e07130bf8ac301c327f0e64bc2d292}{One}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a8f23576efb89e6d93059e33057415b06}{Two}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a14deafe746247fb6f76771246dfb16b5}{Three}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a56504d7f6f1ef88c211d788b514d53d1}{Four}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53af107e3c0debe405b548ccedcc0827556}{Five}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adcab63275dbc01b24e35a888c9deb038}{Six}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adfe47319322dfc26ab2dadffb14a82d6}{Seven}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a1a615e33148f59d3ab915f2cebad2851}{Eigth}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a087299c5c26e659be9c9e37c83e156e1}{Nine}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a01b4e6a097efae92e03e6d81f63e2b97}{Asterisc}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ae8408478b2169095c320fb85f84eb9ff}{Sharp}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a42a4ade1acd55a49164099104990e09f}{A}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a3f2a77ecd272aa6d6b5902faa5e5fc68}{B}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a739ce3f516592d245d16fd8a3893472c}{C}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a77a6b11f9898c052926f1d49765861e8}{D}
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{C\-M\-E} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da5bac3ab726daf5a531f642cf671eb660}{Phone\-Failure} =  0, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dade04141ff60db74d448d71236c8af905}{No\-Connection\-To\-Phone} =  1, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa521beb3794c338b2e23f5369d3108f1}{Phone\-Adaptor\-Link\-Reserved} =  2, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed} =  3, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported} =  4, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf7fef2c44b5704953be43865d85e68a9}{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required} =  5, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da02a3ad69615e01bbc6145ea693d41bb3}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired} =  6, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da8008cbb88c636493ce960985bed8467e}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required} =  7, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daeabbbc2d2d5eeb9a2146b5de72dfcffa}{S\-I\-M\-\_\-\-Not\-Inserted} =  10, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da41c7f262a97a2007f4fe519939e63449}{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required} =  11, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e217d72b14bb1e1d12f82063802d606}{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required} =  12, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e6ea85d33e78112a16bef702a1f8717}{S\-I\-M\-\_\-\-Failure} =  13, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da9f2e27201d1bdb688bb2266d6140a2fb}{S\-I\-M\-\_\-\-Busy} =  14, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa66ba86ccf371adbf778f48936f0d017}{S\-I\-M\-\_\-\-Wrong} =  15, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0a71a3669e3862881ca3e219be387c23}{Incorrect\-Password} =  16, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf92e7a793f4816d46ac70f31e3c56684}{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required} =  17, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da1ab4f534e6acbbe11b79a29f84b3226d}{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired} =  18, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full} =  20, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dadabc79450b430293cbbc28b91c90fb3f}{Invalid\-Index} =  21, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da70e76b0dfeca4f7119d1da36d948697f}{Not\-Found} =  22, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure} =  23, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da33c41eeb3d1a4ee2b5cf16552d32c6ed}{Text\-String\-Too\-Long} =  24, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7cc296c2c62fff13ccb76aaee4cc9019}{Invalid\-Characters\-In\-Text\-String} =  25, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dad0db263786d39e370e0f5b3d7a46009a}{Dial\-String\-Too\-Long} =  26, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7bd91aa24fabf5f0cc2c8f45a57f8c5b}{Invalid\-Characters\-In\-Dial\-String} =  27, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service} =  30, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout} =  31, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da83dc1c6bfa54f54906a3512daaf9dcf6}{Emergency\-Calls\-Only} =  32, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa0770f76c8a57214a191faed01962cbf}{Network\-Personalization\-P\-I\-N\-\_\-\-Required} =  40, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da32c11912e97206f90aa59e68bc4a077c}{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  41, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da076732b1615f86059dd0310f825e98d2}{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  42, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0c04abc48cfae8dac6cbd1ad3bcf0008}{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  43, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da288782b135960efee4ccd0c114992497}{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  44, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da3c2d590f8eb350bf67f8c0b55387b7f9}{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  45, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dae5d4416ff1651cb2e3b05dfdd56b8ca3}{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  46, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daddb8cd1bd3f9edd141304ae166e0d3ba}{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  47, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da4e81c184ac3ad48a389cd4454c4a05bb}{Unknown} =  100, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None} =  1000
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{C\-M\-S} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ae7fd5552a025d0e3fc55584808d0602d}{Phonefailure} =  300, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ab7e593dfd4bdb4e37f3ac31af3a5636f}{S\-M\-S\-Service\-Of\-Phone\-Reserved} =  301, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed} =  3, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported} =  4, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a974157182852fe5c200bda994afd409a}{Invalid\-P\-D\-U\-Mode\-Parameter} =  304, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac8b5ad6a4234d1221b3d79087c1148a8}{Invalid\-Text\-Mode\-Parameter} =  305, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a58c7f417765d0d47b600ef4aba3edb6e}{S\-I\-M\-Not\-Inserted} =  310, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a564eb8b99d5a536ff60a959d4cf1342e}{S\-I\-M\-P\-I\-N\-Necessary} =  311, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4af84020ca2dcb61a082f44f661226f6b7}{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary} =  312, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2ca3d6140b65c4062feb1334bf717098}{S\-I\-M\-Failure} =  313, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2d9a4fbe502772b08f0aa68d776336bd}{S\-I\-M\-Busy} =  314, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a64f7f9a49642e1f8a9752f009597e31b}{S\-I\-M\-Wrong} =  315, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure} =  23, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a7f7b32d7fcf2c3be5c1ad4d9672d7f4e}{Invalid\-Memory\-Index} =  321, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full} =  20, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a96b5eb25edeea51f80555bfc41c1c14b}{S\-M\-S\-C\-Address\-Unknown} =  330, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service} =  30, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout} =  31, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a36b13bee92e122caddcb8abefb6eec31}{Unknown\-Error} =  500, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a948beca328fd2b2bc9dbd6137579e248}{Manufacturer\-Specific} =  512, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None} =  1000
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742}{Hand\-Shaking} \{ \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ae80f4bdedfc52e94f9596b56eef11fe9}{R\-T\-S\-\_\-\-C\-T\-S}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ad743775fa9d49de3e9722b06a896d482}{X\-On\-X\-Off}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742a2a9364d1e805979ab176d7d2e116cc63}{D\-T\-R\-\_\-\-D\-S\-R}
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbe}{Stop\-Bits} \{ \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea7a725f13af144bdef532d0389ba75e0d}{O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea0e793500a63ffa575b9b712ca3bc9851}{T\-W\-O}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aca82b59bbf3249fe74227599ba5a813b}{Description} (nick=\char`\"{}E\-R\-R\-O\-R \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{C\-M\-S}\char`\"{}, blurb=\char`\"{}Responde con \hyperlink{namespaceedwinspire_1_1_ports_ab432ddd57eaa78866b8ce320fdb31d01}{E\-R\-R\-O\-R} modem G\-S\-M\char`\"{})\mbox{]} E\-R\-R\-O\-R\-\_\-\-C\-M\-S
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f}{Response} \hyperlink{namespaceedwinspire_1_1_ports_a6ef86265a936a529ea91a077ab2f2ca3}{with\-\_\-args} (Response\-Code \hyperlink{namespaceedwinspire_1_1_ports_a8b086f30ecfbef96ca3e5f5642767975}{Return}, Array\-List$<$ string $>$ \hyperlink{namespaceedwinspire_1_1_ports_a6989ba34677ae553d4d312c9ae744532}{Lines}, string raw, \hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{C\-M\-E} cme\-Error=C\-M\-E.\-None, \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{C\-M\-S} cms\-Error=C\-M\-S.\-None)
+\begin{DoxyCompactList}\small\item\em Constructor \end{DoxyCompactList}\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f}{Response} ()
+\item 
+public string \hyperlink{namespaceedwinspire_1_1_ports_a1d54df4f08e40e31578925d13f6ee9c6}{To\-String} ()
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_a1cb04d0401c5f2277711b286f3199061}{Last\-Call\-Received} ()
+\item 
+\hyperlink{classedwinspire_1_1_ports_1_1_configure}{edwinspire\-::\-Ports\-::\-Configure} \\*
+G\-Lib\-::\-Object \hyperlink{namespaceedwinspire_1_1_ports_aa3f7c9d23312aa446f2b0b8f52efdf34}{Status} (Data\-Status Status)
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144}{Serial\-Port} \hyperlink{namespaceedwinspire_1_1_ports_a9de2452f18841a5338e2c45fbc8cca2d}{with\-\_\-args} (string Port\-\_\-=\char`\"{}/dev/tty\-S0\char`\"{}, uint Baudrate=2400, uint Data\-Bits=8, Parity Parity\-\_\-=\hyperlink{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{Parity.\-N\-O\-N\-E}, \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbe}{Stop\-Bits} Stop\-Bits\-\_\-=\hyperlink{libspire__serial_8vala_a2cb8470634cc90a55800ee95f967eade}{Stop\-Bits.\-O\-N\-E}, \hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742}{Hand\-Shaking} H\-S\-\_\-=\hyperlink{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{Hand\-Shaking.\-N\-O\-N\-E})
+\item 
+private void \hyperlink{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17}{connect\-Signals} ()
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144}{Serial\-Port} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821}{Set\-\_\-\-Port} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_ab4f5440159397421d6f1985dccda8aa7}{Set} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13}{Setup\-\_\-\-Buffer\-\_\-} (ulong Buffer\-In, ulong Buffer\-Out)
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde}{set\-\_\-handshaking} ()
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d}{Discard\-Buffer} ()
+\item 
+public string\mbox{[}$\,$\mbox{]} \hyperlink{namespaceedwinspire_1_1_ports_ab6cd9fa85820a8013aa6f47c89eb8102}{Get\-\_\-\-Port\-Name} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a1c098ccc8f7a4f8bd868fa4887872b4e}{O\-K}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aff135858aa5a9cc89df1ab5c7be36d57}{C\-O\-N\-N\-E\-C\-T}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a8de2369866bdfd3f0663a793d0e67255}{R\-I\-N\-G}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ad4606903009920c6acc09144a51f91cf}{N\-O\-C\-A\-R\-R\-I\-E\-R}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ab432ddd57eaa78866b8ce320fdb31d01}{E\-R\-R\-O\-R}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aeeca1b6e1c383f62758a51f1307c8638}{N\-O\-D\-I\-A\-L\-T\-O\-N\-E}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ab27d4ee5b5866641be5fde3f6c15719b}{B\-U\-S\-Y}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a7b95c55cd0d61c0352039c017a0fe263}{N\-O\-A\-N\-S\-W\-E\-R}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aa67849e33e71e0685dee31059d242ac3}{E\-R\-R\-O\-R\-\_\-\-C\-M\-E} = 99
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a6d3970cfb8b14fc4c7c0682aefaecb11}{U\-N\-K\-N\-O\-W} = 100
+\item 
+public enum \\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} public \\*
+enum \hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{edwinspire\-::\-Ports\-::\-C\-M\-E} \hyperlink{namespaceedwinspire_1_1_ports_a6e1a116e42ac0d9aa022553ffbd3d841}{C\-M\-E\-Error}
+\begin{DoxyCompactList}\small\item\em Respuesta obtenida del \hyperlink{classedwinspire_1_1_ports_1_1_modem}{Modem} \end{DoxyCompactList}\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{C\-M\-S} \hyperlink{namespaceedwinspire_1_1_ports_aacf05e654cc931a34f76bbcffe360339}{C\-M\-S\-Error} = C\-M\-S.\-None
+\item 
+public Response\-Code \hyperlink{namespaceedwinspire_1_1_ports_a8b086f30ecfbef96ca3e5f5642767975}{Return} = Response\-Code.\-U\-N\-K\-N\-O\-W
+\begin{DoxyCompactList}\small\item\em Respuesta al comando enviado true si la respuesta al comando es O\-K, false en caso contrario \end{DoxyCompactList}\item 
+public string \hyperlink{namespaceedwinspire_1_1_ports_afeb780627bc31cc4b50e998eaf2fb6f0}{Raw} = \char`\"{}\char`\"{}
+\item 
+public Array\-List$<$ string $>$ \hyperlink{namespaceedwinspire_1_1_ports_a6989ba34677ae553d4d312c9ae744532}{Lines} = new Array\-List$<$string$>$()
+\begin{DoxyCompactList}\small\item\em Lineas recibidas como respuesta al comando A\-T \end{DoxyCompactList}\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{edwinspire\-::\-Ports\-::\-C\-M\-S} \hyperlink{namespaceedwinspire_1_1_ports_a22f616818dc85fd8ee4b9f3821546acb}{Number}
+\item 
+public Date\-Time \hyperlink{namespaceedwinspire_1_1_ports_a506e2d03085ed736361fd15035c2e456}{Date}
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_a4bfcb5e5e2846ac1676d0f53dff50445}{Read}
+\item 
+private int \hyperlink{namespaceedwinspire_1_1_ports_a5b6e04d991b7c31daba0475fc35b000e}{Gestor} = -\/1
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_acc08a70e547bb148eb4ecf30c82dfa2e}{Bloqueante} = false
+\item 
+private Timer \hyperlink{namespaceedwinspire_1_1_ports_a458f577133961caebcd35a6b1e7b9322}{Temporizador\-Interno\-Read\-Char} = new Timer()
+\item 
+private Timer \hyperlink{namespaceedwinspire_1_1_ports_afd9c83d6beca9151b46eff2c91bc90dc}{Temporizador\-Interno\-Read\-Line} = new Timer()
+\item 
+private String\-Builder \hyperlink{namespaceedwinspire_1_1_ports_a0a27f70484241b1637ed57e95d4a0d26}{Linea\-Modem} = new String\-Builder()
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_abd75369bb807e77b40ebbda7fc76eeed}{Log\-Modem} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace \hyperlink{namespaceedwinspire_1_1_ports}{Ports} covers everything related to communications with serial ports 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C\-M\-E@{C\-M\-E}}
+\index{C\-M\-E@{C\-M\-E}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{C\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf C\-M\-E}}}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{Phone\-Failure@{Phone\-Failure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Phone\-Failure@{Phone\-Failure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da5bac3ab726daf5a531f642cf671eb660}{Phone\-Failure}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da5bac3ab726daf5a531f642cf671eb660}
+}]\index{No\-Connection\-To\-Phone@{No\-Connection\-To\-Phone}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!No\-Connection\-To\-Phone@{No\-Connection\-To\-Phone}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dade04141ff60db74d448d71236c8af905}{No\-Connection\-To\-Phone}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dade04141ff60db74d448d71236c8af905}
+}]\index{Phone\-Adaptor\-Link\-Reserved@{Phone\-Adaptor\-Link\-Reserved}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Phone\-Adaptor\-Link\-Reserved@{Phone\-Adaptor\-Link\-Reserved}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa521beb3794c338b2e23f5369d3108f1}{Phone\-Adaptor\-Link\-Reserved}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa521beb3794c338b2e23f5369d3108f1}
+}]\index{Operation\-Not\-Allowed@{Operation\-Not\-Allowed}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Operation\-Not\-Allowed@{Operation\-Not\-Allowed}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}
+}]\index{Operation\-Not\-Supported@{Operation\-Not\-Supported}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Operation\-Not\-Supported@{Operation\-Not\-Supported}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}
+}]\index{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required@{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required@{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf7fef2c44b5704953be43865d85e68a9}{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf7fef2c44b5704953be43865d85e68a9}
+}]\index{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired@{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired@{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da02a3ad69615e01bbc6145ea693d41bb3}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da02a3ad69615e01bbc6145ea693d41bb3}
+}]\index{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required@{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required@{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da8008cbb88c636493ce960985bed8467e}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da8008cbb88c636493ce960985bed8467e}
+}]\index{S\-I\-M\-\_\-\-Not\-Inserted@{S\-I\-M\-\_\-\-Not\-Inserted}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-Not\-Inserted@{S\-I\-M\-\_\-\-Not\-Inserted}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daeabbbc2d2d5eeb9a2146b5de72dfcffa}{S\-I\-M\-\_\-\-Not\-Inserted}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daeabbbc2d2d5eeb9a2146b5de72dfcffa}
+}]\index{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da41c7f262a97a2007f4fe519939e63449}{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da41c7f262a97a2007f4fe519939e63449}
+}]\index{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e217d72b14bb1e1d12f82063802d606}{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e217d72b14bb1e1d12f82063802d606}
+}]\index{S\-I\-M\-\_\-\-Failure@{S\-I\-M\-\_\-\-Failure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-Failure@{S\-I\-M\-\_\-\-Failure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e6ea85d33e78112a16bef702a1f8717}{S\-I\-M\-\_\-\-Failure}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e6ea85d33e78112a16bef702a1f8717}
+}]\index{S\-I\-M\-\_\-\-Busy@{S\-I\-M\-\_\-\-Busy}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-Busy@{S\-I\-M\-\_\-\-Busy}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da9f2e27201d1bdb688bb2266d6140a2fb}{S\-I\-M\-\_\-\-Busy}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da9f2e27201d1bdb688bb2266d6140a2fb}
+}]\index{S\-I\-M\-\_\-\-Wrong@{S\-I\-M\-\_\-\-Wrong}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-Wrong@{S\-I\-M\-\_\-\-Wrong}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa66ba86ccf371adbf778f48936f0d017}{S\-I\-M\-\_\-\-Wrong}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa66ba86ccf371adbf778f48936f0d017}
+}]\index{Incorrect\-Password@{Incorrect\-Password}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Incorrect\-Password@{Incorrect\-Password}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0a71a3669e3862881ca3e219be387c23}{Incorrect\-Password}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0a71a3669e3862881ca3e219be387c23}
+}]\index{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required@{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf92e7a793f4816d46ac70f31e3c56684}{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf92e7a793f4816d46ac70f31e3c56684}
+}]\index{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired@{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired@{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da1ab4f534e6acbbe11b79a29f84b3226d}{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da1ab4f534e6acbbe11b79a29f84b3226d}
+}]\index{Memory\-Full@{Memory\-Full}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Memory\-Full@{Memory\-Full}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}
+}]\index{Invalid\-Index@{Invalid\-Index}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-Index@{Invalid\-Index}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dadabc79450b430293cbbc28b91c90fb3f}{Invalid\-Index}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dadabc79450b430293cbbc28b91c90fb3f}
+}]\index{Not\-Found@{Not\-Found}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Not\-Found@{Not\-Found}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da70e76b0dfeca4f7119d1da36d948697f}{Not\-Found}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da70e76b0dfeca4f7119d1da36d948697f}
+}]\index{Memory\-Failure@{Memory\-Failure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Memory\-Failure@{Memory\-Failure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}
+}]\index{Text\-String\-Too\-Long@{Text\-String\-Too\-Long}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Text\-String\-Too\-Long@{Text\-String\-Too\-Long}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da33c41eeb3d1a4ee2b5cf16552d32c6ed}{Text\-String\-Too\-Long}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da33c41eeb3d1a4ee2b5cf16552d32c6ed}
+}]\index{Invalid\-Characters\-In\-Text\-String@{Invalid\-Characters\-In\-Text\-String}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-Characters\-In\-Text\-String@{Invalid\-Characters\-In\-Text\-String}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7cc296c2c62fff13ccb76aaee4cc9019}{Invalid\-Characters\-In\-Text\-String}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7cc296c2c62fff13ccb76aaee4cc9019}
+}]\index{Dial\-String\-Too\-Long@{Dial\-String\-Too\-Long}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Dial\-String\-Too\-Long@{Dial\-String\-Too\-Long}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dad0db263786d39e370e0f5b3d7a46009a}{Dial\-String\-Too\-Long}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dad0db263786d39e370e0f5b3d7a46009a}
+}]\index{Invalid\-Characters\-In\-Dial\-String@{Invalid\-Characters\-In\-Dial\-String}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-Characters\-In\-Dial\-String@{Invalid\-Characters\-In\-Dial\-String}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7bd91aa24fabf5f0cc2c8f45a57f8c5b}{Invalid\-Characters\-In\-Dial\-String}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7bd91aa24fabf5f0cc2c8f45a57f8c5b}
+}]\index{No\-Network\-Service@{No\-Network\-Service}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!No\-Network\-Service@{No\-Network\-Service}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}
+}]\index{Network\-Timeout@{Network\-Timeout}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Timeout@{Network\-Timeout}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}
+}]\index{Emergency\-Calls\-Only@{Emergency\-Calls\-Only}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Emergency\-Calls\-Only@{Emergency\-Calls\-Only}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da83dc1c6bfa54f54906a3512daaf9dcf6}{Emergency\-Calls\-Only}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da83dc1c6bfa54f54906a3512daaf9dcf6}
+}]\index{Network\-Personalization\-P\-I\-N\-\_\-\-Required@{Network\-Personalization\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Personalization\-P\-I\-N\-\_\-\-Required@{Network\-Personalization\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa0770f76c8a57214a191faed01962cbf}{Network\-Personalization\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa0770f76c8a57214a191faed01962cbf}
+}]\index{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da32c11912e97206f90aa59e68bc4a077c}{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da32c11912e97206f90aa59e68bc4a077c}
+}]\index{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da076732b1615f86059dd0310f825e98d2}{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da076732b1615f86059dd0310f825e98d2}
+}]\index{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0c04abc48cfae8dac6cbd1ad3bcf0008}{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0c04abc48cfae8dac6cbd1ad3bcf0008}
+}]\index{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da288782b135960efee4ccd0c114992497}{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da288782b135960efee4ccd0c114992497}
+}]\index{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da3c2d590f8eb350bf67f8c0b55387b7f9}{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da3c2d590f8eb350bf67f8c0b55387b7f9}
+}]\index{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required@{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dae5d4416ff1651cb2e3b05dfdd56b8ca3}{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dae5d4416ff1651cb2e3b05dfdd56b8ca3}
+}]\index{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required@{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daddb8cd1bd3f9edd141304ae166e0d3ba}{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daddb8cd1bd3f9edd141304ae166e0d3ba}
+}]\index{Unknown@{Unknown}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Unknown@{Unknown}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da4e81c184ac3ad48a389cd4454c4a05bb}{Unknown}\label{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da4e81c184ac3ad48a389cd4454c4a05bb}
+}]\index{None@{None}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!None@{None}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 77 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C\-M\-S@{C\-M\-S}}
+\index{C\-M\-S@{C\-M\-S}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{C\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf C\-M\-S}}}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{Phonefailure@{Phonefailure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Phonefailure@{Phonefailure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ae7fd5552a025d0e3fc55584808d0602d}{Phonefailure}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ae7fd5552a025d0e3fc55584808d0602d}
+}]\index{S\-M\-S\-Service\-Of\-Phone\-Reserved@{S\-M\-S\-Service\-Of\-Phone\-Reserved}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-M\-S\-Service\-Of\-Phone\-Reserved@{S\-M\-S\-Service\-Of\-Phone\-Reserved}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ab7e593dfd4bdb4e37f3ac31af3a5636f}{S\-M\-S\-Service\-Of\-Phone\-Reserved}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ab7e593dfd4bdb4e37f3ac31af3a5636f}
+}]\index{Operation\-Not\-Allowed@{Operation\-Not\-Allowed}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Operation\-Not\-Allowed@{Operation\-Not\-Allowed}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}
+}]\index{Operation\-Not\-Supported@{Operation\-Not\-Supported}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Operation\-Not\-Supported@{Operation\-Not\-Supported}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}
+}]\index{Invalid\-P\-D\-U\-Mode\-Parameter@{Invalid\-P\-D\-U\-Mode\-Parameter}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-P\-D\-U\-Mode\-Parameter@{Invalid\-P\-D\-U\-Mode\-Parameter}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a974157182852fe5c200bda994afd409a}{Invalid\-P\-D\-U\-Mode\-Parameter}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a974157182852fe5c200bda994afd409a}
+}]\index{Invalid\-Text\-Mode\-Parameter@{Invalid\-Text\-Mode\-Parameter}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-Text\-Mode\-Parameter@{Invalid\-Text\-Mode\-Parameter}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac8b5ad6a4234d1221b3d79087c1148a8}{Invalid\-Text\-Mode\-Parameter}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac8b5ad6a4234d1221b3d79087c1148a8}
+}]\index{S\-I\-M\-Not\-Inserted@{S\-I\-M\-Not\-Inserted}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-Not\-Inserted@{S\-I\-M\-Not\-Inserted}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a58c7f417765d0d47b600ef4aba3edb6e}{S\-I\-M\-Not\-Inserted}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a58c7f417765d0d47b600ef4aba3edb6e}
+}]\index{S\-I\-M\-P\-I\-N\-Necessary@{S\-I\-M\-P\-I\-N\-Necessary}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-P\-I\-N\-Necessary@{S\-I\-M\-P\-I\-N\-Necessary}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a564eb8b99d5a536ff60a959d4cf1342e}{S\-I\-M\-P\-I\-N\-Necessary}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a564eb8b99d5a536ff60a959d4cf1342e}
+}]\index{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary@{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary@{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4af84020ca2dcb61a082f44f661226f6b7}{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4af84020ca2dcb61a082f44f661226f6b7}
+}]\index{S\-I\-M\-Failure@{S\-I\-M\-Failure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-Failure@{S\-I\-M\-Failure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2ca3d6140b65c4062feb1334bf717098}{S\-I\-M\-Failure}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2ca3d6140b65c4062feb1334bf717098}
+}]\index{S\-I\-M\-Busy@{S\-I\-M\-Busy}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-Busy@{S\-I\-M\-Busy}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2d9a4fbe502772b08f0aa68d776336bd}{S\-I\-M\-Busy}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2d9a4fbe502772b08f0aa68d776336bd}
+}]\index{S\-I\-M\-Wrong@{S\-I\-M\-Wrong}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-I\-M\-Wrong@{S\-I\-M\-Wrong}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a64f7f9a49642e1f8a9752f009597e31b}{S\-I\-M\-Wrong}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a64f7f9a49642e1f8a9752f009597e31b}
+}]\index{Memory\-Failure@{Memory\-Failure}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Memory\-Failure@{Memory\-Failure}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}
+}]\index{Invalid\-Memory\-Index@{Invalid\-Memory\-Index}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Invalid\-Memory\-Index@{Invalid\-Memory\-Index}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a7f7b32d7fcf2c3be5c1ad4d9672d7f4e}{Invalid\-Memory\-Index}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a7f7b32d7fcf2c3be5c1ad4d9672d7f4e}
+}]\index{Memory\-Full@{Memory\-Full}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Memory\-Full@{Memory\-Full}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}
+}]\index{S\-M\-S\-C\-Address\-Unknown@{S\-M\-S\-C\-Address\-Unknown}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!S\-M\-S\-C\-Address\-Unknown@{S\-M\-S\-C\-Address\-Unknown}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a96b5eb25edeea51f80555bfc41c1c14b}{S\-M\-S\-C\-Address\-Unknown}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a96b5eb25edeea51f80555bfc41c1c14b}
+}]\index{No\-Network\-Service@{No\-Network\-Service}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!No\-Network\-Service@{No\-Network\-Service}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}
+}]\index{Network\-Timeout@{Network\-Timeout}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Network\-Timeout@{Network\-Timeout}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}
+}]\index{Unknown\-Error@{Unknown\-Error}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Unknown\-Error@{Unknown\-Error}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a36b13bee92e122caddcb8abefb6eec31}{Unknown\-Error}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a36b13bee92e122caddcb8abefb6eec31}
+}]\index{Manufacturer\-Specific@{Manufacturer\-Specific}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Manufacturer\-Specific@{Manufacturer\-Specific}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a948beca328fd2b2bc9dbd6137579e248}{Manufacturer\-Specific}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a948beca328fd2b2bc9dbd6137579e248}
+}]\index{None@{None}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!None@{None}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None}\label{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 162 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!D\-T\-M\-F@{D\-T\-M\-F}}
+\index{D\-T\-M\-F@{D\-T\-M\-F}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{D\-T\-M\-F}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf D\-T\-M\-F}}}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{Zero@{Zero}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Zero@{Zero}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ab9f6920de535f04ccfe34d670fa2c8a8}{Zero}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ab9f6920de535f04ccfe34d670fa2c8a8}
+}]\index{One@{One}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!One@{One}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ad4e07130bf8ac301c327f0e64bc2d292}{One}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ad4e07130bf8ac301c327f0e64bc2d292}
+}]\index{Two@{Two}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Two@{Two}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a8f23576efb89e6d93059e33057415b06}{Two}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a8f23576efb89e6d93059e33057415b06}
+}]\index{Three@{Three}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Three@{Three}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a14deafe746247fb6f76771246dfb16b5}{Three}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a14deafe746247fb6f76771246dfb16b5}
+}]\index{Four@{Four}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Four@{Four}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a56504d7f6f1ef88c211d788b514d53d1}{Four}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a56504d7f6f1ef88c211d788b514d53d1}
+}]\index{Five@{Five}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Five@{Five}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53af107e3c0debe405b548ccedcc0827556}{Five}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53af107e3c0debe405b548ccedcc0827556}
+}]\index{Six@{Six}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Six@{Six}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adcab63275dbc01b24e35a888c9deb038}{Six}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adcab63275dbc01b24e35a888c9deb038}
+}]\index{Seven@{Seven}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Seven@{Seven}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adfe47319322dfc26ab2dadffb14a82d6}{Seven}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adfe47319322dfc26ab2dadffb14a82d6}
+}]\index{Eigth@{Eigth}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Eigth@{Eigth}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a1a615e33148f59d3ab915f2cebad2851}{Eigth}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a1a615e33148f59d3ab915f2cebad2851}
+}]\index{Nine@{Nine}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Nine@{Nine}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a087299c5c26e659be9c9e37c83e156e1}{Nine}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a087299c5c26e659be9c9e37c83e156e1}
+}]\index{Asterisc@{Asterisc}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Asterisc@{Asterisc}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a01b4e6a097efae92e03e6d81f63e2b97}{Asterisc}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a01b4e6a097efae92e03e6d81f63e2b97}
+}]\index{Sharp@{Sharp}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Sharp@{Sharp}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ae8408478b2169095c320fb85f84eb9ff}{Sharp}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ae8408478b2169095c320fb85f84eb9ff}
+}]\index{A@{A}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!A@{A}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a42a4ade1acd55a49164099104990e09f}{A}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a42a4ade1acd55a49164099104990e09f}
+}]\index{B@{B}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!B@{B}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a3f2a77ecd272aa6d6b5902faa5e5fc68}{B}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a3f2a77ecd272aa6d6b5902faa5e5fc68}
+}]\index{C@{C}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C@{C}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a739ce3f516592d245d16fd8a3893472c}{C}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a739ce3f516592d245d16fd8a3893472c}
+}]\index{D@{D}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!D@{D}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a77a6b11f9898c052926f1d49765861e8}{D}\label{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a77a6b11f9898c052926f1d49765861e8}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 28 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Hand\-Shaking@{Hand\-Shaking}}
+\index{Hand\-Shaking@{Hand\-Shaking}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Hand\-Shaking}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hand\-Shaking}}}\label{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{N\-O\-N\-E@{N\-O\-N\-E}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!N\-O\-N\-E@{N\-O\-N\-E}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}\label{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}
+}]\index{R\-T\-S\-\_\-\-C\-T\-S@{R\-T\-S\-\_\-\-C\-T\-S}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!R\-T\-S\-\_\-\-C\-T\-S@{R\-T\-S\-\_\-\-C\-T\-S}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ae80f4bdedfc52e94f9596b56eef11fe9}{R\-T\-S\-\_\-\-C\-T\-S}\label{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ae80f4bdedfc52e94f9596b56eef11fe9}
+}]\index{X\-On\-X\-Off@{X\-On\-X\-Off}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!X\-On\-X\-Off@{X\-On\-X\-Off}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ad743775fa9d49de3e9722b06a896d482}{X\-On\-X\-Off}\label{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ad743775fa9d49de3e9722b06a896d482}
+}]\index{D\-T\-R\-\_\-\-D\-S\-R@{D\-T\-R\-\_\-\-D\-S\-R}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!D\-T\-R\-\_\-\-D\-S\-R@{D\-T\-R\-\_\-\-D\-S\-R}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742a2a9364d1e805979ab176d7d2e116cc63}{D\-T\-R\-\_\-\-D\-S\-R}\label{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742a2a9364d1e805979ab176d7d2e116cc63}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 56 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbe}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Stop\-Bits@{Stop\-Bits}}
+\index{Stop\-Bits@{Stop\-Bits}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Stop\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Stop\-Bits}}}\label{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbe}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{N\-O\-N\-E@{N\-O\-N\-E}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!N\-O\-N\-E@{N\-O\-N\-E}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}\label{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}
+}]\index{O\-N\-E@{O\-N\-E}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!O\-N\-E@{O\-N\-E}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea7a725f13af144bdef532d0389ba75e0d}{O\-N\-E}\label{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea7a725f13af144bdef532d0389ba75e0d}
+}]\index{T\-W\-O@{T\-W\-O}!edwinspire\-::\-Ports@{edwinspire\-::\-Ports}}\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!T\-W\-O@{T\-W\-O}}\item[{\em 
+\hypertarget{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea0e793500a63ffa575b9b712ca3bc9851}{T\-W\-O}\label{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea0e793500a63ffa575b9b712ca3bc9851}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 80 of file libspire\-\_\-serial.\-vala.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!connect\-Signals@{connect\-Signals}}
+\index{connect\-Signals@{connect\-Signals}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{connect\-Signals}]{\setlength{\rightskip}{0pt plus 5cm}private void edwinspire\-::\-Ports\-::connect\-Signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17}
+
+
+Definition at line 172 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_aca82b59bbf3249fe74227599ba5a813b}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Description@{Description}}
+\index{Description@{Description}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Description}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-Stop\-Bits} Description (
+\begin{DoxyParamCaption}
+\item[{nick}]{ = {\ttfamily \char`\"{}ERROR~CMS\char`\"{}}, }
+\item[{blurb}]{ = {\ttfamily \char`\"{}Responde~con~ERROR~modem~GSM\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_aca82b59bbf3249fe74227599ba5a813b}
+
+
+Definition at line 66 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Discard\-Buffer@{Discard\-Buffer}}
+\index{Discard\-Buffer@{Discard\-Buffer}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Discard\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Discard\-Buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d}
+
+
+Definition at line 245 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_ab6cd9fa85820a8013aa6f47c89eb8102}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Get\-\_\-\-Port\-Name@{Get\-\_\-\-Port\-Name}}
+\index{Get\-\_\-\-Port\-Name@{Get\-\_\-\-Port\-Name}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Get\-\_\-\-Port\-Name}]{\setlength{\rightskip}{0pt plus 5cm}public string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Get\-\_\-\-Port\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_ab6cd9fa85820a8013aa6f47c89eb8102}
+
+
+Definition at line 253 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a1cb04d0401c5f2277711b286f3199061}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Last\-Call\-Received@{Last\-Call\-Received}}
+\index{Last\-Call\-Received@{Last\-Call\-Received}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Last\-Call\-Received}]{\setlength{\rightskip}{0pt plus 5cm}public edwinspire\-::\-Ports\-::\-Last\-Call\-Received (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a1cb04d0401c5f2277711b286f3199061}
+
+
+Definition at line 193 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Response@{Response}}
+\index{Response@{Response}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Response}]{\setlength{\rightskip}{0pt plus 5cm}public edwinspire\-::\-Ports\-::\-Response (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f}
+
+
+Definition at line 149 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Serial\-Port@{Serial\-Port}}
+\index{Serial\-Port@{Serial\-Port}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Serial\-Port}]{\setlength{\rightskip}{0pt plus 5cm}public edwinspire\-::\-Ports\-::\-Serial\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144}
+
+
+Definition at line 203 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_ab4f5440159397421d6f1985dccda8aa7}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Set@{Set}}
+\index{Set@{Set}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Set}]{\setlength{\rightskip}{0pt plus 5cm}private bool edwinspire\-::\-Ports\-::\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_ab4f5440159397421d6f1985dccda8aa7}
+
+
+Definition at line 220 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_ab4f5440159397421d6f1985dccda8aa7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!set\-\_\-handshaking@{set\-\_\-handshaking}}
+\index{set\-\_\-handshaking@{set\-\_\-handshaking}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{set\-\_\-handshaking}]{\setlength{\rightskip}{0pt plus 5cm}private bool edwinspire\-::\-Ports\-::set\-\_\-handshaking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde}
+
+
+Definition at line 236 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Set\-\_\-\-Port@{Set\-\_\-\-Port}}
+\index{Set\-\_\-\-Port@{Set\-\_\-\-Port}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Set\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}private bool edwinspire\-::\-Ports\-::\-Set\-\_\-\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821}
+
+
+Definition at line 208 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Setup\-\_\-\-Buffer\-\_\-@{Setup\-\_\-\-Buffer\-\_\-}}
+\index{Setup\-\_\-\-Buffer\-\_\-@{Setup\-\_\-\-Buffer\-\_\-}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Setup\-\_\-\-Buffer\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}private bool edwinspire\-::\-Ports\-::\-Setup\-\_\-\-Buffer\-\_\- (
+\begin{DoxyParamCaption}
+\item[{ulong}]{Buffer\-In, }
+\item[{ulong}]{Buffer\-Out}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13}
+
+
+Definition at line 229 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespaceedwinspire_1_1_ports_aa3f7c9d23312aa446f2b0b8f52efdf34}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Status@{Status}}
+\index{Status@{Status}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf edwinspire\-::\-Ports\-::\-Configure} G\-Lib\-::\-Object edwinspire\-::\-Ports\-::\-Status (
+\begin{DoxyParamCaption}
+\item[{Data\-Status}]{Status}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_aa3f7c9d23312aa446f2b0b8f52efdf34}
+The Serial\-Port class contains methods for communications with devices via serial port. \hypertarget{namespaceedwinspire_1_1_ports_a1d54df4f08e40e31578925d13f6ee9c6}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}public string edwinspire\-::\-Ports\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a1d54df4f08e40e31578925d13f6ee9c6}
+
+
+Definition at line 151 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a6ef86265a936a529ea91a077ab2f2ca3}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!with\-\_\-args@{with\-\_\-args}}
+\index{with\-\_\-args@{with\-\_\-args}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{with\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}public {\bf Response} edwinspire\-::\-Ports\-::with\-\_\-args (
+\begin{DoxyParamCaption}
+\item[{Response\-Code}]{Return, }
+\item[{Array\-List$<$ string $>$}]{Lines, }
+\item[{string}]{raw, }
+\item[{C\-M\-E}]{cme\-Error = {\ttfamily CME.None}, }
+\item[{C\-M\-S}]{cms\-Error = {\ttfamily CMS.None}}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a6ef86265a936a529ea91a077ab2f2ca3}
+
+
+Constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Return} & true si todo salio bien, false en caso contrario \\
+\hline
+{\em Lines} & Lineas devueltas por el modem como respuesta a un comando A\-T \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 142 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a9de2452f18841a5338e2c45fbc8cca2d}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!with\-\_\-args@{with\-\_\-args}}
+\index{with\-\_\-args@{with\-\_\-args}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{with\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}public {\bf Serial\-Port} edwinspire\-::\-Ports\-::with\-\_\-args (
+\begin{DoxyParamCaption}
+\item[{string}]{Port\-\_\- = {\ttfamily \char`\"{}/dev/ttyS0\char`\"{}}, }
+\item[{uint}]{Baudrate = {\ttfamily 2400}, }
+\item[{uint}]{Data\-Bits = {\ttfamily 8}, }
+\item[{Parity}]{Parity\-\_\- = {\ttfamily {\bf Parity.\-N\-O\-N\-E}}, }
+\item[{Stop\-Bits}]{Stop\-Bits\-\_\- = {\ttfamily {\bf Stop\-Bits.\-O\-N\-E}}, }
+\item[{Hand\-Shaking}]{H\-S\-\_\- = {\ttfamily {\bf Hand\-Shaking.\-N\-O\-N\-E}}}
+\end{DoxyParamCaption}
+)}}\label{namespaceedwinspire_1_1_ports_a9de2452f18841a5338e2c45fbc8cca2d}
+
+
+Definition at line 163 of file libspire\-\_\-serial.\-vala.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceedwinspire_1_1_ports_a9de2452f18841a5338e2c45fbc8cca2d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespaceedwinspire_1_1_ports_acc08a70e547bb148eb4ecf30c82dfa2e}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Bloqueante@{Bloqueante}}
+\index{Bloqueante@{Bloqueante}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Bloqueante}]{\setlength{\rightskip}{0pt plus 5cm}private bool Bloqueante = false}}\label{namespaceedwinspire_1_1_ports_acc08a70e547bb148eb4ecf30c82dfa2e}
+
+
+Definition at line 156 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_ab27d4ee5b5866641be5fde3f6c15719b}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!B\-U\-S\-Y@{B\-U\-S\-Y}}
+\index{B\-U\-S\-Y@{B\-U\-S\-Y}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 B\-U\-S\-Y}}\label{namespaceedwinspire_1_1_ports_ab27d4ee5b5866641be5fde3f6c15719b}
+\hypertarget{namespaceedwinspire_1_1_ports_a6e1a116e42ac0d9aa022553ffbd3d841}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C\-M\-E\-Error@{C\-M\-E\-Error}}
+\index{C\-M\-E\-Error@{C\-M\-E\-Error}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{C\-M\-E\-Error}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F} public enum {\bf edwinspire\-::\-Ports\-::\-C\-M\-E} C\-M\-E\-Error}}\label{namespaceedwinspire_1_1_ports_a6e1a116e42ac0d9aa022553ffbd3d841}
+
+
+Respuesta obtenida del \hyperlink{classedwinspire_1_1_ports_1_1_modem}{Modem} 
+
+\hypertarget{namespaceedwinspire_1_1_ports_aacf05e654cc931a34f76bbcffe360339}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C\-M\-S\-Error@{C\-M\-S\-Error}}
+\index{C\-M\-S\-Error@{C\-M\-S\-Error}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{C\-M\-S\-Error}]{\setlength{\rightskip}{0pt plus 5cm}public {\bf C\-M\-S} C\-M\-S\-Error = C\-M\-S.\-None}}\label{namespaceedwinspire_1_1_ports_aacf05e654cc931a34f76bbcffe360339}
+
+
+Definition at line 122 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_aff135858aa5a9cc89df1ab5c7be36d57}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!C\-O\-N\-N\-E\-C\-T@{C\-O\-N\-N\-E\-C\-T}}
+\index{C\-O\-N\-N\-E\-C\-T@{C\-O\-N\-N\-E\-C\-T}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{C\-O\-N\-N\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 C\-O\-N\-N\-E\-C\-T}}\label{namespaceedwinspire_1_1_ports_aff135858aa5a9cc89df1ab5c7be36d57}
+\hypertarget{namespaceedwinspire_1_1_ports_a506e2d03085ed736361fd15035c2e456}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Date@{Date}}
+\index{Date@{Date}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Date}]{\setlength{\rightskip}{0pt plus 5cm}public Date\-Time Date}}\label{namespaceedwinspire_1_1_ports_a506e2d03085ed736361fd15035c2e456}
+
+
+Definition at line 191 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_ab432ddd57eaa78866b8ce320fdb31d01}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!E\-R\-R\-O\-R@{E\-R\-R\-O\-R}}
+\index{E\-R\-R\-O\-R@{E\-R\-R\-O\-R}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F} 
+			 E\-R\-R\-O\-R}}\label{namespaceedwinspire_1_1_ports_ab432ddd57eaa78866b8ce320fdb31d01}
+\hypertarget{namespaceedwinspire_1_1_ports_aa67849e33e71e0685dee31059d242ac3}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!E\-R\-R\-O\-R\-\_\-\-C\-M\-E@{E\-R\-R\-O\-R\-\_\-\-C\-M\-E}}
+\index{E\-R\-R\-O\-R\-\_\-\-C\-M\-E@{E\-R\-R\-O\-R\-\_\-\-C\-M\-E}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{E\-R\-R\-O\-R\-\_\-\-C\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F} E\-R\-R\-O\-R\-\_\-\-C\-M\-E = 99}}\label{namespaceedwinspire_1_1_ports_aa67849e33e71e0685dee31059d242ac3}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a5b6e04d991b7c31daba0475fc35b000e}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Gestor@{Gestor}}
+\index{Gestor@{Gestor}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Gestor}]{\setlength{\rightskip}{0pt plus 5cm}private int Gestor = -\/1}}\label{namespaceedwinspire_1_1_ports_a5b6e04d991b7c31daba0475fc35b000e}
+
+
+Definition at line 155 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a0a27f70484241b1637ed57e95d4a0d26}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Linea\-Modem@{Linea\-Modem}}
+\index{Linea\-Modem@{Linea\-Modem}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Linea\-Modem}]{\setlength{\rightskip}{0pt plus 5cm}private String\-Builder Linea\-Modem = new String\-Builder()}}\label{namespaceedwinspire_1_1_ports_a0a27f70484241b1637ed57e95d4a0d26}
+
+
+Definition at line 160 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a6989ba34677ae553d4d312c9ae744532}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Lines@{Lines}}
+\index{Lines@{Lines}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Lines}]{\setlength{\rightskip}{0pt plus 5cm}public Array\-List$<$string$>$ Lines = new Array\-List$<$string$>$()}}\label{namespaceedwinspire_1_1_ports_a6989ba34677ae553d4d312c9ae744532}
+
+
+Lineas recibidas como respuesta al comando A\-T 
+
+
+
+Definition at line 132 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_abd75369bb807e77b40ebbda7fc76eeed}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Log\-Modem@{Log\-Modem}}
+\index{Log\-Modem@{Log\-Modem}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Log\-Modem}]{\setlength{\rightskip}{0pt plus 5cm}public bool Log\-Modem = false}}\label{namespaceedwinspire_1_1_ports_abd75369bb807e77b40ebbda7fc76eeed}
+
+
+Definition at line 162 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a7b95c55cd0d61c0352039c017a0fe263}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!N\-O\-A\-N\-S\-W\-E\-R@{N\-O\-A\-N\-S\-W\-E\-R}}
+\index{N\-O\-A\-N\-S\-W\-E\-R@{N\-O\-A\-N\-S\-W\-E\-R}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{N\-O\-A\-N\-S\-W\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 N\-O\-A\-N\-S\-W\-E\-R}}\label{namespaceedwinspire_1_1_ports_a7b95c55cd0d61c0352039c017a0fe263}
+\hypertarget{namespaceedwinspire_1_1_ports_ad4606903009920c6acc09144a51f91cf}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!N\-O\-C\-A\-R\-R\-I\-E\-R@{N\-O\-C\-A\-R\-R\-I\-E\-R}}
+\index{N\-O\-C\-A\-R\-R\-I\-E\-R@{N\-O\-C\-A\-R\-R\-I\-E\-R}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{N\-O\-C\-A\-R\-R\-I\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 N\-O\-C\-A\-R\-R\-I\-E\-R}}\label{namespaceedwinspire_1_1_ports_ad4606903009920c6acc09144a51f91cf}
+\hypertarget{namespaceedwinspire_1_1_ports_aeeca1b6e1c383f62758a51f1307c8638}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!N\-O\-D\-I\-A\-L\-T\-O\-N\-E@{N\-O\-D\-I\-A\-L\-T\-O\-N\-E}}
+\index{N\-O\-D\-I\-A\-L\-T\-O\-N\-E@{N\-O\-D\-I\-A\-L\-T\-O\-N\-E}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{N\-O\-D\-I\-A\-L\-T\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 N\-O\-D\-I\-A\-L\-T\-O\-N\-E}}\label{namespaceedwinspire_1_1_ports_aeeca1b6e1c383f62758a51f1307c8638}
+\hypertarget{namespaceedwinspire_1_1_ports_a22f616818dc85fd8ee4b9f3821546acb}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Number@{Number}}
+\index{Number@{Number}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Number}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-C\-M\-S} Number}}\label{namespaceedwinspire_1_1_ports_a22f616818dc85fd8ee4b9f3821546acb}
+\hypertarget{namespaceedwinspire_1_1_ports_a1c098ccc8f7a4f8bd868fa4887872b4e}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!O\-K@{O\-K}}
+\index{O\-K@{O\-K}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{O\-K}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 O\-K}}\label{namespaceedwinspire_1_1_ports_a1c098ccc8f7a4f8bd868fa4887872b4e}
+\hypertarget{namespaceedwinspire_1_1_ports_afeb780627bc31cc4b50e998eaf2fb6f0}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Raw@{Raw}}
+\index{Raw@{Raw}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Raw}]{\setlength{\rightskip}{0pt plus 5cm}public string Raw = \char`\"{}\char`\"{}}}\label{namespaceedwinspire_1_1_ports_afeb780627bc31cc4b50e998eaf2fb6f0}
+
+
+Definition at line 128 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a4bfcb5e5e2846ac1676d0f53dff50445}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Read@{Read}}
+\index{Read@{Read}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}public bool Read}}\label{namespaceedwinspire_1_1_ports_a4bfcb5e5e2846ac1676d0f53dff50445}
+
+
+Definition at line 192 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a8b086f30ecfbef96ca3e5f5642767975}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Return@{Return}}
+\index{Return@{Return}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Return}]{\setlength{\rightskip}{0pt plus 5cm}public Response\-Code Return = Response\-Code.\-U\-N\-K\-N\-O\-W}}\label{namespaceedwinspire_1_1_ports_a8b086f30ecfbef96ca3e5f5642767975}
+
+
+Respuesta al comando enviado true si la respuesta al comando es O\-K, false en caso contrario 
+
+
+
+Definition at line 127 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a8de2369866bdfd3f0663a793d0e67255}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!R\-I\-N\-G@{R\-I\-N\-G}}
+\index{R\-I\-N\-G@{R\-I\-N\-G}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{R\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F}
+			 R\-I\-N\-G}}\label{namespaceedwinspire_1_1_ports_a8de2369866bdfd3f0663a793d0e67255}
+\hypertarget{namespaceedwinspire_1_1_ports_a458f577133961caebcd35a6b1e7b9322}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Temporizador\-Interno\-Read\-Char@{Temporizador\-Interno\-Read\-Char}}
+\index{Temporizador\-Interno\-Read\-Char@{Temporizador\-Interno\-Read\-Char}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Temporizador\-Interno\-Read\-Char}]{\setlength{\rightskip}{0pt plus 5cm}private Timer Temporizador\-Interno\-Read\-Char = new Timer()}}\label{namespaceedwinspire_1_1_ports_a458f577133961caebcd35a6b1e7b9322}
+
+
+Definition at line 158 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_afd9c83d6beca9151b46eff2c91bc90dc}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!Temporizador\-Interno\-Read\-Line@{Temporizador\-Interno\-Read\-Line}}
+\index{Temporizador\-Interno\-Read\-Line@{Temporizador\-Interno\-Read\-Line}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{Temporizador\-Interno\-Read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}private Timer Temporizador\-Interno\-Read\-Line = new Timer()}}\label{namespaceedwinspire_1_1_ports_afd9c83d6beca9151b46eff2c91bc90dc}
+
+
+Definition at line 159 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{namespaceedwinspire_1_1_ports_a6d3970cfb8b14fc4c7c0682aefaecb11}{\index{edwinspire\-::\-Ports@{edwinspire\-::\-Ports}!U\-N\-K\-N\-O\-W@{U\-N\-K\-N\-O\-W}}
+\index{U\-N\-K\-N\-O\-W@{U\-N\-K\-N\-O\-W}!edwinspire::Ports@{edwinspire\-::\-Ports}}
+\subsubsection[{U\-N\-K\-N\-O\-W}]{\setlength{\rightskip}{0pt plus 5cm}public enum {\bf edwinspire\-::\-Ports\-::\-D\-T\-M\-F} U\-N\-K\-N\-O\-W = 100}}\label{namespaceedwinspire_1_1_ports_a6d3970cfb8b14fc4c7c0682aefaecb11}
+
+
+Definition at line 75 of file libspire\-\_\-modem\-\_\-new.\-vala.
+

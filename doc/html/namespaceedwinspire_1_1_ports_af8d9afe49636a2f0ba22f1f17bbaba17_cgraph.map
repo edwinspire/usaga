@@ -1,0 +1,8 @@
+<map id="connectSignals" name="connectSignals">
+<area shape="rect" id="node3" href="$namespaceedwinspire_1_1_ports.html#a17877b618445a0e65f46c94bc80bc821" title="Set_Port" alt="" coords="189,5,261,35"/>
+<area shape="rect" id="node7" href="$namespaceedwinspire_1_1_ports.html#a16c386569d50ef1f47b43bce24c54cde" title="set_handshaking" alt="" coords="165,59,285,88"/>
+<area shape="rect" id="node11" href="$namespaceedwinspire_1_1_ports.html#a7a08c939ddf6ae7e1426b3bd061c3f13" title="Setup_Buffer_" alt="" coords="173,112,277,141"/>
+<area shape="rect" id="node5" href="$libspire__serial_8vala.html#a358f02cfc4dfa7d4c59442be87dcd127" title="Set_Configure_Port" alt="" coords="333,5,469,35"/>
+<area shape="rect" id="node9" href="$libspire__serial_8vala.html#a215c51266ce081fa46cb9c1f2f395d0f" title="Set_Hands_Haking" alt="" coords="335,59,468,88"/>
+<area shape="rect" id="node13" href="$libspire__serial_8vala.html#af737482681e97ca6ed05e31f452b7857" title="Setup_Buffer" alt="" coords="352,112,451,141"/>
+</map>

@@ -1,0 +1,320 @@
+\hypertarget{libspire__modem__new_8vala}{\section{libspire\-\_\-modem\-\_\-new.\-vala File Reference}
+\label{libspire__modem__new_8vala}\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classedwinspire_1_1_ports_1_1_modem}{Modem}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceedwinspire}{edwinspire}
+\item 
+namespace \hyperlink{namespaceedwinspire_1_1_ports}{edwinspire\-::\-Ports}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{D\-T\-M\-F} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ab9f6920de535f04ccfe34d670fa2c8a8}{Zero}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ad4e07130bf8ac301c327f0e64bc2d292}{One}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a8f23576efb89e6d93059e33057415b06}{Two}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a14deafe746247fb6f76771246dfb16b5}{Three}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a56504d7f6f1ef88c211d788b514d53d1}{Four}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53af107e3c0debe405b548ccedcc0827556}{Five}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adcab63275dbc01b24e35a888c9deb038}{Six}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53adfe47319322dfc26ab2dadffb14a82d6}{Seven}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a1a615e33148f59d3ab915f2cebad2851}{Eigth}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a087299c5c26e659be9c9e37c83e156e1}{Nine}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a01b4e6a097efae92e03e6d81f63e2b97}{Asterisc}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53ae8408478b2169095c320fb85f84eb9ff}{Sharp}, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a42a4ade1acd55a49164099104990e09f}{A}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a3f2a77ecd272aa6d6b5902faa5e5fc68}{B}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a739ce3f516592d245d16fd8a3893472c}{C}, 
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53a77a6b11f9898c052926f1d49765861e8}{D}
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{C\-M\-E} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da5bac3ab726daf5a531f642cf671eb660}{Phone\-Failure} =  0, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dade04141ff60db74d448d71236c8af905}{No\-Connection\-To\-Phone} =  1, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa521beb3794c338b2e23f5369d3108f1}{Phone\-Adaptor\-Link\-Reserved} =  2, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed} =  3, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported} =  4, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf7fef2c44b5704953be43865d85e68a9}{P\-H\-\_\-\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required} =  5, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da02a3ad69615e01bbc6145ea693d41bb3}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Rrequired} =  6, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da8008cbb88c636493ce960985bed8467e}{P\-H\-\_\-\-F\-S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required} =  7, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daeabbbc2d2d5eeb9a2146b5de72dfcffa}{S\-I\-M\-\_\-\-Not\-Inserted} =  10, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da41c7f262a97a2007f4fe519939e63449}{S\-I\-M\-\_\-\-P\-I\-N\-\_\-\-Required} =  11, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e217d72b14bb1e1d12f82063802d606}{S\-I\-M\-\_\-\-P\-U\-K\-\_\-\-Required} =  12, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da2e6ea85d33e78112a16bef702a1f8717}{S\-I\-M\-\_\-\-Failure} =  13, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da9f2e27201d1bdb688bb2266d6140a2fb}{S\-I\-M\-\_\-\-Busy} =  14, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa66ba86ccf371adbf778f48936f0d017}{S\-I\-M\-\_\-\-Wrong} =  15, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0a71a3669e3862881ca3e219be387c23}{Incorrect\-Password} =  16, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daf92e7a793f4816d46ac70f31e3c56684}{S\-I\-M\-\_\-\-P\-I\-N2\-\_\-\-Required} =  17, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da1ab4f534e6acbbe11b79a29f84b3226d}{S\-I\-M\-\_\-\-P\-U\-K2\-\_\-\-Rrequired} =  18, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full} =  20, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dadabc79450b430293cbbc28b91c90fb3f}{Invalid\-Index} =  21, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da70e76b0dfeca4f7119d1da36d948697f}{Not\-Found} =  22, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure} =  23, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da33c41eeb3d1a4ee2b5cf16552d32c6ed}{Text\-String\-Too\-Long} =  24, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7cc296c2c62fff13ccb76aaee4cc9019}{Invalid\-Characters\-In\-Text\-String} =  25, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dad0db263786d39e370e0f5b3d7a46009a}{Dial\-String\-Too\-Long} =  26, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da7bd91aa24fabf5f0cc2c8f45a57f8c5b}{Invalid\-Characters\-In\-Dial\-String} =  27, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service} =  30, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout} =  31, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da83dc1c6bfa54f54906a3512daaf9dcf6}{Emergency\-Calls\-Only} =  32, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daa0770f76c8a57214a191faed01962cbf}{Network\-Personalization\-P\-I\-N\-\_\-\-Required} =  40, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da32c11912e97206f90aa59e68bc4a077c}{Network\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  41, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da076732b1615f86059dd0310f825e98d2}{Network\-Subset\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  42, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da0c04abc48cfae8dac6cbd1ad3bcf0008}{Network\-Subset\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  43, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da288782b135960efee4ccd0c114992497}{Service\-Provider\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  44, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da3c2d590f8eb350bf67f8c0b55387b7f9}{Service\-Provider\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  45, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0dae5d4416ff1651cb2e3b05dfdd56b8ca3}{Corporate\-Personalization\-\_\-\-P\-I\-N\-\_\-\-Required} =  46, 
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0daddb8cd1bd3f9edd141304ae166e0d3ba}{Corporate\-Personalization\-\_\-\-P\-U\-K\-\_\-\-Required} =  47, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0da4e81c184ac3ad48a389cd4454c4a05bb}{Unknown} =  100, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None} =  1000
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{C\-M\-S} \{ \\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ae7fd5552a025d0e3fc55584808d0602d}{Phonefailure} =  300, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ab7e593dfd4bdb4e37f3ac31af3a5636f}{S\-M\-S\-Service\-Of\-Phone\-Reserved} =  301, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a40c3620637782663c2f6af59c8c9c7c5}{Operation\-Not\-Allowed} =  3, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a6cbd4487c4f4d9103805f23686470287}{Operation\-Not\-Supported} =  4, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a974157182852fe5c200bda994afd409a}{Invalid\-P\-D\-U\-Mode\-Parameter} =  304, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac8b5ad6a4234d1221b3d79087c1148a8}{Invalid\-Text\-Mode\-Parameter} =  305, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a58c7f417765d0d47b600ef4aba3edb6e}{S\-I\-M\-Not\-Inserted} =  310, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a564eb8b99d5a536ff60a959d4cf1342e}{S\-I\-M\-P\-I\-N\-Necessary} =  311, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4af84020ca2dcb61a082f44f661226f6b7}{P\-H\-\_\-\-S\-I\-M\-P\-I\-N\-Necessary} =  312, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2ca3d6140b65c4062feb1334bf717098}{S\-I\-M\-Failure} =  313, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2d9a4fbe502772b08f0aa68d776336bd}{S\-I\-M\-Busy} =  314, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a64f7f9a49642e1f8a9752f009597e31b}{S\-I\-M\-Wrong} =  315, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a2a58ed09b8a8239b15d3a0e0c365c029}{Memory\-Failure} =  23, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a7f7b32d7fcf2c3be5c1ad4d9672d7f4e}{Invalid\-Memory\-Index} =  321, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a9c4b821e98068d17ab433a2059b86e65}{Memory\-Full} =  20, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a96b5eb25edeea51f80555bfc41c1c14b}{S\-M\-S\-C\-Address\-Unknown} =  330, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a941770a50c4e4f7a763fe278de42596a}{No\-Network\-Service} =  30, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a4ab8d67ce74f17111c2c63028b724909}{Network\-Timeout} =  31, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a36b13bee92e122caddcb8abefb6eec31}{Unknown\-Error} =  500, 
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4a948beca328fd2b2bc9dbd6137579e248}{Manufacturer\-Specific} =  512, 
+\\*
+\hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4ac7485dcc8d256a6f197ed7802687f252}{None} =  1000
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aca82b59bbf3249fe74227599ba5a813b}{Description} (nick=\char`\"{}E\-R\-R\-O\-R C\-M\-S\char`\"{}, blurb=\char`\"{}Responde con E\-R\-R\-O\-R modem G\-S\-M\char`\"{})\mbox{]} E\-R\-R\-O\-R\-\_\-\-C\-M\-S
+\item 
+public Response \hyperlink{namespaceedwinspire_1_1_ports_a6ef86265a936a529ea91a077ab2f2ca3}{with\-\_\-args} (Response\-Code Return, Array\-List$<$ string $>$ Lines, string raw, C\-M\-E cme\-Error=C\-M\-E.\-None, C\-M\-S cms\-Error=C\-M\-S.\-None)
+\begin{DoxyCompactList}\small\item\em Constructor \end{DoxyCompactList}\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_afc37e1ee0b1084b5c5fccf2fab440b4f}{Response} ()
+\item 
+public string \hyperlink{namespaceedwinspire_1_1_ports_a1d54df4f08e40e31578925d13f6ee9c6}{To\-String} ()
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_a1cb04d0401c5f2277711b286f3199061}{Last\-Call\-Received} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a1c098ccc8f7a4f8bd868fa4887872b4e}{O\-K}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aff135858aa5a9cc89df1ab5c7be36d57}{C\-O\-N\-N\-E\-C\-T}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a8de2369866bdfd3f0663a793d0e67255}{R\-I\-N\-G}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ad4606903009920c6acc09144a51f91cf}{N\-O\-C\-A\-R\-R\-I\-E\-R}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ab432ddd57eaa78866b8ce320fdb31d01}{E\-R\-R\-O\-R}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aeeca1b6e1c383f62758a51f1307c8638}{N\-O\-D\-I\-A\-L\-T\-O\-N\-E}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_ab27d4ee5b5866641be5fde3f6c15719b}{B\-U\-S\-Y}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a7b95c55cd0d61c0352039c017a0fe263}{N\-O\-A\-N\-S\-W\-E\-R}
+\item 
+\hyperlink{libspire__modem__new_8vala_ab7be4097d881eae846c441069ed51f24}{Zero}
+\item 
+\hyperlink{libspire__modem__new_8vala_a5fa00e7f98097a9c0c059b5308a4b863}{One}
+\item 
+\hyperlink{libspire__modem__new_8vala_ae1ebba61750a87cd3e04f7a0bcc54d41}{Two}
+\item 
+\hyperlink{libspire__modem__new_8vala_a7595488bbd935760242afd8a3a2c0dcd}{Three}
+\item 
+\hyperlink{libspire__modem__new_8vala_a3ffdf73f4d6c86cda4741740d081325c}{Four}
+\item 
+\hyperlink{libspire__modem__new_8vala_aee61276f9005313515feb62138be2b8c}{Five}
+\item 
+\hyperlink{libspire__modem__new_8vala_af327dfd1bc2e2ab345c37f6830271498}{Six}
+\item 
+\hyperlink{libspire__modem__new_8vala_a664c9d9eff9f8aedc5d91b3bc6625968}{Seven}
+\item 
+\hyperlink{libspire__modem__new_8vala_ac5a31d996f5dd33cf991970e41362b65}{Eigth}
+\item 
+\hyperlink{libspire__modem__new_8vala_abd916c08d176f7a521336059e38f4b25}{Nine}
+\item 
+\hyperlink{libspire__modem__new_8vala_a96eda96ce5ad0c1d1b6588690e70b48b}{Asterisc}
+\item 
+\hyperlink{libspire__modem__new_8vala_a2c88735882fca7962e70190bc67e5514}{Sharp}
+\item 
+\hyperlink{libspire__modem__new_8vala_a3b98e2dffc6cb06a89dcb0d5c60a0206}{A}
+\item 
+\hyperlink{libspire__modem__new_8vala_a9d3d9048db16a7eee539e93e3618cbe7}{B}
+\item 
+\hyperlink{libspire__modem__new_8vala_aaa53ca0b650dfd85c4f59fa156f7a2cc}{C}
+\item 
+\hyperlink{libspire__modem__new_8vala_a350bfcb1e3cfb28ddff48ce525d4f139}{D}
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aa67849e33e71e0685dee31059d242ac3}{E\-R\-R\-O\-R\-\_\-\-C\-M\-E} = 99
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_a6d3970cfb8b14fc4c7c0682aefaecb11}{U\-N\-K\-N\-O\-W} = 100
+\item 
+public enum \\*
+\hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} public \\*
+enum \hyperlink{namespaceedwinspire_1_1_ports_ace89e61880474073c93815c34c52fe0d}{edwinspire\-::\-Ports\-::\-C\-M\-E} \hyperlink{namespaceedwinspire_1_1_ports_a6e1a116e42ac0d9aa022553ffbd3d841}{C\-M\-E\-Error}
+\begin{DoxyCompactList}\small\item\em Respuesta obtenida del \hyperlink{classedwinspire_1_1_ports_1_1_modem}{Modem} \end{DoxyCompactList}\item 
+public C\-M\-S \hyperlink{namespaceedwinspire_1_1_ports_aacf05e654cc931a34f76bbcffe360339}{C\-M\-S\-Error} = C\-M\-S.\-None
+\item 
+public Response\-Code \hyperlink{namespaceedwinspire_1_1_ports_a8b086f30ecfbef96ca3e5f5642767975}{Return} = Response\-Code.\-U\-N\-K\-N\-O\-W
+\begin{DoxyCompactList}\small\item\em Respuesta al comando enviado true si la respuesta al comando es O\-K, false en caso contrario \end{DoxyCompactList}\item 
+public string \hyperlink{namespaceedwinspire_1_1_ports_afeb780627bc31cc4b50e998eaf2fb6f0}{Raw} = \char`\"{}\char`\"{}
+\item 
+public Array\-List$<$ string $>$ \hyperlink{namespaceedwinspire_1_1_ports_a6989ba34677ae553d4d312c9ae744532}{Lines} = new Array\-List$<$string$>$()
+\begin{DoxyCompactList}\small\item\em Lineas recibidas como respuesta al comando A\-T \end{DoxyCompactList}\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_aa6e4441b65db895e600a13038b3d5ff4}{edwinspire\-::\-Ports\-::\-C\-M\-S} \hyperlink{namespaceedwinspire_1_1_ports_a22f616818dc85fd8ee4b9f3821546acb}{Number}
+\item 
+public Date\-Time \hyperlink{namespaceedwinspire_1_1_ports_a506e2d03085ed736361fd15035c2e456}{Date}
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_a4bfcb5e5e2846ac1676d0f53dff50445}{Read}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{libspire__modem__new_8vala_a3b98e2dffc6cb06a89dcb0d5c60a0206}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!A@{A}}
+\index{A@{A}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{A}]{\setlength{\rightskip}{0pt plus 5cm}A}}\label{libspire__modem__new_8vala_a3b98e2dffc6cb06a89dcb0d5c60a0206}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a96eda96ce5ad0c1d1b6588690e70b48b}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Asterisc@{Asterisc}}
+\index{Asterisc@{Asterisc}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Asterisc}]{\setlength{\rightskip}{0pt plus 5cm}Asterisc}}\label{libspire__modem__new_8vala_a96eda96ce5ad0c1d1b6588690e70b48b}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a9d3d9048db16a7eee539e93e3618cbe7}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!B@{B}}
+\index{B@{B}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{B}]{\setlength{\rightskip}{0pt plus 5cm}B}}\label{libspire__modem__new_8vala_a9d3d9048db16a7eee539e93e3618cbe7}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_aaa53ca0b650dfd85c4f59fa156f7a2cc}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!C@{C}}
+\index{C@{C}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{C}]{\setlength{\rightskip}{0pt plus 5cm}C}}\label{libspire__modem__new_8vala_aaa53ca0b650dfd85c4f59fa156f7a2cc}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a350bfcb1e3cfb28ddff48ce525d4f139}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!D@{D}}
+\index{D@{D}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{D}]{\setlength{\rightskip}{0pt plus 5cm}D}}\label{libspire__modem__new_8vala_a350bfcb1e3cfb28ddff48ce525d4f139}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_ac5a31d996f5dd33cf991970e41362b65}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Eigth@{Eigth}}
+\index{Eigth@{Eigth}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Eigth}]{\setlength{\rightskip}{0pt plus 5cm}Eigth}}\label{libspire__modem__new_8vala_ac5a31d996f5dd33cf991970e41362b65}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_aee61276f9005313515feb62138be2b8c}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Five@{Five}}
+\index{Five@{Five}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Five}]{\setlength{\rightskip}{0pt plus 5cm}Five}}\label{libspire__modem__new_8vala_aee61276f9005313515feb62138be2b8c}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a3ffdf73f4d6c86cda4741740d081325c}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Four@{Four}}
+\index{Four@{Four}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Four}]{\setlength{\rightskip}{0pt plus 5cm}Four}}\label{libspire__modem__new_8vala_a3ffdf73f4d6c86cda4741740d081325c}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_abd916c08d176f7a521336059e38f4b25}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Nine@{Nine}}
+\index{Nine@{Nine}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Nine}]{\setlength{\rightskip}{0pt plus 5cm}Nine}}\label{libspire__modem__new_8vala_abd916c08d176f7a521336059e38f4b25}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a5fa00e7f98097a9c0c059b5308a4b863}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!One@{One}}
+\index{One@{One}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{One}]{\setlength{\rightskip}{0pt plus 5cm}One}}\label{libspire__modem__new_8vala_a5fa00e7f98097a9c0c059b5308a4b863}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a664c9d9eff9f8aedc5d91b3bc6625968}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Seven@{Seven}}
+\index{Seven@{Seven}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Seven}]{\setlength{\rightskip}{0pt plus 5cm}Seven}}\label{libspire__modem__new_8vala_a664c9d9eff9f8aedc5d91b3bc6625968}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a2c88735882fca7962e70190bc67e5514}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Sharp@{Sharp}}
+\index{Sharp@{Sharp}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Sharp}]{\setlength{\rightskip}{0pt plus 5cm}Sharp}}\label{libspire__modem__new_8vala_a2c88735882fca7962e70190bc67e5514}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_af327dfd1bc2e2ab345c37f6830271498}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Six@{Six}}
+\index{Six@{Six}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Six}]{\setlength{\rightskip}{0pt plus 5cm}Six}}\label{libspire__modem__new_8vala_af327dfd1bc2e2ab345c37f6830271498}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_a7595488bbd935760242afd8a3a2c0dcd}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Three@{Three}}
+\index{Three@{Three}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Three}]{\setlength{\rightskip}{0pt plus 5cm}Three}}\label{libspire__modem__new_8vala_a7595488bbd935760242afd8a3a2c0dcd}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_ae1ebba61750a87cd3e04f7a0bcc54d41}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Two@{Two}}
+\index{Two@{Two}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Two}]{\setlength{\rightskip}{0pt plus 5cm}Two}}\label{libspire__modem__new_8vala_ae1ebba61750a87cd3e04f7a0bcc54d41}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{libspire__modem__new_8vala_ab7be4097d881eae846c441069ed51f24}{\index{libspire\-\_\-modem\-\_\-new.\-vala@{libspire\-\_\-modem\-\_\-new.\-vala}!Zero@{Zero}}
+\index{Zero@{Zero}!libspire_modem_new.vala@{libspire\-\_\-modem\-\_\-new.\-vala}}
+\subsubsection[{Zero}]{\setlength{\rightskip}{0pt plus 5cm}Zero}}\label{libspire__modem__new_8vala_ab7be4097d881eae846c441069ed51f24}
+
+
+Definition at line 74 of file libspire\-\_\-modem\-\_\-new.\-vala.
+

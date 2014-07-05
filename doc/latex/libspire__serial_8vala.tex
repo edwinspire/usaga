@@ -1,0 +1,288 @@
+\hypertarget{libspire__serial_8vala}{\section{libspire\-\_\-serial.\-vala File Reference}
+\label{libspire__serial_8vala}\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classedwinspire_1_1_ports_1_1_configure}{Configure}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceedwinspire}{edwinspire}
+\item 
+namespace \hyperlink{namespaceedwinspire_1_1_ports}{edwinspire\-::\-Ports}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742}{Hand\-Shaking} \{ \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ae80f4bdedfc52e94f9596b56eef11fe9}{R\-T\-S\-\_\-\-C\-T\-S}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742ad743775fa9d49de3e9722b06a896d482}{X\-On\-X\-Off}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a3c4e827e4f2f517f8020ab56c3eaa742a2a9364d1e805979ab176d7d2e116cc63}{D\-T\-R\-\_\-\-D\-S\-R}
+ \}
+\item 
+enum \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbe}{Stop\-Bits} \{ \hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea7a725f13af144bdef532d0389ba75e0d}{O\-N\-E}, 
+\hyperlink{namespaceedwinspire_1_1_ports_a2e4c31ec0a94db405865b7c241717fbea0e793500a63ffa575b9b712ca3bc9851}{T\-W\-O}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libspire__serial_8vala_a5257285d61e52d4f38f5b9426643f8e2}{Open\-\_\-\-Port} (string Puerto)
+\begin{DoxyCompactList}\small\item\em Importacion de funciones externas de manejos de puerto serial Multiplataforma. Modificar serial.\-c segun el sistema operativo que este usando \end{DoxyCompactList}\item 
+int \hyperlink{libspire__serial_8vala_a358f02cfc4dfa7d4c59442be87dcd127}{Set\-\_\-\-Configure\-\_\-\-Port} (int fd, uint Baud\-Rate, uint Bits, uint Parity, uint Bits\-Stop)
+\item 
+long \hyperlink{libspire__serial_8vala_a438b86765617ff401ee9ac70cd936fbc}{Write\-\_\-\-Port} (int fd, string buf, int Size\-Data)
+\item 
+char \hyperlink{libspire__serial_8vala_aa54c19e3adbf144d3cb693d776b646c0}{Getc} (int fd)
+\item 
+int \hyperlink{libspire__serial_8vala_a7e22103cbfa46effeac36fcbbdd752f6}{Kbhit\-\_\-\-Port} (int fd)
+\item 
+int \hyperlink{libspire__serial_8vala_ab43253c738acffc6d6fc7176ee1aacb6}{Close\-\_\-\-Port} (int fd)
+\item 
+int \hyperlink{libspire__serial_8vala_a215c51266ce081fa46cb9c1f2f395d0f}{Set\-\_\-\-Hands\-\_\-\-Haking} (int fd, int Flow\-Control)
+\item 
+int \hyperlink{libspire__serial_8vala_a4d56f13b087367e5ade87176e96285fc}{I\-O\-\_\-\-Blocking} (int fd, int Modo)
+\item 
+int \hyperlink{libspire__serial_8vala_a740e10aea09874bdeb3c4641aeceb891}{Clean\-\_\-\-Buffer} (int fd)
+\item 
+int \hyperlink{libspire__serial_8vala_af737482681e97ca6ed05e31f452b7857}{Setup\-\_\-\-Buffer} (int fd, ulong In\-Queue, ulong Out\-Queue)
+\item 
+int \hyperlink{libspire__serial_8vala_a70231811c32b2be3c76d5e9789c0f608}{Set\-\_\-\-Time} (int fd, uint Time)
+\item 
+public enum \hyperlink{namespaceedwinspire_1_1_ports_af4e0ec730b70610713b98825eb7c6f53}{edwinspire\-::\-Ports\-::\-D\-T\-M\-F} \hyperlink{namespaceedwinspire_1_1_ports_aca82b59bbf3249fe74227599ba5a813b}{Description} (nick=\char`\"{}E\-R\-R\-O\-R C\-M\-S\char`\"{}, blurb=\char`\"{}Responde con E\-R\-R\-O\-R modem G\-S\-M\char`\"{})\mbox{]} E\-R\-R\-O\-R\-\_\-\-C\-M\-S
+\item 
+\hyperlink{classedwinspire_1_1_ports_1_1_configure}{edwinspire\-::\-Ports\-::\-Configure} \\*
+G\-Lib\-::\-Object \hyperlink{namespaceedwinspire_1_1_ports_aa3f7c9d23312aa446f2b0b8f52efdf34}{Status} (Data\-Status Status)
+\item 
+public Serial\-Port \hyperlink{namespaceedwinspire_1_1_ports_a9de2452f18841a5338e2c45fbc8cca2d}{with\-\_\-args} (string Port\-\_\-=\char`\"{}/dev/tty\-S0\char`\"{}, uint Baudrate=2400, uint Data\-Bits=8, Parity Parity\-\_\-=\hyperlink{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{Parity.\-N\-O\-N\-E}, Stop\-Bits Stop\-Bits\-\_\-=\hyperlink{libspire__serial_8vala_a2cb8470634cc90a55800ee95f967eade}{Stop\-Bits.\-O\-N\-E}, Hand\-Shaking H\-S\-\_\-=\hyperlink{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{Hand\-Shaking.\-N\-O\-N\-E})
+\item 
+private void \hyperlink{namespaceedwinspire_1_1_ports_af8d9afe49636a2f0ba22f1f17bbaba17}{connect\-Signals} ()
+\item 
+public \hyperlink{namespaceedwinspire_1_1_ports_a293ef58b4105463e6bd4b2d5ad9b3144}{Serial\-Port} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a17877b618445a0e65f46c94bc80bc821}{Set\-\_\-\-Port} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_ab4f5440159397421d6f1985dccda8aa7}{Set} ()
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a7a08c939ddf6ae7e1426b3bd061c3f13}{Setup\-\_\-\-Buffer\-\_\-} (ulong Buffer\-In, ulong Buffer\-Out)
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_a16c386569d50ef1f47b43bce24c54cde}{set\-\_\-handshaking} ()
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_ae3a4888c33e46ef2cb9c21475b39747d}{Discard\-Buffer} ()
+\item 
+public string\mbox{[}$\,$\mbox{]} \hyperlink{namespaceedwinspire_1_1_ports_ab6cd9fa85820a8013aa6f47c89eb8102}{Get\-\_\-\-Port\-Name} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{N\-O\-N\-E}
+\item 
+\hyperlink{libspire__serial_8vala_a3d3371956fb29f3a84cdf916d8f347f6}{R\-T\-S\-\_\-\-C\-T\-S}
+\item 
+\hyperlink{libspire__serial_8vala_aaa5982881590a50cb505f83a83e4b0f6}{X\-On\-X\-Off}
+\item 
+\hyperlink{libspire__serial_8vala_acd396fb9df5bf232a660e7a35e4f7845}{D\-T\-R\-\_\-\-D\-S\-R}
+\item 
+\hyperlink{libspire__serial_8vala_a2cb8470634cc90a55800ee95f967eade}{O\-N\-E}
+\item 
+\hyperlink{libspire__serial_8vala_a0673b633b0851b14ed38bd96f5781290}{T\-W\-O}
+\item 
+private int \hyperlink{namespaceedwinspire_1_1_ports_a5b6e04d991b7c31daba0475fc35b000e}{Gestor} = -\/1
+\item 
+private bool \hyperlink{namespaceedwinspire_1_1_ports_acc08a70e547bb148eb4ecf30c82dfa2e}{Bloqueante} = false
+\item 
+private Timer \hyperlink{namespaceedwinspire_1_1_ports_a458f577133961caebcd35a6b1e7b9322}{Temporizador\-Interno\-Read\-Char} = new Timer()
+\item 
+private Timer \hyperlink{namespaceedwinspire_1_1_ports_afd9c83d6beca9151b46eff2c91bc90dc}{Temporizador\-Interno\-Read\-Line} = new Timer()
+\item 
+private String\-Builder \hyperlink{namespaceedwinspire_1_1_ports_a0a27f70484241b1637ed57e95d4a0d26}{Linea\-Modem} = new String\-Builder()
+\item 
+public bool \hyperlink{namespaceedwinspire_1_1_ports_abd75369bb807e77b40ebbda7fc76eeed}{Log\-Modem} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{libspire__serial_8vala_a740e10aea09874bdeb3c4641aeceb891}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Clean\-\_\-\-Buffer@{Clean\-\_\-\-Buffer}}
+\index{Clean\-\_\-\-Buffer@{Clean\-\_\-\-Buffer}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Clean\-\_\-\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}int Clean\-\_\-\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a740e10aea09874bdeb3c4641aeceb891}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libspire__serial_8vala_a740e10aea09874bdeb3c4641aeceb891_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libspire__serial_8vala_ab43253c738acffc6d6fc7176ee1aacb6}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Close\-\_\-\-Port@{Close\-\_\-\-Port}}
+\index{Close\-\_\-\-Port@{Close\-\_\-\-Port}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Close\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int Close\-\_\-\-Port (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_ab43253c738acffc6d6fc7176ee1aacb6}
+\hypertarget{libspire__serial_8vala_aa54c19e3adbf144d3cb693d776b646c0}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Getc@{Getc}}
+\index{Getc@{Getc}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Getc}]{\setlength{\rightskip}{0pt plus 5cm}char Getc (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_aa54c19e3adbf144d3cb693d776b646c0}
+\hypertarget{libspire__serial_8vala_a4d56f13b087367e5ade87176e96285fc}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!I\-O\-\_\-\-Blocking@{I\-O\-\_\-\-Blocking}}
+\index{I\-O\-\_\-\-Blocking@{I\-O\-\_\-\-Blocking}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{I\-O\-\_\-\-Blocking}]{\setlength{\rightskip}{0pt plus 5cm}int I\-O\-\_\-\-Blocking (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{Modo}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a4d56f13b087367e5ade87176e96285fc}
+\hypertarget{libspire__serial_8vala_a7e22103cbfa46effeac36fcbbdd752f6}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Kbhit\-\_\-\-Port@{Kbhit\-\_\-\-Port}}
+\index{Kbhit\-\_\-\-Port@{Kbhit\-\_\-\-Port}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Kbhit\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int Kbhit\-\_\-\-Port (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a7e22103cbfa46effeac36fcbbdd752f6}
+\hypertarget{libspire__serial_8vala_a5257285d61e52d4f38f5b9426643f8e2}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Open\-\_\-\-Port@{Open\-\_\-\-Port}}
+\index{Open\-\_\-\-Port@{Open\-\_\-\-Port}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Open\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int Open\-\_\-\-Port (
+\begin{DoxyParamCaption}
+\item[{string}]{Puerto}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a5257285d61e52d4f38f5b9426643f8e2}
+
+
+Importacion de funciones externas de manejos de puerto serial Multiplataforma. Modificar serial.\-c segun el sistema operativo que este usando 
+
+\hypertarget{libspire__serial_8vala_a358f02cfc4dfa7d4c59442be87dcd127}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Set\-\_\-\-Configure\-\_\-\-Port@{Set\-\_\-\-Configure\-\_\-\-Port}}
+\index{Set\-\_\-\-Configure\-\_\-\-Port@{Set\-\_\-\-Configure\-\_\-\-Port}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Set\-\_\-\-Configure\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}int Set\-\_\-\-Configure\-\_\-\-Port (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{uint}]{Baud\-Rate, }
+\item[{uint}]{Bits, }
+\item[{uint}]{Parity, }
+\item[{uint}]{Bits\-Stop}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a358f02cfc4dfa7d4c59442be87dcd127}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libspire__serial_8vala_a358f02cfc4dfa7d4c59442be87dcd127_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libspire__serial_8vala_a215c51266ce081fa46cb9c1f2f395d0f}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Set\-\_\-\-Hands\-\_\-\-Haking@{Set\-\_\-\-Hands\-\_\-\-Haking}}
+\index{Set\-\_\-\-Hands\-\_\-\-Haking@{Set\-\_\-\-Hands\-\_\-\-Haking}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Set\-\_\-\-Hands\-\_\-\-Haking}]{\setlength{\rightskip}{0pt plus 5cm}int Set\-\_\-\-Hands\-\_\-\-Haking (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{Flow\-Control}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a215c51266ce081fa46cb9c1f2f395d0f}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libspire__serial_8vala_a215c51266ce081fa46cb9c1f2f395d0f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libspire__serial_8vala_a70231811c32b2be3c76d5e9789c0f608}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Set\-\_\-\-Time@{Set\-\_\-\-Time}}
+\index{Set\-\_\-\-Time@{Set\-\_\-\-Time}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Set\-\_\-\-Time}]{\setlength{\rightskip}{0pt plus 5cm}int Set\-\_\-\-Time (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{uint}]{Time}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a70231811c32b2be3c76d5e9789c0f608}
+\hypertarget{libspire__serial_8vala_af737482681e97ca6ed05e31f452b7857}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Setup\-\_\-\-Buffer@{Setup\-\_\-\-Buffer}}
+\index{Setup\-\_\-\-Buffer@{Setup\-\_\-\-Buffer}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Setup\-\_\-\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}int Setup\-\_\-\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{ulong}]{In\-Queue, }
+\item[{ulong}]{Out\-Queue}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_af737482681e97ca6ed05e31f452b7857}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libspire__serial_8vala_af737482681e97ca6ed05e31f452b7857_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libspire__serial_8vala_a438b86765617ff401ee9ac70cd936fbc}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!Write\-\_\-\-Port@{Write\-\_\-\-Port}}
+\index{Write\-\_\-\-Port@{Write\-\_\-\-Port}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{Write\-\_\-\-Port}]{\setlength{\rightskip}{0pt plus 5cm}long Write\-\_\-\-Port (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{string}]{buf, }
+\item[{int}]{Size\-Data}
+\end{DoxyParamCaption}
+)}}\label{libspire__serial_8vala_a438b86765617ff401ee9ac70cd936fbc}
+
+
+\subsection{Variable Documentation}
+\hypertarget{libspire__serial_8vala_acd396fb9df5bf232a660e7a35e4f7845}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!D\-T\-R\-\_\-\-D\-S\-R@{D\-T\-R\-\_\-\-D\-S\-R}}
+\index{D\-T\-R\-\_\-\-D\-S\-R@{D\-T\-R\-\_\-\-D\-S\-R}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{D\-T\-R\-\_\-\-D\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}D\-T\-R\-\_\-\-D\-S\-R}}\label{libspire__serial_8vala_acd396fb9df5bf232a660e7a35e4f7845}
+
+
+Definition at line 69 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!N\-O\-N\-E@{N\-O\-N\-E}}
+\index{N\-O\-N\-E@{N\-O\-N\-E}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{N\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}N\-O\-N\-E}}\label{libspire__serial_8vala_a899caa602e4fff675b17cdbab33607ec}
+
+
+Definition at line 69 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{libspire__serial_8vala_a2cb8470634cc90a55800ee95f967eade}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!O\-N\-E@{O\-N\-E}}
+\index{O\-N\-E@{O\-N\-E}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}O\-N\-E}}\label{libspire__serial_8vala_a2cb8470634cc90a55800ee95f967eade}
+
+
+Definition at line 91 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{libspire__serial_8vala_a3d3371956fb29f3a84cdf916d8f347f6}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!R\-T\-S\-\_\-\-C\-T\-S@{R\-T\-S\-\_\-\-C\-T\-S}}
+\index{R\-T\-S\-\_\-\-C\-T\-S@{R\-T\-S\-\_\-\-C\-T\-S}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{R\-T\-S\-\_\-\-C\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}R\-T\-S\-\_\-\-C\-T\-S}}\label{libspire__serial_8vala_a3d3371956fb29f3a84cdf916d8f347f6}
+
+
+Definition at line 69 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{libspire__serial_8vala_a0673b633b0851b14ed38bd96f5781290}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!T\-W\-O@{T\-W\-O}}
+\index{T\-W\-O@{T\-W\-O}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{T\-W\-O}]{\setlength{\rightskip}{0pt plus 5cm}T\-W\-O}}\label{libspire__serial_8vala_a0673b633b0851b14ed38bd96f5781290}
+
+
+Definition at line 91 of file libspire\-\_\-serial.\-vala.
+
+\hypertarget{libspire__serial_8vala_aaa5982881590a50cb505f83a83e4b0f6}{\index{libspire\-\_\-serial.\-vala@{libspire\-\_\-serial.\-vala}!X\-On\-X\-Off@{X\-On\-X\-Off}}
+\index{X\-On\-X\-Off@{X\-On\-X\-Off}!libspire_serial.vala@{libspire\-\_\-serial.\-vala}}
+\subsubsection[{X\-On\-X\-Off}]{\setlength{\rightskip}{0pt plus 5cm}X\-On\-X\-Off}}\label{libspire__serial_8vala_aaa5982881590a50cb505f83a83e4b0f6}
+
+
+Definition at line 69 of file libspire\-\_\-serial.\-vala.
+

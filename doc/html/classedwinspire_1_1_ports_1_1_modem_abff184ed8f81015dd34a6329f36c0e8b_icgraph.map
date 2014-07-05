@@ -1,0 +1,16 @@
+<map id="ATS" name="ATS">
+<area shape="rect" id="node3" href="$classedwinspire_1_1_ports_1_1_modem.html#a5fd9a815eef47391dceacff4625bf81b" title="AutomaticAnswerControl" alt="" coords="135,5,300,35"/>
+<area shape="rect" id="node7" href="$classedwinspire_1_1_ports_1_1_modem.html#ad8eb0150331d38233566baf2c3f61f01" title="EscapeSequenseCharacter" alt="" coords="127,59,308,88"/>
+<area shape="rect" id="node11" href="$classedwinspire_1_1_ports_1_1_modem.html#aebfb3752533fc9c6b6700c16d4930c84" title="CommandLineTerminationCharacter" alt="" coords="103,112,332,141"/>
+<area shape="rect" id="node15" href="$classedwinspire_1_1_ports_1_1_modem.html#a93a7a3a4fcd6b1d94f7cb3743f95dda7" title="ResponseFormattingCharacter" alt="" coords="117,165,317,195"/>
+<area shape="rect" id="node19" href="$classedwinspire_1_1_ports_1_1_modem.html#a24f6b914fb202dbe0a7c1a69b19f6c09" title="CommandLineEditingCharacter" alt="" coords="116,219,319,248"/>
+<area shape="rect" id="node23" href="$classedwinspire_1_1_ports_1_1_modem.html#a42b3bc9e47322539d0096a2b788a15b8" title="ATS7" alt="" coords="191,272,244,301"/>
+<area shape="rect" id="node27" href="$classedwinspire_1_1_ports_1_1_modem.html#a4a63cb0f3e162a7ec2452ec5c75cb21c" title="ATS10" alt="" coords="187,329,248,359"/>
+<area shape="rect" id="node5" href="$classedwinspire_1_1_ports_1_1_modem.html#aae9d4c012657f7b8bac2c6bacbf0c554" title="ATS0" alt="" coords="457,5,511,35"/>
+<area shape="rect" id="node9" href="$classedwinspire_1_1_ports_1_1_modem.html#ae9240432722c25be22605992dd5af85f" title="ATS2" alt="" coords="457,59,511,88"/>
+<area shape="rect" id="node13" href="$classedwinspire_1_1_ports_1_1_modem.html#a3298d056581dcf0373ffefc3206466de" title="ATS3" alt="" coords="457,112,511,141"/>
+<area shape="rect" id="node17" href="$classedwinspire_1_1_ports_1_1_modem.html#ad79b09ab56a81d7dcf798c9a2626a4dc" title="ATS4" alt="" coords="457,165,511,195"/>
+<area shape="rect" id="node21" href="$classedwinspire_1_1_ports_1_1_modem.html#a3a66c316b9b75d0f67c9e329587a4cae" title="ATS5" alt="" coords="457,219,511,248"/>
+<area shape="rect" id="node25" href="$classedwinspire_1_1_ports_1_1_modem.html#a17ac02a95f34253204af56a335f91fbb" title="CompletionConnectionTimeOut" alt="" coords="383,272,585,301"/>
+<area shape="rect" id="node29" href="$classedwinspire_1_1_ports_1_1_modem.html#a370601da835ffd208161dffce26c9487" title="AutomaticDisconnectDelay\lControl" alt="" coords="393,325,575,371"/>
+</map>

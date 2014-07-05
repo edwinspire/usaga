@@ -1,0 +1,48 @@
+<map id="Clean_Buffer" name="Clean_Buffer">
+<area shape="rect" id="node3" href="$namespaceedwinspire_1_1_ports.html#ae3a4888c33e46ef2cb9c21475b39747d" title="edwinspire::Ports:\l:DiscardBuffer" alt="" coords="153,981,279,1027"/>
+<area shape="rect" id="node5" href="$classedwinspire_1_1_ports_1_1_modem.html#a48c9c7f70a693ab16500c4c0ed3ae479" title="edwinspire::Ports:\l:Modem::AutoBaudRate" alt="" coords="861,5,1024,51"/>
+<area shape="rect" id="node7" href="$classedwinspire_1_1_ports_1_1_modem.html#a21ad2b0b92a7de2cd8ea614f0ea4f8fd" title="Envia un comando AT al modem " alt="" coords="369,1041,495,1087"/>
+<area shape="rect" id="node9" href="$classedwinspire_1_1_ports_1_1_modem.html#abff184ed8f81015dd34a6329f36c0e8b" title="edwinspire::Ports:\l:Modem::ATS" alt="" coords="611,1041,736,1087"/>
+<area shape="rect" id="node39" href="$classedwinspire_1_1_ports_1_1_modem.html#a8556df8675e2894fa7afdb9dae873233" title="Envia un comando AT del cual se espera obtener como respuesta un OK o ERROR " alt="" coords="329,395,535,442"/>
+<area shape="rect" id="node92" href="$classedwinspire_1_1_ports_1_1_modem.html#a73331ff467c61f738f5ea05da85fae5f" title="edwinspire::Ports:\l:Modem::ATD" alt="" coords="369,1110,495,1157"/>
+<area shape="rect" id="node11" href="$classedwinspire_1_1_ports_1_1_modem.html#a5fd9a815eef47391dceacff4625bf81b" title="edwinspire::Ports:\l:Modem::AutomaticAnswerControl" alt="" coords="832,893,1053,939"/>
+<area shape="rect" id="node15" href="$classedwinspire_1_1_ports_1_1_modem.html#ad8eb0150331d38233566baf2c3f61f01" title="edwinspire::Ports:\l:Modem::EscapeSequenseCharacter" alt="" coords="825,962,1060,1009"/>
+<area shape="rect" id="node19" href="$classedwinspire_1_1_ports_1_1_modem.html#aebfb3752533fc9c6b6700c16d4930c84" title="edwinspire::Ports:\l:Modem::CommandLineTermination\lCharacter" alt="" coords="828,1032,1057,1096"/>
+<area shape="rect" id="node23" href="$classedwinspire_1_1_ports_1_1_modem.html#a93a7a3a4fcd6b1d94f7cb3743f95dda7" title="edwinspire::Ports:\l:Modem::ResponseFormatting\lCharacter" alt="" coords="844,1120,1041,1184"/>
+<area shape="rect" id="node27" href="$classedwinspire_1_1_ports_1_1_modem.html#a24f6b914fb202dbe0a7c1a69b19f6c09" title="edwinspire::Ports:\l:Modem::CommandLineEditing\lCharacter" alt="" coords="843,1208,1043,1272"/>
+<area shape="rect" id="node31" href="$classedwinspire_1_1_ports_1_1_modem.html#a42b3bc9e47322539d0096a2b788a15b8" title="edwinspire::Ports:\l:Modem::ATS7" alt="" coords="880,1295,1005,1342"/>
+<area shape="rect" id="node35" href="$classedwinspire_1_1_ports_1_1_modem.html#a4a63cb0f3e162a7ec2452ec5c75cb21c" title="edwinspire::Ports:\l:Modem::ATS10" alt="" coords="880,1374,1005,1421"/>
+<area shape="rect" id="node13" href="$classedwinspire_1_1_ports_1_1_modem.html#aae9d4c012657f7b8bac2c6bacbf0c554" title="edwinspire::Ports:\l:Modem::ATS0" alt="" coords="1165,893,1291,939"/>
+<area shape="rect" id="node17" href="$classedwinspire_1_1_ports_1_1_modem.html#ae9240432722c25be22605992dd5af85f" title="edwinspire::Ports:\l:Modem::ATS2" alt="" coords="1165,962,1291,1009"/>
+<area shape="rect" id="node21" href="$classedwinspire_1_1_ports_1_1_modem.html#a3298d056581dcf0373ffefc3206466de" title="edwinspire::Ports:\l:Modem::ATS3" alt="" coords="1165,1041,1291,1087"/>
+<area shape="rect" id="node25" href="$classedwinspire_1_1_ports_1_1_modem.html#ad79b09ab56a81d7dcf798c9a2626a4dc" title="edwinspire::Ports:\l:Modem::ATS4" alt="" coords="1165,1129,1291,1175"/>
+<area shape="rect" id="node29" href="$classedwinspire_1_1_ports_1_1_modem.html#a3a66c316b9b75d0f67c9e329587a4cae" title="edwinspire::Ports:\l:Modem::ATS5" alt="" coords="1165,1217,1291,1263"/>
+<area shape="rect" id="node33" href="$classedwinspire_1_1_ports_1_1_modem.html#a17ac02a95f34253204af56a335f91fbb" title="edwinspire::Ports:\l:Modem::CompletionConnection\lTimeOut" alt="" coords="1124,1287,1332,1351"/>
+<area shape="rect" id="node37" href="$classedwinspire_1_1_ports_1_1_modem.html#a370601da835ffd208161dffce26c9487" title="edwinspire::Ports:\l:Modem::AutomaticDisconnect\lDelayControl" alt="" coords="1127,1375,1329,1439"/>
+<area shape="rect" id="node41" href="$classedwinspire_1_1_ports_1_1_modem.html#ab21deebd05c6f5458698115cc17c338e" title="edwinspire::Ports:\l:Modem::ATZ" alt="" coords="611,146,736,193"/>
+<area shape="rect" id="node45" href="$classedwinspire_1_1_ports_1_1_modem.html#aa6b809861a245e102f1a8818c1cc0b9a" title="edwinspire::Ports:\l:Modem::ATE" alt="" coords="611,226,736,273"/>
+<area shape="rect" id="node49" href="$classedwinspire_1_1_ports_1_1_modem.html#ac9c4f895ac77ecf989b078ec431889f6" title="edwinspire::Ports:\l:Modem::ATV" alt="" coords="611,317,736,363"/>
+<area shape="rect" id="node53" href="$classedwinspire_1_1_ports_1_1_modem.html#a0dcb64853bb66381778c839c084a684a" title="edwinspire::Ports:\l:Modem::ATS_Set" alt="" coords="608,430,739,477"/>
+<area shape="rect" id="node83" href="$classedwinspire_1_1_ports_1_1_modem.html#aaad3610bf3613be174d2b736b71d6d6a" title="edwinspire::Ports:\l:Modem::AT" alt="" coords="611,71,736,118"/>
+<area shape="rect" id="node86" href="$classedwinspire_1_1_ports_1_1_modem.html#afd43d380ad038bcb8c3182d312942720" title="edwinspire::Ports:\l:Modem::EscapeSequense" alt="" coords="584,499,763,546"/>
+<area shape="rect" id="node88" href="$classedwinspire_1_1_ports_1_1_modem.html#a099275eaffaeaf3eca71f60705317c8e" title="edwinspire::Ports:\l:Modem::ATA" alt="" coords="611,697,736,743"/>
+<area shape="rect" id="node43" href="$classedwinspire_1_1_ports_1_1_modem.html#a3bda0014711d5cb45cd9b701c12feaaa" title="edwinspire::Ports:\l:Modem::SetToDefaultConfiguration" alt="" coords="828,74,1057,121"/>
+<area shape="rect" id="node47" href="$classedwinspire_1_1_ports_1_1_modem.html#abc831121ef3daecbb5af73f33377e503" title="edwinspire::Ports:\l:Modem::Echo" alt="" coords="880,143,1005,190"/>
+<area shape="rect" id="node51" href="$classedwinspire_1_1_ports_1_1_modem.html#a9f637839b975c7d8790461440e10abfd" title="edwinspire::Ports:\l:Modem::VerboseMode" alt="" coords="864,213,1021,259"/>
+<area shape="rect" id="node55" href="$classedwinspire_1_1_ports_1_1_modem.html#a1849055f60a2952c00925fc9ed63af09" title="edwinspire::Ports:\l:Modem::AutomaticAnswerControl_Set" alt="" coords="819,282,1067,329"/>
+<area shape="rect" id="node59" href="$classedwinspire_1_1_ports_1_1_modem.html#adfb768bf7329f83b0a05a466ad2b093d" title="edwinspire::Ports:\l:Modem::EscapeSequenseCharacter_Set" alt="" coords="812,351,1073,398"/>
+<area shape="rect" id="node63" href="$classedwinspire_1_1_ports_1_1_modem.html#a77c1f7f2f59109965fa1a68dea716d92" title="edwinspire::Ports:\l:Modem::CommandLineTermination\lCharacter_Set" alt="" coords="828,421,1057,485"/>
+<area shape="rect" id="node67" href="$classedwinspire_1_1_ports_1_1_modem.html#a92612ec64b1ea35910823424f2d16049" title="edwinspire::Ports:\l:Modem::ResponseFormatting\lCharacter_Set" alt="" coords="844,509,1041,573"/>
+<area shape="rect" id="node71" href="$classedwinspire_1_1_ports_1_1_modem.html#adddd0ba0328f8e87fd7ecdfa648126c1" title="edwinspire::Ports:\l:Modem::CommandLineEditing\lCharacter_Set" alt="" coords="843,597,1043,661"/>
+<area shape="rect" id="node75" href="$classedwinspire_1_1_ports_1_1_modem.html#a7d530020b45b32365f7efc9a425adc5c" title="edwinspire::Ports:\l:Modem::ATS7_Set" alt="" coords="875,685,1011,731"/>
+<area shape="rect" id="node79" href="$classedwinspire_1_1_ports_1_1_modem.html#ac204bc4be9ca2efac16047f5f8b0ce97" title="edwinspire::Ports:\l:Modem::ATS10_Set" alt="" coords="871,754,1015,801"/>
+<area shape="rect" id="node57" href="$classedwinspire_1_1_ports_1_1_modem.html#abecdea8422eebb704638d2a8794a8940" title="edwinspire::Ports:\l:Modem::ATS0_Set" alt="" coords="1160,282,1296,329"/>
+<area shape="rect" id="node61" href="$classedwinspire_1_1_ports_1_1_modem.html#a91595208ec68ba0bf84aa3b2ddbff8ae" title="edwinspire::Ports:\l:Modem::ATS2_Set" alt="" coords="1160,351,1296,398"/>
+<area shape="rect" id="node65" href="$classedwinspire_1_1_ports_1_1_modem.html#ae6cdfd2101756e3ea7d29022e97e9e4c" title="edwinspire::Ports:\l:Modem::ATS3_Set" alt="" coords="1160,430,1296,477"/>
+<area shape="rect" id="node69" href="$classedwinspire_1_1_ports_1_1_modem.html#a6d2551cca4bd08c244f8b1092260a0f8" title="edwinspire::Ports:\l:Modem::ATS4_Set" alt="" coords="1160,518,1296,565"/>
+<area shape="rect" id="node73" href="$classedwinspire_1_1_ports_1_1_modem.html#a160aec849db6d17c2b685b1641e95853" title="edwinspire::Ports:\l:Modem::ATS5_Set" alt="" coords="1160,606,1296,653"/>
+<area shape="rect" id="node77" href="$classedwinspire_1_1_ports_1_1_modem.html#abc702e61859d7337d9e27049ec63a471" title="edwinspire::Ports:\l:Modem::CompletionConnection\lTimeOut_Set" alt="" coords="1124,676,1332,740"/>
+<area shape="rect" id="node81" href="$classedwinspire_1_1_ports_1_1_modem.html#a5936bc6b960a13a16342ed0ec5c2beca" title="edwinspire::Ports:\l:Modem::AutomaticDisconnect\lDelayControl_Set" alt="" coords="1127,764,1329,828"/>
+<area shape="rect" id="node90" href="$classedwinspire_1_1_ports_1_1_modem.html#a5e1c5afc2ee36df462c761d4a70ca1e4" title="edwinspire::Ports:\l:Modem::AcceptCall" alt="" coords="872,823,1013,870"/>
+<area shape="rect" id="node94" href="$classedwinspire_1_1_ports_1_1_modem.html#a9fd3380484b204fe63c848b282a511ee" title="edwinspire::Ports:\l:Modem::DialCommand" alt="" coords="593,1110,753,1157"/>
+</map>

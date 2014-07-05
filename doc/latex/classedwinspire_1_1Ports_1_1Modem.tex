@@ -1,0 +1,783 @@
+\hypertarget{classedwinspire_1_1Ports_1_1Modem}{\section{edwinspire\-:\-:Ports\-:\-:Modem Class Reference}
+\label{classedwinspire_1_1Ports_1_1Modem}\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+public signal void \hyperlink{classedwinspire_1_1Ports_1_1Modem_a1d524eb74b5fed64ee9b06198c213b50}{Call\-I\-D} (string \hyperlink{namespaceedwinspire_1_1Ports_a45a12d9b3e1b045369ee6b3602c231f2}{Number})
+\item 
+public signal void \hyperlink{classedwinspire_1_1Ports_1_1Modem_a851b8c65f1804a8ca8bfeb938317fdf2}{Ringing} ()
+\item 
+public \hyperlink{classedwinspire_1_1Ports_1_1Modem_abc09ae65bf8bf909e3e036ef28ec8663}{Modem} ()
+\item 
+public uint \hyperlink{classedwinspire_1_1Ports_1_1Modem_a7f222f66c95efa13ce536eee965ee933}{Auto\-Baud\-Rate} ()
+\item 
+public \hyperlink{namespaceedwinspire_1_1Ports_afc37e1ee0b1084b5c5fccf2fab440b4f}{Response} \hyperlink{classedwinspire_1_1Ports_1_1Modem_a2e0d09bff4e330442fd22f04ece4fb86}{Receive} (double waitforresponse\-\_\-ms=0, bool prevent\-Detect\-False\-Response=false)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a3cf23293b5727c0de41c7c9ec47a93ec}{Send} (string Comando\-A\-T)
+\begin{DoxyCompactList}\small\item\em Envia un comando A\-T al modem \end{DoxyCompactList}\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a8ab387ceecbf6bb952bb00579bb1c899}{Send\-Simple\-Command} (string A\-T\-Command, double waitforresponse\-\_\-ms=0)
+\begin{DoxyCompactList}\small\item\em Envia un comando A\-T del cual se espera obtener como respuesta un O\-K o E\-R\-R\-O\-R \end{DoxyCompactList}\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a3ca6e311188caba0e7bc11ee9536b9fc}{Dial\-Command} (string number)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_ad9254464bfd3463080eb3622e0da4c69}{A\-T\-D} (string \hyperlink{namespaceedwinspire_1_1Ports_a45a12d9b3e1b045369ee6b3602c231f2}{Number})
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a56650f780711497aa1028fec4797845f}{Set\-To\-Default\-Configuration} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_ab3311d737ec2eea314516e1f5a37ded4}{A\-T\-Z} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a012d5b58f1a67a9feea575d90cfa6810}{A\-T\-E} (bool enable)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a43bdcc328f0d7e61ea133aebcdd3d648}{A\-T\-V} (bool enable)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_aae5a21a838e7cf4e4e2072673fc32a9a}{Verbose\-Mode} (bool enable)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a97d1fae325793dc1a567d6ef7a9fe66c}{Echo} (bool enable)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_af6b4d26695f9b4a227b89c598cb03236}{A\-T\-S\-\_\-\-Set} (int register, int value)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a39d3ad91e7ca72429b9898b8271f7cea}{Automatic\-Answer\-Control\-\_\-\-Set} (int rings)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a3678cf6db42f0b0584f454df867eaa5d}{Automatic\-Answer\-Control} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a354618811cd6fc70a4ca3d509f786863}{A\-T\-S0} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_aa61c58d06ac73a4676c21700c2bfdde7}{A\-T\-S0\-\_\-\-Set} (int rings)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_ada89e1d686076b9e6374bf9d7b96e990}{Escape\-Sequense\-Character\-\_\-\-Set} (int character=43)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a47cee6bf37c38e0b9d1b800905160ef9}{Escape\-Sequense\-Character} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_afccdb8bce4db05dc97ff13c790de187d}{A\-T\-S2} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a5cd39ceedd28163764c88dbf9ed26340}{A\-T\-S2\-\_\-\-Set} (int character=43)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_ac3bff29454207323e4a035c6f4cababa}{Command\-Line\-Termination\-Character\-\_\-\-Set} (int character=13)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a99b7d14d9dc27ec252ae731f1ad951dd}{Command\-Line\-Termination\-Character} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a79301cceb9c3d12653e079cd12e15446}{A\-T\-S3} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_add30a16060b369fbab60b48cf6110745}{A\-T\-S3\-\_\-\-Set} (int character=13)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_aac8ae6113d70b4b9ea6ac6fd99607fc1}{Response\-Formatting\-Character\-\_\-\-Set} (int character=10)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a7c43d5b2b243b593790ad466b8fbd375}{Response\-Formatting\-Character} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_ab6a44eb69ab813101d203fa2ad1239a8}{A\-T\-S4} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a4ef269ca8e8dc37288f9d3a2f8fd7a5d}{A\-T\-S4\-\_\-\-Set} (int character=10)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a4d74d12f34862fd544cb6c865fcdc08d}{Command\-Line\-Editing\-Character\-\_\-\-Set} (int character=8)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_af1dba36513bc0af8e2d9e15997d119f7}{Command\-Line\-Editing\-Character} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_ac566b0f32752e5ce87a7cbad878587ec}{A\-T\-S5} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_abb57f1af827b076021f988e68a4417c7}{A\-T\-S5\-\_\-\-Set} (int character=8)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_acfbb340072f7a0ebfe07fc239652d1ae}{A\-T\-S7\-\_\-\-Set} (int timeout=50)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_ab12811fff76a814f924feabf33172a8d}{Completion\-Connection\-Time\-Out\-\_\-\-Set} (int timeout=50)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_aaadd01f28f9dda5c9d92fdc8730b2de1}{A\-T\-S7} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_ad361341f56d187f035adb4c73102c9c3}{Completion\-Connection\-Time\-Out} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a37640913ae0ad1fc261825ed88215bce}{A\-T\-S10\-\_\-\-Set} (int delay=2)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a8f6139f59aae77cad6d36f18731470c7}{Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set} (int delay=2)
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a1aefb4dfe1bcecc8b0b59009ea0c7fce}{A\-T\-S10} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a5e7d76433531d2895eb66812f1119fb4}{Automatic\-Disconnect\-Delay\-Control} ()
+\item 
+public int \hyperlink{classedwinspire_1_1Ports_1_1Modem_a068e0e35be6a4342a2c6e36313a2246d}{A\-T\-S} (int register)
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_aea47101eee0211d0ba1a328fcbfe28c9}{A\-T} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a6a90de46a4810fcdf056e44f1f7dd27a}{Escape\-Sequense} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_a1f6ca76e1284927f315c528c96854af6}{Accept\-Call} ()
+\item 
+public bool \hyperlink{classedwinspire_1_1Ports_1_1Modem_acf0e76263adc9ee3b8b1eed05f1a34a8}{A\-T\-A} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+private string\mbox{[}$\,$\mbox{]} \hyperlink{classedwinspire_1_1Ports_1_1Modem_a94bb15b8aeb4d5fa3b8749d6dc2684cc}{expreg\-O\-K}
+\item 
+private string\mbox{[}$\,$\mbox{]} \hyperlink{classedwinspire_1_1Ports_1_1Modem_a439d82c1165b6af0f182fbae8ec9f051}{expreg\-E\-R\-R\-O\-R}
+\item 
+private string\mbox{[}$\,$\mbox{]} \hyperlink{classedwinspire_1_1Ports_1_1Modem_a448a92a7d7a84ef666f02584c819b1cf}{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S}
+\item 
+private string\mbox{[}$\,$\mbox{]} \hyperlink{classedwinspire_1_1Ports_1_1Modem_ab314b7affec099cfde591b6974d233a1}{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E}
+\item 
+private string\mbox{[}$\,$\mbox{]} \hyperlink{classedwinspire_1_1Ports_1_1Modem_ab42c238f6b371b6ffee458652195c234}{expreg\-C\-L\-I\-P}
+\item 
+public \hyperlink{namespaceedwinspire_1_1Ports_a1cb04d0401c5f2277711b286f3199061}{Last\-Call\-Received} \hyperlink{classedwinspire_1_1Ports_1_1Modem_a9cb9107204054dca45a6a75ba3bb66d8}{Last\-Call} = \hyperlink{namespaceedwinspire_1_1Ports_a1cb04d0401c5f2277711b286f3199061}{Last\-Call\-Received}()
+\item 
+private Timer \hyperlink{classedwinspire_1_1Ports_1_1Modem_a899c47d75446730990d26292f1fc15fe}{Temporizador} = new Timer()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 200 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_abc09ae65bf8bf909e3e036ef28ec8663}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Modem@{Modem}}
+\index{Modem@{Modem}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Modem}]{\setlength{\rightskip}{0pt plus 5cm}public edwinspire\-::\-Ports\-::\-Modem\-::\-Modem (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_abc09ae65bf8bf909e3e036ef28ec8663}
+
+
+Definition at line 231 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a1f6ca76e1284927f315c528c96854af6}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Accept\-Call@{Accept\-Call}}
+\index{Accept\-Call@{Accept\-Call}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Accept\-Call}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Accept\-Call (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a1f6ca76e1284927f315c528c96854af6}
+
+
+Definition at line 777 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_aea47101eee0211d0ba1a328fcbfe28c9}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T@{A\-T}}
+\index{A\-T@{A\-T}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_aea47101eee0211d0ba1a328fcbfe28c9}
+
+
+Definition at line 770 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_acf0e76263adc9ee3b8b1eed05f1a34a8}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-A@{A\-T\-A}}
+\index{A\-T\-A@{A\-T\-A}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-A}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_acf0e76263adc9ee3b8b1eed05f1a34a8}
+
+
+Definition at line 781 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ad9254464bfd3463080eb3622e0da4c69}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-D@{A\-T\-D}}
+\index{A\-T\-D@{A\-T\-D}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-D}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-D (
+\begin{DoxyParamCaption}
+\item[{string}]{Number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ad9254464bfd3463080eb3622e0da4c69}
+
+
+Definition at line 618 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a012d5b58f1a67a9feea575d90cfa6810}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-E@{A\-T\-E}}
+\index{A\-T\-E@{A\-T\-E}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-E (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a012d5b58f1a67a9feea575d90cfa6810}
+
+
+Definition at line 639 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a068e0e35be6a4342a2c6e36313a2246d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S@{A\-T\-S}}
+\index{A\-T\-S@{A\-T\-S}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S (
+\begin{DoxyParamCaption}
+\item[{int}]{register}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a068e0e35be6a4342a2c6e36313a2246d}
+
+
+Definition at line 748 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a354618811cd6fc70a4ca3d509f786863}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S0@{A\-T\-S0}}
+\index{A\-T\-S0@{A\-T\-S0}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S0}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a354618811cd6fc70a4ca3d509f786863}
+
+
+Definition at line 669 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_aa61c58d06ac73a4676c21700c2bfdde7}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S0\-\_\-\-Set@{A\-T\-S0\-\_\-\-Set}}
+\index{A\-T\-S0\-\_\-\-Set@{A\-T\-S0\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S0\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S0\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{rings}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_aa61c58d06ac73a4676c21700c2bfdde7}
+
+
+Definition at line 672 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a1aefb4dfe1bcecc8b0b59009ea0c7fce}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S10@{A\-T\-S10}}
+\index{A\-T\-S10@{A\-T\-S10}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S10}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S10 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a1aefb4dfe1bcecc8b0b59009ea0c7fce}
+
+
+Definition at line 741 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a37640913ae0ad1fc261825ed88215bce}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S10\-\_\-\-Set@{A\-T\-S10\-\_\-\-Set}}
+\index{A\-T\-S10\-\_\-\-Set@{A\-T\-S10\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S10\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S10\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{delay = {\ttfamily 2}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a37640913ae0ad1fc261825ed88215bce}
+
+
+Definition at line 735 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_afccdb8bce4db05dc97ff13c790de187d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S2@{A\-T\-S2}}
+\index{A\-T\-S2@{A\-T\-S2}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S2}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_afccdb8bce4db05dc97ff13c790de187d}
+
+
+Definition at line 681 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a5cd39ceedd28163764c88dbf9ed26340}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S2\-\_\-\-Set@{A\-T\-S2\-\_\-\-Set}}
+\index{A\-T\-S2\-\_\-\-Set@{A\-T\-S2\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S2\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S2\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 43}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a5cd39ceedd28163764c88dbf9ed26340}
+
+
+Definition at line 684 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a79301cceb9c3d12653e079cd12e15446}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S3@{A\-T\-S3}}
+\index{A\-T\-S3@{A\-T\-S3}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S3}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a79301cceb9c3d12653e079cd12e15446}
+
+
+Definition at line 693 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_add30a16060b369fbab60b48cf6110745}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S3\-\_\-\-Set@{A\-T\-S3\-\_\-\-Set}}
+\index{A\-T\-S3\-\_\-\-Set@{A\-T\-S3\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S3\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S3\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 13}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_add30a16060b369fbab60b48cf6110745}
+
+
+Definition at line 696 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ab6a44eb69ab813101d203fa2ad1239a8}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S4@{A\-T\-S4}}
+\index{A\-T\-S4@{A\-T\-S4}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S4}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S4 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ab6a44eb69ab813101d203fa2ad1239a8}
+
+
+Definition at line 705 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a4ef269ca8e8dc37288f9d3a2f8fd7a5d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S4\-\_\-\-Set@{A\-T\-S4\-\_\-\-Set}}
+\index{A\-T\-S4\-\_\-\-Set@{A\-T\-S4\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S4\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S4\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 10}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a4ef269ca8e8dc37288f9d3a2f8fd7a5d}
+
+
+Definition at line 708 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ac566b0f32752e5ce87a7cbad878587ec}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S5@{A\-T\-S5}}
+\index{A\-T\-S5@{A\-T\-S5}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S5}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S5 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ac566b0f32752e5ce87a7cbad878587ec}
+
+
+Definition at line 717 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_abb57f1af827b076021f988e68a4417c7}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S5\-\_\-\-Set@{A\-T\-S5\-\_\-\-Set}}
+\index{A\-T\-S5\-\_\-\-Set@{A\-T\-S5\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S5\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S5\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 8}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_abb57f1af827b076021f988e68a4417c7}
+
+
+Definition at line 720 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_aaadd01f28f9dda5c9d92fdc8730b2de1}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S7@{A\-T\-S7}}
+\index{A\-T\-S7@{A\-T\-S7}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S7}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S7 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_aaadd01f28f9dda5c9d92fdc8730b2de1}
+
+
+Definition at line 729 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_acfbb340072f7a0ebfe07fc239652d1ae}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S7\-\_\-\-Set@{A\-T\-S7\-\_\-\-Set}}
+\index{A\-T\-S7\-\_\-\-Set@{A\-T\-S7\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S7\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S7\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{timeout = {\ttfamily 50}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_acfbb340072f7a0ebfe07fc239652d1ae}
+
+
+Definition at line 723 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_af6b4d26695f9b4a227b89c598cb03236}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-S\-\_\-\-Set@{A\-T\-S\-\_\-\-Set}}
+\index{A\-T\-S\-\_\-\-Set@{A\-T\-S\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-S\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-S\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{register, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_af6b4d26695f9b4a227b89c598cb03236}
+
+
+Definition at line 660 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a43bdcc328f0d7e61ea133aebcdd3d648}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-V@{A\-T\-V}}
+\index{A\-T\-V@{A\-T\-V}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-V}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-V (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a43bdcc328f0d7e61ea133aebcdd3d648}
+
+
+Definition at line 647 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ab3311d737ec2eea314516e1f5a37ded4}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!A\-T\-Z@{A\-T\-Z}}
+\index{A\-T\-Z@{A\-T\-Z}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{A\-T\-Z}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-A\-T\-Z (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ab3311d737ec2eea314516e1f5a37ded4}
+
+
+Definition at line 636 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a7f222f66c95efa13ce536eee965ee933}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Auto\-Baud\-Rate@{Auto\-Baud\-Rate}}
+\index{Auto\-Baud\-Rate@{Auto\-Baud\-Rate}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Auto\-Baud\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}public uint edwinspire\-::\-Ports\-::\-Modem\-::\-Auto\-Baud\-Rate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a7f222f66c95efa13ce536eee965ee933}
+
+
+Definition at line 252 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a3678cf6db42f0b0584f454df867eaa5d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Automatic\-Answer\-Control@{Automatic\-Answer\-Control}}
+\index{Automatic\-Answer\-Control@{Automatic\-Answer\-Control}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Automatic\-Answer\-Control}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Automatic\-Answer\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a3678cf6db42f0b0584f454df867eaa5d}
+
+
+Definition at line 666 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a39d3ad91e7ca72429b9898b8271f7cea}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Automatic\-Answer\-Control\-\_\-\-Set@{Automatic\-Answer\-Control\-\_\-\-Set}}
+\index{Automatic\-Answer\-Control\-\_\-\-Set@{Automatic\-Answer\-Control\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Automatic\-Answer\-Control\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Automatic\-Answer\-Control\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{rings}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a39d3ad91e7ca72429b9898b8271f7cea}
+
+
+Definition at line 663 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a5e7d76433531d2895eb66812f1119fb4}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Automatic\-Disconnect\-Delay\-Control@{Automatic\-Disconnect\-Delay\-Control}}
+\index{Automatic\-Disconnect\-Delay\-Control@{Automatic\-Disconnect\-Delay\-Control}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Automatic\-Disconnect\-Delay\-Control}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Automatic\-Disconnect\-Delay\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a5e7d76433531d2895eb66812f1119fb4}
+
+
+Definition at line 744 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a8f6139f59aae77cad6d36f18731470c7}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set@{Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set}}
+\index{Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set@{Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Automatic\-Disconnect\-Delay\-Control\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{delay = {\ttfamily 2}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a8f6139f59aae77cad6d36f18731470c7}
+
+
+Definition at line 738 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a1d524eb74b5fed64ee9b06198c213b50}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Call\-I\-D@{Call\-I\-D}}
+\index{Call\-I\-D@{Call\-I\-D}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Call\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}public signal void edwinspire\-::\-Ports\-::\-Modem\-::\-Call\-I\-D (
+\begin{DoxyParamCaption}
+\item[{string}]{Number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a1d524eb74b5fed64ee9b06198c213b50}
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_af1dba36513bc0af8e2d9e15997d119f7}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Command\-Line\-Editing\-Character@{Command\-Line\-Editing\-Character}}
+\index{Command\-Line\-Editing\-Character@{Command\-Line\-Editing\-Character}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Command\-Line\-Editing\-Character}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Command\-Line\-Editing\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_af1dba36513bc0af8e2d9e15997d119f7}
+
+
+Definition at line 714 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a4d74d12f34862fd544cb6c865fcdc08d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Command\-Line\-Editing\-Character\-\_\-\-Set@{Command\-Line\-Editing\-Character\-\_\-\-Set}}
+\index{Command\-Line\-Editing\-Character\-\_\-\-Set@{Command\-Line\-Editing\-Character\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Command\-Line\-Editing\-Character\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Command\-Line\-Editing\-Character\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 8}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a4d74d12f34862fd544cb6c865fcdc08d}
+
+
+Definition at line 711 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a99b7d14d9dc27ec252ae731f1ad951dd}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Command\-Line\-Termination\-Character@{Command\-Line\-Termination\-Character}}
+\index{Command\-Line\-Termination\-Character@{Command\-Line\-Termination\-Character}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Command\-Line\-Termination\-Character}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Command\-Line\-Termination\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a99b7d14d9dc27ec252ae731f1ad951dd}
+
+
+Definition at line 690 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ac3bff29454207323e4a035c6f4cababa}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Command\-Line\-Termination\-Character\-\_\-\-Set@{Command\-Line\-Termination\-Character\-\_\-\-Set}}
+\index{Command\-Line\-Termination\-Character\-\_\-\-Set@{Command\-Line\-Termination\-Character\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Command\-Line\-Termination\-Character\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Command\-Line\-Termination\-Character\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 13}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ac3bff29454207323e4a035c6f4cababa}
+
+
+Definition at line 687 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ad361341f56d187f035adb4c73102c9c3}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Completion\-Connection\-Time\-Out@{Completion\-Connection\-Time\-Out}}
+\index{Completion\-Connection\-Time\-Out@{Completion\-Connection\-Time\-Out}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Completion\-Connection\-Time\-Out}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Completion\-Connection\-Time\-Out (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ad361341f56d187f035adb4c73102c9c3}
+
+
+Definition at line 732 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ab12811fff76a814f924feabf33172a8d}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Completion\-Connection\-Time\-Out\-\_\-\-Set@{Completion\-Connection\-Time\-Out\-\_\-\-Set}}
+\index{Completion\-Connection\-Time\-Out\-\_\-\-Set@{Completion\-Connection\-Time\-Out\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Completion\-Connection\-Time\-Out\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Completion\-Connection\-Time\-Out\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{timeout = {\ttfamily 50}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ab12811fff76a814f924feabf33172a8d}
+
+
+Definition at line 726 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a3ca6e311188caba0e7bc11ee9536b9fc}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Dial\-Command@{Dial\-Command}}
+\index{Dial\-Command@{Dial\-Command}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Dial\-Command}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Dial\-Command (
+\begin{DoxyParamCaption}
+\item[{string}]{number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a3ca6e311188caba0e7bc11ee9536b9fc}
+
+
+Definition at line 614 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a97d1fae325793dc1a567d6ef7a9fe66c}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Echo@{Echo}}
+\index{Echo@{Echo}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Echo}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Echo (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a97d1fae325793dc1a567d6ef7a9fe66c}
+
+
+Definition at line 657 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a6a90de46a4810fcdf056e44f1f7dd27a}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Escape\-Sequense@{Escape\-Sequense}}
+\index{Escape\-Sequense@{Escape\-Sequense}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Escape\-Sequense}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Escape\-Sequense (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a6a90de46a4810fcdf056e44f1f7dd27a}
+
+
+Definition at line 773 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a47cee6bf37c38e0b9d1b800905160ef9}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Escape\-Sequense\-Character@{Escape\-Sequense\-Character}}
+\index{Escape\-Sequense\-Character@{Escape\-Sequense\-Character}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Escape\-Sequense\-Character}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Escape\-Sequense\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a47cee6bf37c38e0b9d1b800905160ef9}
+
+
+Definition at line 678 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ada89e1d686076b9e6374bf9d7b96e990}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Escape\-Sequense\-Character\-\_\-\-Set@{Escape\-Sequense\-Character\-\_\-\-Set}}
+\index{Escape\-Sequense\-Character\-\_\-\-Set@{Escape\-Sequense\-Character\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Escape\-Sequense\-Character\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Escape\-Sequense\-Character\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 43}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ada89e1d686076b9e6374bf9d7b96e990}
+
+
+Definition at line 675 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a2e0d09bff4e330442fd22f04ece4fb86}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Receive@{Receive}}
+\index{Receive@{Receive}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Receive}]{\setlength{\rightskip}{0pt plus 5cm}public {\bf Response} edwinspire\-::\-Ports\-::\-Modem\-::\-Receive (
+\begin{DoxyParamCaption}
+\item[{double}]{waitforresponse\-\_\-ms = {\ttfamily 0}, }
+\item[{bool}]{prevent\-Detect\-False\-Response = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a2e0d09bff4e330442fd22f04ece4fb86}
+
+
+Definition at line 287 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a7c43d5b2b243b593790ad466b8fbd375}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Response\-Formatting\-Character@{Response\-Formatting\-Character}}
+\index{Response\-Formatting\-Character@{Response\-Formatting\-Character}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Response\-Formatting\-Character}]{\setlength{\rightskip}{0pt plus 5cm}public int edwinspire\-::\-Ports\-::\-Modem\-::\-Response\-Formatting\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a7c43d5b2b243b593790ad466b8fbd375}
+
+
+Definition at line 702 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_aac8ae6113d70b4b9ea6ac6fd99607fc1}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Response\-Formatting\-Character\-\_\-\-Set@{Response\-Formatting\-Character\-\_\-\-Set}}
+\index{Response\-Formatting\-Character\-\_\-\-Set@{Response\-Formatting\-Character\-\_\-\-Set}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Response\-Formatting\-Character\-\_\-\-Set}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Response\-Formatting\-Character\-\_\-\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{character = {\ttfamily 10}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_aac8ae6113d70b4b9ea6ac6fd99607fc1}
+
+
+Definition at line 699 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a851b8c65f1804a8ca8bfeb938317fdf2}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Ringing@{Ringing}}
+\index{Ringing@{Ringing}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Ringing}]{\setlength{\rightskip}{0pt plus 5cm}public signal void edwinspire\-::\-Ports\-::\-Modem\-::\-Ringing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a851b8c65f1804a8ca8bfeb938317fdf2}
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a3cf23293b5727c0de41c7c9ec47a93ec}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Send@{Send}}
+\index{Send@{Send}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Send}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Send (
+\begin{DoxyParamCaption}
+\item[{string}]{Comando\-A\-T}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a3cf23293b5727c0de41c7c9ec47a93ec}
+
+
+Envia un comando A\-T al modem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Comando\-A\-T} & A System.\-String Comando A\-T \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A System.\-Boolean Devuelve true si se ha logrado enviar el comando al modem, caso contrario devuelve false 
+\end{DoxyReturn}
+
+
+Definition at line 574 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a8ab387ceecbf6bb952bb00579bb1c899}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Send\-Simple\-Command@{Send\-Simple\-Command}}
+\index{Send\-Simple\-Command@{Send\-Simple\-Command}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Send\-Simple\-Command}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Send\-Simple\-Command (
+\begin{DoxyParamCaption}
+\item[{string}]{A\-T\-Command, }
+\item[{double}]{waitforresponse\-\_\-ms = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a8ab387ceecbf6bb952bb00579bb1c899}
+
+
+Envia un comando A\-T del cual se espera obtener como respuesta un O\-K o E\-R\-R\-O\-R 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A\-T\-Command} & A System.\-String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A System.\-Boolean Respuesta al comando A\-T (true = O\-K / false = E\-R\-R\-O\-R) 
+\end{DoxyReturn}
+
+
+Definition at line 597 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a56650f780711497aa1028fec4797845f}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Set\-To\-Default\-Configuration@{Set\-To\-Default\-Configuration}}
+\index{Set\-To\-Default\-Configuration@{Set\-To\-Default\-Configuration}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Set\-To\-Default\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Set\-To\-Default\-Configuration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a56650f780711497aa1028fec4797845f}
+
+
+Definition at line 632 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_aae5a21a838e7cf4e4e2072673fc32a9a}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Verbose\-Mode@{Verbose\-Mode}}
+\index{Verbose\-Mode@{Verbose\-Mode}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Verbose\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}public bool edwinspire\-::\-Ports\-::\-Modem\-::\-Verbose\-Mode (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_aae5a21a838e7cf4e4e2072673fc32a9a}
+
+
+Definition at line 654 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ab42c238f6b371b6ffee458652195c234}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!expreg\-C\-L\-I\-P@{expreg\-C\-L\-I\-P}}
+\index{expreg\-C\-L\-I\-P@{expreg\-C\-L\-I\-P}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{expreg\-C\-L\-I\-P}]{\setlength{\rightskip}{0pt plus 5cm}private string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Modem\-::expreg\-C\-L\-I\-P\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ab42c238f6b371b6ffee458652195c234}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+                                \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)+CLIP: \(\backslash\)"(?<CLIP>[0-9|+]+)\(\backslash\)""}
+                        \}
+\end{DoxyCode}
+
+
+Definition at line 220 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a439d82c1165b6af0f182fbae8ec9f051}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!expreg\-E\-R\-R\-O\-R@{expreg\-E\-R\-R\-O\-R}}
+\index{expreg\-E\-R\-R\-O\-R@{expreg\-E\-R\-R\-O\-R}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{expreg\-E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}private string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Modem\-::expreg\-E\-R\-R\-O\-R\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a439d82c1165b6af0f182fbae8ec9f051}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+                                \textcolor{stringliteral}{"ERROR\(\backslash\)r\(\backslash\)n"}
+                        \}
+\end{DoxyCode}
+
+
+Definition at line 205 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_ab314b7affec099cfde591b6974d233a1}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E@{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E}}
+\index{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E@{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}private string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Modem\-::expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-E\-E\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_ab314b7affec099cfde591b6974d233a1}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+                                \textcolor{stringliteral}{""}\textcolor{stringliteral}{"\(\backslash\)+CME ERROR: (?<Error>[0-9|a-z|AZ|\(\backslash\)w| ]+)"}\textcolor{stringliteral}{""}
+      ,
+                                \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)+CME ERROR: (?<Error>[0-9]+)"}
+                        \}
+\end{DoxyCode}
+
+
+Definition at line 215 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a448a92a7d7a84ef666f02584c819b1cf}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S@{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S}}
+\index{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S@{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}private string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Modem\-::expreg\-E\-R\-R\-O\-R\-\_\-\-C\-M\-S\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a448a92a7d7a84ef666f02584c819b1cf}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+                                \textcolor{stringliteral}{""}\textcolor{stringliteral}{"\(\backslash\)+CMS ERROR: (?<Error>[0-9|a-z|AZ|\(\backslash\)w| ]+)"}\textcolor{stringliteral}{""}
+      ,
+                                \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)+CMS ERROR: (?<Error>[0-9]+)"}
+                        \}
+\end{DoxyCode}
+
+
+Definition at line 210 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a94bb15b8aeb4d5fa3b8749d6dc2684cc}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!expreg\-O\-K@{expreg\-O\-K}}
+\index{expreg\-O\-K@{expreg\-O\-K}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{expreg\-O\-K}]{\setlength{\rightskip}{0pt plus 5cm}private string \mbox{[}$\,$\mbox{]} edwinspire\-::\-Ports\-::\-Modem\-::expreg\-O\-K\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a94bb15b8aeb4d5fa3b8749d6dc2684cc}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+ \{
+                                \textcolor{stringliteral}{"OK\(\backslash\)r\(\backslash\)n"}
+                        \}
+\end{DoxyCode}
+
+
+Definition at line 201 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a9cb9107204054dca45a6a75ba3bb66d8}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Last\-Call@{Last\-Call}}
+\index{Last\-Call@{Last\-Call}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Last\-Call}]{\setlength{\rightskip}{0pt plus 5cm}public {\bf Last\-Call\-Received} edwinspire\-::\-Ports\-::\-Modem\-::\-Last\-Call = {\bf Last\-Call\-Received}()\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a9cb9107204054dca45a6a75ba3bb66d8}
+
+
+Definition at line 224 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+\hypertarget{classedwinspire_1_1Ports_1_1Modem_a899c47d75446730990d26292f1fc15fe}{\index{edwinspire\-::\-Ports\-::\-Modem@{edwinspire\-::\-Ports\-::\-Modem}!Temporizador@{Temporizador}}
+\index{Temporizador@{Temporizador}!edwinspire::Ports::Modem@{edwinspire\-::\-Ports\-::\-Modem}}
+\subsubsection[{Temporizador}]{\setlength{\rightskip}{0pt plus 5cm}private Timer edwinspire\-::\-Ports\-::\-Modem\-::\-Temporizador = new Timer()\hspace{0.3cm}{\ttfamily [private]}}}\label{classedwinspire_1_1Ports_1_1Modem_a899c47d75446730990d26292f1fc15fe}
+
+
+Definition at line 230 of file libspire\-\_\-modem\-\_\-new.\-vala.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{libspire__modem__new_8vala}{libspire\-\_\-modem\-\_\-new.\-vala}\end{DoxyCompactItemize}

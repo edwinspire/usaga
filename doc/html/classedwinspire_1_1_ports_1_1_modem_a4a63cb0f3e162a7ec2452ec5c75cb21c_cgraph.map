@@ -1,0 +1,9 @@
+<map id="ATS10" name="ATS10">
+<area shape="rect" id="node3" href="$classedwinspire_1_1_ports_1_1_modem.html#abff184ed8f81015dd34a6329f36c0e8b" title="ATS" alt="" coords="117,75,165,104"/>
+<area shape="rect" id="node5" href="$namespaceedwinspire_1_1_ports.html#ae3a4888c33e46ef2cb9c21475b39747d" title="edwinspire::Ports:\l:DiscardBuffer" alt="" coords="335,5,460,51"/>
+<area shape="rect" id="node9" href="$classedwinspire_1_1_ports_1_1_modem.html#a21ad2b0b92a7de2cd8ea614f0ea4f8fd" title="Envia un comando AT al modem " alt="" coords="224,48,275,77"/>
+<area shape="rect" id="node12" href="$namespaceedwinspire_1_1_ports.html#afc37e1ee0b1084b5c5fccf2fab440b4f" title="edwinspire::Ports:\l:Response" alt="" coords="335,91,460,138"/>
+<area shape="rect" id="node14" href="$classedwinspire_1_1_ports_1_1_modem.html#af029f00adf01cac411d73901909df0e9" title="Receive" alt="" coords="215,152,284,181"/>
+<area shape="rect" id="node7" href="$libspire__serial_8vala.html#a740e10aea09874bdeb3c4641aeceb891" title="Clean_Buffer" alt="" coords="509,13,608,43"/>
+<area shape="rect" id="node16" href="$classedwinspire_1_1_ports_1_1_modem.html#a3a7adf7062dcf2a1dc1ab31a3a1b4363" title="CallID" alt="" coords="368,161,427,191"/>
+</map>
