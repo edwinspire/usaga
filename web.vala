@@ -388,7 +388,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			EventTypesTable Tabla = new EventTypesTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_eventtypes_edit_xml_from_hashmap(request.Form, true).data;
+			Retorno.Data =  Tabla.fun_eventtypes_edit_xml_from_hashmap(request.Form.post_request.internal_hashmap, true).data;
 			return Retorno;
 		}
 		private static uHttp.Response ResponseViewEventTypesXml(Request request) {
@@ -406,7 +406,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_address_edit_xml_from_hashmap(request.Form, true).data;
+			Retorno.Data =  Tabla.fun_account_address_edit_xml_from_hashmap(request.Form.post_request.internal_hashmap, true).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request) {
@@ -529,16 +529,16 @@ i++;
 			string description = "";
 			string ts = "1990-01-01";
 			if(request.Form.post_request.has_key("idnotiftempl")) {
-				id = int.parse(request.Form["idnotiftempl"]);
+				id = int.parse(request.Form.post_request.get_value("idnotiftempl"));
 			}
 			if(request.Form.post_request.has_key("message")) {
-				message = request.Form["message"];
+				message = request.Form.post_request.get_value("message");
 			}
 			if(request.Form.post_request.has_key("description")) {
-				description = request.Form["description"];
+				description = request.Form.post_request.get_value("description");
 			}
 			if(request.Form.post_request.has_key("ts")) {
-				ts = request.Form["ts"];
+				ts = request.Form.post_request.get_value("ts");
 			}
 			NotificationTemplates Tabla = new NotificationTemplates();
 			Tabla.GetParamCnx();
