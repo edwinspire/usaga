@@ -252,7 +252,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
 			if(request.Form.get_request.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			Retorno.Data = this.ReadServerFile("_m_usaga_event_view.html").replace("data-usaga-idevent=\"0\"", "data-usaga-idevent=\""+idevent.to_string()+"\"").data;
 			return Retorno;
@@ -272,7 +272,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
 			if(request.Form.get_request.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			EventCommentTable Tabla = new EventCommentTable();
 			Tabla.GetParamCnx();
@@ -325,7 +325,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
 			if(request.Form.get_request.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
@@ -338,7 +338,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			int manual = 0;
 			if(request.Form.get_request.has_key("manual")) {
-				manual = int.parse(request.Query["manual"]);
+				manual = int.parse(request.Form.get_request.get_value("manual"));
 			}
 			EventTypesTable Tabla = new EventTypesTable();
 			Tabla.GetParamCnx();
@@ -360,7 +360,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Tabla.GetParamCnx();
 			string text = "";
 			if(request.Form.get_request.has_key("text")) {
-				text = request.Query["text"];
+				text = request.Form.get_request.get_value("text");
 			}
 			Retorno.Data =  Tabla.NameAndId_Search_Xml(text, true).data;
 			return Retorno;
@@ -437,7 +437,7 @@ int newid = Tabla.lastid();
 int lastid = 0;
 int idaccount = 0;
 if(request.Form.get_request.has_key("idaccount")){
-idaccount = int.parse(request.Query["idaccount"]); 
+idaccount = int.parse(request.Form.get_request.get_value("idaccount"]); 
 }
 int i = 0;
 while(i<150){
@@ -495,13 +495,13 @@ i++;
 			string start = "1990-01-01";
 			string end = "2100-01-01";
 			if(request.Form.get_request.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			if(request.Form.get_request.has_key("fstart")) {
-				start = request.Query["fstart"];
+				start = request.Form.get_request.get_value("fstart");
 			}
 			if(request.Form.get_request.has_key("fend")) {
-				end = request.Query["fend"];
+				end = request.Form.get_request.get_value("fend");
 			}
 			Retorno.Data = Tabla.byIdAccount_xml(idaccount, start, end, true).data;
 			return Retorno;
@@ -549,7 +549,7 @@ i++;
 			Tabla.GetParamCnx();
 			int id = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			Retorno.Data = Tabla.fun_view_account_contacts_address_xml(id).data;
 			return Retorno;
@@ -590,8 +590,8 @@ i++;
 			int idaccount = 0;
 			int idphone = 0;
 			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idphone")) {
-				idphone = int.parse(request.Query["idphone"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+				idphone = int.parse(request.Form.get_request.get_value("idphone"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountNotificationsEventtypeTable Tabla = new AccountNotificationsEventtypeTable();
 			Tabla.GetParamCnx();
@@ -606,8 +606,8 @@ i++;
 			int idcontact = 0;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
@@ -623,8 +623,8 @@ i++;
 			int idcontact = 0;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
@@ -637,7 +637,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -713,7 +713,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -729,7 +729,7 @@ i++;
 			//print("ResponseGetAccount\n");
 			int id = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -742,7 +742,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			var retornoHtml = uHttpServer.ReadFile(this.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
 			Retorno.Data = retornoHtml.data;
@@ -754,7 +754,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -767,7 +767,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -781,7 +781,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -798,8 +798,8 @@ i++;
 			int idcontact = 0;
 			int idaccount = 0;
 			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
