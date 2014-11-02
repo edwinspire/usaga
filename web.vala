@@ -279,6 +279,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Data =  Tabla.fun_view_events_comments_xml(idevent, true).data;
 			return Retorno;
 		}
+		
 		private uHttp.Response response_fun_event_comment_insert_xml(Request request) {
 			uHttp.Response Retorno = new uHttp.Response();
 			Retorno.Header["Content-Type"] = "text/xml";
@@ -289,6 +290,10 @@ response = ResponseAccountLocationSaveTable(request);
 			int status  = 0;
 			string comment = "";
 			bool fieldtextasbase64 = true;
+			int[] idattachs = {};
+			warranty("No esta implementado\n");
+			/*
+			TODO: Reimplementar esta seccion
 			int[] idattachs = this.attach_files(request.MultiPartForm.Parts, false);
 			if(request.MultiPartForm.is_multipart_form_data) {
 				foreach(var p in request.MultiPartForm.Parts) {
@@ -313,7 +318,7 @@ response = ResponseAccountLocationSaveTable(request);
 						break;
 					}
 				}
-			}
+			}*/
 			EventCommentTable Tabla = new EventCommentTable();
 			Tabla.GetParamCnx();
 			Retorno.Data =  Tabla.fun_event_comment_insert_xml(idevent, idadmin, seconds, status, comment, idattachs, fieldtextasbase64).data;
@@ -523,16 +528,16 @@ i++;
 			string message = "";
 			string description = "";
 			string ts = "1990-01-01";
-			if(request.Form.has_key("idnotiftempl")) {
+			if(request.Form.post_request.has_key("idnotiftempl")) {
 				id = int.parse(request.Form["idnotiftempl"]);
 			}
-			if(request.Form.has_key("message")) {
+			if(request.Form.post_request.has_key("message")) {
 				message = request.Form["message"];
 			}
-			if(request.Form.has_key("description")) {
+			if(request.Form.post_request.has_key("description")) {
 				description = request.Form["description"];
 			}
-			if(request.Form.has_key("ts")) {
+			if(request.Form.post_request.has_key("ts")) {
 				ts = request.Form["ts"];
 			}
 			NotificationTemplates Tabla = new NotificationTemplates();
