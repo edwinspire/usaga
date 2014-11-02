@@ -206,7 +206,7 @@ response = ResponseAccountLocationSaveTable(request);
 				break;				
 				default:
 								      response.Status = StatusCode.NOT_FOUND;
-				response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
+				response.Data = edwinspire.uHttp.Response.HttpError("uHTTP WebServer", "404 - Página no encontrada").data;
 				response.Header["Content-Type"] = "text/html";
 				this.serve_response( response, dos );
 				break;
@@ -291,7 +291,7 @@ response = ResponseAccountLocationSaveTable(request);
 			string comment = "";
 			bool fieldtextasbase64 = true;
 			int[] idattachs = {};
-			warranty("No esta implementado\n");
+			warning("No esta implementado\n");
 			/*
 			TODO: Reimplementar esta seccion
 			int[] idattachs = this.attach_files(request.MultiPartForm.Parts, false);
@@ -669,7 +669,7 @@ i++;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
 			//stderr.printf("********************* Responde A %f\n", Temporizador.elapsed());
-			Retorno.Data =  Tabla.fun_view_events_xml_from_hashmap(request.Query).data;
+			Retorno.Data =  Tabla.fun_view_events_xml_from_hashmap(request.Form.get_request.internal_hashmap).data;
 			//stderr.printf("********************* Responde B %f\n", Temporizador.elapsed());
 			//Temporizador.stop();
 			return Retorno;
@@ -699,7 +699,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Query).data;
+			Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Form.get_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response response_fun_view_accounts_list_xml(Request request) {
