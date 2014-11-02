@@ -227,7 +227,7 @@ response = ResponseAccountLocationSaveTable(request);
 	//	stderr.printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><< ");
 //			stderr.printf(request.Form.size.to_string());
 
-    	 ids = Tabla.fun_view_accounts_events_only_idevents(request.Form);
+    	 ids = Tabla.fun_view_accounts_events_only_idevents(request.Form.post_request.internal_hashmap);
 			
 				//	stderr.printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><< "+ids);
 
@@ -242,7 +242,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_view_accounts_events_reports_xml(request.Form).data;
+			Retorno.Data =  Tabla.fun_view_accounts_events_reports_xml(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}		
 				
@@ -263,7 +263,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_event_insert_manual_xml(request.Form).data;
+			Retorno.Data =  Tabla.fun_event_insert_manual_xml(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private static uHttp.Response response_fun_view_events_comments_xml(Request request) {
@@ -410,7 +410,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notify_applied_to_selected_contacts_xml_hashmap(request.Form).data;
+			Retorno.Data = Tabla.fun_account_notify_applied_to_selected_contacts_xml_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		/*
@@ -512,7 +512,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notifications_applyselected_xml_from_hasmap(request.Form).data;
+			Retorno.Data = Tabla.fun_account_notifications_applyselected_xml_from_hasmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseNotificationTemplatesEdit(Request request) {
@@ -569,8 +569,8 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form).data;
-			//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
+			Retorno.Data = Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
+			//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form.post_request.internal_hashmap));
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountContactsTable(Request request) {
@@ -579,8 +579,8 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_contacts_table_from_hasmap(request.Form).data;
-			//print(Tabla.fun_account_contacts_table_from_hasmap(request.Form));
+			Retorno.Data = Tabla.fun_account_contacts_table_from_hasmap(request.Form.post_request.internal_hashmap).data;
+			//print(Tabla.fun_account_contacts_table_from_hasmap(request.Form.post_request.internal_hashmap));
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountContactPhonesNotifEventTypeToGridx(Request request) {
@@ -651,7 +651,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		// Recibe los datos y los actualiza en la base de datos.
@@ -676,7 +676,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_table_xml_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response fun_account_users_table_xml_from_hashmap(Request request) {
@@ -685,7 +685,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_users_table_xml_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_users_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseGetAccountPhonesTrigger(Request request) {
