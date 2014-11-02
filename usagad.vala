@@ -20,34 +20,15 @@
 //
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
 using GLib;
 using edwinspire.uSAGA;
-
-//using Gee;
-//using edwinspire.UiWeb.Server;
-//using Xml;
-
 public class RunuSaga: GLib.Object {
-
 	public static int main (string[] args) {
 		stdout.printf ("run usagad!\n");
-
-uSagaServer oSAGAServer = new uSagaServer();
-//smsServer.ResetAndLoadDevices();
-oSAGAServer.runuSAGA();
-
-print("El servidor muere...");
+		uSagaServer oSAGAServer = new uSagaServer();
+		//smsServer.ResetAndLoadDevices();
+		oSAGAServer.runuSAGA();
+		print("El servidor muere...");
 		return 0;
 	}
-
-
-
-
 }
-
-
-
-
-
