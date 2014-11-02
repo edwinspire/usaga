@@ -245,13 +245,14 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Data =  Tabla.fun_view_accounts_events_reports_xml(request.Form).data;
 			return Retorno;
 		}		
+			
 				
 		private uHttp.Response response_m_usaga_event_view(Request request) {
 			uHttp.Response Retorno = new uHttp.Response();
 			Retorno.Header["Content-Type"] = "text/html";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
+			if(request.Form.get_request.has_key("idevent")) {
 				idevent = int.parse(request.Query["idevent"]);
 			}
 			Retorno.Data = this.ReadServerFile("_m_usaga_event_view.html").replace("data-usaga-idevent=\"0\"", "data-usaga-idevent=\""+idevent.to_string()+"\"").data;
@@ -271,7 +272,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
+			if(request.Form.get_request.has_key("idevent")) {
 				idevent = int.parse(request.Query["idevent"]);
 			}
 			EventCommentTable Tabla = new EventCommentTable();
@@ -324,7 +325,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
+			if(request.Form.get_request.has_key("idevent")) {
 				idevent = int.parse(request.Query["idevent"]);
 			}
 			EventTable Tabla = new EventTable();
@@ -337,7 +338,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int manual = 0;
-			if(request.Query.has_key("manual")) {
+			if(request.Form.get_request.has_key("manual")) {
 				manual = int.parse(request.Query["manual"]);
 			}
 			EventTypesTable Tabla = new EventTypesTable();
@@ -359,7 +360,7 @@ response = ResponseAccountLocationSaveTable(request);
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
 			string text = "";
-			if(request.Query.has_key("text")) {
+			if(request.Form.get_request.has_key("text")) {
 				text = request.Query["text"];
 			}
 			Retorno.Data =  Tabla.NameAndId_Search_Xml(text, true).data;
@@ -436,7 +437,7 @@ Tabla.GetParamCnx();
 int newid = Tabla.lastid();
 int lastid = 0;
 int idaccount = 0;
-if(request.Query.has_key("idaccount")){
+if(request.Form.get_request.has_key("idaccount")){
 idaccount = int.parse(request.Query["idaccount"]); 
 }
 int i = 0;
@@ -494,13 +495,13 @@ i++;
 			int idaccount = 0;
 			string start = "1990-01-01";
 			string end = "2100-01-01";
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
-			if(request.Query.has_key("fstart")) {
+			if(request.Form.get_request.has_key("fstart")) {
 				start = request.Query["fstart"];
 			}
-			if(request.Query.has_key("fend")) {
+			if(request.Form.get_request.has_key("fend")) {
 				end = request.Query["fend"];
 			}
 			Retorno.Data = Tabla.byIdAccount_xml(idaccount, start, end, true).data;
@@ -548,7 +549,7 @@ i++;
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				id = int.parse(request.Query["idaccount"]);
 			}
 			Retorno.Data = Tabla.fun_view_account_contacts_address_xml(id).data;
@@ -589,7 +590,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
 			int idphone = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idphone")) {
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idphone")) {
 				idphone = int.parse(request.Query["idphone"]);
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
@@ -605,7 +606,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
 				idcontact = int.parse(request.Query["idcontact"]);
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
@@ -622,7 +623,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
 				idcontact = int.parse(request.Query["idcontact"]);
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
@@ -636,7 +637,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				id = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -712,7 +713,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				id = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -728,7 +729,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			//print("ResponseGetAccount\n");
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				id = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -741,7 +742,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/html";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
 			var retornoHtml = uHttpServer.ReadFile(this.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
@@ -753,7 +754,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				id = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -766,7 +767,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -780,7 +781,7 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
+			if(request.Form.get_request.has_key("idaccount")) {
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
 			AccountTable Tabla = new AccountTable();
@@ -797,7 +798,7 @@ i++;
 			//print("ResponseGetAccount\n");
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
 				idcontact = int.parse(request.Query["idcontact"]);
 				idaccount = int.parse(request.Query["idaccount"]);
 			}
