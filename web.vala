@@ -206,13 +206,16 @@ response = ResponseAccountLocationSaveTable(request);
 				break;				
 				default:
 								      response.Status = StatusCode.NOT_FOUND;
-				response.Data = edwinspire.uHttp.Response.HtmErrorPage("uHTTP WebServer", "404 - Página no encontrada").data;
+				response.Data = edwinspire.uHttp.Response.HttpError("uHTTP WebServer", "404 - Página no encontrada").data;
 				response.Header["Content-Type"] = "text/html";
 				this.serve_response( response, dos );
 				break;
 			}
 			return false;
 		}
+		
+		
+		
 		
 		/**
 		* Returns the HTML page with the necessary variasbles to build a web site reports
@@ -227,7 +230,7 @@ response = ResponseAccountLocationSaveTable(request);
 	//	stderr.printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><< ");
 //			stderr.printf(request.Form.size.to_string());
 
-    	 ids = Tabla.fun_view_accounts_events_only_idevents(request.Form);
+    	 ids = Tabla.fun_view_accounts_events_only_idevents(request.Form.post_request.internal_hashmap);
 			
 				//	stderr.printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><< "+ids);
 
@@ -242,7 +245,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_view_accounts_events_reports_xml(request.Form).data;
+			Retorno.Data =  Tabla.fun_view_accounts_events_reports_xml(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}		
 				
@@ -251,8 +254,8 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/html";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+			if(request.Form.get_request.has_key("idevent")) {
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			Retorno.Data = this.ReadServerFile("_m_usaga_event_view.html").replace("data-usaga-idevent=\"0\"", "data-usaga-idevent=\""+idevent.to_string()+"\"").data;
 			return Retorno;
@@ -263,7 +266,7 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Status = StatusCode.OK;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_event_insert_manual_xml(request.Form).data;
+			Retorno.Data =  Tabla.fun_event_insert_manual_xml(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private static uHttp.Response response_fun_view_events_comments_xml(Request request) {
@@ -271,8 +274,8 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+			if(request.Form.get_request.has_key("idevent")) {
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			EventCommentTable Tabla = new EventCommentTable();
 			Tabla.GetParamCnx();
@@ -289,6 +292,10 @@ response = ResponseAccountLocationSaveTable(request);
 			int status  = 0;
 			string comment = "";
 			bool fieldtextasbase64 = true;
+			int[] idattachs = {};
+			//TODO: Reimplementar este metodo
+			warning("No implemented\n");
+			/*
 			int[] idattachs = this.attach_files(request.MultiPartForm.Parts, false);
 			if(request.MultiPartForm.is_multipart_form_data) {
 				foreach(var p in request.MultiPartForm.Parts) {
@@ -313,7 +320,7 @@ response = ResponseAccountLocationSaveTable(request);
 						break;
 					}
 				}
-			}
+			}*/
 			EventCommentTable Tabla = new EventCommentTable();
 			Tabla.GetParamCnx();
 			Retorno.Data =  Tabla.fun_event_comment_insert_xml(idevent, idadmin, seconds, status, comment, idattachs, fieldtextasbase64).data;
@@ -324,8 +331,8 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idevent = 0;
-			if(request.Query.has_key("idevent")) {
-				idevent = int.parse(request.Query["idevent"]);
+			if(request.Form.get_request.has_key("idevent")) {
+				idevent = int.parse(request.Form.get_request.get_value("idevent"));
 			}
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
@@ -337,8 +344,8 @@ response = ResponseAccountLocationSaveTable(request);
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int manual = 0;
-			if(request.Query.has_key("manual")) {
-				manual = int.parse(request.Query["manual"]);
+			if(request.Form.get_request.has_key("manual")) {
+				manual = int.parse(request.Form.get_request.get_value("manual"));
 			}
 			EventTypesTable Tabla = new EventTypesTable();
 			Tabla.GetParamCnx();
@@ -359,8 +366,8 @@ response = ResponseAccountLocationSaveTable(request);
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
 			string text = "";
-			if(request.Query.has_key("text")) {
-				text = request.Query["text"];
+			if(request.Form.get_request.has_key("text")) {
+				text = request.Form.get_request.get_value("text");
 			}
 			Retorno.Data =  Tabla.NameAndId_Search_Xml(text, true).data;
 			return Retorno;
@@ -383,7 +390,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			EventTypesTable Tabla = new EventTypesTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_eventtypes_edit_xml_from_hashmap(request.Form, true).data;
+			Retorno.Data =  Tabla.fun_eventtypes_edit_xml_from_hashmap(request.Form.post_request.internal_hashmap, true).data;
 			return Retorno;
 		}
 		private static uHttp.Response ResponseViewEventTypesXml(Request request) {
@@ -401,7 +408,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_address_edit_xml_from_hashmap(request.Form, true).data;
+			Retorno.Data =  Tabla.fun_account_address_edit_xml_from_hashmap(request.Form.post_request.internal_hashmap, true).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountNotificationAppliedToSelectedContacts(Request request) {
@@ -410,7 +417,7 @@ return Retorno;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notify_applied_to_selected_contacts_xml_hashmap(request.Form).data;
+			Retorno.Data = Tabla.fun_account_notify_applied_to_selected_contacts_xml_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		/*
@@ -436,8 +443,8 @@ Tabla.GetParamCnx();
 int newid = Tabla.lastid();
 int lastid = 0;
 int idaccount = 0;
-if(request.Query.has_key("idaccount")){
-idaccount = int.parse(request.Query["idaccount"]); 
+if(request.Form.get_request.has_key("idaccount")){
+idaccount = int.parse(request.Form.get_request.get_value("idaccount"]); 
 }
 int i = 0;
 while(i<150){
@@ -494,14 +501,14 @@ i++;
 			int idaccount = 0;
 			string start = "1990-01-01";
 			string end = "2100-01-01";
-			if(request.Query.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
-			if(request.Query.has_key("fstart")) {
-				start = request.Query["fstart"];
+			if(request.Form.get_request.has_key("fstart")) {
+				start = request.Form.get_request.get_value("fstart");
 			}
-			if(request.Query.has_key("fend")) {
-				end = request.Query["fend"];
+			if(request.Form.get_request.has_key("fend")) {
+				end = request.Form.get_request.get_value("fend");
 			}
 			Retorno.Data = Tabla.byIdAccount_xml(idaccount, start, end, true).data;
 			return Retorno;
@@ -512,7 +519,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notifications_applyselected_xml_from_hasmap(request.Form).data;
+			Retorno.Data = Tabla.fun_account_notifications_applyselected_xml_from_hasmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseNotificationTemplatesEdit(Request request) {
@@ -523,17 +530,17 @@ i++;
 			string message = "";
 			string description = "";
 			string ts = "1990-01-01";
-			if(request.Form.has_key("idnotiftempl")) {
-				id = int.parse(request.Form["idnotiftempl"]);
+			if(request.Form.post_request.has_key("idnotiftempl")) {
+				id = int.parse(request.Form.post_request.get_value("idnotiftempl"));
 			}
-			if(request.Form.has_key("message")) {
-				message = request.Form["message"];
+			if(request.Form.post_request.has_key("message")) {
+				message = request.Form.post_request.get_value("message");
 			}
-			if(request.Form.has_key("description")) {
-				description = request.Form["description"];
+			if(request.Form.post_request.has_key("description")) {
+				description = request.Form.post_request.get_value("description");
 			}
-			if(request.Form.has_key("ts")) {
-				ts = request.Form["ts"];
+			if(request.Form.post_request.has_key("ts")) {
+				ts = request.Form.post_request.get_value("ts");
 			}
 			NotificationTemplates Tabla = new NotificationTemplates();
 			Tabla.GetParamCnx();
@@ -548,8 +555,8 @@ i++;
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			Retorno.Data = Tabla.fun_view_account_contacts_address_xml(id).data;
 			return Retorno;
@@ -569,8 +576,8 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form).data;
-			//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form));
+			Retorno.Data = Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
+			//GLib.print(Tabla.fun_account_notifications_table_xml_from_hashmap(request.Form.post_request.internal_hashmap));
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountContactsTable(Request request) {
@@ -579,8 +586,8 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
-			Retorno.Data = Tabla.fun_account_contacts_table_from_hasmap(request.Form).data;
-			//print(Tabla.fun_account_contacts_table_from_hasmap(request.Form));
+			Retorno.Data = Tabla.fun_account_contacts_table_from_hasmap(request.Form.post_request.internal_hashmap).data;
+			//print(Tabla.fun_account_contacts_table_from_hasmap(request.Form.post_request.internal_hashmap));
 			return Retorno;
 		}
 		private uHttp.Response ResponseAccountContactPhonesNotifEventTypeToGridx(Request request) {
@@ -589,9 +596,9 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
 			int idphone = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idphone")) {
-				idphone = int.parse(request.Query["idphone"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idphone")) {
+				idphone = int.parse(request.Form.get_request.get_value("idphone"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountNotificationsEventtypeTable Tabla = new AccountNotificationsEventtypeTable();
 			Tabla.GetParamCnx();
@@ -605,9 +612,9 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountNotificationsTable Tabla = new AccountNotificationsTable();
 			Tabla.GetParamCnx();
@@ -622,9 +629,9 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountContactsTable Tabla = new AccountContactsTable();
 			Tabla.GetParamCnx();
@@ -636,8 +643,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -651,7 +658,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_phones_trigger_alarm_table_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		// Recibe los datos y los actualiza en la base de datos.
@@ -664,7 +671,7 @@ i++;
 			EventTable Tabla = new EventTable();
 			Tabla.GetParamCnx();
 			//stderr.printf("********************* Responde A %f\n", Temporizador.elapsed());
-			Retorno.Data =  Tabla.fun_view_events_xml_from_hashmap(request.Query).data;
+			Retorno.Data =  Tabla.fun_view_events_xml_from_hashmap(request.Form.get_request.internal_hashmap).data;
 			//stderr.printf("********************* Responde B %f\n", Temporizador.elapsed());
 			//Temporizador.stop();
 			return Retorno;
@@ -676,7 +683,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_table_xml_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response fun_account_users_table_xml_from_hashmap(Request request) {
@@ -685,7 +692,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.fun_account_users_table_xml_from_hashmap(request.Form).data;
+			Retorno.Data =  Tabla.fun_account_users_table_xml_from_hashmap(request.Form.post_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response ResponseGetAccountPhonesTrigger(Request request) {
@@ -694,7 +701,7 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			AccountPhonesTriggerAlarmTable Tabla = new AccountPhonesTriggerAlarmTable();
 			Tabla.GetParamCnx();
-			Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Query).data;
+			Retorno.Data =  Tabla.AccountPhonesTriggerAlarmViewdbXml_from_hashmap(request.Form.get_request.internal_hashmap).data;
 			return Retorno;
 		}
 		private uHttp.Response response_fun_view_accounts_list_xml(Request request) {
@@ -712,8 +719,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -728,8 +735,8 @@ i++;
 			Retorno.Status = StatusCode.OK;
 			//print("ResponseGetAccount\n");
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -741,8 +748,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/html";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			var retornoHtml = uHttpServer.ReadFile(this.PathLocalFile("usaga_account_map.html")).replace("data-usaga-idaccount=\"0\"", "data-usaga-idaccount=\""+idaccount.to_string()+"\"");
 			Retorno.Data = retornoHtml.data;
@@ -753,8 +760,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int id = 0;
-			if(request.Query.has_key("idaccount")) {
-				id = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				id = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -766,8 +773,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -780,8 +787,8 @@ i++;
 			Retorno.Header["Content-Type"] = "text/xml";
 			Retorno.Status = StatusCode.OK;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount")) {
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount")) {
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
@@ -797,9 +804,9 @@ i++;
 			//print("ResponseGetAccount\n");
 			int idcontact = 0;
 			int idaccount = 0;
-			if(request.Query.has_key("idaccount") && request.Query.has_key("idcontact")) {
-				idcontact = int.parse(request.Query["idcontact"]);
-				idaccount = int.parse(request.Query["idaccount"]);
+			if(request.Form.get_request.has_key("idaccount") && request.Form.get_request.has_key("idcontact")) {
+				idcontact = int.parse(request.Form.get_request.get_value("idcontact"));
+				idaccount = int.parse(request.Form.get_request.get_value("idaccount"));
 			}
 			AccountTable Tabla = new AccountTable();
 			Tabla.GetParamCnx();
