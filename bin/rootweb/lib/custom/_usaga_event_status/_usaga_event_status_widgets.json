@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_usaga_event_status",
+			"description": "_usaga_event_status",
+			"type": "_usaga_event_status/_usaga_event_status",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png",
+			"properties": {
+				"style": "display: inline;"
+			}
+		}
+	],
+	"name": "_usaga_event_status",
+	"longName": "_usaga_event_status"
+}

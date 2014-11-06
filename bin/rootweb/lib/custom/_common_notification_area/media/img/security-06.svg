@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg3450" viewBox="0 0 141.4 141.4" version="1.1">
+  <g id="layer1" transform="translate(-535.78 -1227.3)">
+    <g id="g2391" transform="translate(524.8 1216.3)">
+      <g id="g7">
+        <path id="path8" d="m152.38 152.39v-141.4h-141.4v141.4h141.4z"/>
+        <path id="path9" stroke="#fff" stroke-width="2.8812" fill="#00b200" d="m148.19 148.19v-133.09h-133.09v133.09h133.09z"/>
+      </g>
+      <g id="g10" fill="#fff">
+        <path id="path11" d="m129.25 57.935v-36.315h-12.835v36.315h12.835z"/>
+        <path id="path12" d="m140.92 33.589h-36.315v12.835h36.315v-12.835z"/>
+      </g>
+      <g id="g13" fill="#fff">
+        <path id="path14" d="m23.323 89.552v-5.7241h117.85v5.0508h-10.102v33.671h9.765v5.05h-117.85v-5.724h15.489v-32.324h-15.152z"/>
+        <path id="path15" stroke="#00b200" stroke-width="2.694" d="m50.26 111.37c3.6818 0 6.6666-2.985 6.6666-6.667s-2.9848-6.6665-6.6666-6.6665c-3.6817 0-6.6665 2.9845-6.6665 6.6665s2.9848 6.667 6.6665 6.667z"/>
+        <path id="path16" stroke="#00b200" stroke-width="2.993" d="m92.181 113.25v5.5h-24.748c-8.6424 0-8.2495-12.571-8.2495-12.571v-1.571s-0.3929-12.571 8.2495-12.571h24.748v5.4996"/>
+        <path id="path17" stroke="#00b200" stroke-width="2.993" d="m70.182 97.932h54.604v7.4637"/>
+        <path id="path18" stroke="#00b200" stroke-width="2.993" d="m70.182 112.86h54.604v-7.464h-33.39"/>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>security</dc:title>
+        <dc:date>2010-10-23T19:01:23</dc:date>
+        <dc:description>clip art, clipart, security, </dc:description>
+        <dc:source>http://openclipart.org/detail/92113/security-by-yves_guillou-92113</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yves_guillou</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>security</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

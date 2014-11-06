@@ -1,0 +1,24 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_common_basic_button_action_confirm",
+			"description": "_common_basic_button_action_confirm",
+			"type": "_common_basic_button_action_confirm/_common_basic_button_action_confirm",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png"
+		}
+	],
+	"name": "_common_basic_button_action_confirm",
+	"longName": "_common_basic_button_action_confirm"
+}

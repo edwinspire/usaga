@@ -1,0 +1,37 @@
+{
+	"id": "_usaga_account_contacts_gridx",
+	"name": "_usaga_account_contacts_gridx",
+	"spec": "1.0",
+	"version": "1.0",
+	"require": [
+		{
+			"type": "javascript",
+			"src": "dojo/dojo.js",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dojox/io/xhrScriptPlugin",
+			"$library": "dojo"
+		},
+		{
+			"type": "css",
+			"src": "resources/claro/Gridx.css",
+			"$library": "gridx"
+		},
+		{
+			"$library": "dojo",
+			"format": "amd",
+			"src": "_usaga_account_contacts_gridx/_usaga_account_contacts_gridx",
+			"type": "javascript-module"
+		}
+	],
+	"library": {
+		"dojo": {
+			"src": "../../dojo/dojo/dojo.js"
+		},
+		"gridx": {}
+	},
+	"content": "<div></div>"
+}

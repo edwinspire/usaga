@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg1328" viewBox="0 0 48 48">
+  <defs id="defs3">
+    <linearGradient id="linearGradient4126">
+      <stop id="stop4128" offset="0"/>
+      <stop id="stop4130" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient4132" xlink:href="#linearGradient4126" gradientUnits="userSpaceOnUse" cy="40" cx="23.857" gradientTransform="matrix(1 0 0 .5 -7.259e-15 20)" r="17.143"/>
+    <linearGradient id="linearGradient4140" x1="9.3031" gradientUnits="userSpaceOnUse" x2="38.826" gradientTransform="translate(-.0000011429 -1.7143)" y1="26.719" y2="26.719">
+      <stop id="stop4136" stop-color="#7e807a" offset="0"/>
+      <stop id="stop4148" stop-color="#babbb8" offset=".25"/>
+      <stop id="stop4142" stop-color="#a5a6a3" offset=".5"/>
+      <stop id="stop4138" stop-color="#333432" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4160" x1="24" gradientUnits="userSpaceOnUse" x2="24" y1="16.525" y2="13.285">
+      <stop id="stop6934" stop-color="#fff" offset="0"/>
+      <stop id="stop6936" stop-color="#e7e6ae" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4168" x1="10.116" gradientUnits="userSpaceOnUse" x2="38.013" gradientTransform="translate(-.0000011429 -1.7143)" y1="17.512" y2="17.512">
+      <stop id="stop4164" stop-color="#f79403" offset="0"/>
+      <stop id="stop4170" stop-color="#fdb343" offset=".18692"/>
+      <stop id="stop4172" stop-color="#fdb74f" offset=".43008"/>
+      <stop id="stop4166" stop-color="#8f5601" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4182" x1="17.16" gradientUnits="userSpaceOnUse" x2="37.969" gradientTransform="translate(-.0000011429 -1.7143)" y1="14.004" y2="56.576">
+      <stop id="stop4178" stop-color="#fff" offset="0"/>
+      <stop id="stop4180" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4198" x1="25.065" gradientUnits="userSpaceOnUse" x2="25.208" gradientTransform="translate(-.0000011429 -1.7143)" y1="21.857" y2="25.429">
+      <stop id="stop4208" stop-color="#7d4b01" offset="0"/>
+      <stop id="stop4210" stop-color="#535353" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient6930" x1="16.071" gradientUnits="userSpaceOnUse" x2="15.786" gradientTransform="translate(-.14286 .92857)" y1="19.5" y2="30">
+      <stop id="stop6926" stop-color="#fff" offset="0"/>
+      <stop id="stop6928" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient6946" cx="23.857" xlink:href="#linearGradient4126" gradientUnits="userSpaceOnUse" cy="40" r="17.143" gradientTransform="matrix(1 0 0 .5 -4.4036e-15 20)"/>
+  </defs>
+  <g id="layer1">
+    <path id="path3366" style="color:#000000" d="m41 40a17.143 8.5714 0 1 1 -34.286 0 17.143 8.5714 0 1 1 34.286 0z" transform="matrix(1.0588 0 0 1.1513 -1.1159 -10.277)" display="block" fill="url(#radialGradient4132)"/>
+    <path id="path3068" style="color:#000000" d="m23.937 7.192c-7.859 0-14.25 2.8025-14.25 6.25 0.0005 0.247 0.0005 22.867 0.0005 23.125 0 3.447 6.3905 6.25 14.25 6.25 7.859 0 14.504-2.803 14.504-6.25v-23.125c0-3.4475-6.645-6.25-14.505-6.25z" stroke="url(#linearGradient4198)" stroke-miterlimit="10" display="block" fill="url(#linearGradient4140)"/>
+    <path id="path4152" style="color:#000000" display="block" fill="url(#linearGradient4168)" d="m23.941 7.4485c-7.625 0-13.825 2.7185-13.825 6.0635v6.558c0 3.345 6.2 5.648 13.825 5.648s14.072-2.303 14.072-5.648v-6.558c0-3.345-6.447-6.0635-14.072-6.0635z"/>
+    <path id="path4174" opacity=".5443" style="color:#000000" d="m23.946 7.9713c-7.328 0-13.286 2.6127-13.286 5.8267v22.127c0 3.214 5.958 5.827 13.286 5.827s13.523-2.613 13.523-5.827v-22.127c0-3.214-6.195-5.8267-13.523-5.8267z" stroke="url(#linearGradient4182)" stroke-miterlimit="10" display="block" fill="none"/>
+    <path id="path3364" style="color:#000000" d="m36.857 14.071a12.857 5.5 0 1 1 -25.714 0 12.857 5.5 0 1 1 25.714 0z" transform="matrix(1.0373 0 0 .95462 -.89498 -.075721)" display="block" stroke="url(#linearGradient4160)" stroke-miterlimit="10" stroke-width="1.0049" fill="#fed496"/>
+    <path id="path6944" opacity=".65823" style="color:#000000" d="m41 40a17.143 8.5714 0 1 1 -34.286 0 17.143 8.5714 0 1 1 34.286 0z" transform="matrix(.36343 0 0 .36343 15.472 -4.1186)" display="block" fill="url(#radialGradient6946)"/>
+    <path id="path3362" style="color:#000000" d="m23.889 6.4653c-2.002 0-4.631 0.7142-4.631 1.5927v2.63c0 0.878 2.629 1.592 4.631 1.592 2.003 0 4.411-0.714 4.411-1.592v-2.63c0-0.8785-2.408-1.5927-4.411-1.5927z" stroke="#b46c02" stroke-miterlimit="10" display="block" fill="#fcaf3e"/>
+    <path id="path6922" opacity=".49367" style="color:#000000" d="m13.643 18l0.357 16.786 4.571 1.285-0.142-16.714s2.071 0 5.428-0.214c-5.216-0.233-11.183-2.475-13.214-3.929 1.417 2.092 3 2.786 3 2.786z" display="block" fill="url(#linearGradient6930)"/>
+    <path id="path6940" style="color:#000000" d="m36.857 14.071a12.857 5.5 0 1 1 -25.714 0 12.857 5.5 0 1 1 25.714 0z" transform="matrix(.27198 0 0 .21662 17.27 5.4097)" display="block" stroke="url(#linearGradient4160)" stroke-miterlimit="10" stroke-width="4.1199" fill="#fed496"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango battery</dc:title>
+        <dc:date>2010-03-27T08:32:57</dc:date>
+        <dc:description>"Battery" icon from &lt;a href="http://tango.freedesktop.org/Tango_Desktop_Project"&gt; Tango Project &lt;/a&gt; &#xD;\n&lt;br&gt;&lt;br&gt;&#xD;\nSince version 0.8.90 Tango Project icons are Public Domain: &lt;a href="http://tango.freedesktop.org/Frequently_Asked_Questions#Terms_of_Use.3F"&gt; Tango Project FAQ &lt;/a&gt;</dc:description>
+        <dc:source>http://openclipart.org/detail/34417/tango-battery-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>battery</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>electricity</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>power</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

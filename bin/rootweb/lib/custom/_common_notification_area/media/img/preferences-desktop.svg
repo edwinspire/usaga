@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg11300" viewBox="0 0 48 48">
+  <defs id="defs3">
+    <radialGradient id="radialGradient6719" xlink:href="#linearGradient5060" gradientUnits="userSpaceOnUse" cy="486.65" cx="605.71" gradientTransform="matrix(-2.7744 0 0 1.9697 112.76 -872.89)" r="117.14"/>
+    <linearGradient id="linearGradient5060">
+      <stop id="stop5062" offset="0"/>
+      <stop id="stop5064" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient6717" xlink:href="#linearGradient5060" gradientUnits="userSpaceOnUse" cy="486.65" cx="605.71" gradientTransform="matrix(2.7744 0 0 1.9697 -1891.6 -872.89)" r="117.14"/>
+    <linearGradient id="linearGradient6715" x1="302.86" gradientUnits="userSpaceOnUse" y1="366.65" gradientTransform="matrix(2.7744 0 0 1.9697 -1892.2 -872.89)" x2="302.86" y2="609.51">
+      <stop id="stop5050" stop-opacity="0" offset="0"/>
+      <stop id="stop5056" offset=".5"/>
+      <stop id="stop5052" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient24230">
+      <stop id="stop24232" stop-color="#677579" offset="0"/>
+      <stop id="stop24234" stop-color="#333" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient11526" gradientUnits="userSpaceOnUse" cy="35.878" cx="24.446" gradientTransform="matrix(1.5949 -1.0962e-32 0 1.3243 -12.15 -8.0584)" r="20.531">
+      <stop id="stop11522" stop-color="#fff" offset="0"/>
+      <stop id="stop11524" stop-color="#dcdcdc" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient24236" x1="12.513" xlink:href="#linearGradient24230" gradientUnits="userSpaceOnUse" y1="30.586" gradientTransform="matrix(1 0 0 .58760 4.0823 17.552)" x2="12.513" y2="16.886"/>
+    <linearGradient id="linearGradient24240" x1="12.513" xlink:href="#linearGradient24230" gradientUnits="userSpaceOnUse" y1="30.586" gradientTransform="matrix(1 0 0 .58760 12.056 17.526)" x2="12.513" y2="16.886"/>
+    <linearGradient id="linearGradient24244" x1="12.513" xlink:href="#linearGradient24230" gradientUnits="userSpaceOnUse" y1="30.586" gradientTransform="matrix(1 0 0 .58760 20.056 17.526)" x2="12.513" y2="16.886"/>
+    <linearGradient id="linearGradient24272" x1="23.5" gradientUnits="userSpaceOnUse" y1="19.812" gradientTransform="translate(-.056313 -1.9048)" x2="23.5" y2="12.687">
+      <stop id="stop24268" stop-color="#a5a5a5" offset="0"/>
+      <stop id="stop24270" stop-color="#a5a5a5" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient24296" y2="40.25" gradientUnits="userSpaceOnUse" y1="19.062" x2="26.312" x1="24.531">
+      <stop id="stop24292" offset="0"/>
+      <stop id="stop24294" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1">
+    <g id="g6707" transform="matrix(.019802 0 0 .020868 42.361 37.403)">
+      <rect id="rect6709" opacity=".40206" style="color:black" height="478.36" width="1339.6" y="-150.7" x="-1559.3" fill="url(#linearGradient6715)"/>
+      <path id="path6711" opacity=".40206" style="color:black" fill="url(#radialGradient6717)" d="m-219.62-150.68v478.33c142.88 0.9 345.4-107.17 345.4-239.2 0-132.02-159.44-239.13-345.4-239.13z"/>
+      <path id="path6713" opacity=".40206" style="color:black" fill="url(#radialGradient6719)" d="m-1559.3-150.68v478.33c-142.8 0.9-345.4-107.17-345.4-239.2 0-132.02 159.5-239.13 345.4-239.13z"/>
+    </g>
+    <rect id="rect11518" stroke-linejoin="bevel" style="color:#000000" fill-rule="evenodd" rx=".85864" ry=".85864" height="23.868" width="32.026" stroke="#9b9b9b" stroke-miterlimit="10" y="16.595" x="8.526" fill="url(#radialGradient11526)"/>
+    <rect id="rect11528" stroke-linejoin="bevel" style="color:#000000" rx="0" ry="0" height="21.868" width="30.026" stroke="#fff" stroke-miterlimit="10" y="17.595" x="9.526" fill="none"/>
+    <rect id="rect23355" style="color:#000000" height="9.974" width="5.026" y="26.953" x="14.082" fill="url(#linearGradient24236)"/>
+    <rect id="rect24238" style="color:#000000" height="9.974" width="5.026" y="26.927" x="22.056" fill="url(#linearGradient24240)"/>
+    <rect id="rect24242" style="color:#000000" height="9.974" width="5.026" y="26.927" x="30.056" fill="url(#linearGradient24244)"/>
+    <rect id="rect24246" style="color:#000000" height="5.019" width="6" stroke="#9b9b9b" y="26.434" x="13.608" fill="#eeeeec"/>
+    <rect id="rect24248" style="color:#000000" height="5.019" width="6" stroke="#9b9b9b" y="32.434" x="21.608" fill="#eeeeec"/>
+    <rect id="rect24250" style="color:#000000" height="5.019" width="6" stroke="#9b9b9b" y="32.434" x="29.608" fill="#eeeeec"/>
+    <rect id="rect24252" style="color:#000000" height="3.0468" width="4.1084" stroke="#fff" y="27.423" x="14.578" fill="none"/>
+    <rect id="rect24254" style="color:#000000" height="3.0468" width="4.1084" stroke="#fff" y="33.453" x="22.5" fill="none"/>
+    <rect id="rect24256" style="color:#000000" height="3.0468" width="4.1084" stroke="#fff" y="33.453" x="30.5" fill="none"/>
+    <path id="path24258" d="m8.4437 18.595l-3.5-9.9998h40l-4.313 9.9998h-32.187z" stroke="#787878" style="color:#000000" fill="url(#linearGradient24272)"/>
+    <rect id="rect24260" style="color:#000000" height="2.9375" width="41" stroke="#9f9f9f" y="8.5952" x="4.4437" fill="#ddd"/>
+    <rect id="rect24262" style="color:#000000" rx="1" ry="1" height="2" width="5.5625" stroke="#9f9f9f" y="17.595" x="11.444" fill="#ddd"/>
+    <rect id="rect24264" style="color:#000000" rx="1" ry="1" height="2" width="5.5625" stroke="#9f9f9f" y="17.595" x="31.881" fill="#ddd"/>
+    <rect id="rect24284" opacity=".43407" style="color:#000000" rx="1" ry="1" height="2" width="16.062" y="22" x="13" fill="#9f9f9f"/>
+    <path id="path24286" opacity=".83407" style="color:#000000" fill="#fff" d="m5 11v-2h40l-1 1h-38l-1 1z"/>
+    <path id="path24288" opacity=".098901" d="m9 19.188v7.03l1-0.813c16.722 0.469 20.771 0.137 29 5.22l1.062 1.313-0.062-12.876-31 0.126z" style="color:#000000" fill="url(#linearGradient24296)"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango preferences desktop</dc:title>
+        <dc:date>2010-03-29T09:06:01</dc:date>
+        <dc:description>"Desktop preferences" icon from &lt;a href="http://tango.freedesktop.org/Tango_Desktop_Project"&gt; Tango Project &lt;/a&gt; &#xD;\n&lt;br&gt;&lt;br&gt;&#xD;\nSince version 0.8.90 Tango Project icons are Public Domain: &lt;a href="http://tango.freedesktop.org/Frequently_Asked_Questions#Terms_of_Use.3F"&gt; Tango Project FAQ &lt;/a&gt;</dc:description>
+        <dc:source>http://openclipart.org/detail/35419/tango-preferences-desktop-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>box</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>switch</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

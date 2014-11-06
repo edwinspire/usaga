@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg11300" viewBox="0 0 48 48">
+  <defs id="defs3">
+    <radialGradient id="radialGradient8668" gradientUnits="userSpaceOnUse" cy="36.421" cx="24.837" gradientTransform="matrix(1 0 0 .53672 -6.2273e-14 16.873)" r="15.645">
+      <stop id="stop8664" offset="0"/>
+      <stop id="stop8666" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient1764" x1="17.061" gradientUnits="userSpaceOnUse" y1="11.395" gradientTransform="matrix(-1.8135e-16 -1.1719 -1.1719 1.8135e-16 46.174 54.101)" x2="12.624" y2="12.584">
+      <stop id="stop2189" stop-color="#fff" offset="0"/>
+      <stop id="stop2191" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2314" y2="43.572" gradientUnits="userSpaceOnUse" y1="34.25" x2="26.25" x1="26.5">
+      <stop id="stop2310" stop-color="#edd400" offset="0"/>
+      <stop id="stop2312" stop-color="#edd400" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2322" y2="43.572" gradientUnits="userSpaceOnUse" y1="34.25" x2="26.25" x1="26.5">
+      <stop id="stop2318" stop-color="#c4a000" offset="0"/>
+      <stop id="stop2320" stop-color="#c4a000" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient2332" gradientUnits="userSpaceOnUse" cy="13.283" cx="15.094" gradientTransform="matrix(2.496 -1.1519e-16 1.0618e-16 2.3007 -25.124 -17.826)" r="10.165">
+      <stop id="stop2328" stop-color="#fff" offset="0"/>
+      <stop id="stop2330" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g id="layer1">
+    <path id="path8660" opacity=".14118" style="color:#000000" d="m40.482 36.421a15.645 8.3969 0 1 1 -31.29 0 15.645 8.3969 0 1 1 31.29 0z" fill-rule="evenodd" transform="matrix(-1.4897 0 0 -1.0013 60.604 75.313)" fill="url(#radialGradient8668)"/>
+    <path id="path1432" style="color:#000000" d="m9.5824 45.034c40.026 1.322 33.7-32.74 12.88-32.536v-9.3758l-16.648 14.587 16.648 15.297v-9.668c14.064-0.586 18.178 21.433-12.88 21.696z" stroke="url(#linearGradient2322)" display="block" fill="url(#linearGradient2314)"/>
+    <path id="path2177" opacity=".69886" style="color:#000000" d="m31.032 39.316c11.723-6.08 8.188-26.229-9.583-25.766v-8.0991l-14.048 12.264 14.048 12.944v-8.278c14.84-0.348 14.16 12.758 9.583 16.935z" stroke="url(#linearGradient1764)" stroke-miterlimit="10" display="block" fill="none"/>
+    <path id="path2324" opacity=".51136" style="color:#000000" d="m6.6291 17.683l5.6569 5.391c6.276-0.176 3.447-6.363 14.672-9.457l-4.949-0.619-0.089-8.6618-15.291 13.347z" fill-rule="evenodd" fill="url(#radialGradient2332)"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango edit undo</dc:title>
+        <dc:date>2010-03-24T09:31:23</dc:date>
+        <dc:description>"Undo" icon from &lt;A href="http://tango.freedesktop.org/Tango_Desktop_Project"&gt; Tango Project &lt;/A&gt; \n&lt;BR&gt;&lt;BR&gt;\nSince version 0.8.90 Tango Project icons are Public Domain: &lt;A href="http://tango.freedesktop.org/Frequently_Asked_Questions#Terms_of_Use.3F"&gt; Tango Project FAQ &lt;/A&gt;</dc:description>
+        <dc:source>http://openclipart.org/detail/33673/tango-edit-undo-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>arrow</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>edit</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>tango</rdf:li>
+            <rdf:li>undo</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

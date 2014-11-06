@@ -205,7 +205,7 @@ response = ResponseAccountLocationSaveTable(request);
 				this.serve_response( response, dos );
 				break;				
 				default:
-								      response.Status = StatusCode.NOT_FOUND;
+				response.Status = StatusCode.NOT_FOUND;
 				response.Data = edwinspire.uHttp.Response.HttpError("uHTTP WebServer", "404 - Página no encontrada").data;
 				response.Header["Content-Type"] = "text/html";
 				this.serve_response( response, dos );

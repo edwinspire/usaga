@@ -2,8 +2,9 @@ define(['dojo/_base/declare',
 'dijit/_Widget',
 'dijit/_Templated',
 'dojo/text!_common_from_to_date/_common_from_to_date.html',
-'jspire/form/DateTextBox'
-],function(declare,_Widget,_Templated,templateString, jsDTb){
+'jspire/form/DateTextBox',
+'dojo/dom-style'
+],function(declare,_Widget,_Templated,templateString, jsDTb, domStyle){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
@@ -17,9 +18,13 @@ jsDTb.addGetDateFunction(t.FTo);
 t.reset();
 
 t.ButtonGet.on('Click', function(){
-t.emit('onget', {From: t.get('from'), To: t.get('to'), Rows: t.get('rows')});
+t.emit('onget', t.get('value'));
 });
 
+},
+_getValueAttr: function(){
+var t = this;
+return {From: t.get('from'), To: t.get('to'), Rows: t.get('rows')};
 },
 _getFromAttr: function(){
 //return this.FFrom._getDate()+''+this.HFrom.value.toString().replace(/.*1970\s(\S+).*/,'T$1');
@@ -30,6 +35,22 @@ return this.FTo._getDate()+'T'+this.HTo.value.toLocaleTimeString();
 },
 _getRowsAttr: function(){
 return this.Rows.get('value');
+},
+hidden_button: function(h){
+if(h){
+domStyle.set(this.ButtonGet.domNode, 'display', 'none');
+}else{
+domStyle.set(this.ButtonGet.domNode, 'display', 'block');
+}
+
+},
+hidden_rows: function(h){
+if(h){
+domStyle.set(this.ContainerRow, 'display', 'none');
+}else{
+domStyle.set(this.ContainerRow, 'display', 'block');
+}
+
 },
 reset: function(){
 var t = this;

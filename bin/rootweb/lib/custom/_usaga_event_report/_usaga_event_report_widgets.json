@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_usaga_event_report",
+			"description": "_usaga_event_report",
+			"type": "_usaga_event_report/_usaga_event_report",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png",
+			"properties": {
+				"style": "border: 1px solid black;"
+			}
+		}
+	],
+	"name": "_usaga_event_report",
+	"longName": "_usaga_event_report"
+}

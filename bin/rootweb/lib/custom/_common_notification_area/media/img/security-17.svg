@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg3450" viewBox="0 0 141.4 141.4" version="1.1">
+  <g id="layer1" transform="translate(196.22 -885.61)">
+    <g id="g2884" transform="translate(-207.2 874.62)">
+      <g id="g2886">
+        <path id="path2888" d="m152.38 152.39v-141.4h-141.4v141.4h141.4z"/>
+        <path id="path2890" stroke="#fff" stroke-width="2.8812" fill="#f00" d="m148.19 148.19v-133.09h-133.09v133.09h133.09z"/>
+      </g>
+      <g id="g2892">
+        <path id="path2894" fill="#fff" d="m67.44 33.162 8.6493 0.0106 1.8805-2.0355v-1.62h5.2649l0.405 2.0249 3.645 2.835 5.7333-1.2044c1.4936 0 2.9874 1.4937 1.9915 3.9832-0.9958 2.4895-4.2144 2.2229-5.9748 3.9832-4.9789 4.979 0.7469 10.705 0.7469 10.705 10.456 3.9832 9.4601 13.941 9.4601 13.941v72.196l-35.6-0.249v-72.196s-0.9957-9.958 9.4602-13.941 5.9748-9.4601 0.9958-9.9581l-6.4552-0.1725-11.947 10.445v3.9325h-2.025v-7.6949l13.77-14.985z"/>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>security</dc:title>
+        <dc:date>2010-10-23T19:04:30</dc:date>
+        <dc:description>clip art, clipart, security, </dc:description>
+        <dc:source>http://openclipart.org/detail/92185/security-by-yves_guillou-92185</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yves_guillou</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>security</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

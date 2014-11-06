@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 48 48" version="1.0">
+  <defs id="defs4">
+    <linearGradient id="linearGradient6270">
+      <stop id="stop6272" stop-color="#ebebeb" offset="0"/>
+      <stop id="stop6274" stop-color="#bebebe" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient7024" gradientUnits="userSpaceOnUse" cy="16.5" cx="6.5" gradientTransform="translate(32.225 20.884)" r="2">
+      <stop id="stop6445" stop-color="#f7ff00" offset="0"/>
+      <stop id="stop6447" stop-color="lime" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient7064" x1="29" xlink:href="#linearGradient6270" gradientUnits="userSpaceOnUse" y1="11" gradientTransform="translate(0 1)" x2="29.778" y2="87.723"/>
+    <linearGradient id="linearGradient7066" x1="24" gradientUnits="userSpaceOnUse" y1="11" gradientTransform="translate(0 1)" x2="24" y2="87.306">
+      <stop id="stop6370" stop-color="#a0a0a0" offset="0"/>
+      <stop id="stop6372" stop-color="#646464" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient7077" x1="22.135" xlink:href="#linearGradient6270" gradientUnits="userSpaceOnUse" y1="6.8917" gradientTransform="translate(0 1)" x2="22.262" y2="22.861"/>
+    <linearGradient id="linearGradient7099" y2="41.429" gradientUnits="userSpaceOnUse" x2="25" y1="11.851" x1="25">
+      <stop id="stop7095" stop-color="#fff" offset="0"/>
+      <stop id="stop7097" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient11587" y2="19.812" gradientUnits="userSpaceOnUse" x2="15.25" gradientTransform="matrix(.74742 0 0 .75766 2.4348 14.744)" y1="8.4375" x1="12.938">
+      <stop id="stop6594" stop-color="#fff" stop-opacity=".27451" offset="0"/>
+      <stop id="stop6596" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient11581" gradientUnits="userSpaceOnUse" cy="4.8631" cx="12.244" gradientTransform="matrix(1.0066 .014818 -.0093728 .82833 -.38670 18.092)" r="21">
+      <stop id="stop6714" stop-color="#3c3c3c" offset="0"/>
+      <stop id="stop6716" stop-color="#1e1e1e" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient11583" y2="3" gradientUnits="userSpaceOnUse" x2="25" gradientTransform="matrix(.72786 0 0 .83018 2.9813 14.742)" y1="29" x1="24.875">
+      <stop id="stop6720" stop-color="#0a0a0a" offset="0"/>
+      <stop id="stop6722" stop-color="#1e1e1e" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient6336" gradientUnits="userSpaceOnUse" cy="21.767" cx="113.73" gradientTransform="matrix(.99982 -.018974 .084615 4.4586 -2.3715 -73.125)" r="2.4382">
+      <stop id="stop5548" stop-color="#fff" offset="0"/>
+      <stop id="stop5550" stop-color="#d8d8d8" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient11438" gradientUnits="userSpaceOnUse" cy="20.046" cx="40.264" gradientTransform="matrix(.64238 -.76638 .82316 .68998 -2.1021 37.072)" r="3.2163">
+      <stop id="stop11" stop-color="#fff" offset="0"/>
+      <stop id="stop13" stop-color="#d8d8d8" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient3351-8" xlink:href="#linearGradient3681-3-3" gradientUnits="userSpaceOnUse" cy="41.5" cx="5" gradientTransform="matrix(.59382 0 0 1.5367 -6.6595 -103.94)" r="5"/>
+    <linearGradient id="linearGradient3681-3-3">
+      <stop id="stop3683-8-9" offset="0"/>
+      <stop id="stop3685-0-7" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3353-5" x1="17.554" gradientUnits="userSpaceOnUse" y1="46" gradientTransform="matrix(1.757,0,0,1.397,-17.394,-16.412)" x2="17.554" y2="35">
+      <stop id="stop3705-0-2" stop-opacity="0" offset="0"/>
+      <stop id="stop3711-2-2" offset=".5"/>
+      <stop id="stop3707-8-2" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient11754" xlink:href="#linearGradient3681-3-3" gradientUnits="userSpaceOnUse" cy="41.5" cx="5" gradientTransform="matrix(.59382 0 0 1.5367 41.141 -103.94)" r="5"/>
+  </defs>
+  <g id="layer1">
+    <g id="g7109">
+      <g id="g11899">
+        <g id="g3305" opacity=".4" transform="matrix(.96675 0 0 .94553 .70405 -.19645)">
+          <rect id="rect2484" transform="scale(-1)" height="15.367" width="2.9602" y="-47.848" x="-3.6904" fill="url(#radialGradient3351-8)"/>
+          <rect id="rect2486" height="15.367" width="40.412" y="32.482" x="3.6904" fill="url(#linearGradient3353-5)"/>
+          <rect id="rect3444" transform="scale(1,-1)" height="15.367" width="2.9602" y="-47.848" x="44.11" fill="url(#radialGradient11754)"/>
+        </g>
+        <rect id="rect6358" stroke-linejoin="round" height="3.1121" width="2.6744" stroke="#2e3436" stroke-linecap="round" y="40.512" x="39.568" fill="#2e3436"/>
+        <rect id="rect6338" stroke-linejoin="round" height="3.1121" width="2.6744" stroke="#2e3436" stroke-linecap="round" y="40.512" x="5.5677" fill="#2e3436"/>
+        <path id="path6259" stroke-linejoin="round" d="m9.5 5.5h29l7 7.0518h-43z" stroke="#8c8c8c" stroke-linecap="square" stroke-width=".99995" fill="url(#linearGradient7077)"/>
+        <rect id="rect6261" stroke-linejoin="round" height="29.481" width="43" stroke="url(#linearGradient7066)" stroke-linecap="square" y="12.5" x="2.5" stroke-width=".99995" fill="url(#linearGradient7064)"/>
+        <path id="path6437" stroke-linejoin="round" d="m40.225 37.384a1.5 1.5 0 0 1 -3 0 1.5 1.5 0 1 1 3 0z" stroke="#828282" stroke-linecap="square" fill="url(#radialGradient7024)"/>
+        <path id="path6473" fill="#fafafa" d="m43.725 37.084a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6467" fill="#3c3c3c" d="m43.725 37.384a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <rect id="rect6479" height="2" width="2" y="30.57" x="37.626" fill="#808080"/>
+        <rect id="rect6481" height="2" width="2" y="30.57" x="40.626" fill="#808080"/>
+        <rect id="rect6487" height="1" width="5.019" y="33.57" x="37.626" fill="#808080"/>
+        <rect id="rect7083" opacity=".8" height="27.481" width="41" stroke="url(#linearGradient7099)" stroke-linecap="square" y="13.5" x="3.4998" stroke-width=".99958" fill="none"/>
+        <rect id="rect2716" style="enable-background:new" fill-rule="evenodd" height="20.755" width="29.842" stroke="url(#linearGradient11583)" y="17.648" x="5.5288" stroke-width="1.5833" fill="url(#radialGradient11581)"/>
+        <path id="rect6588" d="m4.6771 17.017h31.392v6.0613l-31.392 5.304v-11.365z" fill="url(#linearGradient11587)"/>
+        <path id="path6088" fill="#fafafa" d="m43.725 37.084a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6090" fill="#3c3c3c" d="m43.725 37.384a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6100" fill="#fafafa" d="m39.446 25.195a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6102" fill="#3c3c3c" d="m39.446 25.495a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6104" fill="#fafafa" d="m39.446 25.195a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6106" fill="#3c3c3c" d="m39.446 25.495a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <rect id="rect6110" stroke-linejoin="round" height=".96706" width="2.192" stroke="#fafafa" stroke-linecap="round" y="24.637" x="40.521" stroke-width=".8839" fill="#fafafa"/>
+        <rect id="rect6108" stroke-linejoin="round" height=".96706" width="2.192" stroke="#3c3c3c" stroke-linecap="round" y="25.086" x="40.545" stroke-width=".8839" fill="#3c3c3c"/>
+        <path id="path6112" fill="#fafafa" d="m39.446 28.204a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6114" fill="#3c3c3c" d="m39.446 28.504a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6116" fill="#fafafa" d="m39.446 28.204a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <path id="path6118" fill="#3c3c3c" d="m39.446 28.504a1 1 0 0 1 -2 0 1 1 0 1 1 2 0z"/>
+        <rect id="rect6120" stroke-linejoin="round" height=".96706" width="2.192" stroke="#fafafa" stroke-linecap="round" y="27.646" x="40.521" stroke-width=".8839" fill="#fafafa"/>
+        <rect id="rect6122" stroke-linejoin="round" height=".96706" width="2.192" stroke="#3c3c3c" stroke-linecap="round" y="28.095" x="40.545" stroke-width=".8839" fill="#3c3c3c"/>
+        <g id="layer1-1" transform="translate(-81.49 6.6737)">
+          <path id="path2144" stroke-linejoin="round" d="m115.09 32.751c0.1-1.299-0.13815-22.347-0.13815-22.347-1.2925-0.65329-2.4225-0.55014-3.7136 0l0.41445 22.347c0.00003 1.0132 3.3449 1.1974 3.437 0z" stroke="#888a85" fill="url(#radialGradient6336)"/>
+        </g>
+        <path id="path6360" stroke-linejoin="round" d="m42.98 20.046a2.7163 2.6476 0 1 1 -5.4327 0 2.7163 2.6476 0 1 1 5.4327 0z" stroke="#888a85" stroke-linecap="round" fill="url(#radialGradient11438)"/>
+        <path id="path6362" stroke-linejoin="round" d="m40.504 20.218 1.8567-0.72206" stroke="#888a85" stroke-linecap="round" stroke-width="1px" fill="none"/>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Microwave</dc:title>
+        <dc:date>2012-05-15T14:25:29</dc:date>
+        <dc:description>A microwave oven clipart influenced by Tango project guidelines</dc:description>
+        <dc:source>http://openclipart.org/detail/170041/microwave-by-b.gaultier</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>b.gaultier</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>microwave</rdf:li>
+            <rdf:li>oven</rdf:li>
+            <rdf:li>tango</rdf:li>
+            <rdf:li>wireless</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

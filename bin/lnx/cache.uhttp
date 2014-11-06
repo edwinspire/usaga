@@ -1,0 +1,4 @@
+#This file contains regular expressions that point to all the files that are saved in the cache server. 
+#Place a regular expression for each line. 
+#If you want to disable a line place the # sign at the beginning of the line. 
+#Every change you make to this file will take effect once the server restarts.

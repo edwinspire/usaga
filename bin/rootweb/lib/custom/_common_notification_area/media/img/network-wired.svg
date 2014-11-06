@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg11300" viewBox="0 0 48 48">
+  <defs id="defs3">
+    <linearGradient id="linearGradient12810">
+      <stop id="stop12812" stop-color="#fff" offset="0"/>
+      <stop id="stop12814" stop-color="#e5e5e5" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient12962" gradientUnits="userSpaceOnUse" cy="44.565" cx="30.204" gradientTransform="matrix(1 7.1069e-17 -4.3595e-17 .33846 -5.0366e-14 29.482)" r="6.566">
+      <stop id="stop11510" offset="0"/>
+      <stop id="stop11512" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient3152" x1="84.999" xlink:href="#linearGradient12810" gradientUnits="userSpaceOnUse" y1="25.21" gradientTransform="matrix(1.3741 0 0 1.3741 -85.102 -12.388)" x2="62.591" y2="12.022"/>
+    <radialGradient id="radialGradient3156" gradientUnits="userSpaceOnUse" cy="33.399" cx="88.593" gradientTransform="matrix(.88944 .20922 -.17864 .75945 -34.977 -11.864)" r="7.0056">
+      <stop id="stop12830" stop-color="#cccccd" offset="0"/>
+      <stop id="stop12862" stop-color="#adadae" offset="0"/>
+      <stop id="stop12832" stop-color="#8f8f90" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient3159" x1="88.75" gradientUnits="userSpaceOnUse" y1="31.656" gradientTransform="matrix(1.3741 0 0 1.3741 -84.459 -12.067)" x2="92.062" y2="36.656">
+      <stop id="stop12838" stop-color="#515152" offset="0"/>
+      <stop id="stop12840" stop-color="#515152" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3166" x1="65.624" xlink:href="#linearGradient12810" gradientUnits="userSpaceOnUse" y1="21.46" gradientTransform="matrix(1.3741 0 0 1.3741 -85.102 -12.388)" x2="87.529" y2="21.46"/>
+  </defs>
+  <g id="layer1">
+    <path id="path12960" opacity=".40642" style="color:#000000" d="m36.77 44.565a6.566 2.2223 0 1 1 -13.132 0 6.566 2.2223 0 1 1 13.132 0z" fill-rule="evenodd" transform="matrix(2.7527 1.4384 -2.4554 4.6796 48.4 -223.04)" fill="url(#radialGradient12962)"/>
+    <path id="path12803" stroke-linejoin="round" style="color:#000000" d="m12.801 5.8182l-7.6433 6.6988 0.2576 6.14 17.992 16.188 11.594-10.734 0.257-6.699-22.457-11.594z" fill-rule="evenodd" stroke="#4d4d4d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" fill="#484848"/>
+    <path id="path12787" style="color:#000000" fill-rule="evenodd" fill="#a6a6a6" d="m5.0704 12.658l0.2467 5.921 18.257 16.037-0.247-6.415-18.257-15.543z"/>
+    <path id="path12789" style="color:#000000" fill-rule="evenodd" fill="#7f7f7f" d="m23.327 28.201v6.538l11.596-10.732 0.246-6.661-11.842 10.855z"/>
+    <path id="path12791" style="color:#000000" fill-rule="evenodd" fill="url(#linearGradient3166)" d="m5.0704 12.669l18.504 15.779 11.595-10.856-22.45-11.842-7.6486 6.919z"/>
+    <path id="path12793" style="color:#000000" fill-rule="evenodd" fill="#ffc11a" d="m6.2665 11.645l2.8747 2s0.6784 0.247 0.9868 0c0.308-0.247 0.247-0.987 0.247-0.987l-2.8749-2.258-1.2336 1.245z"/>
+    <path id="path12795" d="m8.401 9.6711l2.961 1.9999s0.678 0.247 0.986 0c0.309-0.246 0.247-0.987 0.247-0.987l-2.8745-2.2574-1.3195 1.2445z" style="color:#000000" fill="#ffc11a" fill-rule="evenodd"/>
+    <path id="path12797" style="color:#000000" fill-rule="evenodd" fill="#ffc11a" d="m10.584 7.7348l2.875 2.0862s0.678 0.247 0.987 0c0.308-0.2467 0.246-0.9869 0.246-0.9869l-2.96-2.3437-1.148 1.2444z"/>
+    <path id="path12820" opacity=".34225" stroke-linejoin="round" style="color:#000000" d="m12.83 6.3689l-7.0821 6.6361 0.2387 5.346 17.271 15.514 11.086-10.29 0.238-5.605-21.752-11.601z" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" fill="none"/>
+    <path id="path12822" stroke-linejoin="bevel" style="color:#000000" d="m31.564 28.211s5.84 2.318 8.932 7.042c3.091 4.723 4.809 11.593 4.809 11.593" stroke="url(#linearGradient3159)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5" fill="none"/>
+    <path id="path12824" style="color:#000000" fill-rule="evenodd" fill="url(#radialGradient3156)" d="m32.201 26.733c-0.833 0.101-1.492 0.753-1.6 1.585s0.362 1.631 1.141 1.942 4.883 2.665 6.519 5.164c1.789 2.733 2.982 7.198 2.982 7.198 0.254 0.982 1.255 1.573 2.237 1.319 0.982-0.253 1.573-1.255 1.319-2.237 0 0-1.1-4.711-3.441-8.287-2.494-3.811-8.24-6.541-8.24-6.541-0.288-0.126-0.604-0.175-0.917-0.143z"/>
+    <path id="path12801" d="m15.926 15.865l15.049 11.349c1.727 1.11 3.393-0.185 4.441-1.48 1.049-1.295 0.864-2.837-0.247-3.701l-16.036-8.635-3.207 2.467z" style="color:#000000" fill="#a0a0a1" fill-rule="evenodd"/>
+    <path id="path12799" style="color:#000000" fill-rule="evenodd" fill="url(#linearGradient3152)" d="m15.309 15.865l15.42 9.376c0.863 0.616 2.713-0.124 3.454-0.987 0.74-0.864 0.123-2.097-0.494-2.467l-14.679-8.759-3.701 2.837z"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango network wired</dc:title>
+        <dc:date>2010-03-28T12:16:10</dc:date>
+        <dc:description>"Network wired" icon from &lt;a href="http://tango.freedesktop.org/Tango_Desktop_Project"&gt; Tango Project &lt;/a&gt; &#xD;\n&lt;br&gt;&lt;br&gt;&#xD;\nSince version 0.8.90 Tango Project icons are Public Domain: &lt;a href="http://tango.freedesktop.org/Frequently_Asked_Questions#Terms_of_Use.3F"&gt; Tango Project FAQ &lt;/a&gt;</dc:description>
+        <dc:source>http://openclipart.org/detail/34885/tango-network-wired-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>cable</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>network</rdf:li>
+            <rdf:li>plug</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

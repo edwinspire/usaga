@@ -8,6 +8,7 @@ define(['dojo/_base/declare',
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+changed: false,
 //geourl: 'http://edwinspire.com',
 reset: function(){
 this.resetForm();
@@ -16,6 +17,7 @@ this.idlocation = 0;
 },   
 resetForm: function(){
 this.idform.reset();
+this.changed = false;
 },
 idaddress: 0,
 ts: '1990-01-01',
@@ -34,11 +36,64 @@ t.idf9.innerHTML = l.f9;
 t.idf10.innerHTML = l.f10;
 },
 postCreate: function(){
-this._setLabels({f1: 'Campo 1: ', f2: 'Campo 2:', f3: 'Campo 3:', f4: 'Campo 4:', f5: 'Campo 5:', f6: 'Campo 6:', f7: 'Campo 7:', f8: 'Campo 8:', f9: 'Campo 9:', f10: 'Campo 10:'});
-this.reset();
+var t = this;
+t._setLabels({f1: 'Campo 1: ', f2: 'Campo 2:', f3: 'Campo 3:', f4: 'Campo 4:', f5: 'Campo 5:', f6: 'Campo 6:', f7: 'Campo 7:', f8: 'Campo 8:', f9: 'Campo 9:', f10: 'Campo 10:'});
+t.reset();
+
+t.idgeox.on('Change', function(){
+t.changed = true;
+});
+t.idgeoy.on('Change', function(){
+t.changed = true;
+});
+t.idf1.on('Change', function(){
+t.changed = true;
+});
+t.idf2.on('Change', function(){
+t.changed = true;
+});
+t.idf3.on('change', function(){
+t.changed = true;
+});
+t.idf4.on('change', function(){
+t.changed = true;
+});
+t.idf5.on('change', function(){
+t.changed = true;
+});
+t.idf6.on('change', function(){
+t.changed = true;
+});
+t.idf7.on('change', function(){
+t.changed = true;
+});
+t.idf8.on('change', function(){
+t.changed = true;
+});
+t.idf9.on('change', function(){
+t.changed = true;
+});
+t.idf10.on('change', function(){
+t.changed = true;
+});
     // Get a DOM node reference for the root of our widget
  //   var domNode = this.domNode;
 
+},
+disableFields: function(_disabled){
+t = this;
+t.idgeox.set("disabled", _disabled);
+t.idgeoy.set("disabled", _disabled);
+t.idf1.set("disabled", _disabled);
+t.idf2.set("disabled", _disabled);
+t.idf3.set("disabled", _disabled);
+t.idf4.set("disabled", _disabled);
+t.idf5.set("disabled", _disabled);
+t.idf6.set("disabled", _disabled);
+t.idf7.set("disabled", _disabled);
+t.idf8.set("disabled", _disabled);
+t.idf9.set("disabled", _disabled);
+t.idf10.set("disabled", _disabled);
 },
 values: function(){
 var t = this;
@@ -67,6 +122,8 @@ this.load(id_);
 },
 load: function(id){
 var t = this;
+t.disableFields(true);
+t.changed = false;
 t.idaddress = id;
 if(t.idaddress > 0){
             // Request the text file
@@ -85,10 +142,8 @@ if(numrows > 0){
 i = 0;
 t.idaddress = d.getNumber(i, 'idaddress');
 
-//_geox = d.getString(i, "geox");
 t.idgeox.set('value',  d.getString(i, "geox"));
 t.idgeoy.set('value',  d.getString(i, "geoy"));
-
 t.idf1.set('value', d.getStringFromB64(i, 'field1'));
 t.idf2.set('value', d.getStringFromB64(i, 'field2'));
 t.idf3.set('value',d.getStringFromB64(i, 'field3'));
@@ -105,7 +160,10 @@ t.idlocation = d.getInt(i, 'idlocation');
 }else{
 t.reset();
 }
-
+setTimeout(function(){
+t.changed = false;
+t.disableFields(false);
+}, 2000);
 t.emit('onloaddata', t.values());
                 },
                 function(error){
@@ -117,12 +175,14 @@ t.emit('notify_message', {message: error});
             );
 }else{
 t.reset();
+t.disableFields(false);
 t.emit('onloaddata', t.values());
 }
 
 },
 save: function(){
 var t = this;
+if(t.changed){
             // Request the text file
             request.post("fun_address_edit_xml.usms", {
             // Parse data from xml
@@ -149,7 +209,7 @@ t.reset();
 t.emit('notify_message', {message: error});
                 }
             );
-
+}
 },
 delete: function(){
 var t = this;

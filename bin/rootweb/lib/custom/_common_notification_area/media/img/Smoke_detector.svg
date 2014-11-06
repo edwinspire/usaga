@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 480.98 329.83" version="1.1">
+  <defs id="defs4">
+    <filter id="filter3990" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur3992" stdDeviation="1.1624955"/>
+    </filter>
+    <filter id="filter4044" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur4046" stdDeviation="2.3736196"/>
+    </filter>
+    <filter id="filter4089" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur4091" stdDeviation="1.3956292"/>
+    </filter>
+    <filter id="filter4101" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur4103" stdDeviation="1.0344291"/>
+    </filter>
+    <filter id="filter4133" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur4135" stdDeviation="0.22723651"/>
+    </filter>
+    <filter id="filter4276" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur4278" stdDeviation="0.16867169"/>
+    </filter>
+    <radialGradient id="radialGradient4304" gradientUnits="userSpaceOnUse" cy="475.01" cx="451.73" gradientTransform="matrix(.22691 -1.4255 .73024 .36257 20.071 967.99)" r="60">
+      <stop id="stop3825" stop-color="#dcdcdc" offset="0"/>
+      <stop id="stop3827" stop-color="#717171" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4306" gradientUnits="userSpaceOnUse" cy="489.57" cx="384.97" gradientTransform="matrix(.0081097 -.56637 .98588 .048888 -27.813 689.71)" r="60">
+      <stop id="stop3896" stop-color="#dcdcdc" offset="0"/>
+      <stop id="stop3898" stop-color="#6f6f6f" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4308" gradientUnits="userSpaceOnUse" cy="427.63" cx="458" gradientTransform="matrix(1 0 0 .88764 .000002 27.922)" r="172.84">
+      <stop id="stop3866" stop-color="#dcdcdc" offset="0"/>
+      <stop id="stop3868" stop-color="#717171" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient4310" y2="467.96" gradientUnits="userSpaceOnUse" y1="491.65" x2="466.45" x1="400.4">
+      <stop id="stop3906" stop-color="#191919" stop-opacity=".49194" offset="0"/>
+      <stop id="stop3908" stop-color="#d4d4d4" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient4312" gradientUnits="userSpaceOnUse" cy="427.63" cx="458" gradientTransform="matrix(1 0 0 .88764 -8.8e-7 27.922)" r="172.84">
+      <stop id="stop3866-8" stop-color="#dcdcdc" offset="0"/>
+      <stop id="stop3868-1" stop-color="#717171" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient4314" y2="485.3" gradientUnits="userSpaceOnUse" y1="463.14" x2="464.6" x1="404.75">
+      <stop id="stop3946" stop-color="#888" offset="0"/>
+      <stop id="stop3948" stop-color="#cecece" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4316" y2="484.78" gradientUnits="userSpaceOnUse" y1="536.17" x2="417.42" x1="450.74">
+      <stop id="stop3914" stop-color="#888" offset="0"/>
+      <stop id="stop3916" stop-color="#bbb" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient4318" x1="400.4" gradientUnits="userSpaceOnUse" y1="491.65" gradientTransform="matrix(3.8537 0 0 2.0887 -1312.7 -651.33)" x2="466.45" y2="467.96">
+      <stop id="stop4061" stop-color="#5a5a5a" stop-opacity=".87903" offset="0"/>
+      <stop id="stop4063" stop-color="#d6d6d6" stop-opacity=".82258" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient4320" gradientUnits="userSpaceOnUse" cy="415.26" cx="556.61" gradientTransform="matrix(.38020 .52853 -.43387 .31210 524.75 -7.4105)" r="10.889">
+      <stop id="stop4148-8-2" stop-color="#fb0000" stop-opacity=".37903" offset="0"/>
+      <stop id="stop4150-2-9" stop-color="#840000" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g id="layer2" transform="translate(-143.19 -214.33)">
+    <g id="g4280">
+      <path id="path3028" style="color:#000000" d="m618.69 319.61c0 27.559-5.0507 69.181-5.0507 69.181s-165.06 50.619-229.96 50.619c-64.896 0-231.47-50.619-231.47-50.619s-3.5356-41.622-3.5356-69.181c0-55.118 105.22-99.801 235.01-99.801s235.01 44.682 235.01 99.801z" fill-rule="evenodd" filter="url(#filter4101)" fill="#1a1a1a"/>
+      <path id="path3025" style="color:#000000" d="m500 488.34c0 12.426-1.2895 31.194-1.2895 31.194s-42.142 22.824-58.71 22.824c-16.569 0-59.097-22.824-59.097-22.824s-0.90266-18.767-0.90266-31.194c0-24.853 26.863-45 60-45s60 20.147 60 45z" fill-rule="evenodd" transform="matrix(3.9168 0 0 2.2178 -1339.7 -761.44)" fill="url(#radialGradient4304)"/>
+      <path id="path3023" style="color:#000000" d="m500 497.36c-6.7542 41.797-42.842 44.782-60 45-5.1658-1.0558-42.728-39.936-42.728-39.936s13.585 33.445 8.7783 31.375c-13.595-5.8538-25.318-16.228-26.05-36.439 0-24.853 26.863-45 60-45s60 20.147 60 45z" fill-rule="evenodd" transform="matrix(3.8453 0 0 2.0663 -1309 -636.89)" fill="url(#radialGradient4306)"/>
+      <path id="path3021" style="color:#000000" d="m500 497.36c0 24.853-26.863 45-60 45s-60-20.147-60-45 26.863-45 60-45 60 20.147 60 45z" fill-rule="evenodd" transform="matrix(2.3111 0 0 1.2413 -633.58 -170.31)" fill="#1a1a1a"/>
+      <path id="path3019" fill="#4d4d4d" d="m293.45 444 17.678 5.8084c7.1694-9.0615 18.185-17.63 64.145-21.718l20.961-0.25254c34.317 2.999 52.51 11.158 61.619 22.223l17.678-4.7982-0.88645-22.898c-23.37-10.94-48.74-17.48-77.15-17.32l-23.036 1.0714c-25.76 1.7964-50.902 1.4292-80.536 16.786z"/>
+      <path id="path4040" style="color:#000000" d="m256.61 425.04c-21.491 17.31-10.244 32.961 5.3572 48.393-9.194-0.62434-32.456-42.07-35.479-49.994-5.0814-7.6792-10.301-13.987-16.071-14.821 17.501-19.116 44.659-39.292 73.494-48.683 28.835-9.3918 67.355-16.375 101.97-14.679 37.09-1.764 78.418 8.1604 106.07 17.173 27.648 9.0122 47.269 22.914 64.145 46.467-5.4892 3.0635-29.095 32.015-31.315 37.881-2.951 12.697-11.166 19.604-18.688 27.274 11.98-14.533 25.562-28.826 6.566-47.982l-11.112-7.0711c-37.02-18.63-70.5-23.06-103.54-25.76h-23.234c-36.333-1.3608-72.09 5.9162-107.08 24.749z" fill-rule="evenodd" filter="url(#filter4044)" fill="url(#radialGradient4308)"/>
+      <path id="path3902" style="color:#000000" d="m500 497.36c0 24.853-26.863 45-60 45s-60-20.147-60-45 26.863-45 60-45 60 20.147 60 45z" fill-rule="evenodd" transform="matrix(3.8537 0 0 2.0887 -1312.7 -649.33)" fill="url(#linearGradient4310)"/>
+      <path id="path3007" fill="#4d4d4d" d="m487.9 457.89 13.637-38.891-16.898 4.0799 0.53571 33.214z"/>
+      <path id="path3009" fill="none" d="m397.5 402.9 0.5001-9.6602c37.84 1.4217 71.884 11.02 103.54 25.759l-16.898 4.0799c-31.44-14.71-59.11-21.27-87.14-20.18z"/>
+      <path id="path3011" fill="none" d="m374.46 402.36 0.3023-9.1245c-31.564-0.75701-65.13 2.8539-107.08 24.749l17.131 4.0186c23.2-11.407 50.8-19.613 89.643-19.643z"/>
+      <path id="path3013" fill="#e6e6e6" d="m267.69 417.99 12.984 40.172 3.75-2.3214 0.39696-33.831z"/>
+      <path id="path3015" fill="#808080" d="m397.5 402.9v3.5714c19.788 0.5755 32.829-0.48721 77.143 15.893l0.53571 29.107 10 4.8214-0.53571-33.214c-30-12.84-57.89-20.48-87.14-20.17z"/>
+      <path id="path3017" fill="#808080" d="m284.82 422.01-0.39696 33.831 9.0577-4.2779 0.44643-28.661c23.677-12.795 51.676-15.768 80.536-16.786v-3.75c-29.493 0.33779-59.204 4.1716-89.643 19.643z"/>
+      <path id="path3998-4" style="color:#000000" fill-rule="evenodd" fill="url(#radialGradient4312)" d="m267.69 417.99 12.984 40.172-9.7816 5.99-14.286-39.107m256.05 1.0269-13.637 38.891-11.112-7.0711 13.637-38.891m-103.54-25.759-2.0203 41.921h-20.708l-0.50508-41.921"/>
+      <path id="path3003" style="color:#000000" d="m500 497.36c0 24.853-26.863 45-60 45s-60-20.147-60-45 26.863-45 60-45 60 20.147 60 45z" fill-opacity=".66337" fill-rule="evenodd" transform="matrix(2.099 0 0 1.1796 -538.64 -99.435)" filter="url(#filter4133)" fill="#171717"/>
+      <path id="path3001" style="color:#000000" d="m500 497.36c0 24.853-26.863 45-60 45s-60-20.147-60-45 26.863-45 60-45 60 20.147 60 45z" fill-rule="evenodd" transform="matrix(2.0943 0 0 1.1684 -536.56 -93.311)" fill="url(#linearGradient4314)"/>
+      <path id="path2999" style="color:#000000" d="m500 497.36c0 24.853-26.863 45-60 45s-60-20.147-60-45 26.863-45 60-45 60 20.147 60 45z" fill-rule="evenodd" transform="matrix(1.9681 0 0 1 -482.01 -4)" filter="url(#filter3990)" fill="url(#linearGradient4316)"/>
+      <path id="path4048" style="color:#000000" d="m382.94 293.53c-127.7 0-229.22 38.089-229.22 90 0 2.3494-1.7918 2.6626-1.375 4.9688 8.8273-48.634 108.7-80.969 230.59-80.969s221.74 34.334 230.56 82.969c0.41675-2.3062-1.3438-2.6193-1.3438-4.9688 0-51.911-101.52-92-229.22-92z" fill-rule="evenodd" filter="url(#filter4089)" fill="url(#linearGradient4318)"/>
+      <path id="path4230" filter="url(#filter4276)" transform="matrix(1 0 0 1.0519 0 -19.958)" fill="#181818" d="m551.66 414.31c-3.8627-3.0586 6.947-8.7673 17.231-9.8643 2.8316-0.4686 8.9057 1.5713 3.7881 5.867z"/>
+      <g id="g4154" transform="translate(-.5863 -.35404)">
+        <path id="path4142" fill="url(#radialGradient4320)" d="m573.26 410.66c-9.132-5.7109-15.677-2.6256-21.466 3.0305 0 0 1.4552 16.281 12.879 13.385 11.424-2.8961 8.5863-16.415 8.5863-16.415z"/>
+        <path id="path4144" fill="#ffc0c0" d="m565.94 414.96c0.15501 1.719-0.47543 3.0453-1.2627 4.2931l4.0406 1.5152c1.2178-1.0414 1.9571-2.2879 1.5152-4.0406z"/>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Smoke Detector</dc:title>
+        <dc:date>2013-05-17T09:43:51</dc:date>
+        <dc:description>Ceiling mounted smoke detector</dc:description>
+        <dc:source>http://openclipart.org/detail/178271/smoke-detector-by-mi_brami-178271</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>mi_brami</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Building</rdf:li>
+            <rdf:li>Ceiling</rdf:li>
+            <rdf:li>DIA</rdf:li>
+            <rdf:li>Detector</rdf:li>
+            <rdf:li>Photorealistic</rdf:li>
+            <rdf:li>Smoke</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -12,6 +12,7 @@ define(['dojo/_base/declare',
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+changed: false,
 _setLabels: function(l){
 var r = 0;
 var t = this;
@@ -121,6 +122,7 @@ jsFS.addXmlLoader(t.fsL6, 'fun_view_location_level_xml.usms', 'row', {}, 'idl6',
 t._addFSLFunctions(t.fsL6, 6);
 
 t.fsL1.on('Change', function(e){
+t.changed = true;
 t.fsL2.newLoad(this.get('value'));
 });
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
@@ -131,6 +133,7 @@ t._to_set_location.idl1 = 0;
 
 
 t.fsL2.on('Change', function(e){
+t.changed = true;
 t.fsL3.newLoad(this.get('value'));
 });
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
@@ -141,6 +144,7 @@ t._to_set_location.idl2 = 0;
 
 
 t.fsL3.on('Change', function(e){
+t.changed = true;
 t.fsL4.newLoad(this.get('value'));
 });
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
@@ -149,9 +153,8 @@ t.fsL3.setLocation(t._to_set_location.idl3);
 t._to_set_location.idl3 = 0;
 });
 
-
-
 t.fsL4.on('Change', function(e){
+t.changed = true;
 t.fsL5.newLoad(this.get('value'));
 });
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
@@ -160,9 +163,8 @@ t.fsL4.setLocation(t._to_set_location.idl4);
 t._to_set_location.idl4 = 0;
 });
 
-
-
 t.fsL5.on('Change', function(e){
+t.changed = true;
 t.fsL6.newLoad(this.get('value'));
 });
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
@@ -171,12 +173,41 @@ t.fsL5.setLocation(t._to_set_location.idl5);
 t._to_set_location.idl5 = 0;
 });
 
-
 // Esto chequea si el objeto _to_set_location contiene algun dato para setear el select una vez sea han cargado los datos.
 t.fsL6.on('onloaddata', function(){
 t.fsL6.setLocation(t._to_set_location.idl6);
 t._to_set_location.idl6 = 0;
 });
+
+/*
+t.fsL1.on('change', function(){
+t.changed = true;
+});
+t.fsL2.on('change', function(){
+t.changed = true;
+});
+t.fsL3.on('change', function(){
+t.changed = true;
+});
+t.fsL4.on('change', function(){
+t.changed = true;
+});
+t.fsL5.on('change', function(){
+t.changed = true;
+});
+t.fsL6.on('change', function(){
+t.changed = true;
+});
+*/
+},
+disableFields: function(_disabled){
+t = this;
+t.fsL1.set("disabled", _disabled);
+t.fsL2.set("disabled", _disabled);
+t.fsL3.set("disabled", _disabled);
+t.fsL4.set("disabled", _disabled);
+t.fsL5.set("disabled", _disabled);
+t.fsL6.set("disabled", _disabled);
 },
 values: function(){
 var rv = {
@@ -196,13 +227,14 @@ return rl;
 },
 // Este es el punto principal de entrada de idlocation
 _setLocationAttr: function(idlocation){
-
-this.fsL1.Load();
+//this.fsL1.Load();
 this.getidslocations(idlocation);
 },
 getidslocations: function(id_){
 var ids = {};
 var t = this;
+t.changed = false;
+t.disableFields(true);
             // Request the text file
             request.get("fun_view_locations_ids_from_idlocation_xml.usms", {
             // Parse data from xml
@@ -214,22 +246,22 @@ var d = new RXml.getFromXhr(response, 'row');
 
 if(d.length > 0){
 t._to_set_location.idl1 = d.getString(0, 'idl1');
-//console.log('1 '+t._to_set_location.idl1);
 t._to_set_location.idl2 = d.getString(0, 'idl2');
-//console.log('2 '+t._to_set_location.idl2);
 t._to_set_location.idl3 = d.getString(0, 'idl3');
-//console.log('3 '+t._to_set_location.idl3);
 t._to_set_location.idl4 = d.getString(0, 'idl4');
-//console.log('4 '+t._to_set_location.idl4);
 t._to_set_location.idl5 = d.getString(0, 'idl5');
-//console.log('5 '+t._to_set_location.idl5);
 t._to_set_location.idl6 = d.getString(0, 'idl6');
-//console.log('6 '+t._to_set_location.idl6);
 }else{
 t._to_set_location= {idl1: '0', idl2: '0', idl3: '0', idl4: '0', idl5: '0', idl6: '0'};
 }
+
 t.fsL1.Load();
-//t.emit('onsavedata', t.values());
+
+setTimeout(function(){
+t.changed = false;
+t.disableFields(false);
+}, 2000);
+
                 },
                 function(error){
                     // Display the error returned

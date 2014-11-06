@@ -16,6 +16,12 @@
 			"$library": "dojo"
 		},
 		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dijit/TooltipDialog",
+			"$library": "dojo"
+		},
+		{
 			"$library": "dojo",
 			"format": "amd",
 			"src": "_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation",

@@ -1,5 +1,5 @@
 //>>built
-define("jspire/form/FilteringSelect",["dojo/_base/declare", "dojo/request", "dojo/store/Memory", "jspire/request/Xml"],function(_1, R, M, RXml){
+define("jspire/form/FilteringSelect",["dojo/_base/declare", "dojo/request", "dojo/store/Memory", "jspire/request/Xml", "dijit/form/FilteringSelect"],function(_1, R, M, RXml){
 
 return  {
 addXmlLoader: function(filteringselect, url, ri, q, id, name, vep){

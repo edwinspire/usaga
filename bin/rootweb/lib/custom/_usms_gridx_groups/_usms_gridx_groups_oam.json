@@ -1,0 +1,37 @@
+{
+	"id": "_usms_gridx_groups",
+	"name": "_usms_gridx_groups",
+	"spec": "1.0",
+	"version": "1.0",
+	"require": [
+		{
+			"type": "javascript",
+			"src": "dojo/dojo.js",
+			"$library": "dojo"
+		},
+		{
+			"type": "javascript-module",
+			"format": "amd",
+			"src": "dojox/io/xhrScriptPlugin",
+			"$library": "dojo"
+		},
+		{
+			"type": "css",
+			"src": "resources/claro/Gridx.css",
+			"$library": "gridx"
+		},
+		{
+			"$library": "dojo",
+			"format": "amd",
+			"src": "_usms_gridx_groups/_usms_gridx_groups",
+			"type": "javascript-module"
+		}
+	],
+	"library": {
+		"dojo": {
+			"src": "../../dojo/dojo/dojo.js"
+		},
+		"gridx": {}
+	},
+	"content": "<div></div>"
+}

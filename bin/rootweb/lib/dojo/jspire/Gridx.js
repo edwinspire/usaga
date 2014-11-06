@@ -19,7 +19,7 @@ while(i<numsel){
 //console.log(selected[i]);
 gridx.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
 gridx.RowSelected[i] = gridx.store.getValue(item, namefiel);
-//console.log(gridx.RowSelected[i]);
+console.log(gridx.RowSelected);
 } 
 });
 i++;
@@ -38,7 +38,6 @@ var gridx = dijit.byId(idgridx);
 gridx.ItemSelected = [];
 
 dojo.connect(gridx.select.row, 'onSelectionChange', function(selected){	
-//console.log('onSelectionChange');
 console.log(selected);
 gridx.ItemSelected = [];
 numsel = selected.length;
@@ -46,6 +45,7 @@ var i = 0;
 while(i<numsel){
 gridx.store.fetch({query: {unique_id: selected[i]}, onItem: function(item){
 gridx.ItemSelected[i] = item;
+console.log(item);
 } 
 });
 i++;

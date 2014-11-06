@@ -138,8 +138,6 @@ t.emit('notify_message', {message: 'Los datos ingresados no son correctos. Impos
 }
 return datos;
 },
-
-
 save: function(){
 
 var t = this;
@@ -153,7 +151,7 @@ t._actionsave(datos);
 // Guarda los datos en el servidor
 _actionsave: function(_data){
 var t = this;
-
+alert('uh');
    R.post('fun_account_contacts_table.usaga', {
 		data: _data,
             // Parse data from xml

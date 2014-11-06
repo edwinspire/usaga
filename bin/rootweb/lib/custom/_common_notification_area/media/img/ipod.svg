@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 48 48" version="1.1">
+  <defs id="defs4">
+    <linearGradient id="linearGradient3853" y2="44.756" gradientUnits="userSpaceOnUse" x2="17.413" gradientTransform="translate(2 1004.4)" y1="-10.402" x1="17.413">
+      <stop id="stop3849" stop-color="#eeeeec" offset="0"/>
+      <stop id="stop3851" stop-color="#eeeeec" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3857" y2="1006.4" gradientUnits="userSpaceOnUse" x2="12" gradientTransform="translate(2.5 -.49998)" y1="1048.4" x1="12">
+      <stop id="stop3824" stop-color="#d3d7cf" offset="0"/>
+      <stop id="stop3826" stop-color="#eeeeec" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1" transform="translate(0 -1004.4)">
+    <path id="rect3815" d="m13.5 1006.9h23c1.662 0 3 1.338 3 3v36c0 1.662-1.338 3-3 3h-23c-1.662 0-3-1.338-3-3v-36c0-1.662 1.338-3 3-3z" fill="url(#linearGradient3857)" fill-rule="evenodd"/>
+    <path id="rect3817" d="m13.5 1009.9h23v15h-23v-15z" stroke="#2e3436" fill="#555753" fill-rule="evenodd"/>
+    <path id="path3830" d="m28.5 1036.9c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3zm6 0c0 4.9706-4.0294 9-9 9s-9-4.0294-9-9 4.0294-9 9-9 9 4.0294 9 9z" fill-rule="evenodd" stroke="#555753" stroke-width="1px" fill="#888a85"/>
+    <path id="rect3839" d="m13.5 1006.9c-1.662 0-3 1.338-3 3v36c0 1.662 1.338 3 3 3h2.5625l20.219-42h-22.781z" fill="url(#linearGradient3853)" fill-rule="evenodd"/>
+    <path id="path3855" d="m13.5 1006.9h23c1.662 0 3 1.338 3 3v36c0 1.662-1.338 3-3 3h-23c-1.662 0-3-1.338-3-3v-36c0-1.662 1.338-3 3-3z" stroke="#888a85" stroke-width="1px" fill="none"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>iPod Tango Icon</dc:title>
+        <dc:date>2010-09-25T20:59:41</dc:date>
+        <dc:description>iPod Tango Icon</dc:description>
+        <dc:source>http://openclipart.org/detail/86869/ipod-tango-icon-by-jhnri4</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>jhnri4</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>ipod</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>mp3</rdf:li>
+            <rdf:li>music</rdf:li>
+            <rdf:li>player</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

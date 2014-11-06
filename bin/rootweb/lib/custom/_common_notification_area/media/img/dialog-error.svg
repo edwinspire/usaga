@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg1306" viewBox="0 0 48 48">
+  <defs id="defs1308">
+    <radialGradient id="radialGradient3976" gradientUnits="userSpaceOnUse" cy="40" cx="23.857" gradientTransform="matrix(1 0 0 .5 1.893e-14 20)" r="17.143">
+      <stop id="stop4128" offset="0"/>
+      <stop id="stop4130" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient3978" y2="5.541" gradientUnits="userSpaceOnUse" y1="66.288" x2="19.071" x1="36.918">
+      <stop id="stop2538" stop-color="#a40000" offset="0"/>
+      <stop id="stop2540" stop-color="#ff1717" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3980" y2="-8.5627" gradientUnits="userSpaceOnUse" y1="53.836" x2="20.065" x1="43.936">
+      <stop id="stop2481" stop-color="#ffe69b" offset="0"/>
+      <stop id="stop2483" stop-color="#fff" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3982" y2="15.815" gradientUnits="userSpaceOnUse" y1="33.955" x2="20.917" x1="21.994">
+      <stop id="stop3959" stop-color="#fffeff" stop-opacity=".33333" offset="0"/>
+      <stop id="stop3961" stop-color="#fffeff" stop-opacity=".21569" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer2">
+    <path id="path6548" opacity=".6" style="color:#000000" d="m41 40a17.143 8.5714 0 1 1 -34.286 0 17.143 8.5714 0 1 1 34.286 0z" transform="matrix(1.0706 0 0 .525 -.89276 22.5)" display="block" fill="url(#radialGradient3976)"/>
+  </g>
+  <g id="layer1">
+    <g id="g4006">
+      <path id="path1314" d="m46.857 23.929a23.357 23.357 0 1 1 -46.714 0 23.357 23.357 0 1 1 46.714 0z" transform="matrix(.92049 0 0 .92049 2.3685 .97408)" stroke="#b20000" stroke-width="1.0864" fill="url(#linearGradient3978)"/>
+      <path id="path3560" opacity=".34659" d="m49.902 26.635a23.991 23.991 0 1 1 -47.983 0 23.991 23.991 0 1 1 47.983 0z" fill-opacity="0" transform="matrix(.85609 0 0 .85609 1.8183 .19777)" stroke="url(#linearGradient3980)" stroke-width="1.1681"/>
+    </g>
+  </g>
+  <g id="layer3">
+    <rect id="rect2070" transform="matrix(1.0059 0 0 1.1152 -.13804 -2.3727)" height="7.1736" width="27.836" y="19.165" x="10.079" fill="#efefef"/>
+  </g>
+  <g id="layer4">
+    <path id="path3955" transform="matrix(1.003 0 0 1.003 -.071859 .019684)" fill="url(#linearGradient3982)" d="m43.371 21.715c0 10.831-10.355-6.266-18.675 0.387-8.126 6.497-20.597 12.19-20.597 1.36 0-11.084 8.695-21.367 19.526-21.367 10.831-0.0002 19.746 8.79 19.746 19.62z"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango dialog error</dc:title>
+        <dc:date>2010-04-03T15:22:26</dc:date>
+        <dc:description>An icon from Tango Project. Since version 0.8.90 Tango Project icons are Public Domain.</dc:description>
+        <dc:source>http://openclipart.org/detail/36631/tango-dialog-error-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

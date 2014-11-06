@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>Micro Sistema Automatico de Gestion de Alarmas</title>
-<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'},{'name':'_usms_address','location':'../../custom/_usms_address'},{'name':'_common_tooltipdialogconfirmation','location':'../../custom/_common_tooltipdialogconfirmation'},{'name':'_usms_location','location':'../../custom/_usms_location'},{'name':'_common_notification_area','location':'../../custom/_common_notification_area'},{'name':'_usms_menu_header','location':'../../custom/_usms_menu_header'},{'name':'_usaga_account_user_times','location':'../../custom/_usaga_account_user_times'},{'name':'_usaga_menu_header','location':'../../custom/_usaga_menu_header'},{'name':'_usaga_account_times','location':'../../custom/_usaga_account_times'},{'name':'_usaga_account_basic_data','location':'../../custom/_usaga_account_basic_data'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'},{'name':'_usms_location_address','location':'../../custom/_usms_location_address'},{'name':'_common_basic_button_action_confirm','location':'../../custom/_common_basic_button_action_confirm'},{'name':'_usms_contact_phone_data','location':'../../custom/_usms_contact_phone_data'},{'name':'_usms_dtmf_select','location':'../../custom/_usms_dtmf_select'},{'name':'_usms_sim_select','location':'../../custom/_usms_sim_select'},{'name':'_usaga_account_contact','location':'../../custom/_usaga_account_contact'},{'name':'_common_from_to_date','location':'../../custom/_common_from_to_date'},{'name':'_usms_mappoint','location':'../../custom/_usms_mappoint'},{'name':'_usms_contact_data','location':'../../custom/_usms_contact_data'},{'name':'_usms_sms_form','location':'../../custom/_usms_sms_form'},{'name':'_usms_parity','location':'../../custom/_usms_parity'},{'name':'_usms_location','location':'../../custom/_usms_location'},{'name':'_usms_address','location':'../../custom/_usms_address'},{'name':'_usaga_gridx_events','location':'../../custom/_usaga_gridx_events'},{'name':'_common_logging','location':'../../custom/_common_logging'},{'name':'_usms_locations_toolbar_edit','location':'../../custom/_usms_locations_toolbar_edit'},{'name':'_usms_onincomingcall_select','location':'../../custom/_usms_onincomingcall_select'},{'name':'_common_tooltipdialogconfirmation','location':'../../custom/_common_tooltipdialogconfirmation'},{'name':'_usms_msgclass_select','location':'../../custom/_usms_msgclass_select'},{'name':'_usms_smstype','location':'../../custom/_usms_smstype'},{'name':'_usms_contact_phones_gridx','location':'../../custom/_usms_contact_phones_gridx'},{'name':'_usaga_account_basic_data','location':'../../custom/_usaga_account_basic_data'},{'name':'_usms_handshake','location':'../../custom/_usms_handshake'},{'name':'_usaga_account_times','location':'../../custom/_usaga_account_times'},{'name':'_usms_sms_advanced_ptions','location':'../../custom/_usms_sms_advanced_ptions'},{'name':'_usms_menu_header','location':'../../custom/_usms_menu_header'},{'name':'_usms_contacts_search','location':'../../custom/_usms_contacts_search'},{'name':'_common_basic_menubar','location':'../../custom/_common_basic_menubar'},{'name':'_usaga_account_user_times','location':'../../custom/_usaga_account_user_times'},{'name':'_usms_smsout_status','location':'../../custom/_usms_smsout_status'},{'name':'_common_textbox_search','location':'../../custom/_common_textbox_search'},{'name':'_usaga_account_user_time_day','location':'../../custom/_usaga_account_user_time_day'},{'name':'_common_notification_area','location':'../../custom/_common_notification_area'},{'name':'_usaga_account_user','location':'../../custom/_usaga_account_user'},{'name':'_usaga_account_search','location':'../../custom/_usaga_account_search'},{'name':'_usms_contacts_gridx_filter','location':'../../custom/_usms_contacts_gridx_filter'},{'name':'_usms_provider_select','location':'../../custom/_usms_provider_select'},{'name':'_usms_contact','location':'../../custom/_usms_contact'},{'name':'_common_titlebar','location':'../../custom/_common_titlebar'},{'name':'_usaga_account_gridx_filter','location':'../../custom/_usaga_account_gridx_filter'},{'name':'_usaga_menu_header','location':'../../custom/_usaga_menu_header'},{'name':'_usms_stopbits','location':'../../custom/_usms_stopbits'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
 
 <script type="text/javascript">
 require([
@@ -16,15 +16,27 @@ require([
   "dijit/MenuBar",
   "dijit/Menu",
   "dijit/MenuItem",
-  "dijit/PopupMenuBarItem"
+  "dijit/PopupMenuBarItem",
+  "dijit/form/Form",
+  "dijit/form/TextBox",
+  "dijit/form/Button",
+  "_common_logging/_common_logging"
 ]);
 </script>
 <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";
 </style>
+<script type="text/javascript" src="app.js"></script>
 </head>
-<body class="claro" data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
+<body class="claro" data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" id="myapp" data-maq-appstates="{}">
  <div style="width: 100%; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(100%, #f9f9f9), color-stop(0%, white)); background-image: -o-linear-gradient(to top,#f9f9f9 100%, white 0%); background-image: -ms-linear-gradient(to top,#f9f9f9 100%, white 0%); background-image: -moz-linear-gradient(to top,#f9f9f9 100%, white 0%); background-image: -webkit-linear-gradient(to top,#f9f9f9 100%, white 0%); background-image: linear-gradient(to top,#f9f9f9 100%, white 0%); min-height: 50%; height: 100%; background-color: white;">
   <div data-dojo-type="_usaga_menu_header/_usaga_menu_header"></div>
+  <div data-dojo-type="_common_logging/_common_logging" style="width: 25%;"></div>
+  
+
+<div id="test" class="test" data-widget-type="xyz">  <div class="widget-element-id" data-name="a"></div><div data-name="b"></div><input data-name="c"></input><span id="asa" data-widget-type="ax"></span></div>
+
+
+
 </div>
 </body>
 </html>

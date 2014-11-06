@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Untitled</title>
+<script type="text/javascript" src="../lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'},{'name':'_usaga_event_comments','location':'../../custom/_usaga_event_comments'},{'name':'_usms_location_address','location':'../../custom/_usms_location_address'},{'name':'_usms_contact_phone_data','location':'../../custom/_usms_contact_phone_data'},{'name':'_common_basic_button_action_confirm','location':'../../custom/_common_basic_button_action_confirm'},{'name':'_usms_dtmf_select','location':'../../custom/_usms_dtmf_select'},{'name':'_usms_sim_select','location':'../../custom/_usms_sim_select'},{'name':'_common_from_to_date','location':'../../custom/_common_from_to_date'},{'name':'_usaga_account_contact','location':'../../custom/_usaga_account_contact'},{'name':'_usaga_eventtype','location':'../../custom/_usaga_eventtype'},{'name':'_usaga_add_event_comment','location':'../../custom/_usaga_add_event_comment'},{'name':'_usms_mappoint','location':'../../custom/_usms_mappoint'},{'name':'_usms_contact_data','location':'../../custom/_usms_contact_data'},{'name':'_usaga_events_comments','location':'../../custom/_usaga_events_comments'},{'name':'_usms_sms_form','location':'../../custom/_usms_sms_form'},{'name':'_usms_parity','location':'../../custom/_usms_parity'},{'name':'_usaga_event_status','location':'../../custom/_usaga_event_status'},{'name':'_usms_location','location':'../../custom/_usms_location'},{'name':'_usms_address','location':'../../custom/_usms_address'},{'name':'_usaga_gridx_events','location':'../../custom/_usaga_gridx_events'},{'name':'_common_logging','location':'../../custom/_common_logging'},{'name':'_usms_locations_toolbar_edit','location':'../../custom/_usms_locations_toolbar_edit'},{'name':'_usms_onincomingcall_select','location':'../../custom/_usms_onincomingcall_select'},{'name':'_usaga_event_view','location':'../../custom/_usaga_event_view'},{'name':'_usaga_event_comment_view','location':'../../custom/_usaga_event_comment_view'},{'name':'_common_tooltipdialogconfirmation','location':'../../custom/_common_tooltipdialogconfirmation'},{'name':'_usms_msgclass_select','location':'../../custom/_usms_msgclass_select'},{'name':'_usms_smstype','location':'../../custom/_usms_smstype'},{'name':'_usms_contact_phones_gridx','location':'../../custom/_usms_contact_phones_gridx'},{'name':'_usaga_account_basic_data','location':'../../custom/_usaga_account_basic_data'},{'name':'_usaga_account_times','location':'../../custom/_usaga_account_times'},{'name':'_usms_handshake','location':'../../custom/_usms_handshake'},{'name':'_usms_sms_advanced_ptions','location':'../../custom/_usms_sms_advanced_ptions'},{'name':'_usms_menu_header','location':'../../custom/_usms_menu_header'},{'name':'_usms_contacts_search','location':'../../custom/_usms_contacts_search'},{'name':'_common_basic_menubar','location':'../../custom/_common_basic_menubar'},{'name':'_usaga_account_user_times','location':'../../custom/_usaga_account_user_times'},{'name':'_usms_smsout_status','location':'../../custom/_usms_smsout_status'},{'name':'_usaga_account_user_time_day','location':'../../custom/_usaga_account_user_time_day'},{'name':'_common_textbox_search','location':'../../custom/_common_textbox_search'},{'name':'_usms_contacts_gridx_filter','location':'../../custom/_usms_contacts_gridx_filter'},{'name':'_usaga_account_user','location':'../../custom/_usaga_account_user'},{'name':'_common_notification_area','location':'../../custom/_common_notification_area'},{'name':'_usaga_account_search','location':'../../custom/_usaga_account_search'},{'name':'_usms_provider_select','location':'../../custom/_usms_provider_select'},{'name':'_usms_contact','location':'../../custom/_usms_contact'},{'name':'_common_titlebar','location':'../../custom/_common_titlebar'},{'name':'_usaga_accounts_list','location':'../../custom/_usaga_accounts_list'},{'name':'_usaga_account_gridx_filter','location':'../../custom/_usaga_account_gridx_filter'},{'name':'_usaga_menu_header','location':'../../custom/_usaga_menu_header'},{'name':'_usms_stopbits','location':'../../custom/_usms_stopbits'}],'themeMap':[['Android','',['../themes/android/android.css']],['BlackBerry','',['../themes/blackberry/blackberry.css']],['iPad','',['../themes/ipad/ipad.css']],['iPhone','',['../themes/iphone/iphone.css']],['.*','',['../themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/form/FilteringSelect",
+  "_usaga_accounts_list/_usaga_accounts_list",
+  "dijit/form/DateTextBox",
+  "_usaga_account_user_time_day/_usaga_account_user_time_day",
+  "_usaga_account_user_times/_usaga_account_user_times",
+  "dijit/form/TextBox",
+  "dijit/form/NumberTextBox",
+  "_usaga_eventtype/_usaga_eventtype",
+  "dijit/form/NumberSpinner",
+  "dijit/form/TimeTextBox",
+  "dijit/form/Textarea"
+]);
+</script>
+<style>@import "../themes/claro/document.css";@import "../themes/claro/claro.css";@import "../app.css";
+</style>
+<script type="text/javascript" src="../app.js"></script>
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" class="claro" data-maq-ws="collapse" id="myapp" data-maq-appstates="{}">
+ <div>
+  <label style="margin: 3px; font-weight: bold;">
+    
+    #1000</label>
+  <div style="margin: 3px; display: inline-block;">
+   <label style="margin-right: 3px;">
+     Abonado:</label><div data-dojo-type="_usaga_accounts_list/_usaga_accounts_list"></div>
+ </div>
+  <div style="margin: 3px; display: inline-block;">
+    <label style="margin-right: 3px;">
+      Fecha:</label>
+    <input type="text" data-dojo-type="dijit/form/DateTextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="2000-01-01" style="width: 86.109375px;"></input>
+    <input type="text" data-dojo-type="dijit/form/TimeTextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="T10:00:00" style="width: 58.0625px;"></input>
+  </div>
+  <div style="margin: 3px; display: inline-block;">
+    <label style="margin-right: 3px;">
+    C&oacute;digo:</label>
+    <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 50px;" value="N/A"></input>
+  </div>
+  <div style="margin: 3px; display: inline-block;">
+    <label style="margin-right: 3px;">
+  Zona / Usuario:</label>
+    <input type="text" data-dojo-type="dijit/form/NumberTextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." style="width: 50px;" value="0"></input>
+  </div>
+  <div style="margin: 3px; display: inline-block;">
+    <label style="margin-right: 3px;">
+      Tipo Evento:</label>
+    <div data-dojo-type="_usaga_eventtype/_usaga_eventtype" style="display: inline;"></div>
+    </div>
+  <div style="margin: 3px; display: inline-block;">
+    <label style="margin-right: 3px;">
+    Prioridad:</label>
+    <input type="text" data-dojo-type="dijit/form/NumberSpinner" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" invalidMessage="$_unset_$" rangeMessage="Este valor est&amp;aacute; fuera del intervalo." value="100" style="width: 55.109375px;"></input>
+  </div>
+  <div>
+   <label>
+     Descripci&oacute;n:</label>
+   <textarea type="text" data-dojo-type="dijit/form/Textarea" style="height: auto; width: 100%;"></textarea>
+ </div>
+</div>
+</body>
+</html>

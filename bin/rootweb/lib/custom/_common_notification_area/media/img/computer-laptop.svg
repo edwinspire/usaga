@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg7854" viewBox="0 0 48 48" version="1.0">
+  <defs id="defs7856">
+    <linearGradient id="linearGradient5418" y2="18.138" gradientUnits="userSpaceOnUse" x2="25.175" gradientTransform="matrix(1.0625 0 0 .93333 -1.5 .51667)" y1="4.7385" x1="21.088">
+      <stop id="stop5414" stop-color="#fff" offset="0"/>
+      <stop id="stop5416" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient5426" y2="8.2395" gradientUnits="userSpaceOnUse" x2="24.75" gradientTransform="matrix(1.0452 0 0 .97519 -.83237 .65789)" y1="26.933" x1="24.75">
+      <stop id="stop5422" stop-color="#3465a4" offset="0"/>
+      <stop id="stop5424" stop-color="#204a87" offset="1"/>
+    </linearGradient>
+    <filter id="filter5450" y="-.10164" width="1.0757" height="1.2033" x="-.037862">
+      <feGaussianBlur id="feGaussianBlur5452" stdDeviation="0.71465694"/>
+    </filter>
+    <linearGradient id="linearGradient5741" y2="30.489" gradientUnits="userSpaceOnUse" x2="24" y1="2.0109" x1="17.799">
+      <stop id="stop5737" stop-color="#2e3436" offset="0"/>
+      <stop id="stop5739" stop-color="#080d19" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1">
+    <path id="path5428" style="color:#000000" d="m4.8125 29.363l-3.3125 13.219c-0.70396 1.954 0.0843 2.946 0.625 3.125h43.125c0.788-0.629 1.614-1.476 1.125-3.25l-2.5-12.969c-0.066-0.356-0.352-0.548-0.75-0.656l-36.875 0.031c-0.7208-0.043-1.0996-0.026-1.4375 0.5z" fill-rule="evenodd" transform="matrix(1.0154 0 0 1.1259 -.24030 -5.4628)" filter="url(#filter5450)"/>
+    <rect id="rect5139" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" rx=".55721" ry=".49206" height="27.478" width="38.978" stroke="#202526" stroke-linecap="square" y="2.5109" x="4.5109" fill="url(#linearGradient5741)"/>
+    <path id="path5147" stroke-linejoin="round" style="color:#000000" d="m4.8125 28.656l-3.3125 13.219c-0.221 0.613-0.4895 1.189-0.2756 1.56l0.9006 1.565h43.125l1.139-1.434c0.312-0.392 0.194-1.061-0.014-1.816l-2.5-12.969c-0.066-0.357-0.352-0.549-0.75-0.656l-36.875 0.031c-0.7208-0.043-1.0996-0.026-1.4375 0.5z" fill-rule="evenodd" stroke="#202526" stroke-linecap="square" fill="#2e3436"/>
+    <path id="path2787" opacity=".85" stroke-linejoin="round" style="color:#000000" d="m6.7502 29.752l-0.9651 6.267c-0.6372 0.926 0.0762 1.396 0.5656 1.481h27.679l0.088 1.061h8.259c0.713-0.298 1.46-0.7 1.018-1.541l-1.29-7.209c-0.06-0.169-0.319-0.26-0.679-0.311l-33.375 0.015c-0.6522-0.021-0.995-0.013-1.3008 0.237z" stroke="#171b1c" stroke-linecap="square" stroke-width=".5" fill="none"/>
+    <g id="g5266" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" transform="translate(-1.0607 -1.5581)" stroke="#222728" stroke-linecap="square" stroke-width=".48863" fill="#555753">
+      <rect id="rect5268" style="color:#000000" height="1.5114" width="2.9282" y="33.123" x="7.7452"/>
+      <rect id="rect5270" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="10.989"/>
+      <rect id="rect5272" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="13.475"/>
+      <rect id="rect5274" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="15.906"/>
+      <rect id="rect5276" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="18.513"/>
+      <rect id="rect5278" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="20.988"/>
+      <rect id="rect5280" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="23.463"/>
+      <rect id="rect5282" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="26.07"/>
+      <rect id="rect5284" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="28.59"/>
+      <rect id="rect5286" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="31.064"/>
+      <rect id="rect5288" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="33.495"/>
+      <rect id="rect5290" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="36.014"/>
+      <rect id="rect5320" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="38.489"/>
+      <rect id="rect5324" style="color:#000000" height="1.5114" width="1.9139" y="33.123" x="40.964"/>
+    </g>
+    <rect id="rect5199" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="4.0772" stroke="#222728" stroke-linecap="square" y="33.123" x="6.5962" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5203" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="10.989" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5207" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="13.475" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5211" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="15.906" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5215" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="18.513" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5219" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="20.988" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5223" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="23.463" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5227" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="26.07" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5231" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="28.59" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5235" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="31.064" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5239" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="33.495" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5243" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="33.123" x="36.014" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5247" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="3.7237" stroke="#222728" stroke-linecap="square" y="33.123" x="38.312" stroke-width=".48863" fill="#545755"/>
+    <rect id="rect5137" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" rx=".36106" ry=".37227" height="21.032" width="35.032" stroke="#204a87" stroke-linecap="square" y="5.4842" x="6.4842" stroke-width=".96843" fill="url(#linearGradient5426)"/>
+    <rect id="rect5149" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="11.373" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5159" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="13.994" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5163" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="12.414" stroke="#222728" stroke-linecap="square" y="35.244" x="16.623" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5167" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="29.588" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5171" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="32.213" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5175" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.3239" width="2.1327" stroke="#222728" stroke-linecap="square" y="36.432" x="34.98" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5183" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.1989" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.182" x="37.369" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5179" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.1676" width="2.1327" stroke="#222728" stroke-linecap="square" y="36.554" x="37.623" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5187" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.2301" width="2.1327" stroke="#222728" stroke-linecap="square" y="36.526" x="40.244" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5191" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="8.7792" stroke-width=".48863" fill="#555753"/>
+    <rect id="rect5195" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" height="1.5114" width="2.1327" stroke="#222728" stroke-linecap="square" y="35.244" x="6.1542" stroke-width=".48863" fill="#555753"/>
+    <g id="g5328" stroke-linejoin="round" style="color:#000000" fill-rule="evenodd" transform="translate(-1.4982 -2.9331)" stroke="#222728" stroke-linecap="square" stroke-width=".48863" fill="#555753">
+      <rect id="rect5330" style="color:#000000" height="1.5114" width="2.1782" y="33.123" x="8.4952"/>
+      <rect id="rect5332" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="10.989"/>
+      <rect id="rect5334" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="13.475"/>
+      <rect id="rect5336" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="15.906"/>
+      <rect id="rect5338" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="18.513"/>
+      <rect id="rect5340" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="20.988"/>
+      <rect id="rect5342" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="23.463"/>
+      <rect id="rect5344" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="26.07"/>
+      <rect id="rect5346" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="28.59"/>
+      <rect id="rect5348" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="31.064"/>
+      <rect id="rect5350" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="33.495"/>
+      <rect id="rect5352" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="36.014"/>
+      <rect id="rect5354" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="38.489"/>
+      <rect id="rect5356" style="color:#000000" height="1.5114" width="2.1327" y="33.123" x="40.964"/>
+    </g>
+    <path id="path5386" opacity=".75" style="color:#000000" d="m18.143 39.34l-0.143 1.66h11l-0.071-1.538c-0.016-0.312-0.202-0.456-0.429-0.462h-10.071c-0.144 0.009-0.238 0.124-0.286 0.34z" fill-rule="evenodd" fill="#555753"/>
+    <path id="path5388" opacity=".75" style="color:#000000" d="m18.143 41.731l-0.143-0.731h11l-0.071 0.769c-0.025 0.219-0.259 0.204-0.429 0.231h-10.071c-0.117 0.016-0.217-0.05-0.286-0.269z" fill-rule="evenodd" fill="#555753"/>
+    <path id="path5398" d="m1.591 43.05c0.0984 0.644 0.0034 1.371 0.8839 1.68h42.426c0.499-0.476 0.927-0.783 1.194-1.724l-44.504 0.044z" style="color:#000000" fill="#2e3436" fill-rule="evenodd"/>
+    <path id="path5410" opacity=".21839" style="color:#000000" d="m7 6.1167l0.1255 13.883c7.1195-4.224 26.594-6.457 33.874-6.65v-7.35l-34 0.1167z" fill-rule="evenodd" fill="url(#linearGradient5418)"/>
+    <path id="rect5496" opacity=".12" style="color:#000000" d="m1.6661 43h44.396c0 0.619-0.488 1-0.937 1h-42.271c-0.9185 0-1.1879-1-1.1879-1z" fill-rule="evenodd" fill="#eeeeec"/>
+    <path id="rect5733" opacity=".61494" d="m28.997 43.006l0.003 1.074c0 0.191-0.154 0.345-0.345 0.345h-10.31c-0.191 0-0.345-0.154-0.345-0.345v-1.082l10.997 0.008z" style="color:#000000" fill-rule="evenodd"/>
+    <rect id="rect5466" opacity=".27308" style="color:#000000" fill-rule="evenodd" rx=".15702" ry=".34544" height="1" width="5.3125" y="42.425" x="23.688" fill="#808285"/>
+    <rect id="rect3766" opacity=".27308" style="color:#000000" fill-rule="evenodd" rx=".15702" ry=".34544" height="1" width="5.4375" y="42.425" x="18" fill="#808285"/>
+    <path id="path4778" opacity=".27" style="color:#000000" d="m18.501 37.265l-0.147 1.293h4.646l-0.031-1.198c-0.007-0.243-0.089-0.355-0.188-0.36h-4.154c-0.063 0.007-0.104 0.097-0.126 0.265z" fill-rule="evenodd" fill="#888a85"/>
+    <path id="path4780" opacity=".27" style="color:#000000" d="m28.615 37.265l0.154 1.293h-4.813l0.032-1.198c0.007-0.243 0.092-0.355 0.195-0.36h4.303c0.065 0.007 0.108 0.097 0.129 0.265z" fill-rule="evenodd" fill="#888a85"/>
+    <path id="path4782" d="m9.3692 59.977a2.8726 1.7236 0 1 1 -5.7453 0 2.8726 1.7236 0 1 1 5.7453 0z" fill-rule="evenodd" fill-opacity=".75" transform="matrix(.34811 0 0 .29010 21.238 17.601)" stroke="#3465a4" stroke-width="3.1468px" fill="#555753"/>
+    <rect id="rect3781" opacity=".61923" style="color:#000000" fill-rule="evenodd" rx=".15702" ry=".34544" height="1.5" width="1.0937" y="37" x="22.938" fill="#808285"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Laptop</dc:title>
+        <dc:date>2011-09-09T08:54:44</dc:date>
+        <dc:description>A laptop clipart influenced by Tango project guidelines</dc:description>
+        <dc:source>http://openclipart.org/detail/159709/laptop-by-b.gaultier</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>b.gaultier</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>computer</rdf:li>
+            <rdf:li>laptop</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

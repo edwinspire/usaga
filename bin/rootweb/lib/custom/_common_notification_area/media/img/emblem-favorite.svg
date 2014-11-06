@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg1" viewBox="0 0 48 48" version="1.0">
+  <defs id="defs3">
+    <linearGradient id="linearGradient6621">
+      <stop id="stop6622" stop-color="#f5a108" stop-opacity="0" offset="0"/>
+      <stop id="stop6623" stop-color="#fefdc3" stop-opacity=".74251" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient7881" x1="22.82" xlink:href="#linearGradient6621" gradientUnits="userSpaceOnUse" y1="28.829" gradientTransform="matrix(.94698 0 0 .48732 3.735 4.0497)" x2="12.85" y2="12.239"/>
+    <linearGradient id="linearGradient1697" x1="11.355" xlink:href="#linearGradient6621" gradientUnits="userSpaceOnUse" y1="32.757" gradientTransform="matrix(2.0123 0 0 1.08 .83513 -1.3407)" x2="6.3578" y2="6.1003"/>
+    <radialGradient id="radialGradient3107" gradientUnits="userSpaceOnUse" cy="25.531" cx="17.312" gradientTransform="matrix(1 0 0 .35161 9.3805e-16 16.554)" r="9.6875">
+      <stop id="stop3103" offset="0"/>
+      <stop id="stop3105" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient3117" x1="34.798" gradientUnits="userSpaceOnUse" y1="29.173" gradientTransform="matrix(.90340 0 0 .90340 2.3354 2.1777)" x2="17.445" y2="-6.889">
+      <stop id="stop3113" stop-color="#fff" offset="0"/>
+      <stop id="stop3115" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <path id="path3099" opacity=".40909" style="color:#000000" d="m27 25.531a9.6875 3.4062 0 1 1 -19.375 0 9.6875 3.4062 0 1 1 19.375 0z" transform="matrix(2.1829 0 0 2.1829 -13.527 -17.29)" fill="url(#radialGradient3107)"/>
+  <path id="path5378" fill-rule="evenodd" fill="#d4572d" d="m22.262 36.309c0.058-0.086 0.997 1.112 0.997 1.112 4.118-4.481 14.629-12.853 17.496-19.835-5.799 6.431-15.273 16.777-18.493 18.723z"/>
+  <path id="path7876" fill-rule="evenodd" fill="url(#linearGradient7881)" d="m15.166 7.4844c-4.799-0.2362-7.034 2.8466-8.2432 5.7786-1.2 3.861 0.4963 11.155 8.8082 10.6 4.742 0 6.626-4.862 9.121-6.125 2.268-0.857 2.447-0.934 4.843-0.934 3.329 0 9.35-2.41 9.35-4.8-1.023-1.919-3.74-5.3358-8.733-4.7535-3.178 0.3699-6.185 2.6417-6.97 3.7725-1.924-1.6973-4.381-3.5386-8.176-3.5386z"/>
+  <path id="path920" stroke="#820000" fill-rule="evenodd" fill="#c71807" d="m23.925 9.0032c8.303-8.303 19.713-0.6501 19.638 7.2238-0.068 7.199-5.555 10.647-19.338 23.451-14.427-11.912-19.51-14.659-19.435-23.2 0.0754-8.8406 9.844-15.476 19.135-7.4748z"/>
+  <path id="path922" opacity=".625" fill-rule="evenodd" fill="url(#linearGradient1697)" d="m5.0782 16.189c-0.218 7.18 0.7946 6.042 2.6243 8.317 1.7987 2.236 9.6415 0.828 16.682-5.81 7.125-6.717 14.387-2.915 17.908-6.655-2.623-4.4969-10.808-9.9454-18.344-2.3953-9.657-8.7272-18.652-0.7169-18.87 6.5433z"/>
+  <path id="path3109" opacity=".39205" stroke="url(#linearGradient3117)" fill="none" d="m24.022 10.249c7.895-8.5333 18.684-1.404 18.614 5.932-0.064 6.706-5.574 10.396-18.414 22.324-13.44-11.096-18.574-14.054-18.504-22.011 0.0695-8.2358 9.648-14.736 18.304-6.245z"/>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango emblems favorite</dc:title>
+        <dc:date>2010-03-29T15:30:04</dc:date>
+        <dc:description>"Favorites" icon from &lt;a href="http://tango.freedesktop.org/Tango_Desktop_Project"&gt; Tango Project &lt;/a&gt; &#xD;\n&lt;br&gt;&lt;br&gt;&#xD;\nSince version 0.8.90 Tango Project icons are Public Domain: &lt;a href="http://tango.freedesktop.org/Frequently_Asked_Questions#Terms_of_Use.3F"&gt; Tango Project FAQ &lt;/a&gt;</dc:description>
+        <dc:source>http://openclipart.org/detail/35497/tango-emblems-favorite-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>externalsource</rdf:li>
+            <rdf:li>favorite</rdf:li>
+            <rdf:li>heart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>red</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

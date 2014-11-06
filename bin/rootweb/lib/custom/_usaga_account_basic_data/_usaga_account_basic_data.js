@@ -5,73 +5,126 @@ define(['dojo/_base/declare',
 'dojo/request',
 'jspire/form/FilteringSelect',
 'jspire/request/Xml',
-'_common_basic_menubar/_common_basic_menubar'
+'_common_tooltipdialogconfirmation/_common_tooltipdialogconfirmation'
 ],function(declare,_Widget,_Templated,templateString, R, jsFS, RXml){
 
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
 Id: 0,
+//_idcontactLast: '0',
+changed: false,
+new: function(){
+var t = this;
+t.Id = 0;
+t.form_data.reset();
+t.changed = false;
+//t.name.set('invalidMessage', 'El nombre de Abonado es permitido');
+t.emit('onloadaccount', {idaccount: t.Id, idcontact: 0}); 
+t.emit('notify_message', {message: 'Crear nuevo abonado'}); 
+},
 postCreate: function(){
 
 var t = this;
 
-t.idmenu.on('onnew', function(){
-t.form_data.reset();
-t.account_select.set('invalidMessage', 'El nombre de Abonado es permitido');
-t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
-t.emit('notify_message', {message: 'Crear nuevo abonado'}); 
+t.partition.on('Change', function(){
+t.changed = true;
+});
+t.enable.on('Change', function(){
+t.changed = true;
+});
+//t.idgroup.on('Change', function(){
+//t.changed = true;
+//});
+t.account.on('Change', function(){
+t.changed = true;
+});
+t.name.on('Change', function(){
+t.changed = true;
+});
+t.idtype.on('Change', function(){
+t.changed = true;
+});
+t.idcontact.on('Change', function(){
+t.changed = true;
+t.emit('oncontactselected', {idcontact: t.idcontact.get('value')});
+});
+t.note.on('Change', function(){
+t.changed = true;
 });
 
-t.idmenu.on('ondelete', function(){
-t._delete();
+jsFS.addXmlLoader(t.idcontact, "/getcontactslistidcontactname_xml.usms", "row", {}, "idcontact", "name", {name: 'Ninguno', id: '0'});
+//jsFS.addXmlLoader(t.idgroup, 'fun_view_groups_xml.usaga', 'row', {}, 'idgroup', 'name');
+
+/*
+t.idcontact.on('onloaddata', function(){
+setTimeout(t.DialogLinkContact.close, 2000);
+})
+*/
+t.idcontact.Load();
+//t.idgroup.Load();
+
+
+/*
+t.DialogLinkContact.innerHTML('<div style="width: 150px;"><div>Esta acción vincula el contacto seleccionado a este abonado. Si ya hay otro contacto vinculado actualmente esto lo reemplazará</div><div>Está seguro que desea continuar?</div></div>').dijitOwner(t.idcontact, 'Change').on('onok', function(e){
+t.changed = true;
+t._idcontactLast = t.idcontact.get('value');
 });
 
-t.idmenu.on('onsave', function(){
-t.account_select.set('invalidMessage', 'Debe seleccionar un abonado de la lista');
-t._save();
+t.DialogLinkContact.on('onno', function(e){
+// Al volver a cambiar de valor se vuelve a disparar el evento Change, por lo que hay que volver a cerrar el dialogo.
+//t.idcontact.domNode.removeEventListener('Click', this);
+t.idcontact.set('value', t._idcontactLast);
 });
+*/
 
-t.account_select.on('Change', function(){
-t._LoadAccountSelected();
-});
-
-jsFS.addXmlLoader(t.account_select, 'fun_view_idaccounts_names_xml.usaga', 'row', {}, 'idaccount', 'name');
-jsFS.addXmlLoader(t.idgroup, 'fun_view_groups_xml.usaga', 'row', {}, 'idgroup', 'name');
-
-t.account_select.Load();
-t.idgroup.Load();
-
-
+},
+disableFields: function(_disabled){
+var t = this;
+t.partition.set('disabled', _disabled);
+t.enable.set('disabled', _disabled);
+//t.idgroup.set('disabled', _disabled);
+t.account.set('disabled', _disabled);
+t.name.set('disabled', _disabled); 
+t.idtype.set('disabled', _disabled);
+t.idcontact.set('disabled', _disabled);
+t.note.set('disabled', _disabled);
 },
 _resetall: function(){
 this.form_data.reset();
-this._idaddress = 0;
+this.idcontact.reset();
 this.Id = 0;
+this.changed = false;
+t.disableFields(false);
 },
-_idaddress: 0,
-_getIdaddressAttr: function(){
-return this._idaddress;
+_getIdcontactAttr: function(){
+return this.idcontact.get('value');
 },
-_setIdaddressAttr: function(id_){
-// Seteamos el nuevo idaddress (si fue modificado) y enviamos los datos para guardarlos.
-if(id_ != this._idaddress){
-this._idaddress = id_;
-this._save();
+_setIdcontactAttr: function(id_){
+var t = this;
+// Seteamos el nuevo idcontact (si fue modificado) y enviamos los datos para guardarlos.
+if(id_ != t.idcontact.get('value')){
+t.idcontact.Load();
+setTimeout(function(){
+t.idcontact.set('value', id_);
+t.changed = true;
+}, 1500);
 }
 },
 idaccount: function(){
-return this.account_select.get('value');
+return this.Id;
+},
+_getIdaccountAttr: function(){
+return this.Id;
 },
 // Carga el account seleccionado
-_LoadAccountSelected: function(){
+load: function(_id){
 var t = this;
-
-if(t.account_select.state != 'Error'){
-t.Id = t.account_select.get('value');
+t.Id = _id;
+t.changed = false;
 
 if(t.Id > 0){
-
+t.disableFields(true);
    R.get('getaccount.usaga', {
 		query: {idaccount: t.Id},
             // Parse data from xml
@@ -86,6 +139,7 @@ t.Id = d.getNumber(0, "idaccount");
 t.partition.set('value', d.getNumber(0, "partition"));
 t.enable.set('checked', d.getBool(0, "enable")); 
 
+/*
 // Esto es para verificar que sea un numero valido ya que los valores nulos no son enviados desde postgres
 _idgroup = d.getNumber(0, "idgroup");
 if(isNaN(_idgroup) || _idgroup < 1){
@@ -93,24 +147,33 @@ t.idgroup.reset();
 }else{
 t.idgroup.set('value', _idgroup);
 }
+*/
 
 t.account.set('value', d.getStringFromB64(0, "account")); 
-t.account_select.set('value', t.Id); 
+t.name.set('value', d.getStringFromB64(0, "name")); 
 t.idtype.setValue(d.getString(0, "type")); 
 t.note.set('value', d.getStringFromB64(0, "note"));
-t._idaddress = d.getNumber(0, "idaddress"); 
+t.idcontact.set('value', d.getString(0, "idcontact")); 
+//t._idcontactLast = t.idcontact.get('value');
 
 }else{
 t._resetall();
 }
 console.log('IdACcount '+t.Id+' loaded');
-t.emit('onloadaccount', {idaccount: t.Id, idaddress: t._idaddress}); 
-t.emit('notify_message', {message: t.account_select.get('displayedValue')+' cargado'}); 
+setTimeout(function(){
+t.changed = false;
+t.disableFields(false);
+}, 1500);
+
+
+t.emit('onloadaccount', {idaccount: t.Id, idcontact: t.idcontact.get('value'), name: t.name.get('value')}); 
+//t.emit('notify_message', {message: t.name.get('displayedValue')+' cargado'}); 
                 },
                 function(error){
                     // Display the error returned
 console.log(error);
-t.emit('onloadaccount', {idaccount: 0, idaddress: 0}); 
+t.changed = false;
+t.emit('onloadaccount', {idaccount: 0, idcontact: 0}); 
 t.emit('notify_message', {message: error}); 
                 }
             );
@@ -120,12 +183,10 @@ t._resetall();
 }
 
 
-}else{
-console.log('_LoadAccountSelected: '+t.account_select.state);
-}
+
 },
 
-_delete: function(){
+delete: function(){
 idccountdelete = this.Id;
 if(idccountdelete > 0){
 var datos = {};
@@ -134,23 +195,25 @@ this._actionsave(datos);
 }
 },
 
-_save: function(){
+save: function(){
 var t = this;
-console.log('function _save _usaga_account_basic_data: ID '+t.Id);
+if(t.changed){
+console.log('function save _usaga_account_basic_data: ID '+t.Id);
 var datos = {};
 if(t.Id >= 0){
+t.disableFields(true);
 datos.idaccount = t.Id;
-datos.idaddress = t._idaddress;  
-datos.idgroup = t.idgroup.get('value');
+datos.idcontact = t.idcontact.get('value');  
+//datos.idgroup = t.idgroup.get('value');
 datos.partition = t.partition.get('value');
 datos.enable = t.enable.get('checked'); 
 datos.account = t.account.get('value'); 
-datos.name = t.account_select.get('displayedValue'); 
+datos.name = t.name.get('value'); 
 datos.type = t.idtype.get('value');
 datos.note = t.note.get('value');
 t._actionsave(datos);
 }
-
+}
 },
 // Guarda los datos en el servidor
 _actionsave: function(_data){
@@ -170,24 +233,20 @@ if(d.length > 0){
 console.log(d.getStringFromB64(0, 'outpgmsg'));
 t.emit('notify_message', {message: d.getStringFromB64(0, 'outpgmsg')}); 
 
-t.account_select.Load();
-var id = d.getInt(0, "outreturn");
+id = d.getInt(0, "outreturn");
 if(id>0){
-t.account_select.set('value', id);
+t.load(id);
 }else{
 t._resetall();
 }
-t._LoadAccountSelected();
+
 }
-
-
-
 
                 },
                 function(error){
                     // Display the error returned
 t._resetall();
-t._LoadAccountSelected();
+t.load();
 //console.log(errorx);
 t.emit('notify_message', {message: errorx}); 
                 }

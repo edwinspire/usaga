@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 48 48" version="1.0">
+  <defs id="defs4">
+    <linearGradient id="linearGradient2786">
+      <stop id="stop2788" stop-color="#fff" offset="0"/>
+      <stop id="stop2790" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2792" x1="8.625" xlink:href="#linearGradient2786" gradientUnits="userSpaceOnUse" y1="15" gradientTransform="matrix(1 0 0 4.4374 1 -51.561)" x2="8.625" y2="16.001"/>
+    <linearGradient id="linearGradient2818" x1="3.9062" xlink:href="#linearGradient2786" gradientUnits="userSpaceOnUse" y1="13.516" gradientTransform="translate(.84406 .23952)" x2="4.5156" y2="13.781"/>
+    <linearGradient id="linearGradient2837" x1="14.594" xlink:href="#linearGradient2786" gradientUnits="userSpaceOnUse" y1="13.922" gradientTransform="translate(1)" x2="13.578" y2="14.375"/>
+    <linearGradient id="linearGradient2907" x1="13.25" xlink:href="#linearGradient2786" gradientUnits="userSpaceOnUse" y1="16.688" gradientTransform="translate(1)" x2="6.875" y2="11.562"/>
+    <linearGradient id="linearGradient2959" x1="35.332" gradientUnits="userSpaceOnUse" y1="6.3339" gradientTransform="translate(1)" x2="37.011" y2="29.838">
+      <stop id="stop2963" stop-color="#646464" stop-opacity=".69677" offset="0"/>
+      <stop id="stop2965" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2977" x1="20.757" gradientUnits="userSpaceOnUse" y1="12.897" gradientTransform="translate(1)" x2="24.649" y2="25.564">
+      <stop id="stop2973" stop-color="#fff" offset="0"/>
+      <stop id="stop2975" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1">
+    <g id="g2811" opacity=".5616" transform="matrix(1.0441 0 0 1.0441 -.44691 -1.8696)">
+      <path id="path2794" opacity="1" fill-opacity=".081325" transform="matrix(1.6022 0 0 1.5048 -3.323 -21.371)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2796" opacity="1" fill-opacity=".096386" transform="matrix(1.549 0 0 1.3734 -2.8762 -15.806)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2798" opacity="1" fill-opacity=".096386" transform="matrix(1.4926 0 0 1.2234 -2.4028 -9.4527)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2801" opacity="1" fill-opacity=".096386" transform="matrix(1.4316 0 0 1.0734 -1.8908 -3.0997)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2805" opacity="1" fill-opacity=".096386" transform="matrix(1.3816 0 0 .93594 -1.471 2.7234)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2807" opacity="1" fill-opacity=".096386" transform="matrix(1.3447 0 0 .76094 -1.1613 10.135)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+      <path id="path2809" opacity="1" fill-opacity=".096386" transform="matrix(1.2563 0 0 .61094 -.41957 16.488)" d="m14.499 42.353a6.1049 1.5262 0 1 1 -12.21 0 6.1049 1.5262 0 1 1 12.21 0z"/>
+    </g>
+    <path id="path2922" stroke-linejoin="round" d="m17.182 16.5l-1.011 2.286v5.714h30.329v-5.714l-1.011-2.286h-28.307z" fill-rule="evenodd" stroke="#b9b9b9" stroke-linecap="round" stroke-width="3" fill="#fff"/>
+    <path id="path2927" stroke-linejoin="round" d="m17.06 16.999l-0.998 2.001v5.001h29.939v-5.001l-0.998-2.001h-27.943z" fill-rule="evenodd" stroke="#e0e0e0" stroke-linecap="round" stroke-width="1.998" fill="#fff"/>
+    <path id="path2918" fill-rule="evenodd" fill="#fff" d="m16.064 19v5h29.936v-5h-29.936z"/>
+    <path id="path2920" fill-rule="evenodd" fill="#fff" d="m17.06 17h27.942l0.998 2h-29.938l0.998-2z"/>
+    <path id="path2951" fill-rule="evenodd" fill="url(#linearGradient2959)" d="m16.064 19v5h29.936v-5h-29.936z"/>
+    <path id="path2937" fill-rule="evenodd" fill="#ef2929" d="m23 24v-5l-1-2h2l1 2v5h-2z"/>
+    <path id="path2939" fill-rule="evenodd" fill="#ef2929" d="m28 24v-5l-1-2h2l1 2v5h-2z"/>
+    <path id="path2943" fill-rule="evenodd" fill="#ef2929" d="m33 24v-5l-1-2h2l1 2v5h-2z"/>
+    <path id="path2945" fill-rule="evenodd" fill="#ef2929" d="m38 24v-5l-1-2h2l1 2v5h-2z"/>
+    <path id="path2947" fill-rule="evenodd" fill="#ef2929" d="m43 24v-5l-1-2h2l1 2v5h-2z"/>
+    <path id="path2969" fill-rule="evenodd" fill="url(#linearGradient2977)" d="m17.06 17h27.942l0.998 2h-29.938l0.998-2z"/>
+    <path id="path2909" stroke-linejoin="round" d="m5.9688 12c-0.0727 0.086-0.4467 0.778-1.7813 3.406-0.1197 0.164-0.1864 0.359-0.1875 0.594v26h12v-26c0.001-0.169-0.074-0.326-0.156-0.469 0.027 0.034 0.072 0.057 0.094 0.094-1.907-3.603-1.938-3.625-1.938-3.625h-8s-0.0059-0.03-0.0312 0zm-1.0626 3c0.0676-0.008 0.0938 0 0.0938 0-0.1416 0.003-0.2578 0.019-0.375 0.062 0.1012-0.037 0.2137-0.054 0.2812-0.062z" stroke="#80827f" stroke-linecap="round" stroke-width="2" fill="#babdb6"/>
+    <path id="rect1872" fill="#babdb6" d="m5.0445 15c3.3323 0 6.6215-0.004 9.9535-0.004 0.548 0.005 1.004 0.464 1.002 0.991v26.013h-12v-26c0.0027-0.59 0.4245-1.004 1.0445-1z"/>
+    <path id="path2766" fill-rule="evenodd" fill="#babdb6" d="m4.0628 15.615c2-3.954 1.9372-3.615 1.9372-3.615l8.008 0.006s0.026 0.007 1.933 3.61c-0.241-0.421-0.938-0.623-0.938-0.623l-9.9966 0.006s-0.6763-0.018-0.9436 0.616z"/>
+    <path id="path2800" fill-rule="evenodd" fill="url(#linearGradient2818)" d="m5.8441 12.24c-0.0727 0.085-0.4479 0.749-1.7813 3.375 0.2498-0.341 0.6117-0.398 0.75-0.407l1.0313-2.968z"/>
+    <path id="path2804" fill-rule="evenodd" fill="url(#linearGradient2837)" d="m13.984 12l1.046 3s0.685 0.204 0.923 0.625c-1.877-3.603-1.907-3.625-1.907-3.625h-0.062z"/>
+    <path id="path2916" stroke-linejoin="round" d="m6.286 12.485c-0.0669 0.083-0.4115 0.753-1.6411 3.298-0.1103 0.158-0.1717 0.347-0.1727 0.574v25.171h11.056v-25.171c0-0.164-0.069-0.315-0.144-0.453 0.025 0.032 0.067 0.055 0.086 0.09-1.756-3.487-1.785-3.509-1.785-3.509h-7.3702s-0.0054-0.029-0.0288 0z" stroke="#eeeeec" stroke-linecap="round" stroke-width=".944" fill="none"/>
+    <path id="path2773" fill="url(#linearGradient2792)" d="m4.5312 15c-0.6821-0.019-0.5285 1.818-0.5312 4.438h12c0.002-2.339 0.103-4.414-0.5-4.438h-10.969z"/>
+    <path id="path2822" fill-rule="evenodd" fill="url(#linearGradient2907)" d="m4.4379 15l1.5589-2.993 7.9412-0.007 1.562 3h-11.062z"/>
+    <rect id="rect2979" height="5" width="10" y="36" x="5" fill="#2e3436"/>
+    <path id="path2983" fill-rule="evenodd" fill="#edd400" d="m7 41l3.003-5h2l-3.003 5h-2z"/>
+    <path id="path2987" fill-rule="evenodd" fill="#edd400" d="m11 41l3.003-5 1.084-0.038-0.014 1.587-2.073 3.451h-2z"/>
+    <path id="path2989" fill-rule="evenodd" fill="#edd400" d="m6 36l-1 1.674-0.0302 3.339 3.0302-5.013h-2z"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Barrier</dc:title>
+        <dc:date>2008-04-03T12:43:52</dc:date>
+        <dc:description>barrier, barrier, clip art, clipart, guardrail, guardrail, icon, icon, image, media, png, public domain, svg, tango style, tango style, </dc:description>
+        <dc:source>http://openclipart.org/detail/16132/barrier-by-neoguiri</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>neoguiri</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>barrier</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>guardrail</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>tango style</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

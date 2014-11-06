@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg3223" viewBox="0 0 48 48" version="1.0">
+  <defs id="defs3225">
+    <linearGradient id="linearGradient4184">
+      <stop id="stop4186" stop-color="#8c8c8c" offset="0"/>
+      <stop id="stop4188" stop-color="#9f9f9f" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2448" y2="33.563" xlink:href="#linearGradient4184" gradientUnits="userSpaceOnUse" x2="27.622" gradientTransform="matrix(-.77627 -.77627 .77627 -.77627 23.405 60.785)" y1="11.729" x1="27.622"/>
+    <linearGradient id="linearGradient2451" y2="46.366" xlink:href="#linearGradient4184" gradientUnits="userSpaceOnUse" x2="29.936" gradientTransform="matrix(1.0978 0 0 1.0978 -59.532 -26.431)" y1="11.777" x1="16.685"/>
+    <linearGradient id="linearGradient2455" y2="10.143" gradientUnits="userSpaceOnUse" x2="15" gradientTransform="matrix(1.0978 -3.7623e-8 -3.7623e-8 1.0978 -59.532 -26.431)" y1="48" x1="31.621">
+      <stop id="stop4194" stop-color="#9f9f9f" offset="0"/>
+      <stop id="stop4196" stop-color="#e7e7e7" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2458" y2="9.5272" gradientUnits="userSpaceOnUse" x2="27.811" gradientTransform="matrix(1.0978 0 0 1.0978 -59.532 -26.431)" y1=".52717" x1="18.811">
+      <stop id="stop4247" stop-color="#7f7f7f" offset="0"/>
+      <stop id="stop4249" stop-color="#9f9f9f" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2462" y2="-.075759" gradientUnits="userSpaceOnUse" x2="17.916" gradientTransform="matrix(1.0978 -3.7623e-8 -3.7623e-8 1.0978 -59.532 -26.431)" y1="10.728" x1="28.99">
+      <stop id="stop4267" stop-color="#7f7f7f" offset="0"/>
+      <stop id="stop4269" stop-color="#bfbfbf" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1" transform="translate(.0000035520 .0000020070)">
+    <g id="layer2">
+      <g id="g2465">
+        <rect id="rect4230" stroke-linejoin="round" transform="rotate(225)" height="12.311" width="12.251" stroke="#404040" y="-27.068" x="-40.067" stroke-width="1.0572" fill="url(#linearGradient2462)"/>
+        <rect id="rect4253" transform="rotate(225)" height="9.8803" width="9.8803" y="-25.853" x="-38.881" fill="#bfbfbf"/>
+        <rect id="rect4233" transform="rotate(225)" height="9.8803" width="9.8803" y="-25.853" x="-38.881" fill="url(#linearGradient2458)"/>
+        <rect id="rect4227" stroke-linejoin="round" transform="rotate(225)" rx="1.8057" ry="2.0625" height="40.462" width="17.149" stroke="#4e4e4e" y="-14.748" x="-42.516" stroke-width="1.0978" fill="url(#linearGradient2455)"/>
+        <rect id="rect3209" transform="rotate(225)" rx="1.0978" ry="1.0978" height="37.972" width="14.548" y="-13.502" x="-41.215" fill="#e7e7e7"/>
+        <rect id="rect4182" transform="rotate(225)" rx="1.0978" ry="1.0978" height="37.972" width="14.548" y="-13.502" x="-41.215" fill="url(#linearGradient2451)"/>
+        <path id="rect4200" opacity=".9" d="m18.821 37.909c0.43 0.43 1.122 0.43 1.552 0l16.132-16.132c-1.944-0.751-10.424-3.555-14.046 3.469-3.314 6.43-10.149 4.291-12.687 3.227 0.0169 0.256 0.1188 0.507 0.316 0.703l8.733 8.733z" fill="url(#linearGradient2448)"/>
+        <path id="text6167" d="m-2.1186 28.44h1.4559l0.00004 6.357c-0.00001 1.105-0.12509 1.983-0.37524 2.634-0.2502 0.65-0.7017 1.179-1.3546 1.587s-1.5097 0.612-2.5703 0.612c-1.0306 0-1.8736-0.178-2.529-0.533-0.6555-0.355-1.1232-0.869-1.4034-1.542s-0.4203-1.593-0.4203-2.758v-6.357h1.4559v6.349c0 0.956 0.0888 1.66 0.2664 2.113 0.1776 0.452 0.4828 0.801 0.9156 1.047 0.4328 0.245 0.9618 0.367 1.5872 0.367 1.0707 0 1.8336-0.242 2.2889-0.728 0.4553-0.485 0.6829-1.418 0.6829-2.799v-6.349zm3.3921 7.467l1.3734-0.12c0.065 0.551 0.2163 1.002 0.454 1.355 0.2376 0.353 0.6066 0.638 1.1069 0.855 0.5003 0.218 1.0632 0.327 1.6886 0.327 0.5553 0 1.0456-0.083 1.4709-0.248 0.4252-0.165 0.7417-0.391 0.9493-0.679s0.3114-0.602 0.3114-0.942c0-0.345-0.1-0.646-0.3002-0.904-0.2001-0.258-0.5303-0.474-0.9906-0.649-0.2951-0.115-0.948-0.294-1.9587-0.537-1.0106-0.243-1.7185-0.471-2.1238-0.687-0.5253-0.275-0.9168-0.616-1.1744-1.024-0.2577-0.408-0.3865-0.864-0.3865-1.37 0-0.555 0.1576-1.074 0.4728-1.557 0.3152-0.482 0.7754-0.849 1.3808-1.099s1.2783-0.375 2.0188-0.375c0.8155 0 1.5346 0.131 2.1575 0.394 0.6229 0.262 1.1019 0.649 1.4372 1.159 0.3352 0.51 0.5153 1.088 0.5403 1.734l-1.3959 0.105c-0.075-0.696-0.3289-1.221-0.7617-1.576s-1.0719-0.533-1.9174-0.533c-0.8805 0-1.5222 0.161-1.9249 0.484-0.4028 0.323-0.6042 0.712-0.6042 1.167 0 0.395 0.1426 0.72 0.4278 0.976 0.2802 0.255 1.0119 0.516 2.1951 0.784 1.1832 0.267 1.995 0.501 2.4352 0.701 0.6404 0.296 1.1132 0.67 1.4184 1.122 0.3052 0.453 0.4574 0.975 0.4574 1.565 0 0.585-0.1672 1.137-0.5024 1.655s-0.8168 0.92-1.4446 1.208c-0.6279 0.288-1.3346 0.432-2.1201 0.432-0.9956 0-1.8299-0.145-2.5028-0.436-0.6729-0.29-1.2007-0.726-1.5835-1.309-0.3827-0.583-0.5841-1.242-0.6041-1.978zm10.702 3.535v-11.002h4.128c0.84 0 1.514 0.112 2.022 0.334 0.508 0.223 0.906 0.566 1.193 1.028 0.288 0.463 0.432 0.947 0.432 1.452 0 0.471-0.128 0.914-0.383 1.329s-0.64 0.75-1.156 1.005c0.666 0.196 1.177 0.528 1.535 0.999 0.358 0.47 0.537 1.025 0.537 1.666 0 0.515-0.109 0.994-0.327 1.437-0.217 0.442-0.486 0.784-0.807 1.024-0.32 0.24-0.721 0.422-1.204 0.544-0.483 0.123-1.074 0.184-1.775 0.184h-4.195zm1.456-6.379h2.379c0.645 0 1.108-0.042 1.388-0.127 0.371-0.111 0.649-0.293 0.837-0.548s0.281-0.576 0.281-0.961c0-0.365-0.087-0.687-0.262-0.964-0.175-0.278-0.425-0.468-0.751-0.571-0.325-0.102-0.883-0.153-1.673-0.153h-2.199v3.324zm0 5.081h2.739c0.47 0 0.801-0.018 0.991-0.053 0.335-0.06 0.615-0.16 0.84-0.3s0.411-0.344 0.556-0.612c0.145-0.267 0.217-0.576 0.217-0.926 0-0.411-0.105-0.767-0.315-1.07s-0.502-0.515-0.874-0.638c-0.373-0.122-0.91-0.184-1.61-0.184h-2.544v3.783z" fill="#404040" transform="rotate(-45)"/>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>USB Flash Drive Icon</dc:title>
+        <dc:date>2008-03-01T16:44:01</dc:date>
+        <dc:description>An icon I made for my USB flash drive while I was stuck at school longer than usual one day. Inspired by the Tango Icon style. Enjoy.</dc:description>
+        <dc:source>http://openclipart.org/detail/15218/usb-flash-drive-icon-by-_tyizael_</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>_TyIzaeL_</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>drive</rdf:li>
+            <rdf:li>flash</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>memory</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>stick</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>usb</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -9,12 +9,14 @@ define(['dojo/_base/declare',
  return declare([ _Widget, _Templated], {
        widgetsInTemplate:true,
        templateString:templateString,
+changed: false,
 _id: 0,
 _idcontact: 0,
 _ts: "",
 _idaddress: 0,
 reset: function(){
 t = this;
+t.changed = false;
 t._id = 0;
 //t._idcontact = 0;
 t._ts = "1990-01-01";
@@ -23,17 +25,44 @@ t.Formulario.reset();
 },
 _setIdaddressAttr: function(id){
 var t = this;
-t._idaddress;
-t._Save();
+t._idaddress = id;
+t.changed = true;
+t.Save();
 },
 _getIdaddressAttr: function(){
 return this._idaddress;
 },
+_getIdphoneAttr: function(){
+return this._id;
+},
 postCreate: function(){
 var t = this;
+t.disableFields(true);
 
+t.Enable.on('change', function(){
+t.changed = true;
+});
+t.Phone.on('change', function(){
+t.changed = true;
+});
+t.PhoneExt.on('change', function(){
+t.changed = true;
+});
+t.TypePhone.on('change', function(){
+t.changed = true;
+});
+t.UbiPhone.on('change', function(){
+t.changed = true;
+});
+t.Provider.on('change', function(){
+t.changed = true;
+});
+t.Note.on('change', function(){
+t.changed = true;
+});
+/*
 t.menubar.on('ondelete', function(){
-t._Delete();
+t.Delete();
 });
 
 
@@ -42,16 +71,24 @@ var i = t._idcontact*1;
 t.reset();
 t._Load();
 t._idcontact = i;
+t.disableFields(false);
 });
 
 t.menubar.on('onsave', function(){
-t._Save();
+t.Save();
 });
-
-
+*/
 jsFS.addXmlLoader(t.Provider, "provider_listidname_xml.usms", "row", {}, "idprovider", "name");
 t.Provider.Load();
 
+},
+new: function(){
+var i = t._idcontact*1;
+t = this;
+t.reset();
+t._Load();
+t._idcontact = i;
+t.disableFields(false);
 },
 Load: function(idcontact_, idphone_){
 this.reset();
@@ -59,8 +96,20 @@ this._idcontact = idcontact_;
 this._id = idphone_;
 this._Load();
 },
+disableFields: function(_disabled){
+t = this;
+t.Enable.set("disabled", _disabled);
+t.Phone.set("disabled", _disabled);
+t.PhoneExt.set("disabled", _disabled);
+t.TypePhone.set("disabled", _disabled);
+t.UbiPhone.set("disabled", _disabled);
+t.Provider.set("disabled", _disabled);
+t.Note.set("disabled", _disabled);
+},
 _Load: function(){
 var t = this;
+t.disableFields(true);
+t.changed = false;
 if(t._id > 0){
             // Request the text file
             request.get("getphonebyid_xml.usms", {
@@ -89,7 +138,10 @@ t._id = d.getNumber(i, "idphone");
 }else{
 t.reset();
 }
-
+setTimeout(function(){
+t.changed = false;
+t.disableFields(false);
+}, 2000);
 t.emit('onloadphone', {idcontact: t._idcontact, idphone: t._id, idaddress: t._idaddress});
 
                 },
@@ -97,11 +149,12 @@ t.emit('onloadphone', {idcontact: t._idcontact, idphone: t._id, idaddress: t._id
                     // Display the error returned
 t.reset();
 t.emit('onloadphone',  {idcontact: t._idcontact, idaddress: 0, idphone: 0});
-t.emit('onnotify', {msg: error});
+t.emit('onnotify', {message: error});
                 }
             );
 }else{
 t.reset();
+t.disableFields(false);
 t.emit('onloadphone',  {idcontact: t._idcontact, idaddress: 0, idphone: 0});
 }
 
@@ -124,12 +177,12 @@ idaddress: t._idaddress
 }
 },
 
-_Save: function(){
+Save: function(){
 
 var t = this;
+if(t.changed){
 
 if(t.Formulario.validate()){
-
             // Request the text file
             request.post("phonetable_xml.usms", {
             // Parse data from xml
@@ -143,29 +196,30 @@ var xmld = new RXml.getFromXhr(response, 'row');
 if(xmld.length > 0){
 
 t._id = xmld.getInt(0, 'outreturn');
-t.emit('onnotify', {msg: xmld.getStringFromB64(0, 'outpgmsg')});
+t.emit('onnotify', {message: xmld.getStringFromB64(0, 'outpgmessage')});
 }else{
 t.reset();
 }
-t.emit('onsavephone', {idcontact: t._id});
+t.emit('onsavephone', {idcontact: t._idcontact});
 t._Load();
 
                 },
                 function(error){
                     // Display the error returned
-t.emit('onnotify', {msg: error});
+t.emit('onnotify', {message: error});
 t.reset();
 t._Load();
                 }
             );
 
 }else{
-t.emit('onnotify', {msg: 'Los datos no han sido completados correctamente'});
+t.emit('onnotify', {message: 'Los datos no han sido completados correctamente'});
+}
 }
 
 //return Objeto;
 },
-_Delete: function(){
+Delete: function(){
 // Internamente postgres elimina automaticamente es idaddress
 var t = this;
 
@@ -183,10 +237,10 @@ var xmld = new RXml.getFromXhr(response, 'row');
 if(xmld.length > 0){
 if(0 == Math.abs(xmld.getInt(0, 'outreturn'))){
 // Fue borrado correctamente
-t.emit('ondeletephone', {idcontact: t._id, idaddress: t._idaddress});
+t.emit('ondeletephone', {idcontact: t._idcontact, idaddress: t._idaddress});
 t.reset();
 }
-t.emit('onnotify', {msg: xmld.getStringFromB64(0, 'outpgmsg')});
+t.emit('onnotify', {message: xmld.getStringFromB64(0, 'outpgmessage')});
 }else{
 t.reset();
 }
@@ -196,14 +250,14 @@ t._Load();
                 },
                 function(error){
                     // Display the error returned
-t.emit('onnotify', {msg: error});
+t.emit('onnotify', {message: error});
 t.reset();
 t._Load();
                 }
             );
 
 }else{
-t.emit('onnotify', {msg: 'No ha seleccionado un contacto para eliminar'});
+t.emit('onnotify', {message: 'No ha seleccionado un contacto para eliminar'});
 }
 
 //return Objeto;

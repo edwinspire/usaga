@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg6431" viewBox="0 0 48 48">
+  <defs id="defs6433">
+    <linearGradient id="linearGradient2608" x1="34.893" gradientUnits="userSpaceOnUse" y1="36.423" gradientTransform="matrix(.62567 -1.0869 .86668 .49886 28.812 50.337)" x2="45.919" y2="48.548">
+      <stop id="stop1324" stop-color="#729fcf" offset="0"/>
+      <stop id="stop1326" stop-color="#5187d6" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2610" x1="16.875" gradientUnits="userSpaceOnUse" y1="22.852" gradientTransform="matrix(.62567 -1.0869 .86668 .49886 51.847 37.523)" x2="27.901" y2="34.977">
+      <stop id="stop7918" stop-color="#fff" offset="0"/>
+      <stop id="stop7920" stop-color="#fff" stop-opacity=".34021" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1">
+    <g id="g2603" transform="translate(-64.344 .1875)">
+      <path id="path2542" stroke="#3465a4" stroke-width="1.1199px" fill="#75a1d0" d="m95.25 5.1562l-4.688 8.1558h-5.812l-11.938 0.032-0.031 6.968h12l1.781-0.031-3.281 5.657-0.531 0.906-9.938 0.031-0.031 6.969h5.969l-2.938 5.125 6.032 3.5 5-8.657 4.937-0.093 12.129 0.125v-7h-13.098l2.844-5.094 0.906-1.531 9.348 0.093v-7h-5.316l2.716-4.6558-6.06-3.5z"/>
+      <path id="path2544" opacity=".4086" d="m95.469 6.7812l-4.344 7.5308-17.344 0.032-0.031 4.968h14.5l-4.906 8.563h-9.563l-0.031 4.969h6.75l-3.188 5.531 4.282 2.531 4.656-8.062h16.59v-5h-13.715l4.906-8.532h8.809v-5h-5.902l2.874-4.9995-4.343-2.5313z" stroke="url(#linearGradient2610)" stroke-width="1.1199px" fill="url(#linearGradient2608)"/>
+      <path id="path2562" opacity=".31183" fill-rule="evenodd" fill="#fff" d="m73.257 16.842c0 1.937 30.123-0.938 30.123 0v-3l-5.762-0.119c0.937-1.549 1.773-2.862 2.762-4.833-1.529-1.0617-2.995-1.9309-5.01-2.8311-1.059 0.862-2.956 5.5231-4.623 7.7831h-17.49v3z"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>tango style not equal</dc:title>
+        <dc:date>2010-03-24T09:23:35</dc:date>
+        <dc:description>Remixed Tango "list remove" icon.</dc:description>
+        <dc:source>http://openclipart.org/detail/33667/tango-style-not-equal-by-warszawianka</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>warszawianka</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>maths</rdf:li>
+            <rdf:li>not equal</rdf:li>
+            <rdf:li>remix</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

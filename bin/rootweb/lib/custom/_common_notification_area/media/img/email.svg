@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2972" viewBox="0 0 45.717 46.296" version="1.1">
+  <defs id="defs2974">
+    <linearGradient id="linearGradient5686" y2="145.91" gradientUnits="userSpaceOnUse" y1="-35.774" x2="-150.66" x1="-150.66">
+      <stop id="stop5490-3" stop-color="#fb9e00" offset="0"/>
+      <stop id="stop5492-7" stop-color="#f44f00" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3134" x1="-138.55" gradientUnits="userSpaceOnUse" x2="-150.71" gradientTransform="matrix(.91463 0 0 .91463 524.59 397.67)" y1="-33.352" y2="69.331">
+      <stop id="stop5509-8" stop-color="#fff" offset="0"/>
+      <stop id="stop5511-6" stop-color="#fff" stop-opacity=".66667" offset="0"/>
+      <stop id="stop5513-0" stop-color="#9dbbe1" stop-opacity=".089431" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1" transform="translate(-171.78 -323.61)">
+    <g id="g5874" transform="matrix(.26119 0 0 .26119 93.616 229.74)">
+      <path id="path5668" transform="matrix(.96341 0 0 .97561 531.94 394.31)" fill="#f44800" d="m-59.822 55.066c0 50.17-40.671 90.841-90.841 90.841s-90.841-40.671-90.841-90.841 40.671-90.841 90.841-90.841 90.841 40.671 90.841 90.841z"/>
+      <path id="path5670" transform="matrix(.91463 0 0 .91463 524.59 397.67)" fill="url(#linearGradient5686)" d="m-59.822 55.066c0 50.17-40.671 90.841-90.841 90.841s-90.841-40.671-90.841-90.841 40.671-90.841 90.841-90.841 90.841 40.671 90.841 90.841z"/>
+      <g id="text5197" transform="matrix(.79421 0 0 .72444 -411.85 95.391)" fill="#fff">
+        <path id="path5202" d="m1018.6 460.47 1.7055-7.5724h18.01l-10.37 48.914c-0.6368 3.0927-0.9552 5.1393-0.9551 6.1398-0.0001 1.0461 0.25 1.8647 0.7504 2.4559 0.5457 0.59125 1.1824 0.88688 1.9102 0.88686 2.4558 0.00002 5.6167-1.5918 9.4826-4.7754 3.9112-3.2291 7.2995-7.5952 10.165-13.098 2.9106-5.5485 4.366-11.597 4.3661-18.147-0.0001-5.4576-1.0461-10.597-3.1381-15.418-2.0467-4.8208-5.0257-9.005-8.9369-12.553-3.9114-3.5474-8.755-6.3217-14.531-8.3229-5.7306-2.001-12.234-3.0016-19.511-3.0017-7.4133 0.00009-14.213 0.97791-20.398 2.9335-6.1854 1.9102-11.62 4.6845-16.305 8.3229-4.6845 3.593-8.5958 8.0501-11.734 13.371-2.7743 4.639-4.8891 9.7783-6.3445 15.418-1.4554 5.6396-2.1831 11.393-2.183 17.26-0.00002 7.8226 1.5463 14.986 4.639 21.489 3.1381 6.4582 7.6634 11.87 13.576 16.236 5.9579 4.4116 13.144 7.527 21.558 9.3462 8.4138 1.8647 17.919 2.2513 28.516 1.1598 8.4137-1.0006 15.531-2.9108 21.353-5.7305 5.8669-2.8198 10.824-6.7766 14.872-11.87h14.531c-2.3651 4.8664-5.4578 9.2097-9.278 13.03-3.775 3.8203-8.2093 7.0267-13.303 9.6191-5.0939 2.6378-10.802 4.639-17.123 6.0034-6.3219 1.3644-13.212 2.0466-20.671 2.0466-11.188-0.00003-21.262-1.4781-30.222-4.4343-8.9596-2.9108-16.509-7.1404-22.649-12.689-6.0944-5.5031-10.711-12.075-13.849-19.716-3.1381-7.6861-4.7072-16.168-4.7072-25.446-0.00001-9.6872 1.6145-18.738 4.8436-27.152 3.2291-8.4138 7.868-15.713 13.917-21.899 6.0943-6.2307 13.508-11.097 22.24-14.599 8.7776-3.5019 18.442-5.2529 28.994-5.253 8.6412 0.0001 16.555 1.2736 23.741 3.8203 7.2312 2.5015 13.416 6.1172 18.556 10.847 5.1391 4.73 9.0504 10.347 11.734 16.85 2.7287 6.4582 4.0931 13.599 4.0933 21.421-0.0002 6.0944-1.0917 12.075-3.2746 17.942-2.1832 5.8215-5.3213 11.074-9.4144 15.759-4.0479 4.639-8.8233 8.3229-14.326 11.052-5.5032 2.6833-11.438 4.025-17.805 4.025-3.684 0-6.5493-0.61399-8.5958-1.842-2.0467-1.2734-3.4111-3.2746-4.0932-6.0034-3.9569 3.9113-8.5049 6.39-13.644 7.436-5.1393 1.0006-10.119 0.52303-14.94-1.4326-4.8209-2.0011-8.7322-5.3439-11.734-10.028-2.9562-4.6844-4.4343-10.46-4.4343-17.328-0.00003-7.1404 1.5236-14.167 4.5708-21.08 3.0926-6.9129 7.4587-12.575 13.098-16.987 5.685-4.4115 12.098-6.6173 19.238-6.6174 8.1863 0.00007 14.19 3.07 18.01 9.2097m-37.316 35.338c-0.00005 5.4576 1.137 9.6418 3.411 12.553 2.274 2.9108 5.2529 4.3661 8.9368 4.3661 4.2751 0.00001 8.0272-1.7055 11.256-5.1165 3.2745-3.411 5.7532-7.7089 7.436-12.894 1.6827-5.2302 2.5241-10.278 2.5242-15.145-0.0001-2.4104-0.2957-4.5707-0.8869-6.4809-0.5458-1.9556-1.3872-3.6611-2.5241-5.1165-1.0916-1.4553-2.4333-2.5468-4.025-3.2746-1.5464-0.7731-3.3201-1.1597-5.3212-1.1597-4.0023 0.00006-7.618 1.5691-10.847 4.7072-3.1837 3.0927-5.6396 7.1404-7.3678 12.143-1.7283 4.9574-2.5924 10.097-2.5924 15.418" fill="#fff"/>
+      </g>
+      <path id="path5672" opacity=".7572" fill="url(#linearGradient3134)" d="m386.8 364.94c-45.16 0-81.909 36.056-83.062 80.938 37.387 15.04 95.243 25.784 166.03-2.0938-2.2099-43.915-38.505-78.844-82.969-78.844z"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>email</dc:title>
+        <dc:date>2010-08-04T09:38:43</dc:date>
+        <dc:description>Set of web 2.0 icon, available as one download,look in my clip arts.</dc:description>
+        <dc:source>http://openclipart.org/detail/77089/email-by-shokunin</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>shokunin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>arrow</rdf:li>
+            <rdf:li>backward</rdf:li>
+            <rdf:li>cart</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>communicator</rdf:li>
+            <rdf:li>computer</rdf:li>
+            <rdf:li>desktop</rdf:li>
+            <rdf:li>earth</rdf:li>
+            <rdf:li>email</rdf:li>
+            <rdf:li>forward</rdf:li>
+            <rdf:li>globe</rdf:li>
+            <rdf:li>home</rdf:li>
+            <rdf:li>icons</rdf:li>
+            <rdf:li>info</rdf:li>
+            <rdf:li>information</rdf:li>
+            <rdf:li>interface</rdf:li>
+            <rdf:li>lock</rdf:li>
+            <rdf:li>mail</rdf:li>
+            <rdf:li>message</rdf:li>
+            <rdf:li>messenger</rdf:li>
+            <rdf:li>network</rdf:li>
+            <rdf:li>networking</rdf:li>
+            <rdf:li>pidgin</rdf:li>
+            <rdf:li>planet</rdf:li>
+            <rdf:li>play</rdf:li>
+            <rdf:li>secure</rdf:li>
+            <rdf:li>security</rdf:li>
+            <rdf:li>server</rdf:li>
+            <rdf:li>shopping</rdf:li>
+            <rdf:li>sms.text</rdf:li>
+            <rdf:li>unlock</rdf:li>
+            <rdf:li>unsecured</rdf:li>
+            <rdf:li>web</rdf:li>
+            <rdf:li>web 2.0</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

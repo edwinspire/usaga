@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"localPath": true,
+	"customWidgetSpec": 1,
+	"categories": {
+		"custom": {
+			"name": "Custom widget",
+			"description": "Custom widget",
+			"widgetClass": "dijit"
+		}
+	},
+	"widgets": [
+		{
+			"name": "_usaga_account_gridx_filter",
+			"description": "_usaga_account_gridx_filter",
+			"type": "_usaga_account_gridx_filter/_usaga_account_gridx_filter",
+			"category": "custom",
+			"iconLocal": true,
+			"icon": "app/davinci/img/maqetta.png",
+			"properties": {
+				"style": "width: 100%; height: 100%;"
+			}
+		}
+	],
+	"name": "_usaga_account_gridx_filter",
+	"longName": "_usaga_account_gridx_filter"
+}

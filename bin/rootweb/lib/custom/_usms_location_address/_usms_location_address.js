@@ -12,10 +12,10 @@ postCreate: function(){
 
 var t = this;
 
-domStyle.set(t.menubar.new.domNode, "display", "none");
+//domStyle.set(t.menubar.new.domNode, "display", "none");
 t.titleaddress.set('label', 'Dirección');
 t.titlelocation.set('label', 'Localización');
-
+/*
 t.menubar.on('ondelete', function(){
 t.delete();
 });
@@ -24,7 +24,7 @@ t.delete();
 t.menubar.on('onsave', function(){
 t.save();
 });
-
+*/
 
 t.address.on('onloaddata', function(l){
 t.location.set('location', l.idlocation);
@@ -42,10 +42,17 @@ t.location.on('notify_message', function(m){
 t.emit('onnotify', m)
 });
 
+t.TabLocalz.on('Show', function(){
+t.TabLocalz.resize();
+});
+
+
 t.location.set('location', 0);
 t.tab.startup();
 t.tab.resize();
-t.tab.layout();
+//t.tab.layout();
+
+
 },
 _setIdaddressAttr: function(id){
 //this.resize();
@@ -54,9 +61,14 @@ this.map.setAttribute('data', 'usms_map.usms?idaddress='+id);
 },
 resize: function(){
 this.tab.resize();
-this.tab.layout();
+//this.tab.layout();
 },
 save: function(){
+// Si ha cambiado location le pasamos este cambio a address para que pueda ser guardado.
+if(this.location.changed){
+this.address.changed = this.location.changed;
+}
+
 this.address.idlocation = this.location.get('location');
 this.address.save();
 },

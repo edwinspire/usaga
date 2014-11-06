@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 48 48" version="1.1">
+  <defs id="defs4">
+    <linearGradient id="linearGradient3784" y2="1007.7" gradientUnits="userSpaceOnUse" x2="18.312" gradientTransform="translate(1.5 -.5)" y1="1048.4" x1="21">
+      <stop id="stop3780" stop-color="#2e3436" offset="0"/>
+      <stop id="stop3782" stop-color="#555753" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient3786" fx="22.928" fy="1019.5" gradientUnits="userSpaceOnUse" cy="1013.5" cx="22" gradientTransform="matrix(2.2857 6.3995e-7 -9.5993e-7 3.4286 -26.785 -2469.1)" r="14">
+      <stop id="stop3772" stop-color="#eeeeec" offset="0"/>
+      <stop id="stop3774" stop-color="#555753" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient3808" y2="1040.2" gradientUnits="userSpaceOnUse" x2="20.861" y1="1013.3" x1="21.5">
+      <stop id="stop3804" stop-color="#729fcf" offset="0"/>
+      <stop id="stop3806" stop-color="#34a475" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1" fill-rule="evenodd" transform="translate(0 -1004.4)">
+    <path id="rect2987" d="m14.5 1006.9h19c2.216 0 4 1.784 4 4v33c0 2.216-1.784 4-4 4h-19c-2.216 0-4-1.784-4-4v-33c0-2.216 1.784-4 4-4z" stroke="url(#radialGradient3786)" stroke-width="1px" fill="url(#linearGradient3784)"/>
+    <path id="path3792" d="m21 6a1 1 0 1 1 -2 0 1 1 0 1 1 2 0z" stroke="#204a87" fill="#3465a4" transform="matrix(.875 0 0 .875 .8125 1005.8)"/>
+    <path id="rect3794" d="m22.5 1009.9h4c0.554 0 1 0.446 1 1s-0.446 1-1 1h-4c-0.554 0-1-0.446-1-1s0.446-1 1-1z" stroke="#2e3436" stroke-width="1px" fill="#babdb6"/>
+    <path id="rect3796" d="m13.497 1013.9h21.005c0.55254 0 0.99737 0.446 0.99737 1v24c0 0.554-0.44483 1-0.99737 1h-21.005c-0.55254 0-0.99737-0.446-0.99737-1v-24c0-0.554 0.44483-1 0.99737-1z" stroke="#555753" stroke-width="1px" fill="url(#linearGradient3808)"/>
+    <path id="path3810" d="m27.125 39.188a2.9375 2.9375 0 1 1 -5.875 0 2.9375 2.9375 0 1 1 5.875 0z" transform="matrix(.85106 0 0 .85106 3.4149 1010)" stroke="#282828" stroke-width="1.175px" fill="#2e3436"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Tango icon for iPhone 4</dc:title>
+        <dc:date>2010-09-24T23:01:59</dc:date>
+        <dc:description>iPhone 4 Tango Icon</dc:description>
+        <dc:source>http://openclipart.org/detail/86581/tango-icon-for-iphone-4-by-jhnri4</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>jhnri4</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>black</rdf:li>
+            <rdf:li>button</rdf:li>
+            <rdf:li>camera</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>iphone 4</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>screen</rdf:li>
+            <rdf:li>speaker</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>tango</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
