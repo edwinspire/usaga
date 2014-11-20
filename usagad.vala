@@ -26,8 +26,20 @@ public class RunuSaga: GLib.Object {
 	public static int main (string[] args) {
 		stdout.printf ("run usagad!\n");
 		uSagaServer oSAGAServer = new uSagaServer();
-		//smsServer.ResetAndLoadDevices();
-		oSAGAServer.runuSAGA();
+		string Install_Directory = Environment.get_current_dir();
+		
+		if(args.length>1){
+			Install_Directory = args[1];
+		}else{
+			
+#if _LNX_SPIRE_
+    	Install_Directory = "/opt/usaga";
+#endif
+			
+		}
+		
+		oSAGAServer.runuSAGA(Install_Directory);
+		
 		print("El servidor muere...");
 		return 0;
 	}

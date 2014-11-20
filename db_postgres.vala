@@ -423,6 +423,7 @@ return RetornoX;
 			//GLib.print("ResponseGetEventsMonitor >>> \n%s\n", RetornoX);
 			return RetornoX;
 		}
+		
 		public string fun_view_events_comments_xml(int idevent, bool fieldtextasbase64 = true) {
 			string RetornoX = "<table></table>";
 			var  Conexion = Postgres.connect_db (this.ConnString());
@@ -1432,12 +1433,14 @@ return RetornoX;
 		private void fun_eventtype_default() {
 			if(this.EventypesTimes == 0) {
 				EventTypesTable ETT1 = new EventTypesTable();
-				ETT1.GetParamCnx();
+				ETT1.ParamCnx = this.ParamCnx;
+				//ETT1.GetParamCnx(this.Config);
 				ETT1.fun_eventtype_default();
 				this.EventypesTimes++;
 			} else if(this.EventypesTimes>180) {
 				EventTypesTable ETT2 = new EventTypesTable();
-				ETT2.GetParamCnx();
+				ETT2.ParamCnx = this.ParamCnx;
+				//ETT2.GetParamCnx(this.Config);
 				ETT2.fun_eventtype_default();
 				this.EventypesTimes = 1;
 			} else {

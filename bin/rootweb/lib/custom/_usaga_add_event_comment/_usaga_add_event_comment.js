@@ -124,7 +124,7 @@ if(t._mobile){
 
     console.log('Enviando archivos.....');
 
-    iframe("fun_event_comment_insert_xml.usaga",{	
+    iframe("/php/fun_event_comment_insert-xml.php",{	
       form: t.Files.get('id'),
 //	data: {edwin: 'hola'},
       handleAs: "xml"
